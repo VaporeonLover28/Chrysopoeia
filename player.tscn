@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://ccrixd463btyn"]
+
+[ext_resource type="Script" uid="uid://belce67ywjqi1" path="res://player.gd" id="1_02ohv"]
+[ext_resource type="Shader" uid="uid://cvnbjonmqk6pa" path="res://pixel_quantize.gdshader" id="2_onrkg"]
+[ext_resource type="Script" uid="uid://c3h1cstajbjig" path="res://shader_quad.gd" id="3_i3pqv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tfo3t"]
+
+[sub_resource type="Gradient" id="Gradient_i3pqv"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hqtel"]
+gradient = SubResource("Gradient_i3pqv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i3pqv"]
+render_priority = 0
+shader = ExtResource("2_onrkg")
+shader_parameter/TwixelAngle = 0.0
+shader_parameter/PixelSize = 2.0
+shader_parameter/FogColor = Color(0, 0, 0, 1)
+shader_parameter/FogStart = 25.0
+shader_parameter/FogEnd = 300.0
+shader_parameter/Quantize = false
+shader_parameter/PaletteTexture = SubResource("GradientTexture1D_hqtel")
+
+[sub_resource type="QuadMesh" id="QuadMesh_4flbx"]
+material = SubResource("ShaderMaterial_i3pqv")
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_02ohv")
+
+[node name="PlayerCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_tfo3t")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Cam" type="Camera3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.506911, 0)
+
+[node name="Shader_Quad" type="MeshInstance3D" parent="Pivot/Cam"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.06)
+mesh = SubResource("QuadMesh_4flbx")
+script = ExtResource("3_i3pqv")
