@@ -8,6 +8,7 @@ var is_opening = false
 
 func _interact(player_ref):
 	if is_in_group("Camera Pullers"):
+		Globals.player_interacting = true
 		is_pulling = true
 		_camera_transition(player_ref)
 	elif is_in_group("Doors"):

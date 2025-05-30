@@ -15,6 +15,10 @@ run/main_scene="uid://ifr6x47walau"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://Globals.gd"
+
 [global_group]
 
 "Camera Pullers"=""

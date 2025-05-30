@@ -10,13 +10,15 @@
 script = ExtResource("1_ideak")
 
 [node name="nav" type="NavigationAgent3D" parent="."]
-path_max_distance = 100.01
+target_desired_distance = 1.1
+path_max_distance = 5.01
+path_postprocessing = 1
 simplify_path = true
 debug_enabled = true
 
-[node name="walk_random" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
+[node name="idle" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_ideak")
@@ -24,4 +26,5 @@ mesh = SubResource("CapsuleMesh_ideak")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_xxcha")
 
-[connection signal="timeout" from="walk_random" to="." method="_on_walk_random_timeout"]
+[connection signal="target_reached" from="nav" to="." method="_on_nav_target_reached"]
+[connection signal="timeout" from="idle" to="." method="_on_idle_timeout"]
