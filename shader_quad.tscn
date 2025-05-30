@@ -1,17 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbgpivfhrvrfu"]
+[gd_scene load_steps=6 format=3 uid="uid://dbgpivfhrvrfu"]
 
 [ext_resource type="Shader" uid="uid://dpaxcw8k1au0y" path="res://pixel_quantize.gdshader" id="1_1y4gf"]
 [ext_resource type="Script" uid="uid://c2jcx166ph62q" path="res://shader_quad.gd" id="2_52htj"]
+[ext_resource type="Texture2D" uid="uid://dgmx0f1v8bqfr" path="res://PalleteTest/bluetopurple.tres" id="2_emwex"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_onrkg"]
 render_priority = 0
 shader = ExtResource("1_1y4gf")
-shader_parameter/TwixelAngle = 0.0
+shader_parameter/TwixelAngle = 45.0
 shader_parameter/PixelSize = 3.5
 shader_parameter/FogColor = Color(0, 0, 0, 1)
 shader_parameter/FogStart = 25.0
 shader_parameter/FogEnd = 300.0
 shader_parameter/Quantize = false
+shader_parameter/PaletteTexture = ExtResource("2_emwex")
 
 [sub_resource type="QuadMesh" id="QuadMesh_i3pqv"]
 material = SubResource("ShaderMaterial_onrkg")
