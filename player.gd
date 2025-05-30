@@ -4,7 +4,6 @@ extends CharacterBody3D
 @onready var pivot: Node3D = $Pivot
 @onready var ray_interection: RayCast3D = $Pivot/Camera/RayInterection
 
-
 @export var mouse_sensitivity: float = 0.005
 @export var speed : float = 5.0
 #run speed is speed * value, not the value
@@ -21,9 +20,6 @@ func _unhandled_input(event): #event representa o evento do input
 		pivot.rotate_y(-event.relative.x * mouse_sensitivity)
 		camera.rotate_x(-event.relative.y * mouse_sensitivity)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-70), deg_to_rad(70))
-		
-	
-
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -63,5 +59,5 @@ func _headbob(time) -> Vector3:
 
 func _interact_object():
 	var object_chosen = ray_interection.get_collider()
-	if object_chosen != null and object_chosen is InteractableObject:
-		object_chosen._interact()
+	if object_chosen != null and object_chosen.get_parent() is InteractableObject:
+		object_chosen.get_parent()._interact(self)

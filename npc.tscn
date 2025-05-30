@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://jekyh5hw0o23"]
+
+[ext_resource type="Script" uid="uid://d3u1aaam68bee" path="res://npc.gd" id="1_ideak"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ideak"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xxcha"]
+
+[node name="NPC" type="CharacterBody3D"]
+script = ExtResource("1_ideak")
+
+[node name="nav" type="NavigationAgent3D" parent="."]
+path_max_distance = 100.01
+simplify_path = true
+debug_enabled = true
+
+[node name="walk_random" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_ideak")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_xxcha")
+
+[connection signal="timeout" from="walk_random" to="." method="_on_walk_random_timeout"]

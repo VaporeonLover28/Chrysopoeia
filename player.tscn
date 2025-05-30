@@ -1,23 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsp27d25mg6bh"]
+[gd_scene load_steps=4 format=3 uid="uid://dsp27d25mg6bh"]
 
-[ext_resource type="Shader" uid="uid://dpaxcw8k1au0y" path="res://pixel_quantize.gdshader" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://g774yke4vius" path="res://player.gd" id="1_i3pqv"]
-[ext_resource type="Script" uid="uid://c2jcx166ph62q" path="res://shader_quad.gd" id="2_onrkg"]
+[ext_resource type="PackedScene" uid="uid://dbgpivfhrvrfu" path="res://shader_quad.tscn" id="2_onrkg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_onrkg"]
-render_priority = 0
-shader = ExtResource("1_4flbx")
-shader_parameter/TwixelAngle = 0.0
-shader_parameter/PixelSize = 3.5
-shader_parameter/FogColor = Color(0, 0, 0, 1)
-shader_parameter/FogStart = 25.0
-shader_parameter/FogEnd = 300.0
-shader_parameter/Quantize = false
-
-[sub_resource type="QuadMesh" id="QuadMesh_i3pqv"]
-material = SubResource("ShaderMaterial_onrkg")
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_i3pqv")
@@ -30,11 +16,7 @@ shape = SubResource("CapsuleShape3D_sh265")
 [node name="Camera" type="Camera3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="Shader_Quad" type="MeshInstance3D" parent="Pivot/Camera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.06)
-visible = false
-mesh = SubResource("QuadMesh_i3pqv")
-script = ExtResource("2_onrkg")
+[node name="Shader_Quad" parent="Pivot/Camera" instance=ExtResource("2_onrkg")]
 
 [node name="RayInterection" type="RayCast3D" parent="Pivot/Camera"]
-target_position = Vector3(0, 0, -2)
+target_position = Vector3(0, 0, -3)

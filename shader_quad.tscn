@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbgpivfhrvrfu"]
+
+[ext_resource type="Shader" uid="uid://dpaxcw8k1au0y" path="res://pixel_quantize.gdshader" id="1_1y4gf"]
+[ext_resource type="Script" uid="uid://c2jcx166ph62q" path="res://shader_quad.gd" id="2_52htj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_onrkg"]
+render_priority = 0
+shader = ExtResource("1_1y4gf")
+shader_parameter/TwixelAngle = 0.0
+shader_parameter/PixelSize = 3.5
+shader_parameter/FogColor = Color(0, 0, 0, 1)
+shader_parameter/FogStart = 25.0
+shader_parameter/FogEnd = 300.0
+shader_parameter/Quantize = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_i3pqv"]
+material = SubResource("ShaderMaterial_onrkg")
+
+[node name="Shader_Quad" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.06)
+visible = false
+mesh = SubResource("QuadMesh_i3pqv")
+script = ExtResource("2_52htj")

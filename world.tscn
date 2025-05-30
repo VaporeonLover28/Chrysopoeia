@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ifr6x47walau"]
+[gd_scene load_steps=10 format=3 uid="uid://ifr6x47walau"]
 
 [ext_resource type="PackedScene" uid="uid://dsp27d25mg6bh" path="res://player.tscn" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://cjvjkmgcoucsh" path="res://interactable_object_bs.tscn" id="2_fj7yv"]
+[ext_resource type="PackedScene" uid="uid://jekyh5hw0o23" path="res://npc.tscn" id="3_tlwt5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_37kl0"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -15,6 +16,16 @@ background_mode = 2
 sky = SubResource("Sky_8uh7m")
 tonemap_mode = 2
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_fj7yv"]
+vertices = PackedVector3Array(-1, 0.5, -3.25, 0.25, 0.5, -3.5, 0.25, 0.5, -14.5, -14.5, 0.5, -14.5, -14.5, 0.5, -2.25, -1, 0.5, -2.25, 1.25, 0.5, -3.25, 14.5, 0.5, -2.25, 14.5, 0.5, -14.5, 1.25, 0.5, -2.25, -1, 0.5, -1.5, 0, 0.5, -1.25, -14.5, 0.5, 14.5, 0, 0.5, 14.5, 1, 0.5, -1.25, 14.5, 0.5, 14.5)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(0, 5, 4), PackedInt32Array(1, 2, 6), PackedInt32Array(6, 2, 8), PackedInt32Array(6, 8, 7), PackedInt32Array(7, 9, 6), PackedInt32Array(4, 5, 10), PackedInt32Array(10, 11, 4), PackedInt32Array(4, 11, 13), PackedInt32Array(4, 13, 12), PackedInt32Array(9, 7, 14), PackedInt32Array(14, 7, 15), PackedInt32Array(14, 15, 13), PackedInt32Array(13, 11, 14)]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tlwt5"]
+size = Vector3(30, 1, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aqk2v"]
+size = Vector3(30, 1, 30)
+
 [node name="World" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -24,31 +35,23 @@ environment = SubResource("Environment_6uqi0")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
-use_collision = true
-
-[node name="floor" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-size = Vector3(30, 1, 30)
-
-[node name="wall1" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, -5)
-size = Vector3(1, 4, 10)
-
-[node name="wall2" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2, -5)
-size = Vector3(1, 4, 10)
-
-[node name="wall3" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -10)
-size = Vector3(20, 4, 1)
-
-[node name="roof" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.34133, -5)
-size = Vector3(20, 1, 10)
-
 [node name="Player" parent="." instance=ExtResource("1_f3sb7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5.0745)
 
-[node name="InteractableObjectBS" parent="." instance=ExtResource("2_fj7yv")]
+[node name="NPC" parent="." instance=ExtResource("3_tlwt5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.53735, 1.04513, 0)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_fj7yv")
+
+[node name="floor" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/floor"]
+mesh = SubResource("BoxMesh_tlwt5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/floor"]
+shape = SubResource("BoxShape3D_aqk2v")
+
+[node name="InteractableObjectBS" parent="NavigationRegion3D" instance=ExtResource("2_fj7yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2.28799)
