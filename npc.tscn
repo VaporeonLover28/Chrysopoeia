@@ -26,5 +26,5 @@ mesh = SubResource("CapsuleMesh_ideak")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_xxcha")
 
-[connection signal="target_reached" from="nav" to="." method="_on_nav_target_reached"]
+[connection signal="navigation_finished" from="nav" to="." method="_on_nav_navigation_finished"]
 [connection signal="timeout" from="idle" to="." method="_on_idle_timeout"]
