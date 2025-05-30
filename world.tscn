@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://ifr6x47walau"]
+[gd_scene load_steps=12 format=3 uid="uid://ifr6x47walau"]
 
 [ext_resource type="PackedScene" uid="uid://dsp27d25mg6bh" path="res://player.tscn" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://cjvjkmgcoucsh" path="res://interactable_object_bs.tscn" id="2_fj7yv"]
 [ext_resource type="PackedScene" uid="uid://jekyh5hw0o23" path="res://npc.tscn" id="3_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://cb53qpnp2by4" path="res://casino_light.tscn" id="4_036b0"]
 [ext_resource type="Texture2D" uid="uid://bm5mkjkryluex" path="res://Assets/grid_black_512x512.png" id="4_aqk2v"]
-[ext_resource type="PackedScene" uid="uid://cbxskrncy3ia0" path="res://uploads_files_3556018_blackjack+table.glb" id="6_dwbse"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_37kl0"]
 sky_top_color = Color(0.0606355, 0.0252388, 0.221666, 1)
@@ -144,6 +143,3 @@ height = 3.604
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0632236, 3.04997, -7.93165)
 light_energy = 18.029
 omni_range = 15.368
-
-[node name="uploads_files_3556018_blackjack+table" parent="." instance=ExtResource("6_dwbse")]
-transform = Transform3D(0.631163, 0, 0, 0, 0.631163, 0, 0, 0, 0.631163, -3.65255, 0.00288097, 0.906459)
