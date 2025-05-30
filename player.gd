@@ -25,9 +25,10 @@ func _unhandled_input(event): #event representa o evento do input
 	if event is InputEventMouseMotion and Globals.game_paused == false: # se o jogador mover o mouse(prendemos ele na tela)
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if event is InputEventMouseMotion and Globals.game_paused == false:
-		pivot.rotate_y(-event.relative.x * mouse_sensitivity)
-		camera.rotate_x(-event.relative.y * mouse_sensitivity)
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-70), deg_to_rad(70))
+		if Globals.player_interacting == false:
+			pivot.rotate_y(-event.relative.x * mouse_sensitivity)
+			camera.rotate_x(-event.relative.y * mouse_sensitivity)
+			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-70), deg_to_rad(70))
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
