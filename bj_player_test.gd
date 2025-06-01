@@ -63,7 +63,7 @@ func _act():
 						has_aces = true
 			if hand[0][1] != hand[1][1]:
 				if has_aces == false:
-					print("Has no aces or pairs")
+					#print("Has no aces or pairs")
 					match game.dealer_hand[0][1]:
 						"2":
 							match hand_value:
@@ -546,7 +546,7 @@ func _act():
 								21:
 									_stand()
 				else:
-					print("Has a " + hand[0][1] + " and a " + hand[1][1])
+					#print("Has a " + hand[0][1] + " and a " + hand[1][1])
 					match game.dealer_hand[0][1]:
 						"2":
 							if hand[0][1] == "Ace" and \
@@ -1102,7 +1102,7 @@ func _act():
 							hand[1][1] == "Ace":
 								_hit()
 			else:
-				print("Has a pair of " + hand[0][1] + "s")
+				#print("Has a pair of " + hand[0][1] + "s")
 				match game.dealer_hand[0][1]:
 					"2":
 						match hand[0][1]:

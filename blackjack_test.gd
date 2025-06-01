@@ -1,10 +1,10 @@
 extends Control
 
 #TO-DO
-#players com caracteristicas diferentes de logica (adere a estrategia basica, aleatorio, medroso)
+#checar se todos pararam de jogar
+#AA = 12 e n 22
 #regras mudaveis (focar agora em H17, 1 deck, hole card, late surrender, 
 #no split aces, only same split, resplit to 4, no double-split, reno, 3:2 bonus)
-#jogo acontecendo
 
 #TO-DO NO JOGO REAL
 #hole card do dealer
@@ -39,6 +39,8 @@ var deck = standard_deck
 var dealer_hand : Array = []
 #how much the cards value
 var dealer_hand_value : int = 0
+var dealer_busted = false
+var dealer_blackjack = false
 
 #reference for the clients
 var players : Array = []
@@ -107,7 +109,19 @@ func _calculate_hand_value(who):
 				value_bank += str_to_var(dealer_hand[card][1])
 		#updates the dealer's score
 		dealer_hand_value = value_bank
+		var has_ace : bool
+		var has_ten_value : bool
+		for card in dealer_hand.size():
+			if dealer_hand[card].has("Ace"):
+				has_ace = true
+			if dealer_hand[card].has("10") or dealer_hand[card].has("Jack") or \
+			dealer_hand[card].has("Queen") or dealer_hand[card].has("King"):
+				has_ten_value = true
+			if has_ace and has_ten_value:
+				dealer_blackjack == true
+				print("Dealer's got a blackjack!")
 		if dealer_hand_value >= 22:
+			dealer_busted = true
 			print("Dealer has busted! Common casino L")
 			_end_game()
 	else:
@@ -144,7 +158,7 @@ func _distribute_cards():
 		_dealer_add_card("Dealer")
 	for player_count in players.size():
 		if players[player_count].hand.size() < 2:
-			players[player_count]._hit()
+			_player_add_card(players[player_count])
 	#player_action.start()
 
 #puts cards in deck and resets scores
@@ -166,18 +180,40 @@ func _dealer_stand():
 	_end_game()
 
 func _end_game():
-	print("Game ending. Results:\n\n")
-	for i in players:
-		if players[i].hand_value > dealer_hand_value and \
-		players[i].busted != true and players[i].surrendered != true:
-			print(players[i].name + " is a winner!")
-		elif players[i].hand_value <= dealer_hand_value and \
-		players[i].busted != true and players[i].surrendered != true:
-			print(players[i].name + " is a loser.")
-		elif players[i].busted == true:
-			print(players[i].name + " busted and lost.")
-		elif players[i].surrendered == true:
-			print(players[i].name + " had already surrendered.")
+	print("Game ending. Results:\n")
+	if dealer_busted == true:
+		for i in players.size():
+			if players[i].busted != true and players[i].surrendered != true:
+				print(players[i].name + " is a winner!")
+			elif players[i].busted == true:
+				print(players[i].name + " busted and lost.")
+			elif players[i].surrendered == true:
+				print(players[i].name + " had already surrendered.")
+	else:
+		if dealer_blackjack == false:
+			for i in players.size():
+				if players[i].hand_value > dealer_hand_value and \
+				players[i].busted != true and players[i].surrendered != true:
+					print(players[i].name + " is a winner!")
+				elif players[i].hand_value <= dealer_hand_value and \
+				players[i].busted != true and players[i].surrendered != true:
+					print(players[i].name + " is a loser.")
+				elif players[i].busted == true:
+					print(players[i].name + " busted and lost.")
+				elif players[i].surrendered == true:
+					print(players[i].name + " had already surrendered.")
+		else:
+			for i in players.size():
+				if players[i].blackjack_in_hand == true and \
+				players[i].busted != true and players[i].surrendered != true:
+					print(players[i].name + " is pushed.")
+				elif players[i].blackjack_in_hand == false and \
+				players[i].busted != true and players[i].surrendered != true:
+					print(players[i].name + " is a loser.")
+				elif players[i].busted == true:
+					print(players[i].name + " busted and lost.")
+				elif players[i].surrendered == true:
+					print(players[i].name + " had already surrendered.")
 
 func _pass_turn():
 	if whoseturn + 1 <= players.size() - 1:
