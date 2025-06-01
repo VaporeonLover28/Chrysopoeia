@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Shadow Wizard Money House"
-run/main_scene="uid://ifr6x47walau"
+run/main_scene="uid://dre4o6ocgf3lu"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 

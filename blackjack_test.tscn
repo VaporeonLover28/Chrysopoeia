@@ -111,6 +111,16 @@ scale = Vector2(2, 2)
 theme = ExtResource("5_2bpuv")
 text = "STAND"
 
+[node name="pass" type="Button" parent="."]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 487.0
+offset_right = 183.0
+offset_bottom = 518.0
+scale = Vector2(2, 2)
+theme = ExtResource("5_2bpuv")
+text = "Pass turn"
+
 [node name="players" type="BoxContainer" parent="."]
 layout_mode = 0
 offset_left = 278.0
@@ -135,4 +145,5 @@ one_shot = true
 [connection signal="button_up" from="reset" to="." method="_on_reset_button_up"]
 [connection signal="button_up" from="hit" to="." method="_on_hit_button_up"]
 [connection signal="button_up" from="stand" to="." method="_on_stand_button_up"]
+[connection signal="button_up" from="pass" to="." method="_on_pass_button_up"]
 [connection signal="timeout" from="player_action" to="." method="_on_player_action_timeout"]
