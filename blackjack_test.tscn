@@ -136,7 +136,7 @@ size_flags_horizontal = 3
 alignment = 1
 
 [node name="player_action" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 0.01
 one_shot = true
 
 [connection signal="button_up" from="shuffle" to="." method="_on_shuffle_button_up"]

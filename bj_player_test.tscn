@@ -52,10 +52,10 @@ offset_right = 128.0
 offset_bottom = -8.0
 texture = ExtResource("2_co4re")
 
-[node name="value" type="Control" parent="BoxContainer/VBoxContainer"]
+[node name="value1" type="Control" parent="BoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="BoxContainer/VBoxContainer/value"]
+[node name="Label" type="Label" parent="BoxContainer/VBoxContainer/value1"]
 layout_mode = 2
 offset_left = -1.0
 offset_top = -3.0
@@ -63,14 +63,83 @@ offset_right = 60.0
 offset_bottom = 20.0
 text = "Value: 0"
 
-[node name="hand" type="Control" parent="BoxContainer/VBoxContainer"]
+[node name="hand1" type="Control" parent="BoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="BoxContainer/VBoxContainer/hand"]
+[node name="RichTextLabel" type="RichTextLabel" parent="BoxContainer/VBoxContainer/hand1"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 offset_left = 1.0
 offset_top = 22.0
 offset_right = 122.0
 offset_bottom = 75.0
+text = "aaaaaaaaaaaaaaaaa"
+
+[node name="value2" type="Control" parent="BoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BoxContainer/VBoxContainer/value2"]
+layout_mode = 2
+offset_left = 2.0
+offset_top = 65.0
+offset_right = 63.0
+offset_bottom = 88.0
+text = "Value: 0"
+
+[node name="hand2" type="Control" parent="BoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BoxContainer/VBoxContainer/hand2"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+offset_left = 1.0
+offset_top = 80.0
+offset_right = 122.0
+offset_bottom = 133.0
+text = "aaaaaaaaaaaaaaaaa"
+
+[node name="value3" type="Control" parent="BoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BoxContainer/VBoxContainer/value3"]
+layout_mode = 2
+offset_left = 1.0
+offset_top = 121.0
+offset_right = 62.0
+offset_bottom = 144.0
+text = "Value: 0"
+
+[node name="hand3" type="Control" parent="BoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BoxContainer/VBoxContainer/hand3"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+offset_left = 1.0
+offset_top = 135.0
+offset_right = 122.0
+offset_bottom = 188.0
+text = "aaaaaaaaaaaaaaaaa"
+
+[node name="value4" type="Control" parent="BoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BoxContainer/VBoxContainer/value4"]
+layout_mode = 2
+offset_left = 2.0
+offset_top = 172.0
+offset_right = 63.0
+offset_bottom = 195.0
+text = "Value: 0"
+
+[node name="hand4" type="Control" parent="BoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BoxContainer/VBoxContainer/hand4"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+offset_left = 1.0
+offset_top = 193.0
+offset_right = 122.0
+offset_bottom = 246.0
 text = "aaaaaaaaaaaaaaaaa"

@@ -45,6 +45,8 @@ var dealer_blackjack = false
 #reference for the clients
 var players : Array = []
 var whoseturn : int = -1
+var someone_still_playing = false
+var resplit_to : int = 4
 
 func _ready() -> void:
 	#adds 3 to 5 players
@@ -58,12 +60,19 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	#if dealer has less than 17, hit, else stand
-	if dealer_hand_value < 17:
-		$hit.disabled = false
-		$stand.disabled = true
+	if whoseturn != -1:
+		if dealer_hand_value < 17 and someone_still_playing == false:
+			$hit.disabled = false
+			$stand.disabled = true
+		elif dealer_hand_value >= 17 and someone_still_playing == false:
+			$hit.disabled = true
+			$stand.disabled = false
+		else:
+			$hit.disabled = true
+			$stand.disabled = true
 	else:
 		$hit.disabled = true
-		$stand.disabled = false
+		$stand.disabled = true
 
 #shuffles deck (just for better readability lol)
 func _shuffle_deck():
@@ -119,11 +128,16 @@ func _calculate_hand_value(who):
 				has_ten_value = true
 			if has_ace and has_ten_value:
 				dealer_blackjack == true
-				print("Dealer's got a blackjack!")
-		if dealer_hand_value >= 22:
+				if whoseturn != -1:
+					print("Dealer's got a blackjack!")
+		if dealer_hand_value >= 22 and whoseturn != -1:
 			dealer_busted = true
 			print("Dealer has busted! Common casino L")
 			_end_game()
+		elif dealer_hand_value >= 22 and whoseturn == -1:
+			print("Dealer busted at first round, replace card")
+			deck.append(dealer_hand.pop_back())
+			_dealer_add_card("Dealer")
 	else:
 		var value_bank : int
 		#on every card on (a player's) hand
@@ -138,7 +152,15 @@ func _calculate_hand_value(who):
 				value_bank += str_to_var(who.hand[card][1])
 		who.hand_value = value_bank
 		if who.hand_value >= 22:
-			who._bust()
+			var aces_in_hand = 0
+			for card in who.hand.size():
+				if who.hand[card][1] == "Ace":
+					aces_in_hand += 1
+			if aces_in_hand >= 2:
+				value_bank -= 10
+				who.hand_value = value_bank
+			else:
+				who._bust()
 
 #adds a card for the dealer, then updates score
 func _dealer_add_card(dealer):
@@ -159,7 +181,7 @@ func _distribute_cards():
 	for player_count in players.size():
 		if players[player_count].hand.size() < 2:
 			_player_add_card(players[player_count])
-	#player_action.start()
+	player_action.start()
 
 #puts cards in deck and resets scores
 func _reset_cards():
@@ -170,6 +192,12 @@ func _reset_cards():
 		for card in players[player].hand.size():
 			deck.append(players[player].hand.pop_front())
 		players[player].hand_value = 0
+		players[player].standed = false
+		players[player].busted = false
+		players[player].blackjack_in_hand = false 
+		players[player].doubled_down = false
+		players[player].surrendered = false
+		whoseturn = -1
 
 #dealer hits
 func _dealer_hit():
@@ -177,51 +205,53 @@ func _dealer_hit():
 
 #dealer stands
 func _dealer_stand():
+	_calculate_hand_value("Dealer")
 	_end_game()
 
 func _end_game():
 	print("Game ending. Results:\n")
+	print("Dealer hand value: " + str(dealer_hand_value))
 	if dealer_busted == true:
 		for i in players.size():
 			if players[i].busted != true and players[i].surrendered != true:
-				print(players[i].name + " is a winner!")
+				print("Line 217 says " + players[i].name + " is a winner!")
 			elif players[i].busted == true:
-				print(players[i].name + " busted and lost.")
+				print("Line 219 says " + players[i].name + " busted and lost.")
 			elif players[i].surrendered == true:
-				print(players[i].name + " had already surrendered.")
+				print("Line 221 says " + players[i].name + " had already surrendered.")
 	else:
 		if dealer_blackjack == false:
 			for i in players.size():
 				if players[i].hand_value > dealer_hand_value and \
 				players[i].busted != true and players[i].surrendered != true and \
 				players[i].doubled_down == true:
-					print(players[i].name + " doubled down and won!")
+					print("Line 228 says " + players[i].name + " doubled down and won!")
 				elif players[i].hand_value > dealer_hand_value and \
 				players[i].busted != true and players[i].surrendered != true and \
 				players[i].doubled_down == false:
-					print(players[i].name + " is a winner!")
+					print("Line 232 says " + players[i].name + " is a winner!")
 				elif players[i].hand_value <= dealer_hand_value and \
 				players[i].busted != true and players[i].surrendered != true:
-					print(players[i].name + " is a loser.")
+					print("Line 235 says " + players[i].name + " is a loser.")
 				elif players[i].busted == true:
-					print(players[i].name + " busted and lost.")
+					print("Line 237 says " + players[i].name + " busted and lost.")
 				elif players[i].surrendered == true:
-					print(players[i].name + " had already surrendered.")
+					print("Line 239 says " + players[i].name + " had already surrendered.")
 		else:
 			for i in players.size():
 				if players[i].blackjack_in_hand == true and \
 				players[i].busted != true and players[i].surrendered != true:
-					print(players[i].name + " is pushed.")
+					print("Line 244 says " + players[i].name + " is pushed.")
 				elif players[i].blackjack_in_hand == false and \
 				players[i].busted != true and players[i].surrendered != true:
-					print(players[i].name + " is a loser.")
+					print("Line 247 says " + players[i].name + " is a loser.")
 				elif players[i].busted == true:
-					print(players[i].name + " busted and lost.")
+					print("Line 249 says " + players[i].name + " busted and lost.")
 				elif players[i].surrendered == true:
-					print(players[i].name + " had already surrendered.")
+					print("Line 251 says " + players[i].name + " had already surrendered.")
 
 func _pass_turn():
-	var someone_still_playing = false
+	someone_still_playing = false
 	for i in players.size():
 		if players[i].playing == true:
 			someone_still_playing = true
@@ -233,6 +263,12 @@ func _pass_turn():
 			whoseturn = 0
 			print("It's player " + str(whoseturn) + "'s turn!")
 		players[whoseturn]._act()
+		if players[whoseturn].hand2.is_empty() == false:
+			players[whoseturn]._act2()
+		if players[whoseturn].hand3.is_empty() == false:
+			players[whoseturn]._act3()
+		if players[whoseturn].hand4.is_empty() == false:
+			players[whoseturn]._act4()
 	else:
 		print("It's the dealer's turn!")
 
