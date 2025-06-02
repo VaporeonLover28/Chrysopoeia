@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_onrkg"]
 render_priority = 0
 shader = ExtResource("1_1y4gf")
-shader_parameter/TwixelAngle = 45.0
+shader_parameter/TwixelAngle = 0.0
 shader_parameter/PixelSize = 3.5
 shader_parameter/FogColor = Color(0, 0, 0, 1)
 shader_parameter/FogStart = 25.0

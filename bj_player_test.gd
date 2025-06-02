@@ -8,6 +8,7 @@ extends Control
 
 var hand : Array = []
 var hand_value : int = 0
+var playing = true
 var standed = false
 var busted = false
 var doubled_down = false
@@ -22,20 +23,23 @@ var personality_list : Array = [["Strategic", 70], ["Coward", 90], ["Noob", 100]
 func _process(delta: float) -> void:
 	label_hand.text = str(hand)
 	value.text = "Value: " + str(hand_value)
-	label_name.text = name
+	label_name.text = personality + " " + name
 	if standed != true and busted != true and blackjack_in_hand != true \
 	and doubled_down != true and surrendered != true:
+		playing = true
 		state.text = "(Playing)"
-	elif standed == true:
-		state.text = "(Standed)"
-	elif busted == true:
-		state.text = "(Busted)"
-	elif blackjack_in_hand == true:
-		state.text = "(Blackjack)"
-	elif doubled_down == true:
-		state.text = "(Doubled Down)"
-	elif surrendered == true:
-		state.text = "(Surrendered)"
+	else:
+		playing = false
+		if standed == true:
+			state.text = "(Standed)"
+		if blackjack_in_hand == true:
+			state.text = "(Blackjack)"
+		if doubled_down == true:
+			state.text = "(Doubled Down)"
+		if surrendered == true:
+			state.text = "(Surrendered)"
+		if busted == true:
+			state.text = "(Busted)"
 
 func _act():
 	if standed != true and busted != true and blackjack_in_hand != true \
@@ -1485,13 +1489,13 @@ func _act():
 	else:
 		if busted:
 			print(self.name + " has busted! Skipping turn")
-		if standed:
+		elif standed:
 			print(self.name + " has already standed. Skipping turn")
-		if doubled_down:
+		elif doubled_down:
 			print(self.name + " has already doubled down, and will not get cards. Skipping turn")
-		if surrendered:
+		elif surrendered:
 			print(self.name + " has surrendered. Skipping turn")
-		if blackjack_in_hand:
+		elif blackjack_in_hand:
 			print(self.name + " has a blackjack in hand. Skipping turn")
 	#game.player_action.start()
 

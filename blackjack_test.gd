@@ -193,7 +193,12 @@ func _end_game():
 		if dealer_blackjack == false:
 			for i in players.size():
 				if players[i].hand_value > dealer_hand_value and \
-				players[i].busted != true and players[i].surrendered != true:
+				players[i].busted != true and players[i].surrendered != true and \
+				players[i].doubled_down == true:
+					print(players[i].name + " doubled down and won!")
+				elif players[i].hand_value > dealer_hand_value and \
+				players[i].busted != true and players[i].surrendered != true and \
+				players[i].doubled_down == false:
 					print(players[i].name + " is a winner!")
 				elif players[i].hand_value <= dealer_hand_value and \
 				players[i].busted != true and players[i].surrendered != true:
@@ -216,13 +221,20 @@ func _end_game():
 					print(players[i].name + " had already surrendered.")
 
 func _pass_turn():
-	if whoseturn + 1 <= players.size() - 1:
-		whoseturn += 1
-		print("It's player " + str(whoseturn) + "'s turn!")
+	var someone_still_playing = false
+	for i in players.size():
+		if players[i].playing == true:
+			someone_still_playing = true
+	if someone_still_playing == true:
+		if whoseturn + 1 <= players.size() - 1:
+			whoseturn += 1
+			print("It's player " + str(whoseturn) + "'s turn!")
+		else:
+			whoseturn = 0
+			print("It's player " + str(whoseturn) + "'s turn!")
+		players[whoseturn]._act()
 	else:
-		whoseturn = 0
-		print("It's player " + str(whoseturn) + "'s turn!")
-	players[whoseturn]._act()
+		print("It's the dealer's turn!")
 
 
 

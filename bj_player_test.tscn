@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://pov62jfwgcqy" path="res://icon.svg" id="2_co4re"]
 
 [node name="bj_player_test" type="Control"]
-custom_minimum_size = Vector2(130, 0)
+custom_minimum_size = Vector2(170, 0)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -24,11 +24,12 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="BoxContainer/VBoxContainer/name"]
 layout_mode = 2
-offset_left = 30.0
+offset_left = -29.0
 offset_top = -159.0
-offset_right = 106.0
+offset_right = 151.0
 offset_bottom = -136.0
 text = "Player X"
+horizontal_alignment = 1
 
 [node name="state" type="Control" parent="BoxContainer/VBoxContainer"]
 layout_mode = 2
