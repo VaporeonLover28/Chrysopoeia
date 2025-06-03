@@ -172,6 +172,18 @@ func _player_add_card(player):
 	player.hand.append(deck.pop_front())
 	_calculate_hand_value(player)
 
+func _player_add_card2(player):
+	player.hand2.append(deck.pop_front())
+	_calculate_hand_value(player)
+
+func _player_add_card3(player):
+	player.hand3.append(deck.pop_front())
+	_calculate_hand_value(player)
+
+func _player_add_card4(player):
+	player.hand4.append(deck.pop_front())
+	_calculate_hand_value(player)
+
 #distributes cards for everyone (after checking for size)
 #called two times
 #used in round beginning

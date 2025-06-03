@@ -100,6 +100,8 @@ func _act():
 				_blackjack()
 			elif hand_value == 21 and hand.size() > 2:
 				_stand()
+		elif hand_value == 21 and hand.size() > 2:
+			_stand()
 		if personality == "Strategic" and busted != true:
 			var has_aces : bool = false
 			for card in hand.size():
@@ -637,473 +639,243 @@ func _act():
 								12:
 									_hit()
 						"4":
-							if hand[0][1] == "Ace" and \
-							hand[1][1] == "9" or \
-							hand[0][1] == "9" and \
-							hand[1][1] == "Ace":
-								_stand()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "8" or \
-							hand[0][1] == "8" and \
-							hand[1][1] == "Ace":
-								_stand()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "7" or \
-							hand[0][1] == "7" and \
-							hand[1][1] == "Ace":
-								#if not allowed, then stand
-								_double_down()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "6" or \
-							hand[0][1] == "6" and \
-							hand[1][1] == "Ace":
-								#if not allowed, then hit
-								_double_down()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "5" or \
-							hand[0][1] == "5" and \
-							hand[1][1] == "Ace":
-								#if not allowed, then hit
-								_double_down()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "4" or \
-							hand[0][1] == "4" and \
-							hand[1][1] == "Ace":
-								#if not allowed, then hit
-								_double_down()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "3" or \
-							hand[0][1] == "3" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "2" or \
-							hand[0][1] == "2" and \
-							hand[1][1] == "Ace":
-								_hit()
+							match hand_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									#if not allowed, then stand
+									_double_down()
+								17:
+									#if not allowed, then hit
+									_double_down()
+								16:
+									#if not allowed, then hit
+									_double_down()
+								15:
+									#if not allowed, then hit
+									_double_down()
+								14:
+									_hit()
+								13:
+									_hit()
+								12:
+									_hit()
 						"5":
-							if hand[0][1] == "Ace" and \
-							hand[1][1] == "9" or \
-							hand[0][1] == "9" and \
-							hand[1][1] == "Ace":
-								_stand()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "8" or \
-							hand[0][1] == "8" and \
-							hand[1][1] == "Ace":
-								_stand()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "7" or \
-							hand[0][1] == "7" and \
-							hand[1][1] == "Ace":
-								#if not allowed, then stand
-								_double_down()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "6" or \
-							hand[0][1] == "6" and \
-							hand[1][1] == "Ace":
-								#if not allowed, then hit
-								_double_down()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "5" or \
-							hand[0][1] == "5" and \
-							hand[1][1] == "Ace":
-								#if not allowed, then hit
-								_double_down()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "4" or \
-							hand[0][1] == "4" and \
-							hand[1][1] == "Ace":
-								#if not allowed, then hit
-								_double_down()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "3" or \
-							hand[0][1] == "3" and \
-							hand[1][1] == "Ace":
-								#if not allowed, then hit
-								_double_down()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "2" or \
-							hand[0][1] == "2" and \
-							hand[1][1] == "Ace":
-								#if not allowed, then hit
-								_double_down()
+							match hand_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									#if not allowed, then stand
+									_double_down()
+								17:
+									#if not allowed, then hit
+									_double_down()
+								16:
+									#if not allowed, then hit
+									_double_down()
+								15:
+									#if not allowed, then hit
+									_double_down()
+								14:
+									#if not allowed, then hit
+									_double_down()
+								13:
+									#if not allowed, then hit
+									_double_down()
+								12:
+									_hit()
 						"6":
-							if hand[0][1] == "Ace" and \
-							hand[1][1] == "9" or \
-							hand[0][1] == "9" and \
-							hand[1][1] == "Ace":
-								_stand()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "8" or \
-							hand[0][1] == "8" and \
-							hand[1][1] == "Ace":
-								#if not allowed, then stand
-								_double_down()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "7" or \
-							hand[0][1] == "7" and \
-							hand[1][1] == "Ace":
-								#if not allowed, then stand
-								_double_down()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "6" or \
-							hand[0][1] == "6" and \
-							hand[1][1] == "Ace":
-								#if not allowed, then hit
-								_double_down()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "5" or \
-							hand[0][1] == "5" and \
-							hand[1][1] == "Ace":
-								#if not allowed, then hit
-								_double_down()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "4" or \
-							hand[0][1] == "4" and \
-							hand[1][1] == "Ace":
-								#if not allowed, then hit
-								_double_down()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "3" or \
-							hand[0][1] == "3" and \
-							hand[1][1] == "Ace":
-								#if not allowed, then hit
-								_double_down()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "2" or \
-							hand[0][1] == "2" and \
-							hand[1][1] == "Ace":
-								#if not allowed, then hit
-								_double_down()
+							match hand_value:
+								20:
+									_stand()
+								19:
+									#if not allowed, then stand
+									_double_down()
+								18:
+									#if not allowed, then stand
+									_double_down()
+								17:
+									#if not allowed, then hit
+									_double_down()
+								16:
+									#if not allowed, then hit
+									_double_down()
+								15:
+									#if not allowed, then hit
+									_double_down()
+								14:
+									#if not allowed, then hit
+									_double_down()
+								13:
+									#if not allowed, then hit
+									_double_down()
+								12:
+									#if not allowed, then hit
+									_double_down()
 						"7":
-							if hand[0][1] == "Ace" and \
-							hand[1][1] == "9" or \
-							hand[0][1] == "9" and \
-							hand[1][1] == "Ace":
-								_stand()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "8" or \
-							hand[0][1] == "8" and \
-							hand[1][1] == "Ace":
-								_stand()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "7" or \
-							hand[0][1] == "7" and \
-							hand[1][1] == "Ace":
-								_stand()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "6" or \
-							hand[0][1] == "6" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "5" or \
-							hand[0][1] == "5" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "4" or \
-							hand[0][1] == "4" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "3" or \
-							hand[0][1] == "3" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "2" or \
-							hand[0][1] == "2" and \
-							hand[1][1] == "Ace":
-								_hit()
+							match hand_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									_stand()
+								17:
+									_hit()
+								16:
+									_hit()
+								15:
+									_hit()
+								14:
+									_hit()
+								13:
+									_hit()
+								12:
+									_hit()
 						"8":
-							if hand[0][1] == "Ace" and \
-							hand[1][1] == "9" or \
-							hand[0][1] == "9" and \
-							hand[1][1] == "Ace":
-								_stand()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "8" or \
-							hand[0][1] == "8" and \
-							hand[1][1] == "Ace":
-								_stand()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "7" or \
-							hand[0][1] == "7" and \
-							hand[1][1] == "Ace":
-								_stand()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "6" or \
-							hand[0][1] == "6" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "5" or \
-							hand[0][1] == "5" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "4" or \
-							hand[0][1] == "4" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "3" or \
-							hand[0][1] == "3" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "2" or \
-							hand[0][1] == "2" and \
-							hand[1][1] == "Ace":
-								_hit()
+							match hand_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									_stand()
+								17:
+									_hit()
+								16:
+									_hit()
+								15:
+									_hit()
+								14:
+									_hit()
+								13:
+									_hit()
+								12:
+									_hit()
 						"9":
-							if hand[0][1] == "Ace" and \
-							hand[1][1] == "9" or \
-							hand[0][1] == "9" and \
-							hand[1][1] == "Ace":
-								_stand()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "8" or \
-							hand[0][1] == "8" and \
-							hand[1][1] == "Ace":
-								_stand()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "7" or \
-							hand[0][1] == "7" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "6" or \
-							hand[0][1] == "6" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "5" or \
-							hand[0][1] == "5" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "4" or \
-							hand[0][1] == "4" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "3" or \
-							hand[0][1] == "3" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "2" or \
-							hand[0][1] == "2" and \
-							hand[1][1] == "Ace":
-								_hit()
+							match hand_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									_hit()
+								17:
+									_hit()
+								16:
+									_hit()
+								15:
+									_hit()
+								14:
+									_hit()
+								13:
+									_hit()
+								12:
+									_hit()
 						"10":
-							if hand[0][1] == "Ace" and \
-							hand[1][1] == "9" or \
-							hand[0][1] == "9" and \
-							hand[1][1] == "Ace":
-								_stand()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "8" or \
-							hand[0][1] == "8" and \
-							hand[1][1] == "Ace":
-								_stand()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "7" or \
-							hand[0][1] == "7" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "6" or \
-							hand[0][1] == "6" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "5" or \
-							hand[0][1] == "5" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "4" or \
-							hand[0][1] == "4" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "3" or \
-							hand[0][1] == "3" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "2" or \
-							hand[0][1] == "2" and \
-							hand[1][1] == "Ace":
-								_hit()
+							match hand_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									_hit()
+								17:
+									_hit()
+								16:
+									_hit()
+								15:
+									_hit()
+								14:
+									_hit()
+								13:
+									_hit()
+								12:
+									_hit()
 						"Jack":
-							if hand[0][1] == "Ace" and \
-							hand[1][1] == "9" or \
-							hand[0][1] == "9" and \
-							hand[1][1] == "Ace":
-								_stand()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "8" or \
-							hand[0][1] == "8" and \
-							hand[1][1] == "Ace":
-								_stand()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "7" or \
-							hand[0][1] == "7" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "6" or \
-							hand[0][1] == "6" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "5" or \
-							hand[0][1] == "5" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "4" or \
-							hand[0][1] == "4" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "3" or \
-							hand[0][1] == "3" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "2" or \
-							hand[0][1] == "2" and \
-							hand[1][1] == "Ace":
-								_hit()
+							match hand_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									_hit()
+								17:
+									_hit()
+								16:
+									_hit()
+								15:
+									_hit()
+								14:
+									_hit()
+								13:
+									_hit()
+								12:
+									_hit()
 						"Queen":
-							if hand[0][1] == "Ace" and \
-							hand[1][1] == "9" or \
-							hand[0][1] == "9" and \
-							hand[1][1] == "Ace":
-								_stand()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "8" or \
-							hand[0][1] == "8" and \
-							hand[1][1] == "Ace":
-								_stand()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "7" or \
-							hand[0][1] == "7" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "6" or \
-							hand[0][1] == "6" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "5" or \
-							hand[0][1] == "5" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "4" or \
-							hand[0][1] == "4" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "3" or \
-							hand[0][1] == "3" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "2" or \
-							hand[0][1] == "2" and \
-							hand[1][1] == "Ace":
-								_hit()
+							match hand_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									_hit()
+								17:
+									_hit()
+								16:
+									_hit()
+								15:
+									_hit()
+								14:
+									_hit()
+								13:
+									_hit()
+								12:
+									_hit()
 						"King":
-							if hand[0][1] == "Ace" and \
-							hand[1][1] == "9" or \
-							hand[0][1] == "9" and \
-							hand[1][1] == "Ace":
-								_stand()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "8" or \
-							hand[0][1] == "8" and \
-							hand[1][1] == "Ace":
-								_stand()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "7" or \
-							hand[0][1] == "7" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "6" or \
-							hand[0][1] == "6" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "5" or \
-							hand[0][1] == "5" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "4" or \
-							hand[0][1] == "4" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "3" or \
-							hand[0][1] == "3" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "2" or \
-							hand[0][1] == "2" and \
-							hand[1][1] == "Ace":
-								_hit()
+							match hand_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									_hit()
+								17:
+									_hit()
+								16:
+									_hit()
+								15:
+									_hit()
+								14:
+									_hit()
+								13:
+									_hit()
+								12:
+									_hit()
 						"Ace":
-							if hand[0][1] == "Ace" and \
-							hand[1][1] == "9" or \
-							hand[0][1] == "9" and \
-							hand[1][1] == "Ace":
-								_stand()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "8" or \
-							hand[0][1] == "8" and \
-							hand[1][1] == "Ace":
-								_stand()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "7" or \
-							hand[0][1] == "7" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "6" or \
-							hand[0][1] == "6" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "5" or \
-							hand[0][1] == "5" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "4" or \
-							hand[0][1] == "4" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "3" or \
-							hand[0][1] == "3" and \
-							hand[1][1] == "Ace":
-								_hit()
-							elif hand[0][1] == "Ace" and \
-							hand[1][1] == "2" or \
-							hand[0][1] == "2" and \
-							hand[1][1] == "Ace":
-								_hit()
+							match hand_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									_hit()
+								17:
+									_hit()
+								16:
+									_hit()
+								15:
+									_hit()
+								14:
+									_hit()
+								13:
+									_hit()
+								12:
+									_hit()
 			else:
 				print("Has a pair of " + hand[0][1] + "s")
 				match game.dealer_hand[0][1]:
@@ -1516,1429 +1288,1158 @@ func _act2():
 				_blackjack()
 			elif hand2_value == 21 and hand2.size() > 2:
 				_stand()
+		elif hand2_value == 21 and hand2.size() > 2:
+			_stand()
 		if personality == "Strategic" and busted != true:
 			var has_aces : bool = false
 			for card in hand2.size():
 				if has_aces == false:
 					if hand2[card][1] == "Ace":
 						has_aces = true
-			if hand2.size() > 1:
-				if hand2[0][1] != hand2[1][1]:
-					if has_aces == false:
-						print("Has no aces or pairs")
-						match game.dealer_hand2[0][1]:
-							"2":
-								match hand2_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_hit()
-									10:
-										_double_down()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_stand()
-									14:
-										_stand()
-									15:
-										_stand()
-									16:
-										_stand()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"3":
-								match hand2_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_double_down()
-									10:
-										_double_down()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_stand()
-									14:
-										_stand()
-									15:
-										_stand()
-									16:
-										_stand()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"4":
-								match hand2_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_double_down()
-									10:
-										_double_down()
-									11:
-										_double_down()
-									12:
-										_stand()
-									13:
-										_stand()
-									14:
-										_stand()
-									15:
-										_stand()
-									16:
-										_stand()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"5":
-								match hand2_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_double_down()
-									10:
-										_double_down()
-									11:
-										_double_down()
-									12:
-										_stand()
-									13:
-										_stand()
-									14:
-										_stand()
-									15:
-										_stand()
-									16:
-										_stand()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"6":
-								match hand2_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_double_down()
-									10:
-										_double_down()
-									11:
-										_double_down()
-									12:
-										_stand()
-									13:
-										_stand()
-									14:
-										_stand()
-									15:
-										_stand()
-									16:
-										_stand()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"7":
-								match hand2_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_hit()
-									10:
-										_double_down()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_hit()
-									14:
-										_hit()
-									15:
-										_hit()
-									16:
-										_hit()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"8":
-								match hand2_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_hit()
-									10:
-										_double_down()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_hit()
-									14:
-										_hit()
-									15:
-										_hit()
-									16:
-										_hit()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"9":
-								match hand2_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_hit()
-									10:
-										_double_down()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_hit()
-									14:
-										_hit()
-									15:
-										_hit()
-									16:
-										#if not allowed, then hit
-										_surrender()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"10":
-								match hand2_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_hit()
-									10:
-										_hit()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_hit()
-									14:
-										_hit()
-									15:
-										#if not allowed, then hit
-										_surrender()
-									16:
-										#if not allowed, then hit
-										_surrender()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"Jack":
-								match hand2_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_hit()
-									10:
-										_hit()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_hit()
-									14:
-										_hit()
-									15:
-										#if not allowed, then hit
-										_surrender()
-									16:
-										#if not allowed, then hit
-										_surrender()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"Queen":
-								match hand2_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_hit()
-									10:
-										_hit()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_hit()
-									14:
-										_hit()
-									15:
-										#if not allowed, then hit
-										_surrender()
-									16:
-										#if not allowed, then hit
-										_surrender()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"King":
-								match hand2_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_hit()
-									10:
-										_hit()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_hit()
-									14:
-										_hit()
-									15:
-										#if not allowed, then hit
-										_surrender()
-									16:
-										#if not allowed, then hit
-										_surrender()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"Ace":
-								match hand2_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_hit()
-									10:
-										_hit()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_hit()
-									14:
-										_hit()
-									15:
-										#if not allowed, then hit
-										_surrender()
-									16:
-										#if not allowed, then hit
-										_surrender()
-									17:
-										#if not allowed, then stand
-										_surrender()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-					else:
-						print("Has a " + hand2[0][1] + " and a " + hand2[1][1])
-						match game.dealer_hand2[0][1]:
-							"2":
-								if hand2[0][1] == "Ace" and \
-								hand2[1][1] == "9" or \
-								hand2[0][1] == "9" and \
-								hand2[1][1] == "Ace":
-									_stand()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "8" or \
-								hand2[0][1] == "8" and \
-								hand2[1][1] == "Ace":
-									_stand()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "7" or \
-								hand2[0][1] == "7" and \
-								hand2[1][1] == "Ace":
-									#if not allowed, then stand
-									_double_down()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "6" or \
-								hand2[0][1] == "6" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "5" or \
-								hand2[0][1] == "5" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "4" or \
-								hand2[0][1] == "4" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "3" or \
-								hand2[0][1] == "3" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "2" or \
-								hand2[0][1] == "2" and \
-								[1][1] == "Ace":
-									_hit()
-							"3":
-								if hand2[0][1] == "Ace" and \
-								hand2[1][1] == "9" or \
-								hand2[0][1] == "9" and \
-								hand2[1][1] == "Ace":
-									_stand()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "8" or \
-								hand2[0][1] == "8" and \
-								hand2[1][1] == "Ace":
-									_stand()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "7" or \
-								hand2[0][1] == "7" and \
-								hand2[1][1] == "Ace":
-									#if not allowed, then stand
-									_double_down()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "6" or \
-								hand2[0][1] == "6" and \
-								hand2[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "5" or \
-								hand2[0][1] == "5" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "4" or \
-								hand2[0][1] == "4" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "3" or \
-								hand2[0][1] == "3" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "2" or \
-								hand2[0][1] == "2" and \
-								hand2[1][1] == "Ace":
-									_hit()
-							"4":
-								if hand2[0][1] == "Ace" and \
-								hand2[1][1] == "9" or \
-								hand2[0][1] == "9" and \
-								hand2[1][1] == "Ace":
-									_stand()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "8" or \
-								hand2[0][1] == "8" and \
-								hand2[1][1] == "Ace":
-									_stand()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "7" or \
-								hand2[0][1] == "7" and \
-								hand2[1][1] == "Ace":
-									#if not allowed, then stand
-									_double_down()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "6" or \
-								hand2[0][1] == "6" and \
-								hand2[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "5" or \
-								hand2[0][1] == "5" and \
-								hand2[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "4" or \
-								hand2[0][1] == "4" and \
-								hand2[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "3" or \
-								hand2[0][1] == "3" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "2" or \
-								hand2[0][1] == "2" and \
-								hand2[1][1] == "Ace":
-									_hit()
-							"5":
-								if hand2[0][1] == "Ace" and \
-								hand2[1][1] == "9" or \
-								hand2[0][1] == "9" and \
-								hand2[1][1] == "Ace":
-									_stand()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "8" or \
-								hand2[0][1] == "8" and \
-								hand2[1][1] == "Ace":
-									_stand()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "7" or \
-								hand2[0][1] == "7" and \
-								hand2[1][1] == "Ace":
-									#if not allowed, then stand
-									_double_down()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "6" or \
-								hand2[0][1] == "6" and \
-								hand2[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "5" or \
-								hand2[0][1] == "5" and \
-								hand2[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "4" or \
-								hand2[0][1] == "4" and \
-								hand2[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "3" or \
-								hand2[0][1] == "3" and \
-								hand2[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "2" or \
-								hand2[0][1] == "2" and \
-								hand2[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-							"6":
-								if hand2[0][1] == "Ace" and \
-								hand2[1][1] == "9" or \
-								hand2[0][1] == "9" and \
-								hand2[1][1] == "Ace":
-									_stand()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "8" or \
-								hand2[0][1] == "8" and \
-								hand2[1][1] == "Ace":
-									#if not allowed, then stand
-									_double_down()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "7" or \
-								hand2[0][1] == "7" and \
-								hand2[1][1] == "Ace":
-									#if not allowed, then stand
-									_double_down()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "6" or \
-								hand2[0][1] == "6" and \
-								hand2[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "5" or \
-								hand2[0][1] == "5" and \
-								hand2[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "4" or \
-								hand2[0][1] == "4" and \
-								hand2[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "3" or \
-								hand2[0][1] == "3" and \
-								hand2[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "2" or \
-								hand2[0][1] == "2" and \
-								hand2[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-							"7":
-								if hand2[0][1] == "Ace" and \
-								hand2[1][1] == "9" or \
-								hand2[0][1] == "9" and \
-								hand2[1][1] == "Ace":
-									_stand()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "8" or \
-								hand2[0][1] == "8" and \
-								hand2[1][1] == "Ace":
-									_stand()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "7" or \
-								hand2[0][1] == "7" and \
-								hand2[1][1] == "Ace":
-									_stand()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "6" or \
-								hand2[0][1] == "6" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "5" or \
-								hand2[0][1] == "5" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "4" or \
-								hand2[0][1] == "4" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "3" or \
-								hand2[0][1] == "3" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "2" or \
-								hand2[0][1] == "2" and \
-								hand2[1][1] == "Ace":
-									_hit()
-							"8":
-								if hand2[0][1] == "Ace" and \
-								hand2[1][1] == "9" or \
-								hand2[0][1] == "9" and \
-								hand2[1][1] == "Ace":
-									_stand()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "8" or \
-								hand2[0][1] == "8" and \
-								hand2[1][1] == "Ace":
-									_stand()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "7" or \
-								hand2[0][1] == "7" and \
-								hand2[1][1] == "Ace":
-									_stand()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "6" or \
-								hand2[0][1] == "6" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "5" or \
-								hand2[0][1] == "5" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "4" or \
-								hand2[0][1] == "4" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "3" or \
-								hand2[0][1] == "3" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "2" or \
-								hand2[0][1] == "2" and \
-								hand2[1][1] == "Ace":
-									_hit()
-							"9":
-								if hand2[0][1] == "Ace" and \
-								hand2[1][1] == "9" or \
-								hand2[0][1] == "9" and \
-								hand2[1][1] == "Ace":
-									_stand()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "8" or \
-								hand2[0][1] == "8" and \
-								hand2[1][1] == "Ace":
-									_stand()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "7" or \
-								hand2[0][1] == "7" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "6" or \
-								hand2[0][1] == "6" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "5" or \
-								hand2[0][1] == "5" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "4" or \
-								hand2[0][1] == "4" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "3" or \
-								hand2[0][1] == "3" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "2" or \
-								hand2[0][1] == "2" and \
-								hand2[1][1] == "Ace":
-									_hit()
-							"10":
-								if hand2[0][1] == "Ace" and \
-								hand2[1][1] == "9" or \
-								hand2[0][1] == "9" and \
-								hand2[1][1] == "Ace":
-									_stand()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "8" or \
-								hand2[0][1] == "8" and \
-								hand2[1][1] == "Ace":
-									_stand()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "7" or \
-								hand2[0][1] == "7" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "6" or \
-								hand2[0][1] == "6" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "5" or \
-								hand2[0][1] == "5" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "4" or \
-								hand2[0][1] == "4" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "3" or \
-								hand2[0][1] == "3" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "2" or \
-								hand2[0][1] == "2" and \
-								hand2[1][1] == "Ace":
-									_hit()
-							"Jack":
-								if hand2[0][1] == "Ace" and \
-								hand2[1][1] == "9" or \
-								hand2[0][1] == "9" and \
-								hand2[1][1] == "Ace":
-									_stand()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "8" or \
-								hand2[0][1] == "8" and \
-								hand2[1][1] == "Ace":
-									_stand()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "7" or \
-								hand2[0][1] == "7" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "6" or \
-								hand2[0][1] == "6" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "5" or \
-								hand2[0][1] == "5" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "4" or \
-								hand2[0][1] == "4" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "3" or \
-								hand2[0][1] == "3" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "2" or \
-								hand2[0][1] == "2" and \
-								hand2[1][1] == "Ace":
-									_hit()
-							"Queen":
-								if hand2[0][1] == "Ace" and \
-								hand2[1][1] == "9" or \
-								hand2[0][1] == "9" and \
-								hand2[1][1] == "Ace":
-									_stand()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "8" or \
-								hand2[0][1] == "8" and \
-								hand2[1][1] == "Ace":
-									_stand()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "7" or \
-								hand2[0][1] == "7" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "6" or \
-								hand2[0][1] == "6" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "5" or \
-								hand2[0][1] == "5" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "4" or \
-								hand2[0][1] == "4" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "3" or \
-								hand2[0][1] == "3" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "2" or \
-								hand2[0][1] == "2" and \
-								hand2[1][1] == "Ace":
-									_hit()
-							"King":
-								if hand2[0][1] == "Ace" and \
-								hand2[1][1] == "9" or \
-								hand2[0][1] == "9" and \
-								hand2[1][1] == "Ace":
-									_stand()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "8" or \
-								hand2[0][1] == "8" and \
-								hand2[1][1] == "Ace":
-									_stand()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "7" or \
-								hand2[0][1] == "7" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "6" or \
-								hand2[0][1] == "6" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "5" or \
-								hand2[0][1] == "5" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "4" or \
-								hand2[0][1] == "4" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "3" or \
-								hand2[0][1] == "3" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "2" or \
-								hand2[0][1] == "2" and \
-								hand2[1][1] == "Ace":
-									_hit()
-							"Ace":
-								if hand2[0][1] == "Ace" and \
-								hand2[1][1] == "9" or \
-								hand2[0][1] == "9" and \
-								hand2[1][1] == "Ace":
-									_stand()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "8" or \
-								hand2[0][1] == "8" and \
-								hand2[1][1] == "Ace":
-									_stand()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "7" or \
-								hand2[0][1] == "7" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "6" or \
-								hand2[0][1] == "6" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "5" or \
-								hand2[0][1] == "5" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "4" or \
-								hand2[0][1] == "4" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "3" or \
-								hand2[0][1] == "3" and \
-								hand2[1][1] == "Ace":
-									_hit()
-								elif hand2[0][1] == "Ace" and \
-								hand2[1][1] == "2" or \
-								hand2[0][1] == "2" and \
-								hand2[1][1] == "Ace":
-									_hit()
-				else:
-					print("Has a pair of " + hand2[0][1] + "s")
-					match game.dealer_hand2[0][1]:
+			if hand2[0][1] != hand2[1][1]:
+				if has_aces == false:
+					print("Has no aces or pairs")
+					match game.dealer_hand[0][1]:
 						"2":
-							match hand2[0][1]:
-								"Ace":
-									_split(2)
-								"King":
-									_stand()
-								"Queen":
-									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_split(2)
-								"8":
-									_split(2)
-								"7":
-									_split(2)
-								"6":
-									_split(2)
-								"5":
-									#if not allowed, then hit
-									_double_down()
-								"4":
+							match hand2_value:
+								5:
 									_hit()
-								"3":
-									_split(2)
-								"2":
-									_split(2)
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_hit()
+								10:
+									_double_down()
+								11:
+									_double_down()
+								12:
+									_hit()
+								13:
+									_stand()
+								14:
+									_stand()
+								15:
+									_stand()
+								16:
+									_stand()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
 						"3":
-							match hand2[0][1]:
-								"Ace":
-									_split(2)
-								"King":
-									_stand()
-								"Queen":
-									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_split(2)
-								"8":
-									_split(2)
-								"7":
-									_split(2)
-								"6":
-									_split(2)
-								"5":
-									#if not allowed, then hit
-									_double_down()
-								"4":
+							match hand2_value:
+								5:
 									_hit()
-								"3":
-									_split(2)
-								"2":
-									_split(2)
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_double_down()
+								10:
+									_double_down()
+								11:
+									_double_down()
+								12:
+									_hit()
+								13:
+									_stand()
+								14:
+									_stand()
+								15:
+									_stand()
+								16:
+									_stand()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
 						"4":
-							match hand2[0][1]:
-								"Ace":
-									_split(2)
-								"King":
-									_stand()
-								"Queen":
-									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_split(2)
-								"8":
-									_split(2)
-								"7":
-									_split(2)
-								"6":
-									_split(2)
-								"5":
-									#if not allowed, then hit
-									_double_down()
-								"4":
+							match hand2_value:
+								5:
 									_hit()
-								"3":
-									_split(2)
-								"2":
-									_split(2)
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_double_down()
+								10:
+									_double_down()
+								11:
+									_double_down()
+								12:
+									_stand()
+								13:
+									_stand()
+								14:
+									_stand()
+								15:
+									_stand()
+								16:
+									_stand()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
 						"5":
-							match hand2[0][1]:
-								"Ace":
-									_split(2)
-								"King":
-									_stand()
-								"Queen":
-									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_split(2)
-								"8":
-									_split(2)
-								"7":
-									_split(2)
-								"6":
-									_split(2)
-								"5":
-									#if not allowed, then hit
+							match hand2_value:
+								5:
+									_hit()
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
 									_double_down()
-								"4":
-									_split(2)
-								"3":
-									_split(2)
-								"2":
-									_split(2)
+								10:
+									_double_down()
+								11:
+									_double_down()
+								12:
+									_stand()
+								13:
+									_stand()
+								14:
+									_stand()
+								15:
+									_stand()
+								16:
+									_stand()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
 						"6":
-							match hand2[0][1]:
-								"Ace":
-									_split(2)
-								"King":
-									_stand()
-								"Queen":
-									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_split(2)
-								"8":
-									_split(2)
-								"7":
-									_split(2)
-								"6":
-									_split(2)
-								"5":
-									#if not allowed, then hit
+							match hand2_value:
+								5:
+									_hit()
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
 									_double_down()
-								"4":
-									_split(2)
-								"3":
-									_split(2)
-								"2":
-									_split(2)
+								10:
+									_double_down()
+								11:
+									_double_down()
+								12:
+									_stand()
+								13:
+									_stand()
+								14:
+									_stand()
+								15:
+									_stand()
+								16:
+									_stand()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
 						"7":
-							match hand2[0][1]:
-								"Ace":
-									_split(2)
-								"King":
-									_stand()
-								"Queen":
-									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_stand()
-								"8":
-									_split(2)
-								"7":
-									_split(2)
-								"6":
+							match hand2_value:
+								5:
 									_hit()
-								"5":
-									#if not allowed, then hit
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_hit()
+								10:
 									_double_down()
-								"4":
+								11:
+									_double_down()
+								12:
 									_hit()
-								"3":
-									_split(2)
-								"2":
-									_split(2)
+								13:
+									_hit()
+								14:
+									_hit()
+								15:
+									_hit()
+								16:
+									_hit()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
 						"8":
-							match hand2[0][1]:
-								"Ace":
-									_split(2)
-								"King":
-									_stand()
-								"Queen":
-									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_split(2)
-								"8":
-									_split(2)
-								"7":
+							match hand2_value:
+								5:
 									_hit()
-								"6":
+								6:
 									_hit()
-								"5":
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_hit()
+								10:
+									_double_down()
+								11:
+									_double_down()
+								12:
+									_hit()
+								13:
+									_hit()
+								14:
+									_hit()
+								15:
+									_hit()
+								16:
+									_hit()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
+						"9":
+							match hand2_value:
+								5:
+									_hit()
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_hit()
+								10:
+									_double_down()
+								11:
+									_double_down()
+								12:
+									_hit()
+								13:
+									_hit()
+								14:
+									_hit()
+								15:
+									_hit()
+								16:
+									#if not allowed, then hit
+									_surrender()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
+						"10":
+							match hand2_value:
+								5:
+									_hit()
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_hit()
+								10:
+									_hit()
+								11:
+									_double_down()
+								12:
+									_hit()
+								13:
+									_hit()
+								14:
+									_hit()
+								15:
+									#if not allowed, then hit
+									_surrender()
+								16:
+									#if not allowed, then hit
+									_surrender()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
+						"Jack":
+							match hand2_value:
+								5:
+									_hit()
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_hit()
+								10:
+									_hit()
+								11:
+									_double_down()
+								12:
+									_hit()
+								13:
+									_hit()
+								14:
+									_hit()
+								15:
+									#if not allowed, then hit
+									_surrender()
+								16:
+									#if not allowed, then hit
+									_surrender()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
+						"Queen":
+							match hand2_value:
+								5:
+									_hit()
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_hit()
+								10:
+									_hit()
+								11:
+									_double_down()
+								12:
+									_hit()
+								13:
+									_hit()
+								14:
+									_hit()
+								15:
+									#if not allowed, then hit
+									_surrender()
+								16:
+									#if not allowed, then hit
+									_surrender()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
+						"King":
+							match hand2_value:
+								5:
+									_hit()
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_hit()
+								10:
+									_hit()
+								11:
+									_double_down()
+								12:
+									_hit()
+								13:
+									_hit()
+								14:
+									_hit()
+								15:
+									#if not allowed, then hit
+									_surrender()
+								16:
+									#if not allowed, then hit
+									_surrender()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
+						"Ace":
+							match hand2_value:
+								5:
+									_hit()
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_hit()
+								10:
+									_hit()
+								11:
+									_double_down()
+								12:
+									_hit()
+								13:
+									_hit()
+								14:
+									_hit()
+								15:
+									#if not allowed, then hit
+									_surrender()
+								16:
+									#if not allowed, then hit
+									_surrender()
+								17:
+									#if not allowed, then stand
+									_surrender()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
+				else:
+					print("Has an Ace")
+					match game.dealer_hand[0][1]:
+						"2":
+							match hand2_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									#if not allowed, then stand
+									_double_down()
+								17:
+									_hit()
+								16:
+									_hit()
+								15:
+									_hit()
+								14:
+									_hit()
+								13:
+									_hit()
+								12:
+									_hit()
+						"3":
+							match hand2_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									#if not allowed, then stand
+									_double_down()
+								17:
 									#if not allowed, then hit
 									_double_down()
-								"4":
+								16:
 									_hit()
-								"3":
+								15:
 									_hit()
-								"2":
+								14:
+									_hit()
+								13:
+									_hit()
+								12:
+									_hit()
+						"4":
+							match hand2_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									#if not allowed, then stand
+									_double_down()
+								17:
+									#if not allowed, then hit
+									_double_down()
+								16:
+									#if not allowed, then hit
+									_double_down()
+								15:
+									#if not allowed, then hit
+									_double_down()
+								14:
+									_hit()
+								13:
+									_hit()
+								12:
+									_hit()
+						"5":
+							match hand2_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									#if not allowed, then stand
+									_double_down()
+								17:
+									#if not allowed, then hit
+									_double_down()
+								16:
+									#if not allowed, then hit
+									_double_down()
+								15:
+									#if not allowed, then hit
+									_double_down()
+								14:
+									#if not allowed, then hit
+									_double_down()
+								13:
+									#if not allowed, then hit
+									_double_down()
+								12:
+									_hit()
+						"6":
+							match hand2_value:
+								20:
+									_stand()
+								19:
+									#if not allowed, then stand
+									_double_down()
+								18:
+									#if not allowed, then stand
+									_double_down()
+								17:
+									#if not allowed, then hit
+									_double_down()
+								16:
+									#if not allowed, then hit
+									_double_down()
+								15:
+									#if not allowed, then hit
+									_double_down()
+								14:
+									#if not allowed, then hit
+									_double_down()
+								13:
+									#if not allowed, then hit
+									_double_down()
+								12:
+									#if not allowed, then hit
+									_double_down()
+						"7":
+							match hand2_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									_stand()
+								17:
+									_hit()
+								16:
+									_hit()
+								15:
+									_hit()
+								14:
+									_hit()
+								13:
+									_hit()
+								12:
+									_hit()
+						"8":
+							match hand2_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									_stand()
+								17:
+									_hit()
+								16:
+									_hit()
+								15:
+									_hit()
+								14:
+									_hit()
+								13:
+									_hit()
+								12:
 									_hit()
 						"9":
-							match hand2[0][1]:
-								"Ace":
-									_split(2)
-								"King":
+							match hand2_value:
+								20:
 									_stand()
-								"Queen":
+								19:
 									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_split(2)
-								"8":
-									_split(2)
-								"7":
+								18:
 									_hit()
-								"6":
+								17:
 									_hit()
-								"5":
-									#if not allowed, then hit
-									_double_down()
-								"4":
+								16:
 									_hit()
-								"3":
+								15:
 									_hit()
-								"2":
+								14:
+									_hit()
+								13:
+									_hit()
+								12:
 									_hit()
 						"10":
-							match hand2[0][1]:
-								"Ace":
-									_split(2)
-								"King":
+							match hand2_value:
+								20:
 									_stand()
-								"Queen":
+								19:
 									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_stand()
-								"8":
-									_split(2)
-								"7":
+								18:
 									_hit()
-								"6":
+								17:
 									_hit()
-								"5":
+								16:
 									_hit()
-								"4":
+								15:
 									_hit()
-								"3":
+								14:
 									_hit()
-								"2":
+								13:
+									_hit()
+								12:
 									_hit()
 						"Jack":
-							match hand2[0][1]:
-								"Ace":
-									_split(2)
-								"King":
+							match hand2_value:
+								20:
 									_stand()
-								"Queen":
+								19:
 									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_stand()
-								"8":
-									_split(2)
-								"7":
+								18:
 									_hit()
-								"6":
+								17:
 									_hit()
-								"5":
+								16:
 									_hit()
-								"4":
+								15:
 									_hit()
-								"3":
+								14:
 									_hit()
-								"2":
+								13:
+									_hit()
+								12:
 									_hit()
 						"Queen":
-							match hand2[0][1]:
-								"Ace":
-									_split(2)
-								"King":
+							match hand2_value:
+								20:
 									_stand()
-								"Queen":
+								19:
 									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_stand()
-								"8":
-									_split(2)
-								"7":
+								18:
 									_hit()
-								"6":
+								17:
 									_hit()
-								"5":
+								16:
 									_hit()
-								"4":
+								15:
 									_hit()
-								"3":
+								14:
 									_hit()
-								"2":
+								13:
+									_hit()
+								12:
 									_hit()
 						"King":
-							match hand2[0][1]:
-								"Ace":
-									_split(2)
-								"King":
+							match hand2_value:
+								20:
 									_stand()
-								"Queen":
+								19:
 									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_stand()
-								"8":
-									_split(2)
-								"7":
+								18:
 									_hit()
-								"6":
+								17:
 									_hit()
-								"5":
+								16:
 									_hit()
-								"4":
+								15:
 									_hit()
-								"3":
+								14:
 									_hit()
-								"2":
+								13:
+									_hit()
+								12:
 									_hit()
 						"Ace":
-							match hand2[0][1]:
-								"Ace":
-									_split(2)
-								"King":
+							match hand2_value:
+								20:
 									_stand()
-								"Queen":
+								19:
 									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_stand()
-								"8":
-									#if not allowed, then split
-									_surrender()
-								"7":
+								18:
 									_hit()
-								"6":
+								17:
 									_hit()
-								"5":
+								16:
 									_hit()
-								"4":
+								15:
 									_hit()
-								"3":
+								14:
 									_hit()
-								"2":
+								13:
 									_hit()
+								12:
+									_hit()
+			else:
+				print("Has a pair of " + hand2[0][1] + "s")
+				match game.dealer_hand[0][1]:
+					"2":
+						match hand2[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_split(1)
+							"8":
+								_split(1)
+							"7":
+								_split(1)
+							"6":
+								_split(1)
+							"5":
+								#if not allowed, then hit
+								_double_down()
+							"4":
+								_hit()
+							"3":
+								_split(1)
+							"2":
+								_split(1)
+					"3":
+						match hand2[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_split(1)
+							"8":
+								_split(1)
+							"7":
+								_split(1)
+							"6":
+								_split(1)
+							"5":
+								#if not allowed, then hit
+								_double_down()
+							"4":
+								_hit()
+							"3":
+								_split(1)
+							"2":
+								_split(1)
+					"4":
+						match hand2[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_split(1)
+							"8":
+								_split(1)
+							"7":
+								_split(1)
+							"6":
+								_split(1)
+							"5":
+								#if not allowed, then hit
+								_double_down()
+							"4":
+								_hit()
+							"3":
+								_split(1)
+							"2":
+								_split(1)
+					"5":
+						match hand2[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_split(1)
+							"8":
+								_split(1)
+							"7":
+								_split(1)
+							"6":
+								_split(1)
+							"5":
+								#if not allowed, then hit
+								_double_down()
+							"4":
+								_split(1)
+							"3":
+								_split(1)
+							"2":
+								_split(1)
+					"6":
+						match hand2[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_split(1)
+							"8":
+								_split(1)
+							"7":
+								_split(1)
+							"6":
+								_split(1)
+							"5":
+								#if not allowed, then hit
+								_double_down()
+							"4":
+								_split(1)
+							"3":
+								_split(1)
+							"2":
+								_split(1)
+					"7":
+						match hand2[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_stand()
+							"8":
+								_split(1)
+							"7":
+								_split(1)
+							"6":
+								_hit()
+							"5":
+								#if not allowed, then hit
+								_double_down()
+							"4":
+								_hit()
+							"3":
+								_split(1)
+							"2":
+								_split(1)
+					"8":
+						match hand2[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_split(1)
+							"8":
+								_split(1)
+							"7":
+								_hit()
+							"6":
+								_hit()
+							"5":
+								#if not allowed, then hit
+								_double_down()
+							"4":
+								_hit()
+							"3":
+								_hit()
+							"2":
+								_hit()
+					"9":
+						match hand2[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_split(1)
+							"8":
+								_split(1)
+							"7":
+								_hit()
+							"6":
+								_hit()
+							"5":
+								#if not allowed, then hit
+								_double_down()
+							"4":
+								_hit()
+							"3":
+								_hit()
+							"2":
+								_hit()
+					"10":
+						match hand2[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_stand()
+							"8":
+								_split(1)
+							"7":
+								_hit()
+							"6":
+								_hit()
+							"5":
+								_hit()
+							"4":
+								_hit()
+							"3":
+								_hit()
+							"2":
+								_hit()
+					"Jack":
+						match hand2[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_stand()
+							"8":
+								_split(1)
+							"7":
+								_hit()
+							"6":
+								_hit()
+							"5":
+								_hit()
+							"4":
+								_hit()
+							"3":
+								_hit()
+							"2":
+								_hit()
+					"Queen":
+						match hand2[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_stand()
+							"8":
+								_split(1)
+							"7":
+								_hit()
+							"6":
+								_hit()
+							"5":
+								_hit()
+							"4":
+								_hit()
+							"3":
+								_hit()
+							"2":
+								_hit()
+					"King":
+						match hand2[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_stand()
+							"8":
+								_split(1)
+							"7":
+								_hit()
+							"6":
+								_hit()
+							"5":
+								_hit()
+							"4":
+								_hit()
+							"3":
+								_hit()
+							"2":
+								_hit()
+					"Ace":
+						match hand2[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_stand()
+							"8":
+								#if not allowed, then split
+								_surrender()
+							"7":
+								_hit()
+							"6":
+								_hit()
+							"5":
+								_hit()
+							"4":
+								_hit()
+							"3":
+								_hit()
+							"2":
+								_hit()
 		elif personality == "Coward" and busted != true:
 			_stand()
 		elif personality == "Noob" and busted != true:
@@ -2975,1429 +2476,1158 @@ func _act3():
 				_blackjack()
 			elif hand3_value == 21 and hand3.size() > 2:
 				_stand()
+		elif hand3_value == 21 and hand3.size() > 2:
+			_stand()
 		if personality == "Strategic" and busted != true:
 			var has_aces : bool = false
 			for card in hand3.size():
 				if has_aces == false:
 					if hand3[card][1] == "Ace":
 						has_aces = true
-			if hand3.size() > 1:
-				if hand3[0][1] != hand3[1][1]:
-					if has_aces == false:
-						print("Has no aces or pairs")
-						match game.dealer_hand[0][1]:
-							"2":
-								match hand3_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_hit()
-									10:
-										_double_down()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_stand()
-									14:
-										_stand()
-									15:
-										_stand()
-									16:
-										_stand()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"3":
-								match hand3_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_double_down()
-									10:
-										_double_down()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_stand()
-									14:
-										_stand()
-									15:
-										_stand()
-									16:
-										_stand()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"4":
-								match hand3_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_double_down()
-									10:
-										_double_down()
-									11:
-										_double_down()
-									12:
-										_stand()
-									13:
-										_stand()
-									14:
-										_stand()
-									15:
-										_stand()
-									16:
-										_stand()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"5":
-								match hand3_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_double_down()
-									10:
-										_double_down()
-									11:
-										_double_down()
-									12:
-										_stand()
-									13:
-										_stand()
-									14:
-										_stand()
-									15:
-										_stand()
-									16:
-										_stand()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"6":
-								match hand3_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_double_down()
-									10:
-										_double_down()
-									11:
-										_double_down()
-									12:
-										_stand()
-									13:
-										_stand()
-									14:
-										_stand()
-									15:
-										_stand()
-									16:
-										_stand()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"7":
-								match hand3_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_hit()
-									10:
-										_double_down()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_hit()
-									14:
-										_hit()
-									15:
-										_hit()
-									16:
-										_hit()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"8":
-								match hand3_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_hit()
-									10:
-										_double_down()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_hit()
-									14:
-										_hit()
-									15:
-										_hit()
-									16:
-										_hit()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"9":
-								match hand3_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_hit()
-									10:
-										_double_down()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_hit()
-									14:
-										_hit()
-									15:
-										_hit()
-									16:
-										#if not allowed, then hit
-										_surrender()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"10":
-								match hand3_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_hit()
-									10:
-										_hit()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_hit()
-									14:
-										_hit()
-									15:
-										#if not allowed, then hit
-										_surrender()
-									16:
-										#if not allowed, then hit
-										_surrender()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"Jack":
-								match hand3_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_hit()
-									10:
-										_hit()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_hit()
-									14:
-										_hit()
-									15:
-										#if not allowed, then hit
-										_surrender()
-									16:
-										#if not allowed, then hit
-										_surrender()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"Queen":
-								match hand3_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_hit()
-									10:
-										_hit()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_hit()
-									14:
-										_hit()
-									15:
-										#if not allowed, then hit
-										_surrender()
-									16:
-										#if not allowed, then hit
-										_surrender()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"King":
-								match hand3_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_hit()
-									10:
-										_hit()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_hit()
-									14:
-										_hit()
-									15:
-										#if not allowed, then hit
-										_surrender()
-									16:
-										#if not allowed, then hit
-										_surrender()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"Ace":
-								match hand3_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_hit()
-									10:
-										_hit()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_hit()
-									14:
-										_hit()
-									15:
-										#if not allowed, then hit
-										_surrender()
-									16:
-										#if not allowed, then hit
-										_surrender()
-									17:
-										#if not allowed, then stand
-										_surrender()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-					else:
-						print("Has a " + hand3[0][1] + " and a " + hand3[1][1])
-						match game.dealer_hand[0][1]:
-							"2":
-								if hand3[0][1] == "Ace" and \
-								hand3[1][1] == "9" or \
-								hand3[0][1] == "9" and \
-								hand3[1][1] == "Ace":
-									_stand()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "8" or \
-								hand3[0][1] == "8" and \
-								hand3[1][1] == "Ace":
-									_stand()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "7" or \
-								hand3[0][1] == "7" and \
-								hand3[1][1] == "Ace":
-									#if not allowed, then stand
-									_double_down()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "6" or \
-								hand3[0][1] == "6" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "5" or \
-								hand3[0][1] == "5" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "4" or \
-								hand3[0][1] == "4" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "3" or \
-								hand3[0][1] == "3" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "2" or \
-								hand3[0][1] == "2" and \
-								[1][1] == "Ace":
-									_hit()
-							"3":
-								if hand3[0][1] == "Ace" and \
-								hand3[1][1] == "9" or \
-								hand3[0][1] == "9" and \
-								hand3[1][1] == "Ace":
-									_stand()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "8" or \
-								hand3[0][1] == "8" and \
-								hand3[1][1] == "Ace":
-									_stand()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "7" or \
-								hand3[0][1] == "7" and \
-								hand3[1][1] == "Ace":
-									#if not allowed, then stand
-									_double_down()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "6" or \
-								hand3[0][1] == "6" and \
-								hand3[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "5" or \
-								hand3[0][1] == "5" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "4" or \
-								hand3[0][1] == "4" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "3" or \
-								hand3[0][1] == "3" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "2" or \
-								hand3[0][1] == "2" and \
-								hand3[1][1] == "Ace":
-									_hit()
-							"4":
-								if hand3[0][1] == "Ace" and \
-								hand3[1][1] == "9" or \
-								hand3[0][1] == "9" and \
-								hand3[1][1] == "Ace":
-									_stand()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "8" or \
-								hand3[0][1] == "8" and \
-								hand3[1][1] == "Ace":
-									_stand()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "7" or \
-								hand3[0][1] == "7" and \
-								hand3[1][1] == "Ace":
-									#if not allowed, then stand
-									_double_down()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "6" or \
-								hand3[0][1] == "6" and \
-								hand3[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "5" or \
-								hand3[0][1] == "5" and \
-								hand3[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "4" or \
-								hand3[0][1] == "4" and \
-								hand3[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "3" or \
-								hand3[0][1] == "3" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "2" or \
-								hand3[0][1] == "2" and \
-								hand3[1][1] == "Ace":
-									_hit()
-							"5":
-								if hand3[0][1] == "Ace" and \
-								hand3[1][1] == "9" or \
-								hand3[0][1] == "9" and \
-								hand3[1][1] == "Ace":
-									_stand()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "8" or \
-								hand3[0][1] == "8" and \
-								hand3[1][1] == "Ace":
-									_stand()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "7" or \
-								hand3[0][1] == "7" and \
-								hand3[1][1] == "Ace":
-									#if not allowed, then stand
-									_double_down()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "6" or \
-								hand3[0][1] == "6" and \
-								hand3[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "5" or \
-								hand3[0][1] == "5" and \
-								hand3[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "4" or \
-								hand3[0][1] == "4" and \
-								hand3[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "3" or \
-								hand3[0][1] == "3" and \
-								hand3[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "2" or \
-								hand3[0][1] == "2" and \
-								hand3[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-							"6":
-								if hand3[0][1] == "Ace" and \
-								hand3[1][1] == "9" or \
-								hand3[0][1] == "9" and \
-								hand3[1][1] == "Ace":
-									_stand()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "8" or \
-								hand3[0][1] == "8" and \
-								hand3[1][1] == "Ace":
-									#if not allowed, then stand
-									_double_down()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "7" or \
-								hand3[0][1] == "7" and \
-								hand3[1][1] == "Ace":
-									#if not allowed, then stand
-									_double_down()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "6" or \
-								hand3[0][1] == "6" and \
-								hand3[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "5" or \
-								hand3[0][1] == "5" and \
-								hand3[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "4" or \
-								hand3[0][1] == "4" and \
-								hand3[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "3" or \
-								hand3[0][1] == "3" and \
-								hand3[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "2" or \
-								hand3[0][1] == "2" and \
-								hand3[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-							"7":
-								if hand3[0][1] == "Ace" and \
-								hand3[1][1] == "9" or \
-								hand3[0][1] == "9" and \
-								hand3[1][1] == "Ace":
-									_stand()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "8" or \
-								hand3[0][1] == "8" and \
-								hand3[1][1] == "Ace":
-									_stand()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "7" or \
-								hand3[0][1] == "7" and \
-								hand3[1][1] == "Ace":
-									_stand()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "6" or \
-								hand3[0][1] == "6" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "5" or \
-								hand3[0][1] == "5" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "4" or \
-								hand3[0][1] == "4" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "3" or \
-								hand3[0][1] == "3" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "2" or \
-								hand3[0][1] == "2" and \
-								hand3[1][1] == "Ace":
-									_hit()
-							"8":
-								if hand3[0][1] == "Ace" and \
-								hand3[1][1] == "9" or \
-								hand3[0][1] == "9" and \
-								hand3[1][1] == "Ace":
-									_stand()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "8" or \
-								hand3[0][1] == "8" and \
-								hand3[1][1] == "Ace":
-									_stand()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "7" or \
-								hand3[0][1] == "7" and \
-								hand3[1][1] == "Ace":
-									_stand()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "6" or \
-								hand3[0][1] == "6" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "5" or \
-								hand3[0][1] == "5" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "4" or \
-								hand3[0][1] == "4" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "3" or \
-								hand3[0][1] == "3" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "2" or \
-								hand3[0][1] == "2" and \
-								hand3[1][1] == "Ace":
-									_hit()
-							"9":
-								if hand3[0][1] == "Ace" and \
-								hand3[1][1] == "9" or \
-								hand3[0][1] == "9" and \
-								hand3[1][1] == "Ace":
-									_stand()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "8" or \
-								hand3[0][1] == "8" and \
-								hand3[1][1] == "Ace":
-									_stand()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "7" or \
-								hand3[0][1] == "7" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "6" or \
-								hand3[0][1] == "6" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "5" or \
-								hand3[0][1] == "5" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "4" or \
-								hand3[0][1] == "4" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "3" or \
-								hand3[0][1] == "3" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "2" or \
-								hand3[0][1] == "2" and \
-								hand3[1][1] == "Ace":
-									_hit()
-							"10":
-								if hand3[0][1] == "Ace" and \
-								hand3[1][1] == "9" or \
-								hand3[0][1] == "9" and \
-								hand3[1][1] == "Ace":
-									_stand()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "8" or \
-								hand3[0][1] == "8" and \
-								hand3[1][1] == "Ace":
-									_stand()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "7" or \
-								hand3[0][1] == "7" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "6" or \
-								hand3[0][1] == "6" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "5" or \
-								hand3[0][1] == "5" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "4" or \
-								hand3[0][1] == "4" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "3" or \
-								hand3[0][1] == "3" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "2" or \
-								hand3[0][1] == "2" and \
-								hand3[1][1] == "Ace":
-									_hit()
-							"Jack":
-								if hand3[0][1] == "Ace" and \
-								hand3[1][1] == "9" or \
-								hand3[0][1] == "9" and \
-								hand3[1][1] == "Ace":
-									_stand()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "8" or \
-								hand3[0][1] == "8" and \
-								hand3[1][1] == "Ace":
-									_stand()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "7" or \
-								hand3[0][1] == "7" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "6" or \
-								hand3[0][1] == "6" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "5" or \
-								hand3[0][1] == "5" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "4" or \
-								hand3[0][1] == "4" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "3" or \
-								hand3[0][1] == "3" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "2" or \
-								hand3[0][1] == "2" and \
-								hand3[1][1] == "Ace":
-									_hit()
-							"Queen":
-								if hand3[0][1] == "Ace" and \
-								hand3[1][1] == "9" or \
-								hand3[0][1] == "9" and \
-								hand3[1][1] == "Ace":
-									_stand()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "8" or \
-								hand3[0][1] == "8" and \
-								hand3[1][1] == "Ace":
-									_stand()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "7" or \
-								hand3[0][1] == "7" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "6" or \
-								hand3[0][1] == "6" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "5" or \
-								hand3[0][1] == "5" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "4" or \
-								hand3[0][1] == "4" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "3" or \
-								hand3[0][1] == "3" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "2" or \
-								hand3[0][1] == "2" and \
-								hand3[1][1] == "Ace":
-									_hit()
-							"King":
-								if hand3[0][1] == "Ace" and \
-								hand3[1][1] == "9" or \
-								hand3[0][1] == "9" and \
-								hand3[1][1] == "Ace":
-									_stand()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "8" or \
-								hand3[0][1] == "8" and \
-								hand3[1][1] == "Ace":
-									_stand()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "7" or \
-								hand3[0][1] == "7" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "6" or \
-								hand3[0][1] == "6" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "5" or \
-								hand3[0][1] == "5" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "4" or \
-								hand3[0][1] == "4" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "3" or \
-								hand3[0][1] == "3" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "2" or \
-								hand3[0][1] == "2" and \
-								hand3[1][1] == "Ace":
-									_hit()
-							"Ace":
-								if hand3[0][1] == "Ace" and \
-								hand3[1][1] == "9" or \
-								hand3[0][1] == "9" and \
-								hand3[1][1] == "Ace":
-									_stand()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "8" or \
-								hand3[0][1] == "8" and \
-								hand3[1][1] == "Ace":
-									_stand()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "7" or \
-								hand3[0][1] == "7" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "6" or \
-								hand3[0][1] == "6" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "5" or \
-								hand3[0][1] == "5" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "4" or \
-								hand3[0][1] == "4" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "3" or \
-								hand3[0][1] == "3" and \
-								hand3[1][1] == "Ace":
-									_hit()
-								elif hand3[0][1] == "Ace" and \
-								hand3[1][1] == "2" or \
-								hand3[0][1] == "2" and \
-								hand3[1][1] == "Ace":
-									_hit()
-				else:
-					print("Has a pair of " + hand3[0][1] + "s")
+			if hand3[0][1] != hand3[1][1]:
+				if has_aces == false:
+					print("Has no aces or pairs")
 					match game.dealer_hand[0][1]:
 						"2":
-							match hand3[0][1]:
-								"Ace":
-									_split(3)
-								"King":
-									_stand()
-								"Queen":
-									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_split(3)
-								"8":
-									_split(3)
-								"7":
-									_split(3)
-								"6":
-									_split(3)
-								"5":
-									#if not allowed, then hit
-									_double_down()
-								"4":
+							match hand3_value:
+								5:
 									_hit()
-								"3":
-									_split(3)
-								"2":
-									_split(3)
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_hit()
+								10:
+									_double_down()
+								11:
+									_double_down()
+								12:
+									_hit()
+								13:
+									_stand()
+								14:
+									_stand()
+								15:
+									_stand()
+								16:
+									_stand()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
 						"3":
-							match hand3[0][1]:
-								"Ace":
-									_split(3)
-								"King":
-									_stand()
-								"Queen":
-									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_split(3)
-								"8":
-									_split(3)
-								"7":
-									_split(3)
-								"6":
-									_split(3)
-								"5":
-									#if not allowed, then hit
-									_double_down()
-								"4":
+							match hand3_value:
+								5:
 									_hit()
-								"3":
-									_split(3)
-								"2":
-									_split(3)
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_double_down()
+								10:
+									_double_down()
+								11:
+									_double_down()
+								12:
+									_hit()
+								13:
+									_stand()
+								14:
+									_stand()
+								15:
+									_stand()
+								16:
+									_stand()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
 						"4":
-							match hand3[0][1]:
-								"Ace":
-									_split(3)
-								"King":
-									_stand()
-								"Queen":
-									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_split(3)
-								"8":
-									_split(3)
-								"7":
-									_split(3)
-								"6":
-									_split(3)
-								"5":
-									#if not allowed, then hit
-									_double_down()
-								"4":
+							match hand3_value:
+								5:
 									_hit()
-								"3":
-									_split(3)
-								"2":
-									_split(3)
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_double_down()
+								10:
+									_double_down()
+								11:
+									_double_down()
+								12:
+									_stand()
+								13:
+									_stand()
+								14:
+									_stand()
+								15:
+									_stand()
+								16:
+									_stand()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
 						"5":
-							match hand3[0][1]:
-								"Ace":
-									_split(3)
-								"King":
-									_stand()
-								"Queen":
-									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_split(3)
-								"8":
-									_split(3)
-								"7":
-									_split(3)
-								"6":
-									_split(3)
-								"5":
-									#if not allowed, then hit
+							match hand3_value:
+								5:
+									_hit()
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
 									_double_down()
-								"4":
-									_split(3)
-								"3":
-									_split(3)
-								"2":
-									_split(3)
+								10:
+									_double_down()
+								11:
+									_double_down()
+								12:
+									_stand()
+								13:
+									_stand()
+								14:
+									_stand()
+								15:
+									_stand()
+								16:
+									_stand()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
 						"6":
-							match hand3[0][1]:
-								"Ace":
-									_split(3)
-								"King":
-									_stand()
-								"Queen":
-									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_split(3)
-								"8":
-									_split(3)
-								"7":
-									_split(3)
-								"6":
-									_split(3)
-								"5":
-									#if not allowed, then hit
+							match hand3_value:
+								5:
+									_hit()
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
 									_double_down()
-								"4":
-									_split(3)
-								"3":
-									_split(3)
-								"2":
-									_split(3)
+								10:
+									_double_down()
+								11:
+									_double_down()
+								12:
+									_stand()
+								13:
+									_stand()
+								14:
+									_stand()
+								15:
+									_stand()
+								16:
+									_stand()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
 						"7":
-							match hand3[0][1]:
-								"Ace":
-									_split(3)
-								"King":
-									_stand()
-								"Queen":
-									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_stand()
-								"8":
-									_split(3)
-								"7":
-									_split(3)
-								"6":
+							match hand3_value:
+								5:
 									_hit()
-								"5":
-									#if not allowed, then hit
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_hit()
+								10:
 									_double_down()
-								"4":
+								11:
+									_double_down()
+								12:
 									_hit()
-								"3":
-									_split(3)
-								"2":
-									_split(3)
+								13:
+									_hit()
+								14:
+									_hit()
+								15:
+									_hit()
+								16:
+									_hit()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
 						"8":
-							match hand3[0][1]:
-								"Ace":
-									_split(3)
-								"King":
-									_stand()
-								"Queen":
-									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_split(3)
-								"8":
-									_split(3)
-								"7":
+							match hand3_value:
+								5:
 									_hit()
-								"6":
+								6:
 									_hit()
-								"5":
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_hit()
+								10:
+									_double_down()
+								11:
+									_double_down()
+								12:
+									_hit()
+								13:
+									_hit()
+								14:
+									_hit()
+								15:
+									_hit()
+								16:
+									_hit()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
+						"9":
+							match hand3_value:
+								5:
+									_hit()
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_hit()
+								10:
+									_double_down()
+								11:
+									_double_down()
+								12:
+									_hit()
+								13:
+									_hit()
+								14:
+									_hit()
+								15:
+									_hit()
+								16:
+									#if not allowed, then hit
+									_surrender()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
+						"10":
+							match hand3_value:
+								5:
+									_hit()
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_hit()
+								10:
+									_hit()
+								11:
+									_double_down()
+								12:
+									_hit()
+								13:
+									_hit()
+								14:
+									_hit()
+								15:
+									#if not allowed, then hit
+									_surrender()
+								16:
+									#if not allowed, then hit
+									_surrender()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
+						"Jack":
+							match hand3_value:
+								5:
+									_hit()
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_hit()
+								10:
+									_hit()
+								11:
+									_double_down()
+								12:
+									_hit()
+								13:
+									_hit()
+								14:
+									_hit()
+								15:
+									#if not allowed, then hit
+									_surrender()
+								16:
+									#if not allowed, then hit
+									_surrender()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
+						"Queen":
+							match hand3_value:
+								5:
+									_hit()
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_hit()
+								10:
+									_hit()
+								11:
+									_double_down()
+								12:
+									_hit()
+								13:
+									_hit()
+								14:
+									_hit()
+								15:
+									#if not allowed, then hit
+									_surrender()
+								16:
+									#if not allowed, then hit
+									_surrender()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
+						"King":
+							match hand3_value:
+								5:
+									_hit()
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_hit()
+								10:
+									_hit()
+								11:
+									_double_down()
+								12:
+									_hit()
+								13:
+									_hit()
+								14:
+									_hit()
+								15:
+									#if not allowed, then hit
+									_surrender()
+								16:
+									#if not allowed, then hit
+									_surrender()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
+						"Ace":
+							match hand3_value:
+								5:
+									_hit()
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_hit()
+								10:
+									_hit()
+								11:
+									_double_down()
+								12:
+									_hit()
+								13:
+									_hit()
+								14:
+									_hit()
+								15:
+									#if not allowed, then hit
+									_surrender()
+								16:
+									#if not allowed, then hit
+									_surrender()
+								17:
+									#if not allowed, then stand
+									_surrender()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
+				else:
+					print("Has an Ace")
+					match game.dealer_hand[0][1]:
+						"2":
+							match hand3_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									#if not allowed, then stand
+									_double_down()
+								17:
+									_hit()
+								16:
+									_hit()
+								15:
+									_hit()
+								14:
+									_hit()
+								13:
+									_hit()
+								12:
+									_hit()
+						"3":
+							match hand3_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									#if not allowed, then stand
+									_double_down()
+								17:
 									#if not allowed, then hit
 									_double_down()
-								"4":
+								16:
 									_hit()
-								"3":
+								15:
 									_hit()
-								"2":
+								14:
+									_hit()
+								13:
+									_hit()
+								12:
+									_hit()
+						"4":
+							match hand3_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									#if not allowed, then stand
+									_double_down()
+								17:
+									#if not allowed, then hit
+									_double_down()
+								16:
+									#if not allowed, then hit
+									_double_down()
+								15:
+									#if not allowed, then hit
+									_double_down()
+								14:
+									_hit()
+								13:
+									_hit()
+								12:
+									_hit()
+						"5":
+							match hand3_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									#if not allowed, then stand
+									_double_down()
+								17:
+									#if not allowed, then hit
+									_double_down()
+								16:
+									#if not allowed, then hit
+									_double_down()
+								15:
+									#if not allowed, then hit
+									_double_down()
+								14:
+									#if not allowed, then hit
+									_double_down()
+								13:
+									#if not allowed, then hit
+									_double_down()
+								12:
+									_hit()
+						"6":
+							match hand3_value:
+								20:
+									_stand()
+								19:
+									#if not allowed, then stand
+									_double_down()
+								18:
+									#if not allowed, then stand
+									_double_down()
+								17:
+									#if not allowed, then hit
+									_double_down()
+								16:
+									#if not allowed, then hit
+									_double_down()
+								15:
+									#if not allowed, then hit
+									_double_down()
+								14:
+									#if not allowed, then hit
+									_double_down()
+								13:
+									#if not allowed, then hit
+									_double_down()
+								12:
+									#if not allowed, then hit
+									_double_down()
+						"7":
+							match hand3_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									_stand()
+								17:
+									_hit()
+								16:
+									_hit()
+								15:
+									_hit()
+								14:
+									_hit()
+								13:
+									_hit()
+								12:
+									_hit()
+						"8":
+							match hand3_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									_stand()
+								17:
+									_hit()
+								16:
+									_hit()
+								15:
+									_hit()
+								14:
+									_hit()
+								13:
+									_hit()
+								12:
 									_hit()
 						"9":
-							match hand3[0][1]:
-								"Ace":
-									_split(3)
-								"King":
+							match hand3_value:
+								20:
 									_stand()
-								"Queen":
+								19:
 									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_split(3)
-								"8":
-									_split(3)
-								"7":
+								18:
 									_hit()
-								"6":
+								17:
 									_hit()
-								"5":
-									#if not allowed, then hit
-									_double_down()
-								"4":
+								16:
 									_hit()
-								"3":
+								15:
 									_hit()
-								"2":
+								14:
+									_hit()
+								13:
+									_hit()
+								12:
 									_hit()
 						"10":
-							match hand3[0][1]:
-								"Ace":
-									_split(3)
-								"King":
+							match hand3_value:
+								20:
 									_stand()
-								"Queen":
+								19:
 									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_stand()
-								"8":
-									_split(3)
-								"7":
+								18:
 									_hit()
-								"6":
+								17:
 									_hit()
-								"5":
+								16:
 									_hit()
-								"4":
+								15:
 									_hit()
-								"3":
+								14:
 									_hit()
-								"2":
+								13:
+									_hit()
+								12:
 									_hit()
 						"Jack":
-							match hand3[0][1]:
-								"Ace":
-									_split(3)
-								"King":
+							match hand3_value:
+								20:
 									_stand()
-								"Queen":
+								19:
 									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_stand()
-								"8":
-									_split(3)
-								"7":
+								18:
 									_hit()
-								"6":
+								17:
 									_hit()
-								"5":
+								16:
 									_hit()
-								"4":
+								15:
 									_hit()
-								"3":
+								14:
 									_hit()
-								"2":
+								13:
+									_hit()
+								12:
 									_hit()
 						"Queen":
-							match hand3[0][1]:
-								"Ace":
-									_split(3)
-								"King":
+							match hand3_value:
+								20:
 									_stand()
-								"Queen":
+								19:
 									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_stand()
-								"8":
-									_split(3)
-								"7":
+								18:
 									_hit()
-								"6":
+								17:
 									_hit()
-								"5":
+								16:
 									_hit()
-								"4":
+								15:
 									_hit()
-								"3":
+								14:
 									_hit()
-								"2":
+								13:
+									_hit()
+								12:
 									_hit()
 						"King":
-							match hand3[0][1]:
-								"Ace":
-									_split(3)
-								"King":
+							match hand3_value:
+								20:
 									_stand()
-								"Queen":
+								19:
 									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_stand()
-								"8":
-									_split(3)
-								"7":
+								18:
 									_hit()
-								"6":
+								17:
 									_hit()
-								"5":
+								16:
 									_hit()
-								"4":
+								15:
 									_hit()
-								"3":
+								14:
 									_hit()
-								"2":
+								13:
+									_hit()
+								12:
 									_hit()
 						"Ace":
-							match hand3[0][1]:
-								"Ace":
-									_split(3)
-								"King":
+							match hand3_value:
+								20:
 									_stand()
-								"Queen":
+								19:
 									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_stand()
-								"8":
-									#if not allowed, then split
-									_surrender()
-								"7":
+								18:
 									_hit()
-								"6":
+								17:
 									_hit()
-								"5":
+								16:
 									_hit()
-								"4":
+								15:
 									_hit()
-								"3":
+								14:
 									_hit()
-								"2":
+								13:
 									_hit()
+								12:
+									_hit()
+			else:
+				print("Has a pair of " + hand3[0][1] + "s")
+				match game.dealer_hand[0][1]:
+					"2":
+						match hand3[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_split(1)
+							"8":
+								_split(1)
+							"7":
+								_split(1)
+							"6":
+								_split(1)
+							"5":
+								#if not allowed, then hit
+								_double_down()
+							"4":
+								_hit()
+							"3":
+								_split(1)
+							"2":
+								_split(1)
+					"3":
+						match hand3[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_split(1)
+							"8":
+								_split(1)
+							"7":
+								_split(1)
+							"6":
+								_split(1)
+							"5":
+								#if not allowed, then hit
+								_double_down()
+							"4":
+								_hit()
+							"3":
+								_split(1)
+							"2":
+								_split(1)
+					"4":
+						match hand3[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_split(1)
+							"8":
+								_split(1)
+							"7":
+								_split(1)
+							"6":
+								_split(1)
+							"5":
+								#if not allowed, then hit
+								_double_down()
+							"4":
+								_hit()
+							"3":
+								_split(1)
+							"2":
+								_split(1)
+					"5":
+						match hand3[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_split(1)
+							"8":
+								_split(1)
+							"7":
+								_split(1)
+							"6":
+								_split(1)
+							"5":
+								#if not allowed, then hit
+								_double_down()
+							"4":
+								_split(1)
+							"3":
+								_split(1)
+							"2":
+								_split(1)
+					"6":
+						match hand3[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_split(1)
+							"8":
+								_split(1)
+							"7":
+								_split(1)
+							"6":
+								_split(1)
+							"5":
+								#if not allowed, then hit
+								_double_down()
+							"4":
+								_split(1)
+							"3":
+								_split(1)
+							"2":
+								_split(1)
+					"7":
+						match hand3[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_stand()
+							"8":
+								_split(1)
+							"7":
+								_split(1)
+							"6":
+								_hit()
+							"5":
+								#if not allowed, then hit
+								_double_down()
+							"4":
+								_hit()
+							"3":
+								_split(1)
+							"2":
+								_split(1)
+					"8":
+						match hand3[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_split(1)
+							"8":
+								_split(1)
+							"7":
+								_hit()
+							"6":
+								_hit()
+							"5":
+								#if not allowed, then hit
+								_double_down()
+							"4":
+								_hit()
+							"3":
+								_hit()
+							"2":
+								_hit()
+					"9":
+						match hand3[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_split(1)
+							"8":
+								_split(1)
+							"7":
+								_hit()
+							"6":
+								_hit()
+							"5":
+								#if not allowed, then hit
+								_double_down()
+							"4":
+								_hit()
+							"3":
+								_hit()
+							"2":
+								_hit()
+					"10":
+						match hand3[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_stand()
+							"8":
+								_split(1)
+							"7":
+								_hit()
+							"6":
+								_hit()
+							"5":
+								_hit()
+							"4":
+								_hit()
+							"3":
+								_hit()
+							"2":
+								_hit()
+					"Jack":
+						match hand3[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_stand()
+							"8":
+								_split(1)
+							"7":
+								_hit()
+							"6":
+								_hit()
+							"5":
+								_hit()
+							"4":
+								_hit()
+							"3":
+								_hit()
+							"2":
+								_hit()
+					"Queen":
+						match hand3[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_stand()
+							"8":
+								_split(1)
+							"7":
+								_hit()
+							"6":
+								_hit()
+							"5":
+								_hit()
+							"4":
+								_hit()
+							"3":
+								_hit()
+							"2":
+								_hit()
+					"King":
+						match hand3[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_stand()
+							"8":
+								_split(1)
+							"7":
+								_hit()
+							"6":
+								_hit()
+							"5":
+								_hit()
+							"4":
+								_hit()
+							"3":
+								_hit()
+							"2":
+								_hit()
+					"Ace":
+						match hand3[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_stand()
+							"8":
+								#if not allowed, then split
+								_surrender()
+							"7":
+								_hit()
+							"6":
+								_hit()
+							"5":
+								_hit()
+							"4":
+								_hit()
+							"3":
+								_hit()
+							"2":
+								_hit()
 		elif personality == "Coward" and busted != true:
 			_stand()
 		elif personality == "Noob" and busted != true:
@@ -4434,1429 +3664,1158 @@ func _act4():
 				_blackjack()
 			elif hand4_value == 21 and hand4.size() > 2:
 				_stand()
+		elif hand4_value == 21 and hand4.size() > 2:
+			_stand()
 		if personality == "Strategic" and busted != true:
 			var has_aces : bool = false
 			for card in hand4.size():
 				if has_aces == false:
 					if hand4[card][1] == "Ace":
 						has_aces = true
-			if hand4.size() > 1:
-				if hand4[0][1] != hand4[1][1]:
-					if has_aces == false:
-						print("Has no aces or pairs")
-						match game.dealer_hand[0][1]:
-							"2":
-								match hand4_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_hit()
-									10:
-										_double_down()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_stand()
-									14:
-										_stand()
-									15:
-										_stand()
-									16:
-										_stand()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"3":
-								match hand4_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_double_down()
-									10:
-										_double_down()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_stand()
-									14:
-										_stand()
-									15:
-										_stand()
-									16:
-										_stand()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"4":
-								match hand4_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_double_down()
-									10:
-										_double_down()
-									11:
-										_double_down()
-									12:
-										_stand()
-									13:
-										_stand()
-									14:
-										_stand()
-									15:
-										_stand()
-									16:
-										_stand()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"5":
-								match hand4_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_double_down()
-									10:
-										_double_down()
-									11:
-										_double_down()
-									12:
-										_stand()
-									13:
-										_stand()
-									14:
-										_stand()
-									15:
-										_stand()
-									16:
-										_stand()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"6":
-								match hand4_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_double_down()
-									10:
-										_double_down()
-									11:
-										_double_down()
-									12:
-										_stand()
-									13:
-										_stand()
-									14:
-										_stand()
-									15:
-										_stand()
-									16:
-										_stand()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"7":
-								match hand4_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_hit()
-									10:
-										_double_down()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_hit()
-									14:
-										_hit()
-									15:
-										_hit()
-									16:
-										_hit()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"8":
-								match hand4_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_hit()
-									10:
-										_double_down()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_hit()
-									14:
-										_hit()
-									15:
-										_hit()
-									16:
-										_hit()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"9":
-								match hand4_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_hit()
-									10:
-										_double_down()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_hit()
-									14:
-										_hit()
-									15:
-										_hit()
-									16:
-										#if not allowed, then hit
-										_surrender()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"10":
-								match hand4_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_hit()
-									10:
-										_hit()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_hit()
-									14:
-										_hit()
-									15:
-										#if not allowed, then hit
-										_surrender()
-									16:
-										#if not allowed, then hit
-										_surrender()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"Jack":
-								match hand4_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_hit()
-									10:
-										_hit()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_hit()
-									14:
-										_hit()
-									15:
-										#if not allowed, then hit
-										_surrender()
-									16:
-										#if not allowed, then hit
-										_surrender()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"Queen":
-								match hand4_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_hit()
-									10:
-										_hit()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_hit()
-									14:
-										_hit()
-									15:
-										#if not allowed, then hit
-										_surrender()
-									16:
-										#if not allowed, then hit
-										_surrender()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"King":
-								match hand4_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_hit()
-									10:
-										_hit()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_hit()
-									14:
-										_hit()
-									15:
-										#if not allowed, then hit
-										_surrender()
-									16:
-										#if not allowed, then hit
-										_surrender()
-									17:
-										_stand()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-							"Ace":
-								match hand4_value:
-									5:
-										_hit()
-									6:
-										_hit()
-									7:
-										_hit()
-									8:
-										_hit()
-									9:
-										_hit()
-									10:
-										_hit()
-									11:
-										_double_down()
-									12:
-										_hit()
-									13:
-										_hit()
-									14:
-										_hit()
-									15:
-										#if not allowed, then hit
-										_surrender()
-									16:
-										#if not allowed, then hit
-										_surrender()
-									17:
-										#if not allowed, then stand
-										_surrender()
-									18:
-										_stand()
-									19:
-										_stand()
-									20:
-										_stand()
-									21:
-										_stand()
-					else:
-						print("Has a " + hand4[0][1] + " and a " + hand4[1][1])
-						match game.dealer_hand[0][1]:
-							"2":
-								if hand4[0][1] == "Ace" and \
-								hand4[1][1] == "9" or \
-								hand4[0][1] == "9" and \
-								hand4[1][1] == "Ace":
-									_stand()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "8" or \
-								hand4[0][1] == "8" and \
-								hand4[1][1] == "Ace":
-									_stand()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "7" or \
-								hand4[0][1] == "7" and \
-								hand4[1][1] == "Ace":
-									#if not allowed, then stand
-									_double_down()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "6" or \
-								hand4[0][1] == "6" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "5" or \
-								hand4[0][1] == "5" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "4" or \
-								hand4[0][1] == "4" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "3" or \
-								hand4[0][1] == "3" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "2" or \
-								hand4[0][1] == "2" and \
-								[1][1] == "Ace":
-									_hit()
-							"3":
-								if hand4[0][1] == "Ace" and \
-								hand4[1][1] == "9" or \
-								hand4[0][1] == "9" and \
-								hand4[1][1] == "Ace":
-									_stand()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "8" or \
-								hand4[0][1] == "8" and \
-								hand4[1][1] == "Ace":
-									_stand()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "7" or \
-								hand4[0][1] == "7" and \
-								hand4[1][1] == "Ace":
-									#if not allowed, then stand
-									_double_down()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "6" or \
-								hand4[0][1] == "6" and \
-								hand4[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "5" or \
-								hand4[0][1] == "5" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "4" or \
-								hand4[0][1] == "4" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "3" or \
-								hand4[0][1] == "3" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "2" or \
-								hand4[0][1] == "2" and \
-								hand4[1][1] == "Ace":
-									_hit()
-							"4":
-								if hand4[0][1] == "Ace" and \
-								hand4[1][1] == "9" or \
-								hand4[0][1] == "9" and \
-								hand4[1][1] == "Ace":
-									_stand()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "8" or \
-								hand4[0][1] == "8" and \
-								hand4[1][1] == "Ace":
-									_stand()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "7" or \
-								hand4[0][1] == "7" and \
-								hand4[1][1] == "Ace":
-									#if not allowed, then stand
-									_double_down()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "6" or \
-								hand4[0][1] == "6" and \
-								hand4[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "5" or \
-								hand4[0][1] == "5" and \
-								hand4[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "4" or \
-								hand4[0][1] == "4" and \
-								hand4[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "3" or \
-								hand4[0][1] == "3" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "2" or \
-								hand4[0][1] == "2" and \
-								hand4[1][1] == "Ace":
-									_hit()
-							"5":
-								if hand4[0][1] == "Ace" and \
-								hand4[1][1] == "9" or \
-								hand4[0][1] == "9" and \
-								hand4[1][1] == "Ace":
-									_stand()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "8" or \
-								hand4[0][1] == "8" and \
-								hand4[1][1] == "Ace":
-									_stand()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "7" or \
-								hand4[0][1] == "7" and \
-								hand4[1][1] == "Ace":
-									#if not allowed, then stand
-									_double_down()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "6" or \
-								hand4[0][1] == "6" and \
-								hand4[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "5" or \
-								hand4[0][1] == "5" and \
-								hand4[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "4" or \
-								hand4[0][1] == "4" and \
-								hand4[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "3" or \
-								hand4[0][1] == "3" and \
-								hand4[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "2" or \
-								hand4[0][1] == "2" and \
-								hand4[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-							"6":
-								if hand4[0][1] == "Ace" and \
-								hand4[1][1] == "9" or \
-								hand4[0][1] == "9" and \
-								hand4[1][1] == "Ace":
-									_stand()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "8" or \
-								hand4[0][1] == "8" and \
-								hand4[1][1] == "Ace":
-									#if not allowed, then stand
-									_double_down()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "7" or \
-								hand4[0][1] == "7" and \
-								hand4[1][1] == "Ace":
-									#if not allowed, then stand
-									_double_down()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "6" or \
-								hand4[0][1] == "6" and \
-								hand4[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "5" or \
-								hand4[0][1] == "5" and \
-								hand4[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "4" or \
-								hand4[0][1] == "4" and \
-								hand4[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "3" or \
-								hand4[0][1] == "3" and \
-								hand4[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "2" or \
-								hand4[0][1] == "2" and \
-								hand4[1][1] == "Ace":
-									#if not allowed, then hit
-									_double_down()
-							"7":
-								if hand4[0][1] == "Ace" and \
-								hand4[1][1] == "9" or \
-								hand4[0][1] == "9" and \
-								hand4[1][1] == "Ace":
-									_stand()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "8" or \
-								hand4[0][1] == "8" and \
-								hand4[1][1] == "Ace":
-									_stand()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "7" or \
-								hand4[0][1] == "7" and \
-								hand4[1][1] == "Ace":
-									_stand()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "6" or \
-								hand4[0][1] == "6" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "5" or \
-								hand4[0][1] == "5" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "4" or \
-								hand4[0][1] == "4" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "3" or \
-								hand4[0][1] == "3" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "2" or \
-								hand4[0][1] == "2" and \
-								hand4[1][1] == "Ace":
-									_hit()
-							"8":
-								if hand4[0][1] == "Ace" and \
-								hand4[1][1] == "9" or \
-								hand4[0][1] == "9" and \
-								hand4[1][1] == "Ace":
-									_stand()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "8" or \
-								hand4[0][1] == "8" and \
-								hand4[1][1] == "Ace":
-									_stand()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "7" or \
-								hand4[0][1] == "7" and \
-								hand4[1][1] == "Ace":
-									_stand()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "6" or \
-								hand4[0][1] == "6" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "5" or \
-								hand4[0][1] == "5" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "4" or \
-								hand4[0][1] == "4" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "3" or \
-								hand4[0][1] == "3" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "2" or \
-								hand4[0][1] == "2" and \
-								hand4[1][1] == "Ace":
-									_hit()
-							"9":
-								if hand4[0][1] == "Ace" and \
-								hand4[1][1] == "9" or \
-								hand4[0][1] == "9" and \
-								hand4[1][1] == "Ace":
-									_stand()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "8" or \
-								hand4[0][1] == "8" and \
-								hand4[1][1] == "Ace":
-									_stand()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "7" or \
-								hand4[0][1] == "7" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "6" or \
-								hand4[0][1] == "6" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "5" or \
-								hand4[0][1] == "5" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "4" or \
-								hand4[0][1] == "4" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "3" or \
-								hand4[0][1] == "3" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "2" or \
-								hand4[0][1] == "2" and \
-								hand4[1][1] == "Ace":
-									_hit()
-							"10":
-								if hand4[0][1] == "Ace" and \
-								hand4[1][1] == "9" or \
-								hand4[0][1] == "9" and \
-								hand4[1][1] == "Ace":
-									_stand()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "8" or \
-								hand4[0][1] == "8" and \
-								hand4[1][1] == "Ace":
-									_stand()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "7" or \
-								hand4[0][1] == "7" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "6" or \
-								hand4[0][1] == "6" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "5" or \
-								hand4[0][1] == "5" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "4" or \
-								hand4[0][1] == "4" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "3" or \
-								hand4[0][1] == "3" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "2" or \
-								hand4[0][1] == "2" and \
-								hand4[1][1] == "Ace":
-									_hit()
-							"Jack":
-								if hand4[0][1] == "Ace" and \
-								hand4[1][1] == "9" or \
-								hand4[0][1] == "9" and \
-								hand4[1][1] == "Ace":
-									_stand()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "8" or \
-								hand4[0][1] == "8" and \
-								hand4[1][1] == "Ace":
-									_stand()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "7" or \
-								hand4[0][1] == "7" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "6" or \
-								hand4[0][1] == "6" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "5" or \
-								hand4[0][1] == "5" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "4" or \
-								hand4[0][1] == "4" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "3" or \
-								hand4[0][1] == "3" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "2" or \
-								hand4[0][1] == "2" and \
-								hand4[1][1] == "Ace":
-									_hit()
-							"Queen":
-								if hand4[0][1] == "Ace" and \
-								hand4[1][1] == "9" or \
-								hand4[0][1] == "9" and \
-								hand4[1][1] == "Ace":
-									_stand()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "8" or \
-								hand4[0][1] == "8" and \
-								hand4[1][1] == "Ace":
-									_stand()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "7" or \
-								hand4[0][1] == "7" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "6" or \
-								hand4[0][1] == "6" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "5" or \
-								hand4[0][1] == "5" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "4" or \
-								hand4[0][1] == "4" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "3" or \
-								hand4[0][1] == "3" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "2" or \
-								hand4[0][1] == "2" and \
-								hand4[1][1] == "Ace":
-									_hit()
-							"King":
-								if hand4[0][1] == "Ace" and \
-								hand4[1][1] == "9" or \
-								hand4[0][1] == "9" and \
-								hand4[1][1] == "Ace":
-									_stand()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "8" or \
-								hand4[0][1] == "8" and \
-								hand4[1][1] == "Ace":
-									_stand()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "7" or \
-								hand4[0][1] == "7" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "6" or \
-								hand4[0][1] == "6" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "5" or \
-								hand4[0][1] == "5" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "4" or \
-								hand4[0][1] == "4" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "3" or \
-								hand4[0][1] == "3" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "2" or \
-								hand4[0][1] == "2" and \
-								hand4[1][1] == "Ace":
-									_hit()
-							"Ace":
-								if hand4[0][1] == "Ace" and \
-								hand4[1][1] == "9" or \
-								hand4[0][1] == "9" and \
-								hand4[1][1] == "Ace":
-									_stand()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "8" or \
-								hand4[0][1] == "8" and \
-								hand4[1][1] == "Ace":
-									_stand()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "7" or \
-								hand4[0][1] == "7" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "6" or \
-								hand4[0][1] == "6" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "5" or \
-								hand4[0][1] == "5" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "4" or \
-								hand4[0][1] == "4" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "3" or \
-								hand4[0][1] == "3" and \
-								hand4[1][1] == "Ace":
-									_hit()
-								elif hand4[0][1] == "Ace" and \
-								hand4[1][1] == "2" or \
-								hand4[0][1] == "2" and \
-								hand4[1][1] == "Ace":
-									_hit()
-				else:
-					print("Has a pair of " + hand4[0][1] + "s")
+			if hand4[0][1] != hand4[1][1]:
+				if has_aces == false:
+					print("Has no aces or pairs")
 					match game.dealer_hand[0][1]:
 						"2":
-							match hand4[0][1]:
-								"Ace":
-									_split(4)
-								"King":
-									_stand()
-								"Queen":
-									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_split(4)
-								"8":
-									_split(4)
-								"7":
-									_split(4)
-								"6":
-									_split(4)
-								"5":
-									#if not allowed, then hit
-									_double_down()
-								"4":
+							match hand4_value:
+								5:
 									_hit()
-								"3":
-									_split(4)
-								"2":
-									_split(4)
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_hit()
+								10:
+									_double_down()
+								11:
+									_double_down()
+								12:
+									_hit()
+								13:
+									_stand()
+								14:
+									_stand()
+								15:
+									_stand()
+								16:
+									_stand()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
 						"3":
-							match hand4[0][1]:
-								"Ace":
-									_split(4)
-								"King":
-									_stand()
-								"Queen":
-									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_split(4)
-								"8":
-									_split(4)
-								"7":
-									_split(4)
-								"6":
-									_split(4)
-								"5":
-									#if not allowed, then hit
-									_double_down()
-								"4":
+							match hand4_value:
+								5:
 									_hit()
-								"3":
-									_split(4)
-								"2":
-									_split(4)
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_double_down()
+								10:
+									_double_down()
+								11:
+									_double_down()
+								12:
+									_hit()
+								13:
+									_stand()
+								14:
+									_stand()
+								15:
+									_stand()
+								16:
+									_stand()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
 						"4":
-							match hand4[0][1]:
-								"Ace":
-									_split(4)
-								"King":
-									_stand()
-								"Queen":
-									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_split(4)
-								"8":
-									_split(4)
-								"7":
-									_split(4)
-								"6":
-									_split(4)
-								"5":
-									#if not allowed, then hit
-									_double_down()
-								"4":
+							match hand4_value:
+								5:
 									_hit()
-								"3":
-									_split(4)
-								"2":
-									_split(4)
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_double_down()
+								10:
+									_double_down()
+								11:
+									_double_down()
+								12:
+									_stand()
+								13:
+									_stand()
+								14:
+									_stand()
+								15:
+									_stand()
+								16:
+									_stand()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
 						"5":
-							match hand4[0][1]:
-								"Ace":
-									_split(4)
-								"King":
-									_stand()
-								"Queen":
-									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_split(4)
-								"8":
-									_split(4)
-								"7":
-									_split(4)
-								"6":
-									_split(4)
-								"5":
-									#if not allowed, then hit
+							match hand4_value:
+								5:
+									_hit()
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
 									_double_down()
-								"4":
-									_split(4)
-								"3":
-									_split(4)
-								"2":
-									_split(4)
+								10:
+									_double_down()
+								11:
+									_double_down()
+								12:
+									_stand()
+								13:
+									_stand()
+								14:
+									_stand()
+								15:
+									_stand()
+								16:
+									_stand()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
 						"6":
-							match hand4[0][1]:
-								"Ace":
-									_split(4)
-								"King":
-									_stand()
-								"Queen":
-									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_split(4)
-								"8":
-									_split(4)
-								"7":
-									_split(4)
-								"6":
-									_split(4)
-								"5":
-									#if not allowed, then hit
+							match hand4_value:
+								5:
+									_hit()
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
 									_double_down()
-								"4":
-									_split(4)
-								"3":
-									_split(4)
-								"2":
-									_split(4)
+								10:
+									_double_down()
+								11:
+									_double_down()
+								12:
+									_stand()
+								13:
+									_stand()
+								14:
+									_stand()
+								15:
+									_stand()
+								16:
+									_stand()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
 						"7":
-							match hand4[0][1]:
-								"Ace":
-									_split(4)
-								"King":
-									_stand()
-								"Queen":
-									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_stand()
-								"8":
-									_split(4)
-								"7":
-									_split(4)
-								"6":
+							match hand4_value:
+								5:
 									_hit()
-								"5":
-									#if not allowed, then hit
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_hit()
+								10:
 									_double_down()
-								"4":
+								11:
+									_double_down()
+								12:
 									_hit()
-								"3":
-									_split(4)
-								"2":
-									_split(4)
+								13:
+									_hit()
+								14:
+									_hit()
+								15:
+									_hit()
+								16:
+									_hit()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
 						"8":
-							match hand4[0][1]:
-								"Ace":
-									_split(4)
-								"King":
-									_stand()
-								"Queen":
-									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_split(4)
-								"8":
-									_split(4)
-								"7":
+							match hand4_value:
+								5:
 									_hit()
-								"6":
+								6:
 									_hit()
-								"5":
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_hit()
+								10:
+									_double_down()
+								11:
+									_double_down()
+								12:
+									_hit()
+								13:
+									_hit()
+								14:
+									_hit()
+								15:
+									_hit()
+								16:
+									_hit()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
+						"9":
+							match hand4_value:
+								5:
+									_hit()
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_hit()
+								10:
+									_double_down()
+								11:
+									_double_down()
+								12:
+									_hit()
+								13:
+									_hit()
+								14:
+									_hit()
+								15:
+									_hit()
+								16:
+									#if not allowed, then hit
+									_surrender()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
+						"10":
+							match hand4_value:
+								5:
+									_hit()
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_hit()
+								10:
+									_hit()
+								11:
+									_double_down()
+								12:
+									_hit()
+								13:
+									_hit()
+								14:
+									_hit()
+								15:
+									#if not allowed, then hit
+									_surrender()
+								16:
+									#if not allowed, then hit
+									_surrender()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
+						"Jack":
+							match hand4_value:
+								5:
+									_hit()
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_hit()
+								10:
+									_hit()
+								11:
+									_double_down()
+								12:
+									_hit()
+								13:
+									_hit()
+								14:
+									_hit()
+								15:
+									#if not allowed, then hit
+									_surrender()
+								16:
+									#if not allowed, then hit
+									_surrender()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
+						"Queen":
+							match hand4_value:
+								5:
+									_hit()
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_hit()
+								10:
+									_hit()
+								11:
+									_double_down()
+								12:
+									_hit()
+								13:
+									_hit()
+								14:
+									_hit()
+								15:
+									#if not allowed, then hit
+									_surrender()
+								16:
+									#if not allowed, then hit
+									_surrender()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
+						"King":
+							match hand4_value:
+								5:
+									_hit()
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_hit()
+								10:
+									_hit()
+								11:
+									_double_down()
+								12:
+									_hit()
+								13:
+									_hit()
+								14:
+									_hit()
+								15:
+									#if not allowed, then hit
+									_surrender()
+								16:
+									#if not allowed, then hit
+									_surrender()
+								17:
+									_stand()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
+						"Ace":
+							match hand4_value:
+								5:
+									_hit()
+								6:
+									_hit()
+								7:
+									_hit()
+								8:
+									_hit()
+								9:
+									_hit()
+								10:
+									_hit()
+								11:
+									_double_down()
+								12:
+									_hit()
+								13:
+									_hit()
+								14:
+									_hit()
+								15:
+									#if not allowed, then hit
+									_surrender()
+								16:
+									#if not allowed, then hit
+									_surrender()
+								17:
+									#if not allowed, then stand
+									_surrender()
+								18:
+									_stand()
+								19:
+									_stand()
+								20:
+									_stand()
+								21:
+									_stand()
+				else:
+					print("Has an Ace")
+					match game.dealer_hand[0][1]:
+						"2":
+							match hand4_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									#if not allowed, then stand
+									_double_down()
+								17:
+									_hit()
+								16:
+									_hit()
+								15:
+									_hit()
+								14:
+									_hit()
+								13:
+									_hit()
+								12:
+									_hit()
+						"3":
+							match hand4_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									#if not allowed, then stand
+									_double_down()
+								17:
 									#if not allowed, then hit
 									_double_down()
-								"4":
+								16:
 									_hit()
-								"3":
+								15:
 									_hit()
-								"2":
+								14:
+									_hit()
+								13:
+									_hit()
+								12:
+									_hit()
+						"4":
+							match hand4_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									#if not allowed, then stand
+									_double_down()
+								17:
+									#if not allowed, then hit
+									_double_down()
+								16:
+									#if not allowed, then hit
+									_double_down()
+								15:
+									#if not allowed, then hit
+									_double_down()
+								14:
+									_hit()
+								13:
+									_hit()
+								12:
+									_hit()
+						"5":
+							match hand4_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									#if not allowed, then stand
+									_double_down()
+								17:
+									#if not allowed, then hit
+									_double_down()
+								16:
+									#if not allowed, then hit
+									_double_down()
+								15:
+									#if not allowed, then hit
+									_double_down()
+								14:
+									#if not allowed, then hit
+									_double_down()
+								13:
+									#if not allowed, then hit
+									_double_down()
+								12:
+									_hit()
+						"6":
+							match hand4_value:
+								20:
+									_stand()
+								19:
+									#if not allowed, then stand
+									_double_down()
+								18:
+									#if not allowed, then stand
+									_double_down()
+								17:
+									#if not allowed, then hit
+									_double_down()
+								16:
+									#if not allowed, then hit
+									_double_down()
+								15:
+									#if not allowed, then hit
+									_double_down()
+								14:
+									#if not allowed, then hit
+									_double_down()
+								13:
+									#if not allowed, then hit
+									_double_down()
+								12:
+									#if not allowed, then hit
+									_double_down()
+						"7":
+							match hand4_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									_stand()
+								17:
+									_hit()
+								16:
+									_hit()
+								15:
+									_hit()
+								14:
+									_hit()
+								13:
+									_hit()
+								12:
+									_hit()
+						"8":
+							match hand4_value:
+								20:
+									_stand()
+								19:
+									_stand()
+								18:
+									_stand()
+								17:
+									_hit()
+								16:
+									_hit()
+								15:
+									_hit()
+								14:
+									_hit()
+								13:
+									_hit()
+								12:
 									_hit()
 						"9":
-							match hand4[0][1]:
-								"Ace":
-									_split(4)
-								"King":
+							match hand4_value:
+								20:
 									_stand()
-								"Queen":
+								19:
 									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_split(4)
-								"8":
-									_split(4)
-								"7":
+								18:
 									_hit()
-								"6":
+								17:
 									_hit()
-								"5":
-									#if not allowed, then hit
-									_double_down()
-								"4":
+								16:
 									_hit()
-								"3":
+								15:
 									_hit()
-								"2":
+								14:
+									_hit()
+								13:
+									_hit()
+								12:
 									_hit()
 						"10":
-							match hand4[0][1]:
-								"Ace":
-									_split(4)
-								"King":
+							match hand4_value:
+								20:
 									_stand()
-								"Queen":
+								19:
 									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_stand()
-								"8":
-									_split(4)
-								"7":
+								18:
 									_hit()
-								"6":
+								17:
 									_hit()
-								"5":
+								16:
 									_hit()
-								"4":
+								15:
 									_hit()
-								"3":
+								14:
 									_hit()
-								"2":
+								13:
+									_hit()
+								12:
 									_hit()
 						"Jack":
-							match hand4[0][1]:
-								"Ace":
-									_split(4)
-								"King":
+							match hand4_value:
+								20:
 									_stand()
-								"Queen":
+								19:
 									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_stand()
-								"8":
-									_split(4)
-								"7":
+								18:
 									_hit()
-								"6":
+								17:
 									_hit()
-								"5":
+								16:
 									_hit()
-								"4":
+								15:
 									_hit()
-								"3":
+								14:
 									_hit()
-								"2":
+								13:
+									_hit()
+								12:
 									_hit()
 						"Queen":
-							match hand4[0][1]:
-								"Ace":
-									_split(4)
-								"King":
+							match hand4_value:
+								20:
 									_stand()
-								"Queen":
+								19:
 									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_stand()
-								"8":
-									_split(4)
-								"7":
+								18:
 									_hit()
-								"6":
+								17:
 									_hit()
-								"5":
+								16:
 									_hit()
-								"4":
+								15:
 									_hit()
-								"3":
+								14:
 									_hit()
-								"2":
+								13:
+									_hit()
+								12:
 									_hit()
 						"King":
-							match hand4[0][1]:
-								"Ace":
-									_split(4)
-								"King":
+							match hand4_value:
+								20:
 									_stand()
-								"Queen":
+								19:
 									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_stand()
-								"8":
-									_split(4)
-								"7":
+								18:
 									_hit()
-								"6":
+								17:
 									_hit()
-								"5":
+								16:
 									_hit()
-								"4":
+								15:
 									_hit()
-								"3":
+								14:
 									_hit()
-								"2":
+								13:
+									_hit()
+								12:
 									_hit()
 						"Ace":
-							match hand4[0][1]:
-								"Ace":
-									_split(4)
-								"King":
+							match hand4_value:
+								20:
 									_stand()
-								"Queen":
+								19:
 									_stand()
-								"Jack":
-									_stand()
-								"10":
-									_stand()
-								"9":
-									_stand()
-								"8":
-									#if not allowed, then split
-									_surrender()
-								"7":
+								18:
 									_hit()
-								"6":
+								17:
 									_hit()
-								"5":
+								16:
 									_hit()
-								"4":
+								15:
 									_hit()
-								"3":
+								14:
 									_hit()
-								"2":
+								13:
 									_hit()
+								12:
+									_hit()
+			else:
+				print("Has a pair of " + hand4[0][1] + "s")
+				match game.dealer_hand[0][1]:
+					"2":
+						match hand4[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_split(1)
+							"8":
+								_split(1)
+							"7":
+								_split(1)
+							"6":
+								_split(1)
+							"5":
+								#if not allowed, then hit
+								_double_down()
+							"4":
+								_hit()
+							"3":
+								_split(1)
+							"2":
+								_split(1)
+					"3":
+						match hand4[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_split(1)
+							"8":
+								_split(1)
+							"7":
+								_split(1)
+							"6":
+								_split(1)
+							"5":
+								#if not allowed, then hit
+								_double_down()
+							"4":
+								_hit()
+							"3":
+								_split(1)
+							"2":
+								_split(1)
+					"4":
+						match hand4[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_split(1)
+							"8":
+								_split(1)
+							"7":
+								_split(1)
+							"6":
+								_split(1)
+							"5":
+								#if not allowed, then hit
+								_double_down()
+							"4":
+								_hit()
+							"3":
+								_split(1)
+							"2":
+								_split(1)
+					"5":
+						match hand4[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_split(1)
+							"8":
+								_split(1)
+							"7":
+								_split(1)
+							"6":
+								_split(1)
+							"5":
+								#if not allowed, then hit
+								_double_down()
+							"4":
+								_split(1)
+							"3":
+								_split(1)
+							"2":
+								_split(1)
+					"6":
+						match hand4[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_split(1)
+							"8":
+								_split(1)
+							"7":
+								_split(1)
+							"6":
+								_split(1)
+							"5":
+								#if not allowed, then hit
+								_double_down()
+							"4":
+								_split(1)
+							"3":
+								_split(1)
+							"2":
+								_split(1)
+					"7":
+						match hand4[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_stand()
+							"8":
+								_split(1)
+							"7":
+								_split(1)
+							"6":
+								_hit()
+							"5":
+								#if not allowed, then hit
+								_double_down()
+							"4":
+								_hit()
+							"3":
+								_split(1)
+							"2":
+								_split(1)
+					"8":
+						match hand4[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_split(1)
+							"8":
+								_split(1)
+							"7":
+								_hit()
+							"6":
+								_hit()
+							"5":
+								#if not allowed, then hit
+								_double_down()
+							"4":
+								_hit()
+							"3":
+								_hit()
+							"2":
+								_hit()
+					"9":
+						match hand4[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_split(1)
+							"8":
+								_split(1)
+							"7":
+								_hit()
+							"6":
+								_hit()
+							"5":
+								#if not allowed, then hit
+								_double_down()
+							"4":
+								_hit()
+							"3":
+								_hit()
+							"2":
+								_hit()
+					"10":
+						match hand4[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_stand()
+							"8":
+								_split(1)
+							"7":
+								_hit()
+							"6":
+								_hit()
+							"5":
+								_hit()
+							"4":
+								_hit()
+							"3":
+								_hit()
+							"2":
+								_hit()
+					"Jack":
+						match hand4[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_stand()
+							"8":
+								_split(1)
+							"7":
+								_hit()
+							"6":
+								_hit()
+							"5":
+								_hit()
+							"4":
+								_hit()
+							"3":
+								_hit()
+							"2":
+								_hit()
+					"Queen":
+						match hand4[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_stand()
+							"8":
+								_split(1)
+							"7":
+								_hit()
+							"6":
+								_hit()
+							"5":
+								_hit()
+							"4":
+								_hit()
+							"3":
+								_hit()
+							"2":
+								_hit()
+					"King":
+						match hand4[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_stand()
+							"8":
+								_split(1)
+							"7":
+								_hit()
+							"6":
+								_hit()
+							"5":
+								_hit()
+							"4":
+								_hit()
+							"3":
+								_hit()
+							"2":
+								_hit()
+					"Ace":
+						match hand4[0][1]:
+							"Ace":
+								_split(1)
+							"King":
+								_stand()
+							"Queen":
+								_stand()
+							"Jack":
+								_stand()
+							"10":
+								_stand()
+							"9":
+								_stand()
+							"8":
+								#if not allowed, then split
+								_surrender()
+							"7":
+								_hit()
+							"6":
+								_hit()
+							"5":
+								_hit()
+							"4":
+								_hit()
+							"3":
+								_hit()
+							"2":
+								_hit()
 		elif personality == "Coward" and busted != true:
 			_stand()
 		elif personality == "Noob" and busted != true:
@@ -5893,18 +4852,30 @@ func _split(action_number):
 	if action_number == 1:
 		if hand2.is_empty() == true:
 			hand2.push_front(hand.pop_front())
+			game._player_add_card(self)
+			game._player_add_card2(self)
 		elif hand3.is_empty() == true:
 			hand3.push_front(hand.pop_front())
+			game._player_add_card(self)
+			game._player_add_card3(self)
 		elif hand4.is_empty() == true:
 			hand4.push_front(hand.pop_front())
+			game._player_add_card(self)
+			game._player_add_card4(self)
 	elif action_number == 2:
 		if hand3.is_empty() == true:
 			hand3.push_front(hand2.pop_front())
+			game._player_add_card2(self)
+			game._player_add_card3(self)
 		elif hand4.is_empty() == true:
 			hand4.push_front(hand2.pop_front())
+			game._player_add_card2(self)
+			game._player_add_card3(self)
 	elif action_number == 3:
 		if hand4.is_empty() == true:
 			hand4.push_front(hand3.pop_front())
+			game._player_add_card3(self)
+			game._player_add_card4(self)
 	elif action_number == 4:
 		print("...and has reached max splits. Skipping turn")
 
