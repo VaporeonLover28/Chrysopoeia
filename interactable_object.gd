@@ -1,35 +1,36 @@
 extends Node3D; class_name InteractableObject
 
-@onready var camera: Camera3D = $camera
-@onready var marker: Marker3D = $marker
 
-var is_pulling = false
-var is_opening = false
+@export_category("Object basics")
+@export var pass_interact_func : String
+@export var need_object_ref : bool
+@export var pass_interact_parameter : Array
 
-func _interact(player_ref):
-	if is_in_group("Camera Pullers"):
-		Globals.player_interacting = true
-		is_pulling = true
-		_camera_transition(player_ref)
-	elif is_in_group("Doors"):
-		is_opening = true
-		_open()
-
-func _camera_transition(player) -> void:
-	player.camera.current = false
-	camera.global_position = player.camera.global_position
-	camera.rotation = player.camera.rotation
-	camera.current = true
-
-func _process(delta: float) -> void:
-	if is_in_group("Camera Pullers") and is_pulling == true:
-		_pull_camera()
-	elif is_in_group("Doors") and is_opening == true:
-		_open()
-
-func _pull_camera():
-	camera.global_position = lerp(camera.global_position, marker.global_position, get_process_delta_time() * 3)
-	camera.look_at($CSGBox3D.global_position)
-
-func _open():
-	print("nhheeeeeeeeeeeeec")
+func _interact(object_ref):
+	if need_object_ref == true:
+		match pass_interact_parameter.size():
+			0:
+				call(pass_interact_func, object_ref)
+			1:
+				call(pass_interact_func, object_ref, pass_interact_parameter[0])
+			2:
+				call(pass_interact_func, object_ref,pass_interact_parameter[0], \
+				pass_interact_parameter[1])
+			3:
+				call(pass_interact_func, object_ref, \
+				 pass_interact_parameter[0], \
+				 pass_interact_parameter[1], pass_interact_parameter[2])
+	else: 
+		match pass_interact_parameter.size():
+			0:
+				call(pass_interact_func)
+			1:
+				call(pass_interact_func, pass_interact_parameter[0])
+			2:
+				call(pass_interact_func, pass_interact_parameter[0], \
+				pass_interact_parameter[1])
+			3:
+				call(pass_interact_func, \
+				 pass_interact_parameter[0], \
+				 pass_interact_parameter[1], pass_interact_parameter[2])
+	

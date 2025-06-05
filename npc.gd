@@ -16,15 +16,22 @@ func _process(delta: float) -> void:
 	var dir = local_destino.normalized()
 	velocity = dir * 2
 	move_and_slide()
+	
+func _walk_to(target_positon : Vector3):
+	nav.set_target_position(target_positon)
+	
+func _go_to_gambling(gamble_spot: Vector3):
+	pass
 
 func _walk_to_random(min_x, max_x, min_z, max_z):
 	var random_positon := Vector3.ZERO
 	random_positon.x = randf_range(min_x, max_x)
 	random_positon.z = randf_range(min_z, max_z)
-	nav.set_target_position(random_positon)
+	_walk_to(random_positon)
 
 func _on_nav_navigation_finished() -> void:
 	idle.start()
 
 func _on_idle_timeout() -> void:
 	_walk_to_random(-10, 10, -15.5, 1.5)
+	
