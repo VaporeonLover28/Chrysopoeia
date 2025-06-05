@@ -73,7 +73,7 @@ func _headbob(time) -> Vector3:
 func _interact_object():
 	var object_chosen = ray_interection.get_collider()
 	if object_chosen != null and object_chosen.get_parent() is InteractableObject and Globals.game_paused == false:
-		object_chosen.get_parent()._interact(self)
+		object_chosen.get_parent()._interact([self])
 
 func _cancel_interaction():
 	Globals.player_interacting = false

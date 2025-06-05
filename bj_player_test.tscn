@@ -80,10 +80,10 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="BoxContainer/VBoxContainer/value2"]
 layout_mode = 2
-offset_left = 2.0
-offset_top = 65.0
-offset_right = 63.0
-offset_bottom = 88.0
+offset_left = 1.0
+offset_top = 84.0
+offset_right = 62.0
+offset_bottom = 107.0
 text = "Value: 0"
 
 [node name="hand2" type="Control" parent="BoxContainer/VBoxContainer"]
@@ -92,10 +92,9 @@ layout_mode = 2
 [node name="RichTextLabel" type="RichTextLabel" parent="BoxContainer/VBoxContainer/hand2"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-offset_left = 1.0
-offset_top = 80.0
-offset_right = 122.0
-offset_bottom = 133.0
+offset_top = 99.0
+offset_right = 121.0
+offset_bottom = 152.0
 text = "aaaaaaaaaaaaaaaaa"
 
 [node name="value3" type="Control" parent="BoxContainer/VBoxContainer"]
@@ -104,9 +103,9 @@ layout_mode = 2
 [node name="Label" type="Label" parent="BoxContainer/VBoxContainer/value3"]
 layout_mode = 2
 offset_left = 1.0
-offset_top = 121.0
+offset_top = 155.0
 offset_right = 62.0
-offset_bottom = 144.0
+offset_bottom = 178.0
 text = "Value: 0"
 
 [node name="hand3" type="Control" parent="BoxContainer/VBoxContainer"]
@@ -116,9 +115,9 @@ layout_mode = 2
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 offset_left = 1.0
-offset_top = 135.0
+offset_top = 169.0
 offset_right = 122.0
-offset_bottom = 188.0
+offset_bottom = 222.0
 text = "aaaaaaaaaaaaaaaaa"
 
 [node name="value4" type="Control" parent="BoxContainer/VBoxContainer"]
@@ -127,9 +126,9 @@ layout_mode = 2
 [node name="Label" type="Label" parent="BoxContainer/VBoxContainer/value4"]
 layout_mode = 2
 offset_left = 2.0
-offset_top = 172.0
+offset_top = 216.0
 offset_right = 63.0
-offset_bottom = 195.0
+offset_bottom = 239.0
 text = "Value: 0"
 
 [node name="hand4" type="Control" parent="BoxContainer/VBoxContainer"]
@@ -139,7 +138,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 offset_left = 1.0
-offset_top = 193.0
+offset_top = 237.0
 offset_right = 122.0
-offset_bottom = 246.0
+offset_bottom = 290.0
 text = "aaaaaaaaaaaaaaaaa"

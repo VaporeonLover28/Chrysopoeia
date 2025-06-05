@@ -8,8 +8,7 @@ albedo_color = Color(0.682353, 0, 1, 1)
 
 [node name="Gamble spot" type="Node3D"]
 script = ExtResource("1_iytcb")
-pass_interact_func = "_gamble_interact"
-need_object_ref = true
+object_class = "GambleSpot"
 metadata/_custom_type_script = "uid://d3kiv4p05usnv"
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
