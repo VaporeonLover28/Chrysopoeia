@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://ifr6x47walau"]
+[gd_scene load_steps=13 format=3 uid="uid://ifr6x47walau"]
 
 [ext_resource type="PackedScene" uid="uid://dsp27d25mg6bh" path="res://player.tscn" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://jekyh5hw0o23" path="res://npc.tscn" id="3_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://cb53qpnp2by4" path="res://casino_light.tscn" id="4_036b0"]
 [ext_resource type="Texture2D" uid="uid://bm5mkjkryluex" path="res://Assets/grid_black_512x512.png" id="4_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://d2w65oiqysl6d" path="res://gamble_spot.tscn" id="4_dwbse"]
+[ext_resource type="PackedScene" uid="uid://b8aq8i26u0cga" path="res://teste.tscn" id="5_dwbse"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_37kl0"]
 sky_top_color = Color(0.0606355, 0.0252388, 0.221666, 1)
@@ -138,6 +139,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -12)
 
 [node name="Gamble Spot3" parent="NavigationRegion3D" instance=ExtResource("4_dwbse")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -12)
+
+[node name="teste" parent="NavigationRegion3D" instance=ExtResource("5_dwbse")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00669, 1.8191)
 
 [node name="CasinoLight" parent="NavigationRegion3D" instance=ExtResource("4_036b0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0632236, 3.04997, -7.93165)

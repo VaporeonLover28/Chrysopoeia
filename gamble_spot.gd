@@ -4,23 +4,56 @@ extends InteractableObject; class_name GambleSpot
 @onready var camera: Camera3D = $camera
 @onready var marker: Marker3D = $marker
 @onready var sit_positions: Node3D = $"Sit positions"
-@onready var ChairPositionTaken = preload("res://chair_position.gd")
+#camera transition vars
 var is_pulling : bool
-var chosen_camera_position: Marker3D
+var chosen_sitting_position
+#export varibles to change depending on the game
 @export var chair_postion_list : Array[Array]
 @export var game_machice_scene : String
+# other vars
+var player_is_sitting = false
+var save_player_ref : CharacterBody3D
 
 func _ready() -> void:
-	for item in sit_positions.get_child_count():
-		sit_positions.get_child(item).set_script(ChairPositionTaken)
+	#makes sitting spots based on chair_postion_list
+	for item in chair_postion_list.size():
+		var new_chair_position = Marker3D.new()
+		new_chair_position.position = chair_postion_list[item][0]
+		sit_positions.add_child(new_chair_position)
+		
 # Called when the node enters the scene tree for the first time.
 func _interact_GambleSpot(object_ref):
-	if object_ref.name == "Player":
-		Globals.player_interacting = true
-		#checks for marker with the smallest postion distance to player
-		_take_spot(object_ref)
-	else:
-		_take_spot(object_ref)
+	if _ASAT() != true:
+		if object_ref.name == "Player":
+			#makes player sit
+			Globals.player_interacting = true
+			#checks for marker with the smallest postion distance to the player so he can sit
+			chosen_sitting_position = null
+			var smallest_distance : float = 10
+			for item in sit_positions.get_child_count():
+				if smallest_distance > object_ref.global_position.distance_to(sit_positions.get_child(item).global_position)\
+				and chair_postion_list[item][1] != false :
+					chosen_sitting_position = sit_positions.get_child(item)
+					smallest_distance = object_ref.global_position.distance_to(sit_positions.get_child(item).global_position)
+			is_pulling = true
+			save_player_ref = object_ref
+			_camera_transition(object_ref)
+			await get_tree().create_timer(0.2).timeout
+			player_is_sitting = true
+			print(player_is_sitting)
+			
+		
+func _cancel_interact_GambleSpot(object_ref):
+	print("existe")
+	for item in sit_positions.get_child_count():
+		if sit_positions.get_child(item).global_position.distance_to(camera.global_position - Vector3(0, 1.2, 0)) <= 0.5:
+			print("foi")
+			chair_postion_list[item][1] = true
+		
+	if object_ref == save_player_ref:
+		player_is_sitting = false
+		save_player_ref = null
+	
 
 func _camera_transition(player) -> void:
 	player.camera.current = false
@@ -31,23 +64,23 @@ func _camera_transition(player) -> void:
 func _process(delta: float) -> void:
 	if is_pulling == true:
 		_pull_camera()
+	if Input.is_action_just_pressed("e") and player_is_sitting == true:
+		_cancel_interact_GambleSpot(save_player_ref)
 
 func _pull_camera():
-	camera.global_position = lerp(camera.global_position, chosen_camera_position.global_position, get_process_delta_time() * 3)
+	camera.global_position = lerp(camera.global_position, chosen_sitting_position.global_position + Vector3(0, 1.2, 0), get_process_delta_time() * 3)
 	camera.look_at($CSGBox3D.global_position)
-
-func _take_spot(object):
-	chosen_camera_position = null
-	var smallest_distance : float = 10
-	for item in sit_positions.get_child_count():
-		if smallest_distance > object.global_position.distance_to(sit_positions.get_child(item).global_position):
-			chosen_camera_position = sit_positions.get_child(item)
-			smallest_distance = object.global_position.distance_to(sit_positions.get_child(item).global_position)
-			is_pulling = true
-		else:
-			print("não escolhido")
-	_camera_transition(object)
-func _leave_spot():
-	pass
 func _start_game():
 	pass
+
+#returns if all sits are taken
+func _ASAT():
+	var all_got_taken: bool = false
+	for item in chair_postion_list.size():
+		if chair_postion_list[item][1] == false:
+			pass
+		else:
+			all_got_taken = false
+			break
+		all_got_taken = true
+	return all_got_taken

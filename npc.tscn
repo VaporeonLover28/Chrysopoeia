@@ -21,11 +21,16 @@ debug_enabled = true
 wait_time = 2.0
 one_shot = true
 
+[node name="gambling_timer" type="Timer" parent="."]
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_ideak")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_xxcha")
+
+[node name="RayInterection" type="RayCast3D" parent="."]
+target_position = Vector3(0, -1, -1)
 
 [connection signal="navigation_finished" from="nav" to="." method="_on_nav_navigation_finished"]
 [connection signal="timeout" from="idle" to="." method="_on_idle_timeout"]
