@@ -1,26 +1,33 @@
 extends Control
 
 @onready var game: Control = $"../../.."
-@onready var label_hand: RichTextLabel = $BoxContainer/VBoxContainer/hand1/RichTextLabel
-@onready var label_hand2: RichTextLabel = $BoxContainer/VBoxContainer/hand2/RichTextLabel
-@onready var label_hand3: RichTextLabel = $BoxContainer/VBoxContainer/hand3/RichTextLabel
-@onready var label_hand4: RichTextLabel = $BoxContainer/VBoxContainer/hand4/RichTextLabel
-@onready var value: Label = $BoxContainer/VBoxContainer/value1/Label
-@onready var value2: Label = $BoxContainer/VBoxContainer/value2/Label
-@onready var value3: Label = $BoxContainer/VBoxContainer/value3/Label
-@onready var value4: Label = $BoxContainer/VBoxContainer/value4/Label
+@onready var hand_labels : Array = [$BoxContainer/VBoxContainer/hand1/RichTextLabel, 
+$BoxContainer/VBoxContainer/hand2/RichTextLabel,
+$BoxContainer/VBoxContainer/hand3/RichTextLabel,
+$BoxContainer/VBoxContainer/hand4/RichTextLabel]
+@onready var value_labels : Array = [$BoxContainer/VBoxContainer/value1/Label,
+$BoxContainer/VBoxContainer/value2/Label,
+$BoxContainer/VBoxContainer/value3/Label,
+$BoxContainer/VBoxContainer/value4/Label]
 
 @onready var label_name: Label = $BoxContainer/VBoxContainer/name/Label
 @onready var state: Label = $BoxContainer/VBoxContainer/state/Label
 
-var hand : Array = []
-var hand_value : int = 0
+var hands : Array = [hand0, hand1, hand2, hand3]
+var hand_values : Array = [hand0_value, hand1_value, hand2_value, hand3_value]
+@export_enum("Playing", "Standed", "Surrendered", "Doubled", "Busted")
+var hand0_state : String = "Playing"
+var hand0 : Array = []
+var hand0_value : int = 0
+var hand1_state : String = "Playing"
+var hand1 : Array = []
+var hand1_value : int = 0
+var hand2_state : String = "Playing"
 var hand2 : Array = []
 var hand2_value : int = 0
+var hand3_state : String = "Playing"
 var hand3 : Array = []
 var hand3_value : int = 0
-var hand4 : Array = []
-var hand4_value : int = 0
 var playing = true
 var standed = false
 var busted = false
@@ -35,37 +42,19 @@ var personality_list : Array = [["Strategic", 70], ["Coward", 90], ["Noob", 100]
 
 func _process(delta: float) -> void:
 	#defining label text
-	label_hand.text = str(hand)
-	label_hand2.text = str(hand2)
-	label_hand3.text = str(hand3)
-	label_hand4.text = str(hand4)
-	value.text = "Value: " + str(hand_value)
-	value2.text = "Value: " + str(hand2_value)
-	value3.text = "Value: " + str(hand3_value)
-	value4.text = "Value: " + str(hand4_value)
+	for labels in hand_labels.size():
+		hand_labels[labels].text = str(hands[labels])
+	
+	for labels in value_labels.size():
+		value_labels[labels].text = "Value: " + str(hand_values[labels])
+	
 	label_name.text = personality + " " + name
 	
 	#turn on hand labels if the hands are being used
-	if hand2.is_empty() == false:
-		label_hand2.visible = true
-		value2.visible = true
-	else:
-		label_hand2.visible = false
-		value2.visible = false
-	
-	if hand3.is_empty() == false:
-		label_hand3.visible = true
-		value3.visible = true
-	else:
-		label_hand3.visible = false
-		value3.visible = false
-	
-	if hand4.is_empty() == false:
-		label_hand4.visible = true
-		value4.visible = true
-	else:
-		label_hand4.visible = false
-		value4.visible = false
+	for num_of_hands in hands.size():
+		if hands[num_of_hands].is_empty():
+			hand_labels[num_of_hands].visible = true
+			hand_values[num_of_hands].visible = true
 	
 	if standed != true and busted != true and blackjack_in_hand != true \
 	and doubled_down != true and surrendered != true:
@@ -455,9 +444,9 @@ func _act(acting_hand, acting_hand_value):
 									_stand()
 						"Jack":
 							match acting_hand_value:
-								5:
+								5,6:
 									_hit()
-								6:
+								
 									_hit()
 								7:
 									_hit()
