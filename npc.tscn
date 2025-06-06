@@ -10,6 +10,15 @@
 collision_layer = 4
 script = ExtResource("1_ideak")
 
+[node name="Leave Interaction" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="Targeted Interactable Object Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
 [node name="nav" type="NavigationAgent3D" parent="."]
 target_desired_distance = 1.1
 path_max_distance = 5.01
@@ -18,10 +27,8 @@ simplify_path = true
 debug_enabled = true
 
 [node name="idle" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 10.0
 one_shot = true
-
-[node name="gambling_timer" type="Timer" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_ideak")
@@ -29,8 +36,7 @@ mesh = SubResource("CapsuleMesh_ideak")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_xxcha")
 
-[node name="RayInterection" type="RayCast3D" parent="."]
-target_position = Vector3(0, -1, -1)
-
+[connection signal="timeout" from="Leave Interaction" to="." method="_leave_interaction"]
+[connection signal="timeout" from="Targeted Interactable Object Timer" to="." method="_go_to_interactable_object"]
 [connection signal="navigation_finished" from="nav" to="." method="_on_nav_navigation_finished"]
 [connection signal="timeout" from="idle" to="." method="_on_idle_timeout"]
