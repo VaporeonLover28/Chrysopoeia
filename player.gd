@@ -59,6 +59,7 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("e") and Globals.player_interacting == false:
 		_interact_object()
+		
 	elif Input.is_action_just_pressed("e") and Globals.player_interacting == true:
 		_cancel_interaction()
 	
@@ -78,3 +79,4 @@ func _interact_object():
 func _cancel_interaction():
 	Globals.player_interacting = false
 	camera.current = true
+	

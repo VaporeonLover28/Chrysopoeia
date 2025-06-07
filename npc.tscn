@@ -11,11 +11,11 @@ collision_layer = 4
 script = ExtResource("1_ideak")
 
 [node name="Leave Interaction" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 5.0
 one_shot = true
 
 [node name="Targeted Interactable Object Timer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 2.0
 one_shot = true
 autostart = true
 
@@ -37,6 +37,6 @@ mesh = SubResource("CapsuleMesh_ideak")
 shape = SubResource("CapsuleShape3D_xxcha")
 
 [connection signal="timeout" from="Leave Interaction" to="." method="_leave_interaction"]
-[connection signal="timeout" from="Targeted Interactable Object Timer" to="." method="_go_to_interactable_object"]
+[connection signal="timeout" from="Targeted Interactable Object Timer" to="." method="chose_interactable_object"]
 [connection signal="navigation_finished" from="nav" to="." method="_on_nav_navigation_finished"]
 [connection signal="timeout" from="idle" to="." method="_on_idle_timeout"]
