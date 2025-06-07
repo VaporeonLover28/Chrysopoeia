@@ -45,8 +45,9 @@ func _physics_process(delta: float) -> void:
 	var input := Input.get_vector("a", "d", "w", "s")
 	var direction = (pivot.transform.basis * Vector3(input.x, 0, input.y)).normalized()
 	if direction and Globals.game_paused == false:
-		velocity.x = direction.x * speed * run_speed
-		velocity.z = direction.z * speed * run_speed
+		if Globals.player_interacting == false:
+			velocity.x = direction.x * speed * run_speed
+			velocity.z = direction.z * speed * run_speed
 	elif !direction and Globals.game_paused == false:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
@@ -55,7 +56,7 @@ func _physics_process(delta: float) -> void:
 	
 	#headbob
 	t_bob += delta * velocity.length() * float(is_on_floor())
-	camera.transform.origin = _headbob(t_bob)
+	camera.transform.origin = _headbob(t_bob) + Vector3(0, 0.5, 0)
 	
 	if Input.is_action_just_pressed("e") and Globals.player_interacting == false:
 		_interact_object()
