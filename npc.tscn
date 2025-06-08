@@ -11,11 +11,11 @@ collision_layer = 4
 script = ExtResource("1_ideak")
 
 [node name="Leave Interaction" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 10.0
 one_shot = true
 
 [node name="Targeted Interactable Object Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 

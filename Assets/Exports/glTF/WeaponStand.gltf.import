@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://casxrak40p4mw"
-path="res://.godot/imported/WeaponStand.gltf-c0d6af27f935a52f13c0dc5f0212e93b.scn"
+valid=false
 
 [deps]
 
 source_file="res://Assets/Exports/glTF/WeaponStand.gltf"
-dest_files=["res://.godot/imported/WeaponStand.gltf-c0d6af27f935a52f13c0dc5f0212e93b.scn"]
 
 [params]
 

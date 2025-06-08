@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b6ur0kwj6a6km"
-path="res://.godot/imported/Anvil_Log.gltf-7841151f75a87aa60c89ca6acc2e1c9d.scn"
+valid=false
 
 [deps]
 
 source_file="res://Assets/Exports/glTF/Anvil_Log.gltf"
-dest_files=["res://.godot/imported/Anvil_Log.gltf-7841151f75a87aa60c89ca6acc2e1c9d.scn"]
 
 [params]
 

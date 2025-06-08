@@ -36,6 +36,7 @@ func _interact_GambleSpot(object_ref):
 					chosen_sitting_position = item 
 					smallest_distance = object_ref.global_position.distance_to(sit_positions.get_child(item).global_position)
 			chair_postion_list[chosen_sitting_position][1] = false
+			print(chair_postion_list)
 			print(chair_postion_list[chosen_sitting_position][1])
 			if object_ref.name == "Player":
 				chosen_sitting_transition = sit_positions.get_child(chosen_sitting_position)
@@ -90,7 +91,9 @@ func _ASAT():
 func _start_game():
 	pass
 	
-func see_if_npc_can_sit():
-	for item in sit_positions.get_child_count():
-			if chair_postion_list[item][1] != false :
-					return sit_positions.get_child(item)
+#check if the sitting position is taken
+func _SICSOC(choice_of_chair: int):
+	if chair_postion_list[choice_of_chair][1] != false:
+		return true
+	else:
+		return false

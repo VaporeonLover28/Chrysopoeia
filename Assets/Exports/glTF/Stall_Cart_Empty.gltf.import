@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cyacq7po8qfg8"
-path="res://.godot/imported/Stall_Cart_Empty.gltf-1979dc1cfdb2ce2a6162d8aa0d12d33a.scn"
+valid=false
 
 [deps]
 
 source_file="res://Assets/Exports/glTF/Stall_Cart_Empty.gltf"
-dest_files=["res://.godot/imported/Stall_Cart_Empty.gltf-1979dc1cfdb2ce2a6162d8aa0d12d33a.scn"]
 
 [params]
 
