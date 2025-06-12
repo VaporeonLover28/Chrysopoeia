@@ -17,16 +17,16 @@ var hands : Array = [hand0, hand1, hand2, hand3]
 var hand_values : Array = [hand0_value, hand1_value, hand2_value, hand3_value]
 @export_enum("Playing", "Standed", "Surrendered", "Doubled", "Busted")
 var hand0_state : String = "Playing"
-var hand0 : Array = []
+var hand0 : Array
 var hand0_value : int = 0
 var hand1_state : String = "Playing"
-var hand1 : Array = []
+var hand1 : Array
 var hand1_value : int = 0
 var hand2_state : String = "Playing"
-var hand2 : Array = []
+var hand2 : Array
 var hand2_value : int = 0
 var hand3_state : String = "Playing"
-var hand3 : Array = []
+var hand3 : Array
 var hand3_value : int = 0
 var playing = true
 var standed = false
@@ -54,7 +54,7 @@ func _process(delta: float) -> void:
 	for num_of_hands in hands.size():
 		if hands[num_of_hands].is_empty():
 			hand_labels[num_of_hands].visible = true
-			hand_values[num_of_hands].visible = true
+			value_labels[num_of_hands].visible = true
 	
 	if standed != true and busted != true and blackjack_in_hand != true \
 	and doubled_down != true and surrendered != true:
@@ -73,17 +73,17 @@ func _process(delta: float) -> void:
 		if busted == true:
 			state.text = "(Busted)"
 
-func _hand_act():
-	_act(hand, hand_value)
+func _hand0_act():
+	_act(hand0, hand0_value)
+
+func _hand1_act():
+	_act(hand1, hand1_value)
 
 func _hand2_act():
 	_act(hand2, hand2_value)
 
 func _hand3_act():
 	_act(hand3, hand3_value)
-
-func _hand4_act():
-	_act(hand4, hand4_value)
 
 func _act(acting_hand, acting_hand_value):
 	if standed != true and busted != true and blackjack_in_hand != true \
@@ -1292,30 +1292,30 @@ func _double_down():
 func _split(action_number):
 	print(self.name + " splits!")
 	if action_number == 1:
-		if hand2.is_empty() == true:
-			hand2.push_front(hand.pop_front())
+		if hand1.is_empty() == true:
+			hand1.push_front(hand0.pop_front())
 			game._player_add_card(self)
 			game._player_add_card2(self)
-		elif hand3.is_empty() == true:
-			hand3.push_front(hand.pop_front())
+		elif hand2.is_empty() == true:
+			hand2.push_front(hand0.pop_front())
 			game._player_add_card(self)
 			game._player_add_card3(self)
-		elif hand4.is_empty() == true:
-			hand4.push_front(hand.pop_front())
+		elif hand3.is_empty() == true:
+			hand3.push_front(hand0.pop_front())
 			game._player_add_card(self)
 			game._player_add_card4(self)
 	elif action_number == 2:
-		if hand3.is_empty() == true:
-			hand3.push_front(hand2.pop_front())
+		if hand2.is_empty() == true:
+			hand2.push_front(hand1.pop_front())
 			game._player_add_card2(self)
 			game._player_add_card3(self)
-		elif hand4.is_empty() == true:
-			hand4.push_front(hand2.pop_front())
+		elif hand3.is_empty() == true:
+			hand3.push_front(hand1.pop_front())
 			game._player_add_card2(self)
 			game._player_add_card3(self)
 	elif action_number == 3:
-		if hand4.is_empty() == true:
-			hand4.push_front(hand3.pop_front())
+		if hand3.is_empty() == true:
+			hand3.push_front(hand2.pop_front())
 			game._player_add_card3(self)
 			game._player_add_card4(self)
 	elif action_number == 4:
