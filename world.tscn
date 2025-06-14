@@ -19,12 +19,12 @@ ground_bottom_color = Color(0, 0, 0, 1)
 ground_horizon_color = Color(0.170775, 0.000352558, 0.31748, 1)
 ground_curve = 1.68896
 
-[sub_resource type="Sky" id="Sky_8uh7m"]
+[sub_resource type="Sky" id="Sky_wse8f"]
 sky_material = SubResource("ProceduralSkyMaterial_37kl0")
 
 [sub_resource type="Environment" id="Environment_6uqi0"]
 background_mode = 2
-sky = SubResource("Sky_8uh7m")
+sky = SubResource("Sky_wse8f")
 tonemap_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aqk2v"]
@@ -51,7 +51,7 @@ light_color = Color(0.0627451, 0, 0.247059, 1)
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_f3sb7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5.0745)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8997, 1, -6.76904)
 
 [node name="NPC" parent="." instance=ExtResource("3_tlwt5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.68418, 1.04513, -12.1631)
@@ -72,7 +72,7 @@ navigation_mesh = SubResource("NavigationMesh_fj7yv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 material_override = SubResource("StandardMaterial3D_036b0")
 use_collision = true
-collision_mask = 6
+collision_mask = 14
 
 [node name="floor" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)

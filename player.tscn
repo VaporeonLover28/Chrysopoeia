@@ -22,3 +22,8 @@ current = true
 
 [node name="RayInterection" type="RayCast3D" parent="Pivot/Camera"]
 target_position = Vector3(0, 0, -3)
+
+[node name="play_game" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="play_game" to="." method="_on_play_game_timeout"]

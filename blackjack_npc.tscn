@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b383nuibohj06"]
+
+[ext_resource type="Script" uid="uid://up5v8thpic2s" path="res://blackjack_npc.gd" id="1_rreeg"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7bfdo"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_asrcr"]
+
+[node name="blackjack_npc" type="CharacterBody3D"]
+collision_layer = 8
+script = ExtResource("1_rreeg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_7bfdo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_asrcr")

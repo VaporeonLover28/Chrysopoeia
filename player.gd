@@ -3,6 +3,7 @@ extends CharacterBody3D
 @onready var camera: Camera3D = $Pivot/Camera
 @onready var pivot: Node3D = $Pivot
 @onready var ray_interection: RayCast3D = $Pivot/Camera/RayInterection
+@onready var play_game: Timer = $play_game
 
 @export var mouse_sensitivity: float = 0.005
 @export var speed : float = 4.0
@@ -76,8 +77,17 @@ func _interact_object():
 	var object_chosen = ray_interection.get_collider()
 	if object_chosen != null and object_chosen.get_parent() is InteractableObject and Globals.game_paused == false:
 		object_chosen.get_parent()._interact([self])
+		_play_blackjack()
 
 func _cancel_interaction():
 	Globals.player_interacting = false
 	camera.current = true
-	
+
+func _play_blackjack():
+	Globals.player_transform_storage.push_back(transform)
+	Globals.player_transform_storage.push_back(pivot.transform)
+	play_game.start()
+
+func _on_play_game_timeout() -> void:
+	Globals.player_transform_storage.push_back(camera.transform)
+	get_tree().change_scene_to_file("res://blackjack_test_2.tscn")
