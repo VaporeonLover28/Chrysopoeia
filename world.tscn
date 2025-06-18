@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://ifr6x47walau"]
+[gd_scene load_steps=18 format=3 uid="uid://ifr6x47walau"]
 
 [ext_resource type="PackedScene" uid="uid://dsp27d25mg6bh" path="res://player.tscn" id="1_f3sb7"]
+[ext_resource type="Script" uid="uid://cf6y1d4msmkfp" path="res://world.gd" id="1_ic0uy"]
 [ext_resource type="PackedScene" uid="uid://jekyh5hw0o23" path="res://npc.tscn" id="3_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://cb53qpnp2by4" path="res://casino_light.tscn" id="4_036b0"]
 [ext_resource type="Texture2D" uid="uid://bm5mkjkryluex" path="res://Assets/grid_black_512x512.png" id="4_aqk2v"]
@@ -41,6 +42,7 @@ uv1_triplanar = true
 uv1_world_triplanar = true
 
 [node name="World" type="Node3D"]
+script = ExtResource("1_ic0uy")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6uqi0")
@@ -50,11 +52,13 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 light_color = Color(0.0627451, 0, 0.247059, 1)
 shadow_enabled = true
 
+[node name="Walking_NPCs" type="Node" parent="."]
+
+[node name="NPC" parent="Walking_NPCs" instance=ExtResource("3_tlwt5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.68418, 1.04513, -12.1631)
+
 [node name="Player" parent="." instance=ExtResource("1_f3sb7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8997, 1, -6.76904)
-
-[node name="NPC" parent="." instance=ExtResource("3_tlwt5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.68418, 1.04513, -12.1631)
 
 [node name="NonPathDecor" type="Node3D" parent="."]
 
