@@ -38,8 +38,6 @@ func _interact_GambleSpot(object_ref):
 					chosen_sitting_position = item 
 					smallest_distance = object_ref.global_position.distance_to(sit_positions.get_child(item).global_position)
 			chair_postion_list[chosen_sitting_position][1] = false
-			print(chair_postion_list)
-			print(chair_postion_list[chosen_sitting_position][1])
 			if object_ref.name == "Player":
 				chosen_sitting_transition = sit_positions.get_child(chosen_sitting_position)
 				save_player_ref = object_ref
@@ -52,7 +50,6 @@ func _cancel_interact_GambleSpot(object_ref):
 	for item in sit_positions.get_child_count():
 		if sit_positions.get_child(item).global_position.distance_to(object_ref.global_position) <= 0.2:
 			chair_postion_list[item][1] = true
-			print(chair_postion_list)
 	if object_ref == save_player_ref:
 		player_is_sitting = false
 	save_player_ref = null

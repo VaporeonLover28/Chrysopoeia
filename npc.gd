@@ -4,7 +4,7 @@ extends CharacterBody3D; class_name NPC;
 @onready var idle: Timer = $idle
 @onready var targeted_interactable_object_timer: Timer = $"Targeted Interactable Object Timer"
 @onready var leave_interaction: Timer = $"Leave Interaction"
-@onready var all_interactable_spots: Node = $"../NavigationRegion3D/All Interactable Spots"
+@onready var all_interactable_spots: Node = $"../../NavigationRegion3D/All Interactable Spots"
 var is_on_interaction : bool = false
 var is_going_to_interaction : bool = false
 var targeted_position_is_object = null

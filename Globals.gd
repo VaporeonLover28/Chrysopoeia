@@ -8,4 +8,4 @@ var money: int = 0
 var player_transform_storage: Array
 
 func _process(delta: float) -> void:
-	print(player_transform_storage)
+	pass
