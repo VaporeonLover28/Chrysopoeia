@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://cr0s4q071jmdo"]
+
+[ext_resource type="Texture2D" uid="uid://bm5mkjkryluex" path="res://Assets/grid_black_512x512.png" id="1_j8do0"]
+[ext_resource type="PackedScene" uid="uid://bf85c3yhwefir" path="res://Assets/Exports/glTF/Workbench.gltf" id="2_i5tvo"]
+[ext_resource type="PackedScene" uid="uid://8hd5usv25kt" path="res://bj_player_test.tscn" id="3_i5tvo"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k2ed7"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_ylhsq"]
+sky_material = SubResource("ProceduralSkyMaterial_k2ed7")
+
+[sub_resource type="Environment" id="Environment_dft26"]
+background_mode = 2
+sky = SubResource("Sky_ylhsq")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_psklc"]
+albedo_texture = ExtResource("1_j8do0")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="blackjack_test_3" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dft26")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 10.965)
+material_override = SubResource("StandardMaterial3D_psklc")
+use_collision = true
+collision_mask = 14
+
+[node name="floor" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+size = Vector3(32, 1, 18)
+
+[node name="light" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5, 0)
+light_energy = 3.0
+shadow_enabled = true
+spot_range = 10.0
+spot_angle = 35.0
+
+[node name="table" parent="." instance=ExtResource("2_i5tvo")]
+
+[node name="bj_player_test" parent="." instance=ExtResource("3_i5tvo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.890662, 0.854396)
+
+[editable path="bj_player_test"]

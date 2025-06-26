@@ -15,25 +15,28 @@ $BoxContainer/VBoxContainer/value4/Label]
 
 var hands : Array = [hand0, hand1, hand2, hand3]
 var hand_values : Array = [hand0_value, hand1_value, hand2_value, hand3_value]
-@export_enum("Playing", "Standed", "Surrendered", "Doubled", "Busted")
+@export_enum("Playing", "Standed", "Surrendered", "Doubled", "Busted", "Blackjack")
 var hand0_state : String = "Playing"
 var hand0 : Array
 var hand0_value : int = 0
+@export_enum("Playing", "Standed", "Surrendered", "Doubled", "Busted", "Blackjack")
 var hand1_state : String = "Playing"
 var hand1 : Array
 var hand1_value : int = 0
+@export_enum("Playing", "Standed", "Surrendered", "Doubled", "Busted", "Blackjack")
 var hand2_state : String = "Playing"
 var hand2 : Array
 var hand2_value : int = 0
+@export_enum("Playing", "Standed", "Surrendered", "Doubled", "Busted", "Blackjack")
 var hand3_state : String = "Playing"
 var hand3 : Array
 var hand3_value : int = 0
 var playing = true
-var standed = false
-var busted = false
-var doubled_down = false
-var surrendered = false
-var blackjack_in_hand = false
+#var standed = false
+#var busted = false
+#var doubled_down = false
+#var surrendered = false
+#var blackjack_in_hand = false
 
 #personalities defining how the AI plays
 var personality : String
@@ -56,38 +59,39 @@ func _process(delta: float) -> void:
 			hand_labels[num_of_hands].visible = true
 			value_labels[num_of_hands].visible = true
 	
-	if standed != true and busted != true and blackjack_in_hand != true \
-	and doubled_down != true and surrendered != true:
+	#if standed != true and busted != true and blackjack_in_hand != true \
+	#and doubled_down != true and surrendered != true:
+	if hand0_state == "Playing" and hand1_state == "Playing" and \
+	hand2_state == "Playing" and hand3_state == "Playing":
 		playing = true
 		state.text = "(Playing)"
 	else:
 		playing = false
-		if standed == true:
-			state.text = "(Standed)"
-		if blackjack_in_hand == true:
-			state.text = "(Blackjack)"
-		if doubled_down == true:
-			state.text = "(Doubled Down)"
-		if surrendered == true:
-			state.text = "(Surrendered)"
-		if busted == true:
-			state.text = "(Busted)"
+		#if standed == true:
+			#state.text = "(Standed)"
+		#if blackjack_in_hand == true:
+			#state.text = "(Blackjack)"
+		#if doubled_down == true:
+			#state.text = "(Doubled Down)"
+		#if surrendered == true:
+			#state.text = "(Surrendered)"
+		#if busted == true:
+			#state.text = "(Busted)"
 
 func _hand0_act():
-	_act(hand0, hand0_value)
+	_act(hand0, hand0_value, hand0_state)
 
 func _hand1_act():
-	_act(hand1, hand1_value)
+	_act(hand1, hand1_value, hand1_state)
 
 func _hand2_act():
-	_act(hand2, hand2_value)
+	_act(hand2, hand2_value, hand2_state)
 
 func _hand3_act():
-	_act(hand3, hand3_value)
+	_act(hand3, hand3_value, hand3_state)
 
-func _act(acting_hand, acting_hand_value):
-	if standed != true and busted != true and blackjack_in_hand != true \
-	and doubled_down != true and surrendered != true:
+func _act(acting_hand, acting_hand_value, acting_hand_state):
+	if acting_hand_state == "Playing":
 		if acting_hand_value >= 22:
 			_bust()
 		if acting_hand_value == 21 and acting_hand.size() == 2:
@@ -105,7 +109,7 @@ func _act(acting_hand, acting_hand_value):
 				_stand()
 		elif acting_hand_value == 21 and acting_hand.size() > 2:
 			_stand()
-		if personality == "Strategic" and busted != true:
+		if personality == "Strategic" and acting_hand_state != "Busted":
 			var has_aces : bool = false
 			for card in acting_hand.size():
 				if has_aces == false:
@@ -1255,24 +1259,24 @@ func _act(acting_hand, acting_hand_value):
 								_hit()
 							"2":
 								_hit()
-		elif personality == "Coward" and busted != true:
+		elif personality == "Coward" and acting_hand_state != "Busted":
 			if acting_hand_value + 10 >= 22:
 				_stand()
 			else:
 				_hit()
-		elif personality == "Noob" and busted != true:
+		elif personality == "Noob" and acting_hand_state != "Busted":
 			var actions = [_hit(), _stand()]
 			actions.pick_random()
 	else:
-		if busted:
+		if acting_hand_state == "Busted":
 			print(self.name + " has busted! Skipping turn")
-		elif standed:
+		elif acting_hand_state == "Standed":
 			print(self.name + " has already standed. Skipping turn")
-		elif doubled_down:
+		elif acting_hand_state == "Doubled":
 			print(self.name + " has already doubled down, and will not get cards. Skipping turn")
-		elif surrendered:
+		elif acting_hand_state == "Surrendered":
 			print(self.name + " has surrendered. Skipping turn")
-		elif blackjack_in_hand:
+		elif acting_hand_state == "Blackjack":
 			print(self.name + " has a blackjack in hand. Skipping turn")
 	game.player_action.start()
 

@@ -5,7 +5,6 @@ extends Node3D
 @onready var walking_npcs: Node = $Walking_NPCs
 @onready var all_interactable_spots: Node = $"NavigationRegion3D/All Interactable Spots"
 
-
 func _ready() -> void:
 	var new_config = ConfigFile.new()
 	print(SaveScript.current_savefile_loading + "oi")
