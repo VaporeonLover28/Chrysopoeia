@@ -4,11 +4,15 @@ extends CharacterBody3D
 @onready var pivot: Node3D = $Pivot
 @onready var ray_interection: RayCast3D = $Pivot/Camera/RayInterection
 @onready var play_game: Timer = $play_game
+@onready var world_scene = $"../"
 
 @export var mouse_sensitivity: float = 0.005
 @export var speed : float = 4.0
 #run speed is speed * value, not the value
 @export var run_speed : float = 1
+#varibles relacionated with buying on the shop
+var is_on_building_mode: bool = false
+var current_object_being_purchase: Resource
 
 #headbob vars
 @export var bob_freq : float = 2
@@ -91,3 +95,24 @@ func _play_blackjack():
 func _on_play_game_timeout() -> void:
 	Globals.player_transform_storage.push_back(camera.transform)
 	get_tree().change_scene_to_file("res://blackjack_test_2.tscn")
+	
+func _start_bulding_phase(object_to_be_purchase: String):
+	is_on_building_mode = true
+	current_object_being_purchase = load(object_to_be_purchase)
+	var instantiate_model = \
+	current_object_being_purchase.get_node("model").get_child(0).instantiate()
+	instantiate_model.position =  ray_interection.position - Vector3(0,0,-3)
+	ray_interection.add_child(instantiate_model)
+	
+func _rotate_bulding_object(rotation_direction: int):
+	ray_interection.get_child(0).rotate_x(8 * rotation_direction)
+	
+func _cancel_build():
+	pass
+	
+func _build():
+	var instantiate_object = current_object_being_purchase.instantiate()
+	instantiate_object.global_position = ray_interection.position - Vector3(0,0,-3)
+	instantiate_object.rotation = ray_interection.get_child(0).rotation
+	ray_interection.get_child(0).queue_free()
+	world_scene.add_child(instantiate_object)

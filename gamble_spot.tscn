@@ -12,7 +12,9 @@ chair_postion_list = Array[Array]([[Vector3(2.2, 0, 0), true, 0], [Vector3(-2.2,
 object_class = "GambleSpot"
 metadata/_custom_type_script = "uid://d3kiv4p05usnv"
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="Model" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Model"]
 transform = Transform3D(0.999999, -0.00131698, 0.000820503, 0.00131758, 0.999999, -0.000719085, -0.000819537, 0.000720185, 0.999999, 0, 0, 0)
 use_collision = true
 material = SubResource("StandardMaterial3D_6brvv")
