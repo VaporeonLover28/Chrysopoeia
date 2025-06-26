@@ -10,7 +10,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_75u8h")
-hand0_state = null
 
 [node name="BoxContainer" type="BoxContainer" parent="."]
 layout_mode = 0
@@ -63,6 +62,14 @@ offset_right = 61.0
 offset_bottom = 20.0
 text = "Value: 0"
 
+[node name="state" type="Label" parent="BoxContainer/VBoxContainer/value1"]
+layout_mode = 0
+offset_left = -36.0
+offset_top = 36.0
+offset_right = 4.0
+offset_bottom = 59.0
+text = "(P)"
+
 [node name="hand1" type="Control" parent="BoxContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -83,6 +90,14 @@ offset_top = 84.0
 offset_right = 61.0
 offset_bottom = 107.0
 text = "Value: 0"
+
+[node name="state" type="Label" parent="BoxContainer/VBoxContainer/value2"]
+layout_mode = 0
+offset_left = -34.0
+offset_top = 113.0
+offset_right = 6.0
+offset_bottom = 136.0
+text = "(P)"
 
 [node name="hand2" type="Control" parent="BoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -105,6 +120,13 @@ offset_right = 61.0
 offset_bottom = 178.0
 text = "Value: 0"
 
+[node name="state" type="Label" parent="BoxContainer/VBoxContainer/value3"]
+offset_left = -33.0
+offset_top = 178.0
+offset_right = 7.0
+offset_bottom = 201.0
+text = "(P)"
+
 [node name="hand3" type="Control" parent="BoxContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -125,6 +147,13 @@ offset_top = 216.0
 offset_right = 61.0
 offset_bottom = 239.0
 text = "Value: 0"
+
+[node name="state" type="Label" parent="BoxContainer/VBoxContainer/value4"]
+offset_left = -35.0
+offset_top = 249.0
+offset_right = 5.0
+offset_bottom = 272.0
+text = "(P)"
 
 [node name="hand4" type="Control" parent="BoxContainer/VBoxContainer"]
 layout_mode = 2

@@ -8,7 +8,7 @@ extends Control
 #hole card do dealer
 
 @onready var player_side: HBoxContainer = $players/HBoxContainer
-@onready var new_player = preload("res://bj_player_test.tscn")
+@onready var new_npc = preload("res://bj_npc_test.tscn")
 @onready var player_action: Timer = $player_action
 
 #standard deck for shuffling a new deck
@@ -49,7 +49,7 @@ var resplit_to : int = 4
 func _ready() -> void:
 	#adds 3 to 5 players
 	for players_to_add in randi_range(3, 5):
-		var player_inst = new_player.instantiate()
+		var player_inst = new_npc.instantiate()
 		player_inst._decide_personality()
 		player_inst.name = "Player " + str(players.size())
 		players.append(player_inst)
@@ -94,7 +94,7 @@ func _pick_random_card():
 		return null
 
 #calculating the hand scores for each player
-func _calculate_hand_value(who):
+func _calculate_hand_value(who, whathand):
 	#if player is not an object (the dealer is not)
 	if typeof(who) != 24:
 		#value bank is a bandaid-fix for the for loop messing w the score
@@ -139,48 +139,48 @@ func _calculate_hand_value(who):
 	else:
 		var value_bank : int
 		#on every card on (a player's) hand
-		for card in who.hand.size():
-			if who.hand[card][1] == "Ace":
+		for card in who.hands[whathand].size():
+			if who.hands[whathand][card][1] == "Ace":
 				value_bank += 11
-			elif who.hand[card][1] == "King" or \
-			who.hand[card][1] == "Queen" or \
-			who.hand[card][1] == "Jack":
+			elif who.hands[whathand][card][1] == "King" or \
+			who.hands[whathand][card][1] == "Queen" or \
+			who.hands[whathand][card][1] == "Jack":
 				value_bank += 10
 			else:
-				value_bank += str_to_var(who.hand[card][1])
-		who.hand0_value = value_bank
-		if who.hand0_value >= 22:
+				value_bank += str_to_var(who.hands[whathand][card][1])
+		who.hand_values[whathand] = value_bank
+		if who.hand_values[whathand] >= 22:
 			var aces_in_hand = 0
-			for card in who.hand.size():
-				if who.hand[card][1] == "Ace":
+			for card in who.hands[whathand].size():
+				if who.hands[whathand][card][1] == "Ace":
 					aces_in_hand += 1
 			if aces_in_hand >= 2:
 				value_bank -= 10
-				who.hand0_value = value_bank
+				who.hand_values[whathand] = value_bank
 			else:
-				who._bust()
+				who._bust(who.hands[whathand])
 
 #adds a card for the dealer, then updates score
 func _dealer_add_card(dealer):
 	dealer_hand.append(deck.pop_front())
-	_calculate_hand_value(dealer)
+	_calculate_hand_value(dealer, 0)
 
 #adds a card for (a player), then updates score
-func _player_add_card(player):
-	player.hand0.append(deck.pop_front())
-	_calculate_hand_value(player)
+func _player_add_card(player, whathand):
+	player.hands[whathand].append(deck.pop_front())
+	_calculate_hand_value(player, 0)
 
-func _player_add_card2(player):
-	player.hand1.append(deck.pop_front())
-	_calculate_hand_value(player)
-
-func _player_add_card3(player):
-	player.hand2.append(deck.pop_front())
-	_calculate_hand_value(player)
-
-func _player_add_card4(player):
-	player.hand3.append(deck.pop_front())
-	_calculate_hand_value(player)
+#func _player_add_card2(player):
+	#player.hand1.append(deck.pop_front())
+	#_calculate_hand_value(player, 1)
+#
+#func _player_add_card3(player):
+	#player.hand2.append(deck.pop_front())
+	#_calculate_hand_value(player, 2)
+#
+#func _player_add_card4(player):
+	#player.hand3.append(deck.pop_front())
+	#_calculate_hand_value(player, 3)
 
 #distributes cards for everyone (after checking for size)
 #called two times
@@ -190,7 +190,7 @@ func _distribute_cards():
 		_dealer_add_card("Dealer")
 	for player_count in players.size():
 		if players[player_count].hand0.size() < 2:
-			_player_add_card(players[player_count])
+			_player_add_card(players[player_count], 0)
 	player_action.start()
 
 #puts cards in deck and resets scores
@@ -198,15 +198,15 @@ func _reset_cards():
 	for card in dealer_hand.size():
 		deck.append(dealer_hand.pop_front())
 		dealer_hand_value = 0
-	for player in players.size():
-		for card in players[player].hand.size():
-			deck.append(players[player].hand.pop_front())
-		players[player].hand0_value = 0
-		players[player].standed = false
-		players[player].busted = false
-		players[player].blackjack_in_hand = false 
-		players[player].doubled_down = false
-		players[player].surrendered = false
+	#for player in players.size():
+		#for card in players[player].hand.size():
+			#deck.append(players[player].hand.pop_front())
+		#players[player].hand0_value = 0
+		#players[player].standed = false
+		#players[player].busted = false
+		#players[player].blackjack_in_hand = false 
+		#players[player].doubled_down = false
+		#players[player].surrendered = false
 		whoseturn = -1
 
 #dealer hits
@@ -215,7 +215,7 @@ func _dealer_hit():
 
 #dealer stands
 func _dealer_stand():
-	_calculate_hand_value("Dealer")
+	_calculate_hand_value("Dealer", 0)
 	_end_game()
 
 func _end_game():
@@ -272,13 +272,17 @@ func _pass_turn():
 		else:
 			whoseturn = 0
 			print("It's player " + str(whoseturn) + "'s turn!")
-		players[whoseturn]._hand0_act()
+		players[whoseturn]._act(players[whoseturn].hand0, \
+		players[whoseturn].hand0_value, players[whoseturn].hand0_state)
 		if players[whoseturn].hand1.is_empty() == false:
-			players[whoseturn]._hand1_act()
+			players[whoseturn]._act(players[whoseturn].hand1, \
+		players[whoseturn].hand1_value, players[whoseturn].hand1_state)
 		if players[whoseturn].hand2.is_empty() == false:
-			players[whoseturn]._hand2_act()
+			players[whoseturn]._act(players[whoseturn].hand2, \
+		players[whoseturn].hand2_value, players[whoseturn].hand2_state)
 		if players[whoseturn].hand3.is_empty() == false:
-			players[whoseturn]._hand3_act()
+			players[whoseturn]._act(players[whoseturn].hand3, \
+		players[whoseturn].hand3_value, players[whoseturn].hand3_state)
 	else:
 		print("It's the dealer's turn!")
 

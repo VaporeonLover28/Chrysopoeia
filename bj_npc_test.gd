@@ -9,6 +9,11 @@ $BoxContainer/VBoxContainer/hand4/RichTextLabel]
 $BoxContainer/VBoxContainer/value2/Label,
 $BoxContainer/VBoxContainer/value3/Label,
 $BoxContainer/VBoxContainer/value4/Label]
+@onready var state_labels : Array = [$BoxContainer/VBoxContainer/value1/state,
+$BoxContainer/VBoxContainer/value2/state,
+$BoxContainer/VBoxContainer/value3/state,
+$BoxContainer/VBoxContainer/value4/state,
+]
 
 @onready var label_name: Label = $BoxContainer/VBoxContainer/name/Label
 @onready var state: Label = $BoxContainer/VBoxContainer/state/Label
@@ -31,6 +36,8 @@ var hand2_value : int = 0
 var hand3_state : String = "Playing"
 var hand3 : Array
 var hand3_value : int = 0
+
+var state_array : Array = [hand0_state, hand1_state, hand2_state, hand3_state]
 var playing = true
 #var standed = false
 #var busted = false
@@ -51,6 +58,10 @@ func _process(delta: float) -> void:
 	for labels in value_labels.size():
 		value_labels[labels].text = "Value: " + str(hand_values[labels])
 	
+	for labels in state_labels.size():
+		state_labels[labels].text = "(" + \
+		state_array[labels].erase(2, state_array[labels].length() - 2) + ")"
+	
 	label_name.text = personality + " " + name
 	
 	#turn on hand labels if the hands are being used
@@ -67,6 +78,7 @@ func _process(delta: float) -> void:
 		state.text = "(Playing)"
 	else:
 		playing = false
+		state.text = "(Finished)"
 		#if standed == true:
 			#state.text = "(Standed)"
 		#if blackjack_in_hand == true:
@@ -78,22 +90,10 @@ func _process(delta: float) -> void:
 		#if busted == true:
 			#state.text = "(Busted)"
 
-func _hand0_act():
-	_act(hand0, hand0_value, hand0_state)
-
-func _hand1_act():
-	_act(hand1, hand1_value, hand1_state)
-
-func _hand2_act():
-	_act(hand2, hand2_value, hand2_state)
-
-func _hand3_act():
-	_act(hand3, hand3_value, hand3_state)
-
 func _act(acting_hand, acting_hand_value, acting_hand_state):
 	if acting_hand_state == "Playing":
 		if acting_hand_value >= 22:
-			_bust()
+			_bust(acting_hand)
 		if acting_hand_value == 21 and acting_hand.size() == 2:
 			var has_ace : bool
 			var has_ten_value : bool
@@ -104,11 +104,11 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 				acting_hand[card].has("Queen") or acting_hand[card].has("King"):
 					has_ten_value = true
 			if has_ace and has_ten_value:
-				_blackjack()
+				_blackjack(acting_hand)
 			elif acting_hand_value == 21 and acting_hand.size() > 2:
-				_stand()
+				_stand(acting_hand)
 		elif acting_hand_value == 21 and acting_hand.size() > 2:
-			_stand()
+			_stand(acting_hand)
 		if personality == "Strategic" and acting_hand_state != "Busted":
 			var has_aces : bool = false
 			for card in acting_hand.size():
@@ -122,767 +122,767 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 						"2":
 							match acting_hand_value:
 								5:
-									_hit()
+									_hit(acting_hand)
 								6:
-									_hit()
+									_hit(acting_hand)
 								7:
-									_hit()
+									_hit(acting_hand)
 								8:
-									_hit()
+									_hit(acting_hand)
 								9:
-									_hit()
+									_hit(acting_hand)
 								10:
-									_double_down()
+									_double_down(acting_hand)
 								11:
-									_double_down()
+									_double_down(acting_hand)
 								12:
-									_hit()
+									_hit(acting_hand)
 								13:
-									_stand()
+									_stand(acting_hand)
 								14:
-									_stand()
+									_stand(acting_hand)
 								15:
-									_stand()
+									_stand(acting_hand)
 								16:
-									_stand()
+									_stand(acting_hand)
 								17:
-									_stand()
+									_stand(acting_hand)
 								18:
-									_stand()
+									_stand(acting_hand)
 								19:
-									_stand()
+									_stand(acting_hand)
 								20:
-									_stand()
+									_stand(acting_hand)
 								21:
-									_stand()
+									_stand(acting_hand)
 						"3":
 							match acting_hand_value:
 								5:
-									_hit()
+									_hit(acting_hand)
 								6:
-									_hit()
+									_hit(acting_hand)
 								7:
-									_hit()
+									_hit(acting_hand)
 								8:
-									_hit()
+									_hit(acting_hand)
 								9:
-									_double_down()
+									_double_down(acting_hand)
 								10:
-									_double_down()
+									_double_down(acting_hand)
 								11:
-									_double_down()
+									_double_down(acting_hand)
 								12:
-									_hit()
+									_hit(acting_hand)
 								13:
-									_stand()
+									_stand(acting_hand)
 								14:
-									_stand()
+									_stand(acting_hand)
 								15:
-									_stand()
+									_stand(acting_hand)
 								16:
-									_stand()
+									_stand(acting_hand)
 								17:
-									_stand()
+									_stand(acting_hand)
 								18:
-									_stand()
+									_stand(acting_hand)
 								19:
-									_stand()
+									_stand(acting_hand)
 								20:
-									_stand()
+									_stand(acting_hand)
 								21:
-									_stand()
+									_stand(acting_hand)
 						"4":
 							match acting_hand_value:
 								5:
-									_hit()
+									_hit(acting_hand)
 								6:
-									_hit()
+									_hit(acting_hand)
 								7:
-									_hit()
+									_hit(acting_hand)
 								8:
-									_hit()
+									_hit(acting_hand)
 								9:
-									_double_down()
+									_double_down(acting_hand)
 								10:
-									_double_down()
+									_double_down(acting_hand)
 								11:
-									_double_down()
+									_double_down(acting_hand)
 								12:
-									_stand()
+									_stand(acting_hand)
 								13:
-									_stand()
+									_stand(acting_hand)
 								14:
-									_stand()
+									_stand(acting_hand)
 								15:
-									_stand()
+									_stand(acting_hand)
 								16:
-									_stand()
+									_stand(acting_hand)
 								17:
-									_stand()
+									_stand(acting_hand)
 								18:
-									_stand()
+									_stand(acting_hand)
 								19:
-									_stand()
+									_stand(acting_hand)
 								20:
-									_stand()
+									_stand(acting_hand)
 								21:
-									_stand()
+									_stand(acting_hand)
 						"5":
 							match acting_hand_value:
 								5:
-									_hit()
+									_hit(acting_hand)
 								6:
-									_hit()
+									_hit(acting_hand)
 								7:
-									_hit()
+									_hit(acting_hand)
 								8:
-									_hit()
+									_hit(acting_hand)
 								9:
-									_double_down()
+									_double_down(acting_hand)
 								10:
-									_double_down()
+									_double_down(acting_hand)
 								11:
-									_double_down()
+									_double_down(acting_hand)
 								12:
-									_stand()
+									_stand(acting_hand)
 								13:
-									_stand()
+									_stand(acting_hand)
 								14:
-									_stand()
+									_stand(acting_hand)
 								15:
-									_stand()
+									_stand(acting_hand)
 								16:
-									_stand()
+									_stand(acting_hand)
 								17:
-									_stand()
+									_stand(acting_hand)
 								18:
-									_stand()
+									_stand(acting_hand)
 								19:
-									_stand()
+									_stand(acting_hand)
 								20:
-									_stand()
+									_stand(acting_hand)
 								21:
-									_stand()
+									_stand(acting_hand)
 						"6":
 							match acting_hand_value:
 								5:
-									_hit()
+									_hit(acting_hand)
 								6:
-									_hit()
+									_hit(acting_hand)
 								7:
-									_hit()
+									_hit(acting_hand)
 								8:
-									_hit()
+									_hit(acting_hand)
 								9:
-									_double_down()
+									_double_down(acting_hand)
 								10:
-									_double_down()
+									_double_down(acting_hand)
 								11:
-									_double_down()
+									_double_down(acting_hand)
 								12:
-									_stand()
+									_stand(acting_hand)
 								13:
-									_stand()
+									_stand(acting_hand)
 								14:
-									_stand()
+									_stand(acting_hand)
 								15:
-									_stand()
+									_stand(acting_hand)
 								16:
-									_stand()
+									_stand(acting_hand)
 								17:
-									_stand()
+									_stand(acting_hand)
 								18:
-									_stand()
+									_stand(acting_hand)
 								19:
-									_stand()
+									_stand(acting_hand)
 								20:
-									_stand()
+									_stand(acting_hand)
 								21:
-									_stand()
+									_stand(acting_hand)
 						"7":
 							match acting_hand_value:
 								5:
-									_hit()
+									_hit(acting_hand)
 								6:
-									_hit()
+									_hit(acting_hand)
 								7:
-									_hit()
+									_hit(acting_hand)
 								8:
-									_hit()
+									_hit(acting_hand)
 								9:
-									_hit()
+									_hit(acting_hand)
 								10:
-									_double_down()
+									_double_down(acting_hand)
 								11:
-									_double_down()
+									_double_down(acting_hand)
 								12:
-									_hit()
+									_hit(acting_hand)
 								13:
-									_hit()
+									_hit(acting_hand)
 								14:
-									_hit()
+									_hit(acting_hand)
 								15:
-									_hit()
+									_hit(acting_hand)
 								16:
-									_hit()
+									_hit(acting_hand)
 								17:
-									_stand()
+									_stand(acting_hand)
 								18:
-									_stand()
+									_stand(acting_hand)
 								19:
-									_stand()
+									_stand(acting_hand)
 								20:
-									_stand()
+									_stand(acting_hand)
 								21:
-									_stand()
+									_stand(acting_hand)
 						"8":
 							match acting_hand_value:
 								5:
-									_hit()
+									_hit(acting_hand)
 								6:
-									_hit()
+									_hit(acting_hand)
 								7:
-									_hit()
+									_hit(acting_hand)
 								8:
-									_hit()
+									_hit(acting_hand)
 								9:
-									_hit()
+									_hit(acting_hand)
 								10:
-									_double_down()
+									_double_down(acting_hand)
 								11:
-									_double_down()
+									_double_down(acting_hand)
 								12:
-									_hit()
+									_hit(acting_hand)
 								13:
-									_hit()
+									_hit(acting_hand)
 								14:
-									_hit()
+									_hit(acting_hand)
 								15:
-									_hit()
+									_hit(acting_hand)
 								16:
-									_hit()
+									_hit(acting_hand)
 								17:
-									_stand()
+									_stand(acting_hand)
 								18:
-									_stand()
+									_stand(acting_hand)
 								19:
-									_stand()
+									_stand(acting_hand)
 								20:
-									_stand()
+									_stand(acting_hand)
 								21:
-									_stand()
+									_stand(acting_hand)
 						"9":
 							match acting_hand_value:
 								5:
-									_hit()
+									_hit(acting_hand)
 								6:
-									_hit()
+									_hit(acting_hand)
 								7:
-									_hit()
+									_hit(acting_hand)
 								8:
-									_hit()
+									_hit(acting_hand)
 								9:
-									_hit()
+									_hit(acting_hand)
 								10:
-									_double_down()
+									_double_down(acting_hand)
 								11:
-									_double_down()
+									_double_down(acting_hand)
 								12:
-									_hit()
+									_hit(acting_hand)
 								13:
-									_hit()
+									_hit(acting_hand)
 								14:
-									_hit()
+									_hit(acting_hand)
 								15:
-									_hit()
+									_hit(acting_hand)
 								16:
 									#if not allowed, then hit
-									_surrender()
+									_surrender(acting_hand)
 								17:
-									_stand()
+									_stand(acting_hand)
 								18:
-									_stand()
+									_stand(acting_hand)
 								19:
-									_stand()
+									_stand(acting_hand)
 								20:
-									_stand()
+									_stand(acting_hand)
 								21:
-									_stand()
+									_stand(acting_hand)
 						"10":
 							match acting_hand_value:
 								5:
-									_hit()
+									_hit(acting_hand)
 								6:
-									_hit()
+									_hit(acting_hand)
 								7:
-									_hit()
+									_hit(acting_hand)
 								8:
-									_hit()
+									_hit(acting_hand)
 								9:
-									_hit()
+									_hit(acting_hand)
 								10:
-									_hit()
+									_hit(acting_hand)
 								11:
-									_double_down()
+									_double_down(acting_hand)
 								12:
-									_hit()
+									_hit(acting_hand)
 								13:
-									_hit()
+									_hit(acting_hand)
 								14:
-									_hit()
+									_hit(acting_hand)
 								15:
 									#if not allowed, then hit
-									_surrender()
+									_surrender(acting_hand)
 								16:
 									#if not allowed, then hit
-									_surrender()
+									_surrender(acting_hand)
 								17:
-									_stand()
+									_stand(acting_hand)
 								18:
-									_stand()
+									_stand(acting_hand)
 								19:
-									_stand()
+									_stand(acting_hand)
 								20:
-									_stand()
+									_stand(acting_hand)
 								21:
-									_stand()
+									_stand(acting_hand)
 						"Jack":
 							match acting_hand_value:
 								5,6:
-									_hit()
+									_hit(acting_hand)
 								
-									_hit()
+									_hit(acting_hand)
 								7:
-									_hit()
+									_hit(acting_hand)
 								8:
-									_hit()
+									_hit(acting_hand)
 								9:
-									_hit()
+									_hit(acting_hand)
 								10:
-									_hit()
+									_hit(acting_hand)
 								11:
-									_double_down()
+									_double_down(acting_hand)
 								12:
-									_hit()
+									_hit(acting_hand)
 								13:
-									_hit()
+									_hit(acting_hand)
 								14:
-									_hit()
+									_hit(acting_hand)
 								15:
 									#if not allowed, then hit
-									_surrender()
+									_surrender(acting_hand)
 								16:
 									#if not allowed, then hit
-									_surrender()
+									_surrender(acting_hand)
 								17:
-									_stand()
+									_stand(acting_hand)
 								18:
-									_stand()
+									_stand(acting_hand)
 								19:
-									_stand()
+									_stand(acting_hand)
 								20:
-									_stand()
+									_stand(acting_hand)
 								21:
-									_stand()
+									_stand(acting_hand)
 						"Queen":
 							match acting_hand_value:
 								5:
-									_hit()
+									_hit(acting_hand)
 								6:
-									_hit()
+									_hit(acting_hand)
 								7:
-									_hit()
+									_hit(acting_hand)
 								8:
-									_hit()
+									_hit(acting_hand)
 								9:
-									_hit()
+									_hit(acting_hand)
 								10:
-									_hit()
+									_hit(acting_hand)
 								11:
-									_double_down()
+									_double_down(acting_hand)
 								12:
-									_hit()
+									_hit(acting_hand)
 								13:
-									_hit()
+									_hit(acting_hand)
 								14:
-									_hit()
+									_hit(acting_hand)
 								15:
 									#if not allowed, then hit
-									_surrender()
+									_surrender(acting_hand)
 								16:
 									#if not allowed, then hit
-									_surrender()
+									_surrender(acting_hand)
 								17:
-									_stand()
+									_stand(acting_hand)
 								18:
-									_stand()
+									_stand(acting_hand)
 								19:
-									_stand()
+									_stand(acting_hand)
 								20:
-									_stand()
+									_stand(acting_hand)
 								21:
-									_stand()
+									_stand(acting_hand)
 						"King":
 							match acting_hand_value:
 								5:
-									_hit()
+									_hit(acting_hand)
 								6:
-									_hit()
+									_hit(acting_hand)
 								7:
-									_hit()
+									_hit(acting_hand)
 								8:
-									_hit()
+									_hit(acting_hand)
 								9:
-									_hit()
+									_hit(acting_hand)
 								10:
-									_hit()
+									_hit(acting_hand)
 								11:
-									_double_down()
+									_double_down(acting_hand)
 								12:
-									_hit()
+									_hit(acting_hand)
 								13:
-									_hit()
+									_hit(acting_hand)
 								14:
-									_hit()
+									_hit(acting_hand)
 								15:
 									#if not allowed, then hit
-									_surrender()
+									_surrender(acting_hand)
 								16:
 									#if not allowed, then hit
-									_surrender()
+									_surrender(acting_hand)
 								17:
-									_stand()
+									_stand(acting_hand)
 								18:
-									_stand()
+									_stand(acting_hand)
 								19:
-									_stand()
+									_stand(acting_hand)
 								20:
-									_stand()
+									_stand(acting_hand)
 								21:
-									_stand()
+									_stand(acting_hand)
 						"Ace":
 							match acting_hand_value:
 								5:
-									_hit()
+									_hit(acting_hand)
 								6:
-									_hit()
+									_hit(acting_hand)
 								7:
-									_hit()
+									_hit(acting_hand)
 								8:
-									_hit()
+									_hit(acting_hand)
 								9:
-									_hit()
+									_hit(acting_hand)
 								10:
-									_hit()
+									_hit(acting_hand)
 								11:
-									_double_down()
+									_double_down(acting_hand)
 								12:
-									_hit()
+									_hit(acting_hand)
 								13:
-									_hit()
+									_hit(acting_hand)
 								14:
-									_hit()
+									_hit(acting_hand)
 								15:
 									#if not allowed, then hit
-									_surrender()
+									_surrender(acting_hand)
 								16:
 									#if not allowed, then hit
-									_surrender()
+									_surrender(acting_hand)
 								17:
 									#if not allowed, then stand
-									_surrender()
+									_surrender(acting_hand)
 								18:
-									_stand()
+									_stand(acting_hand)
 								19:
-									_stand()
+									_stand(acting_hand)
 								20:
-									_stand()
+									_stand(acting_hand)
 								21:
-									_stand()
+									_stand(acting_hand)
 				else:
 					print("Has an Ace")
 					match game.dealer_hand[0][1]:
 						"2":
 							match acting_hand_value:
 								20:
-									_stand()
+									_stand(acting_hand)
 								19:
-									_stand()
+									_stand(acting_hand)
 								18:
 									#if not allowed, then stand
-									_double_down()
+									_double_down(acting_hand)
 								17:
-									_hit()
+									_hit(acting_hand)
 								16:
-									_hit()
+									_hit(acting_hand)
 								15:
-									_hit()
+									_hit(acting_hand)
 								14:
-									_hit()
+									_hit(acting_hand)
 								13:
-									_hit()
+									_hit(acting_hand)
 								12:
-									_hit()
+									_hit(acting_hand)
 						"3":
 							match acting_hand_value:
 								20:
-									_stand()
+									_stand(acting_hand)
 								19:
-									_stand()
+									_stand(acting_hand)
 								18:
 									#if not allowed, then stand
-									_double_down()
+									_double_down(acting_hand)
 								17:
 									#if not allowed, then hit
-									_double_down()
+									_double_down(acting_hand)
 								16:
-									_hit()
+									_hit(acting_hand)
 								15:
-									_hit()
+									_hit(acting_hand)
 								14:
-									_hit()
+									_hit(acting_hand)
 								13:
-									_hit()
+									_hit(acting_hand)
 								12:
-									_hit()
+									_hit(acting_hand)
 						"4":
 							match acting_hand_value:
 								20:
-									_stand()
+									_stand(acting_hand)
 								19:
-									_stand()
+									_stand(acting_hand)
 								18:
 									#if not allowed, then stand
-									_double_down()
+									_double_down(acting_hand)
 								17:
 									#if not allowed, then hit
-									_double_down()
+									_double_down(acting_hand)
 								16:
 									#if not allowed, then hit
-									_double_down()
+									_double_down(acting_hand)
 								15:
 									#if not allowed, then hit
-									_double_down()
+									_double_down(acting_hand)
 								14:
-									_hit()
+									_hit(acting_hand)
 								13:
-									_hit()
+									_hit(acting_hand)
 								12:
-									_hit()
+									_hit(acting_hand)
 						"5":
 							match acting_hand_value:
 								20:
-									_stand()
+									_stand(acting_hand)
 								19:
-									_stand()
+									_stand(acting_hand)
 								18:
 									#if not allowed, then stand
-									_double_down()
+									_double_down(acting_hand)
 								17:
 									#if not allowed, then hit
-									_double_down()
+									_double_down(acting_hand)
 								16:
 									#if not allowed, then hit
-									_double_down()
+									_double_down(acting_hand)
 								15:
 									#if not allowed, then hit
-									_double_down()
+									_double_down(acting_hand)
 								14:
 									#if not allowed, then hit
-									_double_down()
+									_double_down(acting_hand)
 								13:
 									#if not allowed, then hit
-									_double_down()
+									_double_down(acting_hand)
 								12:
-									_hit()
+									_hit(acting_hand)
 						"6":
 							match acting_hand_value:
 								20:
-									_stand()
+									_stand(acting_hand)
 								19:
 									#if not allowed, then stand
-									_double_down()
+									_double_down(acting_hand)
 								18:
 									#if not allowed, then stand
-									_double_down()
+									_double_down(acting_hand)
 								17:
 									#if not allowed, then hit
-									_double_down()
+									_double_down(acting_hand)
 								16:
 									#if not allowed, then hit
-									_double_down()
+									_double_down(acting_hand)
 								15:
 									#if not allowed, then hit
-									_double_down()
+									_double_down(acting_hand)
 								14:
 									#if not allowed, then hit
-									_double_down()
+									_double_down(acting_hand)
 								13:
 									#if not allowed, then hit
-									_double_down()
+									_double_down(acting_hand)
 								12:
 									#if not allowed, then hit
-									_double_down()
+									_double_down(acting_hand)
 						"7":
 							match acting_hand_value:
 								20:
-									_stand()
+									_stand(acting_hand)
 								19:
-									_stand()
+									_stand(acting_hand)
 								18:
-									_stand()
+									_stand(acting_hand)
 								17:
-									_hit()
+									_hit(acting_hand)
 								16:
-									_hit()
+									_hit(acting_hand)
 								15:
-									_hit()
+									_hit(acting_hand)
 								14:
-									_hit()
+									_hit(acting_hand)
 								13:
-									_hit()
+									_hit(acting_hand)
 								12:
-									_hit()
+									_hit(acting_hand)
 						"8":
 							match acting_hand_value:
 								20:
-									_stand()
+									_stand(acting_hand)
 								19:
-									_stand()
+									_stand(acting_hand)
 								18:
-									_stand()
+									_stand(acting_hand)
 								17:
-									_hit()
+									_hit(acting_hand)
 								16:
-									_hit()
+									_hit(acting_hand)
 								15:
-									_hit()
+									_hit(acting_hand)
 								14:
-									_hit()
+									_hit(acting_hand)
 								13:
-									_hit()
+									_hit(acting_hand)
 								12:
-									_hit()
+									_hit(acting_hand)
 						"9":
 							match acting_hand_value:
 								20:
-									_stand()
+									_stand(acting_hand)
 								19:
-									_stand()
+									_stand(acting_hand)
 								18:
-									_hit()
+									_hit(acting_hand)
 								17:
-									_hit()
+									_hit(acting_hand)
 								16:
-									_hit()
+									_hit(acting_hand)
 								15:
-									_hit()
+									_hit(acting_hand)
 								14:
-									_hit()
+									_hit(acting_hand)
 								13:
-									_hit()
+									_hit(acting_hand)
 								12:
-									_hit()
+									_hit(acting_hand)
 						"10":
 							match acting_hand_value:
 								20:
-									_stand()
+									_stand(acting_hand)
 								19:
-									_stand()
+									_stand(acting_hand)
 								18:
-									_hit()
+									_hit(acting_hand)
 								17:
-									_hit()
+									_hit(acting_hand)
 								16:
-									_hit()
+									_hit(acting_hand)
 								15:
-									_hit()
+									_hit(acting_hand)
 								14:
-									_hit()
+									_hit(acting_hand)
 								13:
-									_hit()
+									_hit(acting_hand)
 								12:
-									_hit()
+									_hit(acting_hand)
 						"Jack":
 							match acting_hand_value:
 								20:
-									_stand()
+									_stand(acting_hand)
 								19:
-									_stand()
+									_stand(acting_hand)
 								18:
-									_hit()
+									_hit(acting_hand)
 								17:
-									_hit()
+									_hit(acting_hand)
 								16:
-									_hit()
+									_hit(acting_hand)
 								15:
-									_hit()
+									_hit(acting_hand)
 								14:
-									_hit()
+									_hit(acting_hand)
 								13:
-									_hit()
+									_hit(acting_hand)
 								12:
-									_hit()
+									_hit(acting_hand)
 						"Queen":
 							match acting_hand_value:
 								20:
-									_stand()
+									_stand(acting_hand)
 								19:
-									_stand()
+									_stand(acting_hand)
 								18:
-									_hit()
+									_hit(acting_hand)
 								17:
-									_hit()
+									_hit(acting_hand)
 								16:
-									_hit()
+									_hit(acting_hand)
 								15:
-									_hit()
+									_hit(acting_hand)
 								14:
-									_hit()
+									_hit(acting_hand)
 								13:
-									_hit()
+									_hit(acting_hand)
 								12:
-									_hit()
+									_hit(acting_hand)
 						"King":
 							match acting_hand_value:
 								20:
-									_stand()
+									_stand(acting_hand)
 								19:
-									_stand()
+									_stand(acting_hand)
 								18:
-									_hit()
+									_hit(acting_hand)
 								17:
-									_hit()
+									_hit(acting_hand)
 								16:
-									_hit()
+									_hit(acting_hand)
 								15:
-									_hit()
+									_hit(acting_hand)
 								14:
-									_hit()
+									_hit(acting_hand)
 								13:
-									_hit()
+									_hit(acting_hand)
 								12:
-									_hit()
+									_hit(acting_hand)
 						"Ace":
 							match acting_hand_value:
 								20:
-									_stand()
+									_stand(acting_hand)
 								19:
-									_stand()
+									_stand(acting_hand)
 								18:
-									_hit()
+									_hit(acting_hand)
 								17:
-									_hit()
+									_hit(acting_hand)
 								16:
-									_hit()
+									_hit(acting_hand)
 								15:
-									_hit()
+									_hit(acting_hand)
 								14:
-									_hit()
+									_hit(acting_hand)
 								13:
-									_hit()
+									_hit(acting_hand)
 								12:
-									_hit()
+									_hit(acting_hand)
 			else:
 				print("Has a pair of " + acting_hand[0][1] + "s")
 				match game.dealer_hand[0][1]:
@@ -891,13 +891,13 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 							"Ace":
 								_split(1)
 							"King":
-								_stand()
+								_stand(acting_hand)
 							"Queen":
-								_stand()
+								_stand(acting_hand)
 							"Jack":
-								_stand()
+								_stand(acting_hand)
 							"10":
-								_stand()
+								_stand(acting_hand)
 							"9":
 								_split(1)
 							"8":
@@ -908,9 +908,9 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								_split(1)
 							"5":
 								#if not allowed, then hit
-								_double_down()
+								_double_down(acting_hand)
 							"4":
-								_hit()
+								_hit(acting_hand)
 							"3":
 								_split(1)
 							"2":
@@ -920,13 +920,13 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 							"Ace":
 								_split(1)
 							"King":
-								_stand()
+								_stand(acting_hand)
 							"Queen":
-								_stand()
+								_stand(acting_hand)
 							"Jack":
-								_stand()
+								_stand(acting_hand)
 							"10":
-								_stand()
+								_stand(acting_hand)
 							"9":
 								_split(1)
 							"8":
@@ -937,9 +937,9 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								_split(1)
 							"5":
 								#if not allowed, then hit
-								_double_down()
+								_double_down(acting_hand)
 							"4":
-								_hit()
+								_hit(acting_hand)
 							"3":
 								_split(1)
 							"2":
@@ -949,13 +949,13 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 							"Ace":
 								_split(1)
 							"King":
-								_stand()
+								_stand(acting_hand)
 							"Queen":
-								_stand()
+								_stand(acting_hand)
 							"Jack":
-								_stand()
+								_stand(acting_hand)
 							"10":
-								_stand()
+								_stand(acting_hand)
 							"9":
 								_split(1)
 							"8":
@@ -966,9 +966,9 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								_split(1)
 							"5":
 								#if not allowed, then hit
-								_double_down()
+								_double_down(acting_hand)
 							"4":
-								_hit()
+								_hit(acting_hand)
 							"3":
 								_split(1)
 							"2":
@@ -978,13 +978,13 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 							"Ace":
 								_split(1)
 							"King":
-								_stand()
+								_stand(acting_hand)
 							"Queen":
-								_stand()
+								_stand(acting_hand)
 							"Jack":
-								_stand()
+								_stand(acting_hand)
 							"10":
-								_stand()
+								_stand(acting_hand)
 							"9":
 								_split(1)
 							"8":
@@ -995,7 +995,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								_split(1)
 							"5":
 								#if not allowed, then hit
-								_double_down()
+								_double_down(acting_hand)
 							"4":
 								_split(1)
 							"3":
@@ -1007,13 +1007,13 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 							"Ace":
 								_split(1)
 							"King":
-								_stand()
+								_stand(acting_hand)
 							"Queen":
-								_stand()
+								_stand(acting_hand)
 							"Jack":
-								_stand()
+								_stand(acting_hand)
 							"10":
-								_stand()
+								_stand(acting_hand)
 							"9":
 								_split(1)
 							"8":
@@ -1024,7 +1024,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								_split(1)
 							"5":
 								#if not allowed, then hit
-								_double_down()
+								_double_down(acting_hand)
 							"4":
 								_split(1)
 							"3":
@@ -1036,26 +1036,26 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 							"Ace":
 								_split(1)
 							"King":
-								_stand()
+								_stand(acting_hand)
 							"Queen":
-								_stand()
+								_stand(acting_hand)
 							"Jack":
-								_stand()
+								_stand(acting_hand)
 							"10":
-								_stand()
+								_stand(acting_hand)
 							"9":
-								_stand()
+								_stand(acting_hand)
 							"8":
 								_split(1)
 							"7":
 								_split(1)
 							"6":
-								_hit()
+								_hit(acting_hand)
 							"5":
 								#if not allowed, then hit
-								_double_down()
+								_double_down(acting_hand)
 							"4":
-								_hit()
+								_hit(acting_hand)
 							"3":
 								_split(1)
 							"2":
@@ -1065,207 +1065,207 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 							"Ace":
 								_split(1)
 							"King":
-								_stand()
+								_stand(acting_hand)
 							"Queen":
-								_stand()
+								_stand(acting_hand)
 							"Jack":
-								_stand()
+								_stand(acting_hand)
 							"10":
-								_stand()
+								_stand(acting_hand)
 							"9":
 								_split(1)
 							"8":
 								_split(1)
 							"7":
-								_hit()
+								_hit(acting_hand)
 							"6":
-								_hit()
+								_hit(acting_hand)
 							"5":
 								#if not allowed, then hit
-								_double_down()
+								_double_down(acting_hand)
 							"4":
-								_hit()
+								_hit(acting_hand)
 							"3":
-								_hit()
+								_hit(acting_hand)
 							"2":
-								_hit()
+								_hit(acting_hand)
 					"9":
 						match acting_hand[0][1]:
 							"Ace":
 								_split(1)
 							"King":
-								_stand()
+								_stand(acting_hand)
 							"Queen":
-								_stand()
+								_stand(acting_hand)
 							"Jack":
-								_stand()
+								_stand(acting_hand)
 							"10":
-								_stand()
+								_stand(acting_hand)
 							"9":
 								_split(1)
 							"8":
 								_split(1)
 							"7":
-								_hit()
+								_hit(acting_hand)
 							"6":
-								_hit()
+								_hit(acting_hand)
 							"5":
 								#if not allowed, then hit
-								_double_down()
+								_double_down(acting_hand)
 							"4":
-								_hit()
+								_hit(acting_hand)
 							"3":
-								_hit()
+								_hit(acting_hand)
 							"2":
-								_hit()
+								_hit(acting_hand)
 					"10":
 						match acting_hand[0][1]:
 							"Ace":
 								_split(1)
 							"King":
-								_stand()
+								_stand(acting_hand)
 							"Queen":
-								_stand()
+								_stand(acting_hand)
 							"Jack":
-								_stand()
+								_stand(acting_hand)
 							"10":
-								_stand()
+								_stand(acting_hand)
 							"9":
-								_stand()
+								_stand(acting_hand)
 							"8":
 								_split(1)
 							"7":
-								_hit()
+								_hit(acting_hand)
 							"6":
-								_hit()
+								_hit(acting_hand)
 							"5":
-								_hit()
+								_hit(acting_hand)
 							"4":
-								_hit()
+								_hit(acting_hand)
 							"3":
-								_hit()
+								_hit(acting_hand)
 							"2":
-								_hit()
+								_hit(acting_hand)
 					"Jack":
 						match acting_hand[0][1]:
 							"Ace":
 								_split(1)
 							"King":
-								_stand()
+								_stand(acting_hand)
 							"Queen":
-								_stand()
+								_stand(acting_hand)
 							"Jack":
-								_stand()
+								_stand(acting_hand)
 							"10":
-								_stand()
+								_stand(acting_hand)
 							"9":
-								_stand()
+								_stand(acting_hand)
 							"8":
 								_split(1)
 							"7":
-								_hit()
+								_hit(acting_hand)
 							"6":
-								_hit()
+								_hit(acting_hand)
 							"5":
-								_hit()
+								_hit(acting_hand)
 							"4":
-								_hit()
+								_hit(acting_hand)
 							"3":
-								_hit()
+								_hit(acting_hand)
 							"2":
-								_hit()
+								_hit(acting_hand)
 					"Queen":
 						match acting_hand[0][1]:
 							"Ace":
 								_split(1)
 							"King":
-								_stand()
+								_stand(acting_hand)
 							"Queen":
-								_stand()
+								_stand(acting_hand)
 							"Jack":
-								_stand()
+								_stand(acting_hand)
 							"10":
-								_stand()
+								_stand(acting_hand)
 							"9":
-								_stand()
+								_stand(acting_hand)
 							"8":
 								_split(1)
 							"7":
-								_hit()
+								_hit(acting_hand)
 							"6":
-								_hit()
+								_hit(acting_hand)
 							"5":
-								_hit()
+								_hit(acting_hand)
 							"4":
-								_hit()
+								_hit(acting_hand)
 							"3":
-								_hit()
+								_hit(acting_hand)
 							"2":
-								_hit()
+								_hit(acting_hand)
 					"King":
 						match acting_hand[0][1]:
 							"Ace":
 								_split(1)
 							"King":
-								_stand()
+								_stand(acting_hand)
 							"Queen":
-								_stand()
+								_stand(acting_hand)
 							"Jack":
-								_stand()
+								_stand(acting_hand)
 							"10":
-								_stand()
+								_stand(acting_hand)
 							"9":
-								_stand()
+								_stand(acting_hand)
 							"8":
 								_split(1)
 							"7":
-								_hit()
+								_hit(acting_hand)
 							"6":
-								_hit()
+								_hit(acting_hand)
 							"5":
-								_hit()
+								_hit(acting_hand)
 							"4":
-								_hit()
+								_hit(acting_hand)
 							"3":
-								_hit()
+								_hit(acting_hand)
 							"2":
-								_hit()
+								_hit(acting_hand)
 					"Ace":
 						match acting_hand[0][1]:
 							"Ace":
 								_split(1)
 							"King":
-								_stand()
+								_stand(acting_hand)
 							"Queen":
-								_stand()
+								_stand(acting_hand)
 							"Jack":
-								_stand()
+								_stand(acting_hand)
 							"10":
-								_stand()
+								_stand(acting_hand)
 							"9":
-								_stand()
+								_stand(acting_hand)
 							"8":
 								#if not allowed, then split
-								_surrender()
+								_surrender(acting_hand)
 							"7":
-								_hit()
+								_hit(acting_hand)
 							"6":
-								_hit()
+								_hit(acting_hand)
 							"5":
-								_hit()
+								_hit(acting_hand)
 							"4":
-								_hit()
+								_hit(acting_hand)
 							"3":
-								_hit()
+								_hit(acting_hand)
 							"2":
-								_hit()
+								_hit(acting_hand)
 		elif personality == "Coward" and acting_hand_state != "Busted":
 			if acting_hand_value + 10 >= 22:
-				_stand()
+				_stand(acting_hand)
 			else:
-				_hit()
+				_hit(acting_hand)
 		elif personality == "Noob" and acting_hand_state != "Busted":
-			var actions = [_hit(), _stand()]
+			var actions = [_hit(acting_hand), _stand(acting_hand)]
 			actions.pick_random()
 	else:
 		if acting_hand_state == "Busted":
@@ -1280,18 +1280,18 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 			print(self.name + " has a blackjack in hand. Skipping turn")
 	game.player_action.start()
 
-func _hit():
+func _hit(acting_hand):
 	print(self.name + " hits.")
-	game._player_add_card(self)
+	game._player_add_card(self, hands.find(acting_hand))
 
-func _stand():
+func _stand(acting_hand):
 	print(self.name + " stands.")
-	standed = true
+	state_array[hands.find(acting_hand)] = "Standed"
 
-func _double_down():
+func _double_down(acting_hand):
 	print(self.name + " double downs!")
-	doubled_down = true
-	_hit()
+	state_array[hands.find(acting_hand)] = "Doubled"
+	_hit(acting_hand)
 
 func _split(action_number):
 	print(self.name + " splits!")
@@ -1325,17 +1325,17 @@ func _split(action_number):
 	elif action_number == 4:
 		print("...and has reached max splits. Skipping turn")
 
-func _surrender():
+func _surrender(acting_hand):
 	print(self.name + " surrenders!")
-	surrendered = true
+	state_array[hands.find(acting_hand)] = "Surrendered"
 
-func _blackjack():
+func _blackjack(acting_hand):
 	print(self.name + " has a blackjack!")
-	blackjack_in_hand = true
+	state_array[hands.find(acting_hand)] = "Blackjack"
 
-func _bust():
+func _bust(acting_hand):
 	print(self.name + " busted!")
-	busted = true
+	state_array[hands.find(acting_hand)] = "Busted"
 
 #chooses how the AI plays
 func _decide_personality():

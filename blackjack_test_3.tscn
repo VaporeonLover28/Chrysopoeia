@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cr0s4q071jmdo"]
+[gd_scene load_steps=10 format=3 uid="uid://cr0s4q071jmdo"]
 
 [ext_resource type="Texture2D" uid="uid://bm5mkjkryluex" path="res://Assets/grid_black_512x512.png" id="1_j8do0"]
 [ext_resource type="PackedScene" uid="uid://bf85c3yhwefir" path="res://Assets/Exports/glTF/Workbench.gltf" id="2_i5tvo"]
 [ext_resource type="PackedScene" uid="uid://8hd5usv25kt" path="res://bj_player_test.tscn" id="3_i5tvo"]
+[ext_resource type="PackedScene" uid="uid://cjrb25thpiawq" path="res://Assets/Originals/mago_beta.glb" id="4_ylhsq"]
+[ext_resource type="Script" uid="uid://j5nv645ekjhk" path="res://mago_beta.gd" id="5_dft26"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k2ed7"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -40,8 +42,8 @@ size = Vector3(32, 1, 18)
 
 [node name="light" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5, 0)
+light_color = Color(1, 0.637837, 0.399547, 1)
 light_energy = 3.0
-shadow_enabled = true
 spot_range = 10.0
 spot_angle = 35.0
 
@@ -49,5 +51,18 @@ spot_angle = 35.0
 
 [node name="bj_player_test" parent="." instance=ExtResource("3_i5tvo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.890662, 0.854396)
+
+[node name="mago_beta" parent="." instance=ExtResource("4_ylhsq")]
+transform = Transform3D(0.086, 0, 1.50367e-08, 0, 0.02, 0, -1.50367e-08, 0, 0.086, 0, 0.905, 0)
+script = ExtResource("5_dft26")
+
+[node name="mago_beta2" parent="." instance=ExtResource("4_ylhsq")]
+transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, -0.0351001, 0.415111, -0.652354)
+
+[node name="mago_beta3" parent="." instance=ExtResource("4_ylhsq")]
+transform = Transform3D(-0.0273299, 0, -0.198124, 0, 0.2, 0, 0.198124, 0, -0.0273299, 0.408794, 0.415111, -0.652354)
+
+[node name="mago_beta4" parent="." instance=ExtResource("4_ylhsq")]
+transform = Transform3D(0.102079, 0, -0.171988, 0, 0.2, 0, 0.171988, 0, 0.102079, -0.615591, 0.415111, -0.652354)
 
 [editable path="bj_player_test"]

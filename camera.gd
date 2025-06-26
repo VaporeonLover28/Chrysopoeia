@@ -29,5 +29,5 @@ func zoom_out_anim():
 	tween.set_trans(Tween.TRANS_QUART)
 	tween.set_ease(Tween.EASE_OUT)
 	#o tween em si
-	#tweena a propriedade FOV da câmera de atual (normalmente 75) até 40 em zoom_duration segundos
-	tween.tween_property(self, "fov", 75.0, zoom_duration / 2)
+	#tweena a propriedade FOV da câmera de atual até 75 em zoom_duration segundos
+	tween.tween_property(self, "fov", 75.0, zoom_duration * 1.25)
