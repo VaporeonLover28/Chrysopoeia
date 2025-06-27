@@ -154,7 +154,7 @@ func _calculate_hand_value(who, whathand):
 			for card in who.hands[whathand].size():
 				if who.hands[whathand][card][1] == "Ace":
 					aces_in_hand += 1
-			if aces_in_hand >= 2:
+			if aces_in_hand >= 1:
 				value_bank -= 10
 				who.hand_values[whathand] = value_bank
 			else:
@@ -168,7 +168,7 @@ func _dealer_add_card(dealer):
 #adds a card for (a player), then updates score
 func _player_add_card(player, whathand):
 	player.hands[whathand].append(deck.pop_front())
-	_calculate_hand_value(player, 0)
+	_calculate_hand_value(player, whathand)
 
 #func _player_add_card2(player):
 	#player.hand1.append(deck.pop_front())

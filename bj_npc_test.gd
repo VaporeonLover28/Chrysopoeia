@@ -18,24 +18,32 @@ $BoxContainer/VBoxContainer/value4/state,
 @onready var label_name: Label = $BoxContainer/VBoxContainer/name/Label
 @onready var state: Label = $BoxContainer/VBoxContainer/state/Label
 
-var hands : Array = [hand0, hand1, hand2, hand3]
-var hand_values : Array = [hand0_value, hand1_value, hand2_value, hand3_value]
+var hands : Array = []
+var hand_values : Array = []
 @export_enum("Playing", "Standed", "Surrendered", "Doubled", "Busted", "Blackjack")
 var hand0_state : String = "Playing"
 var hand0 : Array
-var hand0_value : int = 0
+var hand0_value : int = 0: 
+	set(new_value):
+		print(new_value)
 @export_enum("Playing", "Standed", "Surrendered", "Doubled", "Busted", "Blackjack")
 var hand1_state : String = "Playing"
 var hand1 : Array
-var hand1_value : int = 0
+var hand1_value : int = 0: 
+	set(new_value):
+		print(new_value)
 @export_enum("Playing", "Standed", "Surrendered", "Doubled", "Busted", "Blackjack")
 var hand2_state : String = "Playing"
 var hand2 : Array
-var hand2_value : int = 0
+var hand2_value : int = 0: 
+	set(new_value):
+		print(new_value)
 @export_enum("Playing", "Standed", "Surrendered", "Doubled", "Busted", "Blackjack")
 var hand3_state : String = "Playing"
 var hand3 : Array
-var hand3_value : int = 0
+var hand3_value : int = 0: 
+	set(new_value):
+		print(new_value)
 
 var state_array : Array = [hand0_state, hand1_state, hand2_state, hand3_state]
 var playing = true
@@ -49,6 +57,17 @@ var playing = true
 var personality : String
 #personality, weight of being chosen
 var personality_list : Array = [["Strategic", 70], ["Coward", 90], ["Noob", 100]]
+
+func _init():
+	hands.append_array(hand0)
+	hands.append_array(hand1)
+	hands.append_array(hand2)
+	hands.append_array(hand3)
+	
+	hand_values.append(hand0_value)
+	hand_values.append(hand1_value)
+	hand_values.append(hand2_value)
+	hand_values.append(hand3_value)
 
 func _process(delta: float) -> void:
 	#defining label text
@@ -66,7 +85,7 @@ func _process(delta: float) -> void:
 	
 	#turn on hand labels if the hands are being used
 	for num_of_hands in hands.size():
-		if hands[num_of_hands].is_empty():
+		if hands[num_of_hands].is_empty() == false:
 			hand_labels[num_of_hands].visible = true
 			value_labels[num_of_hands].visible = true
 	
@@ -91,6 +110,9 @@ func _process(delta: float) -> void:
 			#state.text = "(Busted)"
 
 func _act(acting_hand, acting_hand_value, acting_hand_state):
+	print("0: " + str(hand0_value) + ", 1: " + str(hand0_value) + \
+	", 2: " + str(hand0_value) + ", 3: " + str(hand0_value) + ",")
+	print(acting_hand, acting_hand_value) 
 	if acting_hand_state == "Playing":
 		if acting_hand_value >= 22:
 			_bust(acting_hand)
@@ -120,6 +142,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 					print("Has no aces or pairs")
 					match game.dealer_hand[0][1]:
 						"2":
+							
 							match acting_hand_value:
 								5:
 									_hit(acting_hand)
@@ -156,6 +179,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								21:
 									_stand(acting_hand)
 						"3":
+							
 							match acting_hand_value:
 								5:
 									_hit(acting_hand)
@@ -192,6 +216,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								21:
 									_stand(acting_hand)
 						"4":
+							
 							match acting_hand_value:
 								5:
 									_hit(acting_hand)
@@ -228,6 +253,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								21:
 									_stand(acting_hand)
 						"5":
+							
 							match acting_hand_value:
 								5:
 									_hit(acting_hand)
@@ -264,6 +290,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								21:
 									_stand(acting_hand)
 						"6":
+							
 							match acting_hand_value:
 								5:
 									_hit(acting_hand)
@@ -300,6 +327,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								21:
 									_stand(acting_hand)
 						"7":
+							
 							match acting_hand_value:
 								5:
 									_hit(acting_hand)
@@ -336,6 +364,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								21:
 									_stand(acting_hand)
 						"8":
+							
 							match acting_hand_value:
 								5:
 									_hit(acting_hand)
@@ -372,6 +401,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								21:
 									_stand(acting_hand)
 						"9":
+							
 							match acting_hand_value:
 								5:
 									_hit(acting_hand)
@@ -409,6 +439,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								21:
 									_stand(acting_hand)
 						"10":
+							
 							match acting_hand_value:
 								5:
 									_hit(acting_hand)
@@ -447,6 +478,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								21:
 									_stand(acting_hand)
 						"Jack":
+							
 							match acting_hand_value:
 								5,6:
 									_hit(acting_hand)
@@ -485,6 +517,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								21:
 									_stand(acting_hand)
 						"Queen":
+							
 							match acting_hand_value:
 								5:
 									_hit(acting_hand)
@@ -523,6 +556,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								21:
 									_stand(acting_hand)
 						"King":
+							
 							match acting_hand_value:
 								5:
 									_hit(acting_hand)
@@ -561,6 +595,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								21:
 									_stand(acting_hand)
 						"Ace":
+							
 							match acting_hand_value:
 								5:
 									_hit(acting_hand)
@@ -603,6 +638,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 					print("Has an Ace")
 					match game.dealer_hand[0][1]:
 						"2":
+							
 							match acting_hand_value:
 								20:
 									_stand(acting_hand)
@@ -624,6 +660,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								12:
 									_hit(acting_hand)
 						"3":
+							
 							match acting_hand_value:
 								20:
 									_stand(acting_hand)
@@ -646,6 +683,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								12:
 									_hit(acting_hand)
 						"4":
+							print(acting_hand, acting_hand_value)
 							match acting_hand_value:
 								20:
 									_stand(acting_hand)
@@ -670,6 +708,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								12:
 									_hit(acting_hand)
 						"5":
+							
 							match acting_hand_value:
 								20:
 									_stand(acting_hand)
@@ -696,6 +735,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								12:
 									_hit(acting_hand)
 						"6":
+							
 							match acting_hand_value:
 								20:
 									_stand(acting_hand)
@@ -724,6 +764,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 									#if not allowed, then hit
 									_double_down(acting_hand)
 						"7":
+							
 							match acting_hand_value:
 								20:
 									_stand(acting_hand)
@@ -744,6 +785,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								12:
 									_hit(acting_hand)
 						"8":
+							
 							match acting_hand_value:
 								20:
 									_stand(acting_hand)
@@ -764,6 +806,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								12:
 									_hit(acting_hand)
 						"9":
+							
 							match acting_hand_value:
 								20:
 									_stand(acting_hand)
@@ -784,6 +827,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								12:
 									_hit(acting_hand)
 						"10":
+							
 							match acting_hand_value:
 								20:
 									_stand(acting_hand)
@@ -804,6 +848,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								12:
 									_hit(acting_hand)
 						"Jack":
+							
 							match acting_hand_value:
 								20:
 									_stand(acting_hand)
@@ -824,6 +869,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								12:
 									_hit(acting_hand)
 						"Queen":
+							
 							match acting_hand_value:
 								20:
 									_stand(acting_hand)
@@ -844,6 +890,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								12:
 									_hit(acting_hand)
 						"King":
+							
 							match acting_hand_value:
 								20:
 									_stand(acting_hand)
@@ -864,6 +911,7 @@ func _act(acting_hand, acting_hand_value, acting_hand_state):
 								12:
 									_hit(acting_hand)
 						"Ace":
+							
 							match acting_hand_value:
 								20:
 									_stand(acting_hand)

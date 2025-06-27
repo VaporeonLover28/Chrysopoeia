@@ -121,6 +121,7 @@ offset_bottom = 178.0
 text = "Value: 0"
 
 [node name="state" type="Label" parent="BoxContainer/VBoxContainer/value3"]
+layout_mode = 0
 offset_left = -33.0
 offset_top = 178.0
 offset_right = 7.0
@@ -149,6 +150,7 @@ offset_bottom = 239.0
 text = "Value: 0"
 
 [node name="state" type="Label" parent="BoxContainer/VBoxContainer/value4"]
+layout_mode = 0
 offset_left = -35.0
 offset_top = 249.0
 offset_right = 5.0

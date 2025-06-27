@@ -1,6 +1,6 @@
 extends InteractableObject; class_name GambleSpot
 
-@onready var mat = self.material
+#@onready var mat = self.material
 @onready var world: Node3D = $"../../.."
 @onready var camera: Camera3D = $camera
 @onready var marker: Marker3D = $marker
