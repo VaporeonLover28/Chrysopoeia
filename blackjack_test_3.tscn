@@ -41,10 +41,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
 size = Vector3(32, 1, 18)
 
 [node name="light" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5, 0)
+transform = Transform3D(1, 0, 0, 0, 0.196254, 0.980553, 0, -0.980553, 0.196254, 0, 5, 0)
 light_color = Color(1, 0.637837, 0.399547, 1)
 light_energy = 3.0
 spot_range = 10.0
+spot_angle = 35.0
+
+[node name="light2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.972104, 0.234548, 0, -0.234548, 0.972104, 0, 1.33837, 1.67278)
+light_color = Color(1, 0.637837, 0.399547, 1)
+spot_range = 3.19828
 spot_angle = 35.0
 
 [node name="table" parent="." instance=ExtResource("2_i5tvo")]
@@ -53,7 +59,7 @@ spot_angle = 35.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.890662, 0.854396)
 
 [node name="mago_beta" parent="." instance=ExtResource("4_ylhsq")]
-transform = Transform3D(0.086, 0, 1.50367e-08, 0, 0.02, 0, -1.50367e-08, 0, 0.086, 0, 0.905, 0)
+transform = Transform3D(0.086, 0, 1.50367e-08, 0, 0.02, 0, -1.50367e-08, 0, 0.086, 0.475668, -0.341995, -1.99775)
 script = ExtResource("5_dft26")
 
 [node name="mago_beta2" parent="." instance=ExtResource("4_ylhsq")]
@@ -61,8 +67,10 @@ transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 
 
 [node name="mago_beta3" parent="." instance=ExtResource("4_ylhsq")]
 transform = Transform3D(-0.0273299, 0, -0.198124, 0, 0.2, 0, 0.198124, 0, -0.0273299, 0.408794, 0.415111, -0.652354)
+visible = false
 
 [node name="mago_beta4" parent="." instance=ExtResource("4_ylhsq")]
 transform = Transform3D(0.102079, 0, -0.171988, 0, 0.2, 0, 0.171988, 0, 0.102079, -0.615591, 0.415111, -0.652354)
+visible = false
 
 [editable path="bj_player_test"]

@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
-@onready var camera: Camera3D = $Pivot/Camera
-@onready var pivot: Node3D = $Pivot
+@onready var pivot: Camera3D = $Pivot/Camera
+@onready var camera: Node3D = $Pivot
 @onready var ray_interection: RayCast3D = $Pivot/Camera/RayInterection
 @onready var play_game: Timer = $play_game
 @onready var world_scene = $"../"
