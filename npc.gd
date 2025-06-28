@@ -41,36 +41,33 @@ func _walk_to(target_positon : Vector3):
 func _go_to_interactable_object():
 	is_going_to_interaction = true
 	if nav.is_navigation_finished() == true:
-		targeted_sitting_position = 20
 		is_going_to_interaction = false
 		is_on_interaction = true
 		targeted_position_is_object._interact([self])
 		leave_interaction.start()
-		print("estou jogando")
 		return
-	if targeted_position_is_object._SICSOC(targeted_sitting_position) == true:
-		return
-	else:
-		if targeted_position_is_object._ASAT() == false:
-			var random_choice_of_chair = randi_range(0, targeted_position_is_object.get_child_count() - 1)
-			targeted_position_vector = \
-			targeted_position_is_object.get_node("Sit positions").get_child(random_choice_of_chair).global_position
-			targeted_sitting_position = random_choice_of_chair
+	if is_going_to_interaction == true:
+		if targeted_position_is_object._SICSOC(targeted_sitting_position) == true:
+			return
 		else:
-			idle.start()
-			_walk_to_random(-10, 10, -15.5, 1.5)
-			is_going_to_interaction = false
-	
-	
+			if targeted_position_is_object._ASAT() == false:
+				var random_choice_of_chair = randi_range(0, targeted_position_is_object.get_node("Sit positions").get_child_count() - 1)
+				targeted_position_vector = \
+				targeted_position_is_object.get_node("Sit positions").get_child(random_choice_of_chair).global_position
+				targeted_sitting_position = random_choice_of_chair
+			else:
+				idle.start()
+				_walk_to_random(-10, 10, -15.5, 1.5)
+				is_going_to_interaction = false
+
 func chose_interactable_object(): 
 	idle.stop()
 	targeted_position_is_object = all_interactable_spots.get_children().pick_random()
 	if targeted_position_is_object is GambleSpot:
-		var random_choice_of_chair = randi_range(0, targeted_position_is_object.get_child_count() - 1)
+		var random_choice_of_chair = randi_range(0, targeted_position_is_object.get_node("Sit positions").get_child_count() - 1)
 		targeted_position_vector = \
 		targeted_position_is_object.get_node("Sit positions").get_child(random_choice_of_chair).global_position
 		targeted_sitting_position = random_choice_of_chair
-		print(random_choice_of_chair)
 	else:
 		targeted_position_vector = targeted_position_is_object.global_position
 

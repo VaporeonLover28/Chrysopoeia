@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2w65oiqysl6d"]
+[gd_scene load_steps=5 format=3 uid="uid://d2w65oiqysl6d"]
 
 [ext_resource type="Script" uid="uid://d33jhadxc2lv5" path="res://gamble_spot.gd" id="1_iytcb"]
 [ext_resource type="PackedScene" uid="uid://dbgpivfhrvrfu" path="res://shader_quad.tscn" id="2_aq0k3"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6brvv"]
-albedo_color = Color(0.682353, 0, 1, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_aq0k3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6brvv"]
 
 [node name="Gamble spot" type="Node3D"]
 script = ExtResource("1_iytcb")
@@ -12,12 +13,13 @@ chair_postion_list = Array[Array]([[Vector3(2.2, 0, 0), true, 0], [Vector3(-2.2,
 object_class = "GambleSpot"
 metadata/_custom_type_script = "uid://d3kiv4p05usnv"
 
-[node name="Model" type="Node3D" parent="."]
+[node name="Model" type="StaticBody3D" parent="."]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Model"]
-transform = Transform3D(0.999999, -0.00131698, 0.000820503, 0.00131758, 0.999999, -0.000719085, -0.000819537, 0.000720185, 0.999999, 0, 0, 0)
-use_collision = true
-material = SubResource("StandardMaterial3D_6brvv")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Model"]
+shape = SubResource("BoxShape3D_aq0k3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model"]
+mesh = SubResource("BoxMesh_6brvv")
 
 [node name="camera" type="Camera3D" parent="."]
 

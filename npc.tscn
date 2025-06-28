@@ -20,8 +20,6 @@ one_shot = true
 autostart = true
 
 [node name="nav" type="NavigationAgent3D" parent="."]
-target_desired_distance = 1.1
-path_max_distance = 5.01
 path_postprocessing = 1
 simplify_path = true
 debug_enabled = true

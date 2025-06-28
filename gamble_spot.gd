@@ -3,7 +3,6 @@ extends InteractableObject; class_name GambleSpot
 #@onready var mat = self.material
 @onready var world: Node3D = $"../../.."
 @onready var camera: Camera3D = $camera
-@onready var marker: Marker3D = $marker
 @onready var sit_positions: Node = $"Sit positions"
 #camera transition vars
 var is_pulling : bool = false
@@ -24,10 +23,10 @@ func _ready() -> void:
 		var new_chair_position = Marker3D.new()
 		new_chair_position.position = chair_postion_list[item][0]
 		sit_positions.add_child(new_chair_position)
-		
 # Called when the node enters the scene tree for the first time.
 func _interact_GambleSpot(object_ref):
 	if _ASAT() != true and is_pulling == false:
+			print("estou jogando")
 			#makes player sit
 			#checks for marker with the smallest postion distance to the player so he can sit, removing the spot from the pool
 			chosen_sitting_transition = null
@@ -96,7 +95,7 @@ func _start_game():
 
 #check if the sitting position is taken
 func _SICSOC(choice_of_chair: int):
-	if chair_postion_list[choice_of_chair][1] != false:
+	if chair_postion_list[choice_of_chair][1] == true:
 		return true
 	else:
 		return false

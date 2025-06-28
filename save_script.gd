@@ -14,7 +14,8 @@ func _save_function(world_scene: Node3D, save_file_number: int):
 	var array_obj_interact : Array
 	for item in world_scene.get_node("NavigationRegion3D/All Interactable Spots").get_child_count():
 		array_obj_interact.push_back([world_scene.get_node("NavigationRegion3D/All Interactable Spots").get_child(item).scene_file_path, \
-		world_scene.get_node("NavigationRegion3D/All Interactable Spots").get_child(item).global_position])
+		world_scene.get_node("NavigationRegion3D/All Interactable Spots").get_child(item).global_position, \
+		world_scene.get_node("NavigationRegion3D/All Interactable Spots").get_child(item).rotation])
 	new_config.set_value("Scene", "interactable", array_obj_interact)
 	new_config.set_value("Globalvaribles", "money", Globals.money)
 	new_config.set_value("Player", "position", world_scene.get_node("Player").global_position)

@@ -7,14 +7,13 @@ extends Node3D
 
 func _ready() -> void:
 	var new_config = ConfigFile.new()
-	print(SaveScript.current_savefile_loading + "oi")
-	print($"NavigationRegion3D/All Interactable Spots")
 	if SaveScript.current_savefile_loading != "":
 		var loading = new_config.load(SaveScript.current_savefile_loading)
 		if loading == OK:
 			for item in new_config.get_value("Scene", "interactable object count"):
 				var instantiate_interactable = load(new_config.get_value("Scene", "interactable")[item][0]).instantiate()
 				instantiate_interactable.global_position = new_config.get_value("Scene", "interactable")[item][1]
+				instantiate_interactable.rotation = new_config.get_value("Scene", "interactable")[item][2]
 				all_interactable_spots.add_child(instantiate_interactable)
 			print(new_config.get_value("Player", "position"))
 			player.global_position = new_config.get_value("Player", "position")
@@ -24,8 +23,6 @@ func _ready() -> void:
 				walking_npcs.add_child(instantiate_npc)
 		else:
 			return
-	else:
-		print("não loudou")
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("z"):
