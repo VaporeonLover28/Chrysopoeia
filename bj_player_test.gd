@@ -3,6 +3,8 @@ extends CharacterBody3D
 @onready var camera: Camera3D = $Pivot/Camera
 @onready var pivot: Node3D = $Pivot
 @onready var ray_interection: RayCast3D = $Pivot/Camera/RayInterection
+@onready var ui: Control = $"../CanvasLayer/Blackjack_UI_test"
+@onready var game: Node3D = $".."
 
 @export var ZOOM_SPEED : int = 2
 @export var mouse_sensitivity: float = 0.005
@@ -26,6 +28,25 @@ var zooming := false
 	#camera.current = true
 
 func _process(delta: float) -> void:
+	
+	if Input.is_action_just_pressed("space"):
+		ui._slide()
+	
+	if Input.is_action_just_pressed("e"):
+		game._call_player()
+	
+	if Input.is_action_just_pressed("s"):
+		game._shuffle_deck()
+	
+	if Input.is_action_just_pressed("f"):
+		game._pass_turn()
+	
+	if Input.is_action_just_pressed("r"):
+		game._restart_game()
+	
+	if Input.is_action_just_pressed("q"):
+		game._quit_game()
+	
 	move_and_slide()
 
 func _unhandled_input(event): #event representa o evento do input

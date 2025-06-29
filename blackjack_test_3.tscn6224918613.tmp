@@ -60,6 +60,12 @@ spot_angle = 35.0
 
 [node name="bj_player_test" parent="." instance=ExtResource("3_i5tvo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.890662, 0.854396)
+ZOOM_SPEED = null
+mouse_sensitivity = null
+speed = null
+run_speed = null
+bob_freq = null
+bob_amp = null
 
 [node name="mago_beta" parent="." instance=ExtResource("4_ylhsq")]
 transform = Transform3D(0.086, 0, 1.50367e-08, 0, 0.02, 0, -1.50367e-08, 0, 0.086, 0.475668, -0.341995, -1.99775)

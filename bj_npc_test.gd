@@ -18,34 +18,27 @@ $BoxContainer/VBoxContainer/value4/state,
 @onready var label_name: Label = $BoxContainer/VBoxContainer/name/Label
 @onready var state: Label = $BoxContainer/VBoxContainer/state/Label
 
-var hands : Array = []
-var hand_values : Array = []
 @export_enum("Playing", "Standed", "Surrendered", "Doubled", "Busted", "Blackjack")
 var hand0_state : String = "Playing"
 var hand0 : Array
-var hand0_value : int = 0: 
-	set(new_value):
-		print(new_value)
+var hand0_value : int = 0
 @export_enum("Playing", "Standed", "Surrendered", "Doubled", "Busted", "Blackjack")
 var hand1_state : String = "Playing"
 var hand1 : Array
-var hand1_value : int = 0: 
-	set(new_value):
-		print(new_value)
+var hand1_value : int = 0
 @export_enum("Playing", "Standed", "Surrendered", "Doubled", "Busted", "Blackjack")
 var hand2_state : String = "Playing"
 var hand2 : Array
-var hand2_value : int = 0: 
-	set(new_value):
-		print(new_value)
+var hand2_value : int = 0
 @export_enum("Playing", "Standed", "Surrendered", "Doubled", "Busted", "Blackjack")
 var hand3_state : String = "Playing"
 var hand3 : Array
-var hand3_value : int = 0: 
-	set(new_value):
-		print(new_value)
+var hand3_value : int = 0
 
+var hands : Array = [hand0, hand1, hand2, hand3]
+var hand_values : Array = [hand0_value, hand1_value, hand2_value, hand3_value]
 var state_array : Array = [hand0_state, hand1_state, hand2_state, hand3_state]
+
 var playing = true
 #var standed = false
 #var busted = false
@@ -58,22 +51,11 @@ var personality : String
 #personality, weight of being chosen
 var personality_list : Array = [["Strategic", 70], ["Coward", 90], ["Noob", 100]]
 
-func _init():
-	hands.append_array(hand0)
-	hands.append_array(hand1)
-	hands.append_array(hand2)
-	hands.append_array(hand3)
-	
-	hand_values.append(hand0_value)
-	hand_values.append(hand1_value)
-	hand_values.append(hand2_value)
-	hand_values.append(hand3_value)
-
 func _process(delta: float) -> void:
 	#defining label text
 	for labels in hand_labels.size():
 		hand_labels[labels].text = str(hands[labels])
-	
+
 	for labels in value_labels.size():
 		value_labels[labels].text = "Value: " + str(hand_values[labels])
 	
