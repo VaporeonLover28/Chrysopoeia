@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cr0s4q071jmdo"]
+[gd_scene load_steps=13 format=3 uid="uid://cr0s4q071jmdo"]
 
 [ext_resource type="Texture2D" uid="uid://bm5mkjkryluex" path="res://Assets/grid_black_512x512.png" id="1_j8do0"]
 [ext_resource type="Script" uid="uid://08rexs5tbgee" path="res://blackjack_test_3.gd" id="1_psklc"]
@@ -22,6 +22,10 @@ background_mode = 2
 sky = SubResource("Sky_ylhsq")
 tonemap_mode = 2
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_psklc"]
+vertices = PackedVector3Array(-4.5, 0.5, -9.535, -4.5, 0.5, 1.965, 4.5, 0.5, 1.965, 4.5, 0.5, -9.535)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_psklc"]
 albedo_texture = ExtResource("1_j8do0")
 uv1_triplanar = true
@@ -33,15 +37,18 @@ script = ExtResource("1_psklc")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_dft26")
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_psklc")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 10.965)
 material_override = SubResource("StandardMaterial3D_psklc")
 use_collision = true
 collision_mask = 14
 
-[node name="floor" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
-size = Vector3(32, 1, 18)
+[node name="floor" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.7348)
+size = Vector3(10, 1, 12.5304)
 
 [node name="light" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.196254, 0.980553, 0, -0.980553, 0.196254, 0, 5, 0)
@@ -58,23 +65,15 @@ spot_angle = 35.0
 
 [node name="table" parent="." instance=ExtResource("2_i5tvo")]
 
+[node name="chair1" type="Marker3D" parent="table"]
+transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0, 0.415, -0.652)
+
 [node name="bj_player_test" parent="." instance=ExtResource("3_i5tvo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.890662, 0.854396)
 
 [node name="mago_beta" parent="." instance=ExtResource("4_ylhsq")]
 transform = Transform3D(0.086, 0, 1.50367e-08, 0, 0.02, 0, -1.50367e-08, 0, 0.086, 0.475668, -0.341995, -1.99775)
 script = ExtResource("5_dft26")
-
-[node name="mago_beta2" parent="." instance=ExtResource("4_ylhsq")]
-transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, -0.0351001, 0.415111, -0.652354)
-
-[node name="mago_beta3" parent="." instance=ExtResource("4_ylhsq")]
-transform = Transform3D(-0.0273299, 0, -0.198124, 0, 0.2, 0, 0.198124, 0, -0.0273299, 0.408794, 0.415111, -0.652354)
-visible = false
-
-[node name="mago_beta4" parent="." instance=ExtResource("4_ylhsq")]
-transform = Transform3D(0.102079, 0, -0.171988, 0, 0.2, 0, 0.171988, 0, 0.102079, -0.615591, 0.415111, -0.652354)
-visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
