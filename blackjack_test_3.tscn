@@ -90,7 +90,7 @@ script = ExtResource("5_dft26")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Blackjack_UI_test" parent="CanvasLayer" instance=ExtResource("6_dft26")]
-offset_top = 720.0
-offset_bottom = 152.0
+offset_top = 650.0
+offset_bottom = 82.0
 
 [editable path="bj_player_test"]

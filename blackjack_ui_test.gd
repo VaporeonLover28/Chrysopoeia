@@ -24,7 +24,7 @@ func _slide_up():
 	tween.set_ease(Tween.EASE_OUT)
 	#o tween em si
 	#tweena a posição da barra até o topo em meio segundo
-	tween.tween_property(self, "position", Vector2(0, 640), 0.5)
+	tween.tween_property(self, "position", Vector2(0, 570), 0.5)
 func _slide_down():
 	is_up = false
 	#para a barra aonde ela tá ao parar o tween de ir pra baixo
@@ -39,4 +39,4 @@ func _slide_down():
 	tween.set_ease(Tween.EASE_OUT)
 	#o tween em si
 	#tweena a posição da barra até fora da tela em meio segundo
-	tween.tween_property(self, "position", Vector2(0, 720), 0.5)
+	tween.tween_property(self, "position", Vector2(0, 650), 0.5)
