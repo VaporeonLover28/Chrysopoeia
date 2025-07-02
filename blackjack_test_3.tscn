@@ -66,24 +66,24 @@ spot_angle = 35.0
 [node name="table" parent="." instance=ExtResource("2_i5tvo")]
 
 [node name="chair1" type="Marker3D" parent="table"]
-transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0, 0.415, -0.652)
+transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0, 0.415, -0.752299)
 
 [node name="chair2" type="Marker3D" parent="table"]
-transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, -0.608198, 0.415, -0.652)
+transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, -0.747678, 0.415, -0.750943)
 
 [node name="chair3" type="Marker3D" parent="table"]
-transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0.465266, 0.415, -0.652)
+transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0.7531, 0.415, -0.746877)
 
 [node name="chair4" type="Marker3D" parent="table"]
-transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0.980824, 0.415, -0.38115)
+transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 1.24784, 0.415, -0.00570814)
 
 [node name="chair5" type="Marker3D" parent="table"]
-transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, -1.1074, 0.415, -0.38115)
+transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, -1.24972, 0.415, -0.00299716)
 
 [node name="bj_player_test" parent="." instance=ExtResource("3_i5tvo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.890662, 0.854396)
 
-[node name="mago_beta" parent="." instance=ExtResource("4_ylhsq")]
+[node name="spinnin mage" parent="." instance=ExtResource("4_ylhsq")]
 transform = Transform3D(0.086, 0, 1.50367e-08, 0, 0.02, 0, -1.50367e-08, 0, 0.086, 0.475668, -0.341995, -1.99775)
 script = ExtResource("5_dft26")
 

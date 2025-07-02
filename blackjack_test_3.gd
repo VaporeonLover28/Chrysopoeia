@@ -4,6 +4,7 @@ extends Node3D
 @onready var table_node = $table
 
 var table : Array = []
+var round_started : bool = false
 var playing_npcs : Array = []
 
 func _ready():
@@ -25,13 +26,15 @@ func _call_player():
 	add_child(new_npc)
 	for chairs in table.size():
 		if table[chairs][1] == 0 and new_npc.assigned_chair == false:
-			print("Chair Position: " + str(table[chairs][0]))
+			print("Picked chair " + str(chairs + 1) + " at position " + str(table[chairs][0]))
 			new_npc._go_to_table(table[chairs][0])
 			table[chairs][1] = 1
 			new_npc.assigned_chair = true
+		elif table[chairs][1] != 0:
+			print("Chair " + str(chairs + 1) + " is taken")
 		else:
-			pass
-	print("Called Player")
+			print("Already picked another chair")
+	#print("Called Player")
 
 func _shuffle_deck():
 	print("Shuffled Deck")
