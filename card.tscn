@@ -1,0 +1,135 @@
+[gd_scene load_steps=7 format=3 uid="uid://bo6gr1h1ae700"]
+
+[ext_resource type="Script" uid="uid://bvp0d2xuuac0q" path="res://card.gd" id="1_q5obu"]
+[ext_resource type="PackedScene" uid="uid://cx3jvymnyeawf" path="res://Assets/Originals/CartaCERTA.glb" id="1_rjlel"]
+[ext_resource type="Material" uid="uid://cweg8ys1ftbhf" path="res://albedo_black.tres" id="2_q5obu"]
+
+[sub_resource type="TextMesh" id="TextMesh_e484p"]
+material = ExtResource("2_q5obu")
+text = "A"
+depth = 0.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rjlel"]
+material = ExtResource("2_q5obu")
+size = Vector2(0.001, 0.085)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_q5obu"]
+material = ExtResource("2_q5obu")
+size = Vector2(0.05, 0.001)
+
+[node name="card" type="Node3D"]
+script = ExtResource("1_q5obu")
+
+[node name="cardmesh" parent="." instance=ExtResource("1_rjlel")]
+
+[node name="rank1" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.16, 0, 0, 0, -6.99382e-09, 0.16, 0, -0.16, -6.99382e-09, -0.04, 0.007, -0.063)
+mesh = SubResource("TextMesh_e484p")
+
+[node name="rank2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.16, 2.41593e-08, 1.05604e-15, 0, -6.99382e-09, 0.16, 2.41593e-08, 0.16, 6.99382e-09, 0.04, 0.007, 0.068)
+mesh = SubResource("TextMesh_e484p")
+
+[node name="cardinfo" type="Node3D" parent="."]
+
+[node name="box" type="Node3D" parent="cardinfo"]
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 0, 0, 0.00186342)
+
+[node name="wall1" type="MeshInstance3D" parent="cardinfo/box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025, 0.007, 0)
+mesh = SubResource("PlaneMesh_rjlel")
+skeleton = NodePath("../../..")
+
+[node name="wall2" type="MeshInstance3D" parent="cardinfo/box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025, 0.007, 0)
+mesh = SubResource("PlaneMesh_rjlel")
+skeleton = NodePath("../../..")
+
+[node name="wall3" type="MeshInstance3D" parent="cardinfo/box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.007, -0.0420392)
+mesh = SubResource("PlaneMesh_q5obu")
+
+[node name="wall4" type="MeshInstance3D" parent="cardinfo/box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.007, 0.0424002)
+mesh = SubResource("PlaneMesh_q5obu")
+
+[node name="suitmarkers" type="Node3D" parent="cardinfo"]
+
+[node name="rankmarker1" type="Marker3D" parent="cardinfo/suitmarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0356039, 0, -0.0299102)
+gizmo_extents = 0.03
+
+[node name="rankmarker2" type="Marker3D" parent="cardinfo/suitmarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0364486, 0, 0.0371731)
+gizmo_extents = 0.03
+
+[node name="boxmarker1" type="Marker3D" parent="cardinfo/suitmarkers"]
+gizmo_extents = 0.03
+
+[node name="boxmarker2" type="Marker3D" parent="cardinfo/suitmarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.03)
+gizmo_extents = 0.03
+
+[node name="boxmarker3" type="Marker3D" parent="cardinfo/suitmarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.03)
+gizmo_extents = 0.03
+
+[node name="boxmarker4" type="Marker3D" parent="cardinfo/suitmarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0161497, 0, 0.03)
+gizmo_extents = 0.03
+
+[node name="boxmarker5" type="Marker3D" parent="cardinfo/suitmarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016, 0, 0.03)
+gizmo_extents = 0.03
+
+[node name="boxmarker6" type="Marker3D" parent="cardinfo/suitmarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016, 0, -0.03)
+gizmo_extents = 0.03
+
+[node name="boxmarker7" type="Marker3D" parent="cardinfo/suitmarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016, 0, -0.03)
+gizmo_extents = 0.03
+
+[node name="boxmarker8" type="Marker3D" parent="cardinfo/suitmarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016, 0, 0)
+gizmo_extents = 0.03
+
+[node name="boxmarker9" type="Marker3D" parent="cardinfo/suitmarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016, 0, 0)
+gizmo_extents = 0.03
+
+[node name="boxmarker10" type="Marker3D" parent="cardinfo/suitmarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0204977)
+gizmo_extents = 0.03
+
+[node name="boxmarker11" type="Marker3D" parent="cardinfo/suitmarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.02)
+gizmo_extents = 0.03
+
+[node name="boxmarker12" type="Marker3D" parent="cardinfo/suitmarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016, 0, -0.015)
+gizmo_extents = 0.03
+
+[node name="boxmarker13" type="Marker3D" parent="cardinfo/suitmarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016, 0, 0.015)
+gizmo_extents = 0.03
+
+[node name="boxmarker14" type="Marker3D" parent="cardinfo/suitmarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016, 0, 0.03)
+gizmo_extents = 0.03
+
+[node name="boxmarker15" type="Marker3D" parent="cardinfo/suitmarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016, 0, -0.03)
+gizmo_extents = 0.03
+
+[node name="boxmarker16" type="Marker3D" parent="cardinfo/suitmarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016, 0, -0.015)
+gizmo_extents = 0.03
+
+[node name="boxmarker17" type="Marker3D" parent="cardinfo/suitmarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016, 0, 0.015)
+gizmo_extents = 0.03
+
+[node name="boxmarker18" type="Marker3D" parent="cardinfo/suitmarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016, 0, 0.03)
+gizmo_extents = 0.03
