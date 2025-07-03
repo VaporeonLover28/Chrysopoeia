@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cd8xtd14a7jrf"]
+
+[ext_resource type="Shader" uid="uid://cgt5ktxyoiafx" path="res://build_shader.gdshader" id="1_fbx7l"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_fbx7l")
+shader_parameter/redmulti = 1.0
+shader_parameter/greenmulti = 1.0
+shader_parameter/bluemulti = 1.0

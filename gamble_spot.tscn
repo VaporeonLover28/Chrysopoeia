@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://d33jhadxc2lv5" path="res://gamble_spot.gd" id="1_iytcb"]
 [ext_resource type="PackedScene" uid="uid://dbgpivfhrvrfu" path="res://shader_quad.tscn" id="2_aq0k3"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_aq0k3"]
-
 [sub_resource type="BoxMesh" id="BoxMesh_6brvv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aq0k3"]
 
 [node name="Gamble spot" type="Node3D"]
 script = ExtResource("1_iytcb")
@@ -15,11 +15,11 @@ metadata/_custom_type_script = "uid://d3kiv4p05usnv"
 
 [node name="Model" type="StaticBody3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Model"]
-shape = SubResource("BoxShape3D_aq0k3")
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model"]
 mesh = SubResource("BoxMesh_6brvv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Model"]
+shape = SubResource("BoxShape3D_aq0k3")
 
 [node name="camera" type="Camera3D" parent="."]
 
