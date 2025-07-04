@@ -3,8 +3,16 @@
 [ext_resource type="Shader" uid="uid://cgt5ktxyoiafx" path="res://build_shader.gdshader" id="1_fbx7l"]
 
 [resource]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_fbx7l")
-shader_parameter/redmulti = 1.0
+shader_parameter/redmulti = 0.0
 shader_parameter/greenmulti = 1.0
-shader_parameter/bluemulti = 1.0
+shader_parameter/bluemulti = 0.0
+shader_parameter/time = 0.0
+shader_parameter/dir = Vector2(0, 0)
+shader_parameter/emission = Vector3(0, 0, 0)
+shader_parameter/alpha = 0.0
+shader_parameter/freq = 1.0
+shader_parameter/amp = 3.0
+shader_parameter/offset = 2.21

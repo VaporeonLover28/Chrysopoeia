@@ -63,7 +63,7 @@ func _camera_transition(player) -> void:
 	#camera.current = true
 
 func _physics_process(delta: float) -> void:
-	if is_pulling == true:
+	if is_pulling == true and player_ref != null:
 		player_ref.camera.look_at($CSGBox3D.global_position)
 		#_pull_camera()
 	if Input.is_action_just_pressed("e") and player_is_sitting == true:

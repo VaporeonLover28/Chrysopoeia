@@ -16,6 +16,7 @@ const BUILD_SHADER = preload("res://build_material.tres")
 var is_on_building_mode: bool = false
 var current_object_being_purchase: Resource
 var can_build : bool
+var object_rotation: Vector3
 
 #headbob vars
 @export var bob_freq : float = 2
@@ -87,7 +88,6 @@ func _physics_process(delta: float) -> void:
 		
 	if is_on_building_mode == true:
 		lock_model_into_build_spot()
-		ray_builder.get_collider()
 	
 	move_and_slide()
 
@@ -118,25 +118,31 @@ func _on_play_game_timeout() -> void:
 	get_tree().change_scene_to_file("res://blackjack_test_2.tscn")
 	
 func _start_bulding_phase(object_to_be_purchase: String):
+	object_rotation = Vector3.ZERO
 	current_object_being_purchase = load(object_to_be_purchase)
 	var current_object_being_purchase_instantiate = current_object_being_purchase.instantiate()
 	var instantiate_model = \
 	current_object_being_purchase_instantiate.get_node("Model").duplicate()
-	var instantiate_colission = instantiate_model.get_child(-1).duplicate()
+	var new_instance_mesh = MeshInstance3D.new()
+	new_instance_mesh.mesh = instantiate_model.get_node("MeshInstance3D").mesh.duplicate()
+	instantiate_model.get_node("MeshInstance3D").queue_free()
+	new_instance_mesh.mesh.material = BUILD_SHADER
+	new_instance_mesh.mesh.material.set_shader_parameter("bluemulti", 0.0)
+	instantiate_model.add_child(new_instance_mesh)
+	var instantiate_colission = instantiate_model.get_node("CollisionShape3D").duplicate()
 	instantiate_model.get_node("CollisionShape3D").queue_free()
 	var new_area3d = Area3D.new()
 	new_area3d.collision_layer = 2
-	#instantiate_model.get_node("MeshInstance3D").mesh.material = BUILD_SHADER
 	instantiate_model.add_child(new_area3d)
 	instantiate_model.get_child(-1).add_child(instantiate_colission)
-	instantiate_model.position = ray_builder.position - Vector3(0,0,3)
+	instantiate_model.position = ray_builder.position + Vector3(0,0,-3)
 	ray_builder.add_child(instantiate_model)
 	current_object_being_purchase_instantiate.queue_free()
 	is_on_building_mode = true
 	
 	
 func _rotate_bulding_object(rotation_direction: int):
-	ray_builder.get_child(0).rotate_y(8 * rotation_direction)
+	object_rotation += Vector3(0,8,0) * rotation_direction
 	
 func _cancel_build():
 	is_on_building_mode = false
@@ -163,20 +169,33 @@ func _sell():
 func lock_model_into_build_spot():
 	if ray_builder.get_collider() != null \
 	and ray_builder.get_collider().get_name() == "Area build spot"\
+	and ray_builder.get_collider().is_in_group(ray_builder.get_node("Model").get_groups()[0])\
 	and ray_builder.get_node("Model").get_child(-1).has_overlapping_bodies() == false:
 		ray_builder.get_child(0).global_position = ray_builder.get_collider().get_parent().global_position
+		ray_builder.get_child(0).rotation = ray_builder.get_child(0).rotation  + ray_builder.get_collider().get_parent().rotation
 		can_build = true
-		#ray_builder.get_node("Model").get_node("MeshInstance3D").mesh.material.set_shader_parameter("greenmulti", 1.0)
-		print("locked")
+		ray_builder.get_node("Model").get_child(0).mesh.material.set_shader_parameter("greenmulti", 1.0)
+		ray_builder.get_node("Model").get_child(0).mesh.material.set_shader_parameter("redmulti", 0.0)
+		ray_builder.get_node("Model").top_level = true
+		ray_builder.get_node("Model").rotation = object_rotation + ray_builder.get_collider().get_parent().rotation
+		
+		
 	elif ray_builder.get_collider() != null \
-	and ray_builder.get_collider().get_name() == "Area build spot" \
+	and ray_builder.get_collider().get_name() == "Area build spot"\
+	and ray_builder.get_collider().is_in_group(ray_builder.get_node("Model").get_groups()[0])\
 	and ray_builder.get_node("Model").get_child(-1).has_overlapping_bodies() == true:
 		ray_builder.get_child(0).global_position = ray_builder.get_collider().get_parent().global_position
 		can_build = false
-		#ray_builder.get_node("Model").get_node("MeshInstance3D").mesh.material.set_shader_parameter("redmulti", 1.0)
-		print("locked but not buildable")
+		ray_builder.get_node("Model").get_child(0).mesh.material.set_shader_parameter("redmulti", 1.0)
+		ray_builder.get_node("Model").get_child(0).mesh.material.set_shader_parameter("greenmulti", 0.0)
+		ray_builder.get_node("Model").top_level = true
+		ray_builder.get_node("Model").rotation = object_rotation + ray_builder.get_collider().get_parent().rotation
+	
 	elif ray_builder.get_collider() == null:
 		ray_builder.get_child(0).position = ray_builder.position + Vector3(0,0,-3)
 		can_build = false
-		#ray_builder.get_node("Model").get_node("MeshInstance3D").mesh.material.set_shader_parameter("redmulti", 1.0)
-		print("not locked")
+		ray_builder.get_node("Model").get_child(0).mesh.material.set_shader_parameter("redmulti", 1.0)
+		ray_builder.get_node("Model").get_child(0).mesh.material.set_shader_parameter("greenmulti", 0.0)
+		ray_builder.get_node("Model").top_level = false
+		ray_builder.get_node("Model").rotation = ray_builder.rotation
+		object_rotation = Vector3.ZERO
