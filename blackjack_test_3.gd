@@ -1,13 +1,34 @@
 extends Node3D
 
 @onready var npc = preload("res://blackjack_npc.tscn")
+@onready var card = preload("res://card.tscn")
 @onready var table_node = $table
+@onready var deck_node: Node3D = $deck
 
 var table : Array = []
 var round_started : bool = false
 var playing_npcs : Array = []
 
+var standard_deck : Array = [
+	["Hearts", "A"], ["Diamonds", "A"], ["Clubs", "A"], ["Spades", "A"], 
+	["Hearts", "2"], ["Diamonds", "2"], ["Clubs", "2"], ["Spades", "2"], 
+	["Hearts", "3"], ["Diamonds", "3"], ["Clubs", "3"], ["Spades", "3"], 
+	["Hearts", "4"], ["Diamonds", "4"], ["Clubs", "4"], ["Spades", "4"], 
+	["Hearts", "5"], ["Diamonds", "5"], ["Clubs", "5"], ["Spades", "5"], 
+	["Hearts", "6"], ["Diamonds", "6"], ["Clubs", "6"], ["Spades", "6"],  
+	["Hearts", "7"], ["Diamonds", "7"], ["Clubs", "7"], ["Spades", "7"], 
+	["Hearts", "8"], ["Diamonds", "8"], ["Clubs", "8"], ["Spades", "8"], 
+	["Hearts", "9"], ["Diamonds", "9"], ["Clubs", "9"], ["Spades", "9"], 
+	["Hearts", "10"], ["Diamonds", "10"], ["Clubs", "10"], ["Spades", "10"], 
+	["Hearts", "J"], ["Diamonds", "J"], ["Clubs", "J"], ["Spades", "J"], 
+	["Hearts", "Q"], ["Diamonds", "Q"], ["Clubs", "Q"], ["Spades", "Q"], 
+	["Hearts", "K"], ["Diamonds", "K"], ["Clubs", "K"], ["Spades", "K"]
+]
+
+var deck = []
+
 func _ready():
+	_instantiate_cards()
 	#adds a new chair in the table array
 	for chairs in table_node.get_child_count():
 		#excludes the table mesh from chair count
@@ -16,6 +37,17 @@ func _ready():
 			table.append([table_node.get_child(chairs).position, 0])
 			#print("New Chair, pos " + str(table[chairs - 1][0]))
 			#print(table)
+
+func _instantiate_cards():
+	for instance in 52:
+		print("Card number " + str(instance))
+		var new_card = card.instantiate()
+		deck.push_back(new_card)
+		new_card.position.x = float(deck.find(new_card)) / 52 
+		new_card.position.y = float(deck.find(new_card)) / 1048 
+		new_card.name = "card" + str(instance)
+		deck_node.add_child(new_card)
+		new_card._change_values(standard_deck[instance][0], standard_deck[instance][1])
 
 func _call_player():
 	#instantiate new npc away from table (visual effect for testing)

@@ -1,5 +1,7 @@
 extends MeshInstance3D
 
+@export var enabled : bool
+
 func _ready() -> void:
-	#visible = true
-	pass
+	if enabled:
+		visible = true

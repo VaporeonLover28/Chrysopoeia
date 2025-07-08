@@ -80,6 +80,9 @@ transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 
 [node name="chair5" type="Marker3D" parent="table"]
 transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, -1.24972, 0.415, -0.00299716)
 
+[node name="deck" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54688, 0.887299, 0.234632)
+
 [node name="bj_player_test" parent="." instance=ExtResource("3_i5tvo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.890662, 0.854396)
 
