@@ -10,15 +10,15 @@ var round_started : bool = false
 var playing_npcs : Array = []
 
 var standard_deck : Array = [
-	["Hearts", "A"], ["Diamonds", "A"], ["Clubs", "A"], ["Spades", "A"], 
-	["Hearts", "2"], ["Diamonds", "2"], ["Clubs", "2"], ["Spades", "2"], 
-	["Hearts", "3"], ["Diamonds", "3"], ["Clubs", "3"], ["Spades", "3"], 
-	["Hearts", "4"], ["Diamonds", "4"], ["Clubs", "4"], ["Spades", "4"], 
-	["Hearts", "5"], ["Diamonds", "5"], ["Clubs", "5"], ["Spades", "5"], 
-	["Hearts", "6"], ["Diamonds", "6"], ["Clubs", "6"], ["Spades", "6"],  
-	["Hearts", "7"], ["Diamonds", "7"], ["Clubs", "7"], ["Spades", "7"], 
-	["Hearts", "8"], ["Diamonds", "8"], ["Clubs", "8"], ["Spades", "8"], 
-	["Hearts", "9"], ["Diamonds", "9"], ["Clubs", "9"], ["Spades", "9"], 
+	["Hearts", "Ace", "A"], ["Diamonds", "Ace", "A"], ["Clubs", "Ace", "A"], ["Spades", "Ace", "A"], 
+	["Hearts", "Two", "2"], ["Diamonds", "Two", "2"], ["Clubs", "Two", "2"], ["Spades", "Two", "2"], 
+	["Hearts", "Three", "3"], ["Diamonds", "Three", "3"], ["Clubs", "Three", "3"], ["Spades", "Three", "3"], 
+	["Hearts", "Four", "4"], ["Diamonds", "Four", "4"], ["Clubs", "Four", "4"], ["Spades", "Four", "4"], 
+	["Hearts", "Five", "5"], ["Diamonds", "Five", "5"], ["Clubs", "Five", "5"], ["Spades", "Five", "5"], 
+	["Hearts", "Six", "6"], ["Diamonds", "Six", "6"], ["Clubs", "Six", "6"], ["Spades", "Six", "6"],  
+	["Hearts", "Seven", "7"], ["Diamonds", "Seven", "7"], ["Clubs", "Seven", "7"], ["Spades", "Seven", "7"], 
+	["Hearts", "Eight", "8"], ["Diamonds", "Eight", "8"], ["Clubs", "Eight", "8"], ["Spades", "Eight", "8"], 
+	["Hearts", "Nine", "9"], ["Diamonds", "Nine", "9"], ["Clubs", "Nine", "9"], ["Spades", "Nine", "9"], 
 	["Hearts", "10"], ["Diamonds", "10"], ["Clubs", "10"], ["Spades", "10"], 
 	["Hearts", "J"], ["Diamonds", "J"], ["Clubs", "J"], ["Spades", "J"], 
 	["Hearts", "Q"], ["Diamonds", "Q"], ["Clubs", "Q"], ["Spades", "Q"], 
@@ -46,8 +46,10 @@ func _instantiate_cards():
 		new_card.position.x = float(deck.find(new_card)) / 52 
 		new_card.position.y = float(deck.find(new_card)) / 1048 
 		new_card.name = "card" + str(instance)
+		new_card.chosen_suit = standard_deck[instance][0]
+		new_card.chosen_rank = standard_deck[instance][1]
+		new_card.chosen_value = standard_deck[instance][2]
 		deck_node.add_child(new_card)
-		new_card._change_values(standard_deck[instance][0], standard_deck[instance][1])
 
 func _call_player():
 	#instantiate new npc away from table (visual effect for testing)
