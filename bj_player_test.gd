@@ -33,19 +33,19 @@ func _process(delta: float) -> void:
 		ui._slide()
 	
 	if Input.is_action_just_pressed("e"):
-		game._call_player()
+		game.call_player()
 	
 	if Input.is_action_just_pressed("s"):
-		game._shuffle_deck()
+		game.shuffle_deck()
 	
 	if Input.is_action_just_pressed("f"):
-		game._pass_turn()
+		game.pass_turn()
 	
 	if Input.is_action_just_pressed("r"):
-		game._restart_game()
+		game.restart_game()
 	
 	if Input.is_action_just_pressed("q"):
-		game._quit_game()
+		game.quit_game()
 	
 	move_and_slide()
 

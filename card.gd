@@ -6,7 +6,7 @@ extends Node3D
 "10", "J", "Q", "K") var value : String = "A"
 @export_enum("Clubs", "Hearts", "Spades", "Diamonds") var suit : String = "Spades"
 
-@onready var texture: Sprite3D = $texture
+@onready var card_texture: Sprite3D = $card_texture
 
 var chosen_rank : String
 var chosen_value : String
@@ -17,9 +17,8 @@ func _change_values(new_rank, new_suit, new_value):
 	rank = new_rank
 	suit = new_suit
 	value = new_value
-	texture.texture = load("res://Assets/card_textures/" + str(rank.to_lower()) +"_of_" + str(suit.to_lower()) + ".png")
-	print("Changed to " + str(rank.to_lower()) + " of " + str(suit.to_lower()))
-	#Updates the card visuals to the new card values
+	$card_texture.set_texture(load("res://Assets/card_textures/" + str(rank.to_lower()) +"_of_" + str(suit.to_lower()) + ".png"))
+	#print("Changed to " + str(rank.to_lower()) + " of " + str(suit.to_lower()))
 
 func _on_tree_entered() -> void:
 	_change_values(chosen_rank, chosen_suit, chosen_value)
