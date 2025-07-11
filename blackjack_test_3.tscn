@@ -96,4 +96,87 @@ script = ExtResource("5_dft26")
 offset_top = 650.0
 offset_bottom = 82.0
 
+[node name="gamecontrol" type="Panel" parent="CanvasLayer"]
+offset_left = 709.0
+offset_right = 1152.0
+offset_bottom = 148.0
+
+[node name="player0" type="RichTextLabel" parent="CanvasLayer/gamecontrol"]
+layout_mode = 0
+offset_left = 71.0
+offset_right = 142.0
+offset_bottom = 149.0
+theme_override_font_sizes/normal_font_size = 10
+text = "Player X
+AI: 
+Hand: [
+
+]"
+
+[node name="player1" type="RichTextLabel" parent="CanvasLayer/gamecontrol"]
+layout_mode = 0
+offset_left = 142.0
+offset_right = 213.0
+offset_bottom = 149.0
+theme_override_font_sizes/normal_font_size = 10
+text = "Player X
+AI: 
+Hand: [
+
+]"
+
+[node name="player2" type="RichTextLabel" parent="CanvasLayer/gamecontrol"]
+layout_mode = 0
+offset_left = 213.0
+offset_right = 284.0
+offset_bottom = 149.0
+theme_override_font_sizes/normal_font_size = 10
+text = "Player X
+AI: 
+Hand: [
+
+]"
+
+[node name="player3" type="RichTextLabel" parent="CanvasLayer/gamecontrol"]
+layout_mode = 0
+offset_left = 284.0
+offset_right = 355.0
+offset_bottom = 149.0
+theme_override_font_sizes/normal_font_size = 10
+text = "Player X
+AI: 
+Hand: [
+
+]"
+
+[node name="player4" type="RichTextLabel" parent="CanvasLayer/gamecontrol"]
+layout_mode = 0
+offset_left = 355.0
+offset_right = 426.0
+offset_bottom = 149.0
+theme_override_font_sizes/normal_font_size = 10
+text = "Player X
+AI: 
+Hand: [
+
+]"
+
+[node name="round" type="Label" parent="CanvasLayer/gamecontrol"]
+layout_mode = 0
+offset_left = 363.0
+offset_top = 125.0
+offset_right = 428.0
+offset_bottom = 148.0
+text = "Round 0"
+
+[node name="dealer" type="RichTextLabel" parent="CanvasLayer/gamecontrol"]
+layout_mode = 0
+offset_right = 71.0
+offset_bottom = 149.0
+theme_override_font_sizes/normal_font_size = 10
+text = "Dealer
+Hand: [
+
+]"
+
 [editable path="bj_player_test"]

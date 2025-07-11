@@ -1,9 +1,15 @@
 extends CharacterBody3D
 
 @onready var nav: NavigationAgent3D = $nav
+@onready var hand_marker: Marker3D = $hand
+
+@export_enum("Pleb", "Mage", "Guard", "Noble", "Joker" ) var type : String = "Noble"
 
 var assigned_chair : bool = false
 var is_sat_down : bool = false
+
+var assigned_gc_label : RichTextLabel
+var hand1 : Array = []
 
 func _process(delta: float) -> void:
 	if is_sat_down == false:
@@ -20,14 +26,18 @@ func _process(delta: float) -> void:
 	
 	move_and_slide()
 
-func _go_to_table(chair_pos):
+func update_gc_label():
+	assigned_gc_label.text = "Player " + name + "\nAI: " + \
+	str(type) + "\nHand1: " + str(hand1)
+
+func go_to_table(chair_pos):
 	#print(chair_pos)
 	nav.set_target_position(chair_pos)
 
 func _on_nav_navigation_finished() -> void:
 	is_sat_down = true
 
-func _look_at_player():
+func look_at_player():
 	look_at($"../bj_player_test".position)
 	rotation.x = 0
 	rotation.z = 0

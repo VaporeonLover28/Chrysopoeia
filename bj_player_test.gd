@@ -10,15 +10,9 @@ extends CharacterBody3D
 @export var mouse_sensitivity: float = 0.005
 @export var speed : float = 4.0
 
-#run speed is speed * value, not the value
-@export var run_speed : float = 1
+var zooming : bool = false
 
-#headbob vars
-@export var bob_freq : float = 2
-@export var bob_amp : float = 0.08
-var t_bob : float = 0.0
-
-var zooming := false
+var dealer_hand : Array = []
 
 # Called when the node enters the scene tree for the first time.
 #func _ready() -> void:
@@ -28,12 +22,12 @@ var zooming := false
 	#camera.current = true
 
 func _process(delta: float) -> void:
-	
 	if Input.is_action_just_pressed("space"):
 		ui._slide()
 	
 	if Input.is_action_just_pressed("e"):
-		game.call_player()
+		if game.round_started == false:
+			game.call_player()
 	
 	if Input.is_action_just_pressed("s"):
 		game.shuffle_deck()
