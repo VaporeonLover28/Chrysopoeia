@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://byo85d0vn0y1g"]
 
-[ext_resource type="Script" uid="uid://ccrvd7fv0erut" path="res://bj_npc_test.gd" id="1_75u8h"]
-[ext_resource type="Texture2D" uid="uid://pov62jfwgcqy" path="res://icon.svg" id="2_0onm0"]
+[ext_resource type="Script" uid="uid://ccrvd7fv0erut" path="res://Script/bj_npc_test.gd" id="1_iqthl"]
+[ext_resource type="Texture2D" uid="uid://pov62jfwgcqy" path="res://icon.svg" id="2_tcbjy"]
 
 [node name="bj_npc_test" type="Control"]
 custom_minimum_size = Vector2(170, 0)
@@ -9,7 +9,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_75u8h")
+script = ExtResource("1_iqthl")
 
 [node name="BoxContainer" type="BoxContainer" parent="."]
 layout_mode = 0
@@ -50,7 +50,7 @@ layout_mode = 2
 offset_top = -136.0
 offset_right = 128.0
 offset_bottom = -8.0
-texture = ExtResource("2_0onm0")
+texture = ExtResource("2_tcbjy")
 
 [node name="value1" type="Control" parent="BoxContainer/VBoxContainer"]
 layout_mode = 2

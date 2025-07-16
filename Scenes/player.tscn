@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dsp27d25mg6bh"]
 
-[ext_resource type="Script" uid="uid://g774yke4vius" path="res://player.gd" id="1_i3pqv"]
-[ext_resource type="PackedScene" uid="uid://dbgpivfhrvrfu" path="res://shader_quad.tscn" id="2_onrkg"]
+[ext_resource type="Script" uid="uid://g774yke4vius" path="res://Script/player.gd" id="1_i3pqv"]
+[ext_resource type="PackedScene" uid="uid://dbgpivfhrvrfu" path="res://Scenes/shader_quad.tscn" id="2_onrkg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
 

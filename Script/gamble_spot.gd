@@ -14,7 +14,7 @@ var chosen_sitting_transition: Marker3D
 var player_is_sitting = false
 var save_player_ref : CharacterBody3D
 var chosen_sitting_position: int
-var blackjack_npc = preload("res://blackjack_npc.tscn")
+var blackjack_npc = preload("res://Scenes/blackjack_npc.tscn")
 @onready var player_ref = $"../../../Player"
 
 func _ready() -> void:

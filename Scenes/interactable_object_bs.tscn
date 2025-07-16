@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cjvjkmgcoucsh"]
 
-[ext_resource type="Script" uid="uid://d3kiv4p05usnv" path="res://interactable_object.gd" id="1_tg5wq"]
+[ext_resource type="Script" uid="uid://d3kiv4p05usnv" path="res://Script/interactable_object.gd" id="1_tg5wq"]
 
 [node name="InteractableObjectBS" type="Node3D" groups=["Camera Pullers", "Doors"]]
 script = ExtResource("1_tg5wq")

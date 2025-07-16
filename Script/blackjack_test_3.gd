@@ -1,7 +1,7 @@
 extends Node3D
 
-@onready var npc = preload("res://blackjack_npc.tscn")
-@onready var card = preload("res://card.tscn")
+@onready var npc = preload("res://Scenes/blackjack_npc.tscn")
+@onready var card = preload("res://Scenes/card.tscn")
 @onready var table_node = $table
 @onready var deck_node: Node3D = $deck
 @onready var gamecontrol: Panel = $CanvasLayer/gamecontrol

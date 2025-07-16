@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://jekyh5hw0o23"]
 
-[ext_resource type="Script" uid="uid://d3u1aaam68bee" path="res://npc.gd" id="1_ideak"]
+[ext_resource type="Script" uid="uid://d3u1aaam68bee" path="res://Script/npc.gd" id="1_ideak"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ideak"]
 

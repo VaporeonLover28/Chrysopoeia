@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var npc = preload("res://npc.tscn")
+@onready var npc = preload("res://Scenes/npc.tscn")
 @onready var player: CharacterBody3D = $Player
 @onready var walking_npcs: Node = $Walking_NPCs
 @onready var all_interactable_spots: Node = $"NavigationRegion3D/All Interactable Spots"

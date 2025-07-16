@@ -1,12 +1,12 @@
 [gd_scene load_steps=13 format=3 uid="uid://cr0s4q071jmdo"]
 
 [ext_resource type="Texture2D" uid="uid://bm5mkjkryluex" path="res://Assets/grid_black_512x512.png" id="1_j8do0"]
-[ext_resource type="Script" uid="uid://08rexs5tbgee" path="res://blackjack_test_3.gd" id="1_psklc"]
+[ext_resource type="Script" uid="uid://08rexs5tbgee" path="res://Script/blackjack_test_3.gd" id="1_psklc"]
 [ext_resource type="PackedScene" uid="uid://bf85c3yhwefir" path="res://Assets/Exports/glTF/Workbench.gltf" id="2_i5tvo"]
-[ext_resource type="PackedScene" uid="uid://8hd5usv25kt" path="res://bj_player_test.tscn" id="3_i5tvo"]
+[ext_resource type="PackedScene" uid="uid://8hd5usv25kt" path="res://Scenes/bj_player_test.tscn" id="3_i5tvo"]
 [ext_resource type="PackedScene" uid="uid://cjrb25thpiawq" path="res://Assets/Originals/mago_beta.glb" id="4_ylhsq"]
-[ext_resource type="Script" uid="uid://j5nv645ekjhk" path="res://mago_beta.gd" id="5_dft26"]
-[ext_resource type="PackedScene" uid="uid://blky3rg2wfs5q" path="res://blackjack_ui_test.tscn" id="6_dft26"]
+[ext_resource type="Script" uid="uid://j5nv645ekjhk" path="res://Script/mago_beta.gd" id="5_dft26"]
+[ext_resource type="PackedScene" uid="uid://blky3rg2wfs5q" path="res://Scenes/blackjack_ui_test.tscn" id="6_dft26"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k2ed7"]
 sky_top_color = Color(0, 0, 0, 1)

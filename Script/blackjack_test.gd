@@ -8,7 +8,7 @@ extends Control
 #hole card do dealer
 
 @onready var player_side: HBoxContainer = $players/HBoxContainer
-@onready var new_npc = preload("res://bj_npc_test.tscn")
+@onready var new_npc = preload("res://Scenes/bj_npc_test.tscn")
 @onready var player_action: Timer = $player_action
 
 #standard deck for shuffling a new deck

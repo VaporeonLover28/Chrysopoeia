@@ -1,14 +1,14 @@
 [gd_scene load_steps=16 format=3 uid="uid://bogbtytcjcvrf"]
 
-[ext_resource type="PackedScene" uid="uid://8hd5usv25kt" path="res://bj_player_test.tscn" id="1_1yho8"]
+[ext_resource type="PackedScene" uid="uid://8hd5usv25kt" path="res://Scenes/bj_player_test.tscn" id="1_1yho8"]
 [ext_resource type="Texture2D" uid="uid://bm5mkjkryluex" path="res://Assets/grid_black_512x512.png" id="1_y3ea2"]
 [ext_resource type="PackedScene" uid="uid://bju8ckhov8525" path="res://Assets/Exports/glTF/Stool.gltf" id="2_1yho8"]
 [ext_resource type="PackedScene" uid="uid://cpdocr2khmtk5" path="res://Assets/Exports/glTF/Barrel_Holder.gltf" id="3_5kbkc"]
 [ext_resource type="PackedScene" uid="uid://cxaou42cjgaqs" path="res://Assets/Exports/glTF/Barrel.gltf" id="4_vdyal"]
 [ext_resource type="PackedScene" uid="uid://cx03els0ra5bd" path="res://Assets/Exports/glTF/Table_Large.gltf" id="5_fhude"]
 [ext_resource type="PackedScene" uid="uid://t1ipnjtntycl" path="res://Assets/Exports/glTF/Bench.gltf" id="6_pdbo0"]
-[ext_resource type="PackedScene" uid="uid://tr80q2dbxua8" path="res://blackjack_table.tscn" id="8_1yho8"]
-[ext_resource type="PackedScene" uid="uid://cb53qpnp2by4" path="res://casino_light.tscn" id="8_3n36b"]
+[ext_resource type="PackedScene" uid="uid://tr80q2dbxua8" path="res://Scenes/blackjack_table.tscn" id="8_1yho8"]
+[ext_resource type="PackedScene" uid="uid://cb53qpnp2by4" path="res://Scenes/casino_light.tscn" id="8_3n36b"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hki58"]
 sky_top_color = Color(0.0606355, 0.0252388, 0.221666, 1)

@@ -74,7 +74,7 @@ func _physics_process(delta: float) -> void:
 		_cancel_interaction()
 		
 	if Input.is_action_just_pressed("b") and Globals.player_interacting == false and is_on_building_mode == false:
-		_start_bulding_phase("res://gamble_spot.tscn")
+		_start_bulding_phase("res://Scenes/gamble_spot.tscn")
 		await get_tree().create_timer(0.1).timeout
 	
 	if Input.is_action_just_pressed("b") and is_on_building_mode == true:
@@ -115,7 +115,7 @@ func _play_blackjack():
 
 func _on_play_game_timeout() -> void:
 	Globals.player_transform_storage.push_back(camera.transform)
-	get_tree().change_scene_to_file("res://blackjack_test_2.tscn")
+	get_tree().change_scene_to_file("res://Scenes/blackjack_test_2.tscn")
 	
 func _start_bulding_phase(object_to_be_purchase: String):
 	object_rotation = Vector3.ZERO

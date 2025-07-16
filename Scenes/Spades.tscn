@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://5jdk50ld8kpg"]
 
-[ext_resource type="Material" uid="uid://cweg8ys1ftbhf" path="res://albedo_black.tres" id="1_gn485"]
+[ext_resource type="Material" uid="uid://cweg8ys1ftbhf" path="res://albedo_black.tres" id="1_8oil7"]
 
 [sub_resource type="TextMesh" id="TextMesh_ipeki"]
-material = ExtResource("1_gn485")
+material = ExtResource("1_8oil7")
 text = "♠"
 depth = 0.0
 

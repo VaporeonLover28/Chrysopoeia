@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://b383nuibohj06"]
 
-[ext_resource type="Script" uid="uid://up5v8thpic2s" path="res://blackjack_npc.gd" id="1_rreeg"]
-[ext_resource type="PackedScene" uid="uid://cjrb25thpiawq" path="res://Assets/Originals/mago_beta.glb" id="2_7bfdo"]
+[ext_resource type="Script" uid="uid://up5v8thpic2s" path="res://Script/blackjack_npc.gd" id="1_0u2i5"]
+[ext_resource type="PackedScene" uid="uid://cjrb25thpiawq" path="res://Assets/Originals/mago_beta.glb" id="2_vds0t"]
 
 [node name="blackjack_npc" type="CharacterBody3D"]
 collision_layer = 8
-script = ExtResource("1_rreeg")
+script = ExtResource("1_0u2i5")
 
-[node name="mago_beta" parent="." instance=ExtResource("2_7bfdo")]
+[node name="mago_beta" parent="." instance=ExtResource("2_vds0t")]
 transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, -0.010817, 0, 0.000304677)
 
 [node name="nav" type="NavigationAgent3D" parent="."]

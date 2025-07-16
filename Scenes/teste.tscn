@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b8aq8i26u0cga"]
 
-[ext_resource type="Script" uid="uid://d33jhadxc2lv5" path="res://gamble_spot.gd" id="1_o02vu"]
-[ext_resource type="PackedScene" uid="uid://dbgpivfhrvrfu" path="res://shader_quad.tscn" id="2_7w86a"]
+[ext_resource type="Script" uid="uid://d33jhadxc2lv5" path="res://Script/gamble_spot.gd" id="1_o02vu"]
+[ext_resource type="PackedScene" uid="uid://dbgpivfhrvrfu" path="res://Scenes/shader_quad.tscn" id="2_7w86a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s2wow"]
 albedo_color = Color(0.682353, 0, 1, 1)

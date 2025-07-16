@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://dre4o6ocgf3lu"]
 
-[ext_resource type="Script" uid="uid://bm3eg2puuccvq" path="res://blackjack_test.gd" id="1_cu71s"]
-[ext_resource type="Script" uid="uid://bwaoe3df5qxeq" path="res://card_count.gd" id="2_bgqme"]
-[ext_resource type="Script" uid="uid://bighohiwkbgul" path="res://deck_label.gd" id="2_fidyb"]
-[ext_resource type="Script" uid="uid://cooy0aqx0q4sl" path="res://dealer_hand.gd" id="3_ivput"]
-[ext_resource type="Script" uid="uid://bqiwqbf7xhd73" path="res://dealer_hand_value.gd" id="4_ww2m8"]
+[ext_resource type="Script" uid="uid://bm3eg2puuccvq" path="res://Script/blackjack_test.gd" id="1_cu71s"]
+[ext_resource type="Script" uid="uid://bwaoe3df5qxeq" path="res://Script/card_count.gd" id="2_bgqme"]
+[ext_resource type="Script" uid="uid://bighohiwkbgul" path="res://Script/deck_label.gd" id="2_fidyb"]
+[ext_resource type="Script" uid="uid://cooy0aqx0q4sl" path="res://Script/dealer_hand.gd" id="3_ivput"]
+[ext_resource type="Script" uid="uid://bqiwqbf7xhd73" path="res://Script/dealer_hand_value.gd" id="4_ww2m8"]
 [ext_resource type="Theme" uid="uid://cjackrufn8hu6" path="res://test_theme.tres" id="5_2bpuv"]
 
 [node name="blackjack_test" type="Control"]
