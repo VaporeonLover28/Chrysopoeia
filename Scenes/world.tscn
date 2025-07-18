@@ -98,12 +98,20 @@ operation = 2
 size = Vector3(2, 2.5, 0.545)
 
 [node name="wall2" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.75, 2.5, -12)
-size = Vector3(0.5, 4, 18)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.75, 2.5, -16.3784)
+size = Vector3(0.5, 4, 26.7568)
 
 [node name="wall4" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -20.75)
 size = Vector3(32, 4, 0.5)
+
+[node name="wall5" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.73456, 2.5, -29.7454)
+size = Vector3(12.5253, 4, 0.5)
+
+[node name="wall6" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.72016, 2.5, -25.076)
+size = Vector3(9, 4, 0.5)
 
 [node name="door3" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.75, 1.75, -20.746)
@@ -251,3 +259,61 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.88534, 1.66876, 7.15293)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="All Build spots/Spot to build2/Area build spot"]
 shape = SubResource("BoxShape3D_ic0uy")
 debug_color = Color(0.970208, 0, 0.456254, 0.42)
+
+[node name="rinhaspot" type="CSGCombiner3D" parent="."]
+
+[node name="wall14" type="CSGBox3D" parent="rinhaspot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2641, 2, -29.7454)
+size = Vector3(0.418396, 4, 0.5)
+
+[node name="wall15" type="CSGBox3D" parent="rinhaspot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5001, 2, -29.7454)
+size = Vector3(0.418396, 4, 0.5)
+
+[node name="wall23" type="CSGBox3D" parent="rinhaspot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.0798, 2, -29.7468)
+size = Vector3(0.418396, 4, 0.5)
+
+[node name="wall16" type="CSGBox3D" parent="rinhaspot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0459, 2, -29.7454)
+size = Vector3(0.418396, 4, 0.5)
+
+[node name="wall17" type="CSGBox3D" parent="rinhaspot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0459, 2, -28.1624)
+size = Vector3(0.418396, 4, 0.5)
+
+[node name="wall18" type="CSGBox3D" parent="rinhaspot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0459, 2, -26.7176)
+size = Vector3(0.418396, 4, 0.5)
+
+[node name="wall19" type="CSGBox3D" parent="rinhaspot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0459, 2, -25.5312)
+size = Vector3(0.418396, 4, 0.5)
+
+[node name="wall20" type="CSGBox3D" parent="rinhaspot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0459, 2, -24.0765)
+size = Vector3(0.418396, 4, 0.5)
+
+[node name="wall21" type="CSGBox3D" parent="rinhaspot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0459, 2, -22.6219)
+size = Vector3(0.418396, 4, 0.5)
+
+[node name="wall22" type="CSGBox3D" parent="rinhaspot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.1101, 2, -21.3265)
+size = Vector3(0.418396, 4, 0.5)
+
+[node name="wall10" type="CSGBox3D" parent="rinhaspot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05516, 2, -29.7454)
+size = Vector3(0.418396, 4, 0.5)
+
+[node name="wall11" type="CSGBox3D" parent="rinhaspot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.20168, 2, -29.7454)
+size = Vector3(0.418396, 4, 0.5)
+
+[node name="wall12" type="CSGBox3D" parent="rinhaspot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.286078, 2, -29.7454)
+size = Vector3(0.418396, 4, 0.5)
+
+[node name="wall13" type="CSGBox3D" parent="rinhaspot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58789, 2, -29.7454)
+size = Vector3(0.418396, 4, 0.5)
