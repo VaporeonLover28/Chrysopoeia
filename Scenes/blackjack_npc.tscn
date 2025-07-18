@@ -15,6 +15,11 @@ target_desired_distance = 0.1
 path_postprocessing = 1
 
 [node name="hand" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00154, -0.37566)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.399, -0.376)
+
+[node name="action_label" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.865362, -0.194739)
+text = "ACTION"
+uppercase = true
 
 [connection signal="navigation_finished" from="nav" to="." method="_on_nav_navigation_finished"]

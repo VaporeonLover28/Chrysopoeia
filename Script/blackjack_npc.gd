@@ -2,14 +2,17 @@ extends CharacterBody3D
 
 @onready var nav: NavigationAgent3D = $nav
 @onready var hand_marker: Marker3D = $hand
+@onready var action_label: Label3D = $action_label
 
 @export_enum("Pleb", "Mage", "Guard", "Noble", "Joker" ) var type : String = "Noble"
+@export_enum("Playing", "Standed", "Busted", "Surrendered", "Blackjack", "Doubled") var state : String = "Playing"
 
 var assigned_chair : bool = false
 var is_sat_down : bool = false
 
 var assigned_gc_label : RichTextLabel
-var hand1 : Array = []
+var hand : Array = []
+var hand_value : int = 0
 
 func _process(delta: float) -> void:
 	if is_sat_down == false:
@@ -28,7 +31,12 @@ func _process(delta: float) -> void:
 
 func update_gc_label():
 	assigned_gc_label.text = "Player " + name + "\nAI: " + \
-	str(type) + "\nHand1: " + str(hand1)
+	str(type) + "\nValue: " + str(hand_value) + "\nHand:\n"
+	for cards in hand:
+		assigned_gc_label.text += str(cards.rank) + " of " + str(cards.suit) + ",\n"
+
+func update_action_label(action):
+	action_label.text = str(action)
 
 func go_to_table(chair_pos):
 	#print(chair_pos)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bo6gr1h1ae700"]
+[gd_scene load_steps=8 format=3 uid="uid://bo6gr1h1ae700"]
 
 [ext_resource type="Script" uid="uid://bvp0d2xuuac0q" path="res://Script/card.gd" id="1_brehn"]
 [ext_resource type="PackedScene" uid="uid://cx3jvymnyeawf" path="res://Assets/Originals/CartaCERTA.glb" id="2_eumee"]
 [ext_resource type="Material" uid="uid://cweg8ys1ftbhf" path="res://albedo_black.tres" id="3_e6po8"]
+[ext_resource type="Texture2D" uid="uid://cfvv0gh4l613s" path="res://Assets/card_textures/ace_of_clubs.png" id="4_eumee"]
 
 [sub_resource type="TextMesh" id="TextMesh_e484p"]
 material = ExtResource("3_e6po8")
@@ -68,6 +69,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.007, 0.0420578)
 mesh = SubResource("PlaneMesh_q5obu")
 
 [node name="suits" type="Node3D" parent="cardinfo"]
+
+[node name="card_texture" type="Sprite3D" parent="."]
+transform = Transform3D(0.194505, 0, 0, 0, -8.50206e-09, 0.194505, 0, -0.194505, -8.50206e-09, 0.003, 0.001, 0.002)
+shaded = true
+texture_filter = 0
+texture = ExtResource("4_eumee")
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 
