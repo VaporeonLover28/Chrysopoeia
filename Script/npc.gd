@@ -16,24 +16,25 @@ func _ready() -> void:
 	idle.start()
 
 func _physics_process(delta: float) -> void:
-	if not is_on_floor():
-		velocity.y += 9.8 * delta
-	
-	var destino = nav.get_next_path_position()
-	var local_destino = destino - global_position
-	var dir = local_destino.normalized()
-	velocity = dir * 2
-	
-	if is_on_interaction == false :
-		_walk_to(targeted_position_vector)
-	
-	if targeted_position_is_object is InteractableObject and is_on_interaction == false:
-		_go_to_interactable_object()
+	if Globals.game_paused == false:
+		if not is_on_floor():
+			velocity.y += 9.8 * delta
 		
-	if nav.is_target_reachable() == false:
-		_walk_to_random(-10, 10, -15.5, 1.5)
-	
-	move_and_slide()
+		var destino = nav.get_next_path_position()
+		var local_destino = destino - global_position
+		var dir = local_destino.normalized()
+		velocity = dir * 2
+		
+		if is_on_interaction == false :
+			_walk_to(targeted_position_vector)
+		
+		if targeted_position_is_object is InteractableObject and is_on_interaction == false:
+			_go_to_interactable_object()
+			
+		if nav.is_target_reachable() == false:
+			_walk_to_random(-10, 10, -15.5, 1.5)
+		
+		move_and_slide()
 	
 func _walk_to(target_positon : Vector3):
 	nav.set_target_position(target_positon)
@@ -61,15 +62,16 @@ func _go_to_interactable_object():
 				is_going_to_interaction = false
 
 func chose_interactable_object(): 
-	idle.stop()
-	targeted_position_is_object = all_interactable_spots.get_children().pick_random()
-	if targeted_position_is_object is GambleSpot:
-		var random_choice_of_chair = randi_range(0, targeted_position_is_object.get_node("Sit positions").get_child_count() - 1)
-		targeted_position_vector = \
-		targeted_position_is_object.get_node("Sit positions").get_child(random_choice_of_chair).global_position
-		targeted_sitting_position = random_choice_of_chair
-	else:
-		targeted_position_vector = targeted_position_is_object.global_position
+	if Globals.game_paused == false:
+		idle.stop()
+		targeted_position_is_object = all_interactable_spots.get_children().pick_random()
+		if targeted_position_is_object is GambleSpot:
+			var random_choice_of_chair = randi_range(0, targeted_position_is_object.get_node("Sit positions").get_child_count() - 1)
+			targeted_position_vector = \
+			targeted_position_is_object.get_node("Sit positions").get_child(random_choice_of_chair).global_position
+			targeted_sitting_position = random_choice_of_chair
+		else:
+			targeted_position_vector = targeted_position_is_object.global_position
 
 func _walk_to_random(min_x, max_x, min_z, max_z):
 	targeted_position_is_object = null
@@ -79,14 +81,15 @@ func _walk_to_random(min_x, max_x, min_z, max_z):
 	targeted_position_vector = random_positon
 
 func _on_nav_navigation_finished() -> void:
-	if is_going_to_interaction == false and is_on_interaction == false:
+	if is_going_to_interaction == false and is_on_interaction == false and Globals.game_paused == false:
 		idle.start()
 
 func _on_idle_timeout() -> void:
-	_walk_to_random(-10, 10, -15.5, 1.5)
+	if Globals.game_paused == false:
+		_walk_to_random(-10, 10, -15.5, 1.5)
 	
 func _leave_interaction():
-	if targeted_position_is_object is GambleSpot:
+	if targeted_position_is_object is GambleSpot and Globals.game_paused == false:
 		targeted_position_is_object._cancel_interact_GambleSpot(self)
 	is_on_interaction = false
 	idle.start()

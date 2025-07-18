@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Globals="*res://Script/Globals.gd"
 SaveScript="*res://Script/save_script.gd"
+PurchasableItemList="*res://Script/purchasable_item_list.gd"
 
 [display]
 
