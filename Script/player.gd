@@ -74,10 +74,11 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_just_pressed("e") and Globals.player_interacting == true and is_on_building_mode == false:
 		_cancel_interaction()
 		
-	if Input.is_action_just_pressed("b") and Globals.player_interacting == false and Globals.game_paused == false:
+	if Input.is_action_just_pressed("b") and Globals.player_interacting == false and\
+	Globals.game_paused == false and is_on_building_mode == false:
 		world_scene.get_node("Shop Menu").get_child(0)._show_shop_menu()
 	
-	if Input.is_action_just_pressed("b") and is_on_building_mode == true:
+	if Input.is_action_just_pressed("rightclick") and is_on_building_mode == true:
 		_build()
 		
 	if Input.is_action_pressed("q") and is_on_building_mode == true:
