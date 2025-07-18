@@ -13,6 +13,7 @@ extends CharacterBody3D
 var zooming : bool = false
 
 var dealer_hand : Array = []
+var dealer_hand_value : int = 0
 
 # Called when the node enters the scene tree for the first time.
 #func _ready() -> void:
