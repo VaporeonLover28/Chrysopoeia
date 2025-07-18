@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=3 format=3 uid="uid://bxot225pfi0tr"]
+
+[ext_resource type="PackedScene" uid="uid://d2w65oiqysl6d" path="res://Scenes/gamble_spot.tscn" id="1_rh3ga"]
+[ext_resource type="Script" uid="uid://dtrrlkl8w8gkb" path="res://Script/purchasable_itens_resource.gd" id="2_pi6bp"]
+
+[resource]
+script = ExtResource("2_pi6bp")
+item_type = "Objects"
+name = "BaseGambleSpoot"
+price = 0
+description = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+item_scene = ExtResource("1_rh3ga")
+item_sprite = ""
+metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"

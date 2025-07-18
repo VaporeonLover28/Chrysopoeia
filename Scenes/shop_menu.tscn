@@ -1,8 +1,27 @@
-[gd_scene format=3 uid="uid://ltp3jvrek5bh"]
+[gd_scene load_steps=8 format=3 uid="uid://ltp3jvrek5bh"]
+
+[ext_resource type="Script" uid="uid://mh8h7xo4eso6" path="res://shop.gd" id="1_xysl7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c2pxs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xysl7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jhj42"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lvwfa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xdhm7"]
+
+[sub_resource type="Theme" id="Theme_c2pxs"]
+HScrollBar/styles/grabber = SubResource("StyleBoxEmpty_c2pxs")
+HScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_xysl7")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_jhj42")
+HScrollBar/styles/scroll = SubResource("StyleBoxEmpty_lvwfa")
+HScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_xdhm7")
 
 [node name="Shop Menu" type="CanvasLayer"]
 
-[node name="Control" type="Control" parent="."]
+[node name="Shop" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,8 +30,9 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
+script = ExtResource("1_xysl7")
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="Shop"]
 layout_mode = 2
 offset_top = 0.40448
 offset_right = 1152.0
@@ -21,7 +41,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.331203, 0.1742, 0.67, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
+[node name="MarginContainer" type="MarginContainer" parent="Shop"]
 layout_mode = 2
 offset_top = 0.40448
 offset_right = 998.0
@@ -31,47 +51,68 @@ size_flags_vertical = 0
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Shop/MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Shop/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="TabContainer" type="TabContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="TabContainer" type="TabContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 tab_alignment = 2
 current_tab = 0
 clip_tabs = false
 
-[node name="Games" type="Control" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/TabContainer"]
+[node name="Games" type="Control" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer"]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Games"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Games"]
 layout_mode = 2
-offset_right = 223.0
-offset_bottom = 9.0
+offset_left = 2.0
+offset_right = 1102.0
+offset_bottom = 549.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_c2pxs")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Games/ScrollContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Games/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Decoration" type="Control" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Decoration"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 1102.0
+offset_bottom = 549.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Decoration/ScrollContainer"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Games/ScrollContainer/HBoxContainer"]
+[node name="Panel" type="Panel" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Decoration/ScrollContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Games/ScrollContainer/HBoxContainer/Panel"]
+[node name="ColorRect" type="ColorRect" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Decoration/ScrollContainer/HBoxContainer/Panel"]
 layout_direction = 4
 layout_mode = 2
 offset_left = 9.0
-offset_top = -0.40448
 offset_right = 73.0
-offset_bottom = 6.59552
+offset_bottom = 302.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Panel2" type="Panel" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Games/ScrollContainer/HBoxContainer"]
+[node name="Panel2" type="Panel" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Decoration/ScrollContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Games/ScrollContainer/HBoxContainer/Panel2"]
+[node name="ColorRect" type="ColorRect" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Decoration/ScrollContainer/HBoxContainer/Panel2"]
 layout_direction = 4
 layout_mode = 2
 offset_left = 93.0
@@ -81,20 +122,52 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(1, 0, 0, 1)
 
-[node name="Decoration" type="Container" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/TabContainer"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 1
-
-[node name="Spells" type="Container" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/TabContainer"]
+[node name="Spells" type="Control" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="VSeparator" type="VSeparator" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Spells"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 1102.0
+offset_bottom = 549.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Spells/ScrollContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Spells/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Spells/ScrollContainer/HBoxContainer/Panel"]
+visible = false
+layout_direction = 4
+layout_mode = 2
+offset_left = 9.0
+offset_right = 73.0
+offset_bottom = 302.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Panel2" type="Panel" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Spells/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Spells/ScrollContainer/HBoxContainer/Panel2"]
+layout_direction = 4
+layout_mode = 2
+offset_left = 93.0
+offset_right = 640.0
+offset_bottom = 7.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(1, 0, 0, 1)
+
+[node name="VSeparator" type="VSeparator" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 650
 
-[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Money: "

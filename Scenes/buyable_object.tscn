@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=3 uid="uid://clw6o8eer00hf"]
+
+[ext_resource type="Script" uid="uid://bk3ymc60cynwp" path="res://Script/buyable_object.gd" id="1_t6h1u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bxvvs"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_t6h1u"]
+viewport_path = NodePath("VBoxContainer/SubViewport")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3gy53"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_3o5e7"]
+sky_material = SubResource("ProceduralSkyMaterial_3gy53")
+
+[sub_resource type="Environment" id="Environment_bpl3t"]
+background_mode = 2
+sky = SubResource("Sky_3o5e7")
+tonemap_mode = 2
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -322.0
+offset_right = 167.0
+offset_bottom = 232.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+script = ExtResource("1_t6h1u")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+text = "mama"
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 340)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bxvvs")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Panel"]
+layout_mode = 2
+offset_left = -153.0
+offset_top = -68.0
+offset_right = 359.0
+offset_bottom = 444.0
+texture = SubResource("ViewportTexture_t6h1u")
+
+[node name="SubViewport" type="SubViewport" parent="VBoxContainer"]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="VBoxContainer/SubViewport"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="VBoxContainer/SubViewport/Node3D"]
+environment = SubResource("Environment_bpl3t")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="VBoxContainer/SubViewport/Node3D"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="VBoxContainer/SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.913112, 0.40771, 0, -0.40771, 0.913112, 0, 0.665317, 1.91983)
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+text = "descrição"
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "comprar"
