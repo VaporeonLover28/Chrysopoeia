@@ -57,17 +57,18 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="Shop/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="TabContainer" type="TabContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Sections of shop" type="TabContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 tab_alignment = 2
-current_tab = 0
+current_tab = 1
 clip_tabs = false
 
-[node name="Games" type="Control" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer"]
+[node name="Games" type="Control" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Games"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Games"]
 layout_mode = 2
 offset_left = 2.0
 offset_right = 1102.0
@@ -76,17 +77,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_c2pxs")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Games/ScrollContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Games/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Decoration" type="Control" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer"]
-visible = false
+[node name="Decoration" type="Control" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop"]
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Decoration"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Decoration"]
 layout_mode = 0
 offset_left = 2.0
 offset_right = 1102.0
@@ -94,40 +94,15 @@ offset_bottom = 549.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Decoration/ScrollContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Decoration/ScrollContainer"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Decoration/ScrollContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Decoration/ScrollContainer/HBoxContainer/Panel"]
-layout_direction = 4
-layout_mode = 2
-offset_left = 9.0
-offset_right = 73.0
-offset_bottom = 302.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Panel2" type="Panel" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Decoration/ScrollContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Decoration/ScrollContainer/HBoxContainer/Panel2"]
-layout_direction = 4
-layout_mode = 2
-offset_left = 93.0
-offset_right = 640.0
-offset_bottom = 7.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(1, 0, 0, 1)
-
-[node name="Spells" type="Control" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer"]
+[node name="Spells" type="Control" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Spells"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Spells"]
 layout_mode = 0
 offset_left = 2.0
 offset_right = 1102.0
@@ -135,34 +110,19 @@ offset_bottom = 549.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Spells/ScrollContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Spells/ScrollContainer"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Spells/ScrollContainer/HBoxContainer"]
+[node name="Spell_choice_container" type="Control" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Spells/ScrollContainer/HBoxContainer/Panel"]
-visible = false
-layout_direction = 4
+[node name="HBoxContainer" type="HBoxContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Spell_choice_container"]
 layout_mode = 2
-offset_left = 9.0
-offset_right = 73.0
-offset_bottom = 302.0
+offset_left = -256.0
+offset_top = 32.0
+offset_right = 856.0
+offset_bottom = 600.0
 size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Panel2" type="Panel" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Spells/ScrollContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Spells/ScrollContainer/HBoxContainer/Panel2"]
-layout_direction = 4
-layout_mode = 2
-offset_left = 93.0
-offset_right = 640.0
-offset_bottom = 7.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(1, 0, 0, 1)
 
 [node name="VSeparator" type="VSeparator" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2

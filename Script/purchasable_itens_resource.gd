@@ -6,4 +6,4 @@ extends Resource; class_name PurchasableItemResource
 @export var description: String
 @export var item_scene: PackedScene
 #only necessary if it is a spell 
-@export var item_sprite: String
+@export var item_sprite: Texture2D

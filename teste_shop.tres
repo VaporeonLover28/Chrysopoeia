@@ -10,5 +10,4 @@ name = "BaseGambleSpoot"
 price = 0
 description = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
 item_scene = ExtResource("1_rh3ga")
-item_sprite = ""
 metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"
