@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 		var destination = nav.get_next_path_position()
 		var local_destination = destination - global_position
 		var dir = local_destination.normalized()
-		velocity = dir * 4
+		velocity = dir * 2
 		look_at(transform.basis.z * -1)
 		rotation.x = 0
 		rotation.z = 0

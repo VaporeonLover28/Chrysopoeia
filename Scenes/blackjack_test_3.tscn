@@ -38,7 +38,7 @@ script = ExtResource("1_psklc")
 one_shot = true
 
 [node name="card_distr_timer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_dft26")
