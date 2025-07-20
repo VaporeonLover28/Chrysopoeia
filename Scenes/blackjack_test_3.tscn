@@ -34,8 +34,11 @@ uv1_world_triplanar = true
 [node name="blackjack_test_3" type="Node3D"]
 script = ExtResource("1_psklc")
 
+[node name="turn_timer" type="Timer" parent="."]
+one_shot = true
+
 [node name="card_distr_timer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_dft26")
@@ -184,10 +187,10 @@ offset_bottom = 149.0
 theme_override_font_sizes/normal_font_size = 10
 text = "Dealer
 Value: X
-Hand: [
+Hand: 
+"
 
-]"
-
+[connection signal="timeout" from="turn_timer" to="." method="_on_turn_timer_timeout"]
 [connection signal="timeout" from="card_distr_timer" to="." method="_on_card_distr_timer_timeout"]
 
 [editable path="bj_player_test"]

@@ -74,6 +74,7 @@ mesh = SubResource("PlaneMesh_q5obu")
 transform = Transform3D(0.194505, 0, 0, 0, -8.50206e-09, 0.194505, 0, -0.194505, -8.50206e-09, 0.003, 0.001, 0.002)
 shaded = true
 texture_filter = 0
+render_priority = 1
 texture = ExtResource("4_eumee")
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
