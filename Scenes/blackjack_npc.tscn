@@ -22,4 +22,9 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.8
 text = "ACTION"
 uppercase = true
 
+[node name="personality_label" type="Label3D" parent="."]
+transform = Transform3D(-0.439225, 0, -3.83983e-08, 0, 0.439225, 0, 3.83983e-08, 0, -0.439225, 0, 0.977657, -0.194739)
+text = "personality"
+uppercase = true
+
 [connection signal="navigation_finished" from="nav" to="." method="_on_nav_navigation_finished"]

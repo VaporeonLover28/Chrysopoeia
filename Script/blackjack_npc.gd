@@ -3,10 +3,11 @@ extends CharacterBody3D
 @onready var nav: NavigationAgent3D = $nav
 @onready var hand_marker: Marker3D = $hand
 @onready var action_label: Label3D = $action_label
+@onready var personality_label: Label3D = $personality_label
 @onready var game: Node3D = $".."
 @onready var player: CharacterBody3D = $"../bj_player_test"
 
-@export_enum("Pleb", "Mage", "Guard", "Noble", "Joker" ) var personality : String = "Noble"
+@export_enum("Pleb", "Mage", "Guard", "Noble", "Joker" ) var personality : String
 @export_enum("Playing", "Standed", "Busted", "Blackjack", "Doubled") var state : String = "Playing"
 
 var assigned_chair : bool = false
@@ -16,6 +17,9 @@ var assigned_gc_label : RichTextLabel
 var hand : Array = []
 var hand_value : int = 0
 var aces_in_hand = 0
+
+func _ready() -> void:
+	personality_label.text = personality
 
 func _process(delta: float) -> void:
 	if is_sat_down == false:
@@ -36,6 +40,173 @@ func play_turn():
 	print(name + "'s turn ")
 	if state == "Playing":
 		match personality:
+			"Pleb":
+				if hand_value >= 20:
+					stand()
+				else:
+					var random_action = randi_range(1, 100)
+					if random_action >= 70:
+						stand()
+					else:
+						hit()
+			"Mage":
+				if aces_in_hand == 0:
+					hard_total_matrix(
+						"stand",\
+						"stand",\
+						"stand",\
+						"stand",\
+						"hit",\
+						"hit",\
+						"hit",\
+						"hit",\
+						"hit",\
+						"hit")
+				else:
+					soft_total_matrix(
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"hit",\
+							"hit",\
+							"hit",\
+							"hit")
+			"Guard":
+				if aces_in_hand == 0:
+					match player.dealer_hand[1].value:
+						"2":
+							hard_total_matrix(
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"hit",\
+							"hit",\
+							"hit")
+						"3":
+							hard_total_matrix(
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"hit",\
+							"hit",\
+							"hit")
+						"4", "5", "6":
+							hard_total_matrix(
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"hit",\
+							"hit")
+						"7", "8", "9":
+							hard_total_matrix(
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"hit",\
+							"hit",\
+							"hit",\
+							"hit",\
+							"hit",\
+							"hit")
+						"10", "J", "Q", "K", "A":
+							hard_total_matrix(
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"hit",\
+							"hit",\
+							"hit",\
+							"hit",\
+							"hit",\
+							"hit")
+				else:
+					match player.dealer_hand[1].value:
+						"2":
+							soft_total_matrix(
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"hit",\
+							"hit",\
+							"hit")
+						"3":
+							soft_total_matrix(
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"hit",\
+							"hit",\
+							"hit")
+						"4":
+							soft_total_matrix(
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"hit",\
+							"hit",\
+							"hit")
+						"5":
+							soft_total_matrix(
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"hit",\
+							"hit",\
+							"hit")
+						"6":
+							soft_total_matrix(
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"hit",\
+							"hit",\
+							"hit",\
+							"hit")
+						"7", "8":
+							soft_total_matrix(
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"hit",\
+							"hit")
+						"9", "10", "J", "Q", "K", "A":
+							soft_total_matrix(
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"hit",\
+							"hit",\
+							"hit")
 			"Noble":
 				if aces_in_hand == 0:
 					match player.dealer_hand[1].value:
@@ -105,6 +276,7 @@ func play_turn():
 							soft_total_matrix(
 							"stand",\
 							"stand",\
+							"stand",\
 							"double_down",\
 							"hit",\
 							"hit",\
@@ -112,6 +284,7 @@ func play_turn():
 							"hit")
 						"3":
 							soft_total_matrix(
+							"stand",\
 							"stand",\
 							"stand",\
 							"double_down",\
@@ -123,6 +296,7 @@ func play_turn():
 							soft_total_matrix(
 							"stand",\
 							"stand",\
+							"stand",\
 							"double_down",\
 							"double_down",\
 							"double_down",\
@@ -130,6 +304,7 @@ func play_turn():
 							"hit")
 						"5":
 							soft_total_matrix(
+							"stand",\
 							"stand",\
 							"stand",\
 							"double_down",\
@@ -140,7 +315,143 @@ func play_turn():
 						"6":
 							soft_total_matrix(
 							"stand",\
+							"stand",\
 							"double_down",\
+							"double_down",\
+							"double_down",\
+							"double_down",\
+							"double_down",\
+							"double_down")
+						"7", "8":
+							soft_total_matrix(
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"hit",\
+							"hit",\
+							"hit",\
+							"hit")
+						"9", "10", "J", "Q", "K", "A":
+							soft_total_matrix(
+							"stand",\
+							"stand",\
+							"stand",\
+							"hit",\
+							"hit",\
+							"hit",\
+							"hit",\
+							"hit")
+			"Joker":
+				if aces_in_hand == 0:
+					match player.dealer_hand[1].value:
+						"2":
+							hard_total_matrix(
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"hit",\
+							"hit",\
+							"double_down",\
+							"double_down",\
+							"double_down",\
+							"double_down")
+						"3":
+							hard_total_matrix(
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"hit",\
+							"hit",\
+							"double_down",\
+							"double_down",\
+							"double_down",\
+							"double_down")
+						"4", "5", "6":
+							hard_total_matrix(
+							"stand",\
+							"stand",\
+							"stand",\
+							"stand",\
+							"hit",\
+							"hit",\
+							"double_down",\
+							"double_down",\
+							"double_down",\
+							"double_down")
+						"7", "8", "9":
+							hard_total_matrix(
+							"stand",\
+							"stand",\
+							"hit",\
+							"hit",\
+							"hit",\
+							"hit",\
+							"double_down",\
+							"double_down",\
+							"double_down",\
+							"double_down")
+						"10", "J", "Q", "K", "A":
+							hard_total_matrix(
+							"stand",\
+							"stand",\
+							"hit",\
+							"hit",\
+							"hit",\
+							"hit",\
+							"double_down",\
+							"double_down",\
+							"double_down",\
+							"double_down")
+				else:
+					match player.dealer_hand[1].value:
+						"2":
+							soft_total_matrix(
+							"stand",\
+							"stand",\
+							"hit",\
+							"double_down",\
+							"double_down",\
+							"double_down",\
+							"double_down",\
+							"double_down")
+						"3":
+							soft_total_matrix(
+							"stand",\
+							"stand",\
+							"hit",\
+							"double_down",\
+							"double_down",\
+							"double_down",\
+							"double_down",\
+							"double_down")
+						"4":
+							soft_total_matrix(
+							"stand",\
+							"stand",\
+							"hit",\
+							"double_down",\
+							"double_down",\
+							"double_down",\
+							"double_down",\
+							"double_down")
+						"5":
+							soft_total_matrix(
+							"stand",\
+							"stand",\
+							"hit",\
+							"double_down",\
+							"double_down",\
+							"double_down",\
+							"double_down",\
+							"double_down")
+						"6":
+							soft_total_matrix(
+							"stand",\
+							"stand",\
+							"hit",\
 							"double_down",\
 							"double_down",\
 							"double_down",\
@@ -154,11 +465,13 @@ func play_turn():
 							"hit",\
 							"hit",\
 							"hit",\
+							"hit",\
 							"hit")
 						"9", "10", "J", "Q", "K", "A":
 							soft_total_matrix(
 							"stand",\
 							"stand",\
+							"hit",\
 							"hit",\
 							"hit",\
 							"hit",\
@@ -217,11 +530,14 @@ func stand():
 	print(name + " stands.")
 
 func double_down():
-	update_action_label("double")
-	state = "Doubled"
-	print(name + " doubles down.")
-	game.card_to_npc(game.deck.pop_back(), self, Vector3(-180, 90, 0))
-	calculate_hand_value()
+	if game.round <= game.round_order_npcs.size():
+		update_action_label("double")
+		state = "Doubled"
+		print(name + " doubles down.")
+		game.card_to_npc(game.deck.pop_back(), self, Vector3(-180, 90, 0))
+		calculate_hand_value()
+	else:
+		hit()
 
 func bust():
 	update_action_label("bust")
@@ -256,22 +572,24 @@ func hard_total_matrix(case1, case2, case3, case4, case5, case6, case7, case8, c
 		8, 7, 6, 5, 4:
 			case_match(case10)
 
-func soft_total_matrix(case1, case2, case3, case4, case5, case6, case7):
+func soft_total_matrix(case1, case2, case3, case4, case5, case6, case7, case8):
 	match hand_value:
-		20:
+		21:
 			case_match(case1)
-		19:
+		20:
 			case_match(case2)
-		18:
+		19:
 			case_match(case3)
-		17:
+		18:
 			case_match(case4)
-		16, 15:
+		17:
 			case_match(case5)
-		14, 13:
+		16, 15:
 			case_match(case6)
-		12:
+		14, 13:
 			case_match(case7)
+		12:
+			case_match(case8)
 
 func case_match(case):
 	match case:

@@ -7,6 +7,7 @@ extends Node3D
 @export_enum("Clubs", "Hearts", "Spades", "Diamonds") var suit : String = "Spades"
 
 @onready var card_texture: Sprite3D = $card_texture
+@onready var backmesh: Sprite3D = $backmesh
 
 var chosen_rank : String
 var chosen_value : String

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cr0s4q071jmdo"]
+[gd_scene load_steps=15 format=3 uid="uid://cr0s4q071jmdo"]
 
 [ext_resource type="Texture2D" uid="uid://bm5mkjkryluex" path="res://Assets/grid_black_512x512.png" id="1_j8do0"]
 [ext_resource type="Script" uid="uid://08rexs5tbgee" path="res://Script/blackjack_test_3.gd" id="1_psklc"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cjrb25thpiawq" path="res://Assets/Originals/mago_beta.glb" id="4_ylhsq"]
 [ext_resource type="Script" uid="uid://j5nv645ekjhk" path="res://Script/mago_beta.gd" id="5_dft26"]
 [ext_resource type="PackedScene" uid="uid://blky3rg2wfs5q" path="res://Scenes/blackjack_ui_test.tscn" id="6_dft26"]
+[ext_resource type="Texture2D" uid="uid://dhjhpxc8o116y" path="res://Assets/Originals/CartaCERTA_AGORAVAI.png" id="8_ouk2e"]
+[ext_resource type="Texture2D" uid="uid://cfvv0gh4l613s" path="res://Assets/card_textures/ace_of_clubs.png" id="9_d4gfs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k2ed7"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -189,6 +191,40 @@ text = "Dealer
 Value: X
 Hand: 
 "
+
+[node name="selected_card" type="Panel" parent="CanvasLayer"]
+visible = false
+offset_left = 998.0
+offset_top = 266.0
+offset_right = 1150.0
+offset_bottom = 421.0
+
+[node name="card" type="TextureRect" parent="CanvasLayer/selected_card"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 6.0
+offset_right = 645.0
+offset_bottom = 906.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("8_ouk2e")
+
+[node name="info" type="TextureRect" parent="CanvasLayer/selected_card/card"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 120.0
+offset_right = 107.0
+offset_bottom = 199.0
+scale = Vector2(8.695, 8.695)
+texture = ExtResource("9_d4gfs")
+
+[node name="text" type="Label" parent="CanvasLayer/selected_card"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 98.0
+offset_right = 143.0
+offset_bottom = 121.0
+text = "Ace of Diamonds"
+horizontal_alignment = 1
 
 [connection signal="timeout" from="turn_timer" to="." method="_on_turn_timer_timeout"]
 [connection signal="timeout" from="card_distr_timer" to="." method="_on_card_distr_timer_timeout"]
