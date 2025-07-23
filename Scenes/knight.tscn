@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1bvuh6sqefam"]
+
+[ext_resource type="Script" uid="uid://1b1tykx5uhrs" path="res://Script/knight.gd" id="1_rrk28"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fsrac"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_owtlo"]
+albedo_color = Color(0.3, 0.3, 0.3, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nsuie"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rrk28"]
+
+[node name="Knight" type="CharacterBody3D"]
+script = ExtResource("1_rrk28")
+minimum_time_to_enter = 60.0
+maximum_time_to_enter = 75.0
+minimum_time_for_idle = 5.0
+maximum_time_for_idle = 7.0
+minimum_time_for_TIOT = 14.0
+maximum_time_for_TIOT = 26.0
+metadata/_custom_type_script = "uid://d3u1aaam68bee"
+
+[node name="Leave Interaction" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="Targeted Interactable Object Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="nav" type="NavigationAgent3D" parent="."]
+path_postprocessing = 1
+simplify_path = true
+debug_enabled = true
+
+[node name="idle" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="Wait Time To Enter Casino" type="Timer" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_fsrac")
+surface_material_override/0 = SubResource("StandardMaterial3D_owtlo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_nsuie")
+
+[node name="Interacatable object Detection Area" type="Area3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interacatable object Detection Area"]
+shape = SubResource("SphereShape3D_rrk28")
+disabled = true
+
+[connection signal="timeout" from="Leave Interaction" to="." method="_leave_interaction"]
+[connection signal="timeout" from="Targeted Interactable Object Timer" to="." method="chose_interactable_object"]
+[connection signal="navigation_finished" from="nav" to="." method="_on_nav_navigation_finished"]
+[connection signal="timeout" from="idle" to="." method="_on_idle_timeout"]
+[connection signal="timeout" from="Wait Time To Enter Casino" to="." method="_enter_the_casino"]

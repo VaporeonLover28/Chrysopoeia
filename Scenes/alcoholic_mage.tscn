@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://dchvq7ue6xllo"]
+
+[ext_resource type="Script" uid="uid://dfo0rv14cttny" path="res://Script/alcoholic_mage.gd" id="1_axp7q"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_70qoj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_axp7q"]
+albedo_color = Color(0.3, 0, 1, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_esxb1"]
+
+[node name="Alcoholic Mage" type="CharacterBody3D"]
+script = ExtResource("1_axp7q")
+minimum_time_for_idle = 6.0
+maximum_time_for_idle = 8.0
+minimum_time_for_TIOT = 30.0
+maximum_time_for_TIOT = 40.0
+metadata/_custom_type_script = "uid://d3u1aaam68bee"
+
+[node name="Leave Interaction" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="Targeted Interactable Object Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="nav" type="NavigationAgent3D" parent="."]
+path_postprocessing = 1
+simplify_path = true
+debug_enabled = true
+
+[node name="idle" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_70qoj")
+surface_material_override/0 = SubResource("StandardMaterial3D_axp7q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_esxb1")
+
+[connection signal="timeout" from="Leave Interaction" to="." method="_leave_interaction"]
+[connection signal="timeout" from="Targeted Interactable Object Timer" to="." method="chose_interactable_object"]
+[connection signal="navigation_finished" from="nav" to="." method="_on_nav_navigation_finished"]
+[connection signal="timeout" from="idle" to="." method="_on_idle_timeout"]

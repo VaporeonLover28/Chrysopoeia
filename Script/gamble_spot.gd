@@ -26,7 +26,6 @@ func _ready() -> void:
 # Called when the node enters the scene tree for the first time.
 func _interact_GambleSpot(object_ref):
 	if _ASAT() != true and is_pulling == false:
-			print("estou jogando")
 			#makes player sit
 			#checks for marker with the smallest postion distance to the player so he can sit, removing the spot from the pool
 			chosen_sitting_transition = null
@@ -41,7 +40,7 @@ func _interact_GambleSpot(object_ref):
 			if object_ref.name == "Player":
 				chosen_sitting_transition = sit_positions.get_child(chosen_sitting_position)
 				save_player_ref = object_ref
-				_camera_transition(object_ref)
+				#_camera_transition(object_ref)
 				object_ref.global_position = chosen_sitting_transition.global_position
 				player_is_sitting = true
 				Globals.player_interacting = true
@@ -63,8 +62,8 @@ func _camera_transition(player) -> void:
 	#camera.current = true
 
 func _physics_process(delta: float) -> void:
-	if is_pulling == true and player_ref != null:
-		player_ref.camera.look_at($CSGBox3D.global_position)
+	#if is_pulling == true and player_ref != null:
+		#player_ref.camera.look_at($CSGBox3D.global_position)
 		#_pull_camera()
 	if Input.is_action_just_pressed("e") and player_is_sitting == true:
 		_cancel_interact_GambleSpot(save_player_ref)

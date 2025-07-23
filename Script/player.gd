@@ -4,6 +4,7 @@ extends CharacterBody3D
 @onready var pivot: Node3D = $Pivot
 @onready var ray_interection: RayCast3D = $Pivot/Camera/RayInterection
 @onready var ray_builder: RayCast3D = $Pivot/Camera/RayBuilder
+@onready var call_npc_area: Area3D = $"Call NPC Area"
 @onready var play_game: Timer = $play_game
 @onready var world_scene = $"../"
 
@@ -74,9 +75,13 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_just_pressed("e") and Globals.player_interacting == true and is_on_building_mode == false:
 		_cancel_interaction()
 		
+	elif Input.is_action_just_pressed("c") and is_on_building_mode == false:
+		_call_npc_to_game()
+		
 	if Input.is_action_just_pressed("b") and Globals.player_interacting == false and\
 	Globals.game_paused == false and is_on_building_mode == false:
 		world_scene.get_node("Shop Menu").get_child(0)._show_shop_menu()
+		
 	
 	if Input.is_action_just_pressed("rightclick") and is_on_building_mode == true:
 		_build()
@@ -108,11 +113,28 @@ func _interact_object():
 func _cancel_interaction():
 	Globals.player_interacting = false
 	camera.current = true
+	
+func _call_npc_to_game():
+	if world_scene.get_node("Walking_NPCs").get_child_count() > 0 and Globals.game_paused == false:
+		call_npc_area.get_child(0).disabled = false
+		await get_tree().create_timer(0.1).timeout
+		var bodies_on_area = call_npc_area.get_overlapping_bodies().filter(_filter_NPC_in_area)
+		if bodies_on_area.is_empty() == false:
+			var choosen_NPC = bodies_on_area.pick_random()
+			var object_chosen = ray_interection.get_collider()
+			if object_chosen.get_parent() is InteractableObject\
+			  and choosen_NPC != null:
+				choosen_NPC._get_called_to_play_game(object_chosen.get_parent())
+		call_npc_area.get_child(0).disabled = true
+		
+func _filter_NPC_in_area(bodies):
+	return bodies is NPC
 
 func _play_blackjack():
-	Globals.player_transform_storage.push_back(transform)
-	Globals.player_transform_storage.push_back(pivot.transform)
-	play_game.start()
+	#Globals.player_transform_storage.push_back(transform)
+	#Globals.player_transform_storage.push_back(pivot.transform)
+	#play_game.start()
+	pass
 
 func _on_play_game_timeout() -> void:
 	Globals.player_transform_storage.push_back(camera.transform)

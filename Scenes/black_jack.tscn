@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dp7rwp8yfewpg"]
+
+[ext_resource type="Script" uid="uid://d33jhadxc2lv5" path="res://Script/gamble_spot.gd" id="1_33dal"]
+[ext_resource type="PackedScene" uid="uid://dbgpivfhrvrfu" path="res://Scenes/shader_quad.tscn" id="2_nu2ws"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_or8fe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_33dal"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_55y61"]
+
+[node name="BlackJack" type="Node3D"]
+script = ExtResource("1_33dal")
+chair_postion_list = Array[Array]([[Vector3(-2.2, 0, 0), true, 0]])
+object_class = "GambleSpot"
+metadata/_custom_type_script = "uid://d33jhadxc2lv5"
+
+[node name="Model" type="StaticBody3D" parent="." groups=["Ground_object"]]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model"]
+mesh = SubResource("BoxMesh_or8fe")
+surface_material_override/0 = SubResource("StandardMaterial3D_33dal")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Model"]
+shape = SubResource("BoxShape3D_55y61")
+
+[node name="camera" type="Camera3D" parent="."]
+
+[node name="Shader_Quad" parent="camera" instance=ExtResource("2_nu2ws")]
+
+[node name="Sit positions" type="Node3D" parent="."]

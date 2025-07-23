@@ -1,9 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsp27d25mg6bh"]
+[gd_scene load_steps=5 format=3 uid="uid://dsp27d25mg6bh"]
 
 [ext_resource type="Script" uid="uid://g774yke4vius" path="res://Script/player.gd" id="1_i3pqv"]
 [ext_resource type="PackedScene" uid="uid://dbgpivfhrvrfu" path="res://Scenes/shader_quad.tscn" id="2_onrkg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cvnsp"]
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
@@ -29,6 +31,15 @@ collide_with_areas = true
 collide_with_bodies = false
 
 [node name="play_game" type="Timer" parent="."]
+wait_time = 100000.0
 one_shot = true
+
+[node name="Call NPC Area" type="Area3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Call NPC Area"]
+shape = SubResource("SphereShape3D_cvnsp")
+disabled = true
+debug_color = Color(0.963757, 0, 0.496823, 0.42)
 
 [connection signal="timeout" from="play_game" to="." method="_on_play_game_timeout"]
