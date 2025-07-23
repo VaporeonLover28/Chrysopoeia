@@ -75,7 +75,8 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_just_pressed("e") and Globals.player_interacting == true and is_on_building_mode == false:
 		_cancel_interaction()
 		
-	elif Input.is_action_just_pressed("c") and is_on_building_mode == false:
+	elif Input.is_action_just_pressed("c") and is_on_building_mode == false\
+	 and ray_interection.get_collider().get_parent().get_node_or_null("Sit positions") != null:
 		_call_npc_to_game()
 		
 	if Input.is_action_just_pressed("b") and Globals.player_interacting == false and\
