@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://blky3rg2wfs5q"]
+[gd_scene load_steps=8 format=3 uid="uid://blky3rg2wfs5q"]
 
 [ext_resource type="Script" uid="uid://8ff5pjh83l5w" path="res://Script/blackjack_ui_test.gd" id="1_frv1u"]
 [ext_resource type="Texture2D" uid="uid://7x4sn88rtj6y" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_q_outline.png" id="2_kcc8t"]
 [ext_resource type="Texture2D" uid="uid://btuyhxvv5yeqy" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_space_icon_outline.png" id="2_xvrde"]
 [ext_resource type="Texture2D" uid="uid://dvvkd815aepwc" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_e_outline.png" id="3_f2kj2"]
+[ext_resource type="Texture2D" uid="uid://eygmuswbp665" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_ctrl_outline.png" id="4_f2kj2"]
 [ext_resource type="Texture2D" uid="uid://snnysceywnv3" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_f_outline.png" id="4_y1qw6"]
 [ext_resource type="Texture2D" uid="uid://bypg1va0tdeg6" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_r_outline.png" id="5_gjr6c"]
 
@@ -36,13 +37,6 @@ layout_mode = 2
 texture = ExtResource("2_kcc8t")
 stretch_mode = 3
 
-[node name="Input" type="Label" parent="Panel/HBoxContainer/Q"]
-visible = false
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "(Q)"
-horizontal_alignment = 1
-
 [node name="Function" type="Label" parent="Panel/HBoxContainer/Q"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
@@ -59,40 +53,26 @@ layout_mode = 2
 texture = ExtResource("3_f2kj2")
 stretch_mode = 3
 
-[node name="Input" type="Label" parent="Panel/HBoxContainer/E"]
-visible = false
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "(E)"
-horizontal_alignment = 1
-
 [node name="Function" type="Label" parent="Panel/HBoxContainer/E"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Stand"
 horizontal_alignment = 1
 
-[node name="F" type="VBoxContainer" parent="Panel/HBoxContainer"]
+[node name="Ctrl" type="VBoxContainer" parent="Panel/HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 alignment = 1
 
-[node name="InputIcon" type="TextureRect" parent="Panel/HBoxContainer/F"]
+[node name="InputIcon" type="TextureRect" parent="Panel/HBoxContainer/Ctrl"]
 layout_mode = 2
-texture = ExtResource("4_y1qw6")
+texture = ExtResource("4_f2kj2")
 stretch_mode = 3
 
-[node name="Input" type="Label" parent="Panel/HBoxContainer/F"]
-visible = false
+[node name="Function" type="Label" parent="Panel/HBoxContainer/Ctrl"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "(F)"
-horizontal_alignment = 1
-
-[node name="Function" type="Label" parent="Panel/HBoxContainer/F"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Pass Turn"
+theme_override_font_sizes/font_size = 13
+text = "Start Game (2 Players Minimum)"
 horizontal_alignment = 1
 
 [node name="R" type="VBoxContainer" parent="Panel/HBoxContainer"]
@@ -105,17 +85,26 @@ layout_mode = 2
 texture = ExtResource("5_gjr6c")
 stretch_mode = 3
 
-[node name="Input" type="Label" parent="Panel/HBoxContainer/R"]
-visible = false
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "(R)"
-horizontal_alignment = 1
-
 [node name="Function" type="Label" parent="Panel/HBoxContainer/R"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Call Player"
+horizontal_alignment = 1
+
+[node name="F" type="VBoxContainer" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="InputIcon" type="TextureRect" parent="Panel/HBoxContainer/F"]
+layout_mode = 2
+texture = ExtResource("4_y1qw6")
+stretch_mode = 3
+
+[node name="Function" type="Label" parent="Panel/HBoxContainer/F"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Pass Turn"
 horizontal_alignment = 1
 
 [node name="Panel2" type="Panel" parent="."]

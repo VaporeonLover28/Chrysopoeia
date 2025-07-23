@@ -18,8 +18,6 @@ var is_trying_to_spawn_npc: bool = false
 @export var minimum_time_for_spawn_npc: float
 @export var maximum_time_for_spawn_npc: float
 
-
-
 var npc_list: Array[PackedScene] = [preload("res://Scenes/mage.tscn"),\
 preload("res://Scenes/knight.tscn"), \
 preload("res://Scenes/jester.tscn"), \
@@ -31,7 +29,6 @@ preload("res://Scenes/alcoholic_mage.tscn")]
 func _ready() -> void:
 	
 	npc_spwaner_timer.start(randf_range(minimum_time_for_spawn_npc, maximum_time_for_spawn_npc))
-	
 	
 	var new_config = ConfigFile.new()
 	if SaveScript.current_savefile_loading != "":
