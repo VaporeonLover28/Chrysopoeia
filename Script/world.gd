@@ -22,8 +22,7 @@ var npc_list: Array[PackedScene] = [preload("res://Scenes/mage.tscn"),\
 preload("res://Scenes/knight.tscn"), \
 preload("res://Scenes/jester.tscn"), \
 preload("res://Scenes/communer.tscn"), \
-preload("res://Scenes/noble.tscn"), \
-preload("res://Scenes/alcoholic_mage.tscn")]
+preload("res://Scenes/noble.tscn")]
 
 
 func _ready() -> void:
