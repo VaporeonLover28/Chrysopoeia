@@ -26,10 +26,11 @@ func _process(delta: float) -> void:
 	else:
 		r.modulate = Color.DIM_GRAY
 	
-	if game.playing_npcs.size() > 1 and game.whose_turn != -1:
-		f.modulate = Color.WHITE
-	else:
-		f.modulate = Color.DIM_GRAY
+	if !game.round_started:
+		if game.playing_npcs.size() > 1:
+			f.modulate = Color.WHITE
+		else:
+			f.modulate = Color.DIM_GRAY
 
 func _slide():
 	if is_up:

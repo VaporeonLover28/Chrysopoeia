@@ -31,7 +31,11 @@ func _process(delta: float) -> void:
 		game.call_player()
 	
 	if Input.is_action_just_pressed("f"):
-		game.pass_turn()
+		if game.distributed_cards:
+			game.pass_turn()
+			ui.f.modulate = Color.DIM_GRAY
+		else:
+			game.start_game()
 	
 	if Input.is_action_just_pressed("q") and game.dealer_can_hit:
 		game.dealer_hit()

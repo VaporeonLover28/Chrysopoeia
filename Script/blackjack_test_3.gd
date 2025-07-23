@@ -17,6 +17,7 @@ var tween : Tween
 var table : Array = []
 var round_started : bool = false
 var distribution_number : float = 0.0
+var distributed_cards : bool = false
 var round : int = 0
 var playing_npcs : Array = []
 var gc_labels : Array = []
@@ -239,17 +240,17 @@ func card_to_npc(card : Node3D, who : CharacterBody3D, rot : Vector3):
 	who.update_gc_label()
 
 func pass_turn():
+	turn_timer.start()
+	round += 1
+	gc_labels[5].text = "Turn " + str(round)
+
+func start_game():
 	if round_started == false and playing_npcs.size() > 1:
 		round_started = true
 		set_round_order()
 		shuffle_deck()
 		$card_distr_timer.start()
-	elif round_started == false and playing_npcs.size() <= 1:
-		pass
-	else:
-		turn_timer.start()
-		round += 1
-	gc_labels[5].text = "Turn " + str(round)
+		blackjack_ui_test.f.get_child(1).text = "Start Game"
 
 func dealer_turn():
 	#change_selec_card(player.dealer_hand[0])
@@ -385,6 +386,7 @@ func _on_card_distr_timer_timeout() -> void:
 		distribute_cards()
 	else:
 		#print("Stopped timer")
+		distributed_cards = true
 		card_distr_timer.stop()
 
 func _on_turn_timer_timeout() -> void:
