@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("r") and !game.round_started:
 		game.call_player()
 	
-	if Input.is_action_just_pressed("f"):
+	if Input.is_action_just_pressed("f") and game.whose_turn != -1:
 		if game.distributed_cards:
 			game.pass_turn()
 			ui.f.modulate = Color.DIM_GRAY

@@ -407,6 +407,7 @@ func _on_turn_timer_timeout() -> void:
 		round += 1
 		gc_labels[5].text = "Turn " + str(round)
 	else:
+		turn_timer.stop()
 		whose_turn = -1
 		gc_labels[5].text = "Dealer turn"
 		dealer_turn()
