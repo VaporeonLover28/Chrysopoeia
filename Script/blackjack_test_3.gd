@@ -8,6 +8,9 @@ extends Node3D
 @onready var player: CharacterBody3D = $bj_player_test
 @onready var card_distr_timer: Timer = $card_distr_timer
 @onready var turn_timer: Timer = $turn_timer
+@onready var selec_info: TextureRect = $CanvasLayer/selected_card/card/info
+@onready var selec_text: Label = $CanvasLayer/selected_card/text
+@onready var blackjack_ui_test: Control = $CanvasLayer/Blackjack_UI_test
 
 var tween : Tween
 
@@ -18,7 +21,13 @@ var round : int = 0
 var playing_npcs : Array = []
 var gc_labels : Array = []
 var round_order_npcs : Array = []
-var whose_turn = 0
+var whose_turn : int = 0
+##unused (maybe for magic?)
+var dealer_selected_card : Node3D
+var dealer_can_hit : bool = false
+var dealer_can_stand : bool = false
+var dealer_busted : bool = false
+var dealer_blackjacked : bool = false
 
 var standard_deck : Array = [
 	["Clubs", "Ace", "A"], ["Hearts", "Ace", "A"], ["Spades", "Ace", "A"], ["Diamonds", "Ace", "A"], 
@@ -76,31 +85,45 @@ func instantiate_cards():
 
 ##calls an npc (currently instantiating a new one) to a chair
 func call_player():
-	var new_npc = npc.instantiate()
-	##instantiate new npc away from table (visual effect for testing)
-	new_npc.position = Vector3(randf_range(-3, 3), 0.342, -6)
-	add_child(new_npc)
-	##checking if each chair is taken
-	for chairs in table.size():
-		##if it isn't (free chair)
-		if table[chairs][1] == 0 and new_npc.assigned_chair == false:
-			#print("Picked chair " + str(chairs + 1) + " at position " + str(table[chairs][0]))
-			##call the funcion on the npc script to come to the chair
-			new_npc.go_to_table(table[chairs][0])
-			##occupy the chair
-			table[chairs][1] = 1
-			new_npc.assigned_chair = true
-			new_npc.name = str(chairs)
-			##add the npc to the npc array
-			playing_npcs.append(new_npc)
-			##adds a game control label to the npc for testing
-			new_npc.assigned_gc_label = gc_labels[int(new_npc.name)]
-			new_npc.update_gc_label()
-		#elif table[chairs][1] != 0:
-			#print("Chair " + str(chairs + 1) + " is taken")
-		#else:
-			#print("Already picked another chair")
-	#print("Called Player")
+	if playing_npcs.size() + 1 != 6:
+		var new_npc = npc.instantiate()
+		##choosing the personality (change on implementation)
+		var personality_picker = randi_range(1, 5)
+		match personality_picker:
+			1:
+				new_npc.personality = "Pleb"
+			2:
+				new_npc.personality = "Mage"
+			3:
+				new_npc.personality = "Guard"
+			4:
+				new_npc.personality = "Noble"
+			5:
+				new_npc.personality = "Joker"
+		##instantiate new npc away from table (visual effect for testing)
+		new_npc.position = Vector3(randf_range(-3, 3), 0.342, -6)
+		add_child(new_npc)
+		##checking if each chair is taken
+		for chairs in table.size():
+			##if it isn't (free chair)
+			if table[chairs][1] == 0 and new_npc.assigned_chair == false:
+				#print("Picked chair " + str(chairs + 1) + " at position " + str(table[chairs][0]))
+				##call the funcion on the npc script to come to the chair
+				new_npc.go_to_table(table[chairs][0])
+				##occupy the chair
+				table[chairs][1] = 1
+				new_npc.assigned_chair = true
+				new_npc.name = str(chairs)
+				##add the npc to the npc array
+				playing_npcs.append(new_npc)
+				##adds a game control label to the npc for testing
+				new_npc.assigned_gc_label = gc_labels[int(new_npc.name)]
+				new_npc.update_gc_label()
+			#elif table[chairs][1] != 0:
+				#print("Chair " + str(chairs + 1) + " is taken")
+			#else:
+				#print("Already picked another chair")
+		#print("Called Player")
 
 ##setting a table order (left to right) for the rounds playing
 func set_round_order():
@@ -165,36 +188,30 @@ func distribute_cards():
 		##the dealer's first card is side down
 		if distribution_number / 3 > round_order_npcs.size():
 			#print("Distr " + str(distribution_number) + ", card 1 to dealer")
-			##appends the top card to the dealer hand
-			player.dealer_hand.append(deck.back())
-			##gives it to the dealer
+			##gives the top card to the dealer
 			card_to_dealer(deck.pop_back(), Vector3(0.40, 0, 0), Vector3(180, 0, 0))
 		else:
 		##the npc's first and second cards are identical
 			#print("Distr " + str(distribution_number) + ", card 1 to npc " + str(int(floor(distribution_number / 3))))
-			##gives a card to the npc
+			##gives the top card to the npc
 			#round_order_npcs[int(floor(distribution_number / 3))].hand.append(deck.back())
 			card_to_npc(deck.pop_back(), round_order_npcs[int(floor(distribution_number / 3))], Vector3.ZERO)
 	else:
 		##the dealer's first card is side up
 		if distribution_number / 3 > round_order_npcs.size():
 			#print("Distr " + str(distribution_number) + ", card 2 to dealer")
-			##appends the top card to the dealer hand
-			player.dealer_hand.append(deck.back())
-			##gives it to the dealer
+			##gives the top card to the dealer
 			card_to_dealer(deck.pop_back(), Vector3(0.40, 0, 0), Vector3.ZERO)
-			##updates the game control label for the dealer
-			for cards in player.dealer_hand:
-				gc_labels[6].text += str(cards.rank) + " of " + str(cards.suit) + ",\n"
 		else:
 		##the npc's first and second cards are identical
 			#print("Distr " + str(distribution_number) + ", card 2 to npc " + str(int(floor(distribution_number / 3))))
-			##gives a card to the npc
+			##gives the top card to the npc
 			#round_order_npcs[int(floor(distribution_number / 3))].hand.append(deck.back())
 			card_to_npc(deck.pop_back(), round_order_npcs[int(floor(distribution_number / 3))], Vector3.ZERO)
 
 ##tween to send a card to the dealer
 func card_to_dealer(card : Node3D, pos : Vector3, rot : Vector3):
+	player.dealer_hand.append(card)
 	tween = create_tween()
 	tween.set_trans(Tween.TRANS_QUART)
 	tween.set_ease(Tween.EASE_OUT)
@@ -204,6 +221,8 @@ func card_to_dealer(card : Node3D, pos : Vector3, rot : Vector3):
 	float(player.dealer_hand.find(card)) / 512, 0), 1)
 	##makes it rotate to where it is supposed to
 	tween.tween_property(card, "rotation_degrees", rot, 0.66)
+	player.calculate_hand_value()
+	player.update_gc_label()
 
 ##tween to send a card to an npc
 func card_to_npc(card : Node3D, who : CharacterBody3D, rot : Vector3):
@@ -216,6 +235,7 @@ func card_to_npc(card : Node3D, who : CharacterBody3D, rot : Vector3):
 	float(who.hand.size()) / 512, 0), 1)
 	tween.tween_property(card, "rotation_degrees", rot, 0.66)
 	##updates the game control label
+	who.calculate_hand_value()
 	who.update_gc_label()
 
 func pass_turn():
@@ -231,39 +251,133 @@ func pass_turn():
 		round += 1
 	gc_labels[5].text = "Turn " + str(round)
 
-func restart_game():
-	for labels in gc_labels.size() - 1:
-		gc_labels[labels].text = "Player X\nAI:\nHand: [\n\n]"
-	
-	if playing_npcs.size() == 5:
-		playing_npcs[4].queue_free()
-		playing_npcs.pop_at(4)
-		table[4][1] = 0
-	if playing_npcs.size() == 4:
-		playing_npcs[3].queue_free()
-		playing_npcs.pop_at(3)
-		table[3][1] = 0
-	if playing_npcs.size() == 3:
-		playing_npcs[2].queue_free()
-		playing_npcs.pop_at(2)
-		table[2][1] = 0
-	if playing_npcs.size() == 2:
-		playing_npcs[1].queue_free()
-		playing_npcs.pop_at(1)
-		table[1][1] = 0
-	if playing_npcs.size() == 1:
-		playing_npcs[0].queue_free()
-		playing_npcs.pop_at(0)
-		table[0][1] = 0
-	round_order_npcs.clear()
-	
-	round = 0
-	round_started = false
-	distribution_number = 0
-	gc_labels[5].text = "Round " + str(round)
+func dealer_turn():
+	#change_selec_card(player.dealer_hand[0])
+	tween = create_tween()
+	tween.set_trans(Tween.TRANS_QUART)
+	tween.set_ease(Tween.EASE_OUT)
+	##makes it rotate to where it is supposed to
+	tween.tween_property(player.dealer_hand[0], "rotation_degrees", Vector3.ZERO, 0.66)
+	if player.dealer_hand_value >= 17:
+		dealer_can_stand = true
+	else:
+		dealer_can_hit = true
 
-func quit_game():
-	get_tree().quit()
+func dealer_hit():
+	card_to_dealer(deck.pop_back(), Vector3(0.40, 0, 0), Vector3.ZERO)
+	if player.dealer_hand_value >= 17:
+		dealer_can_stand = true
+		dealer_can_hit = false
+	else:
+		dealer_can_hit = true
+		dealer_can_stand = false
+	player.calculate_hand_value()
+
+func dealer_stand():
+	end_game()
+
+func dealer_bust():
+	print("Dealer busted")
+	dealer_busted = true
+	end_game()
+
+func dealer_blackjack():
+	print("Dealer blackjack")
+	dealer_blackjacked = true
+
+func end_game():
+	dealer_can_stand = false
+	dealer_can_hit = false
+	print("Game ended")
+	if dealer_busted:
+		for npcs in round_order_npcs:
+			match npcs.state:
+				"Standed":
+					print(npcs.name + " has won!")
+					##return money bet + how much was bet (2x bet)
+				"Busted":
+					print(npcs. name + " had busted and lost!")
+					##lose the money bet
+				"Doubled":
+					print(npcs.name + " has won with a double down!")
+					##return doubled bet + how much the bet valued in total (4x bet)
+				"Blackjack":
+					print(npcs.name + " has a blackjack and won!")
+					##return bet + bet + half bet (2.5x bet)
+	elif dealer_blackjacked:
+		print("The dealer has a blackjack!")
+		for npcs in round_order_npcs:
+			if npcs.state == "Blackjack":
+				print(npcs.name + " also has a blackjack and gets a push back.")
+			else:
+				print(npcs.name + " either bust or didn't have a blackjack. Either way they lost.")
+	else:
+		for npcs in round_order_npcs:
+			match npcs.state:
+						"Standed":
+							if npcs.hand_value > player.dealer_hand_value:
+								print(npcs.name + " standed and won!")
+								##return money bet + how much was bet (2x bet)
+							elif npcs.hand_value == player.dealer_hand_value:
+								print(npcs.name + " tied the dealer and gets a push back.")
+								##return money bet
+							else:
+								print(npcs.name + " standed and lost!")
+						"Busted":
+							print(npcs. name + " had busted and lost!")
+							##lose the money bet
+						"Doubled":
+							if npcs.hand_value > player.dealer_hand_value:
+								print(npcs.name + " has won with a double down!")
+								##return doubled bet + how much the bet valued in total (4x bet)
+							elif npcs.hand_value == player.dealer_hand_value:
+								print(npcs.name + " tied the dealer and gets a push back.")
+								##return money bet
+							else:
+								print(npcs.name + " doubled down and lost!")
+								##lose the money bet
+						"Blackjack":
+							print(npcs.name + " has a blackjack and won!")
+							##return bet + bet + half bet (2.5x bet)
+
+##unused still
+func change_selec_card(card):
+	dealer_selected_card = card
+	dealer_selected_card.backmesh.visible = true
+
+#func restart_game():
+	#for labels in gc_labels.size() - 1:
+		#gc_labels[labels].text = "Player X\nAI:\nHand: [\n\n]"
+	#
+	#if playing_npcs.size() == 5:
+		#playing_npcs[4].queue_free()
+		#playing_npcs.pop_at(4)
+		#table[4][1] = 0
+	#if playing_npcs.size() == 4:
+		#playing_npcs[3].queue_free()
+		#playing_npcs.pop_at(3)
+		#table[3][1] = 0
+	#if playing_npcs.size() == 3:
+		#playing_npcs[2].queue_free()
+		#playing_npcs.pop_at(2)
+		#table[2][1] = 0
+	#if playing_npcs.size() == 2:
+		#playing_npcs[1].queue_free()
+		#playing_npcs.pop_at(1)
+		#table[1][1] = 0
+	#if playing_npcs.size() == 1:
+		#playing_npcs[0].queue_free()
+		#playing_npcs.pop_at(0)
+		#table[0][1] = 0
+	#round_order_npcs.clear()
+	#
+	#round = 0
+	#round_started = false
+	#distribution_number = 0
+	#gc_labels[5].text = "Round " + str(round)
+
+#func quit_game():
+	#get_tree().quit()
 
 func _on_card_distr_timer_timeout() -> void:
 	##if still distributing cards
@@ -289,6 +403,8 @@ func _on_turn_timer_timeout() -> void:
 			whose_turn += 1
 		turn_timer.start()
 		round += 1
+		gc_labels[5].text = "Turn " + str(round)
 	else:
-		print("Dealer turn")
-		round += 1
+		whose_turn = -1
+		gc_labels[5].text = "Dealer turn"
+		dealer_turn()

@@ -1,8 +1,35 @@
 extends Control
 
+@onready var game = $"../.."
+@onready var q: VBoxContainer = $Panel/HBoxContainer/Q
+@onready var e: VBoxContainer = $Panel/HBoxContainer/E
+@onready var f: VBoxContainer = $Panel/HBoxContainer/F
+@onready var r: VBoxContainer = $Panel/HBoxContainer/R
+
 var is_up = false
 
 var tween : Tween
+
+func _process(delta: float) -> void:
+	if game.dealer_can_hit:
+		q.modulate = Color.WHITE
+	else:
+		q.modulate = Color.DIM_GRAY
+	
+	if game.dealer_can_stand:
+		e.modulate = Color.WHITE
+	else:
+		e.modulate = Color.DIM_GRAY
+	
+	if !game.round_started and game.playing_npcs.size() < 5:
+		r.modulate = Color.WHITE
+	else:
+		r.modulate = Color.DIM_GRAY
+	
+	if game.playing_npcs.size() > 1 and game.whose_turn != -1:
+		f.modulate = Color.WHITE
+	else:
+		f.modulate = Color.DIM_GRAY
 
 func _slide():
 	if is_up:
@@ -24,7 +51,8 @@ func _slide_up():
 	tween.set_ease(Tween.EASE_OUT)
 	#o tween em si
 	#tweena a posição da barra até o topo em meio segundo
-	tween.tween_property(self, "position", Vector2(0, 570), 0.5)
+	tween.tween_property(self, "position", Vector2(0, 553), 0.5)
+
 func _slide_down():
 	is_up = false
 	#para a barra aonde ela tá ao parar o tween de ir pra baixo
