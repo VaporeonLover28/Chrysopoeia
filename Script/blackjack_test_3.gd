@@ -272,7 +272,7 @@ func dealer_hit():
 	else:
 		dealer_can_hit = true
 		dealer_can_stand = false
-	player.calculate_hand_value()
+	#player.calculate_hand_value()
 
 func dealer_stand():
 	end_game()
@@ -287,6 +287,13 @@ func dealer_blackjack():
 	dealer_blackjacked = true
 
 func end_game():
+	for npcs in round_order_npcs:
+		if npcs.state == "Doubled":
+			tween = create_tween()
+			tween.set_trans(Tween.TRANS_QUART)
+			tween.set_ease(Tween.EASE_OUT)
+			tween.set_parallel(true)
+			tween.tween_property(npcs.hand[2], "rotation_degrees", Vector3.ZERO, 0.66)
 	dealer_can_stand = false
 	dealer_can_hit = false
 	print("Game ended")
@@ -387,6 +394,7 @@ func _on_card_distr_timer_timeout() -> void:
 	else:
 		#print("Stopped timer")
 		distributed_cards = true
+		blackjack_ui_test.f.modulate = Color.WHITE
 		card_distr_timer.stop()
 
 func _on_turn_timer_timeout() -> void:

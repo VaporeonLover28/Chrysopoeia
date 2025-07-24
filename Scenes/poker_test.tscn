@@ -1,40 +1,37 @@
-[gd_scene load_steps=15 format=3 uid="uid://cr0s4q071jmdo"]
+[gd_scene load_steps=13 format=3 uid="uid://n2tdlosimaee"]
 
-[ext_resource type="Texture2D" uid="uid://bm5mkjkryluex" path="res://Assets/grid_black_512x512.png" id="1_j8do0"]
-[ext_resource type="Script" uid="uid://08rexs5tbgee" path="res://Script/blackjack_test_3.gd" id="1_psklc"]
-[ext_resource type="PackedScene" uid="uid://bf85c3yhwefir" path="res://Assets/Exports/glTF/Workbench.gltf" id="2_i5tvo"]
-[ext_resource type="PackedScene" uid="uid://8hd5usv25kt" path="res://Scenes/bj_player_test.tscn" id="3_i5tvo"]
-[ext_resource type="PackedScene" uid="uid://cjrb25thpiawq" path="res://Assets/Originals/mago_beta.glb" id="4_ylhsq"]
-[ext_resource type="Script" uid="uid://j5nv645ekjhk" path="res://Script/mago_beta.gd" id="5_dft26"]
-[ext_resource type="PackedScene" uid="uid://blky3rg2wfs5q" path="res://Scenes/blackjack_ui_test.tscn" id="6_dft26"]
-[ext_resource type="Texture2D" uid="uid://dhjhpxc8o116y" path="res://Assets/Originals/CartaCERTA_AGORAVAI.png" id="8_ouk2e"]
-[ext_resource type="Texture2D" uid="uid://cfvv0gh4l613s" path="res://Assets/card_textures/ace_of_clubs.png" id="9_d4gfs"]
+[ext_resource type="Texture2D" uid="uid://bm5mkjkryluex" path="res://Assets/grid_black_512x512.png" id="1_vjnd0"]
+[ext_resource type="PackedScene" uid="uid://bf85c3yhwefir" path="res://Assets/Exports/glTF/Workbench.gltf" id="2_hge40"]
+[ext_resource type="PackedScene" uid="uid://8hd5usv25kt" path="res://Scenes/bj_player_test.tscn" id="3_vyhjf"]
+[ext_resource type="PackedScene" uid="uid://cjrb25thpiawq" path="res://Assets/Originals/mago_beta.glb" id="4_g50ik"]
+[ext_resource type="Script" uid="uid://j5nv645ekjhk" path="res://Script/mago_beta.gd" id="5_jov7v"]
+[ext_resource type="Texture2D" uid="uid://dhjhpxc8o116y" path="res://Assets/Originals/CartaCERTA_AGORAVAI.png" id="7_mwgpf"]
+[ext_resource type="Texture2D" uid="uid://cfvv0gh4l613s" path="res://Assets/card_textures/ace_of_clubs.png" id="8_36qu1"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k2ed7"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4uwxv"]
 sky_top_color = Color(0, 0, 0, 1)
 sky_horizon_color = Color(0, 0, 0, 1)
 ground_bottom_color = Color(0, 0, 0, 1)
 ground_horizon_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Sky" id="Sky_ouk2e"]
-sky_material = SubResource("ProceduralSkyMaterial_k2ed7")
+[sub_resource type="Sky" id="Sky_ylhsq"]
+sky_material = SubResource("ProceduralSkyMaterial_4uwxv")
 
-[sub_resource type="Environment" id="Environment_dft26"]
+[sub_resource type="Environment" id="Environment_e7rs5"]
 background_mode = 2
-sky = SubResource("Sky_ouk2e")
+sky = SubResource("Sky_ylhsq")
 tonemap_mode = 2
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_psklc"]
+[sub_resource type="NavigationMesh" id="NavigationMesh_p8a73"]
 vertices = PackedVector3Array(-4.5, 0.5, -9.535, -4.5, 0.5, 1.965, 4.5, 0.5, 1.965, 4.5, 0.5, -9.535)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_psklc"]
-albedo_texture = ExtResource("1_j8do0")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ptvw2"]
+albedo_texture = ExtResource("1_vjnd0")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
-[node name="blackjack_test_3" type="Node3D"]
-script = ExtResource("1_psklc")
+[node name="poker_test" type="Node3D"]
 
 [node name="turn_timer" type="Timer" parent="."]
 one_shot = true
@@ -43,14 +40,14 @@ one_shot = true
 wait_time = 0.5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_dft26")
+environment = SubResource("Environment_e7rs5")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-navigation_mesh = SubResource("NavigationMesh_psklc")
+navigation_mesh = SubResource("NavigationMesh_p8a73")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 10.965)
-material_override = SubResource("StandardMaterial3D_psklc")
+material_override = SubResource("StandardMaterial3D_ptvw2")
 use_collision = true
 collision_mask = 14
 
@@ -71,7 +68,7 @@ light_color = Color(1, 0.637837, 0.399547, 1)
 spot_range = 3.19828
 spot_angle = 35.0
 
-[node name="table" parent="." instance=ExtResource("2_i5tvo")]
+[node name="table" parent="." instance=ExtResource("2_hge40")]
 
 [node name="chair1" type="Marker3D" parent="table"]
 transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0, 0.415, -0.752299)
@@ -88,22 +85,27 @@ transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 
 [node name="chair5" type="Marker3D" parent="table"]
 transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, -1.24972, 0.415, -0.00299716)
 
+[node name="chair6" type="Marker3D" parent="table"]
+transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0, 0.415, 0.75)
+
+[node name="chair7" type="Marker3D" parent="table"]
+transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, -0.747678, 0.415, 0.75)
+
+[node name="chair8" type="Marker3D" parent="table"]
+transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0.7531, 0.415, 0.75)
+
 [node name="deck" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54688, 0.887299, 0.234632)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.608939, 0.887299, 0.00018622)
 
-[node name="bj_player_test" parent="." instance=ExtResource("3_i5tvo")]
+[node name="poker_player_test" parent="." instance=ExtResource("3_vyhjf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.890662, 0.854396)
+script = null
 
-[node name="spinnin mage" parent="." instance=ExtResource("4_ylhsq")]
+[node name="spinnin mage" parent="." instance=ExtResource("4_g50ik")]
 transform = Transform3D(0.086, 0, 1.50367e-08, 0, 0.02, 0, -1.50367e-08, 0, 0.086, 0.475668, -0.341995, -1.99775)
-script = ExtResource("5_dft26")
+script = ExtResource("5_jov7v")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Blackjack_UI_test" parent="CanvasLayer" instance=ExtResource("6_dft26")]
-offset_top = 650.0
-offset_bottom = 82.0
-metadata/_edit_use_anchors_ = true
 
 [node name="gamecontrol" type="Panel" parent="CanvasLayer"]
 offset_left = 709.0
@@ -215,7 +217,7 @@ offset_top = 6.0
 offset_right = 645.0
 offset_bottom = 906.0
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("8_ouk2e")
+texture = ExtResource("7_mwgpf")
 
 [node name="info" type="TextureRect" parent="CanvasLayer/selected_card/card"]
 layout_mode = 0
@@ -224,7 +226,7 @@ offset_top = 120.0
 offset_right = 107.0
 offset_bottom = 199.0
 scale = Vector2(8.695, 8.695)
-texture = ExtResource("9_d4gfs")
+texture = ExtResource("8_36qu1")
 
 [node name="text" type="Label" parent="CanvasLayer/selected_card"]
 layout_mode = 0
@@ -235,7 +237,4 @@ offset_bottom = 121.0
 text = "Ace of Diamonds"
 horizontal_alignment = 1
 
-[connection signal="timeout" from="turn_timer" to="." method="_on_turn_timer_timeout"]
-[connection signal="timeout" from="card_distr_timer" to="." method="_on_card_distr_timer_timeout"]
-
-[editable path="bj_player_test"]
+[editable path="poker_player_test"]

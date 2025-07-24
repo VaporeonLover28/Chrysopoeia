@@ -36,6 +36,7 @@ func _process(delta: float) -> void:
 			ui.f.modulate = Color.DIM_GRAY
 		else:
 			game.start_game()
+			ui.f.modulate = Color.DIM_GRAY
 	
 	if Input.is_action_just_pressed("q") and game.dealer_can_hit:
 		game.dealer_hit()
