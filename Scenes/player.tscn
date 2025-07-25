@@ -42,4 +42,6 @@ shape = SubResource("SphereShape3D_cvnsp")
 disabled = true
 debug_color = Color(0.963757, 0, 0.496823, 0.42)
 
+[node name="UI" type="CanvasLayer" parent="."]
+
 [connection signal="timeout" from="play_game" to="." method="_on_play_game_timeout"]

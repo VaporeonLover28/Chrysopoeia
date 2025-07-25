@@ -7,6 +7,8 @@ extends CharacterBody3D
 @onready var call_npc_area: Area3D = $"Call NPC Area"
 @onready var play_game: Timer = $play_game
 @onready var world_scene = $"../"
+@onready var loading_suit = preload("res://loading_suit.tscn")
+@onready var ui: CanvasLayer = $UI
 
 const BUILD_SHADER = preload("res://build_material.tres")
 
@@ -24,6 +26,8 @@ var object_rotation: Vector3
 @export var bob_freq : float = 2
 @export var bob_amp : float = 0.08
 var t_bob : float = 0.0
+
+var tween : Tween
 
 func _unhandled_input(event): #event representa o evento do input
 	if event.is_action_pressed("esc") and world_scene.get_node("Shop Menu").visible == false:
@@ -105,9 +109,10 @@ func _headbob(time) -> Vector3:
 	return pos
 
 func _interact_object():
-	var object_chosen = ray_interection.get_collider()
-	if object_chosen != null and object_chosen.get_parent() is InteractableObject and Globals.game_paused == false:
-		object_chosen.get_parent()._interact([self])
+	loading_screen()
+	var object_inst = ray_interection.get_collider()
+	if object_inst != null and object_inst.get_parent() is InteractableObject and Globals.game_paused == false:
+		object_inst.get_parent()._interact([self])
 		#is breaking the game beacuse removes the player reference
 		_play_blackjack()
 
@@ -122,10 +127,10 @@ func _call_npc_to_game():
 		var bodies_on_area = call_npc_area.get_overlapping_bodies().filter(_filter_NPC_in_area)
 		if bodies_on_area.is_empty() == false:
 			var choosen_NPC = bodies_on_area.pick_random()
-			var object_chosen = ray_interection.get_collider()
-			if object_chosen.get_parent() is InteractableObject\
+			var object_inst = ray_interection.get_collider()
+			if object_inst.get_parent() is InteractableObject\
 			  and choosen_NPC != null:
-				choosen_NPC._get_called_to_play_game(object_chosen.get_parent())
+				choosen_NPC._get_called_to_play_game(object_inst.get_parent())
 		call_npc_area.get_child(0).disabled = true
 		
 func _filter_NPC_in_area(bodies):
@@ -136,6 +141,34 @@ func _play_blackjack():
 	#Globals.player_transform_storage.push_back(pivot.transform)
 	#play_game.start()
 	pass
+
+func loading_screen():
+	var which_suit = randi_range(0, 3)
+	var inst = loading_suit.instantiate()
+	match which_suit:
+		0:
+			inst.text += "♠"
+		1:
+			inst.text += "♣"
+		2:
+			inst.text += "♥"
+		3:
+			inst.text += "♦"
+	ui.add_child(inst)
+	inst.rotation = 0
+	inst.scale = Vector2(0.05, 0.05)
+	inst.position = Vector2(531.0, 234.0)
+	tween = create_tween()
+	tween.set_trans(Tween.TRANS_QUART)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(inst, "scale", Vector2(1.0, 1.0), 1)
+	tween.tween_interval(0.5)
+	tween.set_ease(Tween.EASE_IN)
+	tween.set_parallel(true)
+	tween.tween_property(inst, "scale", Vector2(27.0, 27.0), 3)
+	tween.tween_property(inst, "rotation_degrees", 90, 3)
+	tween.tween_property(inst, "position", Vector2(628.0, 223.0), 3)
+	tween.set_parallel(false)
 
 func _on_play_game_timeout() -> void:
 	Globals.player_transform_storage.push_back(camera.transform)
@@ -190,9 +223,9 @@ func _build():
 		can_build = false
 	
 func _sell():
-	var object_chosen = ray_interection.get_collider()
-	if object_chosen != null and object_chosen.get_parent().get_parent() is InteractableObject and Globals.game_paused == false:
-		object_chosen.queue_free()
+	var object_inst = ray_interection.get_collider()
+	if object_inst != null and object_inst.get_parent().get_parent() is InteractableObject and Globals.game_paused == false:
+		object_inst.queue_free()
 		
 func lock_model_into_build_spot():
 	if ray_builder.get_collider() != null \

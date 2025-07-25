@@ -1,0 +1,101 @@
+[gd_scene load_steps=12 format=3 uid="uid://blm2ybcpo2i7k"]
+
+[ext_resource type="Script" uid="uid://du03851jbkyo2" path="res://Script/slot_machine.gd" id="1_0ucjj"]
+[ext_resource type="PackedScene" uid="uid://ds2ti854kfjl1" path="res://Assets/Originals/RodaCaçaniquel.glb" id="1_03c2u"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_x12o1"]
+size = Vector3(1, 0.75, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_agdmm"]
+left_to_right = 0.0
+size = Vector3(0.1, 0.33, 0.94)
+
+[sub_resource type="PrismMesh" id="PrismMesh_nmlme"]
+left_to_right = 1.0
+size = Vector3(0.1, 0.33, 0.9)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i6cki"]
+size = Vector3(0, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_knkoj"]
+size = Vector3(1, 1, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_842tv"]
+size = Vector3(1, 0.355, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_7abct"]
+left_to_right = 1.0
+size = Vector3(1, 0.31, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_0ucjj"]
+left_to_right = 1.0
+size = Vector3(0.4, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kpwbf"]
+size = Vector3(0.15, 0.15, 0.69)
+
+[node name="slot_machine" type="Node3D"]
+script = ExtResource("1_0ucjj")
+
+[node name="mesh" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_x12o1")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="mesh"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.449101, 1.1, 0.239)
+mesh = SubResource("PrismMesh_agdmm")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="mesh"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.449731, 1.1, 0.239)
+mesh = SubResource("PrismMesh_nmlme")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.499828, 1.1, 0)
+mesh = SubResource("BoxMesh_i6cki")
+skeleton = NodePath("../MeshInstance3D3")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.1, 0)
+mesh = SubResource("BoxMesh_i6cki")
+skeleton = NodePath("../MeshInstance3D3")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09121, -0.172001)
+mesh = SubResource("BoxMesh_knkoj")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.77382, 0)
+mesh = SubResource("BoxMesh_842tv")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="mesh"]
+transform = Transform3D(-4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 3.82137e-15, 4.37114e-08, 0, 1.43946, 0)
+mesh = SubResource("PrismMesh_7abct")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="mesh"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.37884, 0.293551)
+mesh = SubResource("PrismMesh_0ucjj")
+
+[node name="wheels" type="Node3D" parent="."]
+
+[node name="RodaCaçaniquel" parent="wheels" instance=ExtResource("1_03c2u")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.336583, 1.20508, 0.400147)
+
+[node name="RodaCaçaniquel2" parent="wheels" instance=ExtResource("1_03c2u")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.120846, 1.20508, 0.400147)
+
+[node name="RodaCaçaniquel3" parent="wheels" instance=ExtResource("1_03c2u")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.105209, 1.20508, 0.400147)
+
+[node name="RodaCaçaniquel4" parent="wheels" instance=ExtResource("1_03c2u")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.331263, 1.20508, 0.400147)
+
+[node name="lever" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.584, 1.06275, 0)
+
+[node name="mesh" type="MeshInstance3D" parent="lever"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.259964, 0)
+mesh = SubResource("BoxMesh_kpwbf")
+skeleton = NodePath("../..")

@@ -86,12 +86,9 @@ transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 
 transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, -1.24972, 0.415, -0.00299716)
 
 [node name="chair6" type="Marker3D" parent="table"]
-transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0, 0.415, 0.75)
-
-[node name="chair7" type="Marker3D" parent="table"]
 transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, -0.747678, 0.415, 0.75)
 
-[node name="chair8" type="Marker3D" parent="table"]
+[node name="chair7" type="Marker3D" parent="table"]
 transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0.7531, 0.415, 0.75)
 
 [node name="deck" type="Node3D" parent="."]
