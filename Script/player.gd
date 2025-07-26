@@ -9,6 +9,7 @@ extends CharacterBody3D
 @onready var world_scene = $"../"
 @onready var loading_suit = preload("res://loading_suit.tscn")
 @onready var ui: CanvasLayer = $UI
+@onready var money: Label = $UI/money
 
 const BUILD_SHADER = preload("res://build_material.tres")
 
@@ -44,6 +45,7 @@ func _unhandled_input(event): #event representa o evento do input
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-70), deg_to_rad(70))
 
 func _physics_process(delta: float) -> void:
+	money.text = "Money: " + str(Globals.money)
 	# Add the gravity.
 	if not is_on_floor() and Globals.game_paused == false:
 		velocity += get_gravity() * delta

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ifr6x47walau"]
+[gd_scene load_steps=24 format=3 uid="uid://ifr6x47walau"]
 
 [ext_resource type="PackedScene" uid="uid://dsp27d25mg6bh" path="res://Scenes/player.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://cf6y1d4msmkfp" path="res://Script/world.gd" id="1_ic0uy"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://t1ipnjtntycl" path="res://Assets/Exports/glTF/Bench.gltf" id="8_ic0uy"]
 [ext_resource type="PackedScene" uid="uid://dp7rwp8yfewpg" path="res://Scenes/black_jack.tscn" id="11_c5t2i"]
 [ext_resource type="PackedScene" uid="uid://bxgjpo50hi4hi" path="res://Scenes/bar.tscn" id="14_kn0ld"]
+[ext_resource type="PackedScene" uid="uid://blm2ybcpo2i7k" path="res://Scenes/slot_machine.tscn" id="16_hgpy0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_37kl0"]
 sky_top_color = Color(0.0606355, 0.0252388, 0.221666, 1)
@@ -258,6 +259,14 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.975
 
 [node name="Bar" parent="NavigationRegion3D/All Interactable Spots" instance=ExtResource("14_kn0ld")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 11.11)
+
+[node name="slot_machine" parent="NavigationRegion3D/All Interactable Spots" instance=ExtResource("16_hgpy0")]
+transform = Transform3D(-5.46392e-08, 0, -1.25, 0, 1.25, 0, 1.25, 0, -5.46392e-08, 14.8727, 0, -6.91034)
+object_class = "SlotMachice"
+
+[node name="slot_machine2" parent="NavigationRegion3D/All Interactable Spots" instance=ExtResource("16_hgpy0")]
+transform = Transform3D(-5.46392e-08, 0, -1.25, 0, 1.25, 0, 1.25, 0, -5.46392e-08, 14.8727, 0, -5.01597)
+object_class = "SlotMachice"
 
 [node name="CasinoLight" parent="NavigationRegion3D" instance=ExtResource("4_036b0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0632236, 3.04997, -11.0472)

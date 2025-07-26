@@ -1,4 +1,4 @@
-extends Node3D
+extends InteractableObject; class_name SlotMachice
 
 @onready var lever: Node3D = $lever
 @onready var wheel_1: Node3D = $wheels/wheel1
@@ -15,24 +15,22 @@ var rewards : Array = [["Mercury", 10, 1], ["Sun", 20, 40], ["Geocentrism", 50, 
 #["Ra", 75, 1], ["Trismegistus", 100, 1], ["Ankh", 0, 1]]
 var tween : Tween
 
-var money : int = 150
 var play_price : int = 30
 var current_reward : Array
 var points : int = 0
 var wheels_spinning : int = 0
 var spinning : bool = false
 
-func _process(delta: float) -> void:
-	$Camera3D/CanvasLayer/Label.text = "Money: " + str(money)
-	if Input.is_action_just_pressed("space") and !spinning:
+func _interact_SlotMachice(object_ref):
+	if !spinning:
 		current_reward.clear()
 		points = 0
 		lever_pull()
 
 func lever_pull():
 	spinning = true
-	if money - play_price >= 0:
-		money -= play_price
+	if Globals.money - play_price >= 0:
+		Globals.money -= play_price
 		spin_rewards()
 		tween = create_tween()
 		tween.set_trans(Tween.TRANS_BACK)
@@ -66,6 +64,7 @@ func spin_rewards():
 	else:
 		print(current_reward)
 		var times = randi_range(5, 7)
+		print(times)
 		spin(wheel_1, times, current_reward[0])
 		await get_tree().create_timer(0.75).timeout
 		spin(wheel_2, times, current_reward[1])
@@ -73,14 +72,15 @@ func spin_rewards():
 		spin(wheel_3, times, current_reward[2])
 		await get_tree().create_timer(0.75).timeout
 		spin(wheel_4, times, current_reward[3])
+		times = 0
 
 func spin(wheel, times_spun, reward):
 	wheels_spinning += 1
 	var found_reward = rewards.find(reward)
 	tween = create_tween()
-	tween.set_trans(Tween.TRANS_ELASTIC)
+	tween.set_trans(Tween.TRANS_BOUNCE)
 	tween.set_ease(Tween.EASE_OUT)
-	tween.tween_property(wheel, "rotation_degrees", Vector3(0, 90, times_spun * 360 + (360 - found_reward * 60)), times_spun + found_reward * 0.33)
+	tween.tween_property(wheel, "rotation_degrees", Vector3(0, 90, times_spun * 360 + (360 - found_reward * 60)), times_spun)
 	await get_tree().create_timer(times_spun + found_reward * 0.33).timeout
 	wheel_stopped(wheel, found_reward)
 
@@ -107,6 +107,6 @@ func check_matching():
 				points += rewards[which_reward][1] * how_many_match[type] * ankh_multiplier
 			#print("match of " + str(how_many_match[type]))
 	spinning = false
-	money += points
+	Globals.money += points
 		#else:
 			#print("not a match")

@@ -12,12 +12,10 @@ var money: int = 1000:
 var money_lost: int = -1
 var spell_inventory_list: Array[PurchasableItemResource]
 
-
 @onready var aqua_vitae_timer: Timer
 @onready var aqua_fortis_active: bool = false
 @onready var aqua_regia_timer: Timer
 @onready var aqua_philosophorum_timer: Timer
-
 
 func _ready() -> void:
 	var aqua_vitae_timer_inst = Timer.new()
