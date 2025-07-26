@@ -1,7 +1,19 @@
-[gd_scene load_steps=12 format=3 uid="uid://blm2ybcpo2i7k"]
+[gd_scene load_steps=15 format=3 uid="uid://blm2ybcpo2i7k"]
 
 [ext_resource type="Script" uid="uid://du03851jbkyo2" path="res://Script/slot_machine.gd" id="1_0ucjj"]
 [ext_resource type="PackedScene" uid="uid://ds2ti854kfjl1" path="res://Assets/Originals/RodaCaçaniquel.glb" id="1_03c2u"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0ucjj"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_s1yih"]
+sky_material = SubResource("ProceduralSkyMaterial_0ucjj")
+
+[sub_resource type="Environment" id="Environment_2rg1w"]
+background_mode = 2
+sky = SubResource("Sky_s1yih")
+tonemap_mode = 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_x12o1"]
 size = Vector3(1, 0.75, 1)
@@ -36,6 +48,9 @@ size = Vector3(0.15, 0.15, 0.69)
 
 [node name="slot_machine" type="Node3D"]
 script = ExtResource("1_0ucjj")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2rg1w")
 
 [node name="mesh" type="Node3D" parent="."]
 
@@ -80,22 +95,35 @@ mesh = SubResource("PrismMesh_0ucjj")
 
 [node name="wheels" type="Node3D" parent="."]
 
-[node name="RodaCaçaniquel" parent="wheels" instance=ExtResource("1_03c2u")]
+[node name="wheel1" parent="wheels" instance=ExtResource("1_03c2u")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.336583, 1.20508, 0.400147)
 
-[node name="RodaCaçaniquel2" parent="wheels" instance=ExtResource("1_03c2u")]
+[node name="wheel2" parent="wheels" instance=ExtResource("1_03c2u")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.120846, 1.20508, 0.400147)
 
-[node name="RodaCaçaniquel3" parent="wheels" instance=ExtResource("1_03c2u")]
+[node name="wheel3" parent="wheels" instance=ExtResource("1_03c2u")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.105209, 1.20508, 0.400147)
 
-[node name="RodaCaçaniquel4" parent="wheels" instance=ExtResource("1_03c2u")]
+[node name="wheel4" parent="wheels" instance=ExtResource("1_03c2u")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.331263, 1.20508, 0.400147)
 
 [node name="lever" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.584, 1.06275, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.584, 1.06275, 0.384154)
 
 [node name="mesh" type="MeshInstance3D" parent="lever"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.259964, 0)
 mesh = SubResource("BoxMesh_kpwbf")
 skeleton = NodePath("../..")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.99166, 0.128882, 0, -0.128882, 0.99166, 0, 1.40687, 1.19395)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera3D"]
+
+[node name="Label" type="Label" parent="Camera3D/CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "Money: 30"
