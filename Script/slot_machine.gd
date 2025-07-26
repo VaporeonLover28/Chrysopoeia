@@ -8,9 +8,11 @@ extends Node3D
 
 ##Reward is [Name, Value, Odds]
 ##Odds is the minimum value the randi must be to choose this reward
-##0-39 is mercury, 40-59 is sun, 60-74 is geocentrism, 75 to 84 is ra, 85 to 90 is trismegistus and 90 to 100 is ankh
-var rewards : Array = [["Mercury", 10, 0], ["Sun", 20, 40], ["Geocentrism", 50, 60], 
-["Ra", 75, 75], ["Trismegistus", 100, 85], ["Ankh", 0, 90]]
+##1-39 is mercury, 40-59 is sun, 60-74 is geocentrism, 75 to 84 is ra, 85 to 94 is trismegistus and 95 to 100 is ankh
+var rewards : Array = [["Mercury", 10, 1], ["Sun", 20, 40], ["Geocentrism", 50, 60], 
+["Ra", 75, 75], ["Trismegistus", 100, 85], ["Ankh", 0, 95]]
+#var rewards : Array = [["Mercury", 10, 1], ["Sun", 20, 1], ["Geocentrism", 50, 1], 
+#["Ra", 75, 1], ["Trismegistus", 100, 1], ["Ankh", 0, 1]]
 var tween : Tween
 
 var money : int = 150
@@ -18,15 +20,17 @@ var play_price : int = 30
 var current_reward : Array
 var points : int = 0
 var wheels_spinning : int = 0
+var spinning : bool = false
 
 func _process(delta: float) -> void:
 	$Camera3D/CanvasLayer/Label.text = "Money: " + str(money)
-	if Input.is_action_just_pressed("space"):
+	if Input.is_action_just_pressed("space") and !spinning:
 		current_reward.clear()
 		points = 0
 		lever_pull()
 
 func lever_pull():
+	spinning = true
 	if money - play_price >= 0:
 		money -= play_price
 		spin_rewards()
@@ -37,23 +41,26 @@ func lever_pull():
 		tween.set_trans(Tween.TRANS_QUART)
 		tween.tween_property(lever, "rotation_degrees", Vector3.ZERO, 0.66)
 	else:
-		print("YOU'RE BROKE BOZO")
 		get_tree().quit()
 
 func spin_rewards():
 	var random_value = randi_range(1, 100)
 	var has_appended : bool = false
 	for i in rewards:
-		if random_value >= i[2]:
-			#print(str(random_value) + " is bigger or equal to " + str(i[2]) + ", checking other rewards")
-			pass
-		elif !has_appended:
-			has_appended = true
-			current_reward.append(rewards[rewards.find(i) - 1])
-			#print(str(random_value) + " is smaller than " + str(i[2]) + ", appending " + rewards[rewards.find(i) - 1][0])
+		if i[0] != "Ankh":
+			if random_value >= i[2]:
+				#print(str(random_value) + " is bigger or equal to " + str(i[2]) + ", checking other rewards")
+				pass
+			elif !has_appended:
+				has_appended = true
+				current_reward.append(rewards[rewards.find(i) - 1])
+				#print(str(random_value) + " is smaller than " + str(i[2]) + ", appending " + rewards[rewards.find(i) - 1][0])
+			else:
+				#print("Already chose reward")
+				pass
 		else:
-			#print("Already chose reward")
-			pass
+			if random_value >= i[2]:
+				current_reward.append(rewards[rewards.find(i)])
 	if current_reward.size() < 4:
 		spin_rewards()
 	else:
@@ -85,15 +92,21 @@ func wheel_stopped(wheel, found_reward):
 
 func check_matching():
 	var how_many_match := {"Mercury": 0, "Sun": 0, "Geocentrism": 0, "Ra": 0, "Trismegistus": 0, "Ankh": 0}
-	for i in current_reward:
-		how_many_match[i[0]] += 1
+	for item in current_reward:
+		how_many_match[item[0]] += 1
 	
-	var which_key = 0
+	var which_reward = -1
+	var has_ankh : bool = how_many_match["Ankh"] > 0
+	var ankh_multiplier : int = 2 * how_many_match["Ankh"] if has_ankh else 1
 	for type in how_many_match:
-		which_key += 1
+		which_reward += 1
 		if how_many_match[type] >= 2:
+			if how_many_match["Ankh"] > 1:
+				points += (rewards[which_reward][1] + (how_many_match["Ankh"] * 100)) * how_many_match[type] * ankh_multiplier
+			else:
+				points += rewards[which_reward][1] * how_many_match[type] * ankh_multiplier
 			#print("match of " + str(how_many_match[type]))
-			points += rewards[which_key - 1][1] * how_many_match[type]
-			money += points
+	spinning = false
+	money += points
 		#else:
 			#print("not a match")
