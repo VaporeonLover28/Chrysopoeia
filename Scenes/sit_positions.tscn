@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://j4nby41rkhr3"]
+
+[ext_resource type="Script" uid="uid://dtug63c4mdjsm" path="res://Script/sit_positions.gd" id="1_8rgpi"]
+
+[node name="Sit positions" type="Node3D"]
+script = ExtResource("1_8rgpi")
+chair_postion_list = Array[Array]([[Vector3(2.2, 0, 0), false], [Vector3(-2.2, 0, 0), false], [], [Vector3(0, 0, -2.2), false], [Vector3(0, 0, -2.2), false]])

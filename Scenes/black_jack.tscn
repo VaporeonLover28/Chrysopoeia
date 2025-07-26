@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dp7rwp8yfewpg"]
+[gd_scene load_steps=7 format=3 uid="uid://dp7rwp8yfewpg"]
 
 [ext_resource type="Script" uid="uid://d33jhadxc2lv5" path="res://Script/gamble_spot.gd" id="1_33dal"]
 [ext_resource type="PackedScene" uid="uid://dbgpivfhrvrfu" path="res://Scenes/shader_quad.tscn" id="2_nu2ws"]
+[ext_resource type="PackedScene" uid="uid://j4nby41rkhr3" path="res://Scenes/sit_positions.tscn" id="3_nu2ws"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_or8fe"]
 
@@ -12,7 +13,6 @@ albedo_color = Color(1, 0, 0, 1)
 
 [node name="BlackJack" type="Node3D"]
 script = ExtResource("1_33dal")
-chair_postion_list = Array[Array]([[Vector3(-2.2, 0, 0), true, 0]])
 object_class = "GambleSpot"
 metadata/_custom_type_script = "uid://d33jhadxc2lv5"
 
@@ -29,4 +29,5 @@ shape = SubResource("BoxShape3D_55y61")
 
 [node name="Shader_Quad" parent="camera" instance=ExtResource("2_nu2ws")]
 
-[node name="Sit positions" type="Node3D" parent="."]
+[node name="Sit positions" parent="." instance=ExtResource("3_nu2ws")]
+chair_postion_list = Array[Array]([[Vector3(0, 0, 2.2), true]])

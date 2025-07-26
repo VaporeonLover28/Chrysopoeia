@@ -26,9 +26,7 @@ preload("res://Scenes/noble.tscn")]
 
 
 func _ready() -> void:
-	
 	npc_spwaner_timer.start(randf_range(minimum_time_for_spawn_npc, maximum_time_for_spawn_npc))
-	
 	var new_config = ConfigFile.new()
 	if SaveScript.current_savefile_loading != "":
 		var loading = new_config.load(SaveScript.current_savefile_loading)

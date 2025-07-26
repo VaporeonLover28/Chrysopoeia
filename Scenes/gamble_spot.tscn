@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2w65oiqysl6d"]
+[gd_scene load_steps=6 format=3 uid="uid://d2w65oiqysl6d"]
 
 [ext_resource type="Script" uid="uid://d33jhadxc2lv5" path="res://Script/gamble_spot.gd" id="1_iytcb"]
 [ext_resource type="PackedScene" uid="uid://dbgpivfhrvrfu" path="res://Scenes/shader_quad.tscn" id="2_aq0k3"]
+[ext_resource type="PackedScene" uid="uid://j4nby41rkhr3" path="res://Scenes/sit_positions.tscn" id="3_t12wh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_aq0k3"]
 
@@ -9,7 +10,6 @@
 
 [node name="Gamble spot" type="Node3D"]
 script = ExtResource("1_iytcb")
-chair_postion_list = Array[Array]([[Vector3(2.2, 0, 0), true, 0], [Vector3(-2.2, 0, 0), true, 1], [Vector3(0, 0, 2.2), true, 2], [Vector3(0, 0, -2.2), true, 3]])
 object_class = "GambleSpot"
 metadata/_custom_type_script = "uid://d3kiv4p05usnv"
 
@@ -25,4 +25,5 @@ shape = SubResource("BoxShape3D_aq0k3")
 
 [node name="Shader_Quad" parent="camera" instance=ExtResource("2_aq0k3")]
 
-[node name="Sit positions" type="Node3D" parent="."]
+[node name="Sit positions" parent="." instance=ExtResource("3_t12wh")]
+chair_postion_list = Array[Array]([[Vector3(2.2, 0, 0), true], [Vector3(-2.2, 0, 0), true], [Vector3(0, 0, 2.2), true], [Vector3(0, 0, -2.2), true]])

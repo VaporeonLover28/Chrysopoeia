@@ -9,6 +9,10 @@ func _init() -> void:
 func _save_function(world_scene: Node3D, save_file_number: int):
 	new_config.set_value("Globalvaribles", "money", Globals.money)
 	new_config.set_value("Globalvaribles", "spells", Globals.spell_inventory_list)
+	new_config.set_value("Globalvaribles", "Aqua Vitae Timer", Globals.aqua_vitae_timer.time_left)
+	new_config.set_value("Globalvaribles", "Aqua Fortis Active", Globals.aqua_fortis_active)
+	new_config.set_value("Globalvaribles", "Aqua Regia Timer", Globals.aqua_regia_timer.time_left)
+	new_config.set_value("Globalvaribles", "Aqua Philosophorum Timer", Globals.aqua_philosophorum_timer.time_left)
 	new_config.set_value("Scene", "World Scene", world_scene.scene_file_path)
 	new_config.set_value("Scene", "interactable object count",\
 	world_scene.get_node("NavigationRegion3D/All Interactable Spots").get_child_count())
@@ -32,7 +36,14 @@ func _load_function(world_scene: Node3D, save_file_number: int):
 	var loading = new_config.load(current_savefile_loading)
 	if loading == OK:
 		Globals.money = new_config.get_value("Globalvaribles", "money")
-		Globals.spell_inventory_list = new_config.get_value("Globalvaribles", "spells",)
+		Globals.spell_inventory_list = new_config.get_value("Globalvaribles", "spells")
+		if new_config.get_value("Globalvaribles", "Aqua Vitae Timer") > 0:
+			Globals.aqua_vitae_timer.start(new_config.get_value("Globalvaribles", "Aqua Vitae Timer"))
+		Globals.aqua_fortis_active = new_config.get_value("Globalvaribles", "Aqua Fortis Active")
+		if new_config.get_value("Globalvaribles", "Aqua Regia Timer") > 0:
+			Globals.aqua_vitae_timer.start(new_config.get_value("Globalvaribles", "Aqua Regia Timer"))
+		if new_config.get_value("Globalvaribles", "Aqua Philosophorum Timer") > 0:
+			Globals.aqua_vitae_timer.start(new_config.get_value("Globalvaribles", "Aqua Philosophorum Timer"))
 		world_scene.get_tree().change_scene_to_file(new_config.get_value("Scene", "World Scene"))
 	else:
 		return

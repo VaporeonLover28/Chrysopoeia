@@ -19,17 +19,17 @@ background_mode = 2
 sky = SubResource("Sky_3o5e7")
 tonemap_mode = 2
 
-[node name="Control" type="Control"]
+[node name="Buyable object" type="Control"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -56.0
-offset_top = -322.0
-offset_right = 167.0
-offset_bottom = 232.0
+offset_left = -111.0
+offset_top = -124.0
+offset_right = 112.0
+offset_bottom = 277.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
@@ -38,9 +38,12 @@ script = ExtResource("1_t6h1u")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_top = 0.314
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -200.914
+offset_bottom = -38.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -51,17 +54,20 @@ theme_override_font_sizes/font_size = 40
 text = "mama"
 
 [node name="Panel" type="Panel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 340)
+custom_minimum_size = Vector2(0, 190)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_bxvvs")
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Panel"]
 layout_mode = 2
-offset_left = -153.0
-offset_top = -68.0
-offset_right = 359.0
-offset_bottom = 444.0
+anchor_right = 1.022
+anchor_bottom = 1.026
+offset_left = -6.0
+offset_top = 5.0
+offset_right = 0.0939789
+offset_bottom = 0.0599976
 texture = SubResource("ViewportTexture_t6h1u")
+expand_mode = 1
 
 [node name="SubViewport" type="SubViewport" parent="VBoxContainer"]
 own_world_3d = true

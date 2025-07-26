@@ -1,0 +1,204 @@
+[gd_scene load_steps=3 format=3 uid="uid://uuscgkuf1gtm"]
+
+[ext_resource type="Script" uid="uid://bwatdkkfxp8n6" path="res://Script/bar_ui.gd" id="1_dh4dj"]
+[ext_resource type="Texture2D" uid="uid://pov62jfwgcqy" path="res://icon.svg" id="2_gudkw"]
+
+[node name="Bar UI" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -339.5
+offset_top = -270.0
+offset_right = 339.5
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_dh4dj")
+
+[node name="BoxContainer" type="BoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VSeparator" type="VSeparator" parent="Control/BoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/BoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="Control/BoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/BoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Money:"
+
+[node name="HSeparator2" type="HSeparator" parent="Control/BoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Control/BoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Buy"
+
+[node name="HSeparator" type="VSeparator" parent="Control/BoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/BoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator2" type="HSeparator" parent="Control/BoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/BoxContainer/HBoxContainer/VBoxContainer2"]
+z_index = 1
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/BoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/BoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Aqua Vitae" type="Control" parent="Control/BoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Control/BoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer2/HBoxContainer/Aqua Vitae"]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 128.0
+offset_bottom = 186.0
+scale = Vector2(0.6, 0.6)
+
+[node name="Label" type="Label" parent="Control/BoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer2/HBoxContainer/Aqua Vitae/HBoxContainer"]
+layout_mode = 2
+text = "Aqua Vitae"
+
+[node name="TextureButton" type="TextureButton" parent="Control/BoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer2/HBoxContainer/Aqua Vitae/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_gudkw")
+
+[node name="Label2" type="Label" parent="Control/BoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer2/HBoxContainer/Aqua Vitae/HBoxContainer"]
+layout_mode = 2
+text = "descrição"
+
+[node name="Aqua Fortis" type="Control" parent="Control/BoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Control/BoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer2/HBoxContainer/Aqua Fortis"]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 128.0
+offset_bottom = 186.0
+scale = Vector2(0.6, 0.6)
+
+[node name="Label" type="Label" parent="Control/BoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer2/HBoxContainer/Aqua Fortis/HBoxContainer"]
+layout_mode = 2
+text = "Aqua Fortis"
+
+[node name="TextureButton" type="TextureButton" parent="Control/BoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer2/HBoxContainer/Aqua Fortis/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_gudkw")
+
+[node name="Label2" type="Label" parent="Control/BoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer2/HBoxContainer/Aqua Fortis/HBoxContainer"]
+layout_mode = 2
+text = "descrição"
+
+[node name="HSeparator2" type="HSeparator" parent="Control/BoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/BoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Aqua Regia" type="Control" parent="Control/BoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer2/HBoxContainer2"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Control/BoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer2/HBoxContainer2/Aqua Regia"]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 128.0
+offset_bottom = 186.0
+scale = Vector2(0.6, 0.6)
+
+[node name="Label" type="Label" parent="Control/BoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer2/HBoxContainer2/Aqua Regia/HBoxContainer"]
+layout_mode = 2
+text = "Aqua Regia"
+
+[node name="TextureButton" type="TextureButton" parent="Control/BoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer2/HBoxContainer2/Aqua Regia/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_gudkw")
+
+[node name="Label2" type="Label" parent="Control/BoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer2/HBoxContainer2/Aqua Regia/HBoxContainer"]
+layout_mode = 2
+text = "descrição"
+
+[node name="Aqua Philosophorum" type="Control" parent="Control/BoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer2/HBoxContainer2"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Control/BoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer2/HBoxContainer2/Aqua Philosophorum"]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 128.0
+offset_bottom = 186.0
+scale = Vector2(0.6, 0.6)
+
+[node name="Label" type="Label" parent="Control/BoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer2/HBoxContainer2/Aqua Philosophorum/HBoxContainer"]
+layout_mode = 2
+text = "Aqua Philosophorum"
+
+[node name="TextureButton" type="TextureButton" parent="Control/BoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer2/HBoxContainer2/Aqua Philosophorum/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_gudkw")
+
+[node name="Label2" type="Label" parent="Control/BoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer2/HBoxContainer2/Aqua Philosophorum/HBoxContainer"]
+layout_mode = 2
+text = "descrição"
+
+[node name="HSeparator3" type="HSeparator" parent="Control/BoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+z_index = -2
+y_sort_enabled = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+mouse_filter = 2
+color = Color(0.568627, 0, 1, 1)
+
+[connection signal="pressed" from="Control/BoxContainer/HBoxContainer/VBoxContainer/Button" to="Control" method="_buy_drink"]

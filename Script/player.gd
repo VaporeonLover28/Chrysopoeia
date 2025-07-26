@@ -30,17 +30,15 @@ var t_bob : float = 0.0
 var tween : Tween
 
 func _unhandled_input(event): #event representa o evento do input
-	if event.is_action_pressed("esc") and world_scene.get_node("Shop Menu").visible == false:
+	if event.is_action_pressed("esc"):
 		if Globals.game_paused == false:#se ele apertar esc(soltamos o mouse)
 			Globals.game_paused = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		elif world_scene.get_node("Shop Menu").visible == false: 
-			Globals.game_paused = false
 	
-	if event is InputEventMouseMotion and Globals.game_paused == false: # se o jogador mover o mouse(prendemos ele na tela)
+	if event is InputEventMouseMotion and Globals.game_paused == false and world_scene.get_node("Bar UI").visible == false: # se o jogador mover o mouse(prendemos ele na tela)
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	if event is InputEventMouseMotion and Globals.game_paused == false:
-		if Globals.player_interacting == false:
+	if event is InputEventMouseMotion and Globals.game_paused == false \
+	and world_scene.get_node("Bar UI").visible == false and Globals.player_interacting == false:
 			pivot.rotate_y(-event.relative.x * mouse_sensitivity)
 			camera.rotate_x(-event.relative.y * mouse_sensitivity)
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-70), deg_to_rad(70))
@@ -74,10 +72,8 @@ func _physics_process(delta: float) -> void:
 	camera.transform.origin = _headbob(t_bob) + Vector3(0, 0.5, 0)
 	
 	if Input.is_action_just_pressed("e") and Globals.player_interacting == false and is_on_building_mode == false:
+		print("oi")
 		_interact_object()
-		
-	elif Input.is_action_just_pressed("e") and Globals.player_interacting == true and is_on_building_mode == false:
-		_cancel_interaction()
 		
 	elif Input.is_action_just_pressed("c") and is_on_building_mode == false\
 	 and ray_interection.get_collider().get_parent().get_node_or_null("Sit positions") != null:
@@ -87,7 +83,6 @@ func _physics_process(delta: float) -> void:
 	Globals.game_paused == false and is_on_building_mode == false:
 		world_scene.get_node("Shop Menu").get_child(0)._show_shop_menu()
 		
-	
 	if Input.is_action_just_pressed("rightclick") and is_on_building_mode == true:
 		_build()
 		
@@ -109,7 +104,7 @@ func _headbob(time) -> Vector3:
 	return pos
 
 func _interact_object():
-	loading_screen()
+	#loading_screen()
 	var object_inst = ray_interection.get_collider()
 	if object_inst != null and object_inst.get_parent() is InteractableObject and Globals.game_paused == false:
 		object_inst.get_parent()._interact([self])
