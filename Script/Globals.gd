@@ -8,6 +8,7 @@ var money: int = 1000:
 		if aqua_philosophorum_timer.time_left > 0 and new_value <= 0:
 			money += 110
 			aqua_philosophorum_timer.stop()
+		money = new_value
 
 var money_lost: int = -1
 var spell_inventory_list: Array[PurchasableItemResource]
