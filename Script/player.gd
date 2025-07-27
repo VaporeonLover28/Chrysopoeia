@@ -7,7 +7,7 @@ extends CharacterBody3D
 @onready var call_npc_area: Area3D = $"Call NPC Area"
 @onready var play_game: Timer = $play_game
 @onready var world_scene = $"../"
-@onready var loading_suit = preload("res://loading_suit.tscn")
+@onready var loading_suit = preload("res://Scenes/loading_suit.tscn")
 @onready var ui: CanvasLayer = $UI
 @onready var money: Label = $UI/money
 
@@ -74,7 +74,7 @@ func _physics_process(delta: float) -> void:
 	camera.transform.origin = _headbob(t_bob) + Vector3(0, 0.5, 0)
 	
 	if Input.is_action_just_pressed("e") and Globals.player_interacting == false and is_on_building_mode == false:
-		print("oi")
+		#print("oi")
 		_interact_object()
 		
 	elif Input.is_action_just_pressed("c") and is_on_building_mode == false\

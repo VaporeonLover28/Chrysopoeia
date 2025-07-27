@@ -24,7 +24,6 @@ preload("res://Scenes/jester.tscn"), \
 preload("res://Scenes/communer.tscn"), \
 preload("res://Scenes/noble.tscn")]
 
-
 func _ready() -> void:
 	npc_spwaner_timer.start(randf_range(minimum_time_for_spawn_npc, maximum_time_for_spawn_npc))
 	var new_config = ConfigFile.new()
@@ -51,7 +50,6 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("x"):
 		SaveScript._load_function(self, 0)
 		
-		
 func _spawn_npc():
 	is_trying_to_spawn_npc = true
 	while is_trying_to_spawn_npc == true:
@@ -62,7 +60,6 @@ func _spawn_npc():
 			NPC_to_spawn.position = Vector3(0,0.5,0)
 			walking_npcs.add_child(NPC_to_spawn)
 			is_trying_to_spawn_npc = false
-			
 			
 		if NPC_to_spawn.scene_file_path == "res://Scenes/knight.tscn" and \
 		_see_number_of_NPC_type(NPC_to_spawn.scene_file_path) < maximum_number_of_knights:

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi326asm5h1wa"]
+
+[ext_resource type="Script" uid="uid://dvjr5u168esi2" path="res://Script/input_prompt.gd" id="1_xn1ex"]
+[ext_resource type="Texture2D" uid="uid://dm8o6o6xhig3i" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_question.png" id="2_xn1ex"]
+
+[node name="input_prompt" type="Node3D"]
+transform = Transform3D(0.635, 0, 0, 0, 0.635, 0, 0, 0, 0.635, 0, 0, 0)
+script = ExtResource("1_xn1ex")
+
+[node name="sprite" type="Sprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_xn1ex")
+
+[node name="label" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.323508, 0)
+billboard = 1
+text = "TEXT MISSING"

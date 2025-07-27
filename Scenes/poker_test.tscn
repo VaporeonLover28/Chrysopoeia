@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://n2tdlosimaee"]
+[gd_scene load_steps=14 format=3 uid="uid://n2tdlosimaee"]
 
 [ext_resource type="Texture2D" uid="uid://bm5mkjkryluex" path="res://Assets/grid_black_512x512.png" id="1_vjnd0"]
 [ext_resource type="PackedScene" uid="uid://bf85c3yhwefir" path="res://Assets/Exports/glTF/Workbench.gltf" id="2_hge40"]
 [ext_resource type="PackedScene" uid="uid://8hd5usv25kt" path="res://Scenes/bj_player_test.tscn" id="3_vyhjf"]
 [ext_resource type="PackedScene" uid="uid://cjrb25thpiawq" path="res://Assets/Originals/mago_beta.glb" id="4_g50ik"]
 [ext_resource type="Script" uid="uid://j5nv645ekjhk" path="res://Script/mago_beta.gd" id="5_jov7v"]
+[ext_resource type="PackedScene" uid="uid://py4e87htiopp" path="res://Scenes/poker_ui_test.tscn" id="6_vjnd0"]
 [ext_resource type="Texture2D" uid="uid://dhjhpxc8o116y" path="res://Assets/Originals/CartaCERTA_AGORAVAI.png" id="7_mwgpf"]
 [ext_resource type="Texture2D" uid="uid://cfvv0gh4l613s" path="res://Assets/card_textures/ace_of_clubs.png" id="8_36qu1"]
 
@@ -103,6 +104,8 @@ transform = Transform3D(0.086, 0, 1.50367e-08, 0, 0.02, 0, -1.50367e-08, 0, 0.08
 script = ExtResource("5_jov7v")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="poker_ui_test" parent="CanvasLayer" instance=ExtResource("6_vjnd0")]
 
 [node name="gamecontrol" type="Panel" parent="CanvasLayer"]
 offset_left = 709.0
