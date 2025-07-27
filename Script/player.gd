@@ -45,7 +45,7 @@ func _unhandled_input(event): #event representa o evento do input
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-70), deg_to_rad(70))
 
 func _physics_process(delta: float) -> void:
-	money.text = "Money: " + str(Globals.money)
+	money.text = "Gold: " + str(Globals.money)
 	# Add the gravity.
 	if not is_on_floor() and Globals.game_paused == false:
 		velocity += get_gravity() * delta

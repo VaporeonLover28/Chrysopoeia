@@ -30,12 +30,12 @@ ground_bottom_color = Color(0, 0, 0, 1)
 ground_horizon_color = Color(0.170775, 0.000352558, 0.31748, 1)
 ground_curve = 1.68896
 
-[sub_resource type="Sky" id="Sky_wse8f"]
+[sub_resource type="Sky" id="Sky_yq1aw"]
 sky_material = SubResource("ProceduralSkyMaterial_37kl0")
 
 [sub_resource type="Environment" id="Environment_6uqi0"]
 background_mode = 2
-sky = SubResource("Sky_wse8f")
+sky = SubResource("Sky_yq1aw")
 tonemap_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aqk2v"]
@@ -221,8 +221,8 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.31
 size = Vector3(15.8579, 4, 0.5)
 
 [node name="wall9" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.3043, 2.5, -6.61384)
-size = Vector3(0.5, 4, 9.93566)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.399, 2.5, -6.61384)
+size = Vector3(0.5, 4, 9.74627)
 
 [node name="wall10" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.3043, 2.5, -3.30996)
@@ -255,7 +255,7 @@ size = Vector3(2.7439, 0.62207, 3)
 
 [node name="stairs" type="CSGPolygon3D" parent="NavigationRegion3D/CSGCombiner3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -21.1839, -0.5, -6.83984)
-polygon = PackedVector2Array(0, 0, 0, 1, 2.68, -1.125)
+polygon = PackedVector2Array(0, 0, 0, 1, 2.48587, -0.979783)
 depth = 2.0
 
 [node name="wall17" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
@@ -503,6 +503,7 @@ shape = SubResource("BoxShape3D_axeuq")
 
 [node name="input_prompt" parent="NavigationRegion3D/CSGCombiner3D/fight_ring/player_recon" instance=ExtResource("13_yq1aw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.890083, 0)
+visible = false
 texture = ExtResource("14_pyn1s")
 action = "Wait for a match to begin"
 

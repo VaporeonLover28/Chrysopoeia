@@ -87,7 +87,6 @@ func spin_rewards():
 		else:
 			##and it is able to be an ankh
 			if random_value >= i[2]:
-				print(random_value)
 				##append the ankh
 				current_reward.append(rewards[rewards.find(i)])
 	

@@ -1,104 +1,382 @@
-[gd_scene load_steps=4 format=3 uid="uid://c72h3kbb7fnrw"]
+[gd_scene load_steps=15 format=3 uid="uid://c72h3kbb7fnrw"]
 
+[ext_resource type="Script" uid="uid://cahgpglfdtcaw" path="res://Script/fight_ring.gd" id="1_3s5ww"]
 [ext_resource type="Texture2D" uid="uid://bm5mkjkryluex" path="res://Assets/grid_black_512x512.png" id="1_ro6q6"]
 [ext_resource type="PackedScene" uid="uid://t1ipnjtntycl" path="res://Assets/Exports/glTF/Bench.gltf" id="2_r26pi"]
+[ext_resource type="Script" uid="uid://cb58tbr6db7dh" path="res://Script/flickertorch.gd" id="3_nam34"]
+[ext_resource type="PackedScene" uid="uid://bpth6e0ob531j" path="res://Assets/Exports/glTF/Chandelier.gltf" id="4_3s5ww"]
+[ext_resource type="Texture2D" uid="uid://bj4wqrulet883" path="res://Assets/Originals/homun.png" id="6_x0qly"]
+[ext_resource type="Texture2D" uid="uid://b62mtehl1yonf" path="res://Assets/Originals/homun2.png" id="7_hapdo"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m5li0"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6ku2c"]
+sky_top_color = Color(0.0606355, 0.0252388, 0.221666, 1)
+sky_horizon_color = Color(0.160711, 0.0228603, 0.335639, 1)
+sky_curve = 0.0568394
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.170775, 0.000352558, 0.31748, 1)
+ground_curve = 1.68896
+
+[sub_resource type="Sky" id="Sky_wse8f"]
+sky_material = SubResource("ProceduralSkyMaterial_6ku2c")
+
+[sub_resource type="Environment" id="Environment_nam34"]
+background_mode = 2
+sky = SubResource("Sky_wse8f")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x0qly"]
 albedo_texture = ExtResource("1_ro6q6")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
-[node name="fight_ring2" type="Node3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nam34"]
+albedo_texture = ExtResource("1_ro6q6")
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3s5ww"]
+size = Vector3(9, 3, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x0qly"]
+size = Vector3(1, 3, 6.3)
+
+[node name="fight_ring" type="Node3D"]
+script = ExtResource("1_3s5ww")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_nam34")
+
+[node name="fight_camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.802817, 0.596225, 0, -0.596225, 0.802817, 0, 5.225, 6.78)
+fov = 55.0
 
 [node name="scenery" type="CSGCombiner3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-material_override = SubResource("StandardMaterial3D_m5li0")
+transform = Transform3D(1, 0, 6.97374e-05, 0, 1, 0, -6.97374e-05, 0, 1, 0, 0.242, 0)
+material_override = SubResource("StandardMaterial3D_x0qly")
 use_collision = true
 collision_mask = 14
 
+[node name="ringlight" type="OmniLight3D" parent="scenery"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0113499, 3.55486, -4.76837e-07)
+light_color = Color(0.783899, 0.388589, 1.92523e-07, 1)
+light_energy = 3.774
+shadow_enabled = true
+shadow_opacity = 0.55
+omni_range = 55.516
+script = ExtResource("3_nam34")
+
+[node name="change" type="Timer" parent="scenery/ringlight"]
+wait_time = 0.5
+autostart = true
+
+[node name="Chandelier2" parent="scenery" instance=ExtResource("4_3s5ww")]
+transform = Transform3D(1.20131, 0, 0, 0, 1.20131, 0, 0, 0, 1.20131, 0, 5.35019, 0)
+
 [node name="floor" type="CSGBox3D" parent="scenery"]
-size = Vector3(14, 1, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.304139, 0)
+size = Vector3(14, 1, 14.735)
 
 [node name="wall1" type="CSGBox3D" parent="scenery"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.71947, 2.5, 0)
-size = Vector3(0.5, 4, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.71947, 2.19586, 0.722412)
+size = Vector3(0.5, 7.095, 11.4448)
 
 [node name="wall2" type="CSGBox3D" parent="scenery"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.76627, 2.5, 0)
-size = Vector3(0.5, 4, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.76627, 2.19586, 0.68457)
+size = Vector3(0.5, 7.095, 11.3691)
 
 [node name="wall3" type="CSGBox3D" parent="scenery"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0239843, 2.4628, -4.7612)
-size = Vector3(14, 4, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0239843, 2.15866, -4.7612)
+size = Vector3(14, 7.095, 0.5)
+
+[node name="ceiling" type="CSGBox3D" parent="scenery"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.19586, -12)
+visible = false
+use_collision = true
+collision_mask = 6
+size = Vector3(80, 1, 80)
+material = SubResource("StandardMaterial3D_nam34")
 
 [node name="seats1" type="CSGBox3D" parent="scenery"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.695861, -4)
+size = Vector3(13, 1, 1)
+
+[node name="seats4" type="CSGBox3D" parent="scenery"]
+transform = Transform3D(-1, 0, 6.97692e-05, 0, 1, 0, -6.97692e-05, 0, -1, -0.0243156, 0.695861, 5.50052)
 size = Vector3(13, 1, 1)
 
 [node name="seats2" type="CSGBox3D" parent="scenery"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, 0.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.695861, 0.75)
 size = Vector3(1, 1, 8.5)
 
 [node name="seats3" type="CSGBox3D" parent="scenery"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 0.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.695861, 0.75)
 size = Vector3(1, 1, 8.5249)
 
 [node name="Bench2" parent="scenery" instance=ExtResource("2_r26pi")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.85185, 1.47782, 3.54647)
+transform = Transform3D(-4.37103e-08, 0, 1, 0, 1, 0, -1, 0, -4.37103e-08, -5.85185, 1.19463, 3.54647)
 
 [node name="Bench3" parent="scenery" instance=ExtResource("2_r26pi")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.85185, 1.47782, 0.942975)
+transform = Transform3D(-4.37103e-08, 0, 1, 0, 1, 0, -1, 0, -4.37103e-08, -5.85185, 1.19463, 0.942975)
 
 [node name="Bench4" parent="scenery" instance=ExtResource("2_r26pi")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.85185, 1.47782, -1.86569)
+transform = Transform3D(-4.37103e-08, 0, 1, 0, 1, 0, -1, 0, -4.37103e-08, -5.85185, 1.19463, -1.86569)
 
 [node name="Bench9" parent="scenery" instance=ExtResource("2_r26pi")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.99933, 1.47782, 3.54647)
+transform = Transform3D(-4.37103e-08, 0, 1, 0, 1, 0, -1, 0, -4.37103e-08, 5.99933, 1.19463, 3.54647)
 
 [node name="Bench10" parent="scenery" instance=ExtResource("2_r26pi")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.99933, 1.47782, 0.942975)
+transform = Transform3D(-4.37103e-08, 0, 1, 0, 1, 0, -1, 0, -4.37103e-08, 5.99933, 1.19463, 0.942975)
 
 [node name="Bench11" parent="scenery" instance=ExtResource("2_r26pi")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.99933, 1.47782, -1.86569)
+transform = Transform3D(-4.37103e-08, 0, 1, 0, 1, 0, -1, 0, -4.37103e-08, 5.99933, 1.19463, -1.86569)
 
 [node name="Bench12" parent="scenery" instance=ExtResource("2_r26pi")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.83803, 0.501677, 3.54647)
+transform = Transform3D(-4.37103e-08, 0, 1, 0, 1, 0, -1, 0, -4.37103e-08, 4.83803, 0.218483, 3.54647)
 
 [node name="Bench13" parent="scenery" instance=ExtResource("2_r26pi")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.83803, 0.501677, 0.942975)
+transform = Transform3D(-4.37103e-08, 0, 1, 0, 1, 0, -1, 0, -4.37103e-08, 4.83803, 0.218483, 0.942975)
 
 [node name="Bench14" parent="scenery" instance=ExtResource("2_r26pi")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.83803, 0.501677, -1.86569)
+transform = Transform3D(-4.37103e-08, 0, 1, 0, 1, 0, -1, 0, -4.37103e-08, 4.83803, 0.218483, -1.86569)
 
 [node name="Bench15" parent="scenery" instance=ExtResource("2_r26pi")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.71803, 0.501677, 3.54647)
+transform = Transform3D(-4.37103e-08, 0, 1, 0, 1, 0, -1, 0, -4.37103e-08, -4.71803, 0.218483, 3.54647)
 
 [node name="Bench16" parent="scenery" instance=ExtResource("2_r26pi")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.71803, 0.501677, 0.942975)
+transform = Transform3D(-4.37103e-08, 0, 1, 0, 1, 0, -1, 0, -4.37103e-08, -4.71803, 0.218483, 0.942975)
 
 [node name="Bench17" parent="scenery" instance=ExtResource("2_r26pi")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.71803, 0.501677, -1.86569)
+transform = Transform3D(-4.37103e-08, 0, 1, 0, 1, 0, -1, 0, -4.37103e-08, -4.71803, 0.218483, -1.86569)
 
 [node name="Bench5" parent="scenery" instance=ExtResource("2_r26pi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.92749, 1.47782, -3.95599)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.92749, 1.19463, -3.95599)
 
 [node name="Bench6" parent="scenery" instance=ExtResource("2_r26pi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21597, 1.47782, -3.95599)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21597, 1.19463, -3.95599)
 
 [node name="Bench7" parent="scenery" instance=ExtResource("2_r26pi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46877, 1.47782, -3.95599)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46877, 1.19463, -3.95599)
 
 [node name="Bench8" parent="scenery" instance=ExtResource("2_r26pi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2452, 1.47782, -3.95599)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2452, 1.19463, -3.95599)
+
+[node name="Bench27" parent="scenery" instance=ExtResource("2_r26pi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9278, 1.19463, 4.86518)
+
+[node name="Bench28" parent="scenery" instance=ExtResource("2_r26pi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.24489, 1.19463, 4.86518)
+
+[node name="Bench29" parent="scenery" instance=ExtResource("2_r26pi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7219, 1.19463, 4.86522)
+
+[node name="Bench30" parent="scenery" instance=ExtResource("2_r26pi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.43358, 1.19463, 4.86512)
 
 [node name="Bench18" parent="scenery" instance=ExtResource("2_r26pi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9276, 0.575754, -2.60568)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9276, 0.210233, -2.60568)
 
 [node name="Bench19" parent="scenery" instance=ExtResource("2_r26pi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21608, 0.575754, -2.60568)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21608, 0.210233, -2.60568)
 
 [node name="Bench20" parent="scenery" instance=ExtResource("2_r26pi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46866, 0.575754, -2.60568)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46866, 0.210233, -2.60568)
 
 [node name="Bench21" parent="scenery" instance=ExtResource("2_r26pi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.24509, 0.575754, -2.60568)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.24509, 0.210233, -2.60568)
+
+[node name="Bench22" parent="scenery" instance=ExtResource("2_r26pi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.24485, 0.210233, 4.27783)
+
+[node name="Bench23" parent="scenery" instance=ExtResource("2_r26pi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5043, 0.21259, 4.27777)
+
+[node name="Bench24" parent="scenery" instance=ExtResource("2_r26pi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5043, 0.21259, 4.27777)
+
+[node name="Bench25" parent="scenery" instance=ExtResource("2_r26pi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.03837, 0.21259, 4.27755)
+
+[node name="Bench26" parent="scenery" instance=ExtResource("2_r26pi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.78781, 0.21259, 4.27759)
+
+[node name="limits" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="limits"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1.833)
+shape = SubResource("BoxShape3D_3s5ww")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="limits"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3.46371)
+shape = SubResource("BoxShape3D_3s5ww")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="limits"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.95358, 2, 0.834043)
+shape = SubResource("BoxShape3D_x0qly")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="limits"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0294, 2, 0.834043)
+shape = SubResource("BoxShape3D_x0qly")
+
+[node name="homun1_spawn" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67543, 0.45, 2.24217)
+
+[node name="homun2_spawn" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.91373, 0.45, -0.758221)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Fight_ring_UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Fight_ring_UI"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Fight_ring_UI/Panel"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+alignment = 1
+
+[node name="Selec_Desc" type="VBoxContainer" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(576, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="selec_image" type="TextureRect" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Selec_Desc"]
+layout_mode = 2
+texture = ExtResource("6_x0qly")
+stretch_mode = 3
+
+[node name="selec_name" type="Label" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Selec_Desc"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Righteous Hard-Headed Homunculus"
+horizontal_alignment = 1
+
+[node name="selec_stats" type="HBoxContainer" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Selec_Desc"]
+layout_mode = 2
+alignment = 1
+
+[node name="selec_price" type="Label" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Selec_Desc/selec_stats"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+text = "50 Gold"
+
+[node name="Button" type="Button" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Selec_Desc/selec_stats"]
+layout_mode = 2
+text = "BET"
+
+[node name="Creatures" type="VBoxContainer" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(576, 0)
+layout_mode = 2
+
+[node name="slot" type="HBoxContainer" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot"]
+layout_mode = 2
+texture = ExtResource("7_hapdo")
+stretch_mode = 3
+
+[node name="selec_name" type="Label" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Righteous Hard-Headed Homunculus"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+action_mode = 0
+text = "CHOOSE"
+
+[node name="slot2" type="HBoxContainer" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot2"]
+layout_mode = 2
+texture = ExtResource("7_hapdo")
+stretch_mode = 3
+
+[node name="selec_name" type="Label" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Righteous Hard-Headed Homunculus"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+action_mode = 0
+text = "CHOOSE"
+
+[node name="slot3" type="HBoxContainer" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot3"]
+layout_mode = 2
+texture = ExtResource("7_hapdo")
+stretch_mode = 3
+
+[node name="selec_name" type="Label" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Righteous Hard-Headed Homunculus"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+action_mode = 0
+text = "CHOOSE"
+
+[node name="slot4" type="HBoxContainer" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot4"]
+layout_mode = 2
+texture = ExtResource("7_hapdo")
+stretch_mode = 3
+
+[node name="selec_name" type="Label" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot4"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Righteous Hard-Headed Homunculus"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot4"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+action_mode = 0
+text = "CHOOSE"
+
+[node name="slot5" type="HBoxContainer" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot5"]
+layout_mode = 2
+texture = ExtResource("7_hapdo")
+stretch_mode = 3
+
+[node name="selec_name" type="Label" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot5"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Righteous Hard-Headed Homunculus"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot5"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+action_mode = 0
+text = "CHOOSE"
+
+[connection signal="timeout" from="scenery/ringlight/change" to="scenery/ringlight" method="_on_change_timeout"]
