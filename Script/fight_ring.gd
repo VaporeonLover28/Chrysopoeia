@@ -139,8 +139,8 @@ func start_match():
 	var enemy_homunculus = homunculus.instantiate()
 	enemy_homunculus.name = enemy_creature_name
 	var split_enemy_stats = enemy_creature_name.split(" ", true, 2)
-	enemy_homunculus.dir_type = split_stats[0]
-	enemy_homunculus.atk_type = split_stats[1]
+	enemy_homunculus.dir_type = split_enemy_stats[0]
+	enemy_homunculus.atk_type = split_enemy_stats[1]
 	
 	player_homunculus.enemy = enemy_homunculus
 	enemy_homunculus.enemy = player_homunculus

@@ -178,12 +178,15 @@ func _on_attack_timeout() -> void:
 	attack_enemy()
 	match atk_type:
 		"Cautious":
-			attack.start(1.5)
+			random_atk_cd(1.5)
 		"Hard-Headed":
-			attack.start(2)
+			random_atk_cd(2)
 		"Purist":
-			attack.start(1)
+			random_atk_cd(1)
 		"Gambler":
-			attack.start(randf_range(0.75, 1.5))
+			random_atk_cd(randf_range(0.75, 1.5))
 		"Tickler":
-			attack.start(0.1)
+			random_atk_cd(0.1)
+
+func random_atk_cd(baseatkcd):
+	attack.start(randf_range(baseatkcd - 0.25, baseatkcd + 0.25))
