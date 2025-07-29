@@ -13,6 +13,7 @@ var player_is_sitting = false
 var save_player_ref : CharacterBody3D
 var chosen_sitting_position: int
 
+var tween : Tween
 
 func _ready() -> void:
 	#makes sitting spots based on chair_postion_list
@@ -38,7 +39,7 @@ func _sit_characther(object_ref):
 		if object_ref.name == "Player":
 			chosen_sitting_transition = self.get_child(chosen_sitting_position)
 			save_player_ref = object_ref
-			#_camera_transition(object_ref)
+			_pull_camera(object_ref)
 			object_ref.global_position = chosen_sitting_transition.global_position
 			player_is_sitting = true
 			Globals.player_interacting = true
@@ -48,38 +49,23 @@ func _stand_characther_up(object_ref):
 		if  self.get_child(item).global_position.distance_to(object_ref.global_position) <= 0.2:
 			chair_postion_list[item][1] = true
 	if object_ref == save_player_ref:
-		#Globals.player_interacting = false
-		#save_player_ref.camera.current = true
+		Globals.player_interacting = false
+		save_player_ref.camera.current = true
 		player_is_sitting = false
 		save_player_ref = null
 		Globals.player_interacting = false
 
-func _camera_transition(player) -> void:
-	#await get_tree().create_timer(0.1).timeout
-	#is_pulling = true
-	#_pull_camera(player)
-	#player.camera.current = false
-	#camera.global_position = player.camera.global_position
-	#camera.rotation = player.camera.rotation
-	#camera.current = true
-	pass
-
-
 func _physics_process(delta: float) -> void:
-	#if is_pulling == true and player_ref != null:
-		#player_ref.camera.look_at(model.global_position)
-		#_pull_camera(player_ref)
 	pass
 
 func _pull_camera(player):
-	#var tween = create_tween()
-	#tween.tween_property(camera, "global_position", chosen_sitting_transition.global_position + + Vector3(0, 1.2, 0), 1)
-	#camera.global_position = lerp(camera.global_position, chosen_sitting_transition.global_position + Vector3(0, 1.2, 0), get_process_delta_time() * 3)
-	#camera.look_at(model.global_position)
-	#if chosen_sitting_transition.global_position.distance_to(camera.global_position - Vector3(0, 1.2, 0)) <= 0.1:
-		#is_pulling = false
-		#Globals.player_is_in_camera_animation = false
-	pass
+	tween = create_tween()
+	tween.set_trans(Tween.TRANS_QUAD)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_parallel(true)
+	tween.tween_property(player_ref.pivot, "rotation_degrees", Vector3(0, 0, 0), 3)
+	tween.tween_property(player_ref.camera, "rotation_degrees", Vector3(0, 0, 0), 3)
+	tween.tween_property(player_ref.camera, "global_position", chosen_sitting_transition.global_position, 3)
 
 #checks then returns if all sits are taken
 func _ASAT():

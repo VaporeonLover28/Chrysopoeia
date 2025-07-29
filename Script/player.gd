@@ -106,7 +106,8 @@ func _headbob(time) -> Vector3:
 	return pos
 
 func _interact_object():
-	#loading_screen()
+	##caso tenha um objeto que carregue cena
+	#loading_screen(cena que vai)
 	var object_inst = ray_interection.get_collider()
 	if object_inst != null and object_inst.get_parent() is InteractableObject and Globals.game_paused == false:
 		object_inst.get_parent()._interact([self])
@@ -139,7 +140,7 @@ func _play_blackjack():
 	#play_game.start()
 	pass
 
-func loading_screen():
+func loading_screen(scene):
 	var which_suit = randi_range(0, 3)
 	var inst = loading_suit.instantiate()
 	match which_suit:
@@ -166,6 +167,8 @@ func loading_screen():
 	tween.tween_property(inst, "rotation_degrees", 90, 3)
 	tween.tween_property(inst, "position", Vector2(628.0, 223.0), 3)
 	tween.set_parallel(false)
+	await get_tree().create_timer(4.5).timeout
+	##muda a cena para o callable scene
 
 func _on_play_game_timeout() -> void:
 	Globals.player_transform_storage.push_back(camera.transform)

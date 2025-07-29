@@ -34,12 +34,12 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if Globals.game_paused == false:
-		#if not is_on_floor():
-			#velocity.y += 9.8 * delta
+		if not is_on_floor():
+			velocity.y += 9.8 * delta
 		var destino = nav.get_next_path_position()
 		var local_destino = destino - global_position
 		var dir = local_destino.normalized()
-		#velocity = dir * 2
+		velocity = dir * 2
 		
 		if targeted_position_is_object is InteractableObject and is_on_interaction == false:
 			_go_to_interactable_object()
