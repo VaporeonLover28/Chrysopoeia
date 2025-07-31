@@ -14,7 +14,7 @@ var chosen_value : String
 var chosen_suit : String
 
 #Changes the card values according to the called parameters
-func _change_values(new_rank, new_suit, new_value):
+func change_values(new_rank, new_suit, new_value):
 	rank = new_rank
 	suit = new_suit
 	value = new_value
@@ -22,4 +22,4 @@ func _change_values(new_rank, new_suit, new_value):
 	#print("Changed to " + str(rank.to_lower()) + " of " + str(suit.to_lower()))
 
 func _on_tree_entered() -> void:
-	_change_values(chosen_rank, chosen_suit, chosen_value)
+	change_values(chosen_rank, chosen_suit, chosen_value)

@@ -76,11 +76,11 @@ func instantiate_cards():
 		var new_card = card.instantiate()
 		##to the deck
 		deck.push_back(new_card)
-		#new_card.position.x = float(deck.find(new_card)) / 52 
+		new_card.position.x = float(deck.find(new_card)) / 52 
 		##puts each card slightly above the previous (stacking deck)
-		new_card.position.y = float(deck.find(new_card)) / 1048
+		new_card.position.y = float(deck.find(new_card)) / 524
 		##each card upside down
-		new_card.rotation_degrees.x = 180
+		#new_card.rotation_degrees.x = 180
 		new_card.name = "card" + str(instance)
 		##every card is based on the standard deck, each suit and rank
 		new_card.chosen_suit = standard_deck[instance][0]
@@ -172,8 +172,8 @@ func shuffle_deck():
 ##puts each card in it's position on the deck (not needed but a nice touch)
 func square_deck():
 	for card in deck:
-		#card.position.x = float(deck.find(card)) / 52 
-		card.position.y = float(deck.find(card)) / 1048
+		card.position.x = float(deck.find(card)) / 52 
+		card.position.y = float(deck.find(card)) / 524
 
 ##animation for card distributing
 func distribute_cards():
@@ -355,7 +355,13 @@ func end_game():
 func spell_cast(spell : String):
 	var spell_worked = randi_range(1, 4)
 	if spell_worked == 4:
-		print("Spell went wrong and now ur infertile")
+		match spell:
+			"Providence":
+				failed_providence()
+			"Philo Shard":
+				failed_philo_shard()
+			"Fools Gold":
+				failed_fools_gold()
 	else:
 		match spell:
 			"Providence":
@@ -377,38 +383,59 @@ func providence():
 	revealed_info.set_texture(load("res://Assets/card_textures/" + str(dealer_revealed_card.rank.to_lower()) +"_of_" + str(dealer_revealed_card.suit.to_lower()) + ".png"))
 	revealed_text.text = str(dealer_revealed_card.rank) +" of " + str(dealer_revealed_card.suit)
 
+func failed_providence():
+	dealer_revealed_card = deck[randi_range(0, deck.size() - 2)]
+	if revealed_card.visible == false:
+		revealed_card.visible = true
+		tween = create_tween()
+		tween.set_trans(Tween.TRANS_QUART)
+		tween.set_ease(Tween.EASE_OUT)
+		tween.set_parallel(true)
+		tween.tween_property(revealed_card, "position", Vector2(998, 266), 1)
+	revealed_info.set_texture(load("res://Assets/card_textures/" + str(dealer_revealed_card.rank.to_lower()) +"_of_" + str(dealer_revealed_card.suit.to_lower()) + ".png"))
+	revealed_text.text = str(dealer_revealed_card.rank) +" of " + str(dealer_revealed_card.suit) + "?"
+
 func philo_shard():
-	print(deck.back().value)
 	match deck.back().value:
 		"A":
-			deck.back().value = "2"
+			deck.back().change_values("Two", deck.back().suit, "2")
 		"J":
-			deck.back().value = "Q"
+			deck.back().change_values("Queen", deck.back().suit, "Q")
 		"Q":
-			deck.back().value = "K"
+			deck.back().change_values("King", deck.back().suit, "K")
 		"K":
-			deck.back().value = "A"
+			deck.back().change_values("Ace", deck.back().suit, "A")
 		_:
-			deck.back().value = value_order[int(deck.back().value)]
-			deck.back().rank = rank_order[int(deck.back().rank)]
-			deck.back().change_values(deck.back().rank, deck.back().suit, deck.back().value)
-	print(deck.back().value)
+			deck.back().change_values(rank_order[int(deck.back().value)], deck.back().suit, value_order[int(deck.back().value)])
+	if dealer_revealed_card != null:
+		providence()
+
+func failed_philo_shard():
+	var what_rank = randi_range(0, 12)
+	deck.back().change_values(rank_order[what_rank], deck.back().suit, value_order[what_rank])
+	if dealer_revealed_card != null:
+		spell_cast("Providence")
 
 func fools_gold():
-	print(deck.back().value)
 	match deck.back().value:
 		"A":
-			deck.back().value = "K"
+			deck.back().change_values("King", deck.back().suit, "K")
 		"J":
-			deck.back().value = "10"
+			deck.back().change_values("Ten", deck.back().suit, "10")
 		"Q":
-			deck.back().value = "J"
+			deck.back().change_values("Jack", deck.back().suit, "J")
 		"K":
-			deck.back().value = "Q"
+			deck.back().change_values("Queen", deck.back().suit, "Q")
 		_:
-			deck.back().value = value_order[int(deck.back().value) - 2]
-			deck.back().value = rank_order[int(deck.back().rank) - 2]
-	print(deck.back().value)
+			deck.back().change_values(rank_order[int(deck.back().value) - 2], deck.back().suit, value_order[int(deck.back().value) - 2])
+	if dealer_revealed_card != null:
+		providence()
+
+func failed_fools_gold():
+	var what_rank = randi_range(0, 12)
+	deck.back().change_values(rank_order[what_rank], deck.back().suit, value_order[what_rank])
+	if dealer_revealed_card != null:
+		spell_cast("Providence")
 
 ##unused still
 #func change_revealed_card(card):
