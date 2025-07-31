@@ -8,8 +8,9 @@ extends Node3D
 @onready var player: CharacterBody3D = $bj_player_test
 @onready var card_distr_timer: Timer = $card_distr_timer
 @onready var turn_timer: Timer = $turn_timer
-@onready var selec_info: TextureRect = $CanvasLayer/revealed_card/card/info
-@onready var selec_text: Label = $CanvasLayer/revealed_card/text
+@onready var revealed_card: Panel = $CanvasLayer/revealed_card
+@onready var revealed_info: TextureRect = $CanvasLayer/revealed_card/card/info
+@onready var revealed_text: Label = $CanvasLayer/revealed_card/text
 @onready var blackjack_ui_test: Control = $CanvasLayer/Blackjack_UI_test
 
 var tween : Tween
@@ -24,7 +25,7 @@ var gc_labels : Array = []
 var round_order_npcs : Array = []
 var whose_turn : int = 0
 ##unused (maybe for magic?)
-var dealer_selected_card : Node3D
+var dealer_revealed_card : Node3D
 var dealer_can_hit : bool = false
 var dealer_can_stand : bool = false
 var dealer_busted : bool = false
@@ -45,6 +46,9 @@ var standard_deck : Array = [
 	["Clubs", "Queen", "Q"], ["Hearts", "Queen", "Q"], ["Spades", "Queen", "Q"], ["Diamonds", "Queen", "Q"], 
 	["Clubs", "King", "K"], ["Hearts", "King", "K"], ["Spades", "King", "K"], ["Diamonds", "King", "K"]
 ]
+
+var rank_order := ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"]
+var value_order := ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 
 var deck = []
 var shuffler_deck = []
@@ -253,7 +257,7 @@ func start_game():
 		blackjack_ui_test.f.get_child(1).text = "Start Game"
 
 func dealer_turn():
-	#change_selec_card(player.dealer_hand[0])
+	#change_revealed_card(player.dealer_hand[0])
 	tween = create_tween()
 	tween.set_trans(Tween.TRANS_QUART)
 	tween.set_ease(Tween.EASE_OUT)
@@ -348,10 +352,68 @@ func end_game():
 							print(npcs.name + " has a blackjack and won!")
 							##return bet + bet + half bet (2.5x bet)
 
+func spell_cast(spell : String):
+	var spell_worked = randi_range(1, 4)
+	if spell_worked == 4:
+		print("Spell went wrong and now ur infertile")
+	else:
+		match spell:
+			"Providence":
+				providence()
+			"Philo Shard":
+				philo_shard()
+			"Fools Gold":
+				fools_gold()
+
+func providence():
+	dealer_revealed_card = deck.back()
+	if revealed_card.visible == false:
+		revealed_card.visible = true
+		tween = create_tween()
+		tween.set_trans(Tween.TRANS_QUART)
+		tween.set_ease(Tween.EASE_OUT)
+		tween.set_parallel(true)
+		tween.tween_property(revealed_card, "position", Vector2(998, 266), 1)
+	revealed_info.set_texture(load("res://Assets/card_textures/" + str(dealer_revealed_card.rank.to_lower()) +"_of_" + str(dealer_revealed_card.suit.to_lower()) + ".png"))
+	revealed_text.text = str(dealer_revealed_card.rank) +" of " + str(dealer_revealed_card.suit)
+
+func philo_shard():
+	print(deck.back().value)
+	match deck.back().value:
+		"A":
+			deck.back().value = "2"
+		"J":
+			deck.back().value = "Q"
+		"Q":
+			deck.back().value = "K"
+		"K":
+			deck.back().value = "A"
+		_:
+			deck.back().value = value_order[int(deck.back().value)]
+			deck.back().rank = rank_order[int(deck.back().rank)]
+			deck.back().change_values(deck.back().rank, deck.back().suit, deck.back().value)
+	print(deck.back().value)
+
+func fools_gold():
+	print(deck.back().value)
+	match deck.back().value:
+		"A":
+			deck.back().value = "K"
+		"J":
+			deck.back().value = "10"
+		"Q":
+			deck.back().value = "J"
+		"K":
+			deck.back().value = "Q"
+		_:
+			deck.back().value = value_order[int(deck.back().value) - 2]
+			deck.back().value = rank_order[int(deck.back().rank) - 2]
+	print(deck.back().value)
+
 ##unused still
-func change_selec_card(card):
-	dealer_selected_card = card
-	dealer_selected_card.backmesh.visible = true
+#func change_revealed_card(card):
+	#dealer_selected_card = card
+	#dealer_selected_card.backmesh.visible = true
 
 #func restart_game():
 	#for labels in gc_labels.size() - 1:

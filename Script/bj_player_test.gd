@@ -84,6 +84,15 @@ func update_gc_label():
 func _unhandled_input(event): #event representa o evento do input
 	#caso o jogo não esteja pausado
 	if !Globals.game_paused:
+		if event.is_action_pressed("tab"):
+			game.spell_cast("Providence")
+		
+		if event.is_action_pressed("a"):
+			game.spell_cast("Fools Gold")
+		
+		if event.is_action_pressed("d"):
+			game.spell_cast("Philo Shard")
+		
 		#se o jogador segurar o botão direito do mouse
 		if Input.is_action_pressed("rightclick") and !zooming:
 			camera.zoom_anim()
@@ -95,11 +104,10 @@ func _unhandled_input(event): #event representa o evento do input
 		if event is InputEventMouseMotion: # se o jogador mover o mouse(prendemos ele na tela)
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		if event is InputEventMouseMotion:
-			if !Globals.player_interacting:
-				pivot.rotate_y(-event.relative.x * mouse_sensitivity)
-				camera.rotate_x(-event.relative.y * mouse_sensitivity)
-				camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-70), deg_to_rad(70))
-				pivot.rotation.y = clamp(pivot.rotation.y, deg_to_rad(-45), deg_to_rad(45))
+			pivot.rotate_y(-event.relative.x * mouse_sensitivity)
+			camera.rotate_x(-event.relative.y * mouse_sensitivity)
+			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-70), deg_to_rad(70))
+			pivot.rotation.y = clamp(pivot.rotation.y, deg_to_rad(-45), deg_to_rad(45))
 	
 	if event.is_action_pressed("esc"):
 		if !Globals.game_paused:#se ele apertar esc(soltamos o mouse)

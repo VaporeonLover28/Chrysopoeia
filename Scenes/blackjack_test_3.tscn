@@ -202,17 +202,18 @@ Hand:
 metadata/_edit_use_anchors_ = true
 
 [node name="revealed_card" type="Panel" parent="CanvasLayer"]
-offset_left = 998.0
+visible = false
+offset_left = 1152.0
 offset_top = 266.0
-offset_right = 1150.0
+offset_right = 1304.0
 offset_bottom = 421.0
 
 [node name="card" type="TextureRect" parent="CanvasLayer/revealed_card"]
 layout_mode = 0
 offset_left = 45.0
-offset_top = 6.0
+offset_top = 14.0
 offset_right = 645.0
-offset_bottom = 906.0
+offset_bottom = 914.0
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("8_ouk2e")
 
@@ -228,9 +229,9 @@ texture = ExtResource("9_d4gfs")
 [node name="text" type="Label" parent="CanvasLayer/revealed_card"]
 layout_mode = 0
 offset_left = 12.0
-offset_top = 98.0
+offset_top = 106.0
 offset_right = 143.0
-offset_bottom = 121.0
+offset_bottom = 129.0
 text = "Ace of Diamonds"
 horizontal_alignment = 1
 
