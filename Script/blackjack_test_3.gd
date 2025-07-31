@@ -8,8 +8,8 @@ extends Node3D
 @onready var player: CharacterBody3D = $bj_player_test
 @onready var card_distr_timer: Timer = $card_distr_timer
 @onready var turn_timer: Timer = $turn_timer
-@onready var selec_info: TextureRect = $CanvasLayer/selected_card/card/info
-@onready var selec_text: Label = $CanvasLayer/selected_card/text
+@onready var selec_info: TextureRect = $CanvasLayer/revealed_card/card/info
+@onready var selec_text: Label = $CanvasLayer/revealed_card/text
 @onready var blackjack_ui_test: Control = $CanvasLayer/Blackjack_UI_test
 
 var tween : Tween

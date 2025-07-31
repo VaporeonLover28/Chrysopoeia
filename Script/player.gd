@@ -116,7 +116,6 @@ func _interact_object():
 
 func _cancel_interaction():
 	Globals.player_interacting = false
-	camera.current = true
 	
 func _call_npc_to_game():
 	if world_scene.get_node("Walking_NPCs").get_child_count() > 0 and Globals.game_paused == false:

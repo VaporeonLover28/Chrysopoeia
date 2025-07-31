@@ -1,7 +1,6 @@
 extends Node3D
 
 @onready var player_ref: CharacterBody3D = $"../../../../Player"
-@onready var camera: Camera3D = $"../camera"
 @onready var model: StaticBody3D = $"../Model"
 
 @export var chair_postion_list : Array[Array]
@@ -40,7 +39,6 @@ func _sit_characther(object_ref):
 			chosen_sitting_transition = self.get_child(chosen_sitting_position)
 			save_player_ref = object_ref
 			_pull_camera(object_ref)
-			object_ref.global_position = chosen_sitting_transition.global_position
 			player_is_sitting = true
 			Globals.player_interacting = true
 
@@ -50,7 +48,6 @@ func _stand_characther_up(object_ref):
 			chair_postion_list[item][1] = true
 	if object_ref == save_player_ref:
 		Globals.player_interacting = false
-		save_player_ref.camera.current = true
 		player_is_sitting = false
 		save_player_ref = null
 		Globals.player_interacting = false
@@ -63,10 +60,12 @@ func _pull_camera(player):
 	tween.set_trans(Tween.TRANS_QUAD)
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_parallel(true)
-	tween.tween_property(player_ref.pivot, "rotation_degrees", Vector3(0, 0, 0), 3)
-	tween.tween_property(player_ref.camera, "rotation_degrees", Vector3(0, 0, 0), 3)
-	tween.tween_property(player_ref.camera, "global_position", chosen_sitting_transition.global_position, 3)
-
+	tween.tween_property(player_ref.pivot, "rotation_degrees", Vector3(0, 0, 0), 1.25)
+	tween.tween_property(player_ref.camera, "rotation_degrees", Vector3(0, 0, 0), 1.25)
+	tween.tween_property(player_ref.camera, "global_position", \
+	chosen_sitting_transition.global_position + Vector3(0, 0.6, 0), 1.25)
+	await get_tree().create_timer(1.25).timeout
+	player.global_position = chosen_sitting_transition.global_position
 #checks then returns if all sits are taken
 func _ASAT():
 	var all_got_taken: bool = false

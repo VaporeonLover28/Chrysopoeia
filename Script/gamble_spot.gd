@@ -2,7 +2,6 @@ extends InteractableObject; class_name GambleSpot
 
 #@onready var mat = self.material
 @onready var world: Node3D = $"../../.."
-@onready var camera: Camera3D = $camera
 @onready var sit_positions: Node = $"Sit positions"
 const LOADING_SUIT = preload("res://Scenes/loading_suit.tscn")
 #put file reference of the wanted game that you want to change to

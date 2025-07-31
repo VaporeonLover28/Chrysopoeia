@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ltp3jvrek5bh"]
+[gd_scene load_steps=9 format=3 uid="uid://ltp3jvrek5bh"]
 
 [ext_resource type="Script" uid="uid://mh8h7xo4eso6" path="res://Script/shop.gd" id="1_xysl7"]
 
@@ -18,6 +18,8 @@ HScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_xysl7")
 HScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_jhj42")
 HScrollBar/styles/scroll = SubResource("StyleBoxEmpty_lvwfa")
 HScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_xdhm7")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h1qh4"]
 
 [node name="Shop Menu" type="CanvasLayer"]
 
@@ -127,6 +129,7 @@ size_flags_horizontal = 4
 [node name="VSeparator" type="VSeparator" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 650
+theme_override_styles/separator = SubResource("StyleBoxEmpty_h1qh4")
 
 [node name="Label" type="Label" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
