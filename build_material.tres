@@ -6,6 +6,6 @@
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_fbx7l")
-shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_color = Color(1, 0, 0, 1)
 shader_parameter/outline_width = 1.0
-shader_parameter/active = true
+shader_parameter/active = false
