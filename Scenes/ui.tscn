@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxmpgsi46nk3j"]
+
+[ext_resource type="PackedScene" uid="uid://shfdwvy4idar" path="res://Assets/Exports/glTF/Anvil.gltf" id="1_jxero"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qdvrb"]
+size = Vector3(0.81665, 0.469696, 0.308594)
+
+[node name="ui" type="StaticBody3D" groups=["Ground_object"]]
+
+[node name="Anvil2" parent="." instance=ExtResource("1_jxero")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0181885, 0.440781, 0.345703)
+shape = SubResource("BoxShape3D_qdvrb")
