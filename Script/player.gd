@@ -178,18 +178,19 @@ func _start_bulding_phase(object_to_be_purchase: PackedScene):
 	current_object_being_purchase = object_to_be_purchase
 	var current_object_being_purchase_instantiate = current_object_being_purchase.instantiate()
 	var instantiate_model
-	if current_object_being_purchase_instantiate is GambleSpot:
+	if current_object_being_purchase_instantiate is InteractableObject:
 		instantiate_model = current_object_being_purchase_instantiate.get_node("Model").duplicate()
 	else:
 		instantiate_model = current_object_being_purchase_instantiate.duplicate()
 	var new_instance_mesh = MeshInstance3D.new()
-	new_instance_mesh.mesh = instantiate_model.get_node("MeshInstance3D").mesh.duplicate()
-	instantiate_model.get_node("MeshInstance3D").queue_free()
-	new_instance_mesh.mesh.material = BUILD_SHADER
-	new_instance_mesh.mesh.material.set_shader_parameter("bluemulti", 0.0)
+	if current_object_being_purchase_instantiate.get_node("Model").duplicate():
+		instantiate_model.get_child(0).mesh.duplicate()
+	else:
+		new_instance_mesh.mesh = instantiate_model.get_child(0).get_child(0).duplicate()
+	for item in new_instance_mesh.mesh.material:
+		item.next_pass = BUILD_SHADER
 	instantiate_model.add_child(new_instance_mesh)
-	var instantiate_colission = instantiate_model.get_node("CollisionShape3D").duplicate()
-	instantiate_model.get_node("CollisionShape3D").queue_free()
+	var instantiate_colission = instantiate_model.get_child(1).duplicate()
 	var new_area3d = Area3D.new()
 	new_area3d.collision_layer = 2
 	instantiate_model.add_child(new_area3d)
@@ -234,7 +235,8 @@ func lock_model_into_build_spot():
 		ray_builder.get_child(0).global_position = ray_builder.get_collider().get_parent().global_position
 		ray_builder.get_child(0).rotation = ray_builder.get_child(0).rotation  + ray_builder.get_collider().get_parent().rotation
 		can_build = true
-		ray_builder.get_child(0).get_child(0).mesh.material.set_shader_parameter("greenmulti", 1.0)
+		for item in ray_builder.get_child(0).get_child(0).mesh.material:
+			item.next_pass.set_shader_parameter("outline_color", Color.GREEN)
 		ray_builder.get_child(0).get_child(0).mesh.material.set_shader_parameter("redmulti", 0.0)
 		ray_builder.get_child(0).top_level = true
 		ray_builder.get_child(0).rotation = object_rotation + ray_builder.get_collider().get_parent().rotation
@@ -246,16 +248,16 @@ func lock_model_into_build_spot():
 	and ray_builder.get_child(0).get_child(-1).has_overlapping_bodies() == true:
 		ray_builder.get_child(0).global_position = ray_builder.get_collider().get_parent().global_position
 		can_build = false
-		ray_builder.get_child(0).get_child(0).mesh.material.set_shader_parameter("redmulti", 1.0)
-		ray_builder.get_child(0).get_child(0).mesh.material.set_shader_parameter("greenmulti", 0.0)
+		for item in ray_builder.get_child(0).get_child(0).mesh.material:
+			item.next_pass.set_shader_parameter("outline_color", Color.RED)
 		ray_builder.get_child(0).top_level = true
 		ray_builder.get_child(0).rotation = object_rotation + ray_builder.get_collider().get_parent().rotation
 	
 	elif ray_builder.get_collider() == null:
 		ray_builder.get_child(0).position = ray_builder.position + Vector3(0,0,-3)
 		can_build = false
-		ray_builder.get_child(0).get_child(0).mesh.material.set_shader_parameter("redmulti", 1.0)
-		ray_builder.get_child(0).get_child(0).mesh.material.set_shader_parameter("greenmulti", 0.0)
+		for item in ray_builder.get_child(0).get_child(0).mesh.material:
+			item.next_pass.set_shader_parameter("outline_color", Color.RED)
 		ray_builder.get_child(0).top_level = false
 		ray_builder.get_child(0).rotation = ray_builder.rotation
 		object_rotation = Vector3.ZERO
