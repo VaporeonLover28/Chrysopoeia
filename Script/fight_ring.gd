@@ -30,6 +30,8 @@ var non_player_bet_creature
 var player_bet_died := false
 var non_bet_died := false
 
+var available_mars := 1
+
 func _ready() -> void:
 	for slot in creatures.get_children():
 		var creature_name : String
@@ -54,7 +56,7 @@ func _ready() -> void:
 				creature_dir_type = "Focused"
 				creature_name = "Focused "
 			
-		creature_type_picker = randi_range(1, 4)
+		creature_type_picker = randi_range(1, 5)
 		match creature_type_picker:
 			1:
 				creature_atk_type = "Cautious"
@@ -92,7 +94,13 @@ func _process(delta: float) -> void:
 		chainend_2.position = Vector3(chain_distance, -1.02, 0)
 		chain.rotation_degrees.y = player_bet_creature.rotation_degrees.y + 90
 		chain.scale.x = scale_needed
+		
 		player_bet_creature.yourbet.visible = true
+		
+		if Input.is_action_just_pressed("tab") and available_mars > 0:
+			available_mars -= 1
+			spell_cast()
+		
 		if non_player_bet_creature.dead:
 			non_bet_died = true
 		if player_bet_creature.dead:
@@ -183,6 +191,13 @@ func chain_pull():
 	non_player_bet_creature.chained = false
 	non_player_bet_creature.sprite.play("default")
 	inactivity.start(chain_cooldown)
+
+func spell_cast():
+	var spell_worked = randi_range(1, 4)
+	if spell_worked == 4:
+		player_bet_creature.failed_mars()
+	else:
+		player_bet_creature.mars()
 
 func end_match():
 	if player_bet_died and !non_bet_died:

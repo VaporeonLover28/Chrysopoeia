@@ -101,7 +101,7 @@ func match_stats():
 			damage = 11
 		"Tickler":
 			health = 100
-			damage = 0.2
+			damage = 0.5
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -178,15 +178,24 @@ func _on_attack_timeout() -> void:
 	attack_enemy()
 	match atk_type:
 		"Cautious":
-			random_atk_cd(1.5)
+			random_atk_cd(1.25)
 		"Hard-Headed":
-			random_atk_cd(2)
+			random_atk_cd(1.5)
 		"Purist":
 			random_atk_cd(1)
 		"Gambler":
 			random_atk_cd(randf_range(0.75, 1.5))
 		"Tickler":
-			random_atk_cd(0.1)
+			random_atk_cd(0.3)
 
 func random_atk_cd(baseatkcd):
-	attack.start(randf_range(baseatkcd - 0.25, baseatkcd + 0.25))
+	attack.start(randf_range(baseatkcd / 1.25, baseatkcd * 1.25))
+
+func mars():
+	print("mars")
+	damage * 1.25
+
+func failed_mars():
+	print("failed mars")
+	health += 20
+	damage /= 1.5
