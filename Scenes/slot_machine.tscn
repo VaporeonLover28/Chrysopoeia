@@ -1,13 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://blm2ybcpo2i7k"]
+[gd_scene load_steps=10 format=3 uid="uid://blm2ybcpo2i7k"]
 
 [ext_resource type="Script" uid="uid://du03851jbkyo2" path="res://Script/slot_machine.gd" id="1_0ucjj"]
 [ext_resource type="PackedScene" uid="uid://ds2ti854kfjl1" path="res://Assets/Originals/RodaCaçaniquel.glb" id="1_03c2u"]
 [ext_resource type="PackedScene" uid="uid://dgww0bhqoowog" path="res://Assets/Originals/Slot_Machice/Caçaniquel.glb" id="2_s1yih"]
 [ext_resource type="PackedScene" uid="uid://ddxc2ltff5yec" path="res://Assets/Originals/Slot_Machice/alavanca.glb" id="4_2rg1w"]
 [ext_resource type="PackedScene" uid="uid://cxvcxyaq27jof" path="res://Assets/Originals/Slot_Machice/Rodacerta.glb" id="5_ab6dg"]
+[ext_resource type="PackedScene" uid="uid://bi326asm5h1wa" path="res://Scenes/input_prompt.tscn" id="6_pyjcy"]
+[ext_resource type="Texture2D" uid="uid://dl1c3wpfn3nqf" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_f.png" id="7_pxobf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ucjj"]
 size = Vector3(1, 1.82428, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ab6dg"]
+size = Vector3(1.5, 1, 2.71042)
 
 [node name="slot_machine" type="Node3D"]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
@@ -51,3 +56,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.928577, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="colision"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0165101, 0)
 shape = SubResource("BoxShape3D_0ucjj")
+
+[node name="input_area" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09988, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="input_area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.765152)
+shape = SubResource("BoxShape3D_ab6dg")
+
+[node name="input_prompt" parent="input_area" instance=ExtResource("6_pyjcy")]
+transform = Transform3D(0.635, 0, 0, 0, 0.635, 0, 0, 0, 0.635, 0, -0.0164474, 0.86953)
+texture = ExtResource("7_pxobf")
+action = "Fortune"
