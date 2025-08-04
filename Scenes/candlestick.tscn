@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bal2sa3ylkh84"]
+
+[ext_resource type="PackedScene" uid="uid://cdlsl2xupts2l" path="res://Assets/Exports/glTF/CandleStick_Triple.gltf" id="1_feppc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i6yl4"]
+size = Vector3(0.391968, 0.487305, 0.107422)
+
+[node name="Candlestick" type="StaticBody3D" groups=["Ground_object"]]
+
+[node name="CandleStick_Triple2" parent="." instance=ExtResource("1_feppc")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0275269, 0.256348, -0.00585938)
+shape = SubResource("BoxShape3D_i6yl4")
