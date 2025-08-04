@@ -8,8 +8,8 @@ extends CharacterBody3D
 @onready var play_game: Timer = $play_game
 @onready var world_scene = $"../"
 @onready var loading_suit = preload("res://Scenes/loading_suit.tscn")
-@onready var ui: CanvasLayer = $UI
-@onready var money: Label = $UI/money
+@onready var ui = $"../HUD"
+@onready var money = $"../HUD/money_box/Gold"
 
 const BUILD_SHADER = preload("res://build_material.tres")
 
