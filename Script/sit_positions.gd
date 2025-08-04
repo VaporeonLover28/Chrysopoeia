@@ -29,8 +29,7 @@ func _sit_characther(object_ref):
 		chosen_sitting_transition = null
 		chosen_sitting_position = 10
 		var smallest_distance : float = 10
-		for item in self.get_child_count() :
-			print(get_parent())
+		for item in self.get_child_count():
 			if smallest_distance > object_ref.global_position.distance_to(self.get_child(item).global_position)\
 			and chair_postion_list[item][1] != false :
 				chosen_sitting_position = item 
@@ -45,7 +44,7 @@ func _sit_characther(object_ref):
 
 func _stand_characther_up(object_ref):
 	for item in self.get_child_count():
-		if  self.get_child(item).global_position.distance_to(object_ref.global_position) <= 0.3:
+		if  self.get_child(item).global_position.distance_to(object_ref.global_position) <= 0.2:
 			chair_postion_list[item][1] = true
 	if object_ref == save_player_ref:
 		Globals.player_interacting = false

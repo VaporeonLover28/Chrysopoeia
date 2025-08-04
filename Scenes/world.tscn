@@ -85,8 +85,8 @@ maximum_number_of_jesters = 1
 maximum_number_of_communers = 1
 maximum_number_of_nobles = 1
 maximum_number_of_alcoholic_mages = 1
-minimum_time_for_spawn_npc = 20.0
-maximum_time_for_spawn_npc = 20.0
+minimum_time_for_spawn_npc = 180.0
+maximum_time_for_spawn_npc = 180.0
 
 [node name="NPC Spwaner Timer" type="Timer" parent="."]
 

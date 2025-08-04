@@ -61,7 +61,7 @@ func _go_to_interactable_object():
 			return
 		else:
 			if targeted_position_is_object.get_node("Sit positions")._ASAT() == false:
-				var random_choice_of_chair = randi_range(0, targeted_position_is_object.get_node("Sit positions").get_child_count() - 1)
+				var random_choice_of_chair = randi_range(0, targeted_position_is_object.get_node("Sit positions").get_child_count())
 				_walk_to(targeted_position_is_object.get_node("Sit positions").get_child(random_choice_of_chair).global_position)
 				targeted_sitting_position = random_choice_of_chair
 			else:
