@@ -42,14 +42,4 @@ shape = SubResource("SphereShape3D_cvnsp")
 disabled = true
 debug_color = Color(0.963757, 0, 0.496823, 0.42)
 
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="money" type="Label" parent="UI"]
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 20
-text = "Money: 0"
-
 [connection signal="timeout" from="play_game" to="." method="_on_play_game_timeout"]

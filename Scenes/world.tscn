@@ -1,8 +1,9 @@
-[gd_scene load_steps=36 format=3 uid="uid://ifr6x47walau"]
+[gd_scene load_steps=38 format=3 uid="uid://ifr6x47walau"]
 
 [ext_resource type="PackedScene" uid="uid://dsp27d25mg6bh" path="res://Scenes/player.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://cf6y1d4msmkfp" path="res://Script/world.gd" id="1_ic0uy"]
 [ext_resource type="PackedScene" uid="uid://ltp3jvrek5bh" path="res://Scenes/shop_menu.tscn" id="2_7yui6"]
+[ext_resource type="PackedScene" uid="uid://cplllnfhtikkb" path="res://Scenes/hud.tscn" id="2_pyn1s"]
 [ext_resource type="PackedScene" uid="uid://uuscgkuf1gtm" path="res://Scenes/bar_ui.tscn" id="3_e0ngr"]
 [ext_resource type="PackedScene" uid="uid://jekyh5hw0o23" path="res://Scenes/npc.tscn" id="3_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://cb53qpnp2by4" path="res://Scenes/casino_light.tscn" id="4_036b0"]
@@ -18,9 +19,10 @@
 [ext_resource type="Script" uid="uid://cb58tbr6db7dh" path="res://Script/flickertorch.gd" id="12_t2t4p"]
 [ext_resource type="PackedScene" uid="uid://bpth6e0ob531j" path="res://Assets/Exports/glTF/Chandelier.gltf" id="13_0pcbe"]
 [ext_resource type="PackedScene" uid="uid://bi326asm5h1wa" path="res://Scenes/input_prompt.tscn" id="13_yq1aw"]
-[ext_resource type="PackedScene" uid="uid://bxgjpo50hi4hi" path="res://Scenes/bar.tscn" id="14_kn0ld"]
 [ext_resource type="Texture2D" uid="uid://bymswxfkuf1i7" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_e.png" id="14_pyn1s"]
 [ext_resource type="PackedScene" uid="uid://blm2ybcpo2i7k" path="res://Scenes/slot_machine.tscn" id="16_hgpy0"]
+[ext_resource type="PackedScene" uid="uid://doc2fu24go0bh" path="res://Scenes/pause.tscn" id="21_yq1aw"]
+[ext_resource type="PackedScene" uid="uid://5fqe31h8scxt" path="res://Assets/Originals/praredelend.glb" id="23_no8kt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_37kl0"]
 sky_top_color = Color(0.0606355, 0.0252388, 0.221666, 1)
@@ -89,6 +91,10 @@ minimum_time_for_spawn_npc = 180.0
 maximum_time_for_spawn_npc = 180.0
 
 [node name="NPC Spwaner Timer" type="Timer" parent="."]
+
+[node name="HUD" parent="." instance=ExtResource("2_pyn1s")]
+
+[node name="Pause" parent="." instance=ExtResource("21_yq1aw")]
 
 [node name="Shop Menu" parent="." instance=ExtResource("2_7yui6")]
 
@@ -675,9 +681,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.947
 [node name="Gamble Spot3" parent="NavigationRegion3D/All Interactable Spots" instance=ExtResource("4_dwbse")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.9755, 1, -12.4465)
 
-[node name="Bar" parent="NavigationRegion3D/All Interactable Spots" instance=ExtResource("14_kn0ld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 11.11)
-
 [node name="slot_machine" parent="NavigationRegion3D/All Interactable Spots" instance=ExtResource("16_hgpy0")]
 transform = Transform3D(-5.46392e-08, 0, -1.25, 0, 1.25, 0, 1.25, 0, -5.46392e-08, 14.8727, 0, -6.91034)
 object_class = "SlotMachice"
@@ -800,6 +803,9 @@ size = Vector3(0.418396, 4, 0.5)
 [node name="wall13" type="CSGBox3D" parent="rinhaspot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58789, 2, -29.7454)
 size = Vector3(0.418396, 4, 0.5)
+
+[node name="praredelend" parent="." instance=ExtResource("23_no8kt")]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 4.08289, 0.0349345, -25.0251)
 
 [connection signal="timeout" from="NPC Spwaner Timer" to="." method="_spawn_npc"]
 [connection signal="body_entered" from="NavigationRegion3D/CSGCombiner3D/fight_ring/player_recon" to="NavigationRegion3D/CSGCombiner3D/fight_ring/player_recon" method="_on_body_entered"]
