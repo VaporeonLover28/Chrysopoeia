@@ -3,7 +3,7 @@ extends Node
 var game_paused: bool = false
 var player_interacting: bool = false
 var player_is_in_camera_animation: bool = false
-var money: int = 1000:
+var money: int = 100:
 	set(new_value):
 		if aqua_philosophorum_timer.time_left > 0 and new_value <= 0:
 			money += 110
@@ -17,6 +17,9 @@ var spell_inventory_list: Array[PurchasableItemResource]
 @onready var aqua_fortis_active: bool = false
 @onready var aqua_regia_timer: Timer
 @onready var aqua_philosophorum_timer: Timer
+
+var fortuna_in_spell_list := true
+var fortuna_target : Node3D
 
 func _ready() -> void:
 	var aqua_vitae_timer_inst = Timer.new()

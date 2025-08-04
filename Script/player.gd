@@ -73,28 +73,32 @@ func _physics_process(delta: float) -> void:
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	camera.transform.origin = _headbob(t_bob) + Vector3(0, 0.5, 0)
 	
-	if Input.is_action_just_pressed("e") and Globals.player_interacting == false and is_on_building_mode == false:
-		#print("oi")
-		_interact_object()
+	if !is_on_building_mode:
+		if Input.is_action_just_pressed("e") and Globals.player_interacting == false:
+			#print("oi")
+			_interact_object()
 		
-	elif Input.is_action_just_pressed("c") and is_on_building_mode == false\
-	 and ray_interection.get_collider().get_parent().get_node_or_null("Sit positions") != null:
-		_call_npc_to_game()
+		elif Input.is_action_just_pressed("c") and \
+		ray_interection.get_collider().get_parent().get_node_or_null("Sit positions") != null:
+			_call_npc_to_game()
+			
+		if Input.is_action_just_pressed("b") and Globals.player_interacting == false and\
+		Globals.game_paused == false:
+			world_scene.get_node("Shop Menu").get_child(0)._show_shop_menu()
 		
-	if Input.is_action_just_pressed("b") and Globals.player_interacting == false and\
-	Globals.game_paused == false and is_on_building_mode == false:
-		world_scene.get_node("Shop Menu").get_child(0)._show_shop_menu()
+		if Input.is_action_just_pressed("f") and Globals.fortuna_in_spell_list and \
+		Globals.fortuna_target != null:
+			Globals.fortuna_target.spell_cast("Fortune")
+	else:
+		if Input.is_action_just_pressed("rightclick"):
+			_build()
+			
+		if Input.is_action_pressed("q"):
+			_rotate_bulding_object(-1)
+			
+		if Input.is_action_pressed("e"):
+			_rotate_bulding_object(1)
 		
-	if Input.is_action_just_pressed("rightclick") and is_on_building_mode == true:
-		_build()
-		
-	if Input.is_action_pressed("q") and is_on_building_mode == true:
-		_rotate_bulding_object(-1)
-		
-	if Input.is_action_pressed("e") and is_on_building_mode == true:
-		_rotate_bulding_object(1)
-		
-	if is_on_building_mode == true:
 		lock_model_into_build_spot()
 	
 	move_and_slide()
@@ -107,7 +111,7 @@ func _headbob(time) -> Vector3:
 
 func _interact_object():
 	##caso tenha um objeto que carregue cena
-	#loading_screen(cena que vai)
+	loading_screen("a")
 	var object_inst = ray_interection.get_collider()
 	if object_inst != null and object_inst.get_parent() is InteractableObject and Globals.game_paused == false:
 		object_inst.get_parent()._interact([self])

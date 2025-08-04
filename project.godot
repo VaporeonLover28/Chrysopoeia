@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Shadow-wizard-money-house-d 0e 4 Ad 3 Ef 14589 Ea 1f 6a 9184b 0443 Eb 95c 479a 4a"
+config/name="Chrysopoeia"
 run/main_scene="uid://ifr6x47walau"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"

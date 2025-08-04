@@ -5,6 +5,7 @@ extends InteractableObject; class_name SlotMachice
 @onready var wheel_2: Node3D = $wheels/wheel2
 @onready var wheel_3: Node3D = $wheels/wheel3
 @onready var wheel_4: Node3D = $wheels/wheel4
+@onready var input_prompt: Node3D = $input_area/input_prompt
 
 ##Reward is [Name, Value, Odds]
 ##Odds is the minimum value the randi must be to choose this reward
@@ -41,12 +42,12 @@ func _interact_SlotMachice(object_ref):
 		lever_pull()
 
 func lever_pull():
-	##block the player from spinning again
-	spinning = true
 	##if the player can afford to play
 	if Globals.money - play_price >= 0:
 		##take money
 		Globals.money -= play_price
+		##block the player from spinning again
+		spinning = true
 		##define the spin results
 		if fortune == 0:
 			spin_rewards(base_rewards)
@@ -178,3 +179,20 @@ func check_matching(loot_table):
 	Globals.money += points
 		#else:
 			#print("not a match")
+
+func spell_cast(spell : String):
+	var spell_worked = randi_range(1, 4)
+	if spell_worked == 4:
+		fortune = -1
+	else:
+		fortune = 1
+
+func _on_input_area_body_entered(body: Node3D) -> void:
+	if Globals.fortuna_in_spell_list and body.name == "Player" and Globals.fortuna_target == null:
+		Globals.fortuna_target = self
+		input_prompt.visible = true
+
+func _on_input_area_body_exited(body: Node3D) -> void:
+	if body.name == "Player" and Globals.fortuna_target == self:
+		Globals.fortuna_target = null
+		input_prompt.visible = false

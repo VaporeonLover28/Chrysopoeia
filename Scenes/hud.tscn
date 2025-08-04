@@ -31,6 +31,7 @@ texture = ExtResource("2_bjfho")
 stretch_mode = 3
 
 [node name="shop_label" type="Label" parent="money_box/shop"]
+layout_mode = 0
 offset_left = 13.0
 offset_top = 57.0
 offset_right = 53.0

@@ -12,7 +12,7 @@
 size = Vector3(1, 1.82428, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ab6dg"]
-size = Vector3(1.5, 1, 2.71042)
+size = Vector3(0.725, 1, 2)
 
 [node name="slot_machine" type="Node3D"]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
@@ -59,6 +59,8 @@ shape = SubResource("BoxShape3D_0ucjj")
 
 [node name="input_area" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09988, 0)
+collision_layer = 16
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="input_area"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.765152)
@@ -66,5 +68,9 @@ shape = SubResource("BoxShape3D_ab6dg")
 
 [node name="input_prompt" parent="input_area" instance=ExtResource("6_pyjcy")]
 transform = Transform3D(0.635, 0, 0, 0, 0.635, 0, 0, 0, 0.635, 0, -0.0164474, 0.86953)
+visible = false
 texture = ExtResource("7_pxobf")
 action = "Fortune"
+
+[connection signal="body_entered" from="input_area" to="." method="_on_input_area_body_entered"]
+[connection signal="body_exited" from="input_area" to="." method="_on_input_area_body_exited"]
