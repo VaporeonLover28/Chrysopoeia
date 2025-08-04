@@ -9,6 +9,7 @@ extends Control
 @onready var world_scene = $"../../"
 @onready var money_label: Label = $MarginContainer/VBoxContainer/HBoxContainer/Label
 
+
 signal wait_for_spell_change
 
 func _ready() -> void:

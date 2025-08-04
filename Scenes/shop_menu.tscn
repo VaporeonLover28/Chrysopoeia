@@ -62,10 +62,11 @@ layout_mode = 2
 [node name="Sections of shop" type="TabContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 tab_alignment = 2
-current_tab = 0
+current_tab = 1
 clip_tabs = false
 
 [node name="Games" type="Control" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -84,7 +85,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Decoration" type="Control" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
