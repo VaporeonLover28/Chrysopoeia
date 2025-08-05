@@ -26,18 +26,19 @@ func _show_shop_menu():
 	if PurchasableItemList.games_list.size() > 0:
 		for item in PurchasableItemList.games_list.size():
 			var instanciated_item = buyable_object.instantiate()
-			print(instanciated_item.get_child(0).get_node("Button"))
 			instanciated_item.item_resource = PurchasableItemList.games_list[item - 1]
 			instanciated_item.get_child(0).get_node("Button").connect("pressed", _buy_item.bind(instanciated_item))
+			instanciated_item.position.x = 245 + (item * 245)
 			games_h_box_container.add_child(instanciated_item)
-			instanciated_item.position.x = 500
 	
 	if PurchasableItemList.decoration_list.size() > 0:
 		for item in PurchasableItemList.decoration_list.size():
 			var instanciated_item = buyable_object.instantiate()
 			instanciated_item.item_resource = PurchasableItemList.decoration_list[item - 1]
 			instanciated_item.get_child(0).get_node("Button").connect("pressed", _buy_item.bind(instanciated_item))
+			instanciated_item.position.x += 245 + (item * 245)
 			decoration_h_box_container.add_child(instanciated_item)
+			
 		
 	if PurchasableItemList.spell_list.size() > 0:
 		for item in PurchasableItemList.spell_list.size():
@@ -45,6 +46,8 @@ func _show_shop_menu():
 			instanciated_item.item_resource = PurchasableItemList.spell_list[item - 1]
 			instanciated_item.get_child(0).get_node("Button").connect("pressed", _buy_item.bind(instanciated_item))
 			spell_h_box_container.add_child(instanciated_item)
+			instanciated_item.position.x += 245 + (item * 245)
+			
 
 
 func _buy_item(object_being_purchase: Control):

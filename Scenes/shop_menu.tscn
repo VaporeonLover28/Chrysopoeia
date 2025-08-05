@@ -62,10 +62,11 @@ layout_mode = 2
 [node name="Sections of shop" type="TabContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 tab_alignment = 2
-current_tab = 0
+current_tab = 1
 clip_tabs = false
 
-[node name="Games" type="Control" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop"]
+[node name="Games" type="TabBar" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -83,8 +84,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Decoration" type="Control" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop"]
-visible = false
+[node name="Decoration" type="TabBar" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop"]
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -98,8 +98,10 @@ grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Decoration/ScrollContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Spells" type="Control" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop"]
+[node name="Spells" type="TabBar" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
@@ -114,6 +116,8 @@ grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Spells/ScrollContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Spell_choice_container" type="Control" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2

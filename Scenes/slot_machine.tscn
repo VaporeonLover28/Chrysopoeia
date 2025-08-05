@@ -18,8 +18,15 @@ size = Vector3(0.725, 1, 2)
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
 script = ExtResource("1_0ucjj")
 
-[node name="mesh" parent="." instance=ExtResource("2_s1yih")]
-transform = Transform3D(-8.52372e-09, 0, -0.195, 0, 0.195, 0, 0.195, 0, -8.52372e-09, 0, 0.154007, 0)
+[node name="Model" type="StaticBody3D" parent="." groups=["Ground_object"]]
+transform = Transform3D(1, 0, 5.68434e-15, 0, 1, 0, -5.68434e-15, 0, 1, 0, 0.928577, 0)
+
+[node name="mesh" parent="Model" instance=ExtResource("2_s1yih")]
+transform = Transform3D(-8.52372e-09, 0, -0.195, 0, 0.195, 0, 0.195, 0, -8.52372e-09, 0, -0.77457, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0165101, 0)
+shape = SubResource("BoxShape3D_0ucjj")
 
 [node name="wheels" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125774, 0)
@@ -50,13 +57,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.581543, 1.14889, 0.103118)
 [node name="alavanca" parent="lever" instance=ExtResource("4_2rg1w")]
 transform = Transform3D(-6.77527e-09, 0, -0.155, 0, 0.155, 0, 0.155, 0, -6.77527e-09, -0.458246, -0.657829, 0.0540456)
 
-[node name="colision" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.928577, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="colision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0165101, 0)
-shape = SubResource("BoxShape3D_0ucjj")
-
 [node name="input_area" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09988, 0)
 collision_layer = 16
@@ -74,3 +74,5 @@ action = "Fortune"
 
 [connection signal="body_entered" from="input_area" to="." method="_on_input_area_body_entered"]
 [connection signal="body_exited" from="input_area" to="." method="_on_input_area_body_exited"]
+
+[editable path="Model/mesh"]

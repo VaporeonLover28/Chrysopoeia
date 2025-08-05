@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=3 format=3 uid="uid://co6pc4wkxyh10"]
+
+[ext_resource type="PackedScene" uid="uid://blm2ybcpo2i7k" path="res://Scenes/slot_machine.tscn" id="1_627h5"]
+[ext_resource type="Script" uid="uid://dtrrlkl8w8gkb" path="res://Script/purchasable_itens_resource.gd" id="2_tocq8"]
+
+[resource]
+script = ExtResource("2_tocq8")
+item_type = "Objects"
+name = "Slot Machine"
+price = 100
+description = "Good ol' time classic"
+item_scene = ExtResource("1_627h5")
+metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"

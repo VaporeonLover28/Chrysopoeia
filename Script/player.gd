@@ -184,7 +184,9 @@ func _start_bulding_phase(object_to_be_purchase: PackedScene):
 	current_object_being_purchase_instantiate.add_child(new_area3d)
 	current_object_being_purchase_instantiate.get_child(-1).add_child(instantiate_colission)
 	current_object_being_purchase_instantiate.position = ray_builder.position + Vector3(0,0,-3)
+	print(current_object_being_purchase_instantiate)
 	ray_builder.add_child(current_object_being_purchase_instantiate)
+	print(ray_builder.get_child(0))
 	await get_tree().create_timer(1).timeout
 	is_on_building_mode = true
 	

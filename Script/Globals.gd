@@ -39,6 +39,21 @@ func _ready() -> void:
 	aqua_philosophorum_timer_inst.name = "Aqua philosophorum Timer"
 	aqua_philosophorum_timer = aqua_philosophorum_timer_inst
 	self.add_child(aqua_philosophorum_timer_inst)
+	
+func _see_if_has_specific_spell( spell_name : String):
+	for item in spell_inventory_list:
+		if spell_name == item.name:
+			return true
+		else:
+			return false
+
+func _remove_spell( spell_name : String):
+	for item in spell_inventory_list.size() - 1:
+		if spell_name == spell_inventory_list[item].name:
+			spell_inventory_list.remove_at(item)
+		else:
+			print("cannot find spell")
+		
 
 func _calculate_bet_loses(money_value: int):
 	if money_value < 0:
