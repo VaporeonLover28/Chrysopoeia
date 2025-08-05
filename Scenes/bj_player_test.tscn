@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tbw4k"]
 
-[node name="bj_player_test" type="CharacterBody3D"]
+[node name="blackjack_player" type="CharacterBody3D"]
 collision_layer = 2
 script = ExtResource("1_tbw4k")
 

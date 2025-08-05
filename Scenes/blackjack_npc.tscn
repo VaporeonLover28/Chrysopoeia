@@ -19,11 +19,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.399, -0.376)
 
 [node name="action_label" type="Label3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.865362, -0.194739)
+visible = false
 text = "ACTION"
 uppercase = true
 
 [node name="personality_label" type="Label3D" parent="."]
 transform = Transform3D(-0.439225, 0, -3.83983e-08, 0, 0.439225, 0, 3.83983e-08, 0, -0.439225, 0, 0.977657, -0.194739)
+visible = false
 text = "personality"
 uppercase = true
 

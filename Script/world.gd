@@ -5,6 +5,7 @@ extends Node3D
 @onready var walking_npcs: Node = $Walking_NPCs
 @onready var all_interactable_spots: Node = $"NavigationRegion3D/All Interactable Spots"
 @onready var npc_spwaner_timer: Timer = $"NPC Spwaner Timer"
+@onready var player_recon: Area3D = $NavigationRegion3D/CSGCombiner3D/fight_ring/player_recon
 
 var is_trying_to_spawn_npc: bool = false
 

@@ -17,6 +17,7 @@ const BUILD_SHADER = preload("res://build_material.tres")
 @export var speed : float = 4.0
 #run speed is speed * value, not the value
 @export var run_speed : float = 1
+var can_move := true
 #varibles relacionated with buying on the shop
 var is_on_building_mode: bool = false
 var current_object_being_purchase: PackedScene
@@ -36,13 +37,14 @@ func _unhandled_input(event): #event representa o evento do input
 			Globals.game_paused = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
-	if event is InputEventMouseMotion and Globals.game_paused == false and world_scene.get_node("Bar UI").visible == false: # se o jogador mover o mouse(prendemos ele na tela)
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	if event is InputEventMouseMotion and Globals.game_paused == false \
-	and world_scene.get_node("Bar UI").visible == false and Globals.player_interacting == false:
-			pivot.rotate_y(-event.relative.x * mouse_sensitivity)
-			camera.rotate_x(-event.relative.y * mouse_sensitivity)
-			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-70), deg_to_rad(70))
+	if can_move:
+		if event is InputEventMouseMotion and Globals.game_paused == false and world_scene.get_node("Bar UI").visible == false: # se o jogador mover o mouse(prendemos ele na tela)
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		if event is InputEventMouseMotion and Globals.game_paused == false \
+		and world_scene.get_node("Bar UI").visible == false and Globals.player_interacting == false:
+				pivot.rotate_y(-event.relative.x * mouse_sensitivity)
+				camera.rotate_x(-event.relative.y * mouse_sensitivity)
+				camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-70), deg_to_rad(70))
 
 func _physics_process(delta: float) -> void:
 	money.text = "Gold: " + str(Globals.money)
@@ -55,19 +57,18 @@ func _physics_process(delta: float) -> void:
 	else:
 		run_speed = 1
 	
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input := Input.get_vector("a", "d", "w", "s")
-	var direction = (pivot.transform.basis * Vector3(input.x, 0, input.y)).normalized()
-	if direction and Globals.game_paused == false:
-		if Globals.player_interacting == false:
-			velocity.x = direction.x * speed * run_speed
-			velocity.z = direction.z * speed * run_speed
-	elif !direction and Globals.game_paused == false:
-		velocity.x = move_toward(velocity.x, 0, speed)
-		velocity.z = move_toward(velocity.z, 0, speed)
-	else:
-		velocity = Vector3.ZERO
+	if can_move:
+		var input := Input.get_vector("a", "d", "w", "s")
+		var direction = (pivot.transform.basis * Vector3(input.x, 0, input.y)).normalized()
+		if direction and Globals.game_paused == false:
+			if Globals.player_interacting == false:
+				velocity.x = direction.x * speed * run_speed
+				velocity.z = direction.z * speed * run_speed
+		elif !direction and Globals.game_paused == false:
+			velocity.x = move_toward(velocity.x, 0, speed)
+			velocity.z = move_toward(velocity.z, 0, speed)
+		else:
+			velocity = Vector3.ZERO
 	
 	#headbob
 	t_bob += delta * velocity.length() * float(is_on_floor())
@@ -76,7 +77,10 @@ func _physics_process(delta: float) -> void:
 	if !is_on_building_mode:
 		if Input.is_action_just_pressed("e") and Globals.player_interacting == false:
 			#print("oi")
-			_interact_object()
+			if world_scene.player_recon.player_inside:
+				loading_screen("fight_ring")
+			else:
+				_interact_object()
 		
 		elif Input.is_action_just_pressed("c") and \
 		ray_interection.get_collider().get_parent().get_node_or_null("Sit positions") != null:
@@ -110,13 +114,9 @@ func _headbob(time) -> Vector3:
 	return pos
 
 func _interact_object():
-	##caso tenha um objeto que carregue cena
-	loading_screen("a")
 	var object_inst = ray_interection.get_collider()
 	if object_inst != null and object_inst.get_parent() is InteractableObject and Globals.game_paused == false:
 		object_inst.get_parent()._interact([self])
-		#is breaking the game beacuse removes the player reference
-		_play_blackjack()
 
 func _cancel_interaction():
 	Globals.player_interacting = false
@@ -137,13 +137,8 @@ func _call_npc_to_game():
 func _filter_NPC_in_area(bodies):
 	return bodies is NPC
 
-func _play_blackjack():
-	#Globals.player_transform_storage.push_back(transform)
-	#Globals.player_transform_storage.push_back(pivot.transform)
-	#play_game.start()
-	pass
-
-func loading_screen(scene):
+func loading_screen(game):
+	can_move = false
 	var which_suit = randi_range(0, 3)
 	var inst = loading_suit.instantiate()
 	match which_suit:
@@ -171,12 +166,8 @@ func loading_screen(scene):
 	tween.tween_property(inst, "position", Vector2(628.0, 223.0), 3)
 	tween.set_parallel(false)
 	await get_tree().create_timer(4.5).timeout
-	##muda a cena para o callable scene
+	get_tree().change_scene_to_file("res://Scenes/" + game + ".tscn")
 
-func _on_play_game_timeout() -> void:
-	Globals.player_transform_storage.push_back(camera.transform)
-	get_tree().change_scene_to_file("res://Scenes/blackjack_test_2.tscn")
-	
 func _start_bulding_phase(object_to_be_purchase: PackedScene):
 	object_rotation = Vector3.ZERO
 	current_object_being_purchase = object_to_be_purchase
@@ -196,7 +187,6 @@ func _start_bulding_phase(object_to_be_purchase: PackedScene):
 	ray_builder.add_child(current_object_being_purchase_instantiate)
 	await get_tree().create_timer(1).timeout
 	is_on_building_mode = true
-	
 	
 func _rotate_bulding_object(rotation_direction: int):
 	object_rotation += Vector3(0,8,0) * rotation_direction
@@ -222,7 +212,7 @@ func _sell():
 	var object_inst = ray_interection.get_collider()
 	if object_inst != null and object_inst.get_parent().get_parent() is InteractableObject and Globals.game_paused == false:
 		object_inst.queue_free()
-		
+
 func lock_model_into_build_spot():
 	if ray_builder.get_collider() != null \
 	and ray_builder.get_collider().get_name() == "Area build spot"\
@@ -235,7 +225,6 @@ func lock_model_into_build_spot():
 			ray_builder.get_child(0).get_child(0).get_child(0).mesh.surface_get_material(item).next_pass.set_shader_parameter("outline_color", Color.GREEN)
 		ray_builder.get_child(0).top_level = true
 		ray_builder.get_child(0).rotation = object_rotation + ray_builder.get_collider().get_parent().rotation
-		
 		
 	elif ray_builder.get_collider() != null \
 	and ray_builder.get_collider().get_name() == "Area build spot"\

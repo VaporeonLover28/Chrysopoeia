@@ -14,20 +14,18 @@ var tween : Tween
 
 # Called when the node enters the scene tree for the first time.
 func _interact_GambleSpot(object_ref):
-	sit_positions._sit_characther(object_ref)
+	sit_positions._sit_character(object_ref)
+	await get_tree().create_timer(0.75).timeout
+	loading_screen(game_machice_scene)
 	
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("e") and sit_positions.player_is_sitting == true:
 		_cancel_interact_GambleSpot(sit_positions.save_player_ref)
 
 func _cancel_interact_GambleSpot(object_ref):
-	sit_positions._stand_characther_up(object_ref)
-
-func _start_game():
-	#loading_screen()
-	get_tree().change_scene_to_file(game_machice_scene)
+	sit_positions._stand_character_up(object_ref)
 	
-func loading_screen():
+func loading_screen(game):
 	var which_suit = randi_range(0, 3)
 	var inst = LOADING_SUIT.instantiate()
 	match which_suit:
@@ -55,4 +53,4 @@ func loading_screen():
 	tween.tween_property(inst, "position", Vector2(628.0, 223.0), 3)
 	tween.set_parallel(false)
 	await get_tree().create_timer(4.5).timeout
-	##muda a cena para o callable scene
+	get_tree().change_scene_to_file("res://Scenes/" + game + ".tscn")

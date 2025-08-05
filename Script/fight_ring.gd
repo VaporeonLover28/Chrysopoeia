@@ -33,6 +33,7 @@ var non_bet_died := false
 var available_mars := 1
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	for slot in creatures.get_children():
 		var creature_name : String
 		var creature_dir_type : String
@@ -112,7 +113,7 @@ func update_slot_info(which):
 	which.get_child(1).text = selectable_creatures_array[creatures.get_children().find(which)][0]
 
 func select_creature(button):
-	if selec_desc.get_child(0).visible == false:
+	if !selec_desc.get_child(0).visible:
 		selec_desc.get_child(0).visible = true
 		selec_desc.get_child(2).visible = true
 	selected_creature_stats.clear()

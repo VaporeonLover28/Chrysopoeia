@@ -21,7 +21,7 @@ func _ready() -> void:
 		new_chair_position.position = chair_postion_list[item][0]
 		self.add_child(new_chair_position)
 		
-func _sit_characther(object_ref):
+func _sit_character(object_ref):
 	await get_tree().create_timer(0.1).timeout
 	if _ASAT() != true:
 		#makes player sit
@@ -42,7 +42,7 @@ func _sit_characther(object_ref):
 			player_is_sitting = true
 			Globals.player_interacting = true
 
-func _stand_characther_up(object_ref):
+func _stand_character_up(object_ref):
 	for item in self.get_child_count():
 		if  self.get_child(item).global_position.distance_to(object_ref.global_position) <= 0.2:
 			chair_postion_list[item][1] = true
@@ -57,14 +57,14 @@ func _physics_process(delta: float) -> void:
 
 func _pull_camera(player):
 	tween = create_tween()
-	tween.set_trans(Tween.TRANS_QUAD)
-	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_OUT)
 	tween.set_parallel(true)
 	tween.tween_property(player_ref.pivot, "rotation_degrees", Vector3(0, 0, 0), 1.25)
 	tween.tween_property(player_ref.camera, "rotation_degrees", Vector3(0, 0, 0), 1.25)
 	tween.tween_property(player_ref.camera, "global_position", \
-	chosen_sitting_transition.global_position + Vector3(0, 0.6, 0), 1.25)
-	await get_tree().create_timer(1.25).timeout
+	chosen_sitting_transition.global_position + Vector3(0, 0.6, 0), 0.75)
+	await get_tree().create_timer(1.5).timeout
 	player.global_position = chosen_sitting_transition.global_position
 #checks then returns if all sits are taken
 func _ASAT():

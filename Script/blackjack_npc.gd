@@ -2,8 +2,8 @@ extends CharacterBody3D
 
 @onready var nav: NavigationAgent3D = $nav
 @onready var hand_marker: Marker3D = $hand
-@onready var action_label: Label3D = $action_label
-@onready var personality_label: Label3D = $personality_label
+#@onready var action_label: Label3D = $action_label
+#@onready var personality_label: Label3D = $personality_label
 @onready var game: Node3D = $".."
 @onready var player: CharacterBody3D = $"../bj_player_test"
 
@@ -13,16 +13,16 @@ extends CharacterBody3D
 var assigned_chair : bool = false
 var is_sat_down : bool = false
 
-var assigned_gc_label : RichTextLabel
+#var assigned_gc_label : RichTextLabel
 var hand : Array = []
 var hand_value : int = 0
 var aces_in_hand = 0
 
-func _ready() -> void:
-	personality_label.text = personality
+#func _ready() -> void:
+	#personality_label.text = personality
 
 func _process(delta: float) -> void:
-	if is_sat_down == false:
+	if !is_sat_down:
 		var destination = nav.get_next_path_position()
 		var local_destination = destination - global_position
 		var dir = local_destination.normalized()
@@ -516,22 +516,22 @@ func calculate_hand_value():
 		blackjack()
 	
 	hand_value = value_bank
-	update_gc_label()
+	#update_gc_label()
 
 func hit():
-	update_action_label("hit")
+	#update_action_label("hit")
 	print(name + " hits.")
 	game.card_to_npc(game.deck.pop_back(), self, Vector3.ZERO)
 	calculate_hand_value()
 
 func stand():
-	update_action_label("stand")
+	#update_action_label("stand")
 	state = "Standed"
 	print(name + " stands.")
 
 func double_down():
 	if game.round <= game.round_order_npcs.size():
-		update_action_label("double")
+		#update_action_label("double")
 		state = "Doubled"
 		print(name + " doubles down.")
 		game.card_to_npc(game.deck.pop_back(), self, Vector3(-180, 90, 0))
@@ -540,12 +540,12 @@ func double_down():
 		hit()
 
 func bust():
-	update_action_label("bust")
+	#update_action_label("bust")
 	state = "Busted"
 	print(name + " busts.")
 
 func blackjack():
-	update_action_label("blackjack")
+	#update_action_label("blackjack")
 	state = "Blackjack"
 	print(name + " has a blackjack.")
 
@@ -600,14 +600,14 @@ func case_match(case):
 		"double_down":
 			double_down()
 
-func update_gc_label():
-	assigned_gc_label.text = "Player " + name + "\nAI: " + \
-	str(personality) + "\nValue: " + str(hand_value) + "\nHand:\n"
-	for cards in hand:
-		assigned_gc_label.text += str(cards.rank) + " of " + str(cards.suit) + ",\n"
+#func update_gc_label():
+	#assigned_gc_label.text = "Player " + name + "\nAI: " + \
+	#str(personality) + "\nValue: " + str(hand_value) + "\nHand:\n"
+	#for cards in hand:
+		#assigned_gc_label.text += str(cards.rank) + " of " + str(cards.suit) + ",\n"
 
-func update_action_label(action):
-	action_label.text = str(action)
+#func update_action_label(action):
+	#action_label.text = str(action)
 
 func go_to_table(chair_pos):
 	#print(chair_pos)

@@ -186,7 +186,7 @@ func _on_attack_timeout() -> void:
 		"Gambler":
 			random_atk_cd(randf_range(0.75, 1.5))
 		"Tickler":
-			random_atk_cd(0.3)
+			random_atk_cd(0.05)
 
 func random_atk_cd(baseatkcd):
 	attack.start(randf_range(baseatkcd / 1.25, baseatkcd * 1.25))

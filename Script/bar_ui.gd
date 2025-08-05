@@ -49,7 +49,7 @@ func select_drink(chosen_drink):
 	sprite.texture = chosen_drink.drink_image
 	description.text = chosen_drink.description
 	buy_button.text = "Buy " + chosen_drink.drink_name + " for " + str(chosen_drink.drink_price) + " Gold"
-	if sprite.visible == false:
+	if !sprite.visible:
 		sprite.visible = true
 		description.visible = true
 		buy_button.visible = true

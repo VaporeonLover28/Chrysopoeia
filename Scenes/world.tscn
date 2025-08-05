@@ -27,7 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://2hi0ppmkqhxs" path="res://Scenes/spinningtor.tscn" id="25_i4fjy"]
 [ext_resource type="Texture2D" uid="uid://bbtb2l43wx0m2" path="res://Assets/Originals/fabbri1.png" id="26_hmc15"]
 [ext_resource type="Texture2D" uid="uid://baq8au6bu4r7" path="res://Assets/Originals/fabbri2.png" id="27_dt0r1"]
-[ext_resource type="Script" uid="uid://dtu7lm3ij73ov" path="res://Scenes/fabbreh.gd" id="28_dt0r1"]
+[ext_resource type="Script" uid="uid://dtu7lm3ij73ov" path="res://Script/fabbreh.gd" id="28_dt0r1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_37kl0"]
 
@@ -122,8 +122,8 @@ environment = SubResource("Environment_6uqi0")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-light_color = Color(0.0627451, 0, 0.247059, 1)
 shadow_enabled = true
+sky_mode = 2
 
 [node name="Walking_NPCs" type="Node" parent="."]
 
@@ -713,6 +713,7 @@ transform = Transform3D(1.20131, 0, 0, 0, 1.20131, 0, 0, 0, 1.20131, 0, 5.35019,
 
 [node name="BlackJack" parent="NavigationRegion3D/All Interactable Spots" instance=ExtResource("11_c5t2i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.819, 1, -12.649)
+game_machice_scene = "blackjack"
 
 [node name="Gamble Spot" parent="NavigationRegion3D/All Interactable Spots" instance=ExtResource("4_dwbse")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.0038, 1, -16.4464)
@@ -875,6 +876,7 @@ transform = Transform3D(0.048, 0, 0, 0, 0.048, 0, 0, 0, 0.048, -19.8906, 0.93334
 
 [node name="fabbreh" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(2.92863, 0, 0, 0, 1, 0, 0, 0, 1, -20.9767, 2.19445, -27.5492)
+shaded = true
 sprite_frames = SubResource("SpriteFrames_qebug")
 animation = &"open"
 autoplay = "closed"
