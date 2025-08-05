@@ -1,15 +1,15 @@
 extends CharacterBody3D
 
 @onready var nav: NavigationAgent3D = $nav
-@onready var hand_marker: Marker3D = $hand
 #@onready var action_label: Label3D = $action_label
 #@onready var personality_label: Label3D = $personality_label
 @onready var game: Node3D = $".."
-@onready var player: CharacterBody3D = $"../bj_player_test"
+@onready var player: CharacterBody3D = $"../blackjack_player"
 
 @export_enum("Pleb", "Mage", "Guard", "Noble", "Joker" ) var personality : String
 @export_enum("Playing", "Standed", "Busted", "Blackjack", "Doubled") var state : String = "Playing"
 
+var hand_marker: Marker3D
 var assigned_chair : bool = false
 var is_sat_down : bool = false
 
@@ -521,7 +521,7 @@ func calculate_hand_value():
 func hit():
 	#update_action_label("hit")
 	print(name + " hits.")
-	game.card_to_npc(game.deck.pop_back(), self, Vector3.ZERO)
+	game.card_to_npc(game.deck.pop_back(), self, Vector3(0, self.hand_marker.rotation_degrees.y, 0))
 	calculate_hand_value()
 
 func stand():

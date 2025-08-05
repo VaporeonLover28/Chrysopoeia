@@ -15,8 +15,9 @@ var tween : Tween
 # Called when the node enters the scene tree for the first time.
 func _interact_GambleSpot(object_ref):
 	sit_positions._sit_character(object_ref)
-	await get_tree().create_timer(0.75).timeout
-	loading_screen(game_machice_scene)
+	if object_ref.name == "Player":
+		await get_tree().create_timer(0.75).timeout
+		loading_screen(game_machice_scene)
 	
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("e") and sit_positions.player_is_sitting == true:

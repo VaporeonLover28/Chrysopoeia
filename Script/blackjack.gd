@@ -12,6 +12,7 @@ extends Node3D
 @onready var revealed_info: TextureRect = $CanvasLayer/revealed_card/card/info
 @onready var revealed_text: Label = $CanvasLayer/revealed_card/text
 @onready var blackjack_ui_test: Control = $CanvasLayer/Blackjack_UI_test
+@onready var hand_markers: Node3D = $hand_markers
 
 var tween : Tween
 
@@ -29,6 +30,7 @@ var dealer_can_hit : bool = false
 var dealer_can_stand : bool = false
 var dealer_busted : bool = false
 var dealer_blackjacked : bool = false
+var hand_marker_array := []
 
 var standard_deck : Array = [
 	["Clubs", "Ace", "A"], ["Hearts", "Ace", "A"], ["Spades", "Ace", "A"], ["Diamonds", "Ace", "A"], 
@@ -57,12 +59,13 @@ func _ready():
 	instantiate_cards()
 	##adds a new chair in the table array for referencing positions
 	for chairs in table_node.get_child_count():
-		#excludes the table mesh from chair count
+		##excludes the table mesh from chair count
 		if table_node.get_child(chairs) is Marker3D:
-			#chair is [position, is_taken]
+			##chair is [position, is_taken]
 			table.append([table_node.get_child(chairs).position, 0])
-			#print("New Chair, pos " + str(table[chairs - 1][0]))
-			#print(table)
+	
+	for markers in hand_markers.get_children():
+		hand_marker_array.append(markers)
 
 ##putting the cards in the screen
 func instantiate_cards():
@@ -114,6 +117,7 @@ func call_player():
 				table[chairs][1] = 1
 				new_npc.assigned_chair = true
 				new_npc.name = str(chairs)
+				new_npc.hand_marker = hand_marker_array[chairs]
 				##add the npc to the npc array
 				playing_npcs.append(new_npc)
 
@@ -180,7 +184,7 @@ func distribute_cards():
 		else:
 		##the npc's first and second cards are identical
 			##gives the top card to the npc
-			card_to_npc(deck.pop_back(), round_order_npcs[int(floor(distribution_number / 3))], Vector3.ZERO)
+			card_to_npc(deck.pop_back(), round_order_npcs[int(floor(distribution_number / 3))], Vector3(0, round_order_npcs[int(floor(distribution_number / 3))].hand_marker.rotation_degrees.y, 0))
 	else:
 		##the dealer's first card is side up
 		if distribution_number / 3 > round_order_npcs.size():
@@ -189,7 +193,7 @@ func distribute_cards():
 		else:
 		##the npc's first and second cards are identical
 			##gives the top card to the npc
-			card_to_npc(deck.pop_back(), round_order_npcs[int(floor(distribution_number / 3))], Vector3.ZERO)
+			card_to_npc(deck.pop_back(), round_order_npcs[int(floor(distribution_number / 3))], Vector3(0, round_order_npcs[int(floor(distribution_number / 3))].hand_marker.rotation_degrees.y, 0))
 
 ##tween to send a card to the dealer
 func card_to_dealer(card : Node3D, pos : Vector3, rot : Vector3):

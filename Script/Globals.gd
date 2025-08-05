@@ -53,7 +53,6 @@ func _remove_spell( spell_name : String):
 			spell_inventory_list.remove_at(item)
 		else:
 			print("cannot find spell")
-		
 
 func _calculate_bet_loses(money_value: int):
 	if money_value < 0:
