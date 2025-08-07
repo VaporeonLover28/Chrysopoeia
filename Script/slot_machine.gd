@@ -35,7 +35,11 @@ var fortune := 0
 ##slot machice lol
 ##spin the wheel if it isn't spinning already
 ##clears the variables
-func _interact_SlotMachice(object_ref):
+
+func _ready() -> void:
+	object_class = "SlotMachine"
+
+func _interact_SlotMachine(object_ref):
 	if !spinning:
 		current_reward.clear()
 		points = 0

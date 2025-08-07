@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=2 format=3 uid="uid://br68s7kx7q8yy"]
+
+[ext_resource type="Script" uid="uid://dtrrlkl8w8gkb" path="res://Script/purchasable_itens_resource.gd" id="1_bh16a"]
+
+[resource]
+script = ExtResource("1_bh16a")
+item_type = "Spells"
+name = "Eye of Providence"
+price = 250
+description = ""
+metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"

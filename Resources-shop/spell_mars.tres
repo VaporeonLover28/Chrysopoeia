@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=2 format=3 uid="uid://bltltrlpmdlk1"]
+
+[ext_resource type="Script" uid="uid://dtrrlkl8w8gkb" path="res://Script/purchasable_itens_resource.gd" id="1_32hlx"]
+
+[resource]
+script = ExtResource("1_32hlx")
+item_type = "Spells"
+name = "Mars"
+price = 200
+description = "War."
+metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"
