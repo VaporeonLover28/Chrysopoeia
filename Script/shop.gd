@@ -3,7 +3,7 @@ extends Control
 @onready var buyable_object = preload("res://Scenes/buyable_object.tscn")
 @onready var sections_of_shop: TabContainer = $"MarginContainer/VBoxContainer/HBoxContainer/Sections of shop"
 @onready var games_h_box_container: HBoxContainer = $"MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Games/ScrollContainer/HBoxContainer"
-@onready var decoration_h_box_container: HBoxContainer = $"MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Decoration/ScrollContainer/GridContainer"
+@onready var decoration_h_box_container: HBoxContainer = $"MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Decoration/ScrollContainer/HBoxContainer"
 @onready var spell_h_box_container: HBoxContainer = $"MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Spells/ScrollContainer/HBoxContainer"
 @onready var spell_option_box_container: HBoxContainer = $MarginContainer/VBoxContainer/HBoxContainer/Spell_choice_container/HBoxContainer
 @onready var world_scene = $"../../"
@@ -19,7 +19,7 @@ func _show_shop_menu():
 	get_parent().visible = true
 	Globals.game_paused = true
 	sections_of_shop.visible = true
-	spell_option_box_container.visible = false
+	#spell_option_box_container.visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 	money_label.text = "Money: " + str(Globals.money)

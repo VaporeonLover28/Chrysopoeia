@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://ltp3jvrek5bh"]
+[gd_scene load_steps=9 format=3 uid="uid://ltp3jvrek5bh"]
 
 [ext_resource type="Script" uid="uid://mh8h7xo4eso6" path="res://Script/shop.gd" id="1_xysl7"]
-[ext_resource type="PackedScene" uid="uid://clw6o8eer00hf" path="res://Scenes/buyable_object.tscn" id="2_jhj42"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c2pxs"]
 
@@ -80,61 +79,10 @@ grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_c2pxs")
 
-[node name="GridContainer" type="HBoxContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Games/ScrollContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Games/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-
-[node name="Buyable object" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Games/ScrollContainer/GridContainer" instance=ExtResource("2_jhj42")]
-layout_mode = 2
-
-[node name="Buyable object2" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Games/ScrollContainer/GridContainer" instance=ExtResource("2_jhj42")]
-layout_mode = 2
-
-[node name="Buyable object3" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Games/ScrollContainer/GridContainer" instance=ExtResource("2_jhj42")]
-layout_mode = 2
-
-[node name="Buyable object4" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Games/ScrollContainer/GridContainer" instance=ExtResource("2_jhj42")]
-layout_mode = 2
-
-[node name="Buyable object5" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Games/ScrollContainer/GridContainer" instance=ExtResource("2_jhj42")]
-layout_mode = 2
-
-[node name="Buyable object6" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Games/ScrollContainer/GridContainer" instance=ExtResource("2_jhj42")]
-layout_mode = 2
-
-[node name="Buyable object7" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Games/ScrollContainer/GridContainer" instance=ExtResource("2_jhj42")]
-layout_mode = 2
-
-[node name="Buyable object8" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Games/ScrollContainer/GridContainer" instance=ExtResource("2_jhj42")]
-layout_mode = 2
-
-[node name="Buyable object9" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Games/ScrollContainer/GridContainer" instance=ExtResource("2_jhj42")]
-layout_mode = 2
-
-[node name="Buyable object10" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Games/ScrollContainer/GridContainer" instance=ExtResource("2_jhj42")]
-layout_mode = 2
-
-[node name="Buyable object11" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Games/ScrollContainer/GridContainer" instance=ExtResource("2_jhj42")]
-layout_mode = 2
-
-[node name="Buyable object12" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Games/ScrollContainer/GridContainer" instance=ExtResource("2_jhj42")]
-layout_mode = 2
-
-[node name="Buyable object13" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Games/ScrollContainer/GridContainer" instance=ExtResource("2_jhj42")]
-layout_mode = 2
-
-[node name="Buyable object14" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Games/ScrollContainer/GridContainer" instance=ExtResource("2_jhj42")]
-layout_mode = 2
-
-[node name="Buyable object15" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Games/ScrollContainer/GridContainer" instance=ExtResource("2_jhj42")]
-layout_mode = 2
-
-[node name="Buyable object16" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Games/ScrollContainer/GridContainer" instance=ExtResource("2_jhj42")]
-layout_mode = 2
-
-[node name="Buyable object17" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Games/ScrollContainer/GridContainer" instance=ExtResource("2_jhj42")]
-layout_mode = 2
 
 [node name="Decoration" type="TabBar" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop"]
 visible = false
