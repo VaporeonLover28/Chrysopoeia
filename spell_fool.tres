@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=2 format=3 uid="uid://bpvpbmep1p0gl"]
+
+[ext_resource type="Script" uid="uid://dtrrlkl8w8gkb" path="res://Script/purchasable_itens_resource.gd" id="1_cg2b6"]
+
+[resource]
+script = ExtResource("1_cg2b6")
+item_type = "Spells"
+name = "Fool's Gold"
+price = 444
+description = ""
+metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"

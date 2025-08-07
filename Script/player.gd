@@ -103,7 +103,8 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("e"):
 			_rotate_bulding_object(1)
 		
-		lock_model_into_build_spot()
+		if is_on_building_mode == true:
+			lock_model_into_build_spot()
 	
 	move_and_slide()
 
@@ -173,7 +174,8 @@ func _start_bulding_phase(object_to_be_purchase: PackedScene):
 	current_object_being_purchase = object_to_be_purchase
 	var current_object_being_purchase_instantiate = current_object_being_purchase.instantiate()
 	if current_object_being_purchase_instantiate is InteractableObject:
-		current_object_being_purchase_instantiate = current_object_being_purchase_instantiate.get_node("Model")
+		current_object_being_purchase_instantiate = current_object_being_purchase_instantiate.get_node("Model").duplicate(true)
+		current_object_being_purchase_instantiate.add_to_group("Ground_object")
 	for item in current_object_being_purchase_instantiate.get_child(0).get_child(0).mesh.get_surface_count():
 		current_object_being_purchase_instantiate.get_child(0).get_child(0).mesh.surface_get_material(item).next_pass = BUILD_SHADER
 		current_object_being_purchase_instantiate.get_child(0).get_child(0).mesh.surface_get_material(item).next_pass.set_shader_parameter("active", true)
@@ -187,21 +189,22 @@ func _start_bulding_phase(object_to_be_purchase: PackedScene):
 	print(current_object_being_purchase_instantiate)
 	ray_builder.add_child(current_object_being_purchase_instantiate)
 	print(ray_builder.get_child(0))
-	await get_tree().create_timer(1).timeout
 	is_on_building_mode = true
 	
 func _rotate_bulding_object(rotation_direction: int):
 	object_rotation += Vector3(0,8,0) * rotation_direction
 	
 func _cancel_build():
+	print("oi")
 	is_on_building_mode = false
 	current_object_being_purchase = null
 	ray_builder.get_child(0).queue_free()
 	
 func _build():
 	if can_build == true:
+		print("oi")
 		var instantiate_object = current_object_being_purchase.instantiate()
-		instantiate_object.global_position = ray_builder.get_child(0).global_position
+		instantiate_object.global_position = ray_builder.get_collider().get_parent().global_position
 		instantiate_object.rotation = ray_builder.get_child(0).rotation
 		ray_builder.get_child(0).queue_free()
 		world_scene.get_node("NavigationRegion3D").get_node("All Interactable Spots").add_child(instantiate_object)
@@ -213,9 +216,11 @@ func _build():
 func _sell():
 	var object_inst = ray_interection.get_collider()
 	if object_inst != null and object_inst.get_parent().get_parent() is InteractableObject and Globals.game_paused == false:
+		print("oi")
 		object_inst.queue_free()
 
 func lock_model_into_build_spot():
+	print(ray_builder.get_child(0).get_groups())
 	if ray_builder.get_collider() != null \
 	and ray_builder.get_collider().get_name() == "Area build spot"\
 	and ray_builder.get_collider().is_in_group(ray_builder.get_child(0).get_groups()[0])\

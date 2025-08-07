@@ -3,7 +3,7 @@ extends Node
 var game_paused: bool = false
 var player_interacting: bool = false
 var player_is_in_camera_animation: bool = false
-var money: int = 100:
+var money: int = 1000:
 	set(new_value):
 		if aqua_philosophorum_timer.time_left > 0 and new_value <= 0:
 			money += 110
