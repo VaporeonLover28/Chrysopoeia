@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=2 format=3 uid="uid://c1ve03nv8ehl6"]
+
+[ext_resource type="Script" uid="uid://dtrrlkl8w8gkb" path="res://Script/purchasable_itens_resource.gd" id="1_jdcbq"]
+
+[resource]
+script = ExtResource("1_jdcbq")
+item_type = "Spells"
+name = "Chipped Key"
+price = 999999
+description = "Looks like it got beat up."
+metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"

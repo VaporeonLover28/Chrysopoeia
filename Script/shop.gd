@@ -3,7 +3,7 @@ extends Control
 @onready var buyable_object = preload("res://Scenes/buyable_object.tscn")
 @onready var sections_of_shop: TabContainer = $"MarginContainer/VBoxContainer/HBoxContainer/Sections of shop"
 @onready var games_h_box_container: HBoxContainer = $"MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Games/ScrollContainer/HBoxContainer"
-@onready var decoration_h_box_container: HBoxContainer = $"MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Decoration/ScrollContainer/HBoxContainer"
+@onready var decoration_h_box_container: HBoxContainer = $"MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Decoration/ScrollContainer/GridContainer"
 @onready var spell_h_box_container: HBoxContainer = $"MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Spells/ScrollContainer/HBoxContainer"
 @onready var spell_option_box_container: HBoxContainer = $MarginContainer/VBoxContainer/HBoxContainer/Spell_choice_container/HBoxContainer
 @onready var world_scene = $"../../"
@@ -12,7 +12,8 @@ extends Control
 signal wait_for_spell_change
 
 func _ready() -> void:
-	get_parent().visible = false
+	#get_parent().visible = false
+	pass
 	
 func _show_shop_menu():
 	get_parent().visible = true
