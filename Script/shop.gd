@@ -12,7 +12,7 @@ extends Control
 signal wait_for_spell_change
 
 func _ready() -> void:
-	#get_parent().visible = false
+	get_parent().visible = false
 	pass
 	
 func _show_shop_menu():
