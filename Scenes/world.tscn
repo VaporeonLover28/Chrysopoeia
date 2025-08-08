@@ -401,15 +401,19 @@ size = Vector3(1.014, 3.1, 4.105)
 material = SubResource("StandardMaterial3D_r74th")
 
 [node name="wall14" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1129, 3.31604, -5.4129)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1129, 3.3112, -5.4129)
 size = Vector3(2.7439, 0.632324, 3.96631)
 
 [node name="wall26" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -20.1129, 2.01335, -3.72882)
-size = Vector3(2.7439, 0.62207, 2.86743)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -20.1129, 2.17015, -3.72882)
+size = Vector3(2.7439, 0.62207, 2.55383)
+
+[node name="wall30" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -20.1129, 1.72049, -3.12014)
+size = Vector3(2.7439, 0.62207, 2.55383)
 
 [node name="stairs" type="CSGPolygon3D" parent="NavigationRegion3D/CSGCombiner3D"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -21.1839, -0.5, -6.83984)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -21.1839, -0.453251, -6.83984)
 polygon = PackedVector2Array(0, 0, 0, 1, 2.48587, -0.979783)
 depth = 2.0
 
@@ -422,7 +426,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.6878, -1.81803, -2.44883)
 size = Vector3(1.00793, 3.7, 3.885)
 
 [node name="stairs2" type="CSGPolygon3D" parent="NavigationRegion3D/CSGCombiner3D"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -21.1839, -2.46943, -4.37109)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -21.1839, -2.40826, -4.37109)
 polygon = PackedVector2Array(0, 0, 0, 1, 2.68, -1.125)
 depth = 2.0
 
@@ -1124,7 +1128,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.422058, 5.80688, -0.123787)
 shape = SubResource("BoxShape3D_opbav")
 
 [node name="praredelend25" parent="." instance=ExtResource("23_no8kt")]
-transform = Transform3D(-0.33, 0, 2.41056e-08, 0, 0.33, 0, -2.88495e-08, 0, -0.275736, 15.7963, -0.0343926, -2.8445)
+transform = Transform3D(-0.33, 0, 2.41056e-08, 0, 0.33, 0, -2.88495e-08, 0, -0.275736, 15.7963, -0.0343926, -3.12032)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="praredelend25"]
 
@@ -1325,9 +1329,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.422053, 5.80688, -0.0980835
 shape = SubResource("BoxShape3D_opbav")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="praredelend48"]
-transform = Transform3D(-0.999895, 0, 0.0158998, 0, 1, 0, -0.0158994, 0, -0.999874, -0.319199, 9.9509, -13.7628)
+transform = Transform3D(-0.999895, 0, 0.0158998, 0, 1, 0, -0.0158994, 0, -0.999874, -0.319199, 9.77178, -13.7628)
 material_override = SubResource("StandardMaterial3D_04jkj")
-size = Vector3(1, 4.24835, 11.3639)
+size = Vector3(1, 4.6066, 11.3639)
 
 [node name="Ceiling1" type="CSGBox3D" parent="praredelend48"]
 transform = Transform3D(-0.999895, 0, 0.0158998, 0, 1, 0, -0.0158994, 0, -0.999874, 24.1544, 11.9973, -13.0056)
@@ -1336,15 +1340,10 @@ gi_mode = 0
 size = Vector3(79.2026, 0.528594, 43.6068)
 
 [node name="Ceiling2" type="CSGBox3D" parent="praredelend48"]
-transform = Transform3D(-0.999895, 0, 0.0158998, 0, 1, 0, -0.0158994, 0, -0.999874, 28.3895, 12.0697, 74.9881)
+transform = Transform3D(-0.999895, 0, 0.0158998, 0, 1, 0, -0.0158994, 0, -0.999874, 28.3822, 12.0697, 75.4516)
 material_override = SubResource("StandardMaterial3D_04jkj")
 gi_mode = 0
-size = Vector3(89.1677, 0.528594, 137.554)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="praredelend48"]
-transform = Transform3D(-0.999895, 0, 0.0158998, 0, 1, 0, -0.0158994, 0, -0.999874, -0.319199, 9.77153, -13.7628)
-material_override = SubResource("StandardMaterial3D_04jkj")
-size = Vector3(1, 4.60709, 11.3639)
+size = Vector3(89.1677, 0.528594, 138.481)
 
 [node name="praredelend31" parent="." instance=ExtResource("23_no8kt")]
 transform = Transform3D(-1.44248e-08, 0, 0.33, 0, 0.33, 0, -0.33, 0, -1.44248e-08, -23.0112, 0.0349345, -2.46286)
@@ -1461,7 +1460,7 @@ mesh = SubResource("ArrayMesh_r74th")
 skeleton = NodePath("")
 
 [node name="Cube_011" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.2, 3.2147e-07, 0, -3.01992e-08, -2.129, 0, 0, 0, 0.135, -18.9594, 2.14713, -7.53485)
+transform = Transform3D(-0.2, 3.2147e-07, 0, -3.01992e-08, -2.129, 0, 0, 0, 0.135, -21.6797, 2.14713, -7.59721)
 mesh = SubResource("ArrayMesh_r74th")
 skeleton = NodePath("")
 
