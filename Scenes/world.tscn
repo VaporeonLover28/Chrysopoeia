@@ -1484,6 +1484,16 @@ transform = Transform3D(1.9843, 0, 0, 0, 0.2, 0, 0, 0, 0.37149, 11.3779, 3.81274
 mesh = SubResource("ArrayMesh_r74th")
 skeleton = NodePath("")
 
+[node name="Cube_015" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.89471, 0, 0, 0, 1, 15.8275, 2.36844, -1.74575)
+mesh = SubResource("ArrayMesh_r74th")
+skeleton = NodePath("")
+
+[node name="Cube_016" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.89471, 0, 0, 0, 0.546401, 15.8275, 2.36844, -21.0046)
+mesh = SubResource("ArrayMesh_r74th")
+skeleton = NodePath("")
+
 [connection signal="timeout" from="NPC Spwaner Timer" to="." method="_spawn_npc"]
 [connection signal="body_entered" from="NavigationRegion3D/CSGCombiner3D/fight_ring/player_recon" to="NavigationRegion3D/CSGCombiner3D/fight_ring/player_recon" method="_on_body_entered"]
 [connection signal="body_exited" from="NavigationRegion3D/CSGCombiner3D/fight_ring/player_recon" to="NavigationRegion3D/CSGCombiner3D/fight_ring/player_recon" method="_on_body_exited"]
