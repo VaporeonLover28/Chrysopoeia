@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4quyek04012y"]
+[gd_scene load_steps=3 format=3 uid="uid://c4quyek04012y"]
 
-[ext_resource type="FontFile" path="res://Assets/comic-sans-ms-font-family/ComicSansMS3.ttf" id="1_k1fuj"]
+[ext_resource type="Script" uid="uid://cuwuov7c11bbi" path="res://Scenes/match_win_test.gd" id="1_3jr5n"]
+[ext_resource type="FontFile" uid="uid://bubxb3wcmbboy" path="res://Assets/Fonts/comic-sans-ms-font-family/COMIC.TTF" id="1_k1fuj"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="match_win_test" type="CanvasLayer"]
+script = ExtResource("1_3jr5n")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1152.0
@@ -21,3 +23,11 @@ text = "[tornado radius=30.0 freq=-4.0 connected=1][rainbow freq=1.0 sat=0.8 val
 MATCH WON[/rainbow][/tornado]"
 scroll_active = false
 horizontal_alignment = 1
+
+[node name="Money_Won_Label" type="Label" parent="."]
+offset_left = 462.0
+offset_top = 361.0
+offset_right = 521.0
+offset_bottom = 384.0
+scale = Vector2(3.66472, 2.70042)
+text = "+0 Gold"

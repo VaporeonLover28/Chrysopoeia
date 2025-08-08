@@ -84,7 +84,7 @@ text = "HP: 100"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.21922, 0)
 visible = false
 billboard = 1
-text = "(Your bet)"
+text = "(Your choice)"
 
 [connection signal="timeout" from="change_dir" to="." method="_on_change_dir_timeout"]
 [connection signal="timeout" from="attack" to="." method="_on_attack_timeout"]

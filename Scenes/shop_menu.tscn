@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://ltp3jvrek5bh"]
+[gd_scene load_steps=10 format=3 uid="uid://ltp3jvrek5bh"]
 
 [ext_resource type="Script" uid="uid://mh8h7xo4eso6" path="res://Script/shop.gd" id="1_xysl7"]
+[ext_resource type="Texture2D" uid="uid://wetbh3qngmmh" path="res://Assets/Originals/spellot.png" id="2_jhj42"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c2pxs"]
 
@@ -22,6 +23,7 @@ HScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_xdhm7")
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h1qh4"]
 
 [node name="Shop Menu" type="CanvasLayer"]
+metadata/_edit_vertical_guides_ = [1293.0]
 
 [node name="Shop" type="Control" parent="."]
 layout_mode = 3
@@ -34,7 +36,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 3
 script = ExtResource("1_xysl7")
 
-[node name="ColorRect" type="ColorRect" parent="Shop"]
+[node name="Bg" type="ColorRect" parent="Shop"]
 layout_mode = 2
 offset_top = 0.40448
 offset_right = 1152.0
@@ -43,7 +45,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.331203, 0.1742, 0.67, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="Shop"]
+[node name="Margin" type="MarginContainer" parent="Shop"]
 layout_mode = 2
 offset_top = 0.40448
 offset_right = 998.0
@@ -53,23 +55,20 @@ size_flags_vertical = 0
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Shop/MarginContainer"]
+[node name="Top_Bar" type="HBoxContainer" parent="Shop/Margin"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Shop/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Sections of shop" type="TabContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Shop_Tabs" type="TabContainer" parent="Shop/Margin/Top_Bar"]
 layout_mode = 2
 tab_alignment = 1
 current_tab = 0
 clip_tabs = false
 
-[node name="Games" type="TabBar" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop"]
+[node name="Games" type="TabBar" parent="Shop/Margin/Top_Bar/Shop_Tabs"]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Games"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Shop/Margin/Top_Bar/Shop_Tabs/Games"]
 layout_mode = 2
 offset_left = 7.0
 offset_top = 6.59552
@@ -79,17 +78,17 @@ grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_c2pxs")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Games/ScrollContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Shop/Margin/Top_Bar/Shop_Tabs/Games/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
-[node name="Decoration" type="TabBar" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop"]
+[node name="Decoration" type="TabBar" parent="Shop/Margin/Top_Bar/Shop_Tabs"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Decoration"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Shop/Margin/Top_Bar/Shop_Tabs/Decoration"]
 layout_mode = 0
 offset_left = 2.0
 offset_right = 1102.0
@@ -97,17 +96,17 @@ offset_bottom = 549.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Decoration/ScrollContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Shop/Margin/Top_Bar/Shop_Tabs/Decoration/ScrollContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 8
 
-[node name="Spells" type="TabBar" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop"]
+[node name="Spells" type="TabBar" parent="Shop/Margin/Top_Bar/Shop_Tabs"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Spells"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Shop/Margin/Top_Bar/Shop_Tabs/Spells"]
 layout_mode = 0
 offset_left = 2.0
 offset_right = 1102.0
@@ -115,16 +114,51 @@ offset_bottom = 549.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer/Sections of shop/Spells/ScrollContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Shop/Margin/Top_Bar/Shop_Tabs/Spells/ScrollContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 8
 
-[node name="VSeparator" type="VSeparator" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="Shop/Margin/Top_Bar"]
 layout_mode = 2
 theme_override_constants/separation = 650
 theme_override_styles/separator = SubResource("StyleBoxEmpty_h1qh4")
 
-[node name="Label" type="Label" parent="Shop/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Money_Label" type="Label" parent="Shop/Margin/Top_Bar"]
 layout_mode = 2
 text = "Money: "
+
+[node name="Inv_Full_Choice" type="PanelContainer" parent="."]
+offset_left = 341.0
+offset_top = 170.0
+offset_right = 741.0
+offset_bottom = 470.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Inv_Full_Choice"]
+layout_mode = 2
+
+[node name="Choose_Label" type="Label" parent="Inv_Full_Choice/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 27
+text = "Your spell inventory is full!
+Choose a slot to replace:"
+horizontal_alignment = 1
+
+[node name="Margin" type="MarginContainer" parent="Inv_Full_Choice/VBoxContainer"]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 2
+theme_override_constants/margin_left = 56
+theme_override_constants/margin_top = 45
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Inv_Full_Choice/VBoxContainer/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="slot1" type="TextureButton" parent="Inv_Full_Choice/VBoxContainer/Margin/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_jhj42")
+
+[node name="slot2" type="TextureButton" parent="Inv_Full_Choice/VBoxContainer/Margin/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_jhj42")

@@ -295,7 +295,7 @@ text = "50 Gold"
 
 [node name="selec_bet" type="Button" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Selec_Desc/selec_stats"]
 layout_mode = 2
-text = "BET"
+text = "FIGHT!"
 
 [node name="Creatures" type="VBoxContainer" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer"]
 custom_minimum_size = Vector2(576, 0)

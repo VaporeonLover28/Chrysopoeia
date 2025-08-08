@@ -4,7 +4,7 @@ extends Control
 @onready var description_label: Label = $VBoxContainer/Label2
 @onready var item_viewport: SubViewport = $VBoxContainer/SubViewport
 @onready var purchase_button: Button = $VBoxContainer/Button
-@onready var item_resource: PurchasableItemResource = load("res://ring_key.tres")
+@onready var item_resource: PurchasableItemResource 
 @onready var texture_rect: TextureRect = $VBoxContainer/Panel/TextureRect
 
 func _ready() -> void:
