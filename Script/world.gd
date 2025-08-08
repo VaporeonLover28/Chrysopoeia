@@ -96,8 +96,8 @@ func _spawn_npc():
 		
 func _see_number_of_NPC_type(npc_type: String):
 	var npc_type_count: int  = 0
-	for npc in walking_npcs.get_children():
-		if npc.scene_file_path == npc_type:
+	for npcs in walking_npcs.get_children():
+		if npcs.scene_file_path == npc_type:
 			npc_type_count += 1
 	return npc_type_count
 	

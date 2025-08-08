@@ -61,10 +61,10 @@ func _buy_item(object_being_purchase: Control):
 				Globals.spell_inventory_list.push_front(object_being_purchase.item_resource)
 			else:
 				for item in Globals.spell_inventory_list.size():
-					var instancieted_spell_choice = buyable_object.instantiate()
-					instancieted_spell_choice.item_resource = Globals.spell_inventory_list[item - 1]
-					instancieted_spell_choice.get_child(0).get_node("Button").connect("pressed", _choose_spell_to_change.bind(instancieted_spell_choice))
-					spell_option_box_container.add_child(instancieted_spell_choice)
+					var instantiated_spell_choice = buyable_object.instantiate()
+					instantiated_spell_choice.item_resource = Globals.spell_inventory_list[item - 1]
+					instantiated_spell_choice.get_child(0).get_node("Button").connect("pressed", _choose_spell_to_change.bind(instantiated_spell_choice))
+					spell_option_box_container.add_child(instantiated_spell_choice)
 				sections_of_shop.visible = false
 				spell_option_box_container.visible = true
 				await wait_for_spell_change
