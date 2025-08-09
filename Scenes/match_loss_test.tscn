@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4quyek04012y"]
+[gd_scene load_steps=3 format=3 uid="uid://djecxd6ckfbpd"]
 
-[ext_resource type="Script" uid="uid://cuwuov7c11bbi" path="res://Scenes/match_win_test.gd" id="1_3jr5n"]
-[ext_resource type="FontFile" uid="uid://bubxb3wcmbboy" path="res://Assets/Fonts/comic-sans-ms-font-family/COMIC.TTF" id="1_k1fuj"]
+[ext_resource type="Script" uid="uid://d3re412q83qpq" path="res://Scenes/match_loss_test.gd" id="1_l50yv"]
+[ext_resource type="FontFile" uid="uid://bubxb3wcmbboy" path="res://Assets/Fonts/comic-sans-ms-font-family/COMIC.TTF" id="1_wwp87"]
 
-[node name="match_win_test" type="CanvasLayer"]
-script = ExtResource("1_3jr5n")
+[node name="match_loss_test" type="CanvasLayer"]
+script = ExtResource("1_l50yv")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -18,29 +18,29 @@ scale = Vector2(0.015, 0.015)
 [node name="ColorRect" type="ColorRect" parent="Control"]
 offset_right = 1152.0
 offset_bottom = 648.0
-color = Color(0.235294, 0, 0.843137, 0.286275)
+color = Color(0.578586, 0, 0.163654, 0.286275)
 
-[node name="Match_Won_Label" type="RichTextLabel" parent="Control"]
+[node name="Match_Loss_Label" type="RichTextLabel" parent="Control"]
 offset_left = 309.0
 offset_top = 40.0
 offset_right = 809.0
 offset_bottom = 240.0
-theme_override_fonts/normal_font = ExtResource("1_k1fuj")
+theme_override_fonts/normal_font = ExtResource("1_wwp87")
 theme_override_font_sizes/normal_font_size = 61
 bbcode_enabled = true
-text = "[tornado radius=30.0 freq=-4.0 connected=1][rainbow freq=1.0 sat=0.8 val=0.8 speed=1.0]MATCH WON[/rainbow][/tornado]"
+text = "match lost"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Money_Won_Label" type="Label" parent="Control"]
+[node name="Money_Loss_Label" type="Label" parent="Control"]
 offset_left = 471.0
 offset_top = 307.0
 offset_right = 634.0
 offset_bottom = 370.0
-theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
-text = "+0 Gold"
+text = "-0 Gold"
 horizontal_alignment = 1
 
 [node name="Continue" type="Button" parent="Control"]

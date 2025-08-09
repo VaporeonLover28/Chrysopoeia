@@ -119,7 +119,9 @@ func _process(delta: float) -> void:
 			sprite.flip_h = true
 	elif sprite.flip_h:
 			sprite.flip_h = false
-	move_and_slide()
+	
+	if get_parent().match_started:
+		move_and_slide()
 
 func attack_enemy():
 	if enemy_in_atk_area:
@@ -175,21 +177,23 @@ func _on_hitbox_body_exited(body: Node3D) -> void:
 		enemy_in_atk_area = false
 
 func _on_attack_timeout() -> void:
-	attack_enemy()
-	match atk_type:
-		"Cautious":
-			random_atk_cd(1.25)
-		"Hard-Headed":
-			random_atk_cd(1.5)
-		"Purist":
-			random_atk_cd(1)
-		"Gambler":
-			random_atk_cd(randf_range(0.75, 1.5))
-		"Tickler":
-			random_atk_cd(0.05)
+	if get_parent().match_started:
+		attack_enemy()
+		match atk_type:
+			"Cautious":
+				random_atk_cd(1.25)
+			"Hard-Headed":
+				random_atk_cd(1.5)
+			"Purist":
+				random_atk_cd(1)
+			"Gambler":
+				random_atk_cd(randf_range(0.75, 1.5))
+			"Tickler":
+				random_atk_cd(0.05)
 
 func random_atk_cd(baseatkcd):
-	attack.start(randf_range(baseatkcd / 1.25, baseatkcd * 1.25))
+	if get_parent().match_started:
+		attack.start(randf_range(baseatkcd / 1.25, baseatkcd * 1.25))
 
 func mars():
 	print("mars")
