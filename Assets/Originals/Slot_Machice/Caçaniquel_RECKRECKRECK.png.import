@@ -3,19 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bdsx00dx2ajx0"
-path.s3tc="res://.godot/imported/CaçaNiquel_RECKRECKRECK.png-adc73b3da2904ff8302a763623064a0c.s3tc.ctex"
+path.s3tc="res://.godot/imported/Caçaniquel_RECKRECKRECK.png-a83bfcc6c0635fd7122b48587269af65.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "87c12567bc73128591f65089e117139a"
+"md5": "2b654fd6891ce752376363b670064341"
 }
 
 [deps]
 
-source_file="res://Assets/Originals/Slot_Machice/CaçaNiquel_RECKRECKRECK.png"
-dest_files=["res://.godot/imported/CaçaNiquel_RECKRECKRECK.png-adc73b3da2904ff8302a763623064a0c.s3tc.ctex"]
+source_file="res://Assets/Originals/Slot_Machice/Caçaniquel_RECKRECKRECK.png"
+dest_files=["res://.godot/imported/Caçaniquel_RECKRECKRECK.png-a83bfcc6c0635fd7122b48587269af65.s3tc.ctex"]
 
 [params]
 
