@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://ltp3jvrek5bh"]
+[gd_scene load_steps=11 format=3 uid="uid://ltp3jvrek5bh"]
 
 [ext_resource type="Script" uid="uid://mh8h7xo4eso6" path="res://Script/shop.gd" id="1_xysl7"]
 [ext_resource type="Texture2D" uid="uid://wetbh3qngmmh" path="res://Assets/Originals/spellot.png" id="2_jhj42"]
+[ext_resource type="Texture2D" uid="uid://pov62jfwgcqy" path="res://icon.svg" id="3_lvwfa"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c2pxs"]
 
@@ -159,6 +160,29 @@ theme_override_constants/separation = 30
 layout_mode = 2
 texture_normal = ExtResource("2_jhj42")
 
+[node name="TextureRect" type="TextureRect" parent="Inv_Full_Choice/VBoxContainer/Margin/HBoxContainer/slot1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.312
+anchor_bottom = 0.229
+offset_left = 33.0
+offset_top = 30.0
+offset_right = 121.064
+offset_bottom = 117.925
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("3_lvwfa")
+
 [node name="slot2" type="TextureButton" parent="Inv_Full_Choice/VBoxContainer/Margin/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_jhj42")
+
+[node name="TextureRect" type="TextureRect" parent="Inv_Full_Choice/VBoxContainer/Margin/HBoxContainer/slot2"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 32.0
+offset_right = 162.0
+offset_bottom = 160.0
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("3_lvwfa")

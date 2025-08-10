@@ -51,6 +51,10 @@ transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
 shape = SubResource("SphereShape3D_y4der")
 disabled = true
 
+[node name="Get Away Timer" type="Timer" parent="."]
+wait_time = 35.0
+autostart = true
+
 [connection signal="timeout" from="Leave Interaction" to="." method="_leave_interaction"]
 [connection signal="timeout" from="Targeted Interactable Object Timer" to="." method="chose_interactable_object"]
 [connection signal="navigation_finished" from="nav" to="." method="_on_nav_navigation_finished"]

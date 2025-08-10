@@ -7,6 +7,8 @@ extends CharacterBody3D; class_name NPC;
 @onready var interacatable_object_detection_area: Area3D = $"Interacatable object Detection Area"
 @onready var all_interactable_spots: Node = $"../../NavigationRegion3D/All Interactable Spots"
 @onready var world_scene: Node3D = $"../../"
+@onready var get_away_timer: Timer = $"Get Away Timer"
+
 
 @export var minimum_time_for_idle: float
 @export var maximum_time_for_idle: float
@@ -55,22 +57,23 @@ func _go_to_interactable_object():
 		is_on_interaction = true
 		targeted_position_is_object._interact([self])
 		leave_interaction.start()
+		get_away_timer.stop()
 		return
 	if targeted_position_is_object.get_node_or_null("Sit positions") != null:
 		if targeted_position_is_object.get_node("Sit positions")._SICSOC(targeted_sitting_position) == true:
 			return
 		else:
 			if targeted_position_is_object.get_node("Sit positions")._ASAT() == false:
-				var random_choice_of_chair = randi_range(0, targeted_position_is_object.get_node("Sit positions").get_child_count())
+				var random_choice_of_chair = randi_range(0, targeted_position_is_object.get_node("Sit positions").get_child_count() - 1)
 				_walk_to(targeted_position_is_object.get_node("Sit positions").get_child(random_choice_of_chair).global_position)
 				targeted_sitting_position = random_choice_of_chair
 			else:
-					idle.start(randf_range(minimum_time_for_idle, maximum_time_for_idle))
-					_walk_to_random(-5, 5, -5, 5)
-					is_going_to_interaction = false
-					targeted_position_is_object = null
+				targeted_interactable_object_timer.start(randf_range(minimum_time_for_TIOT, maximum_time_for_TIOT))
+				_walk_to_random(-5, 5, -5, 5)
+				is_going_to_interaction = false
+				targeted_position_is_object = null
 
-func chose_interactable_object(): 
+func chose_interactable_object():
 	if Globals.game_paused == false:
 		idle.stop()
 		interacatable_object_detection_area.get_child(0).disabled = false
@@ -95,25 +98,23 @@ func _filter_interactable_object_in_area(bodies):
 	
 func _filter_favorite_game(bodies):
 	for item in favorite_games:
-		if bodies.get_parent().name == item:
+		if bodies.get_parent().object_name == item:
 			return true
-		else:
-			return false
+	return false
 	
 func see_if_favorite_game_is_in_area(array_of_bodies: Array):
 	for bodies in array_of_bodies:
-		if favorite_games.has(bodies.get_parent().name):
+		if favorite_games.has(bodies.get_parent().object_name):
 			return true
 			break
 		else:
-			return false
+			pass
+	return false
 
 func _get_called_to_play_game(game_reference: Node3D):
 	if Globals.game_paused == false:
 		idle.stop()
 		targeted_position_is_object = game_reference
-		print(targeted_position_is_object)
-		print(game_reference)
 		var random_choice_of_chair = randi_range(0, targeted_position_is_object.get_node("Sit positions").get_child_count() - 1)
 		_walk_to(targeted_position_is_object.get_node("Sit positions").get_child(random_choice_of_chair).global_position)
 		targeted_sitting_position = random_choice_of_chair
@@ -139,4 +140,10 @@ func _leave_interaction():
 	is_on_interaction = false
 	idle.start(randf_range(minimum_time_for_idle, maximum_time_for_idle))
 	targeted_interactable_object_timer.start(randf_range(minimum_time_for_TIOT, maximum_time_for_TIOT))
+	get_away_timer.start()
 	_walk_to_random(-5, 5, -5, 5)
+
+
+func _on_get_away_timer_timeout() -> void:
+	_walk_to_random(-10, 10, -10, 10)
+	targeted_interactable_object_timer.start(randf_range(minimum_time_for_TIOT, maximum_time_for_TIOT))

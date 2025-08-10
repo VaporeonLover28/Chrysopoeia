@@ -10,6 +10,7 @@
 [node name="Gamble spot" type="Node3D"]
 script = ExtResource("1_iytcb")
 object_class = "GambleSpot"
+object_name = "Gamble spot"
 metadata/_custom_type_script = "uid://d3kiv4p05usnv"
 
 [node name="Model" type="StaticBody3D" parent="." groups=["Ground_object"]]

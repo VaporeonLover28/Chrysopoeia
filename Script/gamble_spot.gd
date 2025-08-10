@@ -12,7 +12,6 @@ var blackjack_npc = preload("res://Scenes/blackjack_npc.tscn")
 
 var tween : Tween
 
-# Called when the node enters the scene tree for the first time.
 func _interact_GambleSpot(object_ref):
 	sit_positions._sit_character(object_ref)
 	if object_ref.name == "Player":

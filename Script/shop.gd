@@ -6,6 +6,8 @@ extends Control
 @onready var decoration_h_box_container: HBoxContainer = $Margin/Top_Bar/Shop_Tabs/Decoration/ScrollContainer/HBoxContainer
 @onready var spell_h_box_container: HBoxContainer = $Margin/Top_Bar/Shop_Tabs/Spells/ScrollContainer/HBoxContainer
 @onready var spell_option_box_container: PanelContainer = $"../Inv_Full_Choice"
+@onready var spell_slot1: TextureRect = $"../Inv_Full_Choice/VBoxContainer/Margin/HBoxContainer/slot1/TextureRect"
+@onready var spell_slot2: TextureRect = $"../Inv_Full_Choice/VBoxContainer/Margin/HBoxContainer/slot2/TextureRect"
 @onready var world_scene = $"../../"
 @onready var money_label: Label = $Margin/Top_Bar/Money_Label
 
@@ -58,11 +60,10 @@ func _buy_item(object_being_purchase: Control):
 			if Globals.spell_inventory_list.size() < 2:
 				Globals.spell_inventory_list.push_front(object_being_purchase.item_resource)
 			else:
-				for item in Globals.spell_inventory_list.size():
-					var instantiated_spell_choice = buyable_object.instantiate()
-					instantiated_spell_choice.item_resource = Globals.spell_inventory_list[item - 1]
-					instantiated_spell_choice.get_child(0).get_node("Button").connect("pressed", _choose_spell_to_change.bind(instantiated_spell_choice))
-					spell_option_box_container.add_child(instantiated_spell_choice)
+				spell_slot1.texture = Globals.spell_inventory_list[0].item_sprite
+				spell_slot1.get_parent().connect("pressed", _choose_spell_to_change.bind(Globals.spell_inventory_list[0]))
+				spell_slot1.texture = Globals.spell_inventory_list[0].item_sprite
+				spell_slot2.get_parent().connect("pressed", _choose_spell_to_change.bind(Globals.spell_inventory_list[1]))
 				shop_tabs.visible = false
 				spell_option_box_container.visible = true
 				await wait_for_spell_change
@@ -81,12 +82,8 @@ func _buy_item(object_being_purchase: Control):
 		if spell_h_box_container.get_child_count() > 0:
 			for item in spell_h_box_container.get_child_count():
 				spell_h_box_container.get_child(item- 1).queue_free()
-				
-		if spell_option_box_container.get_child_count() > 0:
-			for item in spell_option_box_container.get_child_count():
-				spell_option_box_container.get_child(item- 1).queue_free()
 
-func _choose_spell_to_change(spell_choosen: Control):
-	var spell_to_remove = Globals.spell_inventory_list.find(spell_choosen.item_resource)
+func _choose_spell_to_change(spell_choosen: PurchasableItemResource):
+	var spell_to_remove = Globals.spell_inventory_list.find(spell_choosen)
 	Globals.spell_inventory_list.remove_at(spell_to_remove)
 	wait_for_spell_change.emit()

@@ -14,6 +14,7 @@ albedo_color = Color(1, 0, 0, 1)
 [node name="BlackJack" type="Node3D"]
 script = ExtResource("1_33dal")
 object_class = "GambleSpot"
+object_name = "BlackJack"
 metadata/_custom_type_script = "uid://d33jhadxc2lv5"
 
 [node name="Model" type="StaticBody3D" parent="." groups=["Ground_object"]]

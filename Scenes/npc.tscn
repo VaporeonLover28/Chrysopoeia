@@ -10,11 +10,11 @@
 
 [node name="NPC" type="CharacterBody3D"]
 script = ExtResource("1_ideak")
-minimum_time_for_idle = 1000.0
-maximum_time_for_idle = 1000.0
-minimum_time_for_TIOT = 5.0
-maximum_time_for_TIOT = 5.0
-favorite_games = Array[String](["BlackJack"])
+minimum_time_for_idle = 2.0
+maximum_time_for_idle = 8.0
+minimum_time_for_TIOT = 10.0
+maximum_time_for_TIOT = 18.0
+favorite_games = Array[String](["BlackJack", "Gamble spot"])
 chance_to_choose_favorite_game = 100
 
 [node name="Leave Interaction" type="Timer" parent="."]
@@ -28,6 +28,7 @@ one_shot = true
 [node name="nav" type="NavigationAgent3D" parent="."]
 path_postprocessing = 1
 simplify_path = true
+debug_enabled = true
 
 [node name="idle" type="Timer" parent="."]
 wait_time = 10.0
@@ -40,13 +41,18 @@ mesh = SubResource("CapsuleMesh_ideak")
 shape = SubResource("CapsuleShape3D_acqhf")
 
 [node name="Interacatable object Detection Area" type="Area3D" parent="."]
-transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, 0, 0)
+transform = Transform3D(100000, 0, 0, 0, 100000, 0, 0, 0, 100000, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interacatable object Detection Area"]
 shape = SubResource("SphereShape3D_acqhf")
 disabled = true
 
+[node name="Get Away Timer" type="Timer" parent="."]
+wait_time = 35.0
+autostart = true
+
 [connection signal="timeout" from="Leave Interaction" to="." method="_leave_interaction"]
 [connection signal="timeout" from="Targeted Interactable Object Timer" to="." method="chose_interactable_object"]
 [connection signal="navigation_finished" from="nav" to="." method="_on_nav_navigation_finished"]
 [connection signal="timeout" from="idle" to="." method="_on_idle_timeout"]
+[connection signal="timeout" from="Get Away Timer" to="." method="_on_get_away_timer_timeout"]

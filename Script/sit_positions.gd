@@ -10,7 +10,7 @@ var chosen_sitting_transition: Marker3D
 
 var player_is_sitting = false
 var save_player_ref : CharacterBody3D
-var chosen_sitting_position: int
+
 
 var tween : Tween
 
@@ -27,11 +27,14 @@ func _sit_character(object_ref):
 		#makes player sit
 		#checks for marker with the smallest postion distance to the player so he can sit, removing the spot from the pool
 		chosen_sitting_transition = null
-		chosen_sitting_position = 10
+		var chosen_sitting_position: int = 50
 		var smallest_distance : float = 10
+		print("sit")
 		for item in self.get_child_count():
+			print(self.name + " " + str(object_ref.global_position.distance_to(self.get_child(item).global_position)))
+			print(chair_postion_list[item][1] == true)
 			if smallest_distance > object_ref.global_position.distance_to(self.get_child(item).global_position)\
-			and chair_postion_list[item][1] != false :
+			and chair_postion_list[item][1] != false:
 				chosen_sitting_position = item 
 				smallest_distance = object_ref.global_position.distance_to(self.get_child(item).global_position)
 		chair_postion_list[chosen_sitting_position][1] = false
@@ -43,9 +46,17 @@ func _sit_character(object_ref):
 			Globals.player_interacting = true
 
 func _stand_character_up(object_ref):
+	var chosen_sitting_position = 10
+	var smallest_distance : float = 10
+	print("stand")
 	for item in self.get_child_count():
-		if  self.get_child(item).global_position.distance_to(object_ref.global_position) <= 0.2:
-			chair_postion_list[item][1] = true
+		print(self.name + " " + str(object_ref.global_position.distance_to(self.get_child(item).global_position)))
+		print(chair_postion_list[item][1] == true)
+		if smallest_distance > object_ref.global_position.distance_to(self.get_child(item).global_position)\
+		and chair_postion_list[item][1] == false:
+				chosen_sitting_position = item 
+				smallest_distance = object_ref.global_position.distance_to(self.get_child(item).global_position)
+	chair_postion_list[chosen_sitting_position][1] = true
 	if object_ref == save_player_ref:
 		Globals.player_interacting = false
 		player_is_sitting = false
@@ -72,7 +83,6 @@ func _ASAT():
 	for item in chair_postion_list.size():
 		if chair_postion_list[item - 1][1] == false:
 			pass
-			print("ui")
 		else:
 			all_got_taken = false
 			break
