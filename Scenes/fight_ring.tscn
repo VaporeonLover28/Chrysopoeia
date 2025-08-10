@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c72h3kbb7fnrw"]
+[gd_scene load_steps=21 format=3 uid="uid://c72h3kbb7fnrw"]
 
 [ext_resource type="Script" uid="uid://cahgpglfdtcaw" path="res://Script/fight_ring.gd" id="1_3s5ww"]
 [ext_resource type="Texture2D" uid="uid://bm5mkjkryluex" path="res://Assets/grid_black_512x512.png" id="1_ro6q6"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://pov62jfwgcqy" path="res://icon.svg" id="10_lvqhy"]
 [ext_resource type="PackedScene" uid="uid://c4quyek04012y" path="res://Scenes/match_win_test.tscn" id="11_3pjhm"]
 [ext_resource type="PackedScene" uid="uid://djecxd6ckfbpd" path="res://Scenes/match_loss_test.tscn" id="12_56irj"]
+[ext_resource type="PackedScene" uid="uid://beywp328cnlsb" path="res://Scenes/match_tie_test.tscn" id="13_fg0n3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6ku2c"]
 sky_top_color = Color(0.0606355, 0.0252388, 0.221666, 1)
@@ -415,6 +416,9 @@ text = "CHOOSE"
 script = ExtResource("8_7cmb4")
 
 [node name="match_win_test" parent="." instance=ExtResource("11_3pjhm")]
+visible = false
+
+[node name="match_tie_test" parent="." instance=ExtResource("13_fg0n3")]
 visible = false
 
 [node name="match_loss_test" parent="." instance=ExtResource("12_56irj")]

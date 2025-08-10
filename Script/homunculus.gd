@@ -40,17 +40,26 @@ var dirs_dictionary := {
 }
 
 func match_stats():
+	##Makes each direction AI have a better chance of going some direction
 	match dir_type:
 		"Simple":
+			##In simple AI, every direction is statistically equally likely
+			##Roll a number, if it's lesser than 12.5, turn north
+			##12.5 is 1/8th, or 1/directions remaining
 			turn_to_chance["north"] = 12.5
+			##If not, roll a number, if lesser than 14.3, turn northeast
+			##14.3 is 1/7th
 			turn_to_chance["northeast"] = 14.3
+			##1/6th
 			turn_to_chance["east"] = 16.7
 			turn_to_chance["southeast"] = 20
 			turn_to_chance["south"] = 25
 			turn_to_chance["southwest"] = 33
 			turn_to_chance["west"] = 50
+			##By this point, all other options were not chosen
 			turn_to_chance["northwest"] = 100
 		"Drunk":
+			##Slight change in each chance
 			turn_to_chance["north"] = 12.5 + randf_range(-5, 5)
 			turn_to_chance["northeast"] = 14.3 + randf_range(-5, 5)
 			turn_to_chance["east"] = 16.7 + randf_range(-5, 5)
@@ -60,6 +69,7 @@ func match_stats():
 			turn_to_chance["west"] = 50 + randf_range(-5, 5)
 			turn_to_chance["northwest"] = 100
 		"Crableg":
+			##More biased to go east or west (Statistical 50% for any of them, 50% for others)
 			turn_to_chance["east"] = 25
 			turn_to_chance["west"] = 33.3
 			turn_to_chance["north"] = 16.7
@@ -69,6 +79,7 @@ func match_stats():
 			turn_to_chance["northeast"] = 50
 			turn_to_chance["northwest"] = 100
 		"Jabber":
+			##More biased to go north or south
 			turn_to_chance["north"] = 25
 			turn_to_chance["south"] = 33.3
 			turn_to_chance["east"] = 16.7
@@ -78,6 +89,7 @@ func match_stats():
 			turn_to_chance["northeast"] = 50
 			turn_to_chance["northwest"] = 100
 		"Focused":
+			##Only north or south
 			turn_to_chance["northeast"] = -1
 			turn_to_chance["east"] = -1
 			turn_to_chance["southeast"] =-1
@@ -87,6 +99,7 @@ func match_stats():
 			turn_to_chance["north"] = 50
 			turn_to_chance["south"] = 100
 	match atk_type:
+		##Matches stats for attack AI
 		"Cautious":
 			health = 125.0
 			damage = 7.5
@@ -103,39 +116,48 @@ func match_stats():
 			health = 100
 			damage = 0.5
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	bounty_label.text = "$" + str(bounty)
+	bounty_label.text = str(bounty) + " Gold"
 	hp_label.text = "HP: " + str(health)
 	look_at(enemy.global_position)
 	rotation_degrees.x = 0
 	rotation_degrees.z = 0
-	if !chained:
+	
+	##Homunculus moves if it isn't chained
+	if !chained and !get_parent().match_ended:
 		position += current_direction * transform.basis * delta
-	else:
+	elif chained:
 		sprite.play("hurt")
+	else:
+		if dead:
+			global_position.y = 0.6
+			sprite.play("hurt")
+			sprite.billboard = BaseMaterial3D.BILLBOARD_DISABLED
+			rotation_degrees.x = 90
+	
 	if rotation_degrees.y >= 180 or rotation_degrees.y <= 0:
 		if !sprite.flip_h:
 			sprite.flip_h = true
 	elif sprite.flip_h:
 			sprite.flip_h = false
 	
-	if get_parent().match_started:
-		move_and_slide()
+	move_and_slide()
 
 func attack_enemy():
 	if enemy_in_atk_area:
 		enemy.take_dmg(damage)
 
 func take_dmg(dmg):
+	##Starts the inactivity timer to stop the chain
 	get_parent().inactivity.start()
+	
 	health -= dmg
+	
 	if health > 0:
 		sprite.play("hurt")
 		await get_tree().create_timer(0.5).timeout
 		sprite.play("default")
 	else:
-		sprite.play("hurt")
 		dead = true
 
 func change_direction():
@@ -158,13 +180,17 @@ func change_direction():
 
 func pick_dir():
 	var dir_picker := randf_range(0, 100)
+	##If the random number is lesser than the chance required to turn to this direction
 	if dir_picker <= turn_to_chance[dirs_array[current_dir_num]]:
+		##Change direction to the vector3 for that direction
 		current_direction = dirs_dictionary[dirs_array[current_dir_num]]
 	else:
+		##Try again for next direction
 		current_dir_num += 1
 		pick_dir()
 
 func _on_change_dir_timeout() -> void:
+	##Reset the current dir number
 	current_dir_num = 0
 	change_direction()
 
@@ -176,8 +202,9 @@ func _on_hitbox_body_exited(body: Node3D) -> void:
 	if body.name == enemy.name:
 		enemy_in_atk_area = false
 
+##Attacks with a slighty random cooldown based on atk AI
 func _on_attack_timeout() -> void:
-	if get_parent().match_started:
+	if !get_parent().match_ended:
 		attack_enemy()
 		match atk_type:
 			"Cautious":
@@ -191,6 +218,7 @@ func _on_attack_timeout() -> void:
 			"Tickler":
 				random_atk_cd(0.05)
 
+##Randomize the cd
 func random_atk_cd(baseatkcd):
 	if get_parent().match_started:
 		attack.start(randf_range(baseatkcd / 1.25, baseatkcd * 1.25))
@@ -202,4 +230,4 @@ func mars():
 func failed_mars():
 	print("failed mars")
 	health += 20
-	damage /= 1.5
+	damage /= 2

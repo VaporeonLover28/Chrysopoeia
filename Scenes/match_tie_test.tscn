@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4quyek04012y"]
+[gd_scene load_steps=3 format=3 uid="uid://beywp328cnlsb"]
 
-[ext_resource type="Script" uid="uid://cuwuov7c11bbi" path="res://Scenes/match_win_test.gd" id="1_3jr5n"]
-[ext_resource type="FontFile" uid="uid://bubxb3wcmbboy" path="res://Assets/Fonts/comic-sans-ms-font-family/COMIC.TTF" id="1_k1fuj"]
+[ext_resource type="FontFile" uid="uid://bubxb3wcmbboy" path="res://Assets/Fonts/comic-sans-ms-font-family/COMIC.TTF" id="1_8y3bf"]
+[ext_resource type="Script" uid="uid://bsdwv4wmtifxo" path="res://Scenes/match_tie_test.gd" id="1_c4djq"]
 
-[node name="match_win_test" type="CanvasLayer"]
-script = ExtResource("1_3jr5n")
+[node name="match_tie_test" type="CanvasLayer"]
+script = ExtResource("1_c4djq")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -19,24 +19,37 @@ scale = Vector2(0.015, 0.015)
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-color = Color(0.235294, 0, 0.843137, 0.286275)
+color = Color(0.0632464, 0.221454, 0.744317, 0.286275)
 
-[node name="Match_Won_Label" type="RichTextLabel" parent="Control"]
+[node name="Tie_Label" type="RichTextLabel" parent="Control"]
 layout_mode = 0
 offset_left = 309.0
 offset_top = 40.0
 offset_right = 809.0
 offset_bottom = 240.0
-theme_override_fonts/normal_font = ExtResource("1_k1fuj")
+theme_override_fonts/normal_font = ExtResource("1_8y3bf")
 theme_override_font_sizes/normal_font_size = 61
 bbcode_enabled = true
-text = "[tornado radius=30.0 freq=-4.0 connected=1][rainbow freq=1.0 sat=0.8 val=0.8 speed=1.0]MATCH WON[/rainbow][/tornado]"
+text = "match tie"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tie_Label2" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 306.3
+offset_top = 102.0
+offset_right = 806.3
+offset_bottom = 302.0
+theme_override_fonts/normal_font = ExtResource("1_8y3bf")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "Each player gets half the pot"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Money_Won_Label" type="Label" parent="Control"]
-layout_mode = 0
 offset_left = 471.0
 offset_top = 307.0
 offset_right = 634.0
@@ -47,7 +60,6 @@ text = "+0 Gold"
 horizontal_alignment = 1
 
 [node name="Continue" type="Button" parent="Control"]
-visible = false
 layout_mode = 0
 offset_left = 490.0
 offset_top = 491.0
