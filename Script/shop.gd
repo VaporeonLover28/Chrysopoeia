@@ -55,7 +55,17 @@ func _buy_item(object_being_purchase: Control):
 	if object_being_purchase.item_resource.price <= Globals.money:
 		Globals.money -= object_being_purchase.item_resource.price
 		if object_being_purchase.item_resource.item_type == "Objects":
-			world_scene.get_node("Player")._start_bulding_phase(object_being_purchase.item_resource.item_scene)
+			if object_being_purchase.item_resource.name == "Chipped Key" and PurchasableItemList.item_list_level <= 2:
+				Globals.ring_unlock = true
+			else:
+				world_scene.get_node("Player")._start_bulding_phase(object_being_purchase.item_resource.item_scene)
+			match [object_being_purchase.item_resource.name, PurchasableItemList.item_list_level]:
+				["Slot Machine", 0]:
+					PurchasableItemList.item_list_level += 1
+				["Black jack", 1]:
+					PurchasableItemList.item_list_level += 1
+				["Chipped Key", 2]:
+					PurchasableItemList.item_list_level += 1
 		else:
 			if Globals.spell_inventory_list.size() < 2:
 				Globals.spell_inventory_list.push_front(object_being_purchase.item_resource)
@@ -68,20 +78,29 @@ func _buy_item(object_being_purchase: Control):
 				spell_option_box_container.visible = true
 				await wait_for_spell_change
 				Globals.spell_inventory_list.push_front(object_being_purchase.item_resource)
-		get_parent().visible = false
-		Globals.game_paused = false
+				
+		match [object_being_purchase.item_resource.name, PurchasableItemList.item_list_level]:
+			["Slot Machine", 0]:
+				PurchasableItemList.item_list_level += 1
+			["Black jack", 1]:
+				PurchasableItemList.item_list_level += 1
+			["Chipped Key", 2]:
+				PurchasableItemList.item_list_level += 1
+	
+	get_parent().visible = false
+	Globals.game_paused = false
 		
-		if games_h_box_container.get_child_count() > 0:
-			for item in games_h_box_container.get_child_count():
-				games_h_box_container.get_child(item- 1).queue_free()
+	if games_h_box_container.get_child_count() > 0:
+		for item in games_h_box_container.get_child_count():
+			games_h_box_container.get_child(item- 1).queue_free()
 		
-		if decoration_h_box_container.get_child_count() > 0:
-			for item in decoration_h_box_container.get_child_count():
-				decoration_h_box_container.get_child(item- 1).queue_free()
+	if decoration_h_box_container.get_child_count() > 0:
+		for item in decoration_h_box_container.get_child_count():
+			decoration_h_box_container.get_child(item- 1).queue_free()
 
-		if spell_h_box_container.get_child_count() > 0:
-			for item in spell_h_box_container.get_child_count():
-				spell_h_box_container.get_child(item- 1).queue_free()
+	if spell_h_box_container.get_child_count() > 0:
+		for item in spell_h_box_container.get_child_count():
+			spell_h_box_container.get_child(item- 1).queue_free()
 
 func _choose_spell_to_change(spell_choosen: PurchasableItemResource):
 	var spell_to_remove = Globals.spell_inventory_list.find(spell_choosen)

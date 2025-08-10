@@ -14,6 +14,8 @@ var money: int = 1000:
 var money_lost: int = -1
 var spell_inventory_list: Array[PurchasableItemResource]
 
+var ring_unlock: bool = false
+
 @onready var aqua_vitae_timer: Timer
 @onready var aqua_fortis_active: bool = false
 @onready var aqua_regia_timer: Timer

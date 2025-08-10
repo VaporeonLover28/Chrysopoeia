@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=3 format=3 uid="uid://cav5dt5t5pjdm"]
+
+[ext_resource type="PackedScene" uid="uid://dp7rwp8yfewpg" path="res://Scenes/black_jack.tscn" id="1_qk04i"]
+[ext_resource type="Script" uid="uid://dtrrlkl8w8gkb" path="res://Script/purchasable_itens_resource.gd" id="1_xtfld"]
+
+[resource]
+script = ExtResource("1_xtfld")
+item_type = "Objects"
+name = "Black jack"
+price = 0
+description = ""
+item_scene = ExtResource("1_qk04i")
+metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"
