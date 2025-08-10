@@ -6,12 +6,23 @@
 [node name="match_win_test" type="CanvasLayer"]
 script = ExtResource("1_3jr5n")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 575.7
+offset_top = 324.0
+offset_right = 615.7
+offset_bottom = 364.0
+scale = Vector2(0.015, 0.015)
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.235294, 0, 0.843137, 0.286275)
 
-[node name="Match_Won_Label" type="RichTextLabel" parent="."]
+[node name="Match_Won_Label" type="RichTextLabel" parent="Control"]
+layout_mode = 0
 offset_left = 309.0
 offset_top = 40.0
 offset_right = 809.0
@@ -19,15 +30,30 @@ offset_bottom = 240.0
 theme_override_fonts/normal_font = ExtResource("1_k1fuj")
 theme_override_font_sizes/normal_font_size = 61
 bbcode_enabled = true
-text = "[tornado radius=30.0 freq=-4.0 connected=1][rainbow freq=1.0 sat=0.8 val=0.8 speed=1.0]
-MATCH WON[/rainbow][/tornado]"
+text = "[tornado radius=30.0 freq=-4.0 connected=1][rainbow freq=1.0 sat=0.8 val=0.8 speed=1.0]MATCH WON[/rainbow][/tornado]"
 scroll_active = false
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Money_Won_Label" type="Label" parent="."]
-offset_left = 462.0
-offset_top = 361.0
-offset_right = 521.0
-offset_bottom = 384.0
-scale = Vector2(3.66472, 2.70042)
+[node name="Money_Won_Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 471.0
+offset_top = 307.0
+offset_right = 634.0
+offset_bottom = 370.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 45
 text = "+0 Gold"
+horizontal_alignment = 1
+
+[node name="Continue" type="Button" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 490.0
+offset_top = 491.0
+offset_right = 630.0
+offset_bottom = 541.0
+theme_override_font_sizes/font_size = 30
+text = "Continue"
+
+[connection signal="pressed" from="Control/Continue" to="." method="_on_continue_pressed"]

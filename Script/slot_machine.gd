@@ -136,7 +136,7 @@ func spin(wheel, times_spun, reward, loot_table):
 	##cool math
 	tween.tween_property(wheel, "rotation_degrees", Vector3(0, 90, times_spun * 360 + (360 - found_reward * 60)), times_spun)
 	##await the wheel stopping
-	await get_tree().create_timer(times_spun).timeout
+	await get_tree().create_timer(times_spun + 0.05).timeout
 	##define that the wheel has stopped
 	wheel_stopped(wheel, found_reward, loot_table)
 

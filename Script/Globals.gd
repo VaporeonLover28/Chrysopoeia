@@ -1,5 +1,6 @@
 extends Node
 
+var player_pos_save : Vector3
 var game_paused: bool = false
 var player_interacting: bool = false
 var player_is_in_camera_animation: bool = false
@@ -59,3 +60,7 @@ func _calculate_bet_loses(money_value: int):
 		money_lost = money_value
 	if money_value >= 0:
 		money_lost = 0
+
+func return_to_world():
+	get_tree().change_scene_to_file("res://Scenes/world.tscn")
+	$Player.global_position = player_pos_save

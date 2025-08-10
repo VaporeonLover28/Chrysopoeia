@@ -26,6 +26,7 @@ func _cancel_interact_GambleSpot(object_ref):
 	sit_positions._stand_character_up(object_ref)
 	
 func loading_screen(game):
+	Globals.player_pos_save = player_ref.global_position
 	var which_suit = randi_range(0, 3)
 	var inst = LOADING_SUIT.instantiate()
 	match which_suit:

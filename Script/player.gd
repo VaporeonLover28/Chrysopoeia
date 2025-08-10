@@ -139,6 +139,7 @@ func _filter_NPC_in_area(bodies):
 	return bodies is NPC
 
 func loading_screen(game):
+	Globals.player_pos_save = global_position
 	can_move = false
 	var which_suit = randi_range(0, 3)
 	var inst = loading_suit.instantiate()

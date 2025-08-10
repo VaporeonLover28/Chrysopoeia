@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://c72h3kbb7fnrw"]
+[gd_scene load_steps=21 format=3 uid="uid://c72h3kbb7fnrw"]
 
 [ext_resource type="Script" uid="uid://cahgpglfdtcaw" path="res://Script/fight_ring.gd" id="1_3s5ww"]
 [ext_resource type="Texture2D" uid="uid://bm5mkjkryluex" path="res://Assets/grid_black_512x512.png" id="1_ro6q6"]
+[ext_resource type="Material" uid="uid://dnox1xrq8lfuf" path="res://placeholder_mat.tres" id="2_56irj"]
 [ext_resource type="PackedScene" uid="uid://t1ipnjtntycl" path="res://Assets/Exports/glTF/Bench.gltf" id="2_r26pi"]
 [ext_resource type="Script" uid="uid://cb58tbr6db7dh" path="res://Script/flickertorch.gd" id="3_nam34"]
 [ext_resource type="PackedScene" uid="uid://bpth6e0ob531j" path="res://Assets/Exports/glTF/Chandelier.gltf" id="4_3s5ww"]
@@ -10,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://b62mtehl1yonf" path="res://Assets/Originals/homun2.png" id="7_hapdo"]
 [ext_resource type="Script" uid="uid://b1wtnwr6nqbks" path="res://Script/fight_ring_selec_button.gd" id="8_7cmb4"]
 [ext_resource type="Texture2D" uid="uid://pov62jfwgcqy" path="res://icon.svg" id="10_lvqhy"]
+[ext_resource type="PackedScene" uid="uid://c4quyek04012y" path="res://Scenes/match_win_test.tscn" id="11_3pjhm"]
+[ext_resource type="PackedScene" uid="uid://djecxd6ckfbpd" path="res://Scenes/match_loss_test.tscn" id="12_56irj"]
+[ext_resource type="PackedScene" uid="uid://beywp328cnlsb" path="res://Scenes/match_tie_test.tscn" id="13_fg0n3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6ku2c"]
 sky_top_color = Color(0.0606355, 0.0252388, 0.221666, 1)
@@ -26,11 +30,6 @@ sky_material = SubResource("ProceduralSkyMaterial_6ku2c")
 background_mode = 2
 sky = SubResource("Sky_wse8f")
 tonemap_mode = 2
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x0qly"]
-albedo_texture = ExtResource("1_ro6q6")
-uv1_triplanar = true
-uv1_world_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nam34"]
 albedo_texture = ExtResource("1_ro6q6")
@@ -58,13 +57,13 @@ fov = 55.0
 
 [node name="scenery" type="CSGCombiner3D" parent="."]
 transform = Transform3D(1, 0, 6.97374e-05, 0, 1, 0, -6.97374e-05, 0, 1, 0, 0.242, 0)
-material_override = SubResource("StandardMaterial3D_x0qly")
+material_override = ExtResource("2_56irj")
 use_collision = true
 collision_mask = 14
 
 [node name="ringlight" type="OmniLight3D" parent="scenery"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0113499, 3.55486, -4.76837e-07)
-light_color = Color(0.783899, 0.388589, 1.92523e-07, 1)
+light_color = Color(1, 0, 0, 1)
 light_energy = 3.774
 shadow_enabled = true
 shadow_opacity = 0.55
@@ -247,180 +246,189 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67543, 0.45, 2.24217)
 [node name="homun2_spawn" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.91373, 0.45, -0.758221)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Fight_ring_UI" type="CanvasLayer" parent="."]
 
-[node name="Fight_ring_UI" type="Control" parent="CanvasLayer"]
+[node name="UI" type="Control" parent="Fight_ring_UI"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Fight_ring_UI"]
+[node name="Panel" type="Panel" parent="Fight_ring_UI/UI"]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Fight_ring_UI/Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Fight_ring_UI/UI/Panel"]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 alignment = 1
 
-[node name="Selec_Desc" type="VBoxContainer" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer"]
+[node name="Selec_Desc" type="VBoxContainer" parent="Fight_ring_UI/UI/Panel/HBoxContainer"]
 custom_minimum_size = Vector2(576, 0)
 layout_mode = 2
 alignment = 1
 
-[node name="selec_image" type="TextureRect" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Selec_Desc"]
+[node name="selec_image" type="TextureRect" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Selec_Desc"]
 visible = false
 layout_mode = 2
 texture = ExtResource("6_x0qly")
 stretch_mode = 3
 
-[node name="selec_name" type="Label" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Selec_Desc"]
+[node name="selec_name" type="Label" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Selec_Desc"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Choose a Homunculus to view stats"
 horizontal_alignment = 1
 
-[node name="selec_stats" type="HBoxContainer" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Selec_Desc"]
+[node name="selec_stats" type="HBoxContainer" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Selec_Desc"]
 visible = false
 layout_mode = 2
 alignment = 1
 
-[node name="selec_price" type="Label" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Selec_Desc/selec_stats"]
+[node name="selec_price" type="Label" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Selec_Desc/selec_stats"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 text = "50 Gold"
 
-[node name="selec_bet" type="Button" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Selec_Desc/selec_stats"]
+[node name="selec_bet" type="Button" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Selec_Desc/selec_stats"]
 layout_mode = 2
 text = "FIGHT!"
 
-[node name="Creatures" type="VBoxContainer" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer"]
+[node name="Creatures" type="VBoxContainer" parent="Fight_ring_UI/UI/Panel/HBoxContainer"]
 custom_minimum_size = Vector2(576, 0)
 layout_mode = 2
 
-[node name="slot1" type="HBoxContainer" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures"]
+[node name="slot1" type="HBoxContainer" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures"]
 custom_minimum_size = Vector2(0, 125)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot1"]
+[node name="TextureRect" type="TextureRect" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot1"]
 layout_mode = 2
 texture = ExtResource("7_hapdo")
 stretch_mode = 3
 
-[node name="selec_name" type="Label" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot1"]
+[node name="selec_name" type="Label" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot1"]
 custom_minimum_size = Vector2(358, 28)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Righteous Hard-Headed Homunculus"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot1"]
+[node name="Button" type="Button" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot1"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 action_mode = 0
 text = "CHOOSE"
 script = ExtResource("8_7cmb4")
 
-[node name="slot2" type="HBoxContainer" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures"]
+[node name="slot2" type="HBoxContainer" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures"]
 custom_minimum_size = Vector2(0, 125)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot2"]
+[node name="TextureRect" type="TextureRect" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot2"]
 layout_mode = 2
 texture = ExtResource("7_hapdo")
 stretch_mode = 3
 
-[node name="selec_name" type="Label" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot2"]
+[node name="selec_name" type="Label" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot2"]
 custom_minimum_size = Vector2(358, 28)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Righteous Hard-Headed Homunculus"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot2"]
+[node name="Button" type="Button" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 action_mode = 0
 text = "CHOOSE"
 script = ExtResource("8_7cmb4")
 
-[node name="slot3" type="HBoxContainer" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures"]
+[node name="slot3" type="HBoxContainer" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures"]
 custom_minimum_size = Vector2(0, 125)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot3"]
+[node name="TextureRect" type="TextureRect" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot3"]
 layout_mode = 2
 texture = ExtResource("7_hapdo")
 stretch_mode = 3
 
-[node name="selec_name" type="Label" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot3"]
+[node name="selec_name" type="Label" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot3"]
 custom_minimum_size = Vector2(358, 28)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Righteous Hard-Headed Homunculus"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot3"]
+[node name="Button" type="Button" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot3"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 action_mode = 0
 text = "CHOOSE"
 script = ExtResource("8_7cmb4")
 
-[node name="slot4" type="HBoxContainer" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures"]
+[node name="slot4" type="HBoxContainer" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures"]
 custom_minimum_size = Vector2(0, 125)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot4"]
+[node name="TextureRect" type="TextureRect" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot4"]
 layout_mode = 2
 texture = ExtResource("7_hapdo")
 stretch_mode = 3
 
-[node name="selec_name" type="Label" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot4"]
+[node name="selec_name" type="Label" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot4"]
 custom_minimum_size = Vector2(358, 28)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Righteous Hard-Headed Homunculus"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot4"]
+[node name="Button" type="Button" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot4"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 action_mode = 0
 text = "CHOOSE"
 script = ExtResource("8_7cmb4")
 
-[node name="slot5" type="HBoxContainer" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures"]
+[node name="slot5" type="HBoxContainer" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures"]
 custom_minimum_size = Vector2(0, 125)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot5"]
+[node name="TextureRect" type="TextureRect" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot5"]
 layout_mode = 2
 texture = ExtResource("7_hapdo")
 stretch_mode = 3
 
-[node name="selec_name" type="Label" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot5"]
+[node name="selec_name" type="Label" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot5"]
 custom_minimum_size = Vector2(358, 28)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Righteous Hard-Headed Homunculus"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot5"]
+[node name="Button" type="Button" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot5"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 action_mode = 0
 text = "CHOOSE"
 script = ExtResource("8_7cmb4")
+
+[node name="match_win_test" parent="." instance=ExtResource("11_3pjhm")]
+visible = false
+
+[node name="match_tie_test" parent="." instance=ExtResource("13_fg0n3")]
+visible = false
+
+[node name="match_loss_test" parent="." instance=ExtResource("12_56irj")]
+visible = false
 
 [connection signal="timeout" from="inactivity" to="." method="_on_inactivity_timeout"]
 [connection signal="timeout" from="scenery/ringlight/change" to="scenery/ringlight" method="_on_change_timeout"]
-[connection signal="pressed" from="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Selec_Desc/selec_stats/selec_bet" to="." method="_on_selec_bet_pressed"]
-[connection signal="pressed" from="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot1/Button" to="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot1/Button" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot2/Button" to="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot2/Button" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot3/Button" to="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot3/Button" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot4/Button" to="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot4/Button" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot5/Button" to="CanvasLayer/Fight_ring_UI/Panel/HBoxContainer/Creatures/slot5/Button" method="_on_pressed"]
+[connection signal="pressed" from="Fight_ring_UI/UI/Panel/HBoxContainer/Selec_Desc/selec_stats/selec_bet" to="." method="_on_selec_bet_pressed"]
+[connection signal="pressed" from="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot1/Button" to="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot1/Button" method="_on_pressed"]
+[connection signal="pressed" from="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot2/Button" to="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot2/Button" method="_on_pressed"]
+[connection signal="pressed" from="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot3/Button" to="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot3/Button" method="_on_pressed"]
+[connection signal="pressed" from="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot4/Button" to="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot4/Button" method="_on_pressed"]
+[connection signal="pressed" from="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot5/Button" to="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot5/Button" method="_on_pressed"]

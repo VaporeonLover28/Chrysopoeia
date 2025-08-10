@@ -26,7 +26,6 @@ wait_time = 5.0
 one_shot = true
 
 [node name="nav" type="NavigationAgent3D" parent="."]
-path_postprocessing = 1
 simplify_path = true
 debug_enabled = true
 
