@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://bm0dwcec16xlf"]
+[gd_scene load_steps=17 format=3 uid="uid://bm0dwcec16xlf"]
 
 [ext_resource type="Script" uid="uid://brf7xhqpnw2iv" path="res://Script/blackjack.gd" id="1_ghed7"]
 [ext_resource type="Texture2D" uid="uid://bm5mkjkryluex" path="res://Assets/grid_black_512x512.png" id="1_rnqjs"]
 [ext_resource type="PackedScene" uid="uid://bf85c3yhwefir" path="res://Assets/Exports/glTF/Workbench.gltf" id="2_ghed7"]
 [ext_resource type="PackedScene" uid="uid://8hd5usv25kt" path="res://Scenes/bj_player_test.tscn" id="3_wkmli"]
+[ext_resource type="PackedScene" uid="uid://dgs6yskiuhuvj" path="res://Assets/Originals/Mesa_blackjack.glb" id="3_wt0yi"]
 [ext_resource type="PackedScene" uid="uid://cjrb25thpiawq" path="res://Assets/Originals/mago_beta.glb" id="4_wt0yi"]
 [ext_resource type="Script" uid="uid://j5nv645ekjhk" path="res://Script/mago_beta.gd" id="5_tild6"]
 [ext_resource type="Script" uid="uid://b6lxgr0emidg7" path="res://Script/blackjack_player.gd" id="5_wkmli"]
@@ -72,22 +73,26 @@ light_color = Color(1, 0.637837, 0.399547, 1)
 spot_range = 3.19828
 spot_angle = 35.0
 
+[node name="Mesa_blackjack" parent="." instance=ExtResource("3_wt0yi")]
+transform = Transform3D(-1.08486e-08, 0, 0.248187, 0, 0.248187, 0, -0.248187, 0, -1.08486e-08, 0, 0, 0)
+
+[node name="chair1" type="Marker3D" parent="Mesa_blackjack"]
+transform = Transform3D(-3.52246e-08, 0, -0.805844, 0, 0.805844, 0, 0.805844, 0, -3.52246e-08, 0.0165475, 5.26231, -3.01391)
+
+[node name="chair2" type="Marker3D" parent="Mesa_blackjack"]
+transform = Transform3D(-3.52246e-08, 0, -0.805844, 0, 0.805844, 0, 0.805844, 0, -3.52246e-08, -2.99601, 5.26231, -3.00845)
+
+[node name="chair3" type="Marker3D" parent="Mesa_blackjack"]
+transform = Transform3D(-3.52246e-08, 0, -0.805844, 0, 0.805844, 0, 0.805844, 0, -3.52246e-08, 3.05095, 5.26231, -2.99207)
+
+[node name="chair4" type="Marker3D" parent="Mesa_blackjack"]
+transform = Transform3D(-3.52246e-08, 0, -0.805844, 0, 0.805844, 0, 0.805844, 0, -3.52246e-08, 5.04437, 5.26231, -0.00573423)
+
+[node name="chair5" type="Marker3D" parent="Mesa_blackjack"]
+transform = Transform3D(-3.52246e-08, 0, -0.805844, 0, 0.805844, 0, 0.805844, 0, -3.52246e-08, -5.01885, 5.26231, 0.0051889)
+
 [node name="table" parent="." instance=ExtResource("2_ghed7")]
-
-[node name="chair1" type="Marker3D" parent="table"]
-transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0, 0.415, -0.752299)
-
-[node name="chair2" type="Marker3D" parent="table"]
-transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, -0.747678, 0.415, -0.750943)
-
-[node name="chair3" type="Marker3D" parent="table"]
-transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0.7531, 0.415, -0.746877)
-
-[node name="chair4" type="Marker3D" parent="table"]
-transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 1.24784, 0.415, -0.00570814)
-
-[node name="chair5" type="Marker3D" parent="table"]
-transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, -1.24972, 0.415, -0.00299716)
+visible = false
 
 [node name="hand_markers" type="Node3D" parent="."]
 

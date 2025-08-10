@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dp7rwp8yfewpg"]
+[gd_scene load_steps=8 format=3 uid="uid://dp7rwp8yfewpg"]
 
 [ext_resource type="Script" uid="uid://d33jhadxc2lv5" path="res://Script/gamble_spot.gd" id="1_33dal"]
-[ext_resource type="PackedScene" uid="uid://dlyam4e7p758s" path="res://Assets/Originals/Mesa_blackjack.glb" id="2_nu2ws"]
 [ext_resource type="PackedScene" uid="uid://j4nby41rkhr3" path="res://Scenes/sit_positions.tscn" id="3_nu2ws"]
-[ext_resource type="PackedScene" uid="uid://biin8vnpo6uo" path="res://Assets/Originals/Mesa_blackjack (1).glb" id="3_or8fe"]
+[ext_resource type="PackedScene" uid="uid://dgs6yskiuhuvj" path="res://Assets/Originals/Mesa_blackjack.glb" id="4_55y61"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_or8fe"]
 
@@ -37,11 +36,7 @@ shape = SubResource("BoxShape3D_nu2ws")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.076166, 0, 0)
 shape = SubResource("BoxShape3D_or8fe")
 
-[node name="Mesa_blackjack" parent="Model" instance=ExtResource("2_nu2ws")]
-transform = Transform3D(0.248187, 0, 0, 0, 0.248187, 0, 0, 0, 0.248187, 0, -0.893, 0)
-visible = false
-
-[node name="Mesa_blackjack (1)" parent="Model" instance=ExtResource("3_or8fe")]
+[node name="Mesa_blackjack" parent="Model" instance=ExtResource("4_55y61")]
 transform = Transform3D(0.248187, 0, 0, 0, 0.248187, 0, 0, 0, 0.248187, 0, -0.893, 0)
 
 [node name="Sit positions" parent="." instance=ExtResource("3_nu2ws")]
