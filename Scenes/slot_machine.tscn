@@ -1,7 +1,6 @@
-[gd_scene load_steps=14 format=4 uid="uid://blm2ybcpo2i7k"]
+[gd_scene load_steps=13 format=4 uid="uid://blm2ybcpo2i7k"]
 
 [ext_resource type="Script" uid="uid://du03851jbkyo2" path="res://Script/slot_machine.gd" id="1_0ucjj"]
-[ext_resource type="PackedScene" uid="uid://ds2ti854kfjl1" path="res://Assets/Originals/RodaCaçaniquel.glb" id="1_03c2u"]
 [ext_resource type="PackedScene" uid="uid://dgww0bhqoowog" path="res://Assets/Originals/Slot_Machice/Caçaniquel.glb" id="2_s1yih"]
 [ext_resource type="PackedScene" uid="uid://ddxc2ltff5yec" path="res://Assets/Originals/Slot_Machice/alavanca.glb" id="4_2rg1w"]
 [ext_resource type="PackedScene" uid="uid://cxvcxyaq27jof" path="res://Assets/Originals/Slot_Machice/Rodacerta.glb" id="5_ab6dg"]
@@ -79,25 +78,17 @@ shape = SubResource("BoxShape3D_0ucjj")
 [node name="wheels" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125774, 0)
 
-[node name="wheel12" parent="wheels" instance=ExtResource("5_ab6dg")]
-transform = Transform3D(-1.20671e-08, -2.62685e-08, -0.300476, 0, -0.300476, 2.62685e-08, -0.276063, 1.14823e-15, 1.31342e-08, -0.0653471, 1.64198, 0.568535)
-visible = false
+[node name="wheel1" parent="wheels" instance=ExtResource("5_ab6dg")]
+transform = Transform3D(-3.27835e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, -3.27835e-08, -0.256804, 1.468, 0.4)
 
-[node name="wheel1" parent="wheels" instance=ExtResource("1_03c2u")]
-transform = Transform3D(-3.27835e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, -3.27835e-08, -0.266254, 1.46824, 0.400147)
+[node name="wheel2" parent="wheels" instance=ExtResource("5_ab6dg")]
+transform = Transform3D(-3.27835e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, -3.27835e-08, -0.0908036, 1.468, 0.4)
 
-[node name="wheel2" parent="wheels" instance=ExtResource("1_03c2u")]
-transform = Transform3D(-3.27835e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, -3.27835e-08, -0.0953244, 1.468, 0.4)
+[node name="wheel3" parent="wheels" instance=ExtResource("5_ab6dg")]
+transform = Transform3D(-3.27835e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, -3.27835e-08, 0.082429, 1.468, 0.4)
 
-[node name="wheel3" parent="wheels" instance=ExtResource("1_03c2u")]
-transform = Transform3D(-3.27835e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, -3.27835e-08, 0.0806498, 1.468, 0.400147)
-
-[node name="wheel4" parent="wheels" instance=ExtResource("1_03c2u")]
-transform = Transform3D(-3.27835e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, -3.27835e-08, 0.255352, 1.468, 0.400147)
-
-[node name="Rodacerta" parent="wheels" instance=ExtResource("5_ab6dg")]
-transform = Transform3D(0.399169, 0, 0, 0, 0.399169, 0, 0, 0, 0.399169, 0.239688, 1.70611, 0.334581)
-visible = false
+[node name="wheel4" parent="wheels" instance=ExtResource("5_ab6dg")]
+transform = Transform3D(-3.27835e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, -3.27835e-08, 0.253393, 1.468, 0.4)
 
 [node name="lever" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.581543, 1.14889, 0.103118)

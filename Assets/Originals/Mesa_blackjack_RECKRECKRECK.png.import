@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh6eoafdrqsq"
-path.s3tc="res://.godot/imported/Rodacerta_hermes.png-c9704493a0ed68925856588aad93d87d.s3tc.ctex"
+uid="uid://cf2h04h8w5dph"
+path.s3tc="res://.godot/imported/Mesa_blackjack_RECKRECKRECK.png-cfde6c8b15605cabb9367e9c7f64ce4c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "f15312777ea03249c8233c1efb5056c6"
+"md5": "87c12567bc73128591f65089e117139a"
 }
 
 [deps]
 
-source_file="res://Assets/Originals/Slot_Machice/Rodacerta_hermes.png"
-dest_files=["res://.godot/imported/Rodacerta_hermes.png-c9704493a0ed68925856588aad93d87d.s3tc.ctex"]
+source_file="res://Assets/Originals/Mesa_blackjack_RECKRECKRECK.png"
+dest_files=["res://.godot/imported/Mesa_blackjack_RECKRECKRECK.png-cfde6c8b15605cabb9367e9c7f64ce4c.s3tc.ctex"]
 
 [params]
 

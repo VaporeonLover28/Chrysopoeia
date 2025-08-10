@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh6eoafdrqsq"
-path.s3tc="res://.godot/imported/Rodacerta_hermes.png-c9704493a0ed68925856588aad93d87d.s3tc.ctex"
+uid="uid://cljtf38ij3xk1"
+path.s3tc="res://.godot/imported/CaçaNiquel_sol.png-d432a8a47b8b92d3cde0680c07f9b32a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "f15312777ea03249c8233c1efb5056c6"
+"md5": "5e5f3b70b994e915df98e232816ef6ca"
 }
 
 [deps]
 
-source_file="res://Assets/Originals/Slot_Machice/Rodacerta_hermes.png"
-dest_files=["res://.godot/imported/Rodacerta_hermes.png-c9704493a0ed68925856588aad93d87d.s3tc.ctex"]
+source_file="res://Assets/Originals/Slot_Machice/CaçaNiquel_sol.png"
+dest_files=["res://.godot/imported/CaçaNiquel_sol.png-d432a8a47b8b92d3cde0680c07f9b32a.s3tc.ctex"]
 
 [params]
 
