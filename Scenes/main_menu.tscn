@@ -1,8 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://cf21qm02h40cu"]
+[gd_scene load_steps=14 format=3 uid="uid://cf21qm02h40cu"]
 
 [ext_resource type="Texture2D" uid="uid://bm5mkjkryluex" path="res://Assets/grid_black_512x512.png" id="1_fu7sn"]
+[ext_resource type="Script" uid="uid://gupatwggm12k" path="res://Scenes/main_menu.gd" id="1_opfnp"]
 [ext_resource type="PackedScene" uid="uid://cx03els0ra5bd" path="res://Assets/Exports/glTF/Table_Large.gltf" id="2_jix8l"]
+[ext_resource type="Script" uid="uid://h04ek6sfnud1" path="res://Scenes/spinner.gd" id="3_ce3w2"]
 [ext_resource type="PackedScene" uid="uid://cjrb25thpiawq" path="res://Assets/Originals/mago_beta.glb" id="3_glbon"]
+[ext_resource type="Theme" uid="uid://f5yk4gkyeuqv" path="res://Themes/menu_theme.tres" id="5_cp0ys"]
+[ext_resource type="FontFile" uid="uid://paxjlxvek7jf" path="res://Assets/Fonts/ransite_medieval/RansiteMedieval_PERSONAL_USE_ONLY.otf" id="5_n45e2"]
+[ext_resource type="Script" uid="uid://c4ndqtv32fvou" path="res://Scenes/title.gd" id="8_yhxw7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nlkkf"]
 albedo_texture = ExtResource("1_fu7sn")
@@ -23,6 +28,8 @@ background_mode = 2
 sky = SubResource("Sky_ylhsq")
 tonemap_mode = 2
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yhxw7"]
+
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -30,16 +37,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_opfnp")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 0
-offset_right = 1155.0
+offset_right = 751.0
 offset_bottom = 652.0
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(1155, 652)
+size = Vector2i(751, 652)
 render_target_update_mode = 4
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport"]
@@ -68,52 +76,88 @@ light_color = Color(1, 0.637837, 0.399547, 1)
 spot_range = 3.19828
 spot_angle = 35.0
 
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(0.706551, -0.147397, 0.692141, 6.15923e-09, 0.978068, 0.208287, -0.707662, -0.147166, 0.691055, 2.97295, 2.04326, -2.03815)
-fov = 90.0
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
 environment = SubResource("Environment_8qtwp")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 833.0
-offset_top = 374.0
-offset_right = 1087.0
-offset_bottom = 475.0
+[node name="Node3D" type="Node3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23739, -5.54863)
+script = ExtResource("3_ce3w2")
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.883242, 0.468917, 0, -0.468917, 0.883242, 0.009, 0.336694, 0.635021)
+fov = 90.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+clip_children = 2
+layout_mode = 0
+offset_left = 745.0
+offset_right = 1159.0
+offset_bottom = 653.0
+color = Color(0.99864, 0.37336, 0.263904, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 293.64
+offset_right = 342.0
+offset_bottom = 557.64
+
+[node name="Start_btn" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("5_cp0ys")
 text = "Start"
 alignment = 0
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxEmpty_yhxw7")
+
+[node name="Load_btn" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_cp0ys")
 text = "Load"
 alignment = 0
 
-[node name="Button3" type="Button" parent="VBoxContainer"]
+[node name="HSeparator3" type="HSeparator" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxEmpty_yhxw7")
+
+[node name="Options_btn" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_cp0ys")
 text = "Options"
 alignment = 0
 
-[node name="Button4" type="Button" parent="."]
+[node name="HSeparator" type="HSeparator" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-offset_left = 833.0
-offset_top = 570.0
-offset_right = 1087.0
-offset_bottom = 601.0
+theme_override_constants/separation = 73
+theme_override_styles/separator = SubResource("StyleBoxEmpty_yhxw7")
+
+[node name="Quit_btn" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_cp0ys")
 text = "Quit"
 alignment = 0
 
 [node name="mago_beta" parent="." instance=ExtResource("3_glbon")]
 transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0.0108842, 0.415111, -5.56487)
 
-[node name="Label" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
 layout_mode = 0
-offset_left = 300.0
-offset_top = 81.0
-offset_right = 395.0
-offset_bottom = 104.0
-scale = Vector2(6, 6)
-text = "TITULO UAU"
+offset_left = 138.0
+offset_top = -186.0
+offset_right = 962.0
+offset_bottom = -3.0
+theme_override_fonts/font = ExtResource("5_n45e2")
+theme_override_font_sizes/font_size = 180
+text = "Chrysopoeia"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_yhxw7")
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/Start_btn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Load_btn" to="." method="_on_load_btn_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Options_btn" to="." method="_on_options_btn_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Quit_btn" to="." method="_on_quit_btn_pressed"]
