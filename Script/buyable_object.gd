@@ -14,7 +14,7 @@ func _ready() -> void:
 	var instanciated_item 
 	if item_resource.item_type == "Objects":
 		instanciated_item = item_resource.item_scene.instantiate()
-		if instanciated_item is GambleSpot:
+		if instanciated_item is InteractableObject:
 			var instanciated_model = instanciated_item.get_node("Model").duplicate()
 			item_viewport.get_child(0).add_child(instanciated_model)
 		else:

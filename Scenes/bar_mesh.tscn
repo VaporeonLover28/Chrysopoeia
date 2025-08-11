@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://4cbo6gvxcn0d"]
+
+[ext_resource type="PackedScene" uid="uid://dbgpivfhrvrfu" path="res://Scenes/shader_quad.tscn" id="1_a5ye5"]
+[ext_resource type="PackedScene" uid="uid://j4nby41rkhr3" path="res://Scenes/sit_positions.tscn" id="2_ths11"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ggknq"]
+albedo_color = Color(0.59, 0.3245, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8my23"]
+material = SubResource("StandardMaterial3D_ggknq")
+size = Vector3(5, 1, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_eeri8"]
+points = PackedVector3Array(-2.35735, -0.5, -0.5, 2.53869, 0.571429, 0.571429, 2.53869, 0.571429, -0.539683, -2.53869, 0.571429, 0.571429, 2.53869, -0.539683, 0.571429, -2.53869, 0.571429, -0.539683, -2.53869, -0.539683, 0.571429, 2.35735, -0.5, -0.5)
+
+[node name="BarMesh" type="Node3D"]
+
+[node name="Model" type="StaticBody3D" parent="." groups=["Ground_object"]]
+
+[node name="Node3D" type="Node3D" parent="Model"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/Node3D"]
+mesh = SubResource("BoxMesh_8my23")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Model"]
+shape = SubResource("ConvexPolygonShape3D_eeri8")
+
+[node name="camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.83753)
+
+[node name="Shader_Quad" parent="camera" instance=ExtResource("1_a5ye5")]
+script = null
+
+[node name="Sit positions" parent="." instance=ExtResource("2_ths11")]
+script = null

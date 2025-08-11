@@ -1,13 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dp7rwp8yfewpg"]
+[gd_scene load_steps=6 format=3 uid="uid://dp7rwp8yfewpg"]
 
 [ext_resource type="Script" uid="uid://d33jhadxc2lv5" path="res://Script/gamble_spot.gd" id="1_33dal"]
 [ext_resource type="PackedScene" uid="uid://j4nby41rkhr3" path="res://Scenes/sit_positions.tscn" id="3_nu2ws"]
 [ext_resource type="PackedScene" uid="uid://dgs6yskiuhuvj" path="res://Assets/Originals/Mesa_blackjack.glb" id="4_55y61"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_or8fe"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_33dal"]
-albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nu2ws"]
 size = Vector3(0.847473, 1, 1)
@@ -17,27 +12,24 @@ size = Vector3(0.523, 1, 1.91)
 
 [node name="BlackJack" type="Node3D"]
 script = ExtResource("1_33dal")
+game_machice_scene = "blackjack"
 object_class = "GambleSpot"
 object_name = "BlackJack"
 metadata/_custom_type_script = "uid://d33jhadxc2lv5"
 
 [node name="Model" type="StaticBody3D" parent="." groups=["Ground_object"]]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Model"]
-visible = false
-mesh = SubResource("BoxMesh_or8fe")
-surface_material_override/0 = SubResource("StandardMaterial3D_33dal")
+[node name="Mesa_blackjack" parent="Model" instance=ExtResource("4_55y61")]
+transform = Transform3D(0.248187, 0, 0, 0, 0.248187, 0, 0, 0, 0.248187, 0, -0.893, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0858365, 0, 0)
 shape = SubResource("BoxShape3D_nu2ws")
+disabled = true
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.076166, 0, 0)
 shape = SubResource("BoxShape3D_or8fe")
-
-[node name="Mesa_blackjack" parent="Model" instance=ExtResource("4_55y61")]
-transform = Transform3D(0.248187, 0, 0, 0, 0.248187, 0, 0, 0, 0.248187, 0, -0.893, 0)
 
 [node name="Sit positions" parent="." instance=ExtResource("3_nu2ws")]
 chair_postion_list = Array[Array]([[Vector3(0, 0, 2.2), true]])

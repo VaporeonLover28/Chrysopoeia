@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var npc = preload("res://Scenes/blackjack_npc.tscn")
 @onready var card = preload("res://Scenes/card.tscn")
-@onready var table_node = $table
+@onready var table_node = $Mesa_blackjack
 @onready var deck_node: Node3D = $deck
 #@onready var gamecontrol: Panel = $CanvasLayer/gamecontrol
 @onready var player: CharacterBody3D = $blackjack_player
@@ -62,7 +62,8 @@ func _ready():
 		##excludes the table mesh from chair count
 		if table_node.get_child(chairs) is Marker3D:
 			##chair is [position, is_taken]
-			table.append([table_node.get_child(chairs).position, 0])
+			print(table_node.get_child(chairs).global_position)
+			table.append([table_node.get_child(chairs).global_position, 0])
 	
 	for markers in hand_markers.get_children():
 		hand_marker_array.append(markers)
@@ -105,7 +106,7 @@ func call_player():
 			5:
 				new_npc.personality = "Joker"
 		##instantiate new npc away from table (visual effect for testing)
-		new_npc.position = Vector3(randf_range(-3, 3), 0.342, -6)
+		new_npc.global_position = Vector3(randf_range(-3, 3), 0.342, -6)
 		add_child(new_npc)
 		##checking if each chair is taken
 		for chairs in table.size():
@@ -113,6 +114,7 @@ func call_player():
 			if table[chairs][1] == 0 and !new_npc.assigned_chair:
 				##call the funcion on the npc script to come to the chair
 				new_npc.go_to_table(table[chairs][0])
+				print(table[chairs][0])
 				##occupy the chair
 				table[chairs][1] = 1
 				new_npc.assigned_chair = true
@@ -120,6 +122,7 @@ func call_player():
 				new_npc.hand_marker = hand_marker_array[chairs]
 				##add the npc to the npc array
 				playing_npcs.append(new_npc)
+				print(new_npc)
 
 ##setting a table order (left to right) for the rounds playing
 func set_round_order():

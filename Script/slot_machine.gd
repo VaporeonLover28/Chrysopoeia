@@ -192,11 +192,11 @@ func spell_cast(spell : String):
 		fortune = 1
 
 func _on_input_area_body_entered(body: Node3D) -> void:
-	if Globals.fortuna_in_spell_list and body.name == "Player" and Globals.fortuna_target == null:
+	if Globals.fortuna_in_spell_list and body.name == "Player":
 		Globals.fortuna_target = self
 		input_prompt.visible = true
 
 func _on_input_area_body_exited(body: Node3D) -> void:
-	if body.name == "Player" and Globals.fortuna_target == self:
+	if body.name == "Player":
 		Globals.fortuna_target = null
 		input_prompt.visible = false

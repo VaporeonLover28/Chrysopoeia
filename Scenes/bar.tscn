@@ -17,12 +17,16 @@ points = PackedVector3Array(-2.35735, -0.5, -0.5, 2.53869, 0.571429, 0.571429, 2
 [node name="Bar" type="Node3D"]
 script = ExtResource("1_ggknq")
 object_class = "Bar"
+object_name = "Bar"
 metadata/_custom_type_script = "uid://d3kiv4p05usnv"
 
 [node name="Model" type="StaticBody3D" parent="." groups=["Ground_object"]]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Model"]
+[node name="Node3D" type="Node3D" parent="Model"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/Node3D"]
 mesh = SubResource("BoxMesh_n8sa8")
+skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Model"]
 shape = SubResource("ConvexPolygonShape3D_k0573")
