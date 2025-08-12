@@ -1,6 +1,6 @@
 extends CSGBox3D
 
-signal buyed_rign_key
+signal bought_ring_key
 
 @onready var navigation_region_3d: NavigationRegion3D = $"../.."
 
