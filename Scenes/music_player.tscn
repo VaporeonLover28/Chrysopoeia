@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://b3xmstu2dsw6g"]
+
+[ext_resource type="Script" uid="uid://cc3x3x4x0kt85" path="res://Script/music_player.gd" id="1_nnqcb"]
+[ext_resource type="AudioStream" uid="uid://c6nrfa18npmc4" path="res://Soundtrack/3b5.mp3" id="2_cy1if"]
+[ext_resource type="AudioStream" uid="uid://r84sujvwgkkj" path="res://Soundtrack/Enchanted Festival Loop.wav" id="3_hilfb"]
+[ext_resource type="AudioStream" uid="uid://dkad8jmul84jl" path="res://Soundtrack/greensleeves.mp3" id="4_qb4b4"]
+[ext_resource type="AudioStream" uid="uid://uwpmnx50dhfh" path="res://Soundtrack/Lament of the War - Lossless FLAC.mp3" id="5_b03an"]
+[ext_resource type="AudioStream" uid="uid://cfcs05yq8qnno" path="res://Soundtrack/lol-neptune.mp3" id="6_hnt0s"]
+[ext_resource type="AudioStream" uid="uid://n3ymscqbo7sc" path="res://Soundtrack/Small_Sleepy_Town.mp3" id="7_tx3aj"]
+
+[node name="MusicPlayer" type="Node"]
+script = ExtResource("1_nnqcb")
+
+[node name="blackjack_theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_cy1if")
+
+[node name="full_tavern" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hilfb")
+
+[node name="Greensleeves" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_qb4b4")
+
+[node name="fight_theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_b03an")
+
+[node name="menu_theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_hnt0s")
+
+[node name="empty_tavern" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_tx3aj")
+parameters/looping = true
