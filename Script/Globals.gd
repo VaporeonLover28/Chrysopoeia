@@ -66,4 +66,3 @@ func _calculate_bet_loses(money_value: int):
 
 func return_to_world():
 	get_tree().change_scene_to_file("res://Scenes/world.tscn")
-	$Player.global_position = player_pos_save

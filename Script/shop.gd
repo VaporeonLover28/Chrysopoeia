@@ -10,7 +10,7 @@ extends Control
 @onready var spell_slot2: TextureRect = $"../Inv_Full_Choice/VBoxContainer/Margin/HBoxContainer/slot2/TextureRect"
 @onready var world_scene = $"../../"
 @onready var money_label: Label = $Margin/Top_Bar/Money_Label
-@onready var ring_door = $"../../$NavigationRegion3D/$NavigationRegion3D/cassino/$NavigationRegion3D/cassino/door4"
+@onready var ring_door = $"../../NavigationRegion3D/cassino/door4"
 
 signal wait_for_spell_change
 
@@ -55,13 +55,9 @@ func _show_shop_menu():
 func _buy_item(object_being_purchase: Control):
 	if object_being_purchase.item_resource.price <= Globals.money:
 		Globals.money -= object_being_purchase.item_resource.price
+		print("primeiro if rodou")
 		if object_being_purchase.item_resource.item_type == "Objects":
-			if object_being_purchase.item_resource.name == "Chipped Key" and PurchasableItemList.item_list_level <= 3:
-				print("oi")
-				Globals.ring_unlock = true
-				ring_door.buyed_ring_key.emit()
-			else:
-				world_scene.get_node("Player")._start_bulding_phase(object_being_purchase.item_resource.item_scene)
+			world_scene.get_node("Player")._start_bulding_phase(object_being_purchase.item_resource.item_scene)
 			match [object_being_purchase.item_resource.name, PurchasableItemList.item_list_level]:
 				["Slot Machine", 0]:
 					PurchasableItemList.item_list_level += 1
@@ -72,7 +68,11 @@ func _buy_item(object_being_purchase: Control):
 				["Chipped Key", 3]:
 					PurchasableItemList.item_list_level += 1
 		else:
-			if Globals.spell_inventory_list.size() < 2:
+			if object_being_purchase.item_resource.name == "Chipped Key" and PurchasableItemList.item_list_level <= 3:
+				print("deveria ter aberto o ringue")
+				Globals.ring_unlock = true
+				ring_door.bought_ring_key.emit()
+			elif Globals.spell_inventory_list.size() < 2:
 				Globals.spell_inventory_list.push_front(object_being_purchase.item_resource)
 			else:
 				spell_slot1.texture = Globals.spell_inventory_list[0].item_sprite

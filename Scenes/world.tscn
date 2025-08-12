@@ -1298,7 +1298,7 @@ mesh = SubResource("ArrayMesh_r74th")
 skeleton = NodePath("")
 
 [connection signal="timeout" from="NPC Spwaner Timer" to="." method="_spawn_npc"]
-[connection signal="buyed_rign_key" from="NavigationRegion3D/cassino/door4" to="NavigationRegion3D/cassino/door4" method="_remove_wall"]
+[connection signal="bought_ring_key" from="NavigationRegion3D/cassino/door4" to="NavigationRegion3D/cassino/door4" method="_remove_wall"]
 [connection signal="body_entered" from="NavigationRegion3D/cassino/fight_ring/player_recon" to="NavigationRegion3D/cassino/fight_ring/player_recon" method="_on_body_entered"]
 [connection signal="body_exited" from="NavigationRegion3D/cassino/fight_ring/player_recon" to="NavigationRegion3D/cassino/fight_ring/player_recon" method="_on_body_exited"]
 [connection signal="timeout" from="NavigationRegion3D/cassino/fight_ring/ringlight/change" to="NavigationRegion3D/cassino/fight_ring/ringlight" method="_on_change_timeout"]
