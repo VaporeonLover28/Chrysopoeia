@@ -188,7 +188,7 @@ func _start_bulding_phase(object_to_be_purchase: PackedScene):
 		if item is CollisionShape3D:
 			var instantiate_colission = current_object_being_purchased_instantiate.get_child(1).duplicate()
 			current_object_being_purchased_instantiate.get_child(item.get_index()).queue_free()
-			current_object_being_purchased_instantiate.get_node("Area 3d").add_child(instantiate_colission)
+#			current_object_being_purchased_instantiate.get_node("Area 3d").add_child(instantiate_colission)
 	current_object_being_purchased_instantiate.add_child(new_area3d)
 	current_object_being_purchased_instantiate.position = ray_builder.position + Vector3(0,0,-3)
 	print(current_object_being_purchased_instantiate)

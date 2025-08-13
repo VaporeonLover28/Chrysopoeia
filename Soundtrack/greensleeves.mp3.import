@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/greensleeves.mp3-d57af279d10d0346ce8d99fed62e
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0.0
 bpm=0.0
 beat_count=0

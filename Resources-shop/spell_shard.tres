@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=3 format=3 uid="uid://c10qwpfpx1xds"]
 
 [ext_resource type="Script" uid="uid://dtrrlkl8w8gkb" path="res://Script/purchasable_itens_resource.gd" id="1_cksib"]
-[ext_resource type="Texture2D" uid="uid://cqdwkdpitgsxa" path="res://Assets/Originals/philos_shard.png" id="1_kk0ke"]
+[ext_resource type="Texture2D" uid="uid://cqdwkdpitgsxa" path="res://Assets/Originals/Spells/philos_shard.png" id="1_kk0ke"]
 
 [resource]
 script = ExtResource("1_cksib")
 item_type = "Spells"
 name = "Philosopher's Shard"
 price = 300
-description = ""
+description = "\"The philosopher's stone was not a stone at all, that it is in each man, everywhere, at all times, and is called the final aim...\" Well. someone broke it.  Increases the rank of a card"
 item_sprite = ExtResource("1_kk0ke")
 usable = true
 metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"

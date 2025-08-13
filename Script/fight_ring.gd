@@ -101,6 +101,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if match_started and !match_ended:
 		##Chain positioning
+	
 		var distance_between : float = player_bet_creature.global_transform.origin.distance_to(non_player_bet_creature.global_transform.origin)
 		var scale_needed = distance_between / 1.5
 		var midpoint : Vector3 = (player_bet_creature.global_position + non_player_bet_creature.global_position) / 2
@@ -162,6 +163,7 @@ func bet_on_creature():
 
 func start_match():
 	##Instantiating the player homunculus
+	MusicPlayer.fighttheme.play()
 	var player_homunculus = homunculus.instantiate()
 	player_homunculus.name = selected_creature_stats[0][0]
 	var split_stats = selected_creature_stats[0][0].split(" ", true, 2)
@@ -235,6 +237,7 @@ func spell_cast(spell):
 
 func end_match():
 	match_ended = true
+	MusicPlayer.fighttheme.stop()
 	if player_bet_died and !non_bet_died:
 		Globals.money -= player_bet_creature.bounty
 		loss_screen(player_bet_creature.bounty)
