@@ -47,7 +47,7 @@ func _ready() -> void:
 	self.add_child(aqua_philosophorum_timer_inst)
 	
 func check_spell_available(spell_name : String):
-	if spell_inventory_list[0] != null:
+	if spell_inventory_list.size() > 0:
 		var spell_found := false
 		var spell_not_cd := false
 		for spell in spell_inventory_list:

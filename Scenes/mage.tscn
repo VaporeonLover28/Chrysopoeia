@@ -13,6 +13,7 @@ albedo_color = Color(0.57, 0, 0.5415, 1)
 
 [node name="Mage" type="CharacterBody3D"]
 script = ExtResource("1_r3b7i")
+npc_name = "Mage"
 minimum_time_for_idle = 1.0
 maximum_time_for_idle = 3.0
 minimum_time_for_TIOT = 15.0

@@ -9,7 +9,6 @@ extends CharacterBody3D; class_name NPC;
 @onready var world_scene: Node3D = $"../../"
 @onready var get_away_timer: Timer = $"Get Away Timer"
 
-
 @export var npc_name: String
 @export var minimum_time_for_idle: float
 @export var maximum_time_for_idle: float

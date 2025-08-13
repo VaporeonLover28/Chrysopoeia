@@ -13,6 +13,7 @@ albedo_color = Color(1, 0.966667, 0, 1)
 
 [node name="Noble" type="CharacterBody3D"]
 script = ExtResource("1_t8tnd")
+npc_name = "Noble"
 minimum_time_for_idle = 4.0
 maximum_time_for_idle = 6.0
 minimum_time_for_TIOT = 12.0

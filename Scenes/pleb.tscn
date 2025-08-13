@@ -1,24 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1bvuh6sqefam"]
+[gd_scene load_steps=6 format=3 uid="uid://1gqpvwlydbwx"]
 
-[ext_resource type="Script" uid="uid://1b1tykx5uhrs" path="res://Script/knight.gd" id="1_rrk28"]
+[ext_resource type="Script" uid="uid://d3u1aaam68bee" path="res://Script/npc.gd" id="1_7fhad"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_fsrac"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yvte5"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_owtlo"]
-albedo_color = Color(0.3, 0.3, 0.3, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j8il2"]
+albedo_color = Color(0.51, 0.374, 0, 1)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nsuie"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3ne0l"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_rrk28"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_yvte5"]
 
-[node name="Knight" type="CharacterBody3D"]
-script = ExtResource("1_rrk28")
-minimum_time_to_enter = 60.0
-maximum_time_to_enter = 75.0
-minimum_time_for_idle = 5.0
-maximum_time_for_idle = 7.0
-minimum_time_for_TIOT = 14.0
-maximum_time_for_TIOT = 26.0
+[node name="Communer" type="CharacterBody3D"]
+script = ExtResource("1_7fhad")
+npc_name = "Pleb"
+minimum_time_for_idle = 4.0
+maximum_time_for_idle = 6.0
+minimum_time_for_TIOT = 15.0
+maximum_time_for_TIOT = 20.0
 metadata/_custom_type_script = "uid://d3u1aaam68bee"
 
 [node name="Leave Interaction" type="Timer" parent="."]
@@ -39,20 +38,18 @@ debug_enabled = true
 wait_time = 10.0
 one_shot = true
 
-[node name="Wait Time To Enter Casino" type="Timer" parent="."]
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_fsrac")
-surface_material_override/0 = SubResource("StandardMaterial3D_owtlo")
+mesh = SubResource("CapsuleMesh_yvte5")
+surface_material_override/0 = SubResource("StandardMaterial3D_j8il2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_nsuie")
+shape = SubResource("CapsuleShape3D_3ne0l")
 
 [node name="Interacatable object Detection Area" type="Area3D" parent="."]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interacatable object Detection Area"]
-shape = SubResource("SphereShape3D_rrk28")
+shape = SubResource("SphereShape3D_yvte5")
 disabled = true
 
 [node name="Get Away Timer" type="Timer" parent="."]
@@ -63,4 +60,3 @@ autostart = true
 [connection signal="timeout" from="Targeted Interactable Object Timer" to="." method="chose_interactable_object"]
 [connection signal="navigation_finished" from="nav" to="." method="_on_nav_navigation_finished"]
 [connection signal="timeout" from="idle" to="." method="_on_idle_timeout"]
-[connection signal="timeout" from="Wait Time To Enter Casino" to="." method="_enter_the_casino"]

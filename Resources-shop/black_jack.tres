@@ -7,7 +7,8 @@
 script = ExtResource("1_xtfld")
 item_type = "Objects"
 name = "Black jack"
-price = 0
+price = 200
 description = ""
 item_scene = ExtResource("1_qk04i")
+usable = true
 metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"

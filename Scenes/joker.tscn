@@ -1,20 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://1gqpvwlydbwx"]
+[gd_scene load_steps=6 format=3 uid="uid://bt1lwn300o3m6"]
 
-[ext_resource type="Script" uid="uid://d3u1aaam68bee" path="res://Script/npc.gd" id="1_yvte5"]
+[ext_resource type="Script" uid="uid://d3u1aaam68bee" path="res://Script/npc.gd" id="1_u44jf"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_yvte5"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_t8s3u"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j8il2"]
-albedo_color = Color(0.51, 0.374, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mb4xb"]
+albedo_color = Color(1, 0.533333, 0, 1)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3ne0l"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8u4kt"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_yvte5"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_mb4xb"]
 
-[node name="Communer" type="CharacterBody3D"]
-script = ExtResource("1_yvte5")
-minimum_time_for_idle = 4.0
-maximum_time_for_idle = 6.0
+[node name="Jester" type="CharacterBody3D"]
+script = ExtResource("1_u44jf")
+npc_name = "Joker"
+minimum_time_for_idle = 1.0
+maximum_time_for_idle = 3.0
 minimum_time_for_TIOT = 15.0
 maximum_time_for_TIOT = 20.0
 metadata/_custom_type_script = "uid://d3u1aaam68bee"
@@ -38,17 +39,17 @@ wait_time = 10.0
 one_shot = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_yvte5")
-surface_material_override/0 = SubResource("StandardMaterial3D_j8il2")
+mesh = SubResource("CapsuleMesh_t8s3u")
+surface_material_override/0 = SubResource("StandardMaterial3D_mb4xb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_3ne0l")
+shape = SubResource("CapsuleShape3D_8u4kt")
 
 [node name="Interacatable object Detection Area" type="Area3D" parent="."]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interacatable object Detection Area"]
-shape = SubResource("SphereShape3D_yvte5")
+shape = SubResource("SphereShape3D_mb4xb")
 disabled = true
 
 [node name="Get Away Timer" type="Timer" parent="."]

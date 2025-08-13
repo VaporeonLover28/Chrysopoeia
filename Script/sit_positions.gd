@@ -61,7 +61,7 @@ func _stand_character_up(object_ref):
 				chosen_sitting_position = item 
 				smallest_distance = object_ref.global_position.distance_to(self.get_child(item).global_position)
 	chair_postion_list[chosen_sitting_position][1] = true
-	chair_postion_list[chosen_sitting_position].remove_at(3)
+	chair_postion_list[chosen_sitting_position].remove_at(2)
 	characters_sitting_count -= 1
 	if object_ref == save_player_ref:
 		Globals.player_interacting = false

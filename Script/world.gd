@@ -20,9 +20,9 @@ var is_trying_to_spawn_npc: bool = false
 @export var maximum_time_for_spawn_npc: float
 
 var npc_list: Array[PackedScene] = [preload("res://Scenes/mage.tscn"),\
-preload("res://Scenes/knight.tscn"), \
-preload("res://Scenes/jester.tscn"), \
-preload("res://Scenes/communer.tscn"), \
+preload("res://Scenes/guard.tscn"), \
+preload("res://Scenes/joker.tscn"), \
+preload("res://Scenes/pleb.tscn"), \
 preload("res://Scenes/noble.tscn")]
 
 func _ready() -> void:

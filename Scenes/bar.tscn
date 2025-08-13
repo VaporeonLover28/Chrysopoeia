@@ -5,9 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://j4nby41rkhr3" path="res://Scenes/sit_positions.tscn" id="3_uypo1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ggknq"]
+resource_local_to_scene = true
 albedo_color = Color(0.59, 0.3245, 0, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_n8sa8"]
+[sub_resource type="BoxMesh" id="BoxMesh_xgyi3"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_ggknq")
 size = Vector3(5, 1, 1)
 
@@ -25,7 +27,7 @@ metadata/_custom_type_script = "uid://d3kiv4p05usnv"
 [node name="Node3D" type="Node3D" parent="Model"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model/Node3D"]
-mesh = SubResource("BoxMesh_n8sa8")
+mesh = SubResource("BoxMesh_xgyi3")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Model"]

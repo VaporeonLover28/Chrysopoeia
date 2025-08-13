@@ -206,7 +206,7 @@ func _build():
 	if can_build == true:
 		print("oi")
 		var instantiate_object = current_object_being_purchased.instantiate()
-		instantiate_object.global_position = ray_builder.get_collider().get_parent().global_position
+		instantiate_object.global_position = ray_builder.get_collider().get_parent().global_position - Vector3(0, 1, 0)
 		instantiate_object.rotation = ray_builder.get_child(0).rotation
 		ray_builder.get_child(0).queue_free()
 		world_scene.get_node("NavigationRegion3D").get_node("All Interactable Spots").add_child(instantiate_object)

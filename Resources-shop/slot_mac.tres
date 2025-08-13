@@ -7,7 +7,8 @@
 script = ExtResource("2_tocq8")
 item_type = "Objects"
 name = "Slot Machine"
-price = 100
+price = 90
 description = "Good ol' time classic"
 item_scene = ExtResource("1_627h5")
+usable = true
 metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"
