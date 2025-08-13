@@ -1,18 +1,26 @@
 extends CanvasLayer
 
+@onready var shop_menu: CanvasLayer = $"../Shop Menu"
+
 func _ready() -> void:
 	visible = false
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		visible = true
-		get_tree().paused = true
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if !visible:
+		if event.is_action_pressed("esc") and !shop_menu.visible and !get_tree().paused:
+			visible = true
+			get_tree().paused = true
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	else:
+		resume()
 
-func _on_button_resume_pressed() -> void:
+func resume():
 	Globals.game_paused = false
 	get_tree().paused = false
 	visible = false
+
+func _on_button_resume_pressed() -> void:
+	resume()
 
 func _on_button_settings_pressed() -> void:
 	pass 
