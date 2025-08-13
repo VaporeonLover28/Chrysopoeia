@@ -11,6 +11,8 @@ var chosen_sitting_transition: Marker3D
 var player_is_sitting = false
 var save_player_ref : CharacterBody3D
 
+var characters_sitting_count: int = 0
+
 
 var tween : Tween
 
@@ -38,6 +40,8 @@ func _sit_character(object_ref):
 				chosen_sitting_position = item 
 				smallest_distance = object_ref.global_position.distance_to(self.get_child(item).global_position)
 		chair_postion_list[chosen_sitting_position][1] = false
+		chair_postion_list[chosen_sitting_position].push_back(object_ref)
+		characters_sitting_count += 1
 		if object_ref.name == "Player":
 			chosen_sitting_transition = self.get_child(chosen_sitting_position)
 			save_player_ref = object_ref
@@ -57,6 +61,8 @@ func _stand_character_up(object_ref):
 				chosen_sitting_position = item 
 				smallest_distance = object_ref.global_position.distance_to(self.get_child(item).global_position)
 	chair_postion_list[chosen_sitting_position][1] = true
+	chair_postion_list[chosen_sitting_position].remove_at(3)
+	characters_sitting_count -= 1
 	if object_ref == save_player_ref:
 		Globals.player_interacting = false
 		player_is_sitting = false

@@ -17,6 +17,18 @@ func _interact_GambleSpot(object_ref):
 	if object_ref.name == "Player":
 		await get_tree().create_timer(0.75).timeout
 		loading_screen(game_machice_scene)
+		for item in sit_positions.chair_postion_list:
+			var save_character: Array
+			if item[3] != null:
+				save_character.push_back(item[3].npc_name)
+				save_character.push_back(item[3].money)
+				Globals.transiting_characters_to_gamble.push_back(save_character)
+		for item in get_node("Walking_NPCs").get_children():
+			var save_npcs_info : Array
+			save_npcs_info.push_back(item.scene_file_path)
+			save_npcs_info.push_back(item.global_position)
+			Globals.transiting_characters_to_gamble.push_back(save_npcs_info)
+		
 	
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("e") and sit_positions.player_is_sitting == true:

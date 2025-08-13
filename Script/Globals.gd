@@ -11,6 +11,9 @@ var money: int = 1000:
 			money += 110
 			aqua_philosophorum_timer.stop()
 		money = new_value
+		
+var transiting_characters_to_gamble: Array[Array]
+var save_npcs_pos: Array[Array]
 
 var money_lost: int = -1
 var spell_inventory_list: Array[PurchasableItemResource]

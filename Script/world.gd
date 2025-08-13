@@ -38,12 +38,15 @@ func _ready() -> void:
 				all_interactable_spots.add_child(instantiate_interactable)
 			print(new_config.get_value("Player", "position"))
 			player.global_position = new_config.get_value("Player", "position")
-			for item in new_config.get_value("NPC", "count") - 1:
-				var instantiate_npc = npc.instantiate()
-				instantiate_npc.global_position = new_config.get_value("NPC", "position")[item]
+			for item in new_config.get_value("NPC", "info"):
+				var instantiate_npc = load(item[0]).instantiate()
+				instantiate_npc.global_position = item[1]
 				walking_npcs.add_child(instantiate_npc)
-		else:
-			return
+	elif Globals.save_npcs_pos.is_empty() != false:
+		for item in Globals.save_npcs_pos:
+			var instantiate_npc = load(item[0]).instantiate()
+			instantiate_npc.global_position = item[1]
+			walking_npcs.add_child(instantiate_npc)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("z"):
