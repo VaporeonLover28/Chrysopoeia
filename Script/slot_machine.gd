@@ -194,7 +194,7 @@ func spell_cast(spell : String):
 			fortune = 1
 
 func _on_input_area_body_entered(body: Node3D) -> void:
-	if Globals.fortuna_in_spell_list and body.name == "Player":
+	if Globals.check_spell_available("Fortune") and body.name == "Player":
 		Globals.fortuna_target = self
 		input_prompt.visible = true
 

@@ -22,7 +22,6 @@ var ring_unlock: bool = false
 @onready var aqua_regia_timer: Timer
 @onready var aqua_philosophorum_timer: Timer
 
-var fortuna_in_spell_list := true
 var fortuna_target : Node3D
 
 func _ready() -> void:
@@ -47,24 +46,25 @@ func _ready() -> void:
 	self.add_child(aqua_philosophorum_timer_inst)
 	
 func check_spell_available(spell_name : String):
-	var spell_found := false
-	var spell_not_cd := false
-	for spell in spell_inventory_list:
-		if !spell_found:
-			if spell_name == spell.name:
-				print("spell found")
-				spell_found = true
-				if spell.usable:
-					spell_not_cd = true
-					print("spell available")
+	if spell_inventory_list[0] != null:
+		var spell_found := false
+		var spell_not_cd := false
+		for spell in spell_inventory_list:
+			if !spell_found:
+				if spell_name == spell.name:
+					print("spell found")
+					spell_found = true
+					if spell.usable:
+						spell_not_cd = true
+						print("spell available")
+					else:
+						print("spell in inv, on cooldown")
 				else:
-					print("spell in inv, on cooldown")
-			else:
-				print("not spell")
-	if spell_found and spell_not_cd:
-		return true
-	else:
-		return false
+					print("not spell")
+		if spell_found and spell_not_cd:
+			return true
+		else:
+			return false
 
 func cooldown_spell(spell_name : String):
 	for spell in spell_inventory_list:
