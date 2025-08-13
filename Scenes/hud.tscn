@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cplllnfhtikkb"]
+[gd_scene load_steps=7 format=3 uid="uid://cplllnfhtikkb"]
 
 [ext_resource type="Script" uid="uid://cdp52ym80e577" path="res://Scenes/hud.gd" id="1_6fbih"]
 [ext_resource type="Texture2D" uid="uid://brg6gjvw3r7rf" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Double/keyboard_quote_outline.png" id="1_e0onf"]
 [ext_resource type="Texture2D" uid="uid://bpctb6libewyu" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_s.png" id="2_bjfho"]
 [ext_resource type="Texture2D" uid="uid://wetbh3qngmmh" path="res://Assets/Originals/spellot.png" id="4_t1xeu"]
+[ext_resource type="Texture2D" uid="uid://cqdwkdpitgsxa" path="res://Assets/Originals/Spells/philos_shard.png" id="5_36asn"]
 [ext_resource type="FontFile" uid="uid://paxjlxvek7jf" path="res://Assets/Fonts/ransite_medieval/RansiteMedieval_PERSONAL_USE_ONLY.otf" id="5_t1xeu"]
 
 [node name="HUD" type="CanvasLayer"]
@@ -48,7 +49,6 @@ vertical_alignment = 1
 offset_top = 492.0
 offset_right = 301.0
 offset_bottom = 652.0
-scale = Vector2(0.9, 0.977)
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
@@ -71,7 +71,7 @@ offset_top = 27.865
 offset_right = 100.98
 offset_bottom = 102.865
 rotation = 0.000886541
-expand_mode = 2
+texture = ExtResource("5_36asn")
 
 [node name="name" type="RichTextLabel" parent="spells/magic_box/slot_1"]
 custom_minimum_size = Vector2(125, 50)
@@ -96,15 +96,16 @@ texture = ExtResource("4_t1xeu")
 stretch_mode = 3
 
 [node name="spell" type="TextureRect" parent="spells/magic_box/slot_2"]
+layout_mode = 0
 offset_left = 25.98
 offset_top = 27.865
 offset_right = 100.98
 offset_bottom = 102.865
 rotation = 0.000886541
-expand_mode = 2
 
 [node name="name" type="RichTextLabel" parent="spells/magic_box/slot_2"]
 custom_minimum_size = Vector2(125, 50)
+layout_mode = 0
 offset_top = -50.824
 offset_right = 128.0
 offset_bottom = -0.824001

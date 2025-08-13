@@ -71,7 +71,7 @@ func _buy_item(object_being_purchased: Control):
 			if object_being_purchased.item_resource.name == "Chipped Key" and PurchasableItemList.item_list_level <= 3:
 				Globals.ring_unlock = true
 				ring_door.bought_ring_key.emit()
-			elif Globals.spell_inventory_list[0] == null or Globals.spell_inventory_list[1] == null:
+			elif Globals.spell_inventory_list.size() < 2:
 				Globals.spell_inventory_list.push_front(object_being_purchased.item_resource)
 				update_hud.emit()
 			else:

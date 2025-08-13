@@ -28,8 +28,6 @@ var ring_unlock: bool = false
 var fortuna_target : Node3D
 
 func _ready() -> void:
-	spell_inventory_list.resize(2)
-	
 	var aqua_vitae_timer_inst = Timer.new()
 	aqua_vitae_timer_inst.one_shot = true
 	aqua_vitae_timer_inst.name = "Aqua Vitae Timer"
@@ -53,6 +51,8 @@ func check_spell_available(spell_name : String):
 		var spell_found := false
 		var spell_not_cd := false
 		for spell in spell_inventory_list:
+			print(spell_inventory_list)
+			print(spell)
 			if !spell_found:
 				if spell_name == spell.name:
 					print("spell found")

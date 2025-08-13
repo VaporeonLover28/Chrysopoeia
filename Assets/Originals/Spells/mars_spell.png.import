@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqdwkdpitgsxa"
-path="res://.godot/imported/philos_shard.png-735cff97e429a40c3de38323e94185e6.ctex"
+uid="uid://b1ny0535iw3bb"
+path="res://.godot/imported/mars_spell.png-f17da0bbab95e907e57052c8a1fa9755.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Originals/philos_shard.png"
-dest_files=["res://.godot/imported/philos_shard.png-735cff97e429a40c3de38323e94185e6.ctex"]
+source_file="res://Assets/Originals/Spells/mars_spell.png"
+dest_files=["res://.godot/imported/mars_spell.png-f17da0bbab95e907e57052c8a1fa9755.ctex"]
 
 [params]
 

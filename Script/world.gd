@@ -52,7 +52,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("z"):
 		SaveScript._save_function(self, 0)
 	if Input.is_action_just_pressed("x"):
-		SaveScript._load_function(self, 0)
+		SaveScript._load_function(0)
 		
 func _spawn_npc():
 	is_trying_to_spawn_npc = true

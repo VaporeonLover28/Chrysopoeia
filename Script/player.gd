@@ -90,9 +90,10 @@ func _physics_process(delta: float) -> void:
 		Globals.game_paused == false:
 			world_scene.get_node("Shop Menu").get_child(0)._show_shop_menu()
 		
-		if Input.is_action_just_pressed("f") and Globals.fortuna_in_spell_list and \
+		if Input.is_action_just_pressed("f") and Globals.check_spell_available("Wheel of Fortune") and \
 		Globals.fortuna_target != null:
-			Globals.fortuna_target.spell_cast("Fortune")
+			Globals.fortuna_target.spell_cast("Wheel of Fortune")
+			Globals.fortuna_target.input_disappear()
 	else:
 		if Input.is_action_just_pressed("rightclick"):
 			_build()

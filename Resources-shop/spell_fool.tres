@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=3 format=3 uid="uid://bpvpbmep1p0gl"]
 
 [ext_resource type="Script" uid="uid://dtrrlkl8w8gkb" path="res://Script/purchasable_itens_resource.gd" id="1_cg2b6"]
-[ext_resource type="Texture2D" uid="uid://bbtb2l43wx0m2" path="res://Assets/Originals/fabbri1.png" id="1_txebl"]
+[ext_resource type="Texture2D" uid="uid://bs3lcesvirnti" path="res://Assets/Originals/fool-gold.png" id="1_txebl"]
 
 [resource]
 script = ExtResource("1_cg2b6")
@@ -10,4 +10,5 @@ name = "Fool's Gold"
 price = 444
 description = ""
 item_sprite = ExtResource("1_txebl")
+usable = true
 metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"

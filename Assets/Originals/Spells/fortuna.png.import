@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c7nlcwkqj6lvh"
-path="res://.godot/imported/fortuna.png-622f2b108e69f5c15107fcbe4cc4e7d3.ctex"
+path="res://.godot/imported/fortuna.png-35e881e10ad2a22c65d2a2370446217e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Originals/fortuna.png"
-dest_files=["res://.godot/imported/fortuna.png-622f2b108e69f5c15107fcbe4cc4e7d3.ctex"]
+source_file="res://Assets/Originals/Spells/fortuna.png"
+dest_files=["res://.godot/imported/fortuna.png-35e881e10ad2a22c65d2a2370446217e.ctex"]
 
 [params]
 

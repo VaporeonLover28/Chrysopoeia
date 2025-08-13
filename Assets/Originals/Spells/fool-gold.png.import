@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv4htlblj520d"
-path="res://.godot/imported/providence.png-5c1ed9d365ded69dabe4f889603d5dee.ctex"
+uid="uid://bs3lcesvirnti"
+path="res://.godot/imported/fool-gold.png-76c06d55a06b2508c2a28d0191e9a16c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Originals/providence.png"
-dest_files=["res://.godot/imported/providence.png-5c1ed9d365ded69dabe4f889603d5dee.ctex"]
+source_file="res://Assets/Originals/Spells/fool-gold.png"
+dest_files=["res://.godot/imported/fool-gold.png-76c06d55a06b2508c2a28d0191e9a16c.ctex"]
 
 [params]
 

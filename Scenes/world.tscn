@@ -172,8 +172,6 @@ environment = SubResource("Environment_6uqi0")
 [node name="NPC" parent="Walking_NPCs" instance=ExtResource("3_tlwt5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.125, 1, -12.822)
 npc_name = null
-minimum_money = null
-maximum_money = null
 
 [node name="Enter point for npc" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.83101, 0.894929, -12.503)

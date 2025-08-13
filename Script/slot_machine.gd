@@ -193,8 +193,12 @@ func spell_cast(spell : String):
 		else:
 			fortune = 1
 
+func input_disappear():
+	Globals.fortuna_target = null
+	input_prompt.visible = false
+
 func _on_input_area_body_entered(body: Node3D) -> void:
-	if Globals.check_spell_available("Fortune") and body.name == "Player":
+	if Globals.check_spell_available("Wheel of Fortune") and body.name == "Player":
 		Globals.fortuna_target = self
 		input_prompt.visible = true
 

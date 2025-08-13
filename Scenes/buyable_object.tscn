@@ -66,6 +66,7 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_bxvvs")
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Panel"]
+texture_filter = 1
 layout_mode = 2
 anchor_right = 1.022
 anchor_bottom = 1.026
