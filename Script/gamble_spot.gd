@@ -23,11 +23,13 @@ func _interact_GambleSpot(object_ref):
 				print("pushou")
 				save_character.push_back(item[2].npc_name)
 				save_character.push_back(item[2].money)
+				save_character.push_back(item[2].get_index())
 				Globals.transiting_characters_to_gamble.push_back(save_character)
 		for item in world.get_node("Walking_NPCs").get_children():
 			var save_npcs_info : Array
 			save_npcs_info.push_back(item.scene_file_path)
 			save_npcs_info.push_back(item.global_position)
+			save_npcs_info.push_back(item.get_index())
 			Globals.save_npcs_pos.push_back(save_npcs_info)
 		
 	

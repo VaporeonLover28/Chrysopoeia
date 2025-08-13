@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3s2n2c0uwlfu"]
+
+[ext_resource type="Texture2D" uid="uid://wetbh3qngmmh" path="res://Assets/Originals/spellot.png" id="1_ag6sv"]
+[ext_resource type="Texture2D" uid="uid://pov62jfwgcqy" path="res://icon.svg" id="2_s6pbt"]
+
+[node name="Inv_Full_Choice" type="PanelContainer"]
+offset_left = 349.0
+offset_top = -274.0
+offset_right = 749.0
+offset_bottom = 27.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Choose_Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 27
+text = "Your spell inventory is full!
+Choose a slot to replace:"
+horizontal_alignment = 1
+
+[node name="Margin" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 2
+theme_override_constants/margin_left = 56
+theme_override_constants/margin_top = 45
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="slot1" type="TextureButton" parent="VBoxContainer/Margin/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_ag6sv")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Margin/HBoxContainer/slot1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.312
+anchor_bottom = 0.229
+offset_left = 33.0
+offset_top = 30.0
+offset_right = 121.064
+offset_bottom = 117.925
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("2_s6pbt")
+
+[node name="slot2" type="TextureButton" parent="VBoxContainer/Margin/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_ag6sv")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Margin/HBoxContainer/slot2"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 32.0
+offset_right = 162.0
+offset_bottom = 160.0
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("2_s6pbt")

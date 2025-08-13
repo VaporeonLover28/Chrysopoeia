@@ -37,17 +37,26 @@ func _ready() -> void:
 				instantiate_interactable.global_position = new_config.get_value("Scene", "interactable")[item][1]
 				instantiate_interactable.rotation = new_config.get_value("Scene", "interactable")[item][2]
 				all_interactable_spots.add_child(instantiate_interactable)
-			print(new_config.get_value("Player", "position"))
 			player.global_position = new_config.get_value("Player", "position")
+			print(new_config.get_value("NPC", "info"))
+			## proxima linha é só pra testar	
+			$Walking_NPCs/NPC.queue_free()
 			for item in new_config.get_value("NPC", "info"):
 				var instantiate_npc = load(item[0]).instantiate()
 				instantiate_npc.global_position = item[1]
 				walking_npcs.add_child(instantiate_npc)
-	elif Globals.save_npcs_pos.is_empty() != false:
+	elif Globals.save_npcs_pos.is_empty() != true:
+		var counter
 		for item in Globals.save_npcs_pos:
+			
 			var instantiate_npc = load(item[0]).instantiate()
 			instantiate_npc.global_position = item[1]
 			walking_npcs.add_child(instantiate_npc)
+			if walking_npcs.get_child(-1).get_index() == Globals.transiting_characters_to_gamble[counter][2]:
+				walking_npcs.get_child(-1).money == Globals.transiting_characters_to_gamble[counter][1]
+			counter =+ 1
+		Globals.transiting_characters_to_gamble = []
+		Globals.save_npcs_pos = []
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("z"):
