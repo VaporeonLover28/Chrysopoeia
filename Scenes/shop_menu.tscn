@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://ltp3jvrek5bh"]
+[gd_scene load_steps=12 format=3 uid="uid://ltp3jvrek5bh"]
 
 [ext_resource type="Script" uid="uid://mh8h7xo4eso6" path="res://Script/shop.gd" id="1_xysl7"]
 [ext_resource type="Texture2D" uid="uid://wetbh3qngmmh" path="res://Assets/Originals/spellot.png" id="2_jhj42"]
+[ext_resource type="Texture2D" uid="uid://b8o8bfecik2rk" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_x_outline.png" id="2_xdhm7"]
 [ext_resource type="Texture2D" uid="uid://pov62jfwgcqy" path="res://icon.svg" id="3_lvwfa"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c2pxs"]
@@ -58,6 +59,7 @@ theme_override_constants/margin_top = 25
 
 [node name="Top_Bar" type="HBoxContainer" parent="Shop/Margin"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="Shop_Tabs" type="TabContainer" parent="Shop/Margin/Top_Bar"]
 layout_mode = 2
@@ -78,6 +80,8 @@ offset_bottom = 555.596
 grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_c2pxs")
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Shop/Margin/Top_Bar/Shop_Tabs/Games/ScrollContainer"]
 layout_mode = 2
@@ -96,6 +100,8 @@ offset_right = 1102.0
 offset_bottom = 549.0
 grow_horizontal = 2
 grow_vertical = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Shop/Margin/Top_Bar/Shop_Tabs/Decoration/ScrollContainer"]
 layout_mode = 2
@@ -114,6 +120,7 @@ offset_right = 1102.0
 offset_bottom = 549.0
 grow_horizontal = 2
 grow_vertical = 2
+horizontal_scroll_mode = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Shop/Margin/Top_Bar/Shop_Tabs/Spells/ScrollContainer"]
 layout_mode = 2
@@ -122,12 +129,21 @@ size_flags_vertical = 8
 
 [node name="VSeparator" type="VSeparator" parent="Shop/Margin/Top_Bar"]
 layout_mode = 2
-theme_override_constants/separation = 650
+theme_override_constants/separation = 635
 theme_override_styles/separator = SubResource("StyleBoxEmpty_h1qh4")
 
 [node name="Money_Label" type="Label" parent="Shop/Margin/Top_Bar"]
 layout_mode = 2
 text = "Money: "
+
+[node name="VSeparator2" type="VSeparator" parent="Shop/Margin/Top_Bar"]
+layout_mode = 2
+theme_override_constants/separation = -15
+theme_override_styles/separator = SubResource("StyleBoxEmpty_h1qh4")
+
+[node name="Quit_button" type="TextureButton" parent="Shop/Margin/Top_Bar"]
+layout_mode = 2
+texture_normal = ExtResource("2_xdhm7")
 
 [node name="Inv_Full_Choice" type="PanelContainer" parent="."]
 offset_left = 341.0
@@ -186,3 +202,5 @@ offset_bottom = 160.0
 scale = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("3_lvwfa")
+
+[connection signal="pressed" from="Shop/Margin/Top_Bar/Quit_button" to="Shop" method="_on_quit_button_pressed"]

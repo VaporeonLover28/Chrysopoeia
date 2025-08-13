@@ -4,7 +4,7 @@ extends Node
 @onready var decoration_list : Array[PurchasableItemResource] = []
 @onready var spell_list : Array[PurchasableItemResource]
 
-var item_list_level : int = 0:
+var item_list_level : int = 4:
 	set(new_value):
 		item_list_level = new_value
 		update_item_list()

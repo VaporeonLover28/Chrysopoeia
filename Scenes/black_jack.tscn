@@ -130,7 +130,7 @@ metadata/_custom_type_script = "uid://d33jhadxc2lv5"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.947, 0)
 
 [node name="Mesa_blackjack" type="Node3D" parent="Model"]
-transform = Transform3D(0.248187, 0, 0, 0, 0.248187, 0, 0, 0, 0.248187, 0, -0.893, 0)
+transform = Transform3D(0.248187, 0, 0, 0, 0.248187, 0, 0, 0, 0.248187, 0, -0.897969, 0)
 
 [node name="Cylinder_002" type="MeshInstance3D" parent="Model/Mesa_blackjack"]
 transform = Transform3D(1.2, 0, 0, 0, 0.128186, 0, 0, 0, 1.2, 0, -0.0681063, 0)

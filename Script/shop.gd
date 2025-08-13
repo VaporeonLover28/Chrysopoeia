@@ -17,7 +17,11 @@ signal update_hud
 
 func _ready() -> void:
 	get_parent().visible = false
-	
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("esc") and get_parent().visible:
+		hide_shop_menu()
+
 func _show_shop_menu():
 	get_parent().visible = true
 	Globals.game_paused = true
@@ -52,6 +56,22 @@ func _show_shop_menu():
 			instanciated_item.position.x += 245 + (item * 245)
 			spell_h_box_container.add_child(instanciated_item)
 			
+
+func hide_shop_menu():
+	get_parent().visible = false
+	Globals.game_paused = false
+		
+	if games_h_box_container.get_child_count() > 0:
+		for item in games_h_box_container.get_child_count():
+			games_h_box_container.get_child(item- 1).queue_free()
+		
+	if decoration_h_box_container.get_child_count() > 0:
+		for item in decoration_h_box_container.get_child_count():
+			decoration_h_box_container.get_child(item- 1).queue_free()
+
+	if spell_h_box_container.get_child_count() > 0:
+		for item in spell_h_box_container.get_child_count():
+			spell_h_box_container.get_child(item- 1).queue_free()
 
 func _buy_item(object_being_purchased: Control):
 	if object_being_purchased.item_resource.price <= Globals.money:
@@ -93,22 +113,12 @@ func _buy_item(object_being_purchased: Control):
 			["Chipped Key", 2]:
 				PurchasableItemList.item_list_level += 1
 	
-	get_parent().visible = false
-	Globals.game_paused = false
-		
-	if games_h_box_container.get_child_count() > 0:
-		for item in games_h_box_container.get_child_count():
-			games_h_box_container.get_child(item- 1).queue_free()
-		
-	if decoration_h_box_container.get_child_count() > 0:
-		for item in decoration_h_box_container.get_child_count():
-			decoration_h_box_container.get_child(item- 1).queue_free()
-
-	if spell_h_box_container.get_child_count() > 0:
-		for item in spell_h_box_container.get_child_count():
-			spell_h_box_container.get_child(item- 1).queue_free()
+	hide_shop_menu()
 
 func _choose_spell_to_change(spell_choosen: PurchasableItemResource):
 	var spell_to_remove = Globals.spell_inventory_list.find(spell_choosen)
 	Globals.spell_inventory_list.remove_at(spell_to_remove)
 	wait_for_spell_change.emit()
+
+func _on_quit_button_pressed() -> void:
+	hide_shop_menu()
