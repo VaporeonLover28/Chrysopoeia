@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=3 format=3 uid="uid://bltltrlpmdlk1"]
 
 [ext_resource type="Script" uid="uid://dtrrlkl8w8gkb" path="res://Script/purchasable_itens_resource.gd" id="1_32hlx"]
-[ext_resource type="Texture2D" uid="uid://b1ny0535iw3bb" path="res://Assets/Originals/mars_spell.png" id="1_muh6c"]
+[ext_resource type="Texture2D" uid="uid://b1ny0535iw3bb" path="res://Assets/Originals/Spells/mars_spell.png" id="1_muh6c"]
 
 [resource]
 script = ExtResource("1_32hlx")
 item_type = "Spells"
 name = "Mars"
 price = 200
-description = "War."
+description = "Mars, god of war. Strengthens your homunculus."
 item_sprite = ExtResource("1_muh6c")
 usable = true
 metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"

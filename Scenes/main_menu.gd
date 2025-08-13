@@ -3,7 +3,7 @@ extends Control
 func _ready() -> void:
 	MusicPlayer.menutheme.play()
 func _on_start_btn_pressed() -> void:
-	MusicPlayer.menutheme.play()
+	MusicPlayer.menutheme.stop()
 	get_tree().change_scene_to_file("res://Scenes/world.tscn")
 	
 func _on_load_btn_pressed() -> void:

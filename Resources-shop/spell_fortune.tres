@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=3 format=3 uid="uid://feupwn4se2kr"]
 
 [ext_resource type="Script" uid="uid://dtrrlkl8w8gkb" path="res://Script/purchasable_itens_resource.gd" id="1_engqh"]
-[ext_resource type="Texture2D" uid="uid://c7nlcwkqj6lvh" path="res://Assets/Originals/fortuna.png" id="1_uc2ik"]
+[ext_resource type="Texture2D" uid="uid://c7nlcwkqj6lvh" path="res://Assets/Originals/Spells/fortuna.png" id="1_uc2ik"]
 
 [resource]
 script = ExtResource("1_engqh")
 item_type = "Spells"
 name = "Wheel of Fortune"
 price = 600
-description = ""
+description = "\"Philosophers say that Fortune is insane and blind and stupid,and they teach that she stands on a rolling, spherical rock.\" Doubles slot machine spins."
 item_sprite = ExtResource("1_uc2ik")
 usable = true
 metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"

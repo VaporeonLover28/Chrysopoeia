@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Lament of the War - Lossless FLAC.mp3-8ec6745
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

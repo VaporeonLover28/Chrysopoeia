@@ -7,8 +7,8 @@
 script = ExtResource("2_jxxxt")
 item_type = "Objects"
 name = "Candlestick"
-price = 1
-description = "aaaaaaaahhhhh"
+price = 50
+description = "A common light source for fancy tables."
 item_scene = ExtResource("1_yd803")
 usable = true
 metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"
