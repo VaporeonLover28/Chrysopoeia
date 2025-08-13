@@ -13,6 +13,7 @@ extends Control
 @onready var ring_door = $"../../NavigationRegion3D/cassino/door4"
 
 signal wait_for_spell_change
+signal update_hud
 
 func _ready() -> void:
 	get_parent().visible = false
@@ -52,13 +53,12 @@ func _show_shop_menu():
 			spell_h_box_container.add_child(instanciated_item)
 			
 
-func _buy_item(object_being_purchase: Control):
-	if object_being_purchase.item_resource.price <= Globals.money:
-		Globals.money -= object_being_purchase.item_resource.price
-		print("primeiro if rodou")
-		if object_being_purchase.item_resource.item_type == "Objects":
-			world_scene.get_node("Player")._start_bulding_phase(object_being_purchase.item_resource.item_scene)
-			match [object_being_purchase.item_resource.name, PurchasableItemList.item_list_level]:
+func _buy_item(object_being_purchased: Control):
+	if object_being_purchased.item_resource.price <= Globals.money:
+		Globals.money -= object_being_purchased.item_resource.price
+		if object_being_purchased.item_resource.item_type == "Objects":
+			world_scene.get_node("Player")._start_bulding_phase(object_being_purchased.item_resource.item_scene)
+			match [object_being_purchased.item_resource.name, PurchasableItemList.item_list_level]:
 				["Slot Machine", 0]:
 					PurchasableItemList.item_list_level += 1
 				["Black jack", 1]:
@@ -68,12 +68,12 @@ func _buy_item(object_being_purchase: Control):
 				["Chipped Key", 3]:
 					PurchasableItemList.item_list_level += 1
 		else:
-			if object_being_purchase.item_resource.name == "Chipped Key" and PurchasableItemList.item_list_level <= 3:
-				print("deveria ter aberto o ringue")
+			if object_being_purchased.item_resource.name == "Chipped Key" and PurchasableItemList.item_list_level <= 3:
 				Globals.ring_unlock = true
 				ring_door.bought_ring_key.emit()
-			elif Globals.spell_inventory_list.size() < 2:
-				Globals.spell_inventory_list.push_front(object_being_purchase.item_resource)
+			elif Globals.spell_inventory_list[0] == null or Globals.spell_inventory_list[1] == null:
+				Globals.spell_inventory_list.push_front(object_being_purchased.item_resource)
+				update_hud.emit()
 			else:
 				spell_slot1.texture = Globals.spell_inventory_list[0].item_sprite
 				spell_slot1.get_parent().connect("pressed", _choose_spell_to_change.bind(Globals.spell_inventory_list[0]))
@@ -82,9 +82,10 @@ func _buy_item(object_being_purchase: Control):
 				shop_tabs.visible = false
 				spell_option_box_container.visible = true
 				await wait_for_spell_change
-				Globals.spell_inventory_list.push_front(object_being_purchase.item_resource)
+				Globals.spell_inventory_list.push_front(object_being_purchased.item_resource)
+				update_hud.emit()
 				
-		match [object_being_purchase.item_resource.name, PurchasableItemList.item_list_level]:
+		match [object_being_purchased.item_resource.name, PurchasableItemList.item_list_level]:
 			["Slot Machine", 0]:
 				PurchasableItemList.item_list_level += 1
 			["Black jack", 1]:

@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=2 format=3 uid="uid://br68s7kx7q8yy"]
+[gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=3 format=3 uid="uid://br68s7kx7q8yy"]
 
+[ext_resource type="Texture2D" uid="uid://bbtb2l43wx0m2" path="res://Assets/Originals/fabbri1.png" id="1_3ei7p"]
 [ext_resource type="Script" uid="uid://dtrrlkl8w8gkb" path="res://Script/purchasable_itens_resource.gd" id="1_bh16a"]
 
 [resource]
@@ -8,4 +9,5 @@ item_type = "Spells"
 name = "Eye of Providence"
 price = 250
 description = ""
+item_sprite = ExtResource("1_3ei7p")
 metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"

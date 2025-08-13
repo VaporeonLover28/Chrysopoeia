@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://beywp328cnlsb"]
 
 [ext_resource type="FontFile" uid="uid://bubxb3wcmbboy" path="res://Assets/Fonts/comic-sans-ms-font-family/COMIC.TTF" id="1_8y3bf"]
-[ext_resource type="Script" uid="uid://bsdwv4wmtifxo" path="res://Script/match_tie_test.gd" id="1_c4djq"]
+[ext_resource type="Script" path="res://Script/match_tie_test.gd" id="1_c4djq"]
 
 [node name="match_tie_test" type="CanvasLayer"]
 script = ExtResource("1_c4djq")
@@ -50,6 +50,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Money_Won_Label" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = 471.0
 offset_top = 307.0
 offset_right = 634.0

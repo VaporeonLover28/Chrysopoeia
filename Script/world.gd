@@ -45,7 +45,7 @@ func _ready() -> void:
 		else:
 			return
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("z"):
 		SaveScript._save_function(self, 0)
 	if Input.is_action_just_pressed("x"):

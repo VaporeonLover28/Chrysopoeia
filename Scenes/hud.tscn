@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cplllnfhtikkb"]
+[gd_scene load_steps=6 format=3 uid="uid://cplllnfhtikkb"]
 
+[ext_resource type="Script" uid="uid://cdp52ym80e577" path="res://Scenes/hud.gd" id="1_6fbih"]
 [ext_resource type="Texture2D" uid="uid://brg6gjvw3r7rf" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Double/keyboard_quote_outline.png" id="1_e0onf"]
 [ext_resource type="Texture2D" uid="uid://bpctb6libewyu" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_s.png" id="2_bjfho"]
-[ext_resource type="Texture2D" uid="uid://unl6u2wtkrw1" path="res://Assets/Exports/kenney_input-prompts_1.4/Flairs/Double/flair_circle_8.png" id="2_fccik"]
+[ext_resource type="Texture2D" uid="uid://wetbh3qngmmh" path="res://Assets/Originals/spellot.png" id="4_t1xeu"]
+[ext_resource type="FontFile" uid="uid://paxjlxvek7jf" path="res://Assets/Fonts/ransite_medieval/RansiteMedieval_PERSONAL_USE_ONLY.otf" id="5_t1xeu"]
 
 [node name="HUD" type="CanvasLayer"]
 process_mode = 3
+script = ExtResource("1_6fbih")
 
 [node name="pause" type="TextureRect" parent="."]
 offset_right = 40.0
@@ -41,20 +44,76 @@ text = "Shop
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="magic_panel" type="PanelContainer" parent="."]
-offset_top = 520.0
-offset_right = 260.0
-offset_bottom = 648.0
+[node name="spells" type="MarginContainer" parent="."]
+offset_top = 492.0
+offset_right = 301.0
+offset_bottom = 652.0
+scale = Vector2(0.9, 0.977)
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
 
-[node name="magic_box" type="HBoxContainer" parent="magic_panel"]
+[node name="magic_box" type="HBoxContainer" parent="spells"]
 layout_mode = 2
+theme_override_constants/separation = 15
 
-[node name="spell1" type="TextureRect" parent="magic_panel/magic_box"]
+[node name="slot_1" type="TextureRect" parent="spells/magic_box"]
+texture_filter = 1
 layout_mode = 2
-texture = ExtResource("2_fccik")
+texture = ExtResource("4_t1xeu")
 stretch_mode = 3
 
-[node name="spell2" type="TextureRect" parent="magic_panel/magic_box"]
+[node name="spell" type="TextureRect" parent="spells/magic_box/slot_1"]
+layout_mode = 0
+offset_left = 25.98
+offset_top = 27.865
+offset_right = 100.98
+offset_bottom = 102.865
+rotation = 0.000886541
+expand_mode = 2
+
+[node name="name" type="RichTextLabel" parent="spells/magic_box/slot_1"]
+custom_minimum_size = Vector2(125, 50)
+layout_mode = 0
+offset_top = -50.824
+offset_right = 128.0
+offset_bottom = -0.824001
+theme_override_fonts/normal_font = ExtResource("5_t1xeu")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "[wave amp=50.0 freq=5.0 connected=1]Spell Name[/wave]"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="slot_2" type="TextureRect" parent="spells/magic_box"]
+texture_filter = 1
 layout_mode = 2
-texture = ExtResource("2_fccik")
+texture = ExtResource("4_t1xeu")
 stretch_mode = 3
+
+[node name="spell" type="TextureRect" parent="spells/magic_box/slot_2"]
+offset_left = 25.98
+offset_top = 27.865
+offset_right = 100.98
+offset_bottom = 102.865
+rotation = 0.000886541
+expand_mode = 2
+
+[node name="name" type="RichTextLabel" parent="spells/magic_box/slot_2"]
+custom_minimum_size = Vector2(125, 50)
+offset_top = -50.824
+offset_right = 128.0
+offset_bottom = -0.824001
+theme_override_fonts/normal_font = ExtResource("5_t1xeu")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "[wave amp=40.0 freq=5.0 connected=1]Spell Name[/wave]"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -117,7 +117,7 @@ func _process(delta: float) -> void:
 		
 		if Input.is_action_just_pressed("tab") and available_mars > 0:
 			available_mars -= 1
-			spell_cast()
+			spell_cast("Mars")
 		
 		if !match_ended:
 			if non_player_bet_creature.dead:
@@ -223,13 +223,15 @@ func chain_pull():
 		non_player_bet_creature.sprite.play("default")
 		inactivity.start(chain_cooldown)
 
-func spell_cast():
-	##Choosing if mars worked or not
-	var spell_worked = randi_range(1, 4)
-	if spell_worked == 4:
-		player_bet_creature.failed_mars()
-	else:
-		player_bet_creature.mars()
+func spell_cast(spell):
+	if Globals.check_spell_available(spell):
+		Globals.cooldown_spell(spell)
+		##Choosing if mars worked or not
+		var spell_worked = randi_range(1, 4)
+		if spell_worked == 4:
+			player_bet_creature.failed_mars()
+		else:
+			player_bet_creature.mars()
 
 func end_match():
 	match_ended = true

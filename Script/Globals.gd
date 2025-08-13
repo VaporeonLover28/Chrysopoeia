@@ -26,6 +26,8 @@ var fortuna_in_spell_list := true
 var fortuna_target : Node3D
 
 func _ready() -> void:
+	spell_inventory_list.resize(2)
+	
 	var aqua_vitae_timer_inst = Timer.new()
 	aqua_vitae_timer_inst.one_shot = true
 	aqua_vitae_timer_inst.name = "Aqua Vitae Timer"
@@ -44,19 +46,39 @@ func _ready() -> void:
 	aqua_philosophorum_timer = aqua_philosophorum_timer_inst
 	self.add_child(aqua_philosophorum_timer_inst)
 	
-func _see_if_has_specific_spell( spell_name : String):
-	for item in spell_inventory_list:
-		if spell_name == item.name:
-			return true
-		else:
-			return false
+func check_spell_available(spell_name : String):
+	var spell_found := false
+	var spell_not_cd := false
+	for spell in spell_inventory_list:
+		if !spell_found:
+			if spell_name == spell.name:
+				print("spell found")
+				spell_found = true
+				if spell.usable:
+					spell_not_cd = true
+					print("spell available")
+				else:
+					print("spell in inv, on cooldown")
+			else:
+				print("not spell")
+	if spell_found and spell_not_cd:
+		return true
+	else:
+		return false
 
-func _remove_spell( spell_name : String):
-	for item in spell_inventory_list.size() - 1:
-		if spell_name == spell_inventory_list[item].name:
-			spell_inventory_list.remove_at(item)
-		else:
-			print("cannot find spell")
+func cooldown_spell(spell_name : String):
+	for spell in spell_inventory_list:
+		if spell_name == spell.name:
+			spell.usable = false
+		#else:
+			#print("not desired spell")
+
+func _remove_spell(spell_name : String):
+	for spell in spell_inventory_list:
+		if spell_name == spell.name:
+			spell_inventory_list.erase(spell)
+		#else:
+			#print("cannot find spell")
 
 func _calculate_bet_loses(money_value: int):
 	if money_value < 0:
