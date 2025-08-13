@@ -17,29 +17,33 @@ func update_item_list():
 		0:
 			games_list = [load("res://Resources-shop/slot_mac.tres")]
 		1:
-			games_list = [load("res://Resources-shop/slot_mac.tres"),\
+			games_list = [load("res://Resources-shop/slot_mac.tres"),
 			load("res://Resources-shop/black_jack.tres")]
 			spell_list = [load("res://Resources-shop/spell_fortune.tres")]
 		2:
-			games_list = [load("res://Resources-shop/slot_mac.tres"),\
-			load("res://Resources-shop/black_jack.tres"),\
+			games_list = [load("res://Resources-shop/slot_mac.tres"),
+			load("res://Resources-shop/black_jack.tres"),
 			load("res://Resources-shop/bar.tres")]
-			spell_list = [load("res://Resources-shop/spell_fortune.tres"),\
-			load("res://Resources-shop/spell_shard.tres"),\
+			spell_list = [load("res://Resources-shop/spell_fortune.tres"),
+			load("res://Resources-shop/spell_shard.tres"),
+			load("res://Resources-shop/spell_fool.tres"),
 			load("res://Resources-shop/spell_prov.tres")]
 		3:
-			games_list = [load("res://Resources-shop/slot_mac.tres"),\
-			load("res://Resources-shop/black_jack.tres"),\
-			load("res://Resources-shop/bar.tres"),\
+			games_list = [load("res://Resources-shop/slot_mac.tres"),
+			load("res://Resources-shop/black_jack.tres"),
+			load("res://Resources-shop/bar.tres"),
 			load("res://Resources-shop/ring_key.tres")]
-			spell_list = [load("res://Resources-shop/spell_fortune.tres"),\
-			load("res://Resources-shop/spell_shard.tres"),\
+			spell_list = [load("res://Resources-shop/spell_fortune.tres"),
+			load("res://Resources-shop/spell_shard.tres"),
+			load("res://Resources-shop/spell_fool.tres"),
 			load("res://Resources-shop/spell_prov.tres")]
 		4:
-			games_list = [load("res://Resources-shop/slot_mac.tres"),\
-			load("res://Resources-shop/black_jack.tres"),\
-			load("res://Resources-shop/bar.tres"),]
-			spell_list =[load("res://Resources-shop/spell_fortune.tres"),\
-			load("res://Resources-shop/spell_shard.tres"),\
-			load("res://Resources-shop/spell_prov.tres"),\
+			games_list = [load("res://Resources-shop/slot_mac.tres"),
+			load("res://Resources-shop/black_jack.tres"),
+			load("res://Resources-shop/bar.tres"),
+			load("res://Resources-shop/ring_key.tres")]
+			spell_list =[load("res://Resources-shop/spell_fortune.tres"),
+			load("res://Resources-shop/spell_shard.tres"),
+			load("res://Resources-shop/spell_fool.tres"),
+			load("res://Resources-shop/spell_prov.tres"),
 			load("res://Resources-shop/spell_mars.tres")]

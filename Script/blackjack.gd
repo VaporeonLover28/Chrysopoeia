@@ -325,23 +325,25 @@ func end_game():
 							##return bet + bet + half bet (2.5x bet)
 
 func spell_cast(spell : String):
-	var spell_worked = randi_range(1, 4)
-	if spell_worked == 4:
-		match spell:
-			"Providence":
-				failed_providence()
-			"Philo Shard":
-				failed_philo_shard()
-			"Fools Gold":
-				failed_fools_gold()
-	else:
-		match spell:
-			"Providence":
-				providence()
-			"Philo Shard":
-				philo_shard()
-			"Fools Gold":
-				fools_gold()
+	if Globals.check_spell_available(spell):
+		Globals.cooldown_spell(spell)
+		var spell_worked = randi_range(1, 4)
+		if spell_worked == 4:
+			match spell:
+				"Providence":
+					failed_providence()
+				"Philo Shard":
+					failed_philo_shard()
+				"Fools Gold":
+					failed_fools_gold()
+		else:
+			match spell:
+				"Providence":
+					providence()
+				"Philo Shard":
+					philo_shard()
+				"Fools Gold":
+					fools_gold()
 
 func providence():
 	dealer_revealed_card = deck.back()

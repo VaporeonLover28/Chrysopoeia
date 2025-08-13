@@ -20,7 +20,7 @@ const BUILD_SHADER = preload("res://build_material.tres")
 var can_move := true
 #varibles relacionated with buying on the shop
 var is_on_building_mode: bool = false
-var current_object_being_purchase: PackedScene
+var current_object_being_purchased: PackedScene
 var can_build : bool
 var object_rotation: Vector3
 
@@ -172,23 +172,23 @@ func loading_screen(game):
 
 func _start_bulding_phase(object_to_be_purchase: PackedScene):
 	object_rotation = Vector3.ZERO
-	current_object_being_purchase = object_to_be_purchase
-	var current_object_being_purchase_instantiate = current_object_being_purchase.instantiate()
-	if current_object_being_purchase_instantiate is InteractableObject:
-		current_object_being_purchase_instantiate = current_object_being_purchase_instantiate.get_node("Model").duplicate(true)
-		current_object_being_purchase_instantiate.add_to_group("Ground_object")
-	for item in current_object_being_purchase_instantiate.get_child(0).get_child(0).mesh.get_surface_count():
-		current_object_being_purchase_instantiate.get_child(0).get_child(0).mesh.surface_get_material(item).next_pass = BUILD_SHADER
-		current_object_being_purchase_instantiate.get_child(0).get_child(0).mesh.surface_get_material(item).next_pass.set_shader_parameter("active", true)
-	var instantiate_colission = current_object_being_purchase_instantiate.get_child(1).duplicate()
-	current_object_being_purchase_instantiate.get_child(1).queue_free()
+	current_object_being_purchased = object_to_be_purchase
+	var current_object_being_purchased_instantiate = current_object_being_purchased.instantiate()
+	if current_object_being_purchased_instantiate is InteractableObject:
+		current_object_being_purchased_instantiate = current_object_being_purchased_instantiate.get_node("Model").duplicate(true)
+		current_object_being_purchased_instantiate.add_to_group("Ground_object")
+	for item in current_object_being_purchased_instantiate.get_child(0).get_child(0).mesh.get_surface_count():
+		current_object_being_purchased_instantiate.get_child(0).get_child(0).mesh.surface_get_material(item).next_pass = BUILD_SHADER
+		current_object_being_purchased_instantiate.get_child(0).get_child(0).mesh.surface_get_material(item).next_pass.set_shader_parameter("active", true)
+	var instantiate_colission = current_object_being_purchased_instantiate.get_child(1).duplicate()
+	current_object_being_purchased_instantiate.get_child(1).queue_free()
 	var new_area3d = Area3D.new()
 	new_area3d.collision_layer = 2
-	current_object_being_purchase_instantiate.add_child(new_area3d)
-	current_object_being_purchase_instantiate.get_child(-1).add_child(instantiate_colission)
-	current_object_being_purchase_instantiate.position = ray_builder.position + Vector3(0,0,-3)
-	print(current_object_being_purchase_instantiate)
-	ray_builder.add_child(current_object_being_purchase_instantiate)
+	current_object_being_purchased_instantiate.add_child(new_area3d)
+	current_object_being_purchased_instantiate.get_child(-1).add_child(instantiate_colission)
+	current_object_being_purchased_instantiate.position = ray_builder.position + Vector3(0,0,-3)
+	print(current_object_being_purchased_instantiate)
+	ray_builder.add_child(current_object_being_purchased_instantiate)
 	print(ray_builder.get_child(0))
 	is_on_building_mode = true
 	
@@ -198,20 +198,20 @@ func _rotate_bulding_object(rotation_direction: int):
 func _cancel_build():
 	print("oi")
 	is_on_building_mode = false
-	current_object_being_purchase = null
+	current_object_being_purchased = null
 	ray_builder.get_child(0).queue_free()
 	
 func _build():
 	if can_build == true:
 		print("oi")
-		var instantiate_object = current_object_being_purchase.instantiate()
+		var instantiate_object = current_object_being_purchased.instantiate()
 		instantiate_object.global_position = ray_builder.get_collider().get_parent().global_position
 		instantiate_object.rotation = ray_builder.get_child(0).rotation
 		ray_builder.get_child(0).queue_free()
 		world_scene.get_node("NavigationRegion3D").get_node("All Interactable Spots").add_child(instantiate_object)
 		world_scene.get_node("NavigationRegion3D").bake_navigation_mesh()
 		is_on_building_mode = false
-		current_object_being_purchase = null
+		current_object_being_purchased = null
 		can_build = false
 	
 func _sell():
