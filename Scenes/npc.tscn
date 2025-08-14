@@ -19,6 +19,7 @@ minimum_time_for_TIOT = 10.0
 maximum_time_for_TIOT = 18.0
 favorite_games = Array[String](["BlackJack"])
 chance_to_choose_favorite_game = 100
+maximum_money = 500
 
 [node name="Leave Interaction" type="Timer" parent="."]
 wait_time = 10.0

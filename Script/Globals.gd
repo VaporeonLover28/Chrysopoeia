@@ -11,7 +11,7 @@ var money: int = 1000:
 			money += 110
 			aqua_philosophorum_timer.stop()
 		money = new_value
-		if get_parent().get_node_or_null("World") != null:
+		if get_parent().get_node_or_null("World") != null and SaveScript.is_loading == false:
 			SaveScript.auto_save.emit()
 		
 var transiting_characters_to_gamble: Array[Array]  

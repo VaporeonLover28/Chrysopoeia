@@ -47,6 +47,9 @@ func _ready() -> void:
 				var instantiate_npc = load(item[0]).instantiate()
 				instantiate_npc.global_position = item[1]
 				walking_npcs.add_child(instantiate_npc)
+				walking_npcs.get_child(-1).money = item[2]
+				print(walking_npcs.get_child(-1).money)
+			SaveScript.is_loading = false
 	elif Globals.save_npcs_pos.is_empty() != true:
 		var counter
 		for item in Globals.save_npcs_pos:
@@ -55,13 +58,15 @@ func _ready() -> void:
 			walking_npcs.add_child(instantiate_npc)
 			if walking_npcs.get_child(-1).get_index() == Globals.transiting_characters_to_gamble[counter][2]:
 				walking_npcs.get_child(-1).money == Globals.transiting_characters_to_gamble[counter][1]
+			else:
+				walking_npcs.get_child(-1).money == Globals.save_npcs_pos[counter][3]
 			counter =+ 1
 		Globals.transiting_characters_to_gamble = []
 		Globals.save_npcs_pos = []
 		SaveScript.auto_save.emit()
 
-#func _exit_tree() -> void:
-	#SaveScript.auto_save.disconnect(SaveScript._save_function)
+func _exit_tree() -> void:
+	SaveScript.auto_save.disconnect(SaveScript._save_function)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("z"):

@@ -3,6 +3,8 @@ extends Node
 var current_savefile_loading: String
 var new_config : ConfigFile
 
+var is_loading: bool = false
+
 signal auto_save
 
 
@@ -33,6 +35,7 @@ func _save_function(world_scene: Node3D, save_file_number: int):
 		var save_npcs_info : Array
 		save_npcs_info.push_back(item.scene_file_path)
 		save_npcs_info.push_back(item.global_position)
+		save_npcs_info.push_back(item.money)
 		save_npcs_array.push_back(save_npcs_info)
 	new_config.set_value("NPC", "info", save_npcs_array)
 	new_config.save("user://SaveFile" + str(save_file_number) +".cfg")
@@ -42,6 +45,7 @@ func _load_function(save_file_number: int):
 	current_savefile_loading = "user://SaveFile" + str(save_file_number) +".cfg"
 	var loading = new_config.load(current_savefile_loading)
 	if loading == OK:
+		is_loading = true
 		Globals.money = new_config.get_value("Globalvaribles", "money")
 		Globals.spell_inventory_list = new_config.get_value("Globalvaribles", "spells")
 		PurchasableItemList.item_list_level = new_config.get_value("Globalvaribles", "item_list_level")

@@ -22,7 +22,7 @@ extends CharacterBody3D; class_name NPC;
 @export var minimum_money: int
 @export var maximum_money: int
 
-var money : int = randi_range(minimum_money, maximum_money)
+@onready var money : int = randi_range(minimum_money, maximum_money)
 
 var is_on_interaction : bool = false
 var is_going_to_interaction : bool = false
@@ -33,6 +33,7 @@ var targeted_position_vector = Vector3(0,0,0)
 func _ready() -> void:
 	_walk_to(world_scene.get_node("Enter point for npc").position)
 	targeted_interactable_object_timer.start(randf_range(minimum_time_for_TIOT, maximum_time_for_TIOT))
+	print(money)
 
 func _physics_process(delta: float) -> void:
 	if Globals.game_paused == false:

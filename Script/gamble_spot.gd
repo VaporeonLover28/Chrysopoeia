@@ -30,6 +30,7 @@ func _interact_GambleSpot(object_ref):
 			save_npcs_info.push_back(item.scene_file_path)
 			save_npcs_info.push_back(item.global_position)
 			save_npcs_info.push_back(item.get_index())
+			save_npcs_info.push_back(item.money)
 			Globals.save_npcs_pos.push_back(save_npcs_info)
 		
 	
