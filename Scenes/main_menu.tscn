@@ -1,13 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://cf21qm02h40cu"]
+[gd_scene load_steps=16 format=3 uid="uid://cf21qm02h40cu"]
 
 [ext_resource type="Texture2D" uid="uid://bm5mkjkryluex" path="res://Assets/grid_black_512x512.png" id="1_fu7sn"]
-[ext_resource type="Script" uid="uid://gupatwggm12k" path="res://Scenes/main_menu.gd" id="1_opfnp"]
+[ext_resource type="Script" uid="uid://gupatwggm12k" path="res://Script/main_menu.gd" id="1_opfnp"]
 [ext_resource type="PackedScene" uid="uid://cx03els0ra5bd" path="res://Assets/Exports/glTF/Table_Large.gltf" id="2_jix8l"]
-[ext_resource type="Script" uid="uid://h04ek6sfnud1" path="res://Scenes/spinner.gd" id="3_ce3w2"]
+[ext_resource type="Script" uid="uid://h04ek6sfnud1" path="res://Script/spinner.gd" id="3_ce3w2"]
 [ext_resource type="PackedScene" uid="uid://cjrb25thpiawq" path="res://Assets/Originals/mago_beta.glb" id="3_glbon"]
 [ext_resource type="Theme" uid="uid://f5yk4gkyeuqv" path="res://Themes/menu_theme.tres" id="5_cp0ys"]
 [ext_resource type="FontFile" uid="uid://paxjlxvek7jf" path="res://Assets/Fonts/ransite_medieval/RansiteMedieval_PERSONAL_USE_ONLY.otf" id="5_n45e2"]
-[ext_resource type="Script" uid="uid://c4ndqtv32fvou" path="res://Scenes/title.gd" id="8_yhxw7"]
+[ext_resource type="Script" uid="uid://c4ndqtv32fvou" path="res://Script/title.gd" id="8_yhxw7"]
+[ext_resource type="PackedScene" uid="uid://tjnuyxlxa08i" path="res://Assets/Originals/Magorigado_pose2.glb" id="9_16hvj"]
+[ext_resource type="PackedScene" uid="uid://d4afiryk4wkkn" path="res://Assets/Originals/Circulomagico.glb" id="10_vr1f0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nlkkf"]
 albedo_texture = ExtResource("1_fu7sn")
@@ -98,9 +100,9 @@ color = Color(0.99864, 0.37336, 0.263904, 1)
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
 layout_mode = 0
 offset_left = 88.0
-offset_top = 293.64
+offset_top = 286.185
 offset_right = 342.0
-offset_bottom = 557.64
+offset_bottom = 573.185
 
 [node name="Start_btn" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
@@ -143,6 +145,7 @@ alignment = 0
 
 [node name="mago_beta" parent="." instance=ExtResource("3_glbon")]
 transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0.0108842, 0.415111, -5.56487)
+visible = false
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
@@ -156,6 +159,12 @@ text = "Chrysopoeia"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("8_yhxw7")
+
+[node name="Magorigado_pose2" parent="." instance=ExtResource("9_16hvj")]
+transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0, 0.367939, -5.47635)
+
+[node name="Circulomagico" parent="." instance=ExtResource("10_vr1f0")]
+transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, -0.2, 0, 0.2, -8.74228e-09, 0.000680223, 1.29667, -5.08503)
 
 [connection signal="pressed" from="ColorRect/VBoxContainer/Start_btn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Load_btn" to="." method="_on_load_btn_pressed"]
