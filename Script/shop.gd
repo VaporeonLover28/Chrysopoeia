@@ -75,24 +75,25 @@ func hide_shop_menu():
 
 func _buy_item(object_being_purchased: Control):
 	if object_being_purchased.item_resource.price <= Globals.money:
-		if object_being_purchased.item_resource.item_type == "Objects":
-			Globals.money -= object_being_purchased.item_resource.price
-			world_scene.get_node("Player")._start_bulding_phase(object_being_purchased.item_resource.item_scene)
-			match [object_being_purchased.item_resource.name, PurchasableItemList.item_list_level]:
-				["Slot Machine", 0]:
-					PurchasableItemList.item_list_level += 1
-				["Black jack", 1]:
-					PurchasableItemList.item_list_level += 1
-				["Bar", 2]:
-					PurchasableItemList.item_list_level += 1
-				["Chipped Key", 3]:
-					PurchasableItemList.item_list_level += 1
-		else:
-			if object_being_purchased.item_resource.name == "Chipped Key" and PurchasableItemList.item_list_level <= 3:
+		if object_being_purchased.item_resource.item_type == "Objects" or \
+		(object_being_purchased.item_resource.name == "Chipped Key"):
+			if object_being_purchased.item_resource.name == "Chipped Key":
 				Globals.money -= object_being_purchased.item_resource.price
 				Globals.ring_unlock = true
 				ring_door.bought_ring_key.emit()
-			elif Globals.spell_inventory_list.size() < 2:
+			else:
+				world_scene.get_node("Player")._start_bulding_phase(object_being_purchased.item_resource.item_scene)
+				match [object_being_purchased.item_resource.name, PurchasableItemList.item_list_level]:
+					["Slot Machine", 0]:
+						PurchasableItemList.item_list_level += 1
+					["Black jack", 1]:
+						PurchasableItemList.item_list_level += 1
+					["Bar", 2]:
+						PurchasableItemList.item_list_level += 1
+					["Chipped Key", 3]:
+						PurchasableItemList.item_list_level += 1
+		else:
+			if Globals.spell_inventory_list.size() < 2:
 				Globals.money -= object_being_purchased.item_resource.price
 				Globals.spell_inventory_list.push_front(object_being_purchased.item_resource)
 				update_hud.emit()
@@ -105,17 +106,8 @@ func _buy_item(object_being_purchased: Control):
 				spell_option_box_container.visible = true
 				await wait_for_spell_change
 				Globals.spell_inventory_list.push_front(object_being_purchased.item_resource)
-				Globals.money -= object_being_purchased.item_resource.price
 				update_hud.emit()
-				
-		match [object_being_purchased.item_resource.name, PurchasableItemList.item_list_level]:
-			["Slot Machine", 0]:
-				PurchasableItemList.item_list_level += 1
-			["Black jack", 1]:
-				PurchasableItemList.item_list_level += 1
-			["Chipped Key", 2]:
-				PurchasableItemList.item_list_level += 1
-	
+	Globals.money -= object_being_purchased.item_resource.price
 	hide_shop_menu()
 
 func _choose_spell_to_change(spell_choosen: PurchasableItemResource):

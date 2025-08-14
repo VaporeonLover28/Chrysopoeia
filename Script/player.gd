@@ -217,6 +217,7 @@ func _build():
 		is_on_building_mode = false
 		current_object_being_purchased = null
 		can_build = false
+		SaveScript.auto_save.emit()
 	
 func _sell():
 	var object_inst = ray_interection.get_collider()

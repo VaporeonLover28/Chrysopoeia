@@ -3,10 +3,15 @@ extends Node
 var current_savefile_loading: String
 var new_config : ConfigFile
 
+signal auto_save
+
+
 func _init() -> void:
 	new_config = ConfigFile.new()
+	
 
 func _save_function(world_scene: Node3D, save_file_number: int):
+	print("save")
 	new_config.set_value("Globalvaribles", "money", Globals.money)
 	new_config.set_value("Globalvaribles", "spells", Globals.spell_inventory_list)
 	new_config.set_value("Globalvaribles", "item_list_level", PurchasableItemList.item_list_level)

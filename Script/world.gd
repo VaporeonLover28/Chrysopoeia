@@ -26,6 +26,7 @@ preload("res://Scenes/pleb.tscn"), \
 preload("res://Scenes/noble.tscn")]
 
 func _ready() -> void:
+	SaveScript.auto_save.connect(SaveScript._save_function.bind(self, 0))
 	npc_spwaner_timer.start(randf_range(minimum_time_for_spawn_npc, maximum_time_for_spawn_npc))
 	var new_config = ConfigFile.new()
 	MusicPlayer.emptytavern.play()
@@ -37,8 +38,9 @@ func _ready() -> void:
 				instantiate_interactable.global_position = new_config.get_value("Scene", "interactable")[item][1]
 				instantiate_interactable.rotation = new_config.get_value("Scene", "interactable")[item][2]
 				all_interactable_spots.add_child(instantiate_interactable)
+			print(new_config.get_value("Player", "position"))
 			player.global_position = new_config.get_value("Player", "position")
-			print(new_config.get_value("NPC", "info"))
+			#print(new_config.get_value("NPC", "info"))
 			## proxima linha é só pra testar	
 			$Walking_NPCs/NPC.queue_free()
 			for item in new_config.get_value("NPC", "info"):
@@ -48,7 +50,6 @@ func _ready() -> void:
 	elif Globals.save_npcs_pos.is_empty() != true:
 		var counter
 		for item in Globals.save_npcs_pos:
-			
 			var instantiate_npc = load(item[0]).instantiate()
 			instantiate_npc.global_position = item[1]
 			walking_npcs.add_child(instantiate_npc)
@@ -57,6 +58,10 @@ func _ready() -> void:
 			counter =+ 1
 		Globals.transiting_characters_to_gamble = []
 		Globals.save_npcs_pos = []
+		SaveScript.auto_save.emit()
+
+#func _exit_tree() -> void:
+	#SaveScript.auto_save.disconnect(SaveScript._save_function)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("z"):

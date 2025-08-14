@@ -2,6 +2,7 @@ extends Node
 
 var player_pos_save : Vector3
 var game_paused: bool = false
+
 var player_interacting: bool = false
 var player_is_in_camera_animation: bool = false
 var money: int = 1000:
@@ -10,8 +11,10 @@ var money: int = 1000:
 			money += 110
 			aqua_philosophorum_timer.stop()
 		money = new_value
+		if get_parent().get_node_or_null("World") != null:
+			SaveScript.auto_save.emit()
 		
-var transiting_characters_to_gamble: Array[Array]
+var transiting_characters_to_gamble: Array[Array]  
 var save_npcs_pos: Array[Array]
 
 var money_lost: int = -1
