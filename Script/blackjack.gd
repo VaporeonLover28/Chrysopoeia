@@ -55,7 +55,6 @@ var deck = []
 var shuffler_deck = []
 
 func _ready():
-	print(Globals.transiting_characters_to_gamble)
 	player.intro_tweens()
 	instantiate_cards()
 	##adds a new chair in the table array for referencing positions
@@ -63,12 +62,11 @@ func _ready():
 		##excludes the table mesh from chair count
 		if table_node.get_child(chairs) is Marker3D:
 			##chair is [position, is_taken]
-			print(table_node.get_child(chairs).global_position)
 			table.append([table_node.get_child(chairs).global_position, 0])
-	
 	for markers in hand_markers.get_children():
 		hand_marker_array.append(markers)
-
+	for sitting_npcs in Globals.transiting_characters_to_gamble:
+		spawn_player(sitting_npcs[0], sitting_npcs[1])
 ##putting the cards in the screen
 func instantiate_cards():
 	for instance in 52:
@@ -124,6 +122,27 @@ func call_player():
 				##add the npc to the npc array
 				playing_npcs.append(new_npc)
 				print(new_npc)
+
+func spawn_player(pers, money):
+	var new_npc = npc.instantiate()
+	##choosing the personality 
+	new_npc.personality = pers
+	new_npc.money = money
+	add_child(new_npc)
+	##checking if each chair is taken
+	for chairs in table.size():
+		##if it isn't (free chair)
+		if table[chairs][1] == 0 and !new_npc.assigned_chair:
+			new_npc.global_position = table[chairs][0]
+			new_npc.look_at_player()
+			##occupy the chair
+			table[chairs][1] = 1
+			new_npc.assigned_chair = true
+			new_npc.name = str(chairs)
+			new_npc.hand_marker = hand_marker_array[chairs]
+			##add the npc to the npc array
+			playing_npcs.append(new_npc)
+			print(new_npc)
 
 ##setting a table order (left to right) for the rounds playing
 func set_round_order():

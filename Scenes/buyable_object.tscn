@@ -76,6 +76,7 @@ offset_right = 0.0939789
 offset_bottom = 0.0599976
 texture = SubResource("ViewportTexture_t6h1u")
 expand_mode = 1
+stretch_mode = 5
 
 [node name="SubViewport" type="SubViewport" parent="VBoxContainer"]
 own_world_3d = true
@@ -101,7 +102,7 @@ layout_mode = 2
 text = "descrição"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 1
+autowrap_mode = 3
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2

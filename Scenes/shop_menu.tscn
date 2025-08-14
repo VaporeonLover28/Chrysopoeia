@@ -177,6 +177,7 @@ layout_mode = 2
 texture_normal = ExtResource("2_jhj42")
 
 [node name="TextureRect" type="TextureRect" parent="Inv_Full_Choice/VBoxContainer/Margin/HBoxContainer/slot1"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.312
@@ -194,6 +195,7 @@ layout_mode = 2
 texture_normal = ExtResource("2_jhj42")
 
 [node name="TextureRect" type="TextureRect" parent="Inv_Full_Choice/VBoxContainer/Margin/HBoxContainer/slot2"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 34.0
 offset_top = 32.0

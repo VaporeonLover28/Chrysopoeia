@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bkoihmjcjf8pi" path="res://Assets/Originals/praredelend_madeiira.jpg" id="8_coyub"]
 [ext_resource type="PackedScene" uid="uid://t1ipnjtntycl" path="res://Assets/Exports/glTF/Bench.gltf" id="8_ic0uy"]
 [ext_resource type="Material" uid="uid://dnox1xrq8lfuf" path="res://placeholder_mat.tres" id="9_xbk3s"]
-[ext_resource type="Script" uid="uid://p8g8j38kayvm" path="res://Scenes/door_ring.gd" id="10_1vso6"]
+[ext_resource type="Script" uid="uid://p8g8j38kayvm" path="res://Script/door_ring.gd" id="10_1vso6"]
 [ext_resource type="Texture2D" uid="uid://lu8ml1telxlm" path="res://Assets/Originals/praredelend_preda.png" id="10_ochwf"]
 [ext_resource type="PackedScene" uid="uid://dp7rwp8yfewpg" path="res://Scenes/black_jack.tscn" id="11_c5t2i"]
 [ext_resource type="Script" uid="uid://bo2qyu3neh3gx" path="res://Script/player_recon.gd" id="12_axeuq"]
@@ -171,6 +171,7 @@ environment = SubResource("Environment_6uqi0")
 
 [node name="NPC" parent="Walking_NPCs" instance=ExtResource("3_tlwt5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.125, 1, -12.822)
+npc_name = "Pleb"
 
 [node name="Enter point for npc" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.83101, 0.894929, -12.503)
@@ -268,8 +269,8 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17.83
 size = Vector3(0.5, 4, 4.3182)
 
 [node name="wall31" type="CSGBox3D" parent="NavigationRegion3D/cassino"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.2902, 2.5, -6.7906)
-size = Vector3(1.53229, 4, 4.3182)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19.9816, 2.5, -6.7906)
+size = Vector3(1.53229, 4, 3.70109)
 
 [node name="door4" type="CSGBox3D" parent="NavigationRegion3D/cassino"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.3396, 1.75, -6.64607)
@@ -1103,9 +1104,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.422053, 5.80688, -0.0980835
 shape = SubResource("BoxShape3D_opbav")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/praredelend48"]
-transform = Transform3D(-0.999895, 0, 0.0158998, 0, 1, 0, -0.0158994, 0, -0.999874, -0.319199, 9.77178, -13.7628)
+transform = Transform3D(-0.999895, 0, 0.0158998, 0, 1, 0, -0.0158994, 0, -0.999874, -0.509609, 9.77178, -13.7658)
 material_override = SubResource("StandardMaterial3D_04jkj")
-size = Vector3(1, 4.6066, 11.3639)
+size = Vector3(0.619141, 4.6066, 11.3639)
 
 [node name="Ceiling1" type="CSGBox3D" parent="NavigationRegion3D/praredelend48"]
 transform = Transform3D(-0.999895, 0, 0.0158998, 0, 1, 0, -0.0158994, 0, -0.999874, 24.1544, 11.9973, -13.0056)
@@ -1188,6 +1189,24 @@ transform = Transform3D(-1.44248e-08, 0, -0.33, 0, 0.33, 0, 0.33, 0, -1.44248e-0
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/praredelend36"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/praredelend36/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.422053, 5.80688, -0.0980835)
+shape = SubResource("BoxShape3D_opbav")
+
+[node name="praredelend45" parent="NavigationRegion3D" instance=ExtResource("23_no8kt")]
+transform = Transform3D(-0.000126707, 0, 0.33, 0, 0.33, 0, -0.33, 0, -0.000126707, 15.3433, -0.0343926, -20.9739)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/praredelend45"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/praredelend45/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.422053, 5.80688, -0.0980835)
+shape = SubResource("BoxShape3D_opbav")
+
+[node name="praredelend49" parent="NavigationRegion3D" instance=ExtResource("23_no8kt")]
+transform = Transform3D(-0.000126707, 0, 0.33, 0, 0.33, 0, -0.33, 0, -0.000126707, 7.70121, -0.0343926, -20.5583)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/praredelend49"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/praredelend49/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.422053, 5.80688, -0.0980835)
 shape = SubResource("BoxShape3D_opbav")
 

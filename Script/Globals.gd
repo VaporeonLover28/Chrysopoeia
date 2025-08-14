@@ -1,6 +1,5 @@
 extends Node
 
-
 var player_pos_save : Vector3
 var game_paused: bool = false
 var player_interacting: bool = false

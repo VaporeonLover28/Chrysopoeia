@@ -75,8 +75,8 @@ func hide_shop_menu():
 
 func _buy_item(object_being_purchased: Control):
 	if object_being_purchased.item_resource.price <= Globals.money:
-		Globals.money -= object_being_purchased.item_resource.price
 		if object_being_purchased.item_resource.item_type == "Objects":
+			Globals.money -= object_being_purchased.item_resource.price
 			world_scene.get_node("Player")._start_bulding_phase(object_being_purchased.item_resource.item_scene)
 			match [object_being_purchased.item_resource.name, PurchasableItemList.item_list_level]:
 				["Slot Machine", 0]:
@@ -89,20 +89,23 @@ func _buy_item(object_being_purchased: Control):
 					PurchasableItemList.item_list_level += 1
 		else:
 			if object_being_purchased.item_resource.name == "Chipped Key" and PurchasableItemList.item_list_level <= 3:
+				Globals.money -= object_being_purchased.item_resource.price
 				Globals.ring_unlock = true
 				ring_door.bought_ring_key.emit()
 			elif Globals.spell_inventory_list.size() < 2:
+				Globals.money -= object_being_purchased.item_resource.price
 				Globals.spell_inventory_list.push_front(object_being_purchased.item_resource)
 				update_hud.emit()
 			else:
 				spell_slot1.texture = Globals.spell_inventory_list[0].item_sprite
 				spell_slot1.get_parent().connect("pressed", _choose_spell_to_change.bind(Globals.spell_inventory_list[0]))
-				spell_slot1.texture = Globals.spell_inventory_list[0].item_sprite
+				spell_slot2.texture = Globals.spell_inventory_list[1].item_sprite
 				spell_slot2.get_parent().connect("pressed", _choose_spell_to_change.bind(Globals.spell_inventory_list[1]))
 				shop_tabs.visible = false
 				spell_option_box_container.visible = true
 				await wait_for_spell_change
 				Globals.spell_inventory_list.push_front(object_being_purchased.item_resource)
+				Globals.money -= object_being_purchased.item_resource.price
 				update_hud.emit()
 				
 		match [object_being_purchased.item_resource.name, PurchasableItemList.item_list_level]:

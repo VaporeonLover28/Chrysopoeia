@@ -12,7 +12,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_tree().paused = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else:
-		resume()
+		if event.is_action_pressed("esc"):
+			resume()
 
 func resume():
 	Globals.game_paused = false

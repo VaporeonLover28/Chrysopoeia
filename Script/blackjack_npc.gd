@@ -9,6 +9,8 @@ extends CharacterBody3D
 @export_enum("Pleb", "Mage", "Guard", "Noble", "Joker" ) var personality : String
 @export_enum("Playing", "Standed", "Busted", "Blackjack", "Doubled") var state : String = "Playing"
 
+var money : int
+
 var hand_marker: Marker3D
 var assigned_chair : bool = false
 var is_sat_down : bool = false
@@ -615,8 +617,9 @@ func go_to_table(chair_pos):
 
 func _on_nav_navigation_finished() -> void:
 	is_sat_down = true
+	print(self.name + " global pos: " + str(global_position))
 
 func look_at_player():
-	look_at($"../bj_player_test".position)
+	look_at($"../blackjack_player".position)
 	rotation.x = 0
 	rotation.z = 0
