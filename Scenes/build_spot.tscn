@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://c71seo6kj5t62"]
+
+[ext_resource type="Script" uid="uid://b1mjwd0321b81" path="res://Scenes/build_spot.gd" id="1_d0bu4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ic0uy"]
+size = Vector3(3, 3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d0bu4"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(0, 1, 0, 0.286275)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2ijns"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_d0bu4")
+size = Vector2(3, 3)
+
+[node name="Build_Spot" type="Marker3D"]
+script = ExtResource("1_d0bu4")
+
+[node name="Area build spot" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area build spot"]
+shape = SubResource("BoxShape3D_ic0uy")
+debug_color = Color(0.968627, 0, 0.454902, 1)
+
+[node name="Build Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.39867, 0)
+mesh = SubResource("PlaneMesh_2ijns")

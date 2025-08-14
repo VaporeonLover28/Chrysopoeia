@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_xtfld")
 item_type = "Objects"
-name = "Black jack"
+name = "Blackjack"
 price = 200
 description = "The kingdom's most famous card game"
 item_scene = ExtResource("1_qk04i")
