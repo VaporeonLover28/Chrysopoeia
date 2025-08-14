@@ -199,7 +199,7 @@ func _start_bulding_phase(object_to_be_purchase: PackedScene):
 	is_on_building_mode = true
 	
 func _rotate_bulding_object(rotation_direction: int):
-	object_rotation += Vector3(0,8,0) * rotation_direction
+	object_rotation += Vector3(0,deg_to_rad(8),0) * rotation_direction
 	
 func _cancel_build():
 	print("Cancelled build")

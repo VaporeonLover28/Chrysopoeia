@@ -4,7 +4,6 @@ signal bought_ring_key
 
 @onready var navigation_region_3d: NavigationRegion3D = $"../.."
 
-
 func _ready() -> void:
 	if Globals.ring_unlock == true:
 		_remove_wall()

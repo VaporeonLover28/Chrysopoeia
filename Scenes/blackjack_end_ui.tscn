@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4jx1kxn6ebpc"]
+
+[ext_resource type="Script" uid="uid://cwsgkgs1dxin1" path="res://Scenes/blackjack_end_ui.gd" id="1_b8jwi"]
+[ext_resource type="Texture2D" uid="uid://caxlwqsi757pk" path="res://Assets/Exports/placehergaminho.png" id="1_gilck"]
+[ext_resource type="FontFile" uid="uid://4y6u2ai8c7lq" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-Bold.ttf" id="2_7fcdd"]
+
+[node name="blackjack_end_ui" type="CanvasLayer"]
+script = ExtResource("1_b8jwi")
+
+[node name="bg" type="TextureRect" parent="."]
+offset_top = 726.605
+offset_right = 800.0
+offset_bottom = 1878.6
+rotation = -1.5708
+texture = ExtResource("1_gilck")
+expand_mode = 4
+
+[node name="Match_Ended" type="RichTextLabel" parent="."]
+offset_left = 364.0
+offset_top = 116.46
+offset_right = 767.92
+offset_bottom = 202.46
+theme_override_fonts/normal_font = ExtResource("2_7fcdd")
+theme_override_font_sizes/normal_font_size = 65
+bbcode_enabled = true
+text = "[fade start=0 length=40]MATCH OVER[/fade]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Result" type="Label" parent="."]
+offset_left = 517.0
+offset_top = 247.0
+offset_right = 584.0
+offset_bottom = 270.0
+text = "RESULTS"
+
+[node name="result_labels" type="VBoxContainer" parent="."]
+offset_left = 517.0
+offset_top = 247.0
+offset_right = 584.0
+offset_bottom = 432.0
+
+[node name="res_player_0" type="Label" parent="result_labels"]
+layout_mode = 2
+
+[node name="res_player_1" type="Label" parent="result_labels"]
+layout_mode = 2
+
+[node name="res_player_2" type="Label" parent="result_labels"]
+layout_mode = 2
+
+[node name="res_player_3" type="Label" parent="result_labels"]
+layout_mode = 2
+
+[node name="res_player_4" type="Label" parent="result_labels"]
+layout_mode = 2
+
+[node name="res_dealer" type="Label" parent="result_labels"]
+layout_mode = 2

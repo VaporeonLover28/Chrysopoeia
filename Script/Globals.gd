@@ -57,7 +57,7 @@ func check_spell_available(spell_name : String):
 			print(spell)
 			if !spell_found:
 				if spell_name == spell.name:
-					print("spell found")
+					print("spell found: " + spell.name)
 					spell_found = true
 					if spell.usable:
 						spell_not_cd = true

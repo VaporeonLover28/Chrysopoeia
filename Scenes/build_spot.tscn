@@ -22,7 +22,7 @@ script = ExtResource("1_d0bu4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area build spot"]
 shape = SubResource("BoxShape3D_ic0uy")
-debug_color = Color(0.968627, 0, 0.454902, 1)
+debug_color = Color(0, 1, 0, 1)
 
 [node name="Build Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.39867, 0)

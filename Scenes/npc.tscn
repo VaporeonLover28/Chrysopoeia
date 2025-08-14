@@ -30,7 +30,6 @@ one_shot = true
 
 [node name="nav" type="NavigationAgent3D" parent="."]
 simplify_path = true
-debug_enabled = true
 
 [node name="idle" type="Timer" parent="."]
 wait_time = 10.0
