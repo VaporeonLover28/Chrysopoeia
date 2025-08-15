@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4jx1kxn6ebpc"]
+[gd_scene load_steps=5 format=3 uid="uid://c4jx1kxn6ebpc"]
 
 [ext_resource type="Script" uid="uid://cwsgkgs1dxin1" path="res://Scenes/blackjack_end_ui.gd" id="1_b8jwi"]
 [ext_resource type="Texture2D" uid="uid://caxlwqsi757pk" path="res://Assets/Exports/placehergaminho.png" id="1_gilck"]
 [ext_resource type="FontFile" uid="uid://4y6u2ai8c7lq" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-Bold.ttf" id="2_7fcdd"]
+[ext_resource type="FontFile" uid="uid://bxtnksq3tgohf" path="res://Assets/Fonts/comic-sans-ms-font-family/ComicSansMS3.ttf" id="4_x8vvt"]
 
 [node name="blackjack_end_ui" type="CanvasLayer"]
 script = ExtResource("1_b8jwi")
@@ -16,45 +17,93 @@ texture = ExtResource("1_gilck")
 expand_mode = 4
 
 [node name="Match_Ended" type="RichTextLabel" parent="."]
-offset_left = 364.0
-offset_top = 116.46
-offset_right = 767.92
-offset_bottom = 202.46
+top_level = true
+offset_left = 382.0
+offset_top = 118.0
+offset_right = 785.92
+offset_bottom = 204.0
 theme_override_fonts/normal_font = ExtResource("2_7fcdd")
 theme_override_font_sizes/normal_font_size = 65
 bbcode_enabled = true
-text = "[fade start=0 length=40]MATCH OVER[/fade]"
+text = "MATCH OVER"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
 
-[node name="Result" type="Label" parent="."]
-offset_left = 517.0
-offset_top = 247.0
-offset_right = 584.0
-offset_bottom = 270.0
+[node name="Result" type="RichTextLabel" parent="."]
+top_level = true
+offset_left = 550.0
+offset_top = 206.0
+offset_right = 617.0
+offset_bottom = 229.0
+theme_override_fonts/normal_font = ExtResource("4_x8vvt")
+bbcode_enabled = true
 text = "RESULTS"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="result_labels" type="VBoxContainer" parent="."]
-offset_left = 517.0
-offset_top = 247.0
-offset_right = 584.0
-offset_bottom = 432.0
+top_level = true
+offset_left = 312.0
+offset_top = 283.0
+offset_right = 912.0
+offset_bottom = 326.0
 
-[node name="res_player_0" type="Label" parent="result_labels"]
+[node name="res_player_0" type="RichTextLabel" parent="result_labels"]
 layout_mode = 2
+bbcode_enabled = true
+text = "Player 0 had XX Gold and XXXX                         Player 0 net gold: +XX"
+fit_content = true
+scroll_active = false
+visible_characters = 0
+visible_ratio = 0.0
 
-[node name="res_player_1" type="Label" parent="result_labels"]
+[node name="res_player_1" type="RichTextLabel" parent="result_labels"]
 layout_mode = 2
+bbcode_enabled = true
+text = "Player 1 had XX Gold and XXXX                         Player 1 net gold: +XX"
+fit_content = true
+scroll_active = false
+visible_characters = 0
+visible_ratio = 0.0
 
-[node name="res_player_2" type="Label" parent="result_labels"]
+[node name="res_player_2" type="RichTextLabel" parent="result_labels"]
 layout_mode = 2
+bbcode_enabled = true
+text = "Player 2 had XX Gold and XXXX                         Player 2 net gold: +XX"
+fit_content = true
+scroll_active = false
+visible_characters = 0
+visible_ratio = 0.0
 
-[node name="res_player_3" type="Label" parent="result_labels"]
+[node name="res_player_3" type="RichTextLabel" parent="result_labels"]
 layout_mode = 2
+bbcode_enabled = true
+text = "Player 3 had XX Gold and XXXX                         Player 3 net gold: +XX"
+fit_content = true
+scroll_active = false
+visible_characters = 0
+visible_ratio = 0.0
 
-[node name="res_player_4" type="Label" parent="result_labels"]
+[node name="res_player_4" type="RichTextLabel" parent="result_labels"]
 layout_mode = 2
+bbcode_enabled = true
+text = "Player 4 had XX Gold and XXXX                         Player 4 net gold: +XX"
+fit_content = true
+scroll_active = false
+visible_characters = 0
+visible_ratio = 0.0
 
-[node name="res_dealer" type="Label" parent="result_labels"]
+[node name="res_dealer" type="RichTextLabel" parent="result_labels"]
 layout_mode = 2
+bbcode_enabled = true
+text = "Dealer had XXX gold, lost and had to pay players.                         Dealer net gold: -XXX"
+fit_content = true
+scroll_active = false
+visible_characters = 0
+visible_ratio = 0.0
