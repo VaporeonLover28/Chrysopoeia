@@ -309,6 +309,8 @@ func dealer_blackjack():
 	dealer_blackjacked = true
 
 func end_game():
+	MusicPlayer.blackjacktheme.stop()
+	MusicPlayer.greensleeves.play()
 	for npcs in round_order_npcs:
 		if npcs.state == "Doubled":
 			tween = create_tween()
@@ -335,7 +337,7 @@ func end_game():
 					##return doubled bet + how much the bet valued in total (4x bet)
 				"Blackjack":
 					print(npcs.name + " has a blackjack and won!")
-					end_ui.result_texts([npcs.name, "Blackjack", npcs.bet, "+" + str(npcs.bet * 2.5)])
+					end_ui.result_texts([npcs.name, "Blackjack", npcs.bet, "+" + str(int(npcs.bet * 2.5))])
 					##return bet + bet + half bet (2.5x bet)
 	elif dealer_blackjacked:
 		print("The dealer has a blackjack!")
@@ -381,7 +383,7 @@ func end_game():
 								##lose the money bet
 						"Blackjack":
 							print(npcs.name + " has a blackjack and won!")
-							end_ui.result_texts([npcs.name, "Blackjack", npcs.bet, "+" + str(npcs.bet * 2.5)])
+							end_ui.result_texts([npcs.name, "Blackjack", npcs.bet, "+" + str(int(npcs.bet * 2.5))])
 							##return bet + bet + half bet (2.5x bet)
 	end_anim()
 

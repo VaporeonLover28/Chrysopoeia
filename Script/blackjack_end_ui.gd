@@ -35,14 +35,15 @@ func result_texts(player_results : Array):
 	result_labels.get_children()[int(player_results[0])].get_child(0).text = \
 	"Net gold: " + str(player_results[3])
 	
-	#house_net += int(player_results[3])
-	#res_dealer.get_child(0).text = str(house_net)
-
-func calculate_house_net():
-	pass
+	house_net -= int(player_results[3])
+	if house_net > 0:
+		res_dealer.get_child(0).text = "+" + str(house_net)
+	elif house_net < 0:
+		res_dealer.get_child(0).text = str(house_net)
+	else:
+		res_dealer.get_child(0).text = "0"
 
 func match_end_anim():
-	MusicPlayer.greensleeves.play()
 	await get_tree().create_timer(0.5).timeout
 	tween = create_tween()
 	tween.set_ease(Tween.EASE_IN)
@@ -50,8 +51,10 @@ func match_end_anim():
 	vis_tween_label(match_ended, 1, 0.5)
 	vis_tween_label(result, 0.5, 1)
 	for label in result_labels.get_children():
-		vis_tween_label(label, 1, 0)
-		vis_tween_label(label.get_child(0), 0.5, 0.5)
+		if label.text.right(4) != "XXXX":
+			label.visible = true
+			vis_tween_label(label, 1, 0)
+			vis_tween_label(label.get_child(0), 0.5, 0.5)
 	vis_tween_label(res_dealer, 0.5, 0)
 	vis_tween_label(res_dealer.get_child(0), 0.25, 0)
 

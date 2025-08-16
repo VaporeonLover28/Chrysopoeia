@@ -7,7 +7,6 @@ extends Node
 @onready var menutheme: AudioStreamPlayer = $menu_theme
 @onready var emptytavern: AudioStreamPlayer = $empty_tavern
 
-
 func play(audio: AudioStream, single = false) -> void:
 	if not audio:
 		return
@@ -18,7 +17,7 @@ func play(audio: AudioStream, single = false) -> void:
 			player.stream = audio
 			player.play()
 			return
-			
+
 func stop():
 	for player:AudioStreamPlayer in get_children():
 		player.stop()

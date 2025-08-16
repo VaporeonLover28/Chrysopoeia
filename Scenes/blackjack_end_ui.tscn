@@ -75,7 +75,9 @@ offset_right = 912.0
 offset_bottom = 326.0
 
 [node name="res_player_0" type="RichTextLabel" parent="result_labels"]
+visible = false
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_7fcdd")
 bbcode_enabled = true
 text = "Player 0 had XX Gold and XXXX"
 fit_content = true
@@ -88,15 +90,20 @@ layout_mode = 0
 offset_left = 450.0
 offset_right = 650.0
 offset_bottom = 20.0
+theme_override_fonts/normal_font = ExtResource("2_7fcdd")
 bbcode_enabled = true
 text = "Player 1 net gold: "
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="res_player_1" type="RichTextLabel" parent="result_labels"]
+visible = false
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_7fcdd")
 bbcode_enabled = true
 text = "Player 1 had XX Gold and XXXX                         "
 fit_content = true
@@ -109,15 +116,20 @@ layout_mode = 0
 offset_left = 450.0
 offset_right = 650.0
 offset_bottom = 20.0
+theme_override_fonts/normal_font = ExtResource("2_7fcdd")
 bbcode_enabled = true
 text = "Player 1 net gold: "
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="res_player_2" type="RichTextLabel" parent="result_labels"]
+visible = false
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_7fcdd")
 bbcode_enabled = true
 text = "Player 2 had XX Gold and XXXX"
 fit_content = true
@@ -130,15 +142,20 @@ layout_mode = 0
 offset_left = 450.0
 offset_right = 650.0
 offset_bottom = 20.0
+theme_override_fonts/normal_font = ExtResource("2_7fcdd")
 bbcode_enabled = true
 text = "Player 1 net gold: "
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="res_player_3" type="RichTextLabel" parent="result_labels"]
+visible = false
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_7fcdd")
 bbcode_enabled = true
 text = "Player 3 had XX Gold and XXXX"
 fit_content = true
@@ -151,15 +168,20 @@ layout_mode = 0
 offset_left = 450.0
 offset_right = 650.0
 offset_bottom = 20.0
+theme_override_fonts/normal_font = ExtResource("2_7fcdd")
 bbcode_enabled = true
 text = "Player 1 net gold: "
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="res_player_4" type="RichTextLabel" parent="result_labels"]
+visible = false
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_7fcdd")
 bbcode_enabled = true
 text = "Player 4 had XX Gold and XXXX"
 fit_content = true
@@ -172,18 +194,22 @@ layout_mode = 0
 offset_left = 450.0
 offset_right = 650.0
 offset_bottom = 20.0
+theme_override_fonts/normal_font = ExtResource("2_7fcdd")
 bbcode_enabled = true
 text = "Player 1 net gold: "
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="res_dealer" type="RichTextLabel" parent="."]
 offset_left = 492.0
 offset_top = 449.0
 offset_right = 992.0
 offset_bottom = 469.0
+theme_override_fonts/normal_font = ExtResource("2_7fcdd")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "House net gold:"
@@ -200,6 +226,7 @@ layout_mode = 0
 offset_left = 157.0
 offset_right = 197.0
 offset_bottom = 40.0
+theme_override_fonts/normal_font = ExtResource("2_7fcdd")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "Net Gold"
