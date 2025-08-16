@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://t1ipnjtntycl" path="res://Assets/Exports/glTF/Bench.gltf" id="8_ic0uy"]
 [ext_resource type="Material" uid="uid://dnox1xrq8lfuf" path="res://placeholder_mat.tres" id="9_xbk3s"]
 [ext_resource type="Script" uid="uid://p8g8j38kayvm" path="res://Script/door_ring.gd" id="10_1vso6"]
-[ext_resource type="PackedScene" uid="uid://b2v7ibbqtredo" path="res://Assets/Originals/barbuitobonitu.glb" id="10_o2rbt"]
 [ext_resource type="Texture2D" uid="uid://lu8ml1telxlm" path="res://Assets/Originals/praredelend_preda.png" id="10_ochwf"]
 [ext_resource type="Script" uid="uid://bo2qyu3neh3gx" path="res://Script/player_recon.gd" id="12_axeuq"]
 [ext_resource type="Script" uid="uid://cb58tbr6db7dh" path="res://Script/flickertorch.gd" id="12_t2t4p"]
@@ -29,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://baq8au6bu4r7" path="res://Assets/Originals/fabbri2.png" id="27_dt0r1"]
 [ext_resource type="PackedScene" uid="uid://c71seo6kj5t62" path="res://Scenes/build_spot.tscn" id="28_3ua1v"]
 [ext_resource type="Script" uid="uid://dtu7lm3ij73ov" path="res://Script/fabbreh.gd" id="28_dt0r1"]
+[ext_resource type="PackedScene" uid="uid://dnfxouiiwtyus" path="res://Assets/Originals/barbuitobonito.glb" id="30_o2rbt"]
 [ext_resource type="Texture2D" uid="uid://denb5xhofm2r0" path="res://Assets/Originals/pilastralend_RammedEarth018_COL_1K_METALNESS.png" id="33_p5wkl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o2rbt"]
@@ -239,9 +239,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75046, -3.25)
 visible = false
 operation = 2
 size = Vector3(2, 2.5, 0.5)
-
-[node name="barbuitobonitu" parent="NavigationRegion3D/cassino" instance=ExtResource("10_o2rbt")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7, 1, -17)
 
 [node name="wall7" type="CSGBox3D" parent="NavigationRegion3D/cassino"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23.6242, 2.5, -18.6119)
@@ -1315,6 +1312,10 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 2.89471, 0, 0, 0, 0.546401, 15.8275, 2.36844, -21.0046)
 mesh = SubResource("ArrayMesh_r74th")
 skeleton = NodePath("")
+
+[node name="barbuitobonito" parent="." instance=ExtResource("30_o2rbt")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.79038, 0.559158, -10.506)
+visible = false
 
 [connection signal="timeout" from="NPC Spwaner Timer" to="." method="_spawn_npc"]
 [connection signal="update_hud" from="Shop Menu/Shop" to="HUD" method="update_spell_slots"]
