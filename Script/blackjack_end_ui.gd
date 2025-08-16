@@ -13,6 +13,7 @@ extends CanvasLayer
 var tween : Tween
 
 func _ready():
+	MusicPlayer.greensleeves.play()
 	result_texts(["0", "Loss", 200, "-200"])
 	result_texts(["1", "Tie", 100, "0"])
 	result_texts(["2", "Win", 200, "+200"])

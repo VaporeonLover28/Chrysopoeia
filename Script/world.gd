@@ -66,6 +66,7 @@ func _ready() -> void:
 		SaveScript.auto_save.emit()
 
 func _exit_tree() -> void:
+	MusicPlayer.emptytavern.stop()
 	SaveScript.auto_save.disconnect(SaveScript._save_function)
 
 func _process(delta: float) -> void:
