@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=2 format=3 uid="uid://c1ve03nv8ehl6"]
+[gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=3 format=3 uid="uid://c1ve03nv8ehl6"]
 
+[ext_resource type="Texture2D" uid="uid://cqorsj65gffoj" path="res://Assets/Originals/Spells/ring-key.png" id="1_63m15"]
 [ext_resource type="Script" uid="uid://dtrrlkl8w8gkb" path="res://Script/purchasable_itens_resource.gd" id="1_jdcbq"]
 
 [resource]
@@ -8,4 +9,6 @@ item_type = "Spells"
 name = "Chipped Key"
 price = 0
 description = "Looks like it got beat up."
+item_sprite = ExtResource("1_63m15")
+usable = true
 metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"
