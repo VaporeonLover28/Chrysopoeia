@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsp27d25mg6bh"]
+[gd_scene load_steps=7 format=3 uid="uid://dsp27d25mg6bh"]
 
 [ext_resource type="Script" uid="uid://g774yke4vius" path="res://Script/player.gd" id="1_i3pqv"]
 [ext_resource type="PackedScene" uid="uid://dbgpivfhrvrfu" path="res://Scenes/shader_quad.tscn" id="2_onrkg"]
+[ext_resource type="AudioStream" uid="uid://cxb6quno7o8rl" path="res://SFX/walking/walk1.mp3" id="2_vgqql"]
+[ext_resource type="AudioStream" uid="uid://dbqkoxlle6ono" path="res://SFX/walking/walk2.mp3" id="3_fkybt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
 
@@ -10,6 +12,12 @@
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
 script = ExtResource("1_i3pqv")
+
+[node name="Walk1" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_vgqql")
+
+[node name="Walk2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_fkybt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_sh265")

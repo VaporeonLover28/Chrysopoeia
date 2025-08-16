@@ -11,6 +11,11 @@ extends CharacterBody3D
 @onready var ui = $"../HUD"
 @onready var money = $"../HUD/money_box/Gold"
 
+@onready var walk_1: AudioStreamPlayer3D = $Walk1
+@onready var walk_2: AudioStreamPlayer3D = $Walk2
+
+
+
 const BUILD_SHADER = preload("res://build_material.tres")
 
 @export var mouse_sensitivity: float = 0.005
@@ -74,6 +79,13 @@ func _physics_process(delta: float) -> void:
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	camera.transform.origin = _headbob(t_bob) + Vector3(0, 0.5, 0)
 	
+	if is_on_floor() and velocity.length() > 0.2:
+		if sin(t_bob * bob_freq) < -0.95:  
+			if not walk_1.playing and not walk_2.playing:
+				if randf() > 0.5:
+					walk_1.play()
+				else:
+					walk_2.play()
 	if !is_on_building_mode:
 		if Input.is_action_just_pressed("e") and Globals.player_interacting == false:
 			#print("oi")
