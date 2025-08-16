@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 	money_won_label.text = "+" + str(money_won_progress) + " Gold" + "!".repeat(money_won_progress / 60)
 
 func win_anim():
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(1).timeout
 	tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_QUART)

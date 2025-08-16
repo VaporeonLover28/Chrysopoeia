@@ -159,7 +159,7 @@ func take_dmg(dmg):
 	
 	if health > 0:
 		sprite.play("hurt")
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(0.5).timeout
 		sprite.play("default")
 	else:
 		dead = true
