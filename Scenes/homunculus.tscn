@@ -1,17 +1,35 @@
-[gd_scene load_steps=8 format=3 uid="uid://bycamrxr8ti3"]
+[gd_scene load_steps=10 format=3 uid="uid://bycamrxr8ti3"]
 
 [ext_resource type="Script" uid="uid://o7ofmc37mg3h" path="res://Script/homunculus.gd" id="1_ocvrq"]
-[ext_resource type="Texture2D" uid="uid://ckelo8g6m6kfh" path="res://Assets/Originals/Untitled18_20240903135844.png" id="1_p1nnl"]
-[ext_resource type="Texture2D" uid="uid://ss7jui1s4was" path="res://Assets/Originals/Untitled19_20240903140425.png" id="3_ygv5h"]
+[ext_resource type="Texture2D" uid="uid://cvrr7f4f1i4cs" path="res://Assets/Originals/homunculus_sprites/homunsculus.png" id="2_ygv5h"]
+[ext_resource type="Texture2D" uid="uid://c1ntxxqgwufx3" path="res://Assets/Originals/homunculus_sprites/homuns_punch.png" id="3_djr0o"]
+[ext_resource type="Texture2D" uid="uid://jlrd78pppdq2" path="res://Assets/Originals/homunculus_sprites/homunhit.png" id="3_ygv5h"]
+[ext_resource type="Texture2D" uid="uid://rrc0l5iio6o8" path="res://Assets/Originals/homunculus_sprites/homuns_punch2.png" id="4_ai20m"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_n8lva"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_p1nnl")
+"texture": ExtResource("2_ygv5h")
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_djr0o")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ai20m")
+}],
+"loop": true,
+"name": &"hit2",
 "speed": 5.0
 }, {
 "frames": [{
@@ -47,9 +65,12 @@ autostart = true
 
 [node name="sprite_placeholder" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.0484454, 0, 0, 0, 0.0484454, 0, 0, 0, 0.0484454, 0, 0.97, 0)
+pixel_size = 0.2
 billboard = 2
 shaded = true
+texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_n8lva")
+animation = &"hit2"
 autoplay = "default"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
