@@ -13,7 +13,7 @@ var enemy_in_atk_area := false
 var bounty : int = 0
 @export var health := 100.0
 @export var damage := 10.0
-
+ 
 var dead := false
 var chained := false
 
@@ -145,8 +145,12 @@ func _process(delta: float) -> void:
 
 func attack_enemy():
 	if enemy_in_atk_area:
+		if randf() > 0.5:
+			sprite.play("hit")
+		else:
+			sprite.play("hit2")
 		enemy.take_dmg(damage)
-
+		
 func take_dmg(dmg):
 	##Starts the inactivity timer to stop the chain
 	get_parent().inactivity.start()
