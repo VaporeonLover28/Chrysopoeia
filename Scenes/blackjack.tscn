@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bm0dwcec16xlf"]
+[gd_scene load_steps=17 format=3 uid="uid://bm0dwcec16xlf"]
 
 [ext_resource type="Script" uid="uid://brf7xhqpnw2iv" path="res://Script/blackjack.gd" id="1_ghed7"]
 [ext_resource type="Texture2D" uid="uid://bm5mkjkryluex" path="res://Assets/grid_black_512x512.png" id="1_rnqjs"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://blky3rg2wfs5q" path="res://Scenes/blackjack_ui_test.tscn" id="6_2qcqo"]
 [ext_resource type="Texture2D" uid="uid://dhjhpxc8o116y" path="res://Assets/Originals/CartaCERTA_AGORAVAI.png" id="7_kl8m7"]
 [ext_resource type="Texture2D" uid="uid://cfvv0gh4l613s" path="res://Assets/card_textures/ace_of_clubs.png" id="8_pnc4g"]
+[ext_resource type="PackedScene" uid="uid://c4jx1kxn6ebpc" path="res://Scenes/blackjack_end_ui.tscn" id="11_wt0yi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4avdp"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -255,6 +256,10 @@ offset_right = 143.0
 offset_bottom = 129.0
 text = "Ace of Diamonds"
 horizontal_alignment = 1
+
+[node name="blackjack_end_ui" parent="." instance=ExtResource("11_wt0yi")]
+offset = Vector2(0, 821)
+transform = Transform2D(1, 0, 0, 1, 0, 821)
 
 [connection signal="timeout" from="turn_timer" to="." method="_on_turn_timer_timeout"]
 [connection signal="timeout" from="card_distr_timer" to="." method="_on_card_distr_timer_timeout"]

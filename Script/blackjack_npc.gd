@@ -10,6 +10,7 @@ extends CharacterBody3D
 @export_enum("Playing", "Standed", "Busted", "Blackjack", "Doubled") var state : String = "Playing"
 
 var money : int
+var bet : int
 
 var hand_marker: Marker3D
 var assigned_chair : bool = false
@@ -523,7 +524,7 @@ func calculate_hand_value():
 func hit():
 	#update_action_label("hit")
 	print(name + " hits.")
-	game.card_to_npc(game.deck.pop_back(), self, Vector3(0, self.hand_marker.rotation_degrees.y, 0))
+	game.card_to_npc(game.deck.pop_back(), self, Vector3(0, 0, 0))
 	calculate_hand_value()
 
 func stand():

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgq0u7ixd4j2s"]
+
+[ext_resource type="Texture2D" uid="uid://bbtb2l43wx0m2" path="res://Assets/Originals/fabbri1.png" id="1_sv3p1"]
+[ext_resource type="FontFile" uid="uid://4y6u2ai8c7lq" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-Bold.ttf" id="2_ikbim"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ikbim"]
+albedo_color = Color(1, 0.839216, 0, 1)
+albedo_texture = ExtResource("1_sv3p1")
+metallic = 1.0
+roughness = 0.4
+uv1_scale = Vector3(1.835, 1.835, 1.835)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 150.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_sdcr6"]
+material = SubResource("StandardMaterial3D_ikbim")
+
+[node name="gold_nugget" type="Node3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_sdcr6")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.796325, 0)
+pixel_size = 0.01
+texture_filter = 0
+modulate = Color(1, 1, 0, 1)
+outline_modulate = Color(0.589949, 0.410146, 2.88785e-07, 1)
+text = "200 Gold"
+font = ExtResource("2_ikbim")

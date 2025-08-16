@@ -13,19 +13,23 @@ script = ExtResource("1_nnqcb")
 
 [node name="blackjack_theme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_cy1if")
+volume_db = -10.0
 
 [node name="full_tavern" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_hilfb")
+volume_db = -15.0
 
 [node name="Greensleeves" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_qb4b4")
 
 [node name="fight_theme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_b03an")
+volume_db = -12.0
 
 [node name="menu_theme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_hnt0s")
 
 [node name="empty_tavern" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_tx3aj")
+volume_db = -5.0
 parameters/looping = true

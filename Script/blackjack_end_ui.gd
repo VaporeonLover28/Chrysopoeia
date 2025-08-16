@@ -11,42 +11,38 @@ extends CanvasLayer
 @onready var res_dealer: RichTextLabel = $res_dealer
 
 var tween : Tween
-
-func _ready():
-	MusicPlayer.greensleeves.play()
-	result_texts(["0", "Loss", 200, "-200"])
-	result_texts(["1", "Tie", 100, "0"])
-	result_texts(["2", "Win", 200, "+200"])
-	result_texts(["3", "Double Win", 400, "+800"])
-	result_texts(["4", "Double Loss", 250, "-500"])
-	result_texts(["Dealer", "DEALER", 500, "+300"])
-	match_end_anim()
+var house_net : int = 0
 
 func result_texts(player_results : Array):
-	#[dealer/npc name, state, bet, net bet result]
-	match player_results[0]:
-		"0", "1", "2", "3", "4":
-			result_labels.get_children()[int(player_results[0])].text = "Player " +\
-			player_results[0] + " had " + str(player_results[2]) + " Gold and "
-			
-			match player_results[1]:
-				"Win":
-					result_labels.get_children()[int(player_results[0])].text += "won."
-				"Double Win":
-					result_labels.get_children()[int(player_results[0])].text += "won with a double down!"
-				"Tie":
-					result_labels.get_children()[int(player_results[0])].text += "tied the dealer."
-				"Loss":
-					result_labels.get_children()[int(player_results[0])].text += "lost."
-				"Double Loss":
-					result_labels.get_children()[int(player_results[0])].text += "lost with a double down!"
-				
-			result_labels.get_children()[int(player_results[0])].get_child(0).text = \
-			"Net gold: " + player_results[3]
-		"Dealer":
-			res_dealer.get_child(0).text = player_results[3]
+	##[dealer/npc name, state, bet, net bet result]
+	result_labels.get_children()[int(player_results[0])].text = "Player " +\
+	player_results[0] + " had " + str(player_results[2]) + " Gold and "
+	
+	match player_results[1]:
+		"Win":
+			result_labels.get_children()[int(player_results[0])].text += "won."
+		"Double Win":
+			result_labels.get_children()[int(player_results[0])].text += "won with a double down!"
+		"Tie":
+			result_labels.get_children()[int(player_results[0])].text += "tied the dealer."
+		"Loss":
+			result_labels.get_children()[int(player_results[0])].text += "lost."
+		"Double Loss":
+			result_labels.get_children()[int(player_results[0])].text += "lost with a double down!"
+		"Blackjack":
+			result_labels.get_children()[int(player_results[0])].text += "won with a blackjack!"
+		
+	result_labels.get_children()[int(player_results[0])].get_child(0).text = \
+	"Net gold: " + str(player_results[3])
+	
+	#house_net += int(player_results[3])
+	#res_dealer.get_child(0).text = str(house_net)
+
+func calculate_house_net():
+	pass
 
 func match_end_anim():
+	MusicPlayer.greensleeves.play()
 	await get_tree().create_timer(0.5).timeout
 	tween = create_tween()
 	tween.set_ease(Tween.EASE_IN)

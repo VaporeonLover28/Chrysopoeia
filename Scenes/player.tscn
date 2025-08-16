@@ -15,9 +15,12 @@ script = ExtResource("1_i3pqv")
 
 [node name="Walk1" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_vgqql")
+volume_db = -40.0
 
 [node name="Walk2" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_fkybt")
+volume_db = -40.0
+pitch_scale = 1.11
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_sh265")
