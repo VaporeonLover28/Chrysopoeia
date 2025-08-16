@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c4jx1kxn6ebpc"]
 
-[ext_resource type="Script" uid="uid://cwsgkgs1dxin1" path="res://Scenes/blackjack_end_ui.gd" id="1_b8jwi"]
+[ext_resource type="Script" uid="uid://cwsgkgs1dxin1" path="res://Script/blackjack_end_ui.gd" id="1_b8jwi"]
 [ext_resource type="Texture2D" uid="uid://caxlwqsi757pk" path="res://Assets/Exports/placehergaminho.png" id="1_gilck"]
 [ext_resource type="FontFile" uid="uid://4y6u2ai8c7lq" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-Bold.ttf" id="2_7fcdd"]
 [ext_resource type="FontFile" uid="uid://bxtnksq3tgohf" path="res://Assets/Fonts/comic-sans-ms-font-family/ComicSansMS3.ttf" id="4_x8vvt"]
@@ -32,13 +32,22 @@ vertical_alignment = 1
 visible_characters = 0
 visible_ratio = 0.0
 
+[node name="net" type="RichTextLabel" parent="Match_Ended"]
+visible = false
+offset_left = 400.0
+offset_right = 440.0
+offset_bottom = 40.0
+bbcode_enabled = true
+text = "XXX"
+
 [node name="Result" type="RichTextLabel" parent="."]
 top_level = true
-offset_left = 550.0
+offset_left = 513.375
 offset_top = 206.0
-offset_right = 617.0
+offset_right = 580.375
 offset_bottom = 229.0
 theme_override_fonts/normal_font = ExtResource("4_x8vvt")
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "RESULTS"
 fit_content = true
@@ -46,6 +55,14 @@ scroll_active = false
 autowrap_mode = 0
 visible_characters = 0
 visible_ratio = 0.0
+
+[node name="net" type="RichTextLabel" parent="Result"]
+visible = false
+offset_left = 400.0
+offset_right = 440.0
+offset_bottom = 40.0
+bbcode_enabled = true
+text = "XXX"
 
 [node name="result_labels" type="VBoxContainer" parent="."]
 top_level = true
@@ -57,53 +74,130 @@ offset_bottom = 326.0
 [node name="res_player_0" type="RichTextLabel" parent="result_labels"]
 layout_mode = 2
 bbcode_enabled = true
-text = "Player 0 had XX Gold and XXXX                         Player 0 net gold: +XX"
+text = "Player 0 had XX Gold and XXXX"
 fit_content = true
 scroll_active = false
 visible_characters = 0
 visible_ratio = 0.0
+
+[node name="net" type="RichTextLabel" parent="result_labels/res_player_0"]
+layout_mode = 0
+offset_left = 450.0
+offset_right = 650.0
+offset_bottom = 20.0
+bbcode_enabled = true
+text = "Player 1 net gold: "
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
 
 [node name="res_player_1" type="RichTextLabel" parent="result_labels"]
 layout_mode = 2
 bbcode_enabled = true
-text = "Player 1 had XX Gold and XXXX                         Player 1 net gold: +XX"
+text = "Player 1 had XX Gold and XXXX                         "
 fit_content = true
 scroll_active = false
 visible_characters = 0
 visible_ratio = 0.0
+
+[node name="net" type="RichTextLabel" parent="result_labels/res_player_1"]
+offset_left = 450.0
+offset_right = 650.0
+offset_bottom = 20.0
+bbcode_enabled = true
+text = "Player 1 net gold: "
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
 
 [node name="res_player_2" type="RichTextLabel" parent="result_labels"]
 layout_mode = 2
 bbcode_enabled = true
-text = "Player 2 had XX Gold and XXXX                         Player 2 net gold: +XX"
+text = "Player 2 had XX Gold and XXXX"
 fit_content = true
 scroll_active = false
 visible_characters = 0
 visible_ratio = 0.0
+
+[node name="net" type="RichTextLabel" parent="result_labels/res_player_2"]
+offset_left = 450.0
+offset_right = 650.0
+offset_bottom = 20.0
+bbcode_enabled = true
+text = "Player 1 net gold: "
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
 
 [node name="res_player_3" type="RichTextLabel" parent="result_labels"]
 layout_mode = 2
 bbcode_enabled = true
-text = "Player 3 had XX Gold and XXXX                         Player 3 net gold: +XX"
+text = "Player 3 had XX Gold and XXXX"
 fit_content = true
 scroll_active = false
 visible_characters = 0
 visible_ratio = 0.0
+
+[node name="net" type="RichTextLabel" parent="result_labels/res_player_3"]
+offset_left = 450.0
+offset_right = 650.0
+offset_bottom = 20.0
+bbcode_enabled = true
+text = "Player 1 net gold: "
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
 
 [node name="res_player_4" type="RichTextLabel" parent="result_labels"]
 layout_mode = 2
 bbcode_enabled = true
-text = "Player 4 had XX Gold and XXXX                         Player 4 net gold: +XX"
+text = "Player 4 had XX Gold and XXXX"
 fit_content = true
 scroll_active = false
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="res_dealer" type="RichTextLabel" parent="result_labels"]
-layout_mode = 2
+[node name="net" type="RichTextLabel" parent="result_labels/res_player_4"]
+offset_left = 450.0
+offset_right = 650.0
+offset_bottom = 20.0
 bbcode_enabled = true
-text = "Dealer had XXX gold, lost and had to pay players.                         Dealer net gold: -XXX"
+text = "Player 1 net gold: "
 fit_content = true
 scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+
+[node name="res_dealer" type="RichTextLabel" parent="."]
+offset_left = 492.0
+offset_top = 449.0
+offset_right = 992.0
+offset_bottom = 469.0
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "House net gold:"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+justification_flags = 161
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="net" type="RichTextLabel" parent="res_dealer"]
+layout_mode = 0
+offset_left = 157.0
+offset_right = 197.0
+offset_bottom = 40.0
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Net Gold"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 visible_characters = 0
 visible_ratio = 0.0
