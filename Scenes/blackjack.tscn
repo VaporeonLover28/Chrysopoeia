@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bm0dwcec16xlf"]
+[gd_scene load_steps=18 format=3 uid="uid://bm0dwcec16xlf"]
 
 [ext_resource type="Script" uid="uid://brf7xhqpnw2iv" path="res://Script/blackjack.gd" id="1_ghed7"]
 [ext_resource type="Texture2D" uid="uid://bm5mkjkryluex" path="res://Assets/grid_black_512x512.png" id="1_rnqjs"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dhjhpxc8o116y" path="res://Assets/Originals/CartaCERTA_AGORAVAI.png" id="7_kl8m7"]
 [ext_resource type="Texture2D" uid="uid://cfvv0gh4l613s" path="res://Assets/card_textures/ace_of_clubs.png" id="8_pnc4g"]
 [ext_resource type="PackedScene" uid="uid://c4jx1kxn6ebpc" path="res://Scenes/blackjack_end_ui.tscn" id="11_wt0yi"]
+[ext_resource type="PackedScene" uid="uid://fw326cacay8v" path="res://Scenes/spell_menu.tscn" id="12_tild6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4avdp"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -109,7 +110,7 @@ transform = Transform3D(0.542016, 0, -0.840368, 0, 1, 0, 0.840368, 0, 0.542016, 
 transform = Transform3D(0.51598, 0, 0.856601, 0, 1, 0, -0.856601, 0, 0.51598, -0.501329, 0.905753, -0.0585135)
 
 [node name="deck" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.632098, 0.887299, 0.157821)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18919, 0.887299, 0.157821)
 
 [node name="blackjack_player" parent="." instance=ExtResource("3_wkmli")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.06, 0.854)
@@ -260,6 +261,8 @@ horizontal_alignment = 1
 [node name="blackjack_end_ui" parent="." instance=ExtResource("11_wt0yi")]
 offset = Vector2(0, 821)
 transform = Transform2D(1, 0, 0, 1, 0, 821)
+
+[node name="Spell_menu" parent="." instance=ExtResource("12_tild6")]
 
 [connection signal="timeout" from="turn_timer" to="." method="_on_turn_timer_timeout"]
 [connection signal="timeout" from="card_distr_timer" to="." method="_on_card_distr_timer_timeout"]

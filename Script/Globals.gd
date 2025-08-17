@@ -55,8 +55,7 @@ func check_spell_available(spell_name : String):
 		var spell_found := false
 		var spell_not_cd := false
 		for spell in spell_inventory_list:
-			print(spell_inventory_list)
-			print(spell)
+			print(spell.name)
 			if !spell_found:
 				if spell_name == spell.name:
 					print("spell found: " + spell.name)
@@ -79,6 +78,11 @@ func cooldown_spell(spell_name : String):
 			spell.usable = false
 		#else:
 			#print("not desired spell")
+
+func clear_cooldowns():
+	for spell in spell_inventory_list:
+		if !spell.usable:
+				spell.usable = true
 
 func _remove_spell(spell_name : String):
 	for spell in spell_inventory_list:

@@ -11,4 +11,5 @@ price = 250
 description = "\"Two men look at the same bars: One sees mud and one sees the stars.\"Lets you see the next card in the deck."
 item_sprite = ExtResource("1_3ei7p")
 usable = true
+keybind = "tab"
 metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"

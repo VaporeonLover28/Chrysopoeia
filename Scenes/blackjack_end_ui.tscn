@@ -1,27 +1,152 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4jx1kxn6ebpc"]
+[gd_scene load_steps=33 format=3 uid="uid://c4jx1kxn6ebpc"]
 
 [ext_resource type="Script" uid="uid://cwsgkgs1dxin1" path="res://Script/blackjack_end_ui.gd" id="1_b8jwi"]
-[ext_resource type="Texture2D" uid="uid://caxlwqsi757pk" path="res://Assets/Exports/placehergaminho.png" id="1_gilck"]
 [ext_resource type="FontFile" uid="uid://4y6u2ai8c7lq" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-Bold.ttf" id="2_7fcdd"]
+[ext_resource type="Texture2D" uid="uid://bhm7iuxwwodlc" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024333.png" id="2_s34sp"]
+[ext_resource type="Texture2D" uid="uid://i2akf0ju8xn3" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024402.png" id="3_sjria"]
+[ext_resource type="Texture2D" uid="uid://egyaahdv6jpg" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024437.png" id="4_lu2d6"]
 [ext_resource type="FontFile" uid="uid://bxtnksq3tgohf" path="res://Assets/Fonts/comic-sans-ms-font-family/ComicSansMS3.ttf" id="4_x8vvt"]
+[ext_resource type="Texture2D" uid="uid://dtxfnhnc06qg3" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024511.png" id="5_4omyl"]
+[ext_resource type="Texture2D" uid="uid://bdcqrh2xht7u" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024538.png" id="6_v1otq"]
+[ext_resource type="Texture2D" uid="uid://bu822v0kahoq2" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130108.png" id="7_fuo12"]
+[ext_resource type="Texture2D" uid="uid://dkhl7vsnqeego" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130133.png" id="8_y3lwx"]
+[ext_resource type="Texture2D" uid="uid://nbkh4aphl8yk" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130207.png" id="9_ia5py"]
+[ext_resource type="Texture2D" uid="uid://cgt4wqhmgoscb" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130228.png" id="10_i7n3w"]
+[ext_resource type="Texture2D" uid="uid://bqdve5hva8f8q" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130248.png" id="11_jjw11"]
+[ext_resource type="Texture2D" uid="uid://df3wrdcpepy80" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130341.png" id="12_uy40g"]
+[ext_resource type="Texture2D" uid="uid://b8nlbir068ihx" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130357.png" id="13_rwcfc"]
+[ext_resource type="Texture2D" uid="uid://bjsbl26vi4wyx" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130418.png" id="14_6o2ib"]
+[ext_resource type="Texture2D" uid="uid://dynp3emk68bax" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130434.png" id="15_u2mnp"]
+[ext_resource type="Texture2D" uid="uid://csos1tsim6ga6" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130456.png" id="16_57eit"]
+[ext_resource type="Texture2D" uid="uid://d1l3lpsj4ykc8" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130531.png" id="17_mkqpl"]
+[ext_resource type="Texture2D" uid="uid://djliwdnltry16" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130548.png" id="18_qlrny"]
+[ext_resource type="Texture2D" uid="uid://cgbh43crb2pk8" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130608.png" id="19_wr1ob"]
+[ext_resource type="Texture2D" uid="uid://bnqo0lpkvd6px" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130625.png" id="20_jlhfr"]
+[ext_resource type="Texture2D" uid="uid://droxfo4heuvl4" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130648.png" id="21_sbgjf"]
+[ext_resource type="Texture2D" uid="uid://bgl24p3qpd2f6" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130712.png" id="22_ledxa"]
+[ext_resource type="Texture2D" uid="uid://cjaxygb5naw8p" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130820.png" id="23_gy76y"]
+[ext_resource type="Texture2D" uid="uid://35wi0fglpfe5" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130843.png" id="24_c6hhk"]
+[ext_resource type="Texture2D" uid="uid://b48me18e8fkbq" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130904.png" id="25_xldvd"]
+[ext_resource type="Texture2D" uid="uid://d27wuogivrq5e" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130921.png" id="26_7g6dy"]
+[ext_resource type="Texture2D" uid="uid://xcgj0i00ah4k" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130951.png" id="27_s6cds"]
+[ext_resource type="Texture2D" uid="uid://dpjpcs6o1j0bc" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817131015.png" id="28_fvmnf"]
+[ext_resource type="Texture2D" uid="uid://drpqmobd0hljp" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817131051.png" id="29_lgg1v"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xahnm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s34sp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s34sp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sjria")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lu2d6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4omyl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_v1otq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_fuo12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_y3lwx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ia5py")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_i7n3w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_jjw11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_uy40g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_rwcfc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_6o2ib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_u2mnp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_57eit")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_mkqpl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_qlrny")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_wr1ob")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_jlhfr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_sbgjf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_ledxa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_gy76y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_c6hhk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_xldvd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_7g6dy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_s6cds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_fvmnf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_lgg1v")
+}],
+"loop": false,
+"name": &"open",
+"speed": 1.0
+}]
 
 [node name="blackjack_end_ui" type="CanvasLayer"]
 script = ExtResource("1_b8jwi")
 metadata/_edit_vertical_guides_ = [1956.0]
 
-[node name="bg" type="TextureRect" parent="."]
-offset_top = 726.605
-offset_right = 800.0
-offset_bottom = 1878.6
-rotation = -1.5708
-texture = ExtResource("1_gilck")
-expand_mode = 4
+[node name="bg" type="AnimatedSprite2D" parent="."]
+position = Vector2(576, 320)
+sprite_frames = SubResource("SpriteFrames_xahnm")
+animation = &"open"
+autoplay = "default"
 
 [node name="Match_Ended" type="RichTextLabel" parent="."]
 top_level = true
-offset_left = 382.0
+offset_left = 359.0
 offset_top = 118.0
-offset_right = 785.92
+offset_right = 762.92
 offset_bottom = 204.0
 theme_override_fonts/normal_font = ExtResource("2_7fcdd")
 theme_override_font_sizes/normal_font_size = 65
@@ -44,9 +169,9 @@ text = "XXX"
 
 [node name="Result" type="RichTextLabel" parent="."]
 top_level = true
-offset_left = 513.375
+offset_left = 504.0
 offset_top = 206.0
-offset_right = 580.375
+offset_right = 571.0
 offset_bottom = 229.0
 theme_override_fonts/normal_font = ExtResource("4_x8vvt")
 theme_override_font_sizes/normal_font_size = 30
@@ -69,10 +194,10 @@ text = "XXX"
 
 [node name="result_labels" type="VBoxContainer" parent="."]
 top_level = true
-offset_left = 312.0
-offset_top = 283.0
-offset_right = 912.0
-offset_bottom = 326.0
+offset_left = 287.0
+offset_top = 285.0
+offset_right = 887.0
+offset_bottom = 328.0
 
 [node name="res_player_0" type="RichTextLabel" parent="result_labels"]
 visible = false
@@ -205,10 +330,10 @@ visible_characters = 0
 visible_ratio = 0.0
 
 [node name="res_dealer" type="RichTextLabel" parent="."]
-offset_left = 492.0
-offset_top = 449.0
-offset_right = 992.0
-offset_bottom = 469.0
+offset_left = 477.0
+offset_top = 424.0
+offset_right = 977.0
+offset_bottom = 444.0
 theme_override_fonts/normal_font = ExtResource("2_7fcdd")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true

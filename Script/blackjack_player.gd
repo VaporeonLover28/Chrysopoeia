@@ -98,7 +98,7 @@ func _unhandled_input(event): #event representa o evento do input
 			pass
 		else:
 			camera.zoom_out_anim()
-			
+		
 		if event is InputEventMouseMotion: # se o jogador mover o mouse(prendemos ele na tela)
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		if event is InputEventMouseMotion:

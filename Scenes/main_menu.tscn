@@ -80,6 +80,7 @@ grow_vertical = 2
 script = ExtResource("1_opfnp")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+texture_filter = 1
 layout_mode = 0
 offset_left = -351.52
 offset_right = 1215.48

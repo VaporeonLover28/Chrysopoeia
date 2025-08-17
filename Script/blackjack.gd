@@ -213,7 +213,7 @@ func distribute_cards():
 		##the dealer's first card is side down
 		if distribution_number / 3 > round_order_npcs.size():
 			##gives the top card to the dealer
-			card_to_dealer(deck.pop_back(), Vector3(0.40, 0, 0), Vector3(180, 0, 0))
+			card_to_dealer(deck.pop_back(), Vector3(-0.35, 0, 0), Vector3(180, 0, 0))
 		else:
 		##the npc's first and second cards are identical
 			##gives the top card to the npc
@@ -222,7 +222,7 @@ func distribute_cards():
 		##the dealer's first card is side up
 		if distribution_number / 3 > round_order_npcs.size():
 			##gives the top card to the dealer
-			card_to_dealer(deck.pop_back(), Vector3(0.40, 0, 0), Vector3.ZERO)
+			card_to_dealer(deck.pop_back(), Vector3(-0.35, 0, 0), Vector3.ZERO)
 		else:
 		##the npc's first and second cards are identical
 			##gives the top card to the npc
@@ -298,7 +298,7 @@ func dealer_turn():
 	dealer_can_hit = true
 
 func dealer_hit():
-	card_to_dealer(deck.pop_back(), Vector3(0.40, 0, 0), Vector3.ZERO)
+	card_to_dealer(deck.pop_back(), Vector3(-0.35, 0, 0), Vector3.ZERO)
 
 func dealer_stand():
 	end_game()
@@ -392,11 +392,12 @@ func end_game():
 	end_anim()
 
 func end_anim():
+	await get_tree().create_timer(2).timeout
 	tween = create_tween()
 	tween.set_trans(Tween.TRANS_QUART)
 	tween.set_ease(Tween.EASE_OUT)
 	tween.tween_property(end_ui, "offset", Vector2.ZERO, 2.5)
-	await get_tree().create_timer(2.5).timeout
+	await get_tree().create_timer(2).timeout
 	end_ui.match_end_anim()
 
 func spell_cast(spell : String):

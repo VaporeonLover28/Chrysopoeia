@@ -11,4 +11,5 @@ price = 200
 description = "Mars, god of war. Strengthens your homunculus."
 item_sprite = ExtResource("1_muh6c")
 usable = true
+keybind = "tab"
 metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"

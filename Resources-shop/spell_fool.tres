@@ -11,4 +11,5 @@ price = 444
 description = "All that glitters is gold. Err.. Maybe not this time... Lowers the rank of a card. "
 item_sprite = ExtResource("1_txebl")
 usable = true
+keybind = "a"
 metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"

@@ -15,6 +15,7 @@ extends Node3D
 @onready var match_win_test: CanvasLayer = $match_win_test
 @onready var match_tie_test: CanvasLayer = $match_tie_test
 @onready var match_loss_test: CanvasLayer = $match_loss_test
+@onready var spell_menu = preload("res://Scenes/spell_menu.tscn")
 
 var chain_cooldown = 10
 var chain_distance = 1
@@ -162,6 +163,7 @@ func bet_on_creature():
 	start_match()
 
 func start_match():
+	add_child(spell_menu.instantiate())
 	##Instantiating the player homunculus
 	MusicPlayer.fighttheme.play()
 	var player_homunculus = homunculus.instantiate()

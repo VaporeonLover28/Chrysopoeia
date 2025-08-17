@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+@onready var bg: AnimatedSprite2D = $bg
 @onready var match_ended: RichTextLabel = $Match_Ended
 @onready var result: RichTextLabel = $Result
 @onready var result_labels: VBoxContainer = $result_labels
@@ -45,7 +46,10 @@ func result_texts(player_results : Array):
 		res_dealer.get_child(0).text = "0"
 
 func match_end_anim():
-	await get_tree().create_timer(0.5).timeout
+	get_parent().player.allowed_to_move = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	bg.play("open")
+	await get_tree().create_timer(2).timeout
 	tween = create_tween()
 	tween.set_ease(Tween.EASE_IN)
 	tween.set_trans(Tween.TRANS_LINEAR)
@@ -58,15 +62,16 @@ func match_end_anim():
 			vis_tween_label(label.get_child(0), 0.5, 0.5)
 	vis_tween_label(res_dealer, 0.5, 0)
 	vis_tween_label(res_dealer.get_child(0), 0.25, 0)
-	tween.tween_callback(vis_button())
-
-func vis_button():
+	await get_tree().create_timer(4.25 + (result_labels.get_children().size() * 1)).timeout
 	leave.visible = true
 
 func vis_tween_label(label, time, interval):
 	color_label(label)
 	tween.tween_property(label, "visible_ratio", 1, time)
 	tween.tween_interval(interval)
+
+func unvis_label(label):
+	tween.tween_property(label, "visible_ratio", 0, 0.75)
 
 func color_label(label):
 	if label.name != "net":
@@ -98,4 +103,28 @@ func color_label(label):
 						 + current_net_text[current_net_text.size() - 1] + "[/color]"
 
 func _on_leave_pressed() -> void:
-	Globals.return_to_world()
+	tween = create_tween()
+	tween.set_trans(Tween.TRANS_LINEAR)
+	tween.set_ease(Tween.EASE_OUT_IN)
+	tween.set_parallel(true)
+	unvis_label(match_ended)
+	unvis_label(result)
+	for label in result_labels.get_children():
+		unvis_label(label)
+		unvis_label(label.get_child(0))
+	unvis_label(res_dealer)
+	unvis_label(res_dealer.get_child(0))
+	tween.set_parallel(false)
+	tween.tween_interval(0.12)
+	tween.tween_callback(func(): leave.visible = false)
+	tween.tween_callback(bg.play_backwards.bind("open"))
+	tween.tween_interval(0.67)
+	tween.set_trans(Tween.TRANS_QUART)
+	tween.set_ease(Tween.EASE_IN)
+	tween.tween_property(bg, "position", Vector2(576, 1141), 1)
+	tween.tween_callback(func():
+		Globals.money += int(house_net)
+		MusicPlayer.greensleeves.stop()
+		Globals.clear_cooldowns()
+		Globals.return_to_world()
+	)

@@ -8,3 +8,4 @@ extends Resource; class_name PurchasableItemResource
 #only necessary if it is a spell 
 @export var item_sprite: Texture2D
 @export var usable: bool = true
+@export var keybind: String
