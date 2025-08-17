@@ -1,9 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://ltp3jvrek5bh"]
+[gd_scene load_steps=14 format=3 uid="uid://ltp3jvrek5bh"]
 
 [ext_resource type="Script" uid="uid://mh8h7xo4eso6" path="res://Script/shop.gd" id="1_xysl7"]
 [ext_resource type="Texture2D" uid="uid://wetbh3qngmmh" path="res://Assets/Originals/spellot.png" id="2_jhj42"]
 [ext_resource type="Texture2D" uid="uid://b8o8bfecik2rk" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_x_outline.png" id="2_xdhm7"]
 [ext_resource type="Texture2D" uid="uid://pov62jfwgcqy" path="res://icon.svg" id="3_lvwfa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xbhrw"]
+
+[sub_resource type="Theme" id="Theme_hm266"]
+TabContainer/styles/panel = SubResource("StyleBoxEmpty_xbhrw")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c2pxs"]
 
@@ -59,6 +64,7 @@ theme_override_constants/margin_top = 25
 
 [node name="Top_Bar" type="HBoxContainer" parent="Shop/Margin"]
 layout_mode = 2
+theme = SubResource("Theme_hm266")
 theme_override_constants/separation = 20
 
 [node name="Shop_Tabs" type="TabContainer" parent="Shop/Margin/Top_Bar"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cf21qm02h40cu"]
+[gd_scene load_steps=24 format=3 uid="uid://cf21qm02h40cu"]
 
 [ext_resource type="Texture2D" uid="uid://bm5mkjkryluex" path="res://Assets/grid_black_512x512.png" id="1_fu7sn"]
 [ext_resource type="Script" uid="uid://gupatwggm12k" path="res://Script/main_menu.gd" id="1_opfnp"]
@@ -7,6 +7,7 @@
 [ext_resource type="Theme" uid="uid://f5yk4gkyeuqv" path="res://Themes/menu_theme.tres" id="5_cp0ys"]
 [ext_resource type="FontFile" uid="uid://paxjlxvek7jf" path="res://Assets/Fonts/ransite_medieval/RansiteMedieval_PERSONAL_USE_ONLY.otf" id="5_n45e2"]
 [ext_resource type="Texture2D" uid="uid://dou0u21vugnyg" path="res://Assets/Originals/banner.png" id="5_vr1f0"]
+[ext_resource type="Script" uid="uid://dl3d0x2t346o" path="res://Assets/Originals/circulomagico.gd" id="6_vtepg"]
 [ext_resource type="Script" uid="uid://dj7uf3sroay0t" path="res://Assets/Originals/gold_nugget.gd" id="7_5egv6"]
 [ext_resource type="Script" uid="uid://c4ndqtv32fvou" path="res://Script/title.gd" id="8_yhxw7"]
 [ext_resource type="PackedScene" uid="uid://tjnuyxlxa08i" path="res://Assets/Originals/Magorigado_pose2.glb" id="9_16hvj"]
@@ -31,6 +32,41 @@ sky_material = SubResource("ProceduralSkyMaterial_qe12f")
 background_mode = 2
 sky = SubResource("Sky_ylhsq")
 tonemap_mode = 2
+
+[sub_resource type="Curve" id="Curve_m3bi6"]
+_data = [Vector2(0, 0.842697), 0.0, 0.0, 0, 0, Vector2(0.522059, 0.516854), 0.0, 0.0, 0, 0, Vector2(0.970588, 0.685393), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_wyh8j"]
+resource_local_to_scene = true
+width = 128
+curve = SubResource("Curve_m3bi6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ujyyl"]
+lifetime_randomness = 1.0
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 0.5)
+emission_ring_height = 1.0
+emission_ring_radius = 2.0
+emission_ring_inner_radius = 1.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(4.23, 0, -2.63)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_wyh8j")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mkpwh"]
+blend_mode = 1
+cull_mode = 1
+albedo_color = Color(0.921569, 0.921569, 0.203922, 1)
+emission_enabled = true
+emission = Color(0.997293, 0.829422, 1.15514e-06, 1)
+emission_energy_multiplier = 2.5
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4nkqq"]
+material = SubResource("StandardMaterial3D_mkpwh")
+radius = 0.01
+height = 0.02
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yhxw7"]
 
@@ -88,7 +124,17 @@ spot_angle = 35.0
 transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0, 0.367939, -5.47635)
 
 [node name="Circulomagico" parent="SubViewportContainer/SubViewport" instance=ExtResource("10_vr1f0")]
-transform = Transform3D(0.199799, 0.00895752, -3.91546e-10, 0, -8.74228e-09, -0.2, -0.00895752, 0.199799, -8.73351e-09, 0.0266514, 1.29667, -5.08503)
+transform = Transform3D(0.199799, 0.00895752, -3.91546e-10, 0, -8.74228e-09, -0.2, -0.00895752, 0.199799, -8.73351e-09, 0.0266514, 1.29667, -5.09108)
+script = ExtResource("6_vtepg")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="SubViewportContainer/SubViewport/Circulomagico"]
+transform = Transform3D(0.596653, 5.57351e-16, -0.0449353, 0.0267496, -2.35368e-08, 1.00229, -1.16926e-09, -0.538458, -4.38115e-08, -0.0347567, -0.118996, 0.0433335)
+amount = 60
+lifetime = 3.05
+collision_base_size = 0.0
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_ujyyl")
+draw_pass_1 = SubResource("CapsuleMesh_4nkqq")
 
 [node name="gold_nugget" parent="SubViewportContainer/SubViewport" instance=ExtResource("11_vr1f0")]
 transform = Transform3D(0.799449, 0.0296638, 0.000809833, -0.0296638, 0.79945, -4.72689e-12, -0.000809276, -3.00284e-05, 0.8, 0.0339304, 1.28485, -4.99758)
@@ -162,6 +208,11 @@ offset_left = 138.0
 offset_top = -186.0
 offset_right = 962.0
 offset_bottom = -3.0
+theme_override_colors/font_color = Color(0.653681, 0.0323807, 0, 1)
+theme_override_colors/font_outline_color = Color(0.912465, 0.642415, 0.0429651, 1)
+theme_override_constants/shadow_offset_x = 45
+theme_override_constants/shadow_offset_y = 50
+theme_override_constants/outline_size = 45
 theme_override_fonts/font = ExtResource("5_n45e2")
 theme_override_font_sizes/font_size = 180
 text = "Chrysopoeia"
