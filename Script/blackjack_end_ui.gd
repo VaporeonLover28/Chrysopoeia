@@ -9,6 +9,7 @@ extends CanvasLayer
 @onready var res_player_3: RichTextLabel = $result_labels/res_player_3
 @onready var res_player_4: RichTextLabel = $result_labels/res_player_4
 @onready var res_dealer: RichTextLabel = $res_dealer
+@onready var leave: Button = $leave
 
 var tween : Tween
 var house_net : int = 0
@@ -57,6 +58,10 @@ func match_end_anim():
 			vis_tween_label(label.get_child(0), 0.5, 0.5)
 	vis_tween_label(res_dealer, 0.5, 0)
 	vis_tween_label(res_dealer.get_child(0), 0.25, 0)
+	tween.tween_callback(vis_button())
+
+func vis_button():
+	leave.visible = true
 
 func vis_tween_label(label, time, interval):
 	color_label(label)
@@ -91,3 +96,6 @@ func color_label(label):
 					_:
 						label.get_child(0).text = "[color=White]"\
 						 + current_net_text[current_net_text.size() - 1] + "[/color]"
+
+func _on_leave_pressed() -> void:
+	Globals.return_to_world()

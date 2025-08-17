@@ -158,6 +158,9 @@ maximum_time_for_spawn_npc = 180.0
 
 [node name="Shop Menu" parent="." instance=ExtResource("2_7yui6")]
 
+[node name="Top_Bar" parent="Shop Menu/Shop/Margin" index="0"]
+theme = null
+
 [node name="Bar UI" parent="." instance=ExtResource("3_e0ngr")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

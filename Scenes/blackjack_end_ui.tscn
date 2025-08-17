@@ -235,3 +235,15 @@ scroll_active = false
 autowrap_mode = 0
 visible_characters = 0
 visible_ratio = 0.0
+
+[node name="leave" type="Button" parent="."]
+visible = false
+offset_left = 533.0
+offset_top = 472.0
+offset_right = 626.0
+offset_bottom = 520.0
+theme_override_fonts/font = ExtResource("2_7fcdd")
+theme_override_font_sizes/font_size = 32
+text = "Leave"
+
+[connection signal="pressed" from="leave" to="." method="_on_leave_pressed"]

@@ -7,7 +7,7 @@
 [ext_resource type="Theme" uid="uid://f5yk4gkyeuqv" path="res://Themes/menu_theme.tres" id="5_cp0ys"]
 [ext_resource type="FontFile" uid="uid://paxjlxvek7jf" path="res://Assets/Fonts/ransite_medieval/RansiteMedieval_PERSONAL_USE_ONLY.otf" id="5_n45e2"]
 [ext_resource type="Texture2D" uid="uid://dou0u21vugnyg" path="res://Assets/Originals/banner.png" id="5_vr1f0"]
-[ext_resource type="Script" uid="uid://dl3d0x2t346o" path="res://Assets/Originals/circulomagico.gd" id="6_vtepg"]
+[ext_resource type="Script" path="res://Assets/Originals/circulomagico.gd" id="6_vtepg"]
 [ext_resource type="Script" uid="uid://dj7uf3sroay0t" path="res://Assets/Originals/gold_nugget.gd" id="7_5egv6"]
 [ext_resource type="Script" uid="uid://c4ndqtv32fvou" path="res://Script/title.gd" id="8_yhxw7"]
 [ext_resource type="PackedScene" uid="uid://tjnuyxlxa08i" path="res://Assets/Originals/Magorigado_pose2.glb" id="9_16hvj"]
@@ -81,8 +81,8 @@ script = ExtResource("1_opfnp")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 0
-offset_left = -410.0
-offset_right = 1157.0
+offset_left = -351.52
+offset_right = 1215.48
 offset_bottom = 652.0
 stretch = true
 
@@ -107,6 +107,9 @@ environment = SubResource("Environment_8qtwp")
 [node name="Table" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_t1dhk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00459552, 0.00956634, -4.4175)
 
+[node name="Sketchfab_model" parent="SubViewportContainer/SubViewport/Table" index="0"]
+visible = false
+
 [node name="light" type="SpotLight3D" parent="SubViewportContainer/SubViewport/Table"]
 transform = Transform3D(1, 0, 0, 0, 0.196254, 0.980553, 0, -0.980553, 0.196254, -0.0275023, 4.99043, -0.00590324)
 light_color = Color(1, 0.637837, 0.399547, 1)
@@ -124,29 +127,34 @@ spot_angle = 35.0
 transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0, 0.367939, -5.47635)
 
 [node name="Circulomagico" parent="SubViewportContainer/SubViewport" instance=ExtResource("10_vr1f0")]
-transform = Transform3D(0.199799, 0.00895752, -3.91546e-10, 0, -8.74228e-09, -0.2, -0.00895752, 0.199799, -8.73351e-09, 0.0266514, 1.29667, -5.09108)
+transform = Transform3D(0.13986, 0.00627027, -2.74082e-10, 0, -6.11959e-09, -0.14, -0.00627027, 0.13986, -6.11345e-09, 0.0266514, 1.29667, -5.20395)
 script = ExtResource("6_vtepg")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="SubViewportContainer/SubViewport/Circulomagico"]
-transform = Transform3D(0.596653, 5.57351e-16, -0.0449353, 0.0267496, -2.35368e-08, 1.00229, -1.16926e-09, -0.538458, -4.38115e-08, -0.0347567, -0.118996, 0.0433335)
+transform = Transform3D(0.499498, 5.00393e-10, -0.0201536, 0.0223929, -2.23343e-08, 0.449549, -5.00393e-10, -0.5, -2.01009e-08, -0.0510505, 0.244436, 0.0433331)
 amount = 60
-lifetime = 3.05
+lifetime = 0.7
 collision_base_size = 0.0
 transform_align = 3
 process_material = SubResource("ParticleProcessMaterial_ujyyl")
 draw_pass_1 = SubResource("CapsuleMesh_4nkqq")
 
 [node name="gold_nugget" parent="SubViewportContainer/SubViewport" instance=ExtResource("11_vr1f0")]
-transform = Transform3D(0.799449, 0.0296638, 0.000809833, -0.0296638, 0.79945, -4.72689e-12, -0.000809276, -3.00284e-05, 0.8, 0.0339304, 1.28485, -4.99758)
+transform = Transform3D(0.799449, 0.0296638, 0.000809833, -0.0296638, 0.79945, -4.72689e-12, -0.000809276, -3.00284e-05, 0.8, 0.0339304, 1.28485, -4.9649)
 script = ExtResource("7_5egv6")
 
+[node name="GoldNugget" parent="SubViewportContainer/SubViewport/gold_nugget" index="0"]
+transform = Transform3D(0.01, 0, 0, 0, 0, -0.01, 0, 0.01, 0, 0, -0.036, 0)
+
+[node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="SubViewportContainer/SubViewport/gold_nugget"]
+
 [node name="Node3D" type="Node3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23739, -5.54863)
+transform = Transform3D(0.804894, 0, -0.593419, 0, 1, 0, 0.593419, 0, 0.804894, 0.25, 1.37, -5.404)
 script = ExtResource("3_ce3w2")
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/Node3D"]
-transform = Transform3D(1, 0, 0, 0, 0.879308, 0.476254, 0, -0.476254, 0.879308, 0.009, 0.336694, 0.764461)
-fov = 90.0
+transform = Transform3D(1, 0, 0, 0, 0.924546, 0.38107, 0, -0.38107, 0.924546, 0.009, 0.217, 0.764)
+fov = 74.5
 
 [node name="ColorRect" type="TextureRect" parent="."]
 clip_children = 2
@@ -158,10 +166,10 @@ texture = ExtResource("5_vr1f0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
 layout_mode = 0
-offset_left = 88.0
-offset_top = 250.0
-offset_right = 342.0
-offset_bottom = 537.0
+offset_left = 82.0
+offset_top = 251.0
+offset_right = 336.0
+offset_bottom = 538.0
 
 [node name="Start_btn" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
@@ -204,17 +212,18 @@ alignment = 0
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
-offset_left = 138.0
-offset_top = -186.0
-offset_right = 962.0
-offset_bottom = -3.0
+offset_left = 289.0
+offset_top = -133.0
+offset_right = 845.0
+offset_bottom = -9.0
+pivot_offset = Vector2(278, 62)
 theme_override_colors/font_color = Color(0.653681, 0.0323807, 0, 1)
 theme_override_colors/font_outline_color = Color(0.912465, 0.642415, 0.0429651, 1)
 theme_override_constants/shadow_offset_x = 45
 theme_override_constants/shadow_offset_y = 50
 theme_override_constants/outline_size = 45
 theme_override_fonts/font = ExtResource("5_n45e2")
-theme_override_font_sizes/font_size = 180
+theme_override_font_sizes/font_size = 135
 text = "Chrysopoeia"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -224,3 +233,6 @@ script = ExtResource("8_yhxw7")
 [connection signal="pressed" from="ColorRect/VBoxContainer/Load_btn" to="." method="_on_load_btn_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Options_btn" to="." method="_on_options_btn_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Quit_btn" to="." method="_on_quit_btn_pressed"]
+
+[editable path="SubViewportContainer/SubViewport/Table"]
+[editable path="SubViewportContainer/SubViewport/gold_nugget"]
