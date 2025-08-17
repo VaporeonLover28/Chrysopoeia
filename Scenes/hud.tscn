@@ -28,6 +28,7 @@ layout_mode = 2
 text = "Gold: XXXXX"
 
 [node name="shop" type="TextureRect" parent="money_box"]
+texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("3_t1xeu")
