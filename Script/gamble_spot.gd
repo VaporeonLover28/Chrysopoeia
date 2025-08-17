@@ -25,13 +25,28 @@ func _interact_GambleSpot(object_ref):
 				save_character.push_back(item[2].money)
 				save_character.push_back(item[2].get_index())
 				Globals.transiting_characters_to_gamble.push_back(save_character)
-		for item in world.get_node("Walking_NPCs").get_children():
+		for item in get_node("Walking_NPCs").get_children():
 			var save_npcs_info : Array
 			save_npcs_info.push_back(item.scene_file_path)
 			save_npcs_info.push_back(item.global_position)
+			print(item.global_position)
 			save_npcs_info.push_back(item.get_index())
 			save_npcs_info.push_back(item.money)
 			Globals.save_npcs_pos.push_back(save_npcs_info)
+		for item in 2:
+			var node_to_get
+			match item:
+				0:
+					node_to_get = world.all_interactable_spots
+				1:
+					node_to_get = world.all_non_interactable_objects
+			for object in node_to_get.get_children():
+				var save_object_info: Array
+				save_object_info.push_back(object.scene_file_path)
+				save_object_info.push_back(object.global_position)
+				save_object_info.push_back(object.rotation)
+				Globals.save_objects.push_back(save_object_info)
+		Globals.save_player_pos = object_ref.global_position
 		
 	
 func _physics_process(delta: float) -> void:

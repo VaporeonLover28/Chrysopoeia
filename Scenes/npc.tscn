@@ -13,16 +13,16 @@ collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_ideak")
 npc_name = "NPC"
-minimum_time_for_idle = 2.0
-maximum_time_for_idle = 8.0
-minimum_time_for_TIOT = 10.0
-maximum_time_for_TIOT = 18.0
+minimum_time_for_idle = 10.0
+maximum_time_for_idle = 10.0
+minimum_time_for_TIOT = 1.0
+maximum_time_for_TIOT = 1.0
 favorite_games = Array[String](["BlackJack"])
 chance_to_choose_favorite_game = 100
 maximum_money = 500
 
 [node name="Leave Interaction" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 30.0
 one_shot = true
 
 [node name="Targeted Interactable Object Timer" type="Timer" parent="."]

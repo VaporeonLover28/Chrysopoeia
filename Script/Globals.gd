@@ -16,6 +16,8 @@ var money: int = 1000:
 		
 var transiting_characters_to_gamble: Array[Array]  
 var save_npcs_pos: Array[Array]
+var save_objects: Array[Array]
+var save_player_pos: Vector3 = Vector3()
 
 var money_lost: int = -1
 var spell_inventory_list: Array[PurchasableItemResource]

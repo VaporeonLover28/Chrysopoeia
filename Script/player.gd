@@ -36,12 +36,15 @@ var t_bob : float = 0.0
 
 var tween : Tween
 
+func _ready() -> void:
+	if Globals.save_player_pos != Vector3():
+		global_position = Globals.save_player_pos
+
 func _unhandled_input(event): #event representa o evento do input
 	if event.is_action_pressed("esc"):
 		if Globals.game_paused == false:#se ele apertar esc(soltamos o mouse)
 			Globals.game_paused = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	
 	if can_move:
 		if event is InputEventMouseMotion and Globals.game_paused == false and world_scene.get_node("Bar UI").visible == false: # se o jogador mover o mouse(prendemos ele na tela)
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -88,10 +91,31 @@ func _physics_process(delta: float) -> void:
 					walk_2.play()
 	if !is_on_building_mode:
 		if Input.is_action_just_pressed("e") and Globals.player_interacting == false:
-			#print("oi")
 			if world_scene.player_recon.player_inside:
+				for item in world_scene.get_node("Walking_NPCs").get_children():
+					var save_npcs_info : Array
+					save_npcs_info.push_back(item.scene_file_path)
+					save_npcs_info.push_back(item.global_position)
+					print(item.global_position)
+					save_npcs_info.push_back(item.get_index())
+					save_npcs_info.push_back(item.money)
+					Globals.save_npcs_pos.push_back(save_npcs_info)
+				for item in 2:
+					var node_to_get
+					match item:
+						0:
+							node_to_get = world_scene.all_interactable_spots
+						1:
+							node_to_get = world_scene.all_non_interactable_objects
+					for object in node_to_get.get_children():
+						var save_object_info: Array
+						save_object_info.push_back(object.scene_file_path)
+						save_object_info.push_back(object.global_position)
+						save_object_info.push_back(object.rotation)
+						Globals.save_objects.push_back(save_object_info)
+				Globals.save_player_pos = global_position
 				loading_screen("fight_ring")
-			else:
+			elif ray_interection.get_collider() != null:
 				_interact_object()
 		
 		elif Input.is_action_just_pressed("c") and \
@@ -106,6 +130,9 @@ func _physics_process(delta: float) -> void:
 		Globals.fortuna_target != null:
 			Globals.fortuna_target.spell_cast("Wheel of Fortune")
 			Globals.fortuna_target.input_disappear()
+			
+		if Input.is_action_just_pressed("h") and ray_interection.get_collider() != null:
+			_sell()
 	else:
 		if Input.is_action_just_pressed("rightclick"):
 			_build()
@@ -227,7 +254,10 @@ func _build():
 		instantiate_object.global_position = ray_builder.get_collider().get_parent().global_position - Vector3(0, 1.5, 0)
 		instantiate_object.rotation = ray_builder.get_child(0).rotation
 		ray_builder.get_child(0).queue_free()
-		world_scene.get_node("NavigationRegion3D").get_node("All Interactable Spots").add_child(instantiate_object)
+		if instantiate_object is InteractableObject:
+			world_scene.get_node("NavigationRegion3D").get_node("All Interactable Spots").add_child(instantiate_object)
+		else:
+			world_scene.get_node("NavigationRegion3D").get_node("All non interactable objects").add_child(instantiate_object)
 		world_scene.get_node("NavigationRegion3D").bake_navigation_mesh()
 		for spot in $"../All Build spots".get_children():
 			spot.update_mesh(false)
@@ -238,8 +268,11 @@ func _build():
 	
 func _sell():
 	var object_inst = ray_interection.get_collider()
-	if object_inst != null and object_inst.get_parent().get_parent() is InteractableObject and Globals.game_paused == false:
-		print("sold")
+	if object_inst.get_parent() is InteractableObject:
+		object_inst = object_inst.get_parent()
+	if object_inst != null and object_inst.get_node_or_null("Sell_Satisfation Value") != null and Globals.game_paused == false:
+		ray_builder.get_collider().get_parent().taken = false
+		Globals.money += object_inst.get_node_or_null("Sell_Satisfation Value").sell_value
 		object_inst.queue_free()
 
 func lock_model_into_build_spot():

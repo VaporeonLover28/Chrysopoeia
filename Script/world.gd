@@ -4,6 +4,7 @@ extends Node3D
 @onready var player: CharacterBody3D = $Player
 @onready var walking_npcs: Node = $Walking_NPCs
 @onready var all_interactable_spots: Node = $"NavigationRegion3D/All Interactable Spots"
+@onready var all_non_interactable_objects: Node = $"NavigationRegion3D/All non interactable objects"
 @onready var npc_spwaner_timer: Timer = $"NPC Spwaner Timer"
 @onready var player_recon: Area3D = $NavigationRegion3D/cassino/fight_ring/player_recon
 
@@ -50,20 +51,34 @@ func _ready() -> void:
 				walking_npcs.get_child(-1).money = item[2]
 				print(walking_npcs.get_child(-1).money)
 			SaveScript.is_loading = false
-	elif Globals.save_npcs_pos.is_empty() != true:
-		var counter
+	elif Globals.save_npcs_pos.is_empty() != true and Globals.save_objects.is_empty() != true:
+		$Walking_NPCs/NPC.queue_free()
+		var counter: int = 0
 		for item in Globals.save_npcs_pos:
 			var instantiate_npc = load(item[0]).instantiate()
 			instantiate_npc.global_position = item[1]
 			walking_npcs.add_child(instantiate_npc)
-			if walking_npcs.get_child(-1).get_index() == Globals.transiting_characters_to_gamble[counter][2]:
-				walking_npcs.get_child(-1).money == Globals.transiting_characters_to_gamble[counter][1]
-			else:
-				walking_npcs.get_child(-1).money == Globals.save_npcs_pos[counter][3]
+			if Globals.transiting_characters_to_gamble.is_empty() != true and \
+			walking_npcs.get_child(-1).get_index() == Globals.transiting_characters_to_gamble[counter][2]:
+					walking_npcs.get_child(-1).money == Globals.transiting_characters_to_gamble[counter][1]
+			else: 
+				walking_npcs.get_child(-1).money = Globals.save_npcs_pos[counter][3]
 			counter =+ 1
-		Globals.transiting_characters_to_gamble = []
-		Globals.save_npcs_pos = []
+		for item in Globals.save_objects:
+			var instantiate_object = load(item[0]).instantiate()
+			instantiate_object.global_position = item[1]
+			instantiate_object.rotation = item[2]
+			if instantiate_object is InteractableObject:
+				all_interactable_spots.add_child(instantiate_object)
+			else:
+				all_non_interactable_objects.add_child(instantiate_object)
+		print(Globals.save_player_pos)
 		SaveScript.auto_save.emit()
+	Globals.transiting_characters_to_gamble = []
+	Globals.save_npcs_pos = []
+	Globals.save_objects = []
+	Globals.save_player_pos = Vector3()
+		
 
 func _exit_tree() -> void:
 	MusicPlayer.emptytavern.stop()

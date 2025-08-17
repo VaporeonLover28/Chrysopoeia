@@ -107,7 +107,7 @@ func _buy_item(object_being_purchased: Control):
 				await wait_for_spell_change
 				Globals.spell_inventory_list.push_front(object_being_purchased.item_resource)
 				update_hud.emit()
-	Globals.money -= object_being_purchased.item_resource.price
+		Globals.money -= object_being_purchased.item_resource.price
 	hide_shop_menu()
 
 func _choose_spell_to_change(spell_choosen: PurchasableItemResource):

@@ -41,6 +41,7 @@ func _sit_character(object_ref):
 				smallest_distance = object_ref.global_position.distance_to(self.get_child(item).global_position)
 		chair_postion_list[chosen_sitting_position][1] = false
 		chair_postion_list[chosen_sitting_position].push_back(object_ref)
+		print(chair_postion_list)
 		characters_sitting_count += 1
 		if object_ref.name == "Player":
 			chosen_sitting_transition = self.get_child(chosen_sitting_position)

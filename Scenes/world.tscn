@@ -727,6 +727,8 @@ transform = Transform3D(1.20131, 0, 0, 0, 1.20131, 0, 0, 0, 1.20131, 0, 5.35019,
 
 [node name="All Interactable Spots" type="Node" parent="NavigationRegion3D"]
 
+[node name="All non interactable objects" type="Node" parent="NavigationRegion3D"]
+
 [node name="CasinoLight" parent="NavigationRegion3D" instance=ExtResource("4_036b0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0632236, 3.04997, -11.0472)
 visible = false

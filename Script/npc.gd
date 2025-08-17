@@ -57,6 +57,7 @@ func _go_to_interactable_object():
 		is_going_to_interaction = false
 		is_on_interaction = true
 		targeted_position_is_object._interact([self])
+		print("sit")
 		leave_interaction.start()
 		get_away_timer.stop()
 		return
@@ -75,6 +76,7 @@ func _go_to_interactable_object():
 				targeted_position_is_object = null
 
 func chose_interactable_object():
+	print("chosed interactable object")
 	if Globals.game_paused == false:
 		idle.stop()
 		interacatable_object_detection_area.get_child(0).disabled = false
@@ -138,6 +140,7 @@ func _on_idle_timeout() -> void:
 func _leave_interaction():
 	if targeted_position_is_object is GambleSpot and Globals.game_paused == false:
 		targeted_position_is_object._cancel_interact_GambleSpot(self)
+		print("got up")
 	is_on_interaction = false
 	idle.start(randf_range(minimum_time_for_idle, maximum_time_for_idle))
 	targeted_interactable_object_timer.start(randf_range(minimum_time_for_TIOT, maximum_time_for_TIOT))
@@ -146,5 +149,6 @@ func _leave_interaction():
 
 
 func _on_get_away_timer_timeout() -> void:
-	_walk_to_random(-10, 10, -10, 10)
-	targeted_interactable_object_timer.start(randf_range(minimum_time_for_TIOT, maximum_time_for_TIOT))
+	if Globals.game_paused == false and is_going_to_interaction == false and is_on_interaction == false:
+		_walk_to_random(-10, 10, -10, 10)
+		targeted_interactable_object_timer.start(randf_range(minimum_time_for_TIOT, maximum_time_for_TIOT))
