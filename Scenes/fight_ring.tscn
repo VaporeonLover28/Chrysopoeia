@@ -272,6 +272,7 @@ alignment = 1
 
 [node name="selec_image" type="TextureRect" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Selec_Desc"]
 visible = false
+texture_filter = 3
 layout_mode = 2
 texture = ExtResource("6_x0qly")
 stretch_mode = 3
@@ -305,6 +306,7 @@ custom_minimum_size = Vector2(0, 125)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot1"]
+texture_filter = 3
 layout_mode = 2
 texture = ExtResource("7_hapdo")
 stretch_mode = 3
@@ -328,6 +330,7 @@ custom_minimum_size = Vector2(0, 125)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot2"]
+texture_filter = 3
 layout_mode = 2
 texture = ExtResource("7_hapdo")
 stretch_mode = 3
@@ -351,6 +354,7 @@ custom_minimum_size = Vector2(0, 125)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot3"]
+texture_filter = 3
 layout_mode = 2
 texture = ExtResource("7_hapdo")
 stretch_mode = 3
@@ -374,6 +378,7 @@ custom_minimum_size = Vector2(0, 125)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot4"]
+texture_filter = 3
 layout_mode = 2
 texture = ExtResource("7_hapdo")
 stretch_mode = 3
