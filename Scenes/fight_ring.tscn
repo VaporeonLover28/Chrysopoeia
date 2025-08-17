@@ -402,6 +402,7 @@ custom_minimum_size = Vector2(0, 125)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot5"]
+texture_filter = 3
 layout_mode = 2
 texture = ExtResource("7_hapdo")
 stretch_mode = 3
