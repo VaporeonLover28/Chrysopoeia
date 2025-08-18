@@ -225,6 +225,33 @@ func homunc_attack_sfx():
 			HomunculosSfx.homunculo_ataque_06.play()
 		7:
 			HomunculosSfx.homunculo_ataque_07.play()
+func homunc_damage_sfx():
+	var which = randi_range(1, 5)
+	match which:
+		1:
+			HomunculosSfx.homunculo_dano_01.play()
+		2:
+			HomunculosSfx.homunculo_dano_02.play()
+		3:
+			HomunculosSfx.homunculo_dano_03.play()
+		4:
+			HomunculosSfx.homunculo_dano_04.play()
+		5:
+			HomunculosSfx.homunculo_dano_05.play()
+func homunc_death_sfx():
+	var which = randi_range(1, 4)
+	match which:
+		1:
+			HomunculosSfx.homunculo_morte_01.play()
+		2:
+			HomunculosSfx.homunculo_morte_02.play()
+		3:
+			HomunculosSfx.homunculo_morte_03.play()
+		4:
+			HomunculosSfx.homunculo_morte_04.play()
+func homunc_punch():
+	HomunculosSfx.homunculo_soco.play()
+
 func chain_pull():
 	if !match_ended:
 		tween = create_tween()
