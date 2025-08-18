@@ -152,5 +152,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.910575, 0)
 chair_postion_list = Array[Array]([[Vector3(0, 0, 2.2), true]])
 
 [node name="Sell_Satisfation Value" parent="." instance=ExtResource("3_or8fe")]
-sell_value = 50
-satisfaction_value = 2
+sell_value = 200

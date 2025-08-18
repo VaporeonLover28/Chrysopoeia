@@ -13,6 +13,8 @@ func _ready() -> void:
 	mesh.visible = false
 	#print(mesh.mesh.surface_get_material(0).albedo_color != color_free)
 	area.add_to_group(object_type)
+	area.monitoring = false
+	area.monitoring = true
 
 func update_mesh(on_or_off : bool):
 	if taken and mesh.mesh.surface_get_material(0).albedo_color != color_taken:

@@ -33,6 +33,8 @@ window/stretch/aspect="expand"
 "Camera Pullers"=""
 Doors=""
 Ground_object=""
+Table_object=""
+ceiling_object=""
 
 [input]
 

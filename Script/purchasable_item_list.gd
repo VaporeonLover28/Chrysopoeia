@@ -1,7 +1,11 @@
 extends Node
 
 @onready var games_list : Array[PurchasableItemResource]
-@onready var decoration_list : Array[PurchasableItemResource] = []
+@onready var decoration_list : Array[PurchasableItemResource] = \
+[load("res://Resources-shop/Candlestick.tres"),\
+load("res://Resources-shop/chair.tres"),\
+load("res://Resources-shop/chandelier.tres"),
+load("res://Resources-shop/table.tres")]
 @onready var spell_list : Array[PurchasableItemResource]
 
 var item_list_level : int = 4:

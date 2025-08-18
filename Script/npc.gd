@@ -28,7 +28,6 @@ var is_on_interaction : bool = false
 var is_going_to_interaction : bool = false
 var targeted_position_is_object = null
 var targeted_sitting_position : int = 20
-var targeted_position_vector = Vector3(0,0,0)
 
 func _ready() -> void:
 	_walk_to(world_scene.get_node("Enter point for npc").position)
@@ -43,8 +42,10 @@ func _physics_process(delta: float) -> void:
 		var local_destino = destino - global_position
 		var dir = local_destino.normalized()
 		velocity = dir * 2
-		if targeted_position_is_object is InteractableObject and is_on_interaction == false:
+			
+		if is_instance_valid(targeted_position_is_object) == true and targeted_position_is_object is InteractableObject and is_on_interaction == false:
 			_go_to_interactable_object()
+		
 			
 		move_and_slide()
 
@@ -138,7 +139,7 @@ func _on_idle_timeout() -> void:
 		_walk_to_random(-5, 5, -5, 5)
 	
 func _leave_interaction():
-	if targeted_position_is_object is GambleSpot and Globals.game_paused == false:
+	if is_instance_valid(targeted_position_is_object) == true and targeted_position_is_object is GambleSpot and Globals.game_paused == false:
 		targeted_position_is_object._cancel_interact_GambleSpot(self)
 		print("got up")
 	is_on_interaction = false

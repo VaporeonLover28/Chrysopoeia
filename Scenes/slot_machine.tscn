@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://blm2ybcpo2i7k"]
+[gd_scene load_steps=14 format=4 uid="uid://blm2ybcpo2i7k"]
 
 [ext_resource type="Script" uid="uid://du03851jbkyo2" path="res://Script/slot_machine.gd" id="1_0ucjj"]
 [ext_resource type="PackedScene" uid="uid://dgww0bhqoowog" path="res://Assets/Originals/Slot_Machice/Caçaniquel.glb" id="2_s1yih"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cxvcxyaq27jof" path="res://Assets/Originals/Slot_Machice/Rodacerta.glb" id="5_ab6dg"]
 [ext_resource type="PackedScene" uid="uid://bi326asm5h1wa" path="res://Scenes/input_prompt.tscn" id="6_pyjcy"]
 [ext_resource type="Texture2D" uid="uid://dl1c3wpfn3nqf" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_f.png" id="7_pxobf"]
+[ext_resource type="PackedScene" uid="uid://c6jqyf306la64" path="res://Scenes/sell_satisfation_value.tscn" id="7_pyjcy"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_33385"]
 load_path = "res://.godot/imported/Caçanique_RECKRECKRESERVA.png-b30410b43749643c8a27bd887e578734.s3tc.ctex"
@@ -111,6 +112,9 @@ transform = Transform3D(0.635, 0, 0, 0, 0.635, 0, 0, 0, 0.635, 0, -0.0164474, 0.
 visible = false
 texture = ExtResource("7_pxobf")
 action = "Fortune"
+
+[node name="Sell_Satisfation Value" parent="." instance=ExtResource("7_pyjcy")]
+sell_value = 90
 
 [connection signal="body_entered" from="input_area" to="." method="_on_input_area_body_entered"]
 [connection signal="body_exited" from="input_area" to="." method="_on_input_area_body_exited"]

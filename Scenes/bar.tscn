@@ -39,4 +39,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.83753)
 [node name="Shader_Quad" parent="camera" instance=ExtResource("2_xgyi3")]
 
 [node name="Sit positions" parent="." instance=ExtResource("3_uypo1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.33239, 0)
 chair_postion_list = Array[Array]([[Vector3(0, 0, 2.2), true]])

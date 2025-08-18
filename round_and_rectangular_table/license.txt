@@ -1,0 +1,11 @@
+Model Information:
+* title:	round and rectangular table
+* source:	https://sketchfab.com/3d-models/round-and-rectangular-table-b1a5c583f62b43b4abd7dfae8f117a74
+* author:	Jampre (https://sketchfab.com/jampre)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "round and rectangular table" (https://sketchfab.com/3d-models/round-and-rectangular-table-b1a5c583f62b43b4abd7dfae8f117a74) by Jampre (https://sketchfab.com/jampre) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

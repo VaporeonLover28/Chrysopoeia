@@ -1,14 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bal2sa3ylkh84"]
+[gd_scene load_steps=4 format=3 uid="uid://bal2sa3ylkh84"]
 
 [ext_resource type="PackedScene" uid="uid://cdlsl2xupts2l" path="res://Assets/Exports/glTF/CandleStick_Triple.gltf" id="1_feppc"]
+[ext_resource type="PackedScene" uid="uid://c6jqyf306la64" path="res://Scenes/sell_satisfation_value.tscn" id="2_i5q6g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i6yl4"]
 size = Vector3(0.391968, 0.487305, 0.107422)
 
-[node name="Candlestick" type="StaticBody3D" groups=["Ground_object"]]
+[node name="Candlestick" type="StaticBody3D" groups=["Table_object"]]
 
 [node name="CandleStick_Triple2" parent="." instance=ExtResource("1_feppc")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0275269, 0.256348, -0.00585938)
 shape = SubResource("BoxShape3D_i6yl4")
+
+[node name="Sell_Satisfation Value" parent="." instance=ExtResource("2_i5q6g")]
+sell_value = 50

@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://ifr6x47walau"]
+[gd_scene load_steps=54 format=4 uid="uid://ifr6x47walau"]
 
 [ext_resource type="PackedScene" uid="uid://dsp27d25mg6bh" path="res://Scenes/player.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://cf6y1d4msmkfp" path="res://Script/world.gd" id="1_ic0uy"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://bymswxfkuf1i7" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_e.png" id="14_pyn1s"]
 [ext_resource type="PackedScene" uid="uid://doc2fu24go0bh" path="res://Scenes/pause.tscn" id="21_yq1aw"]
 [ext_resource type="PackedScene" uid="uid://5fqe31h8scxt" path="res://Assets/Originals/praredelend.glb" id="23_no8kt"]
+[ext_resource type="Script" uid="uid://b1mjwd0321b81" path="res://Script/build_spot.gd" id="25_1vso6"]
 [ext_resource type="PackedScene" uid="uid://2hi0ppmkqhxs" path="res://Scenes/spinningtor.tscn" id="25_i4fjy"]
 [ext_resource type="Texture2D" uid="uid://bbtb2l43wx0m2" path="res://Assets/Originals/fabbri1.png" id="26_hmc15"]
 [ext_resource type="Texture2D" uid="uid://baq8au6bu4r7" path="res://Assets/Originals/fabbri2.png" id="27_dt0r1"]
@@ -83,6 +84,19 @@ size = Vector3(0.97998, 12.6138, 16.0626)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04jkj"]
 albedo_color = Color(1, 0.913725, 1, 1)
 albedo_texture = ExtResource("33_p5wkl")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d0bu4"]
+size = Vector3(2.38513, 1.89441, 2.38354)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ua1v"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(0, 1, 0, 0.286275)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_r0ikl"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_3ua1v")
+size = Vector2(3, 3)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qebug"]
 animations = [{
@@ -728,9 +742,9 @@ autostart = true
 [node name="Chandelier2" parent="NavigationRegion3D/cassino/fight_ring" instance=ExtResource("13_0pcbe")]
 transform = Transform3D(1.20131, 0, 0, 0, 1.20131, 0, 0, 0, 1.20131, 0, 5.35019, 0)
 
-[node name="All Interactable Spots" type="Node" parent="NavigationRegion3D"]
+[node name="All Interactable Spots" type="Node3D" parent="NavigationRegion3D"]
 
-[node name="All non interactable objects" type="Node" parent="NavigationRegion3D"]
+[node name="All non interactable objects" type="Node3D" parent="NavigationRegion3D"]
 
 [node name="CasinoLight" parent="NavigationRegion3D" instance=ExtResource("4_036b0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0632236, 3.04997, -11.0472)
@@ -1165,9 +1179,21 @@ shape = SubResource("BoxShape3D_opbav")
 
 [node name="All Build spots" type="Node" parent="."]
 
-[node name="Build_Spot1" parent="All Build spots" instance=ExtResource("28_3ua1v")]
+[node name="Build_Spot1" type="Marker3D" parent="All Build spots"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5788, 1.5, -18.125)
+script = ExtResource("25_1vso6")
 object_type = "Ground_object"
+
+[node name="Area build spot" type="Area3D" parent="All Build spots/Build_Spot1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="All Build spots/Build_Spot1/Area build spot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00161, 0.31466, -0.0691856)
+shape = SubResource("BoxShape3D_d0bu4")
+debug_color = Color(0, 1, 0, 1)
+
+[node name="Build Mesh" type="MeshInstance3D" parent="All Build spots/Build_Spot1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.39867, 0)
+mesh = SubResource("PlaneMesh_r0ikl")
 
 [node name="Build_Spot2" parent="All Build spots" instance=ExtResource("28_3ua1v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5788, 1.5, -14.9286)

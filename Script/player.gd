@@ -3,7 +3,9 @@ extends CharacterBody3D
 @onready var camera: Camera3D = $Pivot/Camera
 @onready var pivot: Node3D = $Pivot
 @onready var ray_interection: RayCast3D = $Pivot/Camera/RayInterection
-@onready var ray_builder: RayCast3D = $Pivot/Camera/RayBuilder
+@onready var ray_builder_1: RayCast3D = $Pivot/Camera/RayBuilder1
+@onready var ray_builder_2: RayCast3D = $Pivot/Camera/RayBuilder2
+@onready var ray_builder: RayCast3D
 @onready var call_npc_area: Area3D = $"Call NPC Area"
 @onready var play_game: Timer = $play_game
 @onready var world_scene = $"../"
@@ -13,8 +15,6 @@ extends CharacterBody3D
 
 @onready var walk_1: AudioStreamPlayer3D = $Walk1
 @onready var walk_2: AudioStreamPlayer3D = $Walk2
-
-
 
 const BUILD_SHADER = preload("res://build_material.tres")
 
@@ -89,6 +89,12 @@ func _physics_process(delta: float) -> void:
 					walk_1.play()
 				else:
 					walk_2.play()
+					
+	if ray_builder_2.is_colliding():
+		ray_builder = ray_builder_2
+	else: 
+		ray_builder = ray_builder_1
+	
 	if !is_on_building_mode:
 		if Input.is_action_just_pressed("e") and Globals.player_interacting == false:
 			if world_scene.player_recon.player_inside:
@@ -134,8 +140,12 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("h") and ray_interection.get_collider() != null:
 			_sell()
 	else:
+			
 		if Input.is_action_just_pressed("rightclick"):
 			_build()
+		
+		if Input.is_action_just_pressed("h"):
+			_cancel_build()
 			
 		if Input.is_action_pressed("q"):
 			_rotate_bulding_object(-1)
@@ -219,6 +229,11 @@ func _start_bulding_phase(object_to_be_purchase: PackedScene):
 	if current_object_being_purchased_instantiate is InteractableObject:
 		current_object_being_purchased_instantiate = current_object_being_purchased_instantiate.get_node("Model").duplicate(true)
 		current_object_being_purchased_instantiate.add_to_group("Ground_object")
+	for item in current_object_being_purchased_instantiate.get_children():
+		if item is Node3D or item is CollisionShape3D:
+			pass
+		else:
+			item.queue_free()
 	for item in current_object_being_purchased_instantiate.get_child(0).get_child(0).mesh.get_surface_count():
 		current_object_being_purchased_instantiate.get_child(0).get_child(0).mesh.surface_get_material(item).next_pass = BUILD_SHADER
 		current_object_being_purchased_instantiate.get_child(0).get_child(0).mesh.surface_get_material(item).next_pass.set_shader_parameter("active", true)
@@ -231,10 +246,9 @@ func _start_bulding_phase(object_to_be_purchase: PackedScene):
 			current_object_being_purchased_instantiate.get_child(item.get_index()).queue_free()
 			new_area3d.add_child(instantiate_colission)
 	current_object_being_purchased_instantiate.add_child(new_area3d)
-	current_object_being_purchased_instantiate.position = ray_builder.position + Vector3(0,0,-3)
+	current_object_being_purchased_instantiate.position = ray_builder_1.position + Vector3(0,0,-3)
 	print(current_object_being_purchased_instantiate.name)
-	ray_builder.add_child(current_object_being_purchased_instantiate)
-	print(ray_builder.get_child(0).name)
+	ray_builder_1.add_child(current_object_being_purchased_instantiate)
 	is_on_building_mode = true
 	
 func _rotate_bulding_object(rotation_direction: int):
@@ -244,20 +258,20 @@ func _cancel_build():
 	print("Cancelled build")
 	is_on_building_mode = false
 	current_object_being_purchased = null
-	ray_builder.get_child(0).queue_free()
+	ray_builder_1.get_child(0).queue_free()
 	
 func _build():
 	if can_build == true:
 		print("Built " + str(current_object_being_purchased))
 		var instantiate_object = current_object_being_purchased.instantiate()
 		ray_builder.get_collider().get_parent().taken = true
-		instantiate_object.global_position = ray_builder.get_collider().get_parent().global_position - Vector3(0, 1.5, 0)
-		instantiate_object.rotation = ray_builder.get_child(0).rotation
-		ray_builder.get_child(0).queue_free()
+		instantiate_object.rotation = ray_builder_1.get_child(0).rotation
+		ray_builder_1.get_child(0).queue_free()
 		if instantiate_object is InteractableObject:
 			world_scene.get_node("NavigationRegion3D").get_node("All Interactable Spots").add_child(instantiate_object)
 		else:
 			world_scene.get_node("NavigationRegion3D").get_node("All non interactable objects").add_child(instantiate_object)
+		instantiate_object.global_position = ray_builder_1.get_child(0).global_position - Vector3(0, 1.5, 0)
 		world_scene.get_node("NavigationRegion3D").bake_navigation_mesh()
 		for spot in $"../All Build spots".get_children():
 			spot.update_mesh(false)
@@ -272,40 +286,48 @@ func _sell():
 		object_inst = object_inst.get_parent()
 	if object_inst != null and object_inst.get_node_or_null("Sell_Satisfation Value") != null and Globals.game_paused == false:
 		ray_builder.get_collider().get_parent().taken = false
-		Globals.money += object_inst.get_node_or_null("Sell_Satisfation Value").sell_value
-		object_inst.queue_free()
+		print(ray_builder.get_collider().get_overlapping_bodies())
+		if ray_builder.get_collider().get_overlapping_areas().is_empty() == true:
+			print("has_overlapping_bodies")
+			print(ray_builder.get_collider().get_overlapping_bodies())
+			for item in ray_builder.get_collider().get_overlapping_bodies():
+				if item.get_parent() is InteractableObject:
+					item = item.get_parent()
+				if item.get_node_or_null("Sell_Satisfation Value") != null:
+					Globals.money += item.get_node_or_null("Sell_Satisfation Value").sell_value
+					item.queue_free()
 
 func lock_model_into_build_spot():
-	#print(ray_builder.get_child(0).get_groups())
 	if ray_builder.get_collider() != null\
 	and ray_builder.get_collider().get_name() == "Area build spot"\
-	and ray_builder.get_collider().is_in_group(ray_builder.get_child(0).get_groups()[0])\
-	and ray_builder.get_child(0).get_child(-1).has_overlapping_bodies() == false\
-	and !ray_builder.get_collider().get_parent().taken:
-		ray_builder.get_child(0).global_position = ray_builder.get_collider().get_parent().global_position
-		ray_builder.get_child(0).rotation = ray_builder.get_child(0).rotation  + ray_builder.get_collider().get_parent().rotation
+	and ray_builder.get_collider().is_in_group(ray_builder_1.get_child(0).get_groups()[0])\
+	and ray_builder_1.get_child(0).get_child(-1).has_overlapping_bodies() == false\
+	and !ray_builder.get_collider().get_parent().taken \
+	and ray_builder.get_collider().collision_layer == ray_builder.collision_mask:
+		ray_builder_1.get_child(0).global_position = ray_builder.get_collider().get_parent().global_position
+		ray_builder_1.get_child(0).rotation = ray_builder_1.get_child(0).rotation  + ray_builder.get_collider().get_parent().rotation
 		can_build = true
-		for item in ray_builder.get_child(0).get_child(0).get_child(0).mesh.get_surface_count():
-			ray_builder.get_child(0).get_child(0).get_child(0).mesh.surface_get_material(item).next_pass.set_shader_parameter("outline_color", Color.GREEN)
-		ray_builder.get_child(0).top_level = true
-		ray_builder.get_child(0).rotation = object_rotation + ray_builder.get_collider().get_parent().rotation
+		for item in ray_builder_1.get_child(0).get_child(0).get_child(0).mesh.get_surface_count():
+			ray_builder_1.get_child(0).get_child(0).get_child(0).mesh.surface_get_material(item).next_pass.set_shader_parameter("outline_color", Color.GREEN)
+		ray_builder_1.get_child(0).top_level = true
+		ray_builder_1.get_child(0).rotation = object_rotation + ray_builder.get_collider().get_parent().rotation
 	
 	elif ray_builder.get_collider() != null \
 	and ray_builder.get_collider().get_name() == "Area build spot"\
-	and ray_builder.get_collider().is_in_group(ray_builder.get_child(0).get_groups()[0])\
-	and ray_builder.get_child(0).get_child(-1).has_overlapping_bodies() == true:
-		#ray_builder.get_child(0).global_position = ray_builder.get_collider().get_parent().global_position
+	and ray_builder.get_collider().is_in_group(ray_builder_1.get_child(0).get_groups()[0])\
+	and ray_builder_1.get_child(0).get_child(-1).has_overlapping_bodies() == true:
+		#ray_builder_1.get_child(0).global_position = ray_builder.get_collider().get_parent().global_position
 		can_build = false
-		for item in ray_builder.get_child(0).get_child(0).get_child(0).mesh.get_surface_count():
-			ray_builder.get_child(0).get_child(0).get_child(0).mesh.surface_get_material(item).next_pass.set_shader_parameter("outline_color", Color.RED)
-		#ray_builder.get_child(0).top_level = true
-		#ray_builder.get_child(0).rotation = object_rotation + ray_builder.get_collider().get_parent().rotation
+		for item in ray_builder_1.get_child(0).get_child(0).get_child(0).mesh.get_surface_count():
+			ray_builder_1.get_child(0).get_child(0).get_child(0).mesh.surface_get_material(item).next_pass.set_shader_parameter("outline_color", Color.RED)
+		#ray_builder_1.get_child(0).top_level = true
+		#ray_builder_1.get_child(0).rotation = object_rotation + ray_builder.get_collider().get_parent().rotation
 	
 	elif ray_builder.get_collider() == null:
-		ray_builder.get_child(0).position = ray_builder.position + Vector3(0,0,-3)
+		ray_builder_1.get_child(0).position = ray_builder_1.position + Vector3(0,0,-3)
 		can_build = false
-		for item in ray_builder.get_child(0).get_child(0).get_child(0).mesh.get_surface_count():
-			ray_builder.get_child(0).get_child(0).get_child(0).mesh.surface_get_material(item).next_pass.set_shader_parameter("outline_color", Color.RED)
-		ray_builder.get_child(0).top_level = false
-		ray_builder.get_child(0).rotation = ray_builder.rotation
+		for item in ray_builder_1.get_child(0).get_child(0).get_child(0).mesh.get_surface_count():
+			ray_builder_1.get_child(0).get_child(0).get_child(0).mesh.surface_get_material(item).next_pass.set_shader_parameter("outline_color", Color.RED)
+		ray_builder_1.get_child(0).top_level = false
+		ray_builder_1.get_child(0).rotation = ray_builder.rotation
 		object_rotation = Vector3.ZERO

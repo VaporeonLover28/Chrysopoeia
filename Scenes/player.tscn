@@ -36,8 +36,16 @@ current = true
 [node name="RayInterection" type="RayCast3D" parent="Pivot/Camera"]
 target_position = Vector3(0, 0, -3)
 
-[node name="RayBuilder" type="RayCast3D" parent="Pivot/Camera"]
+[node name="RayBuilder1" type="RayCast3D" parent="Pivot/Camera"]
 target_position = Vector3(0, 0, -3)
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayBuilder2" type="RayCast3D" parent="Pivot/Camera"]
+target_position = Vector3(0, 0, -3)
+collision_mask = 2
+hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false
 
@@ -46,7 +54,7 @@ wait_time = 100000.0
 one_shot = true
 
 [node name="Call NPC Area" type="Area3D" parent="."]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Call NPC Area"]
 shape = SubResource("SphereShape3D_cvnsp")

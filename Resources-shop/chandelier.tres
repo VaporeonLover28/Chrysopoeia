@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=3 format=3 uid="uid://cflagy6qrtpb3"]
+
+[ext_resource type="PackedScene" uid="uid://7rsdr8js0apu" path="res://Scenes/chandelier_.tscn" id="1_kfpxi"]
+[ext_resource type="Script" uid="uid://dtrrlkl8w8gkb" path="res://Script/purchasable_itens_resource.gd" id="1_qiq54"]
+
+[resource]
+script = ExtResource("1_qiq54")
+item_type = "Objects"
+name = "chandelier"
+price = 50
+description = ""
+item_scene = ExtResource("1_kfpxi")
+usable = true
+metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"
