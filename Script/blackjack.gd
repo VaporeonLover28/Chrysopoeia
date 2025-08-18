@@ -230,6 +230,7 @@ func distribute_cards():
 
 ##tween to send a card to the dealer
 func card_to_dealer(card : Node3D, pos : Vector3, rot : Vector3):
+	card_sfx()
 	player.dealer_hand.append(card)
 	tween = create_tween()
 	tween.set_trans(Tween.TRANS_QUART)
@@ -245,6 +246,7 @@ func card_to_dealer(card : Node3D, pos : Vector3, rot : Vector3):
 
 ##tween to send a card to an npc
 func card_to_npc(card : Node3D, who : CharacterBody3D, rot : Vector3):
+	card_sfx()
 	who.hand.append(card)
 	card.reparent(who.hand_marker)
 	tween = create_tween()
@@ -294,6 +296,7 @@ func dealer_turn():
 	tween.set_ease(Tween.EASE_OUT)
 	##makes it rotate to where it is supposed to
 	tween.tween_property(player.dealer_hand[0], "rotation_degrees", Vector3.ZERO, 0.66)
+	flip_sfx()
 	dealer_can_stand = true
 	dealer_can_hit = true
 
@@ -321,6 +324,7 @@ func end_game():
 			tween.set_trans(Tween.TRANS_QUART)
 			tween.set_ease(Tween.EASE_OUT)
 			tween.tween_property(npcs.hand[2], "rotation_degrees", Vector3.ZERO, 0.66)
+			flip_sfx()
 	dealer_can_stand = false
 	dealer_can_hit = false
 	print("Game ended")
@@ -518,3 +522,18 @@ func _on_turn_timer_timeout() -> void:
 		turn_timer.stop()
 		whose_turn = -1
 		dealer_turn()
+
+func card_sfx():
+	var which = randi_range(1, 4)
+	match which:
+		1:
+			CardsSfx.cartas_01.play()
+		2:
+			CardsSfx.cartas_02.play()
+		3:
+			CardsSfx.cartas_03.play()
+		4:
+			CardsSfx.cartas_04.play()
+
+func flip_sfx():
+	CardsSfx.virando_cartas.play()

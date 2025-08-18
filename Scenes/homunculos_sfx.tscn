@@ -1,0 +1,106 @@
+[gd_scene load_steps=22 format=3 uid="uid://b2oqrx16hx3wh"]
+
+[ext_resource type="Script" uid="uid://bkhmxx0ne4rkt" path="res://homunculos_sfx.gd" id="1_h3xet"]
+[ext_resource type="AudioStream" uid="uid://cqhwg7nysjt3r" path="res://SFX/homunculos/galunga.wav" id="2_vspqp"]
+[ext_resource type="AudioStream" uid="uid://bf32w3gmm4o0o" path="res://SFX/homunculos/homunculo_ataque_01.wav" id="3_74if4"]
+[ext_resource type="AudioStream" uid="uid://dxpqpb1sapu8n" path="res://SFX/homunculos/homunculo_ataque_02.wav" id="4_xx64b"]
+[ext_resource type="AudioStream" uid="uid://tsajqh2oxsam" path="res://SFX/homunculos/homunculo_ataque_03.wav" id="5_nsdp2"]
+[ext_resource type="AudioStream" uid="uid://bnl4ibuw0kiop" path="res://SFX/homunculos/homunculo_ataque_04.wav" id="6_oet0n"]
+[ext_resource type="AudioStream" uid="uid://jashwmrri1md" path="res://SFX/homunculos/homunculo_ataque_05.wav" id="7_svrdu"]
+[ext_resource type="AudioStream" uid="uid://b28vjwirm4stj" path="res://SFX/homunculos/homunculo_ataque_06.wav" id="8_8tyis"]
+[ext_resource type="AudioStream" uid="uid://dd4nb1teowvuj" path="res://SFX/homunculos/homunculo_ataque_07.wav" id="9_esdo5"]
+[ext_resource type="AudioStream" uid="uid://code5vjfc3spq" path="res://SFX/homunculos/homunculo_dano_01.wav" id="10_c88hy"]
+[ext_resource type="AudioStream" uid="uid://bmwbtw3f2perh" path="res://SFX/homunculos/homunculo_dano_02.wav" id="11_btm6a"]
+[ext_resource type="AudioStream" uid="uid://bnkqtc3q0oeve" path="res://SFX/homunculos/homunculo_dano_03.wav" id="12_3fhu2"]
+[ext_resource type="AudioStream" uid="uid://k0opgud3oycr" path="res://SFX/homunculos/homunculo_dano_04.wav" id="13_reo01"]
+[ext_resource type="AudioStream" uid="uid://bracpplr0eek7" path="res://SFX/homunculos/homunculo_dano_05.wav" id="14_ta2fb"]
+[ext_resource type="AudioStream" uid="uid://d3epqr3f0o02x" path="res://SFX/homunculos/homunculo_morte_01.wav" id="15_32c3a"]
+[ext_resource type="AudioStream" uid="uid://bn12602sjbtaf" path="res://SFX/homunculos/homunculo_morte_02.wav" id="16_4poab"]
+[ext_resource type="AudioStream" uid="uid://b1nku5fv3oqpn" path="res://SFX/homunculos/homunculo_morte_03.wav" id="17_tnntv"]
+[ext_resource type="AudioStream" uid="uid://bytoc2p6qglqc" path="res://SFX/homunculos/homunculo_morte_04.wav" id="18_1l3nd"]
+[ext_resource type="AudioStream" uid="uid://b22qo0vx188ob" path="res://SFX/homunculos/homunculo_soco.wav" id="19_k3kii"]
+[ext_resource type="AudioStream" uid="uid://co4hbqlpahy3w" path="res://SFX/homunculos/oblong.wav" id="20_w63pe"]
+[ext_resource type="AudioStream" uid="uid://da4c8thmohc6p" path="res://SFX/homunculos/ungus.wav" id="21_587mq"]
+
+[node name="Homunculos_sfx" type="Node3D"]
+script = ExtResource("1_h3xet")
+
+[node name="Galunga" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_vspqp")
+bus = &"SFX"
+
+[node name="HomunculoAtaque01" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_74if4")
+bus = &"SFX"
+
+[node name="HomunculoAtaque02" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_xx64b")
+bus = &"SFX"
+
+[node name="HomunculoAtaque03" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_nsdp2")
+bus = &"SFX"
+
+[node name="HomunculoAtaque04" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_oet0n")
+bus = &"SFX"
+
+[node name="HomunculoAtaque05" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_svrdu")
+bus = &"SFX"
+
+[node name="HomunculoAtaque06" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_8tyis")
+bus = &"SFX"
+
+[node name="HomunculoAtaque07" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("9_esdo5")
+bus = &"SFX"
+
+[node name="HomunculoDano01" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("10_c88hy")
+bus = &"SFX"
+
+[node name="HomunculoDano02" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("11_btm6a")
+bus = &"SFX"
+
+[node name="HomunculoDano03" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("12_3fhu2")
+bus = &"SFX"
+
+[node name="HomunculoDano04" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("13_reo01")
+bus = &"SFX"
+
+[node name="HomunculoDano05" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("14_ta2fb")
+bus = &"SFX"
+
+[node name="HomunculoMorte01" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("15_32c3a")
+bus = &"SFX"
+
+[node name="HomunculoMorte02" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("16_4poab")
+bus = &"SFX"
+
+[node name="HomunculoMorte03" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("17_tnntv")
+bus = &"SFX"
+
+[node name="HomunculoMorte04" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("18_1l3nd")
+bus = &"SFX"
+
+[node name="HomunculoSoco" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("19_k3kii")
+bus = &"SFX"
+
+[node name="Oblong" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("20_w63pe")
+bus = &"SFX"
+
+[node name="Ungus" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("21_587mq")
+bus = &"SFX"

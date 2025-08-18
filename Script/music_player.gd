@@ -6,6 +6,8 @@ extends Node
 @onready var fighttheme: AudioStreamPlayer =  $fight_theme
 @onready var menutheme: AudioStreamPlayer = $menu_theme
 @onready var emptytavern: AudioStreamPlayer = $empty_tavern
+@onready var jingle_vitoria = $JingleVitoria
+@onready var jingle_derrota = $JingleDerrota
 
 func play(audio: AudioStream, single = false) -> void:
 	if not audio:

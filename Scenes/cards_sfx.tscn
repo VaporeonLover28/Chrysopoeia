@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://drerme36gy1ha"]
+
+[ext_resource type="Script" uid="uid://byp1l41kbrh8t" path="res://Scenes/cards_sfx.gd" id="1_0uckc"]
+[ext_resource type="AudioStream" uid="uid://wekyfymit0kv" path="res://SFX/cartas/virando_cartas.wav" id="1_qwftu"]
+[ext_resource type="AudioStream" uid="uid://bthle7pns5iu0" path="res://SFX/cartas/cartas_01.wav" id="2_0uckc"]
+[ext_resource type="AudioStream" uid="uid://njito3v2ctaa" path="res://SFX/cartas/cartas_02.wav" id="3_m21jy"]
+[ext_resource type="AudioStream" uid="uid://bedao7jj5coq1" path="res://SFX/cartas/cartas_03.wav" id="4_75bqn"]
+[ext_resource type="AudioStream" uid="uid://bijc8451oqvt6" path="res://SFX/cartas/cartas_04.wav" id="5_kj5q0"]
+
+[node name="CardsSFX" type="Node3D"]
+script = ExtResource("1_0uckc")
+
+[node name="VirandoCartas" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("1_qwftu")
+bus = &"SFX"
+
+[node name="Cartas01" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_0uckc")
+bus = &"SFX"
+
+[node name="Cartas02" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_m21jy")
+bus = &"SFX"
+
+[node name="Cartas03" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_75bqn")
+bus = &"SFX"
+
+[node name="Cartas04" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_kj5q0")
+bus = &"SFX"

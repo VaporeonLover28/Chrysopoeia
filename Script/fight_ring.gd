@@ -167,6 +167,7 @@ func start_match():
 	##Instantiating the player homunculus
 	MusicPlayer.fighttheme.play()
 	var player_homunculus = homunculus.instantiate()
+	warcry_sfx()
 	player_homunculus.name = selected_creature_stats[0][0]
 	var split_stats = selected_creature_stats[0][0].split(" ", true, 2)
 	player_homunculus.dir_type = split_stats[0]
@@ -197,7 +198,33 @@ func start_match():
 	
 	match_started = true
 	$inactivity.start()
+func warcry_sfx():
+	var which = randi_range(1, 3)
+	match which:
+		1:
+			HomunculosSfx.galunga.play()
+		2:
+			HomunculosSfx.oblong.play()
+		3:
+			HomunculosSfx.ungus.play()
 
+func homunc_attack_sfx():
+	var which = randi_range(1, 7)
+	match which:
+		1:
+			HomunculosSfx.homunculo_ataque_01.play()
+		2:
+			HomunculosSfx.homunculo_ataque_02.play()
+		3:
+			HomunculosSfx.homunculo_ataque_03.play()
+		4:
+			HomunculosSfx.homunculo_ataque_04.play()
+		5:
+			HomunculosSfx.homunculo_ataque_05.play()
+		6:
+			HomunculosSfx.homunculo_ataque_06.play()
+		7:
+			HomunculosSfx.homunculo_ataque_07.play()
 func chain_pull():
 	if !match_ended:
 		tween = create_tween()
@@ -243,14 +270,18 @@ func end_match():
 	if player_bet_died and !non_bet_died:
 		Globals.money -= player_bet_creature.bounty
 		loss_screen(player_bet_creature.bounty)
+		MusicPlayer.jingle_derrota.play()
+
 	elif player_bet_died and non_bet_died:
 		var half_bet = (player_bet_creature.bounty + non_player_bet_creature.bounty) / 2
 		Globals.money -= player_bet_creature.bounty
 		Globals.money += half_bet
 		tie_screen(half_bet)
+		MusicPlayer.jingle_derrota.play()
 	elif !player_bet_died and non_bet_died:
 		Globals.money += non_player_bet_creature.bounty
 		win_screen(non_player_bet_creature.bounty)
+		MusicPlayer.jingle_vitoria.play()
 
 func win_screen(money_won):
 	match_win_test.money_won = money_won
