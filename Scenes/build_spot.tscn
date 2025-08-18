@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b1mjwd0321b81" path="res://Script/build_spot.gd" id="1_d0bu4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d0bu4"]
-size = Vector3(2.38513, 1.89441, 2.38354)
+size = Vector3(3.11401, 2.87364, 3.11107)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d0bu4"]
 resource_local_to_scene = true
@@ -21,7 +21,7 @@ script = ExtResource("1_d0bu4")
 [node name="Area build spot" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area build spot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00161, 0.31466, -0.0691856)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0601807, -0.175, -0.175909)
 shape = SubResource("BoxShape3D_d0bu4")
 debug_color = Color(0, 1, 0, 1)
 

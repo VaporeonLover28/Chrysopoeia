@@ -48,7 +48,7 @@ height = 0.0512813
 radius = 0.977051
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ic0uy"]
-size = Vector3(0.989982, 0.462341, 1.01192)
+size = Vector3(0.928459, 0.619591, 0.999219)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0jux3"]
 resource_local_to_scene = true
@@ -85,7 +85,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.19186, 0)
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Build_Spot/Area build spot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0587633, -0.124664, 0.0303727)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0101394, 0.00271273, 0.00727903)
 shape = SubResource("BoxShape3D_ic0uy")
 debug_color = Color(0, 1, 0, 1)
 
