@@ -42,6 +42,9 @@ func _physics_process(delta: float) -> void:
 		var local_destino = destino - global_position
 		var dir = local_destino.normalized()
 		velocity = dir * 2
+		look_at(destino)
+		rotation.x = 0
+		rotation.z = 0
 			
 		if is_instance_valid(targeted_position_is_object) == true and targeted_position_is_object is InteractableObject and is_on_interaction == false:
 			_go_to_interactable_object()

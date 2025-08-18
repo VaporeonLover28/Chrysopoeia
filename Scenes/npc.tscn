@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://jekyh5hw0o23"]
 
 [ext_resource type="Script" uid="uid://d3u1aaam68bee" path="res://Script/npc.gd" id="1_ideak"]
-[ext_resource type="PackedScene" uid="uid://cjrb25thpiawq" path="res://Assets/Originals/mago_beta.glb" id="2_xxsvc"]
+[ext_resource type="PackedScene" uid="uid://ceplhjmvmqltv" path="res://Assets/Originals/Magorigado.glb" id="2_xxsvc"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ideak"]
 
@@ -37,7 +37,7 @@ simplify_path = true
 wait_time = 10.0
 one_shot = true
 
-[node name="mago_beta" parent="." instance=ExtResource("2_xxsvc")]
+[node name="Magorigado" parent="." instance=ExtResource("2_xxsvc")]
 transform = Transform3D(-1.31134e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.31134e-08, -0.010817, -0.915939, 0.000304677)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
