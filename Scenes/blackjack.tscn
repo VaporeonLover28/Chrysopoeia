@@ -97,17 +97,37 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.356,
 [node name="hand0" type="Marker3D" parent="hand_markers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.905753, -0.349337)
 
+[node name="state" type="Label3D" parent="hand_markers/hand0"]
+transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0.0594715, 0, 0.134197)
+uppercase = true
+
 [node name="hand1" type="Marker3D" parent="hand_markers"]
 transform = Transform3D(0.896741, 0, 0.442555, 0, 1, 0, -0.442555, 0, 0.896741, -0.288565, 0.905753, -0.276891)
+
+[node name="state" type="Label3D" parent="hand_markers/hand1"]
+transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0.0594715, 0, 0.134197)
+uppercase = true
 
 [node name="hand2" type="Marker3D" parent="hand_markers"]
 transform = Transform3D(0.884166, 0, -0.467174, 0, 1, 0, 0.467174, 0, 0.884166, 0.271582, 0.905753, -0.276891)
 
+[node name="state" type="Label3D" parent="hand_markers/hand2"]
+transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0.0594715, 0, 0.134197)
+uppercase = true
+
 [node name="hand3" type="Marker3D" parent="hand_markers"]
 transform = Transform3D(0.542016, 0, -0.840368, 0, 1, 0, 0.840368, 0, 0.542016, 0.465604, 0.905753, -0.0585135)
 
+[node name="state" type="Label3D" parent="hand_markers/hand3"]
+transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0.0594715, 0, 0.134197)
+uppercase = true
+
 [node name="hand4" type="Marker3D" parent="hand_markers"]
 transform = Transform3D(0.51598, 0, 0.856601, 0, 1, 0, -0.856601, 0, 0.51598, -0.501329, 0.905753, -0.0585135)
+
+[node name="state" type="Label3D" parent="hand_markers/hand4"]
+transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0.0594715, 0, 0.134197)
+uppercase = true
 
 [node name="deck" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18919, 0.887299, 0.157821)

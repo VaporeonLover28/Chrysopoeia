@@ -277,8 +277,6 @@ func _build():
 			world_scene.get_node("NavigationRegion3D").get_node("All non interactable objects").add_child(instantiate_object)
 		instantiate_object.global_position = ray_builder_1.get_child(0).global_position - Vector3(0, 1.5, 0)
 		world_scene.get_node("NavigationRegion3D").bake_navigation_mesh()
-		for spot in $"../All Build spots".get_children():
-			spot.update_mesh(false)
 		is_on_building_mode = false
 		current_object_being_purchased = null
 		can_build = false

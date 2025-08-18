@@ -521,6 +521,9 @@ func calculate_hand_value():
 	hand_value = value_bank
 	#update_gc_label()
 
+func update_state_label():
+	hand_marker.get_child(0).text = state
+
 func hit():
 	#update_action_label("hit")
 	print(name + " hits.")
@@ -531,6 +534,7 @@ func stand():
 	#update_action_label("stand")
 	state = "Standed"
 	print(name + " stands.")
+	update_state_label()
 
 func double_down():
 	if game.round <= game.round_order_npcs.size():
@@ -546,11 +550,13 @@ func bust():
 	#update_action_label("bust")
 	state = "Busted"
 	print(name + " busts.")
+	update_state_label()
 
 func blackjack():
 	#update_action_label("blackjack")
 	state = "Blackjack"
 	print(name + " has a blackjack.")
+	update_state_label()
 
 func hard_total_matrix(case1, case2, case3, case4, case5, case6, case7, case8, case9, case10):
 	match hand_value:

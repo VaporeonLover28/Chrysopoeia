@@ -176,6 +176,7 @@ maximum_time_for_spawn_npc = 180.0
 theme = null
 
 [node name="Bar UI" parent="." instance=ExtResource("3_e0ngr")]
+visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6uqi0")

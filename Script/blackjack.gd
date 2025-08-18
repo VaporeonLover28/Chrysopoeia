@@ -219,7 +219,7 @@ func distribute_cards():
 			##gives the top card to the npc
 			card_to_npc(deck.pop_back(), round_order_npcs[int(floor(distribution_number / 3))], Vector3(0, 0, 0))
 	else:
-		##the dealer's first card is side up
+		##the dealer's second card is side up
 		if distribution_number / 3 > round_order_npcs.size():
 			##gives the top card to the dealer
 			card_to_dealer(deck.pop_back(), Vector3(-0.35, 0, 0), Vector3.ZERO)
@@ -260,6 +260,7 @@ func card_to_npc(card : Node3D, who : CharacterBody3D, rot : Vector3):
 	##updates the game control label
 	who.calculate_hand_value()
 	#who.update_gc_label()
+	who.update_state_label()
 
 func pass_turn():
 	turn_timer.start()
