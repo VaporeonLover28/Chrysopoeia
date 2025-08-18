@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://b2oqrx16hx3wh"]
 
-[ext_resource type="Script" uid="uid://bkhmxx0ne4rkt" path="res://homunculos_sfx.gd" id="1_h3xet"]
+[ext_resource type="Script" uid="uid://bkhmxx0ne4rkt" path="res://Script/homunculos_sfx.gd" id="1_h3xet"]
 [ext_resource type="AudioStream" uid="uid://cqhwg7nysjt3r" path="res://SFX/homunculos/galunga.wav" id="2_vspqp"]
 [ext_resource type="AudioStream" uid="uid://bf32w3gmm4o0o" path="res://SFX/homunculos/homunculo_ataque_01.wav" id="3_74if4"]
 [ext_resource type="AudioStream" uid="uid://dxpqpb1sapu8n" path="res://SFX/homunculos/homunculo_ataque_02.wav" id="4_xx64b"]
