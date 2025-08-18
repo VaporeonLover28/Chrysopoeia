@@ -141,9 +141,9 @@ func _physics_process(delta: float) -> void:
 			_sell()
 	else:
 			
-		if Input.is_action_just_pressed("rightclick"):
+		if Input.is_action_just_pressed("rightclick") and is_on_building_mode:
 			_build()
-		
+			
 		if Input.is_action_just_pressed("h"):
 			_cancel_build()
 			
@@ -264,6 +264,7 @@ func _cancel_build():
 	
 func _build():
 	if can_build == true:
+		build_sfx()
 		world_scene.update_all_mesh.emit()
 		print("Built " + str(current_object_being_purchased))
 		var instantiate_object = current_object_being_purchased.instantiate()
@@ -347,3 +348,13 @@ func lock_model_into_build_spot():
 		ray_builder_1.get_child(0).top_level = false
 		ray_builder_1.get_child(0).rotation = ray_builder.rotation
 		object_rotation = Vector3.ZERO
+func build_sfx():
+	var which = randi_range(1, 3)
+	match which:
+		1:
+			BuildingSfx.construir_01.play()
+		2:
+			BuildingSfx.construir_02.play()
+		3:
+			BuildingSfx.construir_03.play()
+	

@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://dycom8i5son62"]
+
+[ext_resource type="AudioStream" uid="uid://creduk17qbypk" path="res://SFX/construir/construir_01.wav" id="1_amr18"]
+[ext_resource type="Script" uid="uid://c7agqwbpw1l50" path="res://Scenes/building.gd" id="1_b2wr7"]
+[ext_resource type="AudioStream" uid="uid://jrv2wdnvqmcf" path="res://SFX/construir/construir_02.wav" id="2_b2wr7"]
+[ext_resource type="AudioStream" uid="uid://b2n0s2ykbh27c" path="res://SFX/construir/construir_03.wav" id="3_n4bpb"]
+
+[node name="Building" type="Node3D"]
+script = ExtResource("1_b2wr7")
+
+[node name="Construir01" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("1_amr18")
+
+[node name="Construir02" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_b2wr7")
+
+[node name="Construir03" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_n4bpb")
