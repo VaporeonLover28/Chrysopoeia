@@ -132,6 +132,7 @@ func _process(delta: float) -> void:
 		if dead:
 			global_position.y = 0.6
 			sprite.play("hurt")
+			
 			sprite.billboard = BaseMaterial3D.BILLBOARD_DISABLED
 			rotation_degrees.x = 90
 	
@@ -147,8 +148,12 @@ func attack_enemy():
 	if enemy_in_atk_area:
 		if randf() > 0.5:
 			sprite.play("hit")
+			homunc_attack_sfx()
+			homunc_punch()
 		else:
 			sprite.play("hit2")
+			homunc_attack_sfx()
+			homunc_punch()
 		enemy.take_dmg(damage)
 		
 func take_dmg(dmg):
@@ -159,10 +164,13 @@ func take_dmg(dmg):
 	
 	if health > 0:
 		sprite.play("hurt")
+		homunc_damage_sfx()
 		await get_tree().create_timer(0.5).timeout
 		sprite.play("default")
 	else:
 		dead = true
+		homunc_death_sfx()
+		
 
 func change_direction():
 	match dir_type:
@@ -235,3 +243,47 @@ func failed_mars():
 	print("failed mars")
 	health += 20
 	damage /= 2
+	
+func homunc_attack_sfx():
+	var which = randi_range(1, 7)
+	match which:
+		1:
+			HomunculosSfx.homunculo_ataque_01.play()
+		2:
+			HomunculosSfx.homunculo_ataque_02.play()
+		3:
+			HomunculosSfx.homunculo_ataque_03.play()
+		4:
+			HomunculosSfx.homunculo_ataque_04.play()
+		5:
+			HomunculosSfx.homunculo_ataque_05.play()
+		6:
+			HomunculosSfx.homunculo_ataque_06.play()
+		7:
+			HomunculosSfx.homunculo_ataque_07.play()
+func homunc_damage_sfx():
+	var which = randi_range(1, 5)
+	match which:
+		1:
+			HomunculosSfx.homunculo_dano_01.play()
+		2:
+			HomunculosSfx.homunculo_dano_02.play()
+		3:
+			HomunculosSfx.homunculo_dano_03.play()
+		4:
+			HomunculosSfx.homunculo_dano_04.play()
+		5:
+			HomunculosSfx.homunculo_dano_05.play()
+func homunc_death_sfx():
+	var which = randi_range(1, 4)
+	match which:
+		1:
+			HomunculosSfx.homunculo_morte_01.play()
+		2:
+			HomunculosSfx.homunculo_morte_02.play()
+		3:
+			HomunculosSfx.homunculo_morte_03.play()
+		4:
+			HomunculosSfx.homunculo_morte_04.play()
+func homunc_punch():
+	HomunculosSfx.homunculo_soco.play()

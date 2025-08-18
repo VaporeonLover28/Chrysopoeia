@@ -72,6 +72,7 @@ func _ready():
 		spawn_player(sitting_npcs[0], sitting_npcs[1])
 	await get_tree().create_timer(0.5).timeout
 	MusicPlayer.blackjacktheme.play()
+	MusicPlayer.emptytavern.stop()
 ##putting the cards in the screen
 func instantiate_cards():
 	for instance in 52:

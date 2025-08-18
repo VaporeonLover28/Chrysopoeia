@@ -19,6 +19,8 @@ extends Node3D
 @onready var homunculo_soco = $HomunculoSoco
 @onready var oblong = $Oblong
 @onready var ungus = $Ungus
+@onready var homunc_chain_2: AudioStreamPlayer3D = $HomuncChain2
+@onready var homunc_chain: AudioStreamPlayer3D = $HomuncChain
 
 
 # Called when the node enters the scene tree for the first time.

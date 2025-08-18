@@ -1,8 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://b2oqrx16hx3wh"]
+[gd_scene load_steps=24 format=3 uid="uid://b2oqrx16hx3wh"]
 
 [ext_resource type="Script" uid="uid://bkhmxx0ne4rkt" path="res://Script/homunculos_sfx.gd" id="1_h3xet"]
+[ext_resource type="AudioStream" uid="uid://bhaar1pjvjueo" path="res://SFX/homunculos/homunc_chain2.mp3" id="2_74if4"]
 [ext_resource type="AudioStream" uid="uid://cqhwg7nysjt3r" path="res://SFX/homunculos/galunga.wav" id="2_vspqp"]
 [ext_resource type="AudioStream" uid="uid://bf32w3gmm4o0o" path="res://SFX/homunculos/homunculo_ataque_01.wav" id="3_74if4"]
+[ext_resource type="AudioStream" uid="uid://c754f2iecya1a" path="res://SFX/homunculos/homunc_chain.mp3" id="3_xx64b"]
 [ext_resource type="AudioStream" uid="uid://dxpqpb1sapu8n" path="res://SFX/homunculos/homunculo_ataque_02.wav" id="4_xx64b"]
 [ext_resource type="AudioStream" uid="uid://tsajqh2oxsam" path="res://SFX/homunculos/homunculo_ataque_03.wav" id="5_nsdp2"]
 [ext_resource type="AudioStream" uid="uid://bnl4ibuw0kiop" path="res://SFX/homunculos/homunculo_ataque_04.wav" id="6_oet0n"]
@@ -24,6 +26,17 @@
 
 [node name="Homunculos_sfx" type="Node3D"]
 script = ExtResource("1_h3xet")
+
+[node name="HomuncChain2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_74if4")
+bus = &"SFX"
+
+[node name="HomuncChain" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_xx64b")
+volume_db = 10.0
+max_db = 5.0
+panning_strength = 2.0
+bus = &"SFX"
 
 [node name="Galunga" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_vspqp")

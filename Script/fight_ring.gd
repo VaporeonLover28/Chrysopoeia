@@ -208,49 +208,7 @@ func warcry_sfx():
 		3:
 			HomunculosSfx.ungus.play()
 
-func homunc_attack_sfx():
-	var which = randi_range(1, 7)
-	match which:
-		1:
-			HomunculosSfx.homunculo_ataque_01.play()
-		2:
-			HomunculosSfx.homunculo_ataque_02.play()
-		3:
-			HomunculosSfx.homunculo_ataque_03.play()
-		4:
-			HomunculosSfx.homunculo_ataque_04.play()
-		5:
-			HomunculosSfx.homunculo_ataque_05.play()
-		6:
-			HomunculosSfx.homunculo_ataque_06.play()
-		7:
-			HomunculosSfx.homunculo_ataque_07.play()
-func homunc_damage_sfx():
-	var which = randi_range(1, 5)
-	match which:
-		1:
-			HomunculosSfx.homunculo_dano_01.play()
-		2:
-			HomunculosSfx.homunculo_dano_02.play()
-		3:
-			HomunculosSfx.homunculo_dano_03.play()
-		4:
-			HomunculosSfx.homunculo_dano_04.play()
-		5:
-			HomunculosSfx.homunculo_dano_05.play()
-func homunc_death_sfx():
-	var which = randi_range(1, 4)
-	match which:
-		1:
-			HomunculosSfx.homunculo_morte_01.play()
-		2:
-			HomunculosSfx.homunculo_morte_02.play()
-		3:
-			HomunculosSfx.homunculo_morte_03.play()
-		4:
-			HomunculosSfx.homunculo_morte_04.play()
-func homunc_punch():
-	HomunculosSfx.homunculo_soco.play()
+
 
 func chain_pull():
 	if !match_ended:
@@ -280,7 +238,15 @@ func chain_pull():
 		non_player_bet_creature.chained = false
 		non_player_bet_creature.sprite.play("default")
 		inactivity.start(chain_cooldown)
+func chain_sfx():
+	var which = randi_range(1, 2)
+	match which:
+		1:
+			HomunculosSfx.homunc_chain.play()
+		2:
+			HomunculosSfx.homunc_chain_2.play()
 
+	
 func spell_cast(spell):
 	if Globals.check_spell_available(spell):
 		Globals.cooldown_spell(spell)
@@ -354,6 +320,7 @@ func _on_selec_bet_pressed() -> void:
 
 func _on_inactivity_timeout() -> void:
 	chain_pull()
+	chain_sfx()
 	if chain_distance - 0.2 > 0.5:
 		chain_distance -= 0.2
 	if chain_cooldown - 2 > 0:
