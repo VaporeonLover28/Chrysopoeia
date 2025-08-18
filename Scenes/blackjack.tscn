@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://bm0dwcec16xlf"]
+[gd_scene load_steps=19 format=3 uid="uid://bm0dwcec16xlf"]
 
 [ext_resource type="Script" uid="uid://brf7xhqpnw2iv" path="res://Script/blackjack.gd" id="1_ghed7"]
 [ext_resource type="Texture2D" uid="uid://bkoihmjcjf8pi" path="res://Assets/Originals/praredelend_madeiira.jpg" id="2_tild6"]
 [ext_resource type="PackedScene" uid="uid://8hd5usv25kt" path="res://Scenes/bj_player_test.tscn" id="3_wkmli"]
 [ext_resource type="PackedScene" uid="uid://dgs6yskiuhuvj" path="res://Assets/Originals/Mesa_blackjack.glb" id="3_wt0yi"]
+[ext_resource type="FontFile" uid="uid://4y6u2ai8c7lq" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-Bold.ttf" id="4_2qcqo"]
 [ext_resource type="PackedScene" uid="uid://cjrb25thpiawq" path="res://Assets/Originals/mago_beta.glb" id="4_wt0yi"]
 [ext_resource type="Script" uid="uid://j5nv645ekjhk" path="res://Script/mago_beta.gd" id="5_tild6"]
 [ext_resource type="Script" uid="uid://b6lxgr0emidg7" path="res://Script/blackjack_player.gd" id="5_wkmli"]
@@ -99,6 +100,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.905753, -0.349337)
 
 [node name="state" type="Label3D" parent="hand_markers/hand0"]
 transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0.0594715, 0, 0.134197)
+modulate = Color(1, 0.780392, 0.486275, 0)
+outline_modulate = Color(0.788235, 0.321569, 0, 0)
+font = ExtResource("4_2qcqo")
 uppercase = true
 
 [node name="hand1" type="Marker3D" parent="hand_markers"]
@@ -106,6 +110,9 @@ transform = Transform3D(0.896741, 0, 0.442555, 0, 1, 0, -0.442555, 0, 0.896741, 
 
 [node name="state" type="Label3D" parent="hand_markers/hand1"]
 transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0.0594715, 0, 0.134197)
+modulate = Color(1, 0.780392, 0.486275, 0)
+outline_modulate = Color(0.788235, 0.321569, 0, 0)
+font = ExtResource("4_2qcqo")
 uppercase = true
 
 [node name="hand2" type="Marker3D" parent="hand_markers"]
@@ -113,6 +120,9 @@ transform = Transform3D(0.884166, 0, -0.467174, 0, 1, 0, 0.467174, 0, 0.884166, 
 
 [node name="state" type="Label3D" parent="hand_markers/hand2"]
 transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0.0594715, 0, 0.134197)
+modulate = Color(1, 0.780392, 0.486275, 0)
+outline_modulate = Color(0.788235, 0.321569, 0, 0)
+font = ExtResource("4_2qcqo")
 uppercase = true
 
 [node name="hand3" type="Marker3D" parent="hand_markers"]
@@ -120,6 +130,9 @@ transform = Transform3D(0.542016, 0, -0.840368, 0, 1, 0, 0.840368, 0, 0.542016, 
 
 [node name="state" type="Label3D" parent="hand_markers/hand3"]
 transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0.0594715, 0, 0.134197)
+modulate = Color(1, 0.780392, 0.486275, 0)
+outline_modulate = Color(0.788235, 0.321569, 0, 0)
+font = ExtResource("4_2qcqo")
 uppercase = true
 
 [node name="hand4" type="Marker3D" parent="hand_markers"]
@@ -127,6 +140,9 @@ transform = Transform3D(0.51598, 0, 0.856601, 0, 1, 0, -0.856601, 0, 0.51598, -0
 
 [node name="state" type="Label3D" parent="hand_markers/hand4"]
 transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0.0594715, 0, 0.134197)
+modulate = Color(1, 0.780392, 0.486275, 0)
+outline_modulate = Color(0.788235, 0.321569, 0, 0)
+font = ExtResource("4_2qcqo")
 uppercase = true
 
 [node name="deck" type="Node3D" parent="."]
@@ -137,7 +153,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.06, 0.854)
 script = ExtResource("5_wkmli")
 
 [node name="spinnin mage" parent="." instance=ExtResource("4_wt0yi")]
-transform = Transform3D(0.086, 0, 1.50367e-08, 0, 0.02, 0, -1.50367e-08, 0, 0.086, 1.58809, -0.341995, -3.05256)
+transform = Transform3D(0.086, 0, 1.50367e-08, 0, 0.02, 0, -1.50367e-08, 0, 0.086, 1.58809, -0.924249, -3.05256)
 script = ExtResource("5_tild6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

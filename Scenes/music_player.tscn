@@ -15,9 +15,11 @@ script = ExtResource("1_nnqcb")
 
 [node name="JingleDerrota" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_hilfb")
+volume_db = -2.0
 
 [node name="JingleVitoria" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_qb4b4")
+volume_db = -6.0
 
 [node name="blackjack_theme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_cy1if")
@@ -35,12 +37,12 @@ bus = &"BGM"
 
 [node name="fight_theme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_b03an")
-volume_db = -12.0
+volume_db = -7.0
 bus = &"BGM"
 
 [node name="menu_theme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_hnt0s")
-volume_db = -12.86
+volume_db = -5.0
 bus = &"BGM"
 
 [node name="empty_tavern" type="AudioStreamPlayer" parent="."]

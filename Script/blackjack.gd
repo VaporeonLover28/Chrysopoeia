@@ -273,14 +273,19 @@ func place_bets():
 		##placing a bet should be 10%, 20% or 30% of current money
 		npcs.bet = npcs.money * (randi_range(1, 3) * 10) / 100
 		var inst = gold.instantiate()
-		inst.global_position.z -= 0.2
+		npcs.hand_marker.add_child(inst)
+		inst.global_position = npcs.global_position + Vector3(0, 0.8, 0)
+		#inst.global_position.z -= 0.2
 		inst.scale = Vector3(0.1, 0.1, 0.1)
+		tween = create_tween()
+		tween.set_trans(Tween.TRANS_QUART)
+		tween.set_ease(Tween.EASE_OUT)
+		tween.tween_property(inst, "position", Vector3(0, 0, -0.2), 1)
 		
 		if npcs.bet > 10:
 			inst.scale = Vector3.ONE * (0.1 + npcs.bet / 2500.0)
 
 		inst.get_child(1).text = str(npcs.bet) + " Gold"
-		npcs.hand_marker.add_child(inst)
 
 func start_game():
 	if !bets_on_table:

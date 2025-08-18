@@ -29,12 +29,14 @@ script = ExtResource("1_h3xet")
 
 [node name="HomuncChain2" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_74if4")
+volume_db = 6.0
+max_db = 6.0
 bus = &"SFX"
 
 [node name="HomuncChain" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_xx64b")
-volume_db = 10.0
-max_db = 5.0
+volume_db = 6.0
+max_db = 6.0
 panning_strength = 2.0
 bus = &"SFX"
 

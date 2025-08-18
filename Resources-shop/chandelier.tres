@@ -6,9 +6,10 @@
 [resource]
 script = ExtResource("1_qiq54")
 item_type = "Objects"
-name = "chandelier"
+name = "Chandelier"
 price = 50
 description = ""
 item_scene = ExtResource("1_kfpxi")
 usable = true
+keybind = ""
 metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"

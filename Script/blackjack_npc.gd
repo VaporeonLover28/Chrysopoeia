@@ -21,6 +21,8 @@ var hand : Array = []
 var hand_value : int = 0
 var aces_in_hand = 0
 
+var tween : Tween
+
 #func _ready() -> void:
 	#personality_label.text = personality
 
@@ -522,6 +524,14 @@ func calculate_hand_value():
 	#update_gc_label()
 
 func update_state_label():
+	if hand_marker.get_child(0).modulate.a == 0:
+		tween = create_tween()
+		tween.set_trans(Tween.TRANS_QUART)
+		tween.set_ease(Tween.EASE_IN_OUT)
+		tween.set_parallel(true)
+		tween.tween_property(hand_marker.get_child(0), "modulate", Color(1.0, 0.78, 0.486), 1)
+		tween.tween_property(hand_marker.get_child(0), "outline_modulate", Color(0.788, 0.322, 0.0), 1)
+		#ffc77c00
 	hand_marker.get_child(0).text = state
 
 func hit():
