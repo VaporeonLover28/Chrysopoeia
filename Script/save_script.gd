@@ -25,6 +25,10 @@ func _save_function(world_scene: Node3D, save_file_number: int):
 	new_config.set_value("Scene", "World Scene", world_scene.scene_file_path)
 	new_config.set_value("Scene", "interactable object count",\
 	world_scene.get_node("NavigationRegion3D/All Interactable Spots").get_child_count())
+	var array_obj_non_interact : Array
+	for item in world_scene.get_node("NavigationRegion3D/All non interactable objects").get_children():
+		array_obj_non_interact.push_back([item.scene_file_path, item.global_position, item.rotation])
+	new_config.set_value("Scene", "non interactable", array_obj_non_interact)
 	var array_obj_interact : Array
 	for item in world_scene.get_node("NavigationRegion3D/All Interactable Spots").get_children():
 		array_obj_interact.push_back([item.scene_file_path, item.global_position, item.rotation])

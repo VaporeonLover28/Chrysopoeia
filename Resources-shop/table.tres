@@ -7,7 +7,7 @@
 script = ExtResource("1_2x08f")
 item_type = "Objects"
 name = "Table"
-price = 50
+price = 100
 description = ""
 item_scene = ExtResource("1_xq057")
 usable = true

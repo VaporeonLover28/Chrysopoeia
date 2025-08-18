@@ -221,8 +221,7 @@ func loading_screen(game):
 	get_tree().change_scene_to_file("res://Scenes/" + game + ".tscn")
 
 func _start_bulding_phase(object_to_be_purchase: PackedScene):
-	for spot in $"../All Build spots".get_children():
-		spot.update_mesh(true)
+	world_scene.update_all_mesh.emit()
 	object_rotation = Vector3.ZERO
 	current_object_being_purchased = object_to_be_purchase
 	var current_object_being_purchased_instantiate = current_object_being_purchased.instantiate()
@@ -240,7 +239,7 @@ func _start_bulding_phase(object_to_be_purchase: PackedScene):
 		current_object_being_purchased_instantiate.get_child(0).get_child(0).mesh.surface_get_material(item).next_pass.set_shader_parameter("active", true)
 	var new_area3d = Area3D.new()
 	new_area3d.name = "Area 3d"
-	new_area3d.collision_layer = 2
+	new_area3d.collision_layer = 4
 	for item in current_object_being_purchased_instantiate.get_children():
 		if item is CollisionShape3D:
 			var instantiate_colission = item.duplicate()
@@ -256,6 +255,7 @@ func _rotate_bulding_object(rotation_direction: int):
 	object_rotation += Vector3(0,deg_to_rad(8),0) * rotation_direction
 	
 func _cancel_build():
+	world_scene.update_all_mesh.emit()
 	print("Cancelled build")
 	is_on_building_mode = false
 	current_object_being_purchased = null
@@ -264,8 +264,10 @@ func _cancel_build():
 	
 func _build():
 	if can_build == true:
+		world_scene.update_all_mesh.emit()
 		print("Built " + str(current_object_being_purchased))
 		var instantiate_object = current_object_being_purchased.instantiate()
+		print(ray_builder.get_collider().get_parent())
 		ray_builder.get_collider().get_parent().taken = true
 		instantiate_object.rotation = ray_builder_1.get_child(0).rotation
 		ray_builder_1.get_child(0).queue_free()
@@ -281,18 +283,18 @@ func _build():
 		current_object_being_purchased = null
 		can_build = false
 		Globals.save_money = 0
+		SaveScript.auto_save.emit()
 		var save_ray_builder_1_monetoring = ray_builder_1.get_collider()
 		var save_ray_builder_2_monetoring = ray_builder_2.get_collider()
 		save_ray_builder_1_monetoring.monitoring = false
 		if save_ray_builder_2_monetoring != null:
 			print("save_ray_builder_2_monetoring.monitoring = false")
 			save_ray_builder_2_monetoring.monitoring = false
-		await get_tree().create_timer(0.8).timeout
+		await get_tree().create_timer(0.1).timeout
 		save_ray_builder_1_monetoring.monitoring = true
 		if save_ray_builder_2_monetoring != null:
 			print("save_ray_builder_2_monetoring.monitoring = true")
 			save_ray_builder_2_monetoring.monitoring = true
-		SaveScript.auto_save.emit()
 	
 func _sell():
 	var object_inst = ray_interection.get_collider()
@@ -301,7 +303,7 @@ func _sell():
 	if object_inst != null and object_inst.get_node_or_null("Sell_Satisfation Value") != null and Globals.game_paused == false:
 		ray_builder.get_collider().get_parent().taken = false
 		print(ray_builder.get_collider().get_overlapping_bodies())
-		if ray_builder.get_collider().get_overlapping_areas().is_empty() == true:
+		if ray_builder.get_collider().get_overlapping_bodies().is_empty() != true:
 			print("has_overlapping_bodies")
 			print(ray_builder.get_collider().get_overlapping_bodies())
 			for item in ray_builder.get_collider().get_overlapping_bodies():
@@ -312,13 +314,14 @@ func _sell():
 					item.queue_free()
 				else:
 					print("don't have Sell_Satisfation Value node")
+	
 
 func lock_model_into_build_spot():
 	if ray_builder.get_collider() != null\
 	and ray_builder.get_collider().get_name() == "Area build spot"\
 	and ray_builder.get_collider().is_in_group(ray_builder_1.get_child(0).get_groups()[0])\
 	and ray_builder_1.get_child(0).get_child(-1).has_overlapping_bodies() == false\
-	and !ray_builder.get_collider().get_parent().taken:
+	and ray_builder.get_collider().get_parent().taken == false:
 		ray_builder_1.get_child(0).global_position = ray_builder.get_collider().get_parent().global_position
 		ray_builder_1.get_child(0).rotation = ray_builder_1.get_child(0).rotation  + ray_builder.get_collider().get_parent().rotation
 		can_build = true

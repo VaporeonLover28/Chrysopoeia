@@ -26,6 +26,8 @@ preload("res://Scenes/joker.tscn"), \
 preload("res://Scenes/pleb.tscn"), \
 preload("res://Scenes/noble.tscn")]
 
+signal update_all_mesh
+
 func _ready() -> void:
 	SaveScript.auto_save.connect(SaveScript._save_function.bind(self, 0))
 	npc_spwaner_timer.start(randf_range(minimum_time_for_spawn_npc, maximum_time_for_spawn_npc))
@@ -34,11 +36,19 @@ func _ready() -> void:
 	if SaveScript.current_savefile_loading != "":
 		var loading = new_config.load(SaveScript.current_savefile_loading)
 		if loading == OK:
-			for item in new_config.get_value("Scene", "interactable object count"):
-				var instantiate_interactable = load(new_config.get_value("Scene", "interactable")[item][0]).instantiate()
-				instantiate_interactable.global_position = new_config.get_value("Scene", "interactable")[item][1]
-				instantiate_interactable.rotation = new_config.get_value("Scene", "interactable")[item][2]
-				all_interactable_spots.add_child(instantiate_interactable)
+			var count_1 : int = 0
+			var count_2 : int = 0
+			for item in new_config.get_value("Scene", "non interactable"):
+				var instantiate_interactable = load(item[0]).instantiate()
+				all_non_interactable_objects.add_child(instantiate_interactable)
+				instantiate_interactable.global_position = item[1]
+				instantiate_interactable.rotation = item[2]
+				
+			for item in new_config.get_value("Scene", "interactable"):
+				var instantiate_interactable = load(item[0]).instantiate()
+				all_non_interactable_objects.add_child(instantiate_interactable)
+				instantiate_interactable.global_position = item[1]
+				instantiate_interactable.rotation = item[2]
 			print(new_config.get_value("Player", "position"))
 			player.global_position = new_config.get_value("Player", "position")
 			#print(new_config.get_value("NPC", "info"))
@@ -78,11 +88,6 @@ func _ready() -> void:
 	Globals.save_npcs_pos = []
 	Globals.save_objects = []
 	Globals.save_player_pos = Vector3()
-		
-
-func _exit_tree() -> void:
-	MusicPlayer.emptytavern.stop()
-	SaveScript.auto_save.disconnect(SaveScript._save_function)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("z"):
