@@ -25,6 +25,6 @@ func win_anim():
 
 func end_anim():
 	continue_button.visible = true
-
+	CoinEarned.moedas_01.play()
 func _on_continue_pressed() -> void:
 	Globals.return_to_world()

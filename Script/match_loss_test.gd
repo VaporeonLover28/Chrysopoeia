@@ -22,8 +22,9 @@ func loss_anim():
 	tween.tween_property(self, "money_lost_progress", money_lost, anim_duration)
 	await get_tree().create_timer(anim_duration).timeout
 	end_anim()
-
+	
 func end_anim():
+	CoinEarned.moedas_03.play()
 	continue_button.visible = true
 
 func _on_continue_pressed() -> void:

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcyut3jcin2li"]
+
+[ext_resource type="Script" uid="uid://63he44ium4gl" path="res://coin_earned.gd" id="1_403lq"]
+[ext_resource type="AudioStream" uid="uid://0irwjorqac3" path="res://SFX/moedas/moedas_01.wav" id="2_r7uqb"]
+[ext_resource type="AudioStream" uid="uid://bhx85iegwogsp" path="res://SFX/moedas/moedas_02.wav" id="3_rhrvp"]
+[ext_resource type="AudioStream" uid="uid://cl3b4hlb7exdn" path="res://SFX/moedas/moedas_03.wav" id="4_0t8ge"]
+
+[node name="coin_earned" type="AudioStreamPlayer"]
+script = ExtResource("1_403lq")
+
+[node name="Moedas01" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_r7uqb")
+bus = &"SFX"
+
+[node name="Moedas02" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_rhrvp")
+bus = &"SFX"
+
+[node name="Moedas03" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_0t8ge")
+bus = &"SFX"

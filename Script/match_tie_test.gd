@@ -24,6 +24,7 @@ func win_anim():
 	end_anim()
 
 func end_anim():
+	CoinEarned.moedas_02.play()
 	continue_button.visible = true
 
 func _on_continue_pressed() -> void:

@@ -296,6 +296,7 @@ func _build():
 			save_ray_builder_2_monetoring.monitoring = true
 	
 func _sell():
+	CoinEarned.moedas_01.play()
 	var object_inst = ray_interection.get_collider()
 	if object_inst.get_parent() is InteractableObject:
 		object_inst = object_inst.get_parent()

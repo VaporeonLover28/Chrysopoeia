@@ -24,6 +24,7 @@ MusicPlayer="*res://Scenes/music_player.tscn"
 CardsSfx="*res://Scenes/cards_sfx.tscn"
 HomunculosSfx="*res://Scenes/homunculos_sfx.tscn"
 BuildingSfx="*res://Scenes/building.tscn"
+CoinEarned="*res://Scenes/coin_earned.tscn"
 
 [display]
 

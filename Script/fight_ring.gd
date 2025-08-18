@@ -262,6 +262,7 @@ func end_match():
 	MusicPlayer.fighttheme.stop()
 	if player_bet_died and !non_bet_died:
 		Globals.money -= player_bet_creature.bounty
+		
 		loss_screen(player_bet_creature.bounty)
 		MusicPlayer.jingle_derrota.play()
 
