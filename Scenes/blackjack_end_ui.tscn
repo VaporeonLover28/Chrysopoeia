@@ -129,7 +129,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"open",
-"speed": 1.0
+"speed": 45.0
 }]
 
 [node name="blackjack_end_ui" type="CanvasLayer"]

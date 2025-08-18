@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://bm0dwcec16xlf"]
 
 [ext_resource type="Script" uid="uid://brf7xhqpnw2iv" path="res://Script/blackjack.gd" id="1_ghed7"]
-[ext_resource type="Texture2D" uid="uid://bm5mkjkryluex" path="res://Assets/grid_black_512x512.png" id="1_rnqjs"]
+[ext_resource type="Texture2D" uid="uid://bkoihmjcjf8pi" path="res://Assets/Originals/praredelend_madeiira.jpg" id="2_tild6"]
 [ext_resource type="PackedScene" uid="uid://8hd5usv25kt" path="res://Scenes/bj_player_test.tscn" id="3_wkmli"]
 [ext_resource type="PackedScene" uid="uid://dgs6yskiuhuvj" path="res://Assets/Originals/Mesa_blackjack.glb" id="3_wt0yi"]
 [ext_resource type="PackedScene" uid="uid://cjrb25thpiawq" path="res://Assets/Originals/mago_beta.glb" id="4_wt0yi"]
@@ -32,7 +32,7 @@ vertices = PackedVector3Array(-4.5, 0.5, -9.535, -4.5, 0.5, 1.965, 4.5, 0.5, 1.9
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h467y"]
-albedo_texture = ExtResource("1_rnqjs")
+albedo_texture = ExtResource("2_tild6")
 uv1_triplanar = true
 uv1_world_triplanar = true
 

@@ -1,0 +1,76 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc8lfsm2djmxi"]
+
+[ext_resource type="Theme" uid="uid://cdh2vq0ieqel5" path="res://Themes/option_theme_check.tres" id="1_qqnya"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+tab_alignment = 1
+current_tab = 2
+
+[node name="Display" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Margin_display" type="MarginContainer" parent="TabContainer/Display"]
+layout_mode = 0
+offset_right = 1147.0
+offset_bottom = 611.0
+theme_override_constants/margin_left = 45
+theme_override_constants/margin_top = 60
+
+[node name="Display_container" type="VBoxContainer" parent="TabContainer/Display/Margin_display"]
+layout_mode = 2
+
+[node name="Res_container" type="HBoxContainer" parent="TabContainer/Display/Margin_display/Display_container"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Resolution_label" type="Label" parent="TabContainer/Display/Margin_display/Display_container/Res_container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = " Resolution"
+
+[node name="Resolution_button" type="OptionButton" parent="TabContainer/Display/Margin_display/Display_container/Res_container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+selected = 0
+allow_reselect = true
+item_count = 5
+popup/item_0/id = 0
+popup/item_1/id = 1
+popup/item_2/id = 2
+popup/item_3/id = 3
+popup/item_4/id = 4
+
+[node name="Fullscreen_button" type="CheckButton" parent="TabContainer/Display/Margin_display/Display_container"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_qqnya")
+text = "Fullscreen"
+
+[node name="Vsync_button" type="CheckButton" parent="TabContainer/Display/Margin_display/Display_container"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_qqnya")
+text = "Enable Vsync
+"
+
+[node name="Inputs" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Audio" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 2

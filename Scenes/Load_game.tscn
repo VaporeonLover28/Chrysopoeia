@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://cplce0dsdfclg"]
+
+[ext_resource type="FontFile" uid="uid://4y6u2ai8c7lq" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-Bold.ttf" id="1_oeq2r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ukh7"]
+
+[sub_resource type="Theme" id="Theme_t782j"]
+default_font = ExtResource("1_oeq2r")
+Button/colors/font_color = Color(0.913725, 0.768627, 0.180392, 1)
+Button/font_sizes/font_size = 30
+Button/fonts/font = ExtResource("1_oeq2r")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bg" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.421035, 0, 0.0529206, 1)
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 1.0
+offset_right = 1153.0
+offset_bottom = 642.0
+theme_override_constants/margin_left = 105
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 105
+
+[node name="Load_container" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+
+[node name="Load_game_label" type="Label" parent="Margin/Load_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.686987, 0.162148, 1)
+theme_override_colors/font_outline_color = Color(0.719209, 0.34296, 0.144537, 1)
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("1_oeq2r")
+theme_override_font_sizes/font_size = 60
+text = "Load game"
+horizontal_alignment = 1
+
+[node name="Separator" type="HSeparator" parent="Margin/Load_container"]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxEmpty_0ukh7")
+
+[node name="Load_game_button" type="Button" parent="Margin/Load_container"]
+layout_mode = 2
+theme = SubResource("Theme_t782j")
+text = "Load
+"

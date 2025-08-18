@@ -1,21 +1,26 @@
-[gd_scene load_steps=24 format=3 uid="uid://cf21qm02h40cu"]
+[gd_scene load_steps=25 format=3 uid="uid://cf21qm02h40cu"]
 
-[ext_resource type="Texture2D" uid="uid://bm5mkjkryluex" path="res://Assets/grid_black_512x512.png" id="1_fu7sn"]
 [ext_resource type="Script" uid="uid://gupatwggm12k" path="res://Script/main_menu.gd" id="1_opfnp"]
 [ext_resource type="Script" uid="uid://h04ek6sfnud1" path="res://Script/spinner.gd" id="3_ce3w2"]
 [ext_resource type="PackedScene" uid="uid://1vs87kpuhfnj" path="res://Assets/Exports/glTF/fantasy_table_low-poly_stylised.glb" id="3_t1dhk"]
 [ext_resource type="Theme" uid="uid://f5yk4gkyeuqv" path="res://Themes/menu_theme.tres" id="5_cp0ys"]
 [ext_resource type="FontFile" uid="uid://paxjlxvek7jf" path="res://Assets/Fonts/ransite_medieval/RansiteMedieval_PERSONAL_USE_ONLY.otf" id="5_n45e2"]
 [ext_resource type="Texture2D" uid="uid://dou0u21vugnyg" path="res://Assets/Originals/banner.png" id="5_vr1f0"]
-[ext_resource type="Script" path="res://Assets/Originals/circulomagico.gd" id="6_vtepg"]
+[ext_resource type="Script" uid="uid://dl3d0x2t346o" path="res://Assets/Originals/circulomagico.gd" id="6_vtepg"]
 [ext_resource type="Script" uid="uid://dj7uf3sroay0t" path="res://Assets/Originals/gold_nugget.gd" id="7_5egv6"]
+[ext_resource type="Texture2D" uid="uid://bbtb2l43wx0m2" path="res://Assets/Originals/fabbri1.png" id="7_8dnnj"]
 [ext_resource type="Script" uid="uid://c4ndqtv32fvou" path="res://Script/title.gd" id="8_yhxw7"]
 [ext_resource type="PackedScene" uid="uid://tjnuyxlxa08i" path="res://Assets/Originals/Magorigado_pose2.glb" id="9_16hvj"]
 [ext_resource type="PackedScene" uid="uid://d4afiryk4wkkn" path="res://Assets/Originals/Circulomagico.glb" id="10_vr1f0"]
 [ext_resource type="PackedScene" uid="uid://bo12uuy2oanjx" path="res://Assets/Originals/gold_nugget.glb" id="11_vr1f0"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nlkkf"]
-albedo_texture = ExtResource("1_fu7sn")
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5egv6"]
+load_path = "res://.godot/imported/praredelend_preda.png-080c9f603eb289def9d6616a64ce1c56.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vtepg"]
+albedo_color = Color(0.381703, 0.381703, 0.381703, 1)
+albedo_texture = SubResource("CompressedTexture2D_5egv6")
+uv1_scale = Vector3(0.092, 0.092, 0.092)
 uv1_triplanar = true
 uv1_world_triplanar = true
 
@@ -94,7 +99,7 @@ render_target_update_mode = 4
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 10.965)
-material_override = SubResource("StandardMaterial3D_nlkkf")
+material_override = SubResource("StandardMaterial3D_vtepg")
 use_collision = true
 collision_mask = 14
 
@@ -139,6 +144,14 @@ collision_base_size = 0.0
 transform_align = 3
 process_material = SubResource("ParticleProcessMaterial_ujyyl")
 draw_pass_1 = SubResource("CapsuleMesh_4nkqq")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SubViewportContainer/SubViewport/Circulomagico"]
+light_color = Color(1, 1, 0, 1)
+light_energy = 0.192
+light_projector = ExtResource("7_8dnnj")
+shadow_enabled = true
+shadow_bias = 0.2
+omni_attenuation = 1.725
 
 [node name="gold_nugget" parent="SubViewportContainer/SubViewport" instance=ExtResource("11_vr1f0")]
 transform = Transform3D(0.799449, 0.0296638, 0.000809833, -0.0296638, 0.79945, -4.72689e-12, -0.000809276, -3.00284e-05, 0.8, 0.0339304, 1.28485, -4.9649)
