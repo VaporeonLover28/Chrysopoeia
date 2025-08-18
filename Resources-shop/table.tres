@@ -11,4 +11,5 @@ price = 50
 description = ""
 item_scene = ExtResource("1_xq057")
 usable = true
+keybind = ""
 metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"

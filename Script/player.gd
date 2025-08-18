@@ -227,8 +227,9 @@ func _start_bulding_phase(object_to_be_purchase: PackedScene):
 	current_object_being_purchased = object_to_be_purchase
 	var current_object_being_purchased_instantiate = current_object_being_purchased.instantiate()
 	if current_object_being_purchased_instantiate is InteractableObject:
-		current_object_being_purchased_instantiate = current_object_being_purchased_instantiate.get_node("Model").duplicate(true)
+		current_object_being_purchased_instantiate = current_object_being_purchased_instantiate.get_node("Model").duplicate()
 		current_object_being_purchased_instantiate.add_to_group("Ground_object")
+		print(current_object_being_purchased_instantiate.get_groups())
 	for item in current_object_being_purchased_instantiate.get_children():
 		if item is Node3D or item is CollisionShape3D:
 			pass
@@ -258,6 +259,7 @@ func _cancel_build():
 	print("Cancelled build")
 	is_on_building_mode = false
 	current_object_being_purchased = null
+	Globals.money += Globals.save_money 
 	ray_builder_1.get_child(0).queue_free()
 	
 func _build():
@@ -278,6 +280,18 @@ func _build():
 		is_on_building_mode = false
 		current_object_being_purchased = null
 		can_build = false
+		Globals.save_money = 0
+		var save_ray_builder_1_monetoring = ray_builder_1.get_collider()
+		var save_ray_builder_2_monetoring = ray_builder_2.get_collider()
+		save_ray_builder_1_monetoring.monitoring = false
+		if save_ray_builder_2_monetoring != null:
+			print("save_ray_builder_2_monetoring.monitoring = false")
+			save_ray_builder_2_monetoring.monitoring = false
+		await get_tree().create_timer(0.8).timeout
+		save_ray_builder_1_monetoring.monitoring = true
+		if save_ray_builder_2_monetoring != null:
+			print("save_ray_builder_2_monetoring.monitoring = true")
+			save_ray_builder_2_monetoring.monitoring = true
 		SaveScript.auto_save.emit()
 	
 func _sell():
@@ -296,14 +310,15 @@ func _sell():
 				if item.get_node_or_null("Sell_Satisfation Value") != null:
 					Globals.money += item.get_node_or_null("Sell_Satisfation Value").sell_value
 					item.queue_free()
+				else:
+					print("don't have Sell_Satisfation Value node")
 
 func lock_model_into_build_spot():
 	if ray_builder.get_collider() != null\
 	and ray_builder.get_collider().get_name() == "Area build spot"\
 	and ray_builder.get_collider().is_in_group(ray_builder_1.get_child(0).get_groups()[0])\
 	and ray_builder_1.get_child(0).get_child(-1).has_overlapping_bodies() == false\
-	and !ray_builder.get_collider().get_parent().taken \
-	and ray_builder.get_collider().collision_layer == ray_builder.collision_mask:
+	and !ray_builder.get_collider().get_parent().taken:
 		ray_builder_1.get_child(0).global_position = ray_builder.get_collider().get_parent().global_position
 		ray_builder_1.get_child(0).rotation = ray_builder_1.get_child(0).rotation  + ray_builder.get_collider().get_parent().rotation
 		can_build = true
