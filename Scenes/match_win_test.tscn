@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c4quyek04012y"]
 
-[ext_resource type="Script" path="res://Script/match_win_test.gd" id="1_3jr5n"]
+[ext_resource type="Script" uid="uid://cuwuov7c11bbi" path="res://Script/match_win_test.gd" id="1_3jr5n"]
 [ext_resource type="FontFile" uid="uid://bubxb3wcmbboy" path="res://Assets/Fonts/comic-sans-ms-font-family/COMIC.TTF" id="1_k1fuj"]
 
 [node name="match_win_test" type="CanvasLayer"]
