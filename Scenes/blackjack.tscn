@@ -294,11 +294,11 @@ offset_bottom = 129.0
 text = "Ace of Diamonds"
 horizontal_alignment = 1
 
+[node name="Spell_menu" parent="." instance=ExtResource("12_tild6")]
+
 [node name="blackjack_end_ui" parent="." instance=ExtResource("11_wt0yi")]
 offset = Vector2(0, 821)
 transform = Transform2D(1, 0, 0, 1, 0, 821)
-
-[node name="Spell_menu" parent="." instance=ExtResource("12_tild6")]
 
 [connection signal="timeout" from="turn_timer" to="." method="_on_turn_timer_timeout"]
 [connection signal="timeout" from="card_distr_timer" to="." method="_on_card_distr_timer_timeout"]

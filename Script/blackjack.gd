@@ -413,28 +413,27 @@ func end_anim():
 	end_ui.match_end_anim()
 
 func spell_cast(spell : String):
+	print(spell)
 	if Globals.check_spell_available(spell):
 		SpellSounds.feitiço_sfx.play()
 		Globals.cooldown_spell(spell)
 		var spell_worked = randi_range(1, 4)
 		if spell_worked == 4:
 			match spell:
-				"Providence":
+				"Eye of Providence":
 					failed_providence()
-				"Philo Shard":
+				"Philosopher's Shard":
 					failed_philo_shard()
-				"Fools Gold":
+				"Fool's Gold":
 					failed_fools_gold()
 		else:
 			match spell:
-				"Providence":
+				"Eye of Providence":
 					providence()
-				"Philo Shard":
+				"Philosopher's Shard":
 					philo_shard()
-				"Fools Gold":
+				"Fool's Gold":
 					fools_gold()
-	end_ui.visible = true
-	end_ui.match_end_anim()
 
 func providence():
 	dealer_revealed_card = deck.back()

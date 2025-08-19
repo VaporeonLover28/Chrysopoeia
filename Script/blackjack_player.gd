@@ -83,13 +83,13 @@ func _unhandled_input(event): #event representa o evento do input
 	#caso o jogo não esteja pausado
 	if !Globals.game_paused and allowed_to_move:
 		if event.is_action_pressed("tab"):
-			game.spell_cast("Providence")
+			game.spell_cast("Eye of Providence")
 		
 		if event.is_action_pressed("a"):
-			game.spell_cast("Fools Gold")
+			game.spell_cast("Fool's Gold")
 		
 		if event.is_action_pressed("d"):
-			game.spell_cast("Philo Shard")
+			game.spell_cast("Philosopher's Shard")
 		
 		#se o jogador segurar o botão direito do mouse
 		if Input.is_action_pressed("rightclick") and !zooming:

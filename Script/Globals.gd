@@ -80,7 +80,7 @@ func check_spell_available(spell_name : String):
 					else:
 						print("spell in inv, on cooldown")
 				else:
-					print("not spell")
+					print("not " + spell_name)
 		if spell_found and spell_not_cd:
 			return true
 		else:
@@ -112,4 +112,5 @@ func _calculate_bet_loses(money_value: int):
 		money_lost = 0
 
 func return_to_world():
+	player_interacting = false
 	get_tree().change_scene_to_file("res://Scenes/world.tscn")
