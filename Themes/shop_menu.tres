@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://dtnkyvcoybi"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://dtnkyvcoybi"]
 
 [ext_resource type="FontFile" uid="uid://4y6u2ai8c7lq" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-Bold.ttf" id="1_xoeh4"]
 
@@ -30,8 +30,27 @@ corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lkph0"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xoeh4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7mc11"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fcci4"]
+bg_color = Color(0.545098, 0.270588, 0.0745098, 0.588235)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.545098, 0.270588, 0.0745098, 0.611765)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_72cqv"]
-bg_color = Color(0.545098, 0.270588, 0.0745098, 0.611765)
+bg_color = Color(0.545098, 0.270588, 0.0745098, 0.933333)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -46,17 +65,20 @@ expand_margin_top = 1.0
 expand_margin_bottom = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s8k1n"]
+content_margin_left = 5.0
 bg_color = Color(0.545098, 0.270588, 0.0745098, 0)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.545098, 0.270588, 0.0745098, 0.611765)
+border_blend = true
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
-expand_margin_left = 15.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
 
 [resource]
 Button/colors/font_color = Color(0.545098, 0.270588, 0.0745098, 1)
@@ -69,7 +91,14 @@ Label/colors/font_color = Color(0.545098, 0.270588, 0.0745098, 1)
 Label/font_sizes/font_size = 16
 Label/fonts/font = ExtResource("1_xoeh4")
 TabBar/fonts/font = ExtResource("1_xoeh4")
+TabContainer/colors/font_hovered_color = Color(0.95, 0.95, 0.95, 1)
+TabContainer/colors/font_selected_color = Color(0.95, 0.95, 0.95, 1)
+TabContainer/colors/font_unselected_color = Color(1, 1, 1, 1)
+TabContainer/font_sizes/font_size = 16
 TabContainer/fonts/font = ExtResource("1_xoeh4")
 TabContainer/styles/panel = SubResource("StyleBoxEmpty_lkph0")
+TabContainer/styles/tab_disabled = SubResource("StyleBoxEmpty_xoeh4")
+TabContainer/styles/tab_focus = SubResource("StyleBoxEmpty_7mc11")
+TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_fcci4")
 TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_72cqv")
 TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_s8k1n")
