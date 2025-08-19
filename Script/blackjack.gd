@@ -421,14 +421,18 @@ func spell_cast(spell : String):
 		if spell_worked == 4:
 			match spell:
 				"Eye of Providence":
+					
 					failed_providence()
 				"Philosopher's Shard":
+					
 					failed_philo_shard()
 				"Fool's Gold":
+					
 					failed_fools_gold()
 		else:
 			match spell:
 				"Eye of Providence":
+					
 					providence()
 				"Philosopher's Shard":
 					philo_shard()
@@ -436,6 +440,7 @@ func spell_cast(spell : String):
 					fools_gold()
 
 func providence():
+	Globals.prov_sounds()
 	dealer_revealed_card = deck.back()
 	if !revealed_card.visible:
 		revealed_card.visible = true
@@ -460,6 +465,7 @@ func failed_providence():
 	revealed_text.text = str(dealer_revealed_card.rank) +" of " + str(dealer_revealed_card.suit) + "?"
 
 func philo_shard():
+	Globals.shard_sounds()
 	match deck.back().value:
 		"A":
 			deck.back().change_values("Two", deck.back().suit, "2")
@@ -481,6 +487,7 @@ func failed_philo_shard():
 		spell_cast("Providence")
 
 func fools_gold():
+	Globals.fgold_sounds()
 	match deck.back().value:
 		"A":
 			deck.back().change_values("King", deck.back().suit, "K")
