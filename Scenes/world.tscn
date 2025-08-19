@@ -310,6 +310,8 @@ theme = null
 
 [node name="bg" parent="Shop Menu" index="2"]
 sprite_frames = SubResource("SpriteFrames_cwuo4")
+frame = 0
+frame_progress = 0.0
 
 [node name="Bar UI" parent="." instance=ExtResource("3_e0ngr")]
 visible = false
@@ -1482,7 +1484,7 @@ mesh = SubResource("ArrayMesh_r74th")
 skeleton = NodePath("")
 
 [node name="barbuitobonito" parent="." instance=ExtResource("30_o2rbt")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.0218, 0.559158, -16.9854)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.0218, 0.632395, -16.9854)
 
 [connection signal="timeout" from="NPC Spwaner Timer" to="." method="_spawn_npc"]
 [connection signal="update_hud" from="Shop Menu/Shop" to="HUD" method="update_spell_slots"]
