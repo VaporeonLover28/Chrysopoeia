@@ -70,6 +70,8 @@ func lever_pull():
 		tween.set_trans(Tween.TRANS_QUART)
 		tween.tween_property(lever, "rotation_degrees", Vector3.ZERO, 0.66)
 	##if cannot be afforded
+		if play_price == 0:
+			play_price = 30
 	else:
 		##just ignore
 		pass
@@ -152,6 +154,7 @@ func wheel_stopped(wheel, found_reward, loot_table):
 	if wheels_spinning == 0:
 		##check for combos
 		check_matching(loot_table)
+	
 
 ##checking combos
 func check_matching(loot_table):
@@ -183,10 +186,18 @@ func check_matching(loot_table):
 			#print("match of " + str(how_many_match[type]))
 	##make the machine spinnable again
 	spinning = false
+	Globals.is_betting = true
 	##give the earned money to the player
+	if Globals.aqua_regia_timer.time_left > 0 and Globals.is_betting == true:
+		points *= 2
 	Globals.money += points
 		#else:
 			#print("not a match")
+	if Globals.aqua_fortis_active == true:
+		play_price = 0
+		lever_pull()
+		Globals.aqua_fortis_active = false
+	Globals.is_betting = false
 
 func spell_cast(spell : String):
 	if Globals.check_spell_available(spell):

@@ -29,6 +29,7 @@ preload("res://Scenes/noble.tscn")]
 signal update_all_mesh
 
 func _ready() -> void:
+	Globals.is_betting = false
 	SaveScript.auto_save.connect(SaveScript._save_function.bind(self, 0))
 	npc_spwaner_timer.start(randf_range(minimum_time_for_spawn_npc, maximum_time_for_spawn_npc))
 	var new_config = ConfigFile.new()

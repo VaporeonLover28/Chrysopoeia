@@ -41,6 +41,7 @@ var non_bet_died := false
 var available_mars := 1
 
 func _ready() -> void:
+	Globals.is_betting = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 	##Chooses 5 homunculi to list
@@ -259,6 +260,9 @@ func spell_cast(spell):
 
 func end_match():
 	match_ended = true
+	if Globals.aqua_regia_timer.time_left > 0 and Globals.is_betting == true:
+		player_bet_creature.bounty *= 2
+		non_player_bet_creature.bounty *= 2
 	MusicPlayer.fighttheme.stop()
 	if player_bet_died and !non_bet_died:
 		Globals.money -= player_bet_creature.bounty

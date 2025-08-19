@@ -58,6 +58,7 @@ var deck = []
 var shuffler_deck = []
 
 func _ready():
+	Globals.is_betting = true
 	player.intro_tweens()
 	instantiate_cards()
 	##adds a new chair in the table array for referencing positions

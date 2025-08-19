@@ -33,10 +33,9 @@ func result_texts(player_results : Array):
 			result_labels.get_children()[int(player_results[0])].text += "lost with a double down!"
 		"Blackjack":
 			result_labels.get_children()[int(player_results[0])].text += "won with a blackjack!"
-		
+	
 	result_labels.get_children()[int(player_results[0])].get_child(0).text = \
 	"Net gold: " + str(player_results[3])
-	
 	house_net -= int(player_results[3])
 	if house_net > 0:
 		res_dealer.get_child(0).text = "+" + str(house_net)
@@ -46,6 +45,9 @@ func result_texts(player_results : Array):
 		res_dealer.get_child(0).text = "0"
 
 func match_end_anim():
+	if Globals.aqua_regia_timer.time_left > 0 and Globals.is_betting == true:
+		print("house_net doubled")
+		house_net *= 2
 	get_parent().player.allowed_to_move = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	bg.play("open")

@@ -5,22 +5,35 @@ var game_paused: bool = false
 
 var player_interacting: bool = false
 var player_is_in_camera_animation: bool = false
+var is_betting : bool = false
 var money: int = 1000:
 	set(new_value):
+		if (new_value - money) < 0 and is_betting == true:
+			money_lost = (new_value - money)
+		elif (new_value - money) > 0 and is_betting == true:
+			money_lost = 0
+		if aqua_vitae_timer.time_left > 0 and (new_value - money) <= money and is_betting == true:
+			new_value += (new_value - money) * 4 / 100
+			aqua_vitae_timer.stop()
+		print(aqua_philosophorum_timer.time_left)
 		if aqua_philosophorum_timer.time_left > 0 and new_value <= 0:
-			money += 110
+			print("aqua_philosophorum activated")
+			new_value = 110
 			aqua_philosophorum_timer.stop()
+		if aqua_regia_timer.time_left > 0 and is_betting == true:
+			aqua_regia_timer.stop()
 		money = new_value
 		if get_parent().get_node_or_null("World") != null and SaveScript.is_loading == false:
 			SaveScript.auto_save.emit()
+
 var save_money: int = 0
-		
+
 var transiting_characters_to_gamble: Array[Array]  
 var save_npcs_pos: Array[Array]
 var save_objects: Array[Array]
 var save_player_pos: Vector3 = Vector3()
 
-var money_lost: int = -1
+var money_lost: int = 0
 var spell_inventory_list: Array[PurchasableItemResource]
 
 var ring_unlock: bool = false

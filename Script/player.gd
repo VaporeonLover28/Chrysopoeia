@@ -153,6 +153,7 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("e"):
 			_rotate_bulding_object(1)
 		
+		
 		if is_on_building_mode == true:
 			lock_model_into_build_spot()
 	
