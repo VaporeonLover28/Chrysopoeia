@@ -135,7 +135,11 @@ script = ExtResource("1_3s5ww")
 environment = SubResource("Environment_nam34")
 
 [node name="inactivity" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 11.0
+one_shot = true
+
+[node name="inac_charge" type="Timer" parent="."]
+wait_time = 6.0
 one_shot = true
 
 [node name="fight_camera" type="Camera3D" parent="."]
@@ -547,6 +551,7 @@ visible = false
 visible = false
 
 [connection signal="timeout" from="inactivity" to="." method="_on_inactivity_timeout"]
+[connection signal="timeout" from="inac_charge" to="." method="_on_inac_charge_timeout"]
 [connection signal="timeout" from="scenery/ringlight/change" to="scenery/ringlight" method="_on_change_timeout"]
 [connection signal="pressed" from="Fight_ring_UI/UI/Panel/HBoxContainer/Selec_Desc/selec_stats/selec_bet" to="." method="_on_selec_bet_pressed"]
 [connection signal="pressed" from="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot1/Button" to="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot1/Button" method="_on_pressed"]

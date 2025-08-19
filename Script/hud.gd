@@ -19,9 +19,17 @@ func update_spell_slots():
 		slot_1.get_child(0).texture = Globals.spell_inventory_list[0].item_sprite
 		slot_1.get_child(1).text = "[wave amp=40.0 freq=5.0 connected=1]" + \
 		Globals.spell_inventory_list[0].name + "[/wave]"
+		if !Globals.spell_inventory_list[0].usable:
+			slot_1.modulate = Color(0.553, 0.553, 0.553)
+		else:
+			slot_1.modulate = Color(1, 1, 1)
 	if Globals.spell_inventory_list.size() > 1:
 		if slot_2.visible == false:
 			slot_2.visible = true
 		slot_2.get_child(0).texture = Globals.spell_inventory_list[1].item_sprite
 		slot_2.get_child(1).text =  "[wave amp=40.0 freq=5.0 connected=1]" + \
 		Globals.spell_inventory_list[1].name + "[/wave]"
+		if !Globals.spell_inventory_list[1].usable:
+			slot_2.modulate = Color(0.553, 0.553, 0.553)
+		else:
+			slot_2.modulate = Color(1, 1, 1)

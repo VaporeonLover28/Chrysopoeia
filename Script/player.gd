@@ -135,6 +135,7 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("f") and Globals.check_spell_available("Wheel of Fortune") and \
 		Globals.fortuna_target != null:
 			Globals.fortuna_target.spell_cast("Wheel of Fortune")
+			ui.update_spell_slots()
 			SpellSounds.feitiço_sfx.play()
 			Globals.fortuna_sounds()
 			Globals.fortuna_target.input_disappear()
