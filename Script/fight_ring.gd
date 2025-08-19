@@ -121,7 +121,7 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("tab") and available_mars > 0:
 			available_mars -= 1
 			spell_cast("Mars")
-		
+			
 		if !match_ended:
 			if non_player_bet_creature.dead:
 				non_bet_died = true

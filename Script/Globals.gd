@@ -114,3 +114,39 @@ func _calculate_bet_loses(money_value: int):
 func return_to_world():
 	player_interacting = false
 	get_tree().change_scene_to_file("res://Scenes/world.tscn")
+
+func fortuna_sounds():
+	var which_one = randi_range(1, 2)	
+	match which_one:
+		1:
+			SpellSounds.fortuna_01.play()
+		2:
+			SpellSounds.fortuna_01.play()
+func prov_sounds():
+	var which_one = randi_range(1, 2)	
+	match which_one:
+		1:
+			SpellSounds.ad_maiorem_01.play()
+		2:
+			SpellSounds.ad_maiorem_02.play()
+func shard_sounds():
+	var which_one = randi_range(1, 2)	
+	match which_one:
+		1:
+			SpellSounds.sapere_aude_01.play()
+		2:
+			SpellSounds.sapere_aude_02.play()
+func mars_sounds():
+	var which_one = randi_range(1, 2)	
+	match which_one:
+		1:
+			SpellSounds.bellum_01.play()
+		2:
+			SpellSounds.bellum_02.play()
+func fgold_sounds():
+	var which_one = randi_range(1, 2)	
+	match which_one:
+		1:
+			SpellSounds.auri_sacra_01.play()
+		2:
+			SpellSounds.auri_sacra_02.play()
