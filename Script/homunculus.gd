@@ -236,6 +236,7 @@ func random_atk_cd(baseatkcd):
 		attack.start(randf_range(baseatkcd / 1.25, baseatkcd * 1.25))
 
 func mars():
+	Globals.mars_sounds()
 	print("mars")
 	damage * 1.25
 

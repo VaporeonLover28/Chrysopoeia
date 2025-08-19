@@ -5,6 +5,8 @@ extends Control
 @onready var description: Label = $HBoxContainer/Selected_Drink/Drink_Box/Description
 @onready var buy_button: Button = $HBoxContainer/Selected_Drink/Buy_Button
 @onready var gold: Label = $HBoxContainer/Selected_Drink/Gold
+@onready var sip_potion: AudioStreamPlayer = $"../sipPotion"
+@onready var select_potion: AudioStreamPlayer = $"../selectPotion"
 
 
 var save_bar_reference: InteractableObject
@@ -18,6 +20,7 @@ func show_bar_ui(bar_reference: InteractableObject):
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func buy_drink():
+	sip_potion.play()
 	if selected_drink.drink_price <= Globals.money:
 		Globals.money -= selected_drink.drink_price
 		match selected_drink.drink_name:
@@ -50,6 +53,7 @@ func buy_drink():
 		print("Potion not affordable")
 
 func select_drink(chosen_drink):
+	select_potion.play()
 	selected_drink = chosen_drink
 	drink_name.text = selected_drink.drink_name
 	sprite.texture = chosen_drink.drink_image
