@@ -6,7 +6,7 @@
 [ext_resource type="Theme" uid="uid://f5yk4gkyeuqv" path="res://Themes/menu_theme.tres" id="5_cp0ys"]
 [ext_resource type="FontFile" uid="uid://paxjlxvek7jf" path="res://Assets/Fonts/ransite_medieval/RansiteMedieval_PERSONAL_USE_ONLY.otf" id="5_n45e2"]
 [ext_resource type="Texture2D" uid="uid://dou0u21vugnyg" path="res://Assets/Originals/banner.png" id="5_vr1f0"]
-[ext_resource type="Script" path="res://Assets/Originals/circulomagico.gd" id="6_vtepg"]
+[ext_resource type="Script" uid="uid://dl3d0x2t346o" path="res://Assets/Originals/circulomagico.gd" id="6_vtepg"]
 [ext_resource type="Script" uid="uid://dj7uf3sroay0t" path="res://Assets/Originals/gold_nugget.gd" id="7_5egv6"]
 [ext_resource type="Texture2D" uid="uid://bbtb2l43wx0m2" path="res://Assets/Originals/fabbri1.png" id="7_8dnnj"]
 [ext_resource type="Script" uid="uid://c4ndqtv32fvou" path="res://Script/title.gd" id="8_yhxw7"]
@@ -37,6 +37,8 @@ sky_material = SubResource("ProceduralSkyMaterial_qe12f")
 background_mode = 2
 sky = SubResource("Sky_ylhsq")
 tonemap_mode = 2
+glow_enabled = true
+glow_intensity = 0.3
 
 [sub_resource type="Curve" id="Curve_m3bi6"]
 _data = [Vector2(0, 0.842697), 0.0, 0.0, 0, 0, Vector2(0.522059, 0.516854), 0.0, 0.0, 0, 0, Vector2(0.970588, 0.685393), 0.0, 0.0, 0, 0]
@@ -150,7 +152,6 @@ light_color = Color(1, 1, 0, 1)
 light_energy = 0.192
 light_projector = ExtResource("7_8dnnj")
 shadow_enabled = true
-shadow_bias = 0.2
 omni_attenuation = 1.725
 
 [node name="gold_nugget" parent="SubViewportContainer/SubViewport" instance=ExtResource("11_vr1f0")]

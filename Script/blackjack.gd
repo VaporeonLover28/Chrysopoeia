@@ -117,8 +117,8 @@ func call_player():
 				new_npc.personality = "Joker"
 				new_npc.money = randi_range(1, 3) * 1000
 		##instantiate new npc away from table (visual effect for testing)
-		new_npc.global_position = Vector3(randf_range(-3, 3), 0.342, -6)
 		add_child(new_npc)
+		new_npc.global_position = Vector3(randf_range(-3, 3), 0.342, -6)
 		##checking if each chair is taken
 		for chairs in table.size():
 			##if it isn't (free chair)
