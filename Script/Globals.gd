@@ -6,7 +6,7 @@ var game_paused: bool = false
 var player_interacting: bool = false
 var player_is_in_camera_animation: bool = false
 var is_betting : bool = false
-var money: int = 1000:
+var money: int = 100000:
 	set(new_value):
 		if (new_value - money) < 0 and is_betting == true:
 			money_lost = (new_value - money)
@@ -86,6 +86,20 @@ func check_spell_available(spell_name : String):
 		else:
 			return false
 
+func limit_spells(allowed_spells : Array):
+	##allowed spells array contains names
+	##i.e. ["Eye of Providence", "Mars"]
+	
+	##temporarily disables all spells in inv
+	for spell in spell_inventory_list:
+		spell.usable = false
+		##if the spell is one of the allowed ones
+		for allowed in allowed_spells:
+			if spell.name == allowed:
+				##turn it back on
+				spell.usable = true
+	##not allowed spells will remain unusable
+
 func cooldown_spell(spell_name : String):
 	for spell in spell_inventory_list:
 		if spell_name == spell.name:
@@ -113,6 +127,7 @@ func _calculate_bet_loses(money_value: int):
 
 func return_to_world():
 	player_interacting = false
+	clear_cooldowns()
 	get_tree().change_scene_to_file("res://Scenes/world.tscn")
 
 func fortuna_sounds():

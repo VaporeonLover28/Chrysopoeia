@@ -15,6 +15,7 @@ extends Node3D
 @onready var blackjack_ui_test: Control = $CanvasLayer/Blackjack_UI_test
 @onready var end_ui: CanvasLayer = $blackjack_end_ui
 @onready var hand_markers: Node3D = $hand_markers
+@onready var spell_menu: CanvasLayer = $Spell_menu
 
 var tween : Tween
 
@@ -58,6 +59,7 @@ var deck = []
 var shuffler_deck = []
 
 func _ready():
+	spell_menu.load_slots("Blackjack")
 	Globals.is_betting = true
 	player.intro_tweens()
 	instantiate_cards()
@@ -74,6 +76,7 @@ func _ready():
 	await get_tree().create_timer(0.5).timeout
 	MusicPlayer.blackjacktheme.play()
 	MusicPlayer.emptytavern.stop()
+
 ##putting the cards in the screen
 func instantiate_cards():
 	for instance in 52:
@@ -269,30 +272,32 @@ func pass_turn():
 	round += 1
 
 func place_bets():
-	bets_on_table = true
-	for npcs in playing_npcs:
-		##placing a bet should be 10%, 20% or 30% of current money
-		npcs.bet = npcs.money * (randi_range(1, 3) * 10) / 100
-		var inst = gold.instantiate()
-		npcs.hand_marker.add_child(inst)
-		inst.global_position = npcs.global_position + Vector3(0, 0.8, 0)
-		#inst.global_position.z -= 0.2
-		inst.scale = Vector3(0.1, 0.1, 0.1)
-		tween = create_tween()
-		tween.set_trans(Tween.TRANS_QUART)
-		tween.set_ease(Tween.EASE_OUT)
-		tween.tween_property(inst, "position", Vector3(0, 0, -0.2), 1)
-		
-		if npcs.bet > 10:
-			inst.scale = Vector3.ONE * (0.1 + npcs.bet / 2500.0)
+	if !round_started and playing_npcs.size() > 1:
+		blackjack_ui_test.f.get_child(1).text = "Distribute Cards"
+		bets_on_table = true
+		for npcs in playing_npcs:
+			##placing a bet should be 10%, 20% or 30% of current money
+			npcs.bet = npcs.money * (randi_range(1, 3) * 10) / 100
+			var inst = gold.instantiate()
+			npcs.hand_marker.add_child(inst)
+			inst.global_position = npcs.global_position + Vector3(0, 0.8, 0)
+			#inst.global_position.z -= 0.2
+			inst.scale = Vector3(0.1, 0.1, 0.1)
+			tween = create_tween()
+			tween.set_trans(Tween.TRANS_QUART)
+			tween.set_ease(Tween.EASE_OUT)
+			tween.tween_property(inst, "position", Vector3(0, 0, -0.2), 1)
+			
+			if npcs.bet > 10:
+				inst.scale = Vector3.ONE * (0.1 + npcs.bet / 2500.0)
 
-		inst.get_child(1).text = str(npcs.bet) + " Gold"
+			inst.get_child(1).text = str(npcs.bet) + " Gold"
 
 func start_game():
-	if !bets_on_table:
-		place_bets()
-		blackjack_ui_test.f.get_child(1).text = "Distribute Cards"
-	elif !round_started and playing_npcs.size() > 1:
+	#if !bets_on_table:
+		#place_bets()
+		#blackjack_ui_test.f.get_child(1).text = "Distribute Cards"
+	if bets_on_table:
 		round_started = true
 		set_round_order()
 		$card_distr_timer.start()
