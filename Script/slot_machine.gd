@@ -190,6 +190,7 @@ func check_matching(loot_table):
 	##give the earned money to the player
 	if Globals.aqua_regia_timer.time_left > 0 and Globals.is_betting == true:
 		points *= 2
+	CoinEarned.moedas_01.play()
 	Globals.money += points
 		#else:
 			#print("not a match")

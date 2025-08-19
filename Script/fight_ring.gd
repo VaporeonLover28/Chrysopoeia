@@ -250,6 +250,7 @@ func chain_sfx():
 	
 func spell_cast(spell):
 	if Globals.check_spell_available(spell):
+		SpellSounds.feitiço_sfx.play()
 		Globals.cooldown_spell(spell)
 		##Choosing if mars worked or not
 		var spell_worked = randi_range(1, 4)
