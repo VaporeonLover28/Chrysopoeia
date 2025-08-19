@@ -414,6 +414,7 @@ func end_anim():
 
 func spell_cast(spell : String):
 	if Globals.check_spell_available(spell):
+		SpellSounds.feitiço_sfx.play()
 		Globals.cooldown_spell(spell)
 		var spell_worked = randi_range(1, 4)
 		if spell_worked == 4:

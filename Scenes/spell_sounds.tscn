@@ -18,33 +18,44 @@ script = ExtResource("1_u8ese")
 
 [node name="AdMaiorem01" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("1_amnbd")
+bus = &"SFX"
 
 [node name="AdMaiorem02" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_u8ese")
+bus = &"SFX"
 
 [node name="AuriSacra01" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_rk6ag")
+bus = &"SFX"
 
 [node name="AuriSacra02" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_6t0uy")
+bus = &"SFX"
 
 [node name="Bellum01" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_48rel")
+bus = &"SFX"
 
 [node name="Bellum02" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_ahvyf")
+bus = &"SFX"
 
 [node name="FeitiçoSfx" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_5h2n5")
+bus = &"SFX"
 
 [node name="Fortuna01" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("8_k1a1x")
+bus = &"SFX"
 
 [node name="Fortuna02" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("9_fh3hy")
+bus = &"SFX"
 
 [node name="SapereAude01" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("10_y1hdr")
+bus = &"SFX"
 
 [node name="SapereAude02" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("11_iawnw")
+bus = &"SFX"
