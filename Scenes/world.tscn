@@ -310,8 +310,6 @@ theme = null
 
 [node name="bg" parent="Shop Menu" index="2"]
 sprite_frames = SubResource("SpriteFrames_cwuo4")
-frame = 27
-frame_progress = 1.0
 
 [node name="Bar UI" parent="." instance=ExtResource("3_e0ngr")]
 visible = false
