@@ -11,12 +11,15 @@ extends Control
 @onready var world_scene = $"../../"
 @onready var money_label: Label = $Margin/Top_Bar/Money_Label
 @onready var ring_door = $"../../NavigationRegion3D/cassino/door4"
+@onready var bg = $"../bg"
 
 signal wait_for_spell_change
 signal update_hud
 
-func _ready() -> void:
-	get_parent().visible = false
+var tween : Tween
+
+#func _ready() -> void:
+	#get_parent().visible = false
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("esc") and get_parent().visible:
@@ -24,10 +27,20 @@ func _process(delta: float) -> void:
 
 func _show_shop_menu():
 	get_parent().visible = true
+	self.visible = false
 	Globals.game_paused = true
-	shop_tabs.visible = true
+	#shop_tabs.visible = true
 	spell_option_box_container.visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	tween = create_tween()
+	tween.set_trans(Tween.TRANS_QUART)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_parallel(true)
+	tween.tween_property(get_parent(), "offset", Vector2.ZERO, 0.75)
+	tween.tween_interval(0.75)
+	tween.tween_callback(func():bg.play("open"))
+	tween.tween_interval(0.75)
+	tween.tween_callback(func():visible = true)
 	
 	money_label.text = "Money: " + str(Globals.money)
 	

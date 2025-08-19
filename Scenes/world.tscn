@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=4 uid="uid://ifr6x47walau"]
+[gd_scene load_steps=83 format=4 uid="uid://ifr6x47walau"]
 
 [ext_resource type="PackedScene" uid="uid://dsp27d25mg6bh" path="res://Scenes/player.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://cf6y1d4msmkfp" path="res://Script/world.gd" id="1_ic0uy"]
@@ -8,34 +8,162 @@
 [ext_resource type="PackedScene" uid="uid://jekyh5hw0o23" path="res://Scenes/npc.tscn" id="3_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://cb53qpnp2by4" path="res://Scenes/casino_light.tscn" id="4_036b0"]
 [ext_resource type="PackedScene" uid="uid://bju8ckhov8525" path="res://Assets/Exports/glTF/Stool.gltf" id="4_gbfbk"]
+[ext_resource type="Texture2D" uid="uid://bhm7iuxwwodlc" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024333.png" id="5_cvubk"]
 [ext_resource type="PackedScene" uid="uid://cpdocr2khmtk5" path="res://Assets/Exports/glTF/Barrel_Holder.gltf" id="5_ioo17"]
+[ext_resource type="Texture2D" uid="uid://i2akf0ju8xn3" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024402.png" id="6_eskoj"]
 [ext_resource type="PackedScene" uid="uid://cxaou42cjgaqs" path="res://Assets/Exports/glTF/Barrel.gltf" id="6_wse8f"]
+[ext_resource type="Texture2D" uid="uid://egyaahdv6jpg" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024437.png" id="7_5kw24"]
 [ext_resource type="PackedScene" uid="uid://cx03els0ra5bd" path="res://Assets/Exports/glTF/Table_Large.gltf" id="7_wse8f"]
 [ext_resource type="Texture2D" uid="uid://bkoihmjcjf8pi" path="res://Assets/Originals/praredelend_madeiira.jpg" id="8_coyub"]
+[ext_resource type="Texture2D" uid="uid://dtxfnhnc06qg3" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024511.png" id="8_dsm2w"]
 [ext_resource type="PackedScene" uid="uid://t1ipnjtntycl" path="res://Assets/Exports/glTF/Bench.gltf" id="8_ic0uy"]
+[ext_resource type="Texture2D" uid="uid://bdcqrh2xht7u" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024538.png" id="9_82dmg"]
 [ext_resource type="Material" uid="uid://dnox1xrq8lfuf" path="res://placeholder_mat.tres" id="9_xbk3s"]
+[ext_resource type="Texture2D" uid="uid://bu822v0kahoq2" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130108.png" id="10_0d7cr"]
 [ext_resource type="Script" uid="uid://p8g8j38kayvm" path="res://Script/door_ring.gd" id="10_1vso6"]
 [ext_resource type="Texture2D" uid="uid://lu8ml1telxlm" path="res://Assets/Originals/praredelend_preda.png" id="10_ochwf"]
+[ext_resource type="Texture2D" uid="uid://dkhl7vsnqeego" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130133.png" id="11_l4vrt"]
 [ext_resource type="Script" uid="uid://bo2qyu3neh3gx" path="res://Script/player_recon.gd" id="12_axeuq"]
+[ext_resource type="Texture2D" uid="uid://nbkh4aphl8yk" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130207.png" id="12_ry8tx"]
 [ext_resource type="Script" uid="uid://cb58tbr6db7dh" path="res://Script/flickertorch.gd" id="12_t2t4p"]
 [ext_resource type="PackedScene" uid="uid://bpth6e0ob531j" path="res://Assets/Exports/glTF/Chandelier.gltf" id="13_0pcbe"]
+[ext_resource type="Texture2D" uid="uid://cgt4wqhmgoscb" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130228.png" id="13_uq5fj"]
 [ext_resource type="PackedScene" uid="uid://bi326asm5h1wa" path="res://Scenes/input_prompt.tscn" id="13_yq1aw"]
 [ext_resource type="Texture2D" uid="uid://bymswxfkuf1i7" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_e.png" id="14_pyn1s"]
+[ext_resource type="Texture2D" uid="uid://bqdve5hva8f8q" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130248.png" id="14_xm6am"]
+[ext_resource type="Texture2D" uid="uid://df3wrdcpepy80" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130341.png" id="15_tutfb"]
+[ext_resource type="Texture2D" uid="uid://b8nlbir068ihx" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130357.png" id="16_s73dv"]
+[ext_resource type="Texture2D" uid="uid://bjsbl26vi4wyx" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130418.png" id="17_lxtj3"]
+[ext_resource type="Texture2D" uid="uid://dynp3emk68bax" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130434.png" id="18_0lmv0"]
+[ext_resource type="Texture2D" uid="uid://csos1tsim6ga6" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130456.png" id="19_uoh4w"]
+[ext_resource type="Texture2D" uid="uid://d1l3lpsj4ykc8" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130531.png" id="20_372dg"]
+[ext_resource type="Texture2D" uid="uid://djliwdnltry16" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130548.png" id="21_3spdv"]
 [ext_resource type="PackedScene" uid="uid://doc2fu24go0bh" path="res://Scenes/pause.tscn" id="21_yq1aw"]
+[ext_resource type="Texture2D" uid="uid://cgbh43crb2pk8" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130608.png" id="22_wex5w"]
+[ext_resource type="Texture2D" uid="uid://bnqo0lpkvd6px" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130625.png" id="23_de5wk"]
 [ext_resource type="PackedScene" uid="uid://5fqe31h8scxt" path="res://Assets/Originals/praredelend.glb" id="23_no8kt"]
+[ext_resource type="Texture2D" uid="uid://droxfo4heuvl4" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130648.png" id="24_ctcri"]
 [ext_resource type="Script" uid="uid://b1mjwd0321b81" path="res://Script/build_spot.gd" id="25_1vso6"]
 [ext_resource type="PackedScene" uid="uid://2hi0ppmkqhxs" path="res://Scenes/spinningtor.tscn" id="25_i4fjy"]
+[ext_resource type="Texture2D" uid="uid://bgl24p3qpd2f6" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130712.png" id="25_mkebs"]
+[ext_resource type="Texture2D" uid="uid://cjaxygb5naw8p" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130820.png" id="26_a4ai1"]
 [ext_resource type="Texture2D" uid="uid://bbtb2l43wx0m2" path="res://Assets/Originals/fabbri1.png" id="26_hmc15"]
 [ext_resource type="Texture2D" uid="uid://baq8au6bu4r7" path="res://Assets/Originals/fabbri2.png" id="27_dt0r1"]
+[ext_resource type="Texture2D" uid="uid://35wi0fglpfe5" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130843.png" id="27_h2ogk"]
 [ext_resource type="PackedScene" uid="uid://c71seo6kj5t62" path="res://Scenes/build_spot.tscn" id="28_3ua1v"]
+[ext_resource type="Texture2D" uid="uid://b48me18e8fkbq" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130904.png" id="28_al65q"]
 [ext_resource type="Script" uid="uid://dtu7lm3ij73ov" path="res://Script/fabbreh.gd" id="28_dt0r1"]
+[ext_resource type="Texture2D" uid="uid://d27wuogivrq5e" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130921.png" id="29_xfvhd"]
+[ext_resource type="Texture2D" uid="uid://xcgj0i00ah4k" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130951.png" id="30_6c0jt"]
 [ext_resource type="PackedScene" uid="uid://dnfxouiiwtyus" path="res://Assets/Originals/barbuitobonito.glb" id="30_o2rbt"]
+[ext_resource type="Texture2D" uid="uid://dpjpcs6o1j0bc" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817131015.png" id="31_74toi"]
+[ext_resource type="Texture2D" uid="uid://drpqmobd0hljp" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817131051.png" id="32_eea73"]
 [ext_resource type="Texture2D" uid="uid://denb5xhofm2r0" path="res://Assets/Originals/pilastralend_RammedEarth018_COL_1K_METALNESS.png" id="33_p5wkl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cwuo4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_cvubk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_cvubk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_eskoj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5kw24")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_dsm2w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_82dmg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0d7cr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_l4vrt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ry8tx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_uq5fj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_xm6am")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_tutfb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_s73dv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_lxtj3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_0lmv0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_uoh4w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_372dg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_3spdv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_wex5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_de5wk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_ctcri")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_mkebs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_a4ai1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_h2ogk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_al65q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_xfvhd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_6c0jt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_74toi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_eea73")
+}],
+"loop": false,
+"name": &"open",
+"speed": 120.0
+}]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o2rbt"]
 sky_top_color = Color(1, 1, 1, 1)
 sky_horizon_color = Color(1, 1, 1, 1)
-ground_bottom_color = Color(0.466181, 0.466181, 0.466181, 1)
+ground_bottom_color = Color(0.556953, 0.556953, 0.556953, 1)
 ground_horizon_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Sky" id="Sky_yq1aw"]
@@ -171,6 +299,16 @@ maximum_time_for_spawn_npc = 180.0
 [node name="Pause" parent="." instance=ExtResource("21_yq1aw")]
 
 [node name="Shop Menu" parent="." instance=ExtResource("2_7yui6")]
+offset = Vector2(0, 655)
+transform = Transform2D(1, 0, 0, 1, 0, 655)
+
+[node name="bg" parent="Shop Menu" index="0"]
+sprite_frames = SubResource("SpriteFrames_cwuo4")
+frame = 27
+frame_progress = 1.0
+
+[node name="Shop" parent="Shop Menu" index="1"]
+visible = false
 
 [node name="Top_Bar" parent="Shop Menu/Shop/Margin" index="0"]
 theme = null
