@@ -1,10 +1,11 @@
-[gd_scene load_steps=44 format=3 uid="uid://ltp3jvrek5bh"]
+[gd_scene load_steps=45 format=3 uid="uid://ltp3jvrek5bh"]
 
 [ext_resource type="Script" uid="uid://mh8h7xo4eso6" path="res://Script/shop.gd" id="1_xysl7"]
 [ext_resource type="Texture2D" uid="uid://bhm7iuxwwodlc" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024333.png" id="2_e6gci"]
 [ext_resource type="Texture2D" uid="uid://wetbh3qngmmh" path="res://Assets/Originals/spellot.png" id="2_jhj42"]
 [ext_resource type="Theme" uid="uid://dtnkyvcoybi" path="res://Themes/shop_menu.tres" id="2_lkph0"]
 [ext_resource type="Texture2D" uid="uid://b8o8bfecik2rk" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_x_outline.png" id="2_xdhm7"]
+[ext_resource type="FontFile" uid="uid://4y6u2ai8c7lq" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-Bold.ttf" id="3_g4n61"]
 [ext_resource type="Texture2D" uid="uid://i2akf0ju8xn3" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024402.png" id="3_lkph0"]
 [ext_resource type="Texture2D" uid="uid://pov62jfwgcqy" path="res://icon.svg" id="3_lvwfa"]
 [ext_resource type="Texture2D" uid="uid://egyaahdv6jpg" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024437.png" id="4_g4n61"]
@@ -184,9 +185,10 @@ color = Color(0.331203, 0.1742, 0.67, 1)
 
 [node name="Margin" type="MarginContainer" parent="Shop"]
 layout_mode = 2
-offset_top = 0.40448
-offset_right = 998.0
-offset_bottom = 60.4045
+offset_left = 135.0
+offset_top = 64.0
+offset_right = 981.0
+offset_bottom = 153.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_constants/margin_left = 25
@@ -195,7 +197,7 @@ theme_override_constants/margin_top = 25
 [node name="Top_Bar" type="HBoxContainer" parent="Shop/Margin"]
 layout_mode = 2
 theme = SubResource("Theme_hm266")
-theme_override_constants/separation = 20
+theme_override_constants/separation = -45
 
 [node name="Shop_Tabs" type="TabContainer" parent="Shop/Margin/Top_Bar"]
 layout_mode = 2
@@ -211,9 +213,9 @@ metadata/_tab_index = 0
 [node name="ScrollContainer" type="ScrollContainer" parent="Shop/Margin/Top_Bar/Shop_Tabs/Games"]
 layout_mode = 2
 offset_left = 7.0
-offset_top = 6.59552
-offset_right = 1107.0
-offset_bottom = 555.596
+offset_top = 7.0
+offset_right = 824.0
+offset_bottom = 426.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_c2pxs")
@@ -231,12 +233,14 @@ layout_mode = 2
 metadata/_tab_index = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Shop/Margin/Top_Bar/Shop_Tabs/Decoration"]
-layout_mode = 0
-offset_left = 2.0
-offset_right = 1102.0
-offset_bottom = 549.0
+layout_mode = 2
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 824.0
+offset_bottom = 426.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_c2pxs")
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 0
 
@@ -251,13 +255,16 @@ layout_mode = 2
 metadata/_tab_index = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Shop/Margin/Top_Bar/Shop_Tabs/Spells"]
-layout_mode = 0
-offset_left = 2.0
-offset_right = 1102.0
-offset_bottom = 549.0
+layout_mode = 2
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 824.0
+offset_bottom = 426.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_c2pxs")
 horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Shop/Margin/Top_Bar/Shop_Tabs/Spells/ScrollContainer"]
 layout_mode = 2
@@ -266,19 +273,25 @@ size_flags_vertical = 8
 
 [node name="VSeparator" type="VSeparator" parent="Shop/Margin/Top_Bar"]
 layout_mode = 2
-theme_override_constants/separation = 635
+theme_override_constants/separation = 555
 theme_override_styles/separator = SubResource("StyleBoxEmpty_h1qh4")
 
 [node name="Money_Label" type="Label" parent="Shop/Margin/Top_Bar"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.545098, 0.270588, 0.0745098, 1)
+theme_override_fonts/font = ExtResource("3_g4n61")
 text = "Money: "
 
 [node name="VSeparator2" type="VSeparator" parent="Shop/Margin/Top_Bar"]
+visible = false
 layout_mode = 2
-theme_override_constants/separation = -15
+theme_override_constants/separation = 350
 theme_override_styles/separator = SubResource("StyleBoxEmpty_h1qh4")
 
 [node name="Quit_button" type="TextureButton" parent="Shop/Margin/Top_Bar"]
+visible = false
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture_normal = ExtResource("2_xdhm7")
 
@@ -294,6 +307,7 @@ layout_mode = 2
 [node name="Choose_Label" type="Label" parent="Inv_Full_Choice/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_g4n61")
 theme_override_font_sizes/font_size = 27
 text = "Your spell inventory is full!
 Choose a slot to replace:"
@@ -349,5 +363,7 @@ scale = Vector2(1.115, 1.115)
 sprite_frames = SubResource("SpriteFrames_kx6si")
 animation = &"open"
 autoplay = "default"
+frame = 27
+frame_progress = 1.0
 
 [connection signal="pressed" from="Shop/Margin/Top_Bar/Quit_button" to="Shop" method="_on_quit_button_pressed"]
