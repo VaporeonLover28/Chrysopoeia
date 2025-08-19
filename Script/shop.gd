@@ -26,6 +26,7 @@ func _process(delta: float) -> void:
 		hide_shop_menu()
 
 func _show_shop_menu():
+	print(shop_tabs.theme)
 	get_parent().visible = true
 	self.visible = false
 	Globals.game_paused = true

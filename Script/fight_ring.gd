@@ -41,6 +41,7 @@ var non_bet_died := false
 var available_mars := 1
 
 func _ready() -> void:
+	spell_menu.load_slots("Fight Ring")
 	Globals.is_betting = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
