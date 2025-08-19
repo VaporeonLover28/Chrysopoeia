@@ -41,6 +41,7 @@ var non_bet_died := false
 var available_mars := 1
 
 func _ready() -> void:
+	spell_menu.load_slots("Fight Ring")
 	Globals.is_betting = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
@@ -121,7 +122,7 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("tab") and available_mars > 0:
 			available_mars -= 1
 			spell_cast("Mars")
-		
+			
 		if !match_ended:
 			if non_player_bet_creature.dead:
 				non_bet_died = true
