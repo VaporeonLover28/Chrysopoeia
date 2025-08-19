@@ -1,11 +1,9 @@
-[gd_scene load_steps=33 format=3 uid="uid://c4jx1kxn6ebpc"]
+[gd_scene load_steps=35 format=3 uid="uid://c4jx1kxn6ebpc"]
 
 [ext_resource type="Script" uid="uid://cwsgkgs1dxin1" path="res://Script/blackjack_end_ui.gd" id="1_b8jwi"]
-[ext_resource type="FontFile" uid="uid://4y6u2ai8c7lq" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-Bold.ttf" id="2_7fcdd"]
 [ext_resource type="Texture2D" uid="uid://bhm7iuxwwodlc" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024333.png" id="2_s34sp"]
 [ext_resource type="Texture2D" uid="uid://i2akf0ju8xn3" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024402.png" id="3_sjria"]
 [ext_resource type="Texture2D" uid="uid://egyaahdv6jpg" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024437.png" id="4_lu2d6"]
-[ext_resource type="FontFile" uid="uid://bxtnksq3tgohf" path="res://Assets/Fonts/comic-sans-ms-font-family/ComicSansMS3.ttf" id="4_x8vvt"]
 [ext_resource type="Texture2D" uid="uid://dtxfnhnc06qg3" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024511.png" id="5_4omyl"]
 [ext_resource type="Texture2D" uid="uid://bdcqrh2xht7u" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024538.png" id="6_v1otq"]
 [ext_resource type="Texture2D" uid="uid://bu822v0kahoq2" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130108.png" id="7_fuo12"]
@@ -31,6 +29,8 @@
 [ext_resource type="Texture2D" uid="uid://xcgj0i00ah4k" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130951.png" id="27_s6cds"]
 [ext_resource type="Texture2D" uid="uid://dpjpcs6o1j0bc" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817131015.png" id="28_fvmnf"]
 [ext_resource type="Texture2D" uid="uid://drpqmobd0hljp" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817131051.png" id="29_lgg1v"]
+[ext_resource type="FontFile" uid="uid://bc4j7ku7lla8b" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-BoldOblique.ttf" id="30_sjria"]
+[ext_resource type="FontFile" uid="uid://drtho11v7p8h" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-BookOblique.ttf" id="31_lu2d6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xahnm"]
 animations = [{
@@ -132,6 +132,16 @@ animations = [{
 "speed": 45.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjria"]
+bg_color = Color(0, 0, 0, 0.411765)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 13
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sjria"]
+
 [node name="blackjack_end_ui" type="CanvasLayer"]
 script = ExtResource("1_b8jwi")
 metadata/_edit_vertical_guides_ = [1956.0]
@@ -141,6 +151,8 @@ position = Vector2(576, 320)
 sprite_frames = SubResource("SpriteFrames_xahnm")
 animation = &"open"
 autoplay = "default"
+frame = 27
+frame_progress = 1.0
 
 [node name="Match_Ended" type="RichTextLabel" parent="."]
 top_level = true
@@ -148,7 +160,7 @@ offset_left = 359.0
 offset_top = 118.0
 offset_right = 762.92
 offset_bottom = 204.0
-theme_override_fonts/normal_font = ExtResource("2_7fcdd")
+theme_override_fonts/normal_font = ExtResource("30_sjria")
 theme_override_font_sizes/normal_font_size = 65
 bbcode_enabled = true
 text = "MATCH OVER"
@@ -164,6 +176,7 @@ layout_mode = 0
 offset_left = 400.0
 offset_right = 440.0
 offset_bottom = 40.0
+theme_override_fonts/normal_font = ExtResource("31_lu2d6")
 bbcode_enabled = true
 text = "XXX"
 
@@ -173,7 +186,7 @@ offset_left = 504.0
 offset_top = 206.0
 offset_right = 571.0
 offset_bottom = 229.0
-theme_override_fonts/normal_font = ExtResource("4_x8vvt")
+theme_override_fonts/normal_font = ExtResource("30_sjria")
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "RESULTS"
@@ -189,6 +202,7 @@ layout_mode = 0
 offset_left = 400.0
 offset_right = 440.0
 offset_bottom = 40.0
+theme_override_fonts/normal_font = ExtResource("31_lu2d6")
 bbcode_enabled = true
 text = "XXX"
 
@@ -202,7 +216,7 @@ offset_bottom = 328.0
 [node name="res_player_0" type="RichTextLabel" parent="result_labels"]
 visible = false
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("2_7fcdd")
+theme_override_fonts/normal_font = ExtResource("31_lu2d6")
 bbcode_enabled = true
 text = "Player 0 had XX Gold and XXXX"
 fit_content = true
@@ -215,7 +229,7 @@ layout_mode = 0
 offset_left = 450.0
 offset_right = 650.0
 offset_bottom = 20.0
-theme_override_fonts/normal_font = ExtResource("2_7fcdd")
+theme_override_fonts/normal_font = ExtResource("31_lu2d6")
 bbcode_enabled = true
 text = "Player 1 net gold: "
 fit_content = true
@@ -228,7 +242,7 @@ visible_ratio = 0.0
 [node name="res_player_1" type="RichTextLabel" parent="result_labels"]
 visible = false
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("2_7fcdd")
+theme_override_fonts/normal_font = ExtResource("31_lu2d6")
 bbcode_enabled = true
 text = "Player 1 had XX Gold and XXXX                         "
 fit_content = true
@@ -241,7 +255,7 @@ layout_mode = 0
 offset_left = 450.0
 offset_right = 650.0
 offset_bottom = 20.0
-theme_override_fonts/normal_font = ExtResource("2_7fcdd")
+theme_override_fonts/normal_font = ExtResource("31_lu2d6")
 bbcode_enabled = true
 text = "Player 1 net gold: "
 fit_content = true
@@ -254,7 +268,7 @@ visible_ratio = 0.0
 [node name="res_player_2" type="RichTextLabel" parent="result_labels"]
 visible = false
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("2_7fcdd")
+theme_override_fonts/normal_font = ExtResource("31_lu2d6")
 bbcode_enabled = true
 text = "Player 2 had XX Gold and XXXX"
 fit_content = true
@@ -267,7 +281,7 @@ layout_mode = 0
 offset_left = 450.0
 offset_right = 650.0
 offset_bottom = 20.0
-theme_override_fonts/normal_font = ExtResource("2_7fcdd")
+theme_override_fonts/normal_font = ExtResource("31_lu2d6")
 bbcode_enabled = true
 text = "Player 1 net gold: "
 fit_content = true
@@ -280,7 +294,7 @@ visible_ratio = 0.0
 [node name="res_player_3" type="RichTextLabel" parent="result_labels"]
 visible = false
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("2_7fcdd")
+theme_override_fonts/normal_font = ExtResource("31_lu2d6")
 bbcode_enabled = true
 text = "Player 3 had XX Gold and XXXX"
 fit_content = true
@@ -293,7 +307,7 @@ layout_mode = 0
 offset_left = 450.0
 offset_right = 650.0
 offset_bottom = 20.0
-theme_override_fonts/normal_font = ExtResource("2_7fcdd")
+theme_override_fonts/normal_font = ExtResource("31_lu2d6")
 bbcode_enabled = true
 text = "Player 1 net gold: "
 fit_content = true
@@ -306,7 +320,7 @@ visible_ratio = 0.0
 [node name="res_player_4" type="RichTextLabel" parent="result_labels"]
 visible = false
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("2_7fcdd")
+theme_override_fonts/normal_font = ExtResource("31_lu2d6")
 bbcode_enabled = true
 text = "Player 4 had XX Gold and XXXX"
 fit_content = true
@@ -319,7 +333,7 @@ layout_mode = 0
 offset_left = 450.0
 offset_right = 650.0
 offset_bottom = 20.0
-theme_override_fonts/normal_font = ExtResource("2_7fcdd")
+theme_override_fonts/normal_font = ExtResource("31_lu2d6")
 bbcode_enabled = true
 text = "Player 1 net gold: "
 fit_content = true
@@ -334,7 +348,7 @@ offset_left = 477.0
 offset_top = 424.0
 offset_right = 977.0
 offset_bottom = 444.0
-theme_override_fonts/normal_font = ExtResource("2_7fcdd")
+theme_override_fonts/normal_font = ExtResource("31_lu2d6")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "House net gold:"
@@ -351,7 +365,7 @@ layout_mode = 0
 offset_left = 157.0
 offset_right = 197.0
 offset_bottom = 40.0
-theme_override_fonts/normal_font = ExtResource("2_7fcdd")
+theme_override_fonts/normal_font = ExtResource("31_lu2d6")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "Net Gold"
@@ -367,8 +381,11 @@ offset_left = 533.0
 offset_top = 472.0
 offset_right = 626.0
 offset_bottom = 520.0
-theme_override_fonts/font = ExtResource("2_7fcdd")
+theme_override_colors/font_color = Color(0.545098, 0.270588, 0.0745098, 1)
+theme_override_fonts/font = ExtResource("30_sjria")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxFlat_sjria")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_sjria")
 text = "Leave"
 
 [connection signal="pressed" from="leave" to="." method="_on_leave_pressed"]

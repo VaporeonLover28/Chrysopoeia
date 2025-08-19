@@ -1,7 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://djecxd6ckfbpd"]
+[gd_scene load_steps=5 format=3 uid="uid://djecxd6ckfbpd"]
 
 [ext_resource type="Script" uid="uid://d3re412q83qpq" path="res://Script/match_loss_test.gd" id="1_l50yv"]
 [ext_resource type="FontFile" uid="uid://bubxb3wcmbboy" path="res://Assets/Fonts/comic-sans-ms-font-family/COMIC.TTF" id="1_wwp87"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l50yv"]
+bg_color = Color(0.341176, 0, 0, 0.611765)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 13
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hdfg"]
+bg_color = Color(0.341176, 0, 0, 0.611765)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 13
 
 [node name="match_loss_test" type="CanvasLayer"]
 script = ExtResource("1_l50yv")
@@ -30,7 +46,7 @@ offset_bottom = 240.0
 theme_override_fonts/normal_font = ExtResource("1_wwp87")
 theme_override_font_sizes/normal_font_size = 61
 bbcode_enabled = true
-text = "match lost"
+text = "Match lost"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -42,18 +58,22 @@ offset_top = 307.0
 offset_right = 634.0
 offset_bottom = 370.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_wwp87")
 theme_override_font_sizes/font_size = 45
 text = "-0 Gold"
 horizontal_alignment = 1
 
 [node name="Continue" type="Button" parent="Control"]
-visible = false
 layout_mode = 0
 offset_left = 490.0
 offset_top = 491.0
 offset_right = 630.0
 offset_bottom = 541.0
+theme_override_colors/font_pressed_color = Color(1, 0.571068, 0.508893, 1)
+theme_override_fonts/font = ExtResource("1_wwp87")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_l50yv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4hdfg")
 text = "Continue"
 
 [connection signal="pressed" from="Control/Continue" to="." method="_on_continue_pressed"]

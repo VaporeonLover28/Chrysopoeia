@@ -1,7 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4quyek04012y"]
+[gd_scene load_steps=6 format=3 uid="uid://c4quyek04012y"]
 
 [ext_resource type="Script" uid="uid://cuwuov7c11bbi" path="res://Script/match_win_test.gd" id="1_3jr5n"]
 [ext_resource type="FontFile" uid="uid://bubxb3wcmbboy" path="res://Assets/Fonts/comic-sans-ms-font-family/COMIC.TTF" id="1_k1fuj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3jr5n"]
+bg_color = Color(0.784314, 0.537255, 0.996078, 0.623529)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 13
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhtbf"]
+bg_color = Color(0.784314, 0.537255, 0.996078, 0.623529)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 13
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ip53u"]
+bg_color = Color(0, 0, 0, 0.317647)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 13
 
 [node name="match_win_test" type="CanvasLayer"]
 script = ExtResource("1_3jr5n")
@@ -42,6 +66,7 @@ offset_top = 307.0
 offset_right = 634.0
 offset_bottom = 370.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_k1fuj")
 theme_override_font_sizes/font_size = 45
 text = "+0 Gold"
 horizontal_alignment = 1
@@ -53,7 +78,12 @@ offset_left = 490.0
 offset_top = 491.0
 offset_right = 630.0
 offset_bottom = 541.0
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_k1fuj")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_3jr5n")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qhtbf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ip53u")
 text = "Continue"
 
 [connection signal="pressed" from="Control/Continue" to="." method="_on_continue_pressed"]

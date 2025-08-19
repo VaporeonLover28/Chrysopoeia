@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c72h3kbb7fnrw"]
+[gd_scene load_steps=28 format=3 uid="uid://c72h3kbb7fnrw"]
 
 [ext_resource type="Script" uid="uid://cahgpglfdtcaw" path="res://Script/fight_ring.gd" id="1_3s5ww"]
 [ext_resource type="Texture2D" uid="uid://bm5mkjkryluex" path="res://Assets/grid_black_512x512.png" id="1_ro6q6"]
@@ -6,12 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://t1ipnjtntycl" path="res://Assets/Exports/glTF/Bench.gltf" id="2_r26pi"]
 [ext_resource type="Script" uid="uid://cb58tbr6db7dh" path="res://Script/flickertorch.gd" id="3_nam34"]
 [ext_resource type="PackedScene" uid="uid://bpth6e0ob531j" path="res://Assets/Exports/glTF/Chandelier.gltf" id="4_3s5ww"]
+[ext_resource type="PackedScene" uid="uid://brm5hr0ht02jn" path="res://Assets/Originals/Magi_circulo_correntesglb.glb" id="6_2y5br"]
 [ext_resource type="Texture2D" uid="uid://b4geitgwon0px" path="res://Assets/Originals/chain2.png" id="6_qtb8p"]
 [ext_resource type="Texture2D" uid="uid://bj4wqrulet883" path="res://Assets/Originals/homun.png" id="6_x0qly"]
 [ext_resource type="Texture2D" uid="uid://b62mtehl1yonf" path="res://Assets/Originals/homun2.png" id="7_hapdo"]
 [ext_resource type="Script" uid="uid://b1wtnwr6nqbks" path="res://Script/fight_ring_selec_button.gd" id="8_7cmb4"]
 [ext_resource type="Texture2D" uid="uid://pov62jfwgcqy" path="res://icon.svg" id="10_lvqhy"]
 [ext_resource type="PackedScene" uid="uid://c4quyek04012y" path="res://Scenes/match_win_test.tscn" id="11_3pjhm"]
+[ext_resource type="FontFile" uid="uid://4y6u2ai8c7lq" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-Bold.ttf" id="11_jmwri"]
 [ext_resource type="PackedScene" uid="uid://djecxd6ckfbpd" path="res://Scenes/match_loss_test.tscn" id="12_56irj"]
 [ext_resource type="PackedScene" uid="uid://beywp328cnlsb" path="res://Scenes/match_tie_test.tscn" id="13_fg0n3"]
 
@@ -34,6 +36,41 @@ tonemap_mode = 2
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nam34"]
 albedo_texture = ExtResource("1_ro6q6")
 uv1_triplanar = true
+
+[sub_resource type="Curve" id="Curve_jmwri"]
+_data = [Vector2(0.0220588, 0.573034), 0.0, 0.0, 0, 0, Vector2(0.397059, 1), 0.0, 0.0, 0, 0, Vector2(0.911765, 0.47191), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_wyh8j"]
+resource_local_to_scene = true
+width = 128
+curve = SubResource("Curve_jmwri")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mh6ap"]
+lifetime_randomness = 1.0
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 0.5)
+emission_ring_height = 1.0
+emission_ring_radius = 2.0
+emission_ring_inner_radius = 1.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 0.3, 0)
+spread = 50.0
+gravity = Vector3(0, 0.6, 0)
+scale_min = 0.0
+scale_max = 0.8
+scale_curve = SubResource("CurveTexture_wyh8j")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrp1f"]
+blend_mode = 1
+albedo_color = Color(0.828226, 0.0089115, 0.739474, 1)
+emission_enabled = true
+emission = Color(0.94834, 0.210238, 0.818488, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_51mtu"]
+material = SubResource("StandardMaterial3D_wrp1f")
+radius = 0.2
+height = 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3s5ww"]
 size = Vector3(9, 3, 1)
@@ -100,6 +137,20 @@ use_collision = true
 collision_mask = 6
 size = Vector3(80, 1, 80)
 material = SubResource("StandardMaterial3D_nam34")
+
+[node name="Magi_circulo_correntesglb" parent="scenery" instance=ExtResource("6_2y5br")]
+transform = Transform3D(3, 0, -0.000209212, 0, 3, 0, 0.000209212, 0, 3, 0, 0.200058, 0.9)
+visible = false
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="scenery/Magi_circulo_correntesglb"]
+transform = Transform3D(0.499956, 0.00612061, -0.00220905, 0.00243928, 0.00126164, 0.449994, 0.00612671, -0.499961, 0.00110849, -0.0107171, 0.267895, 0.0595637)
+visible = false
+amount = 60
+lifetime = 0.7
+collision_base_size = 0.0
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_mh6ap")
+draw_pass_1 = SubResource("SphereMesh_51mtu")
 
 [node name="seats1" type="CSGBox3D" parent="scenery"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.695861, -4)
@@ -279,6 +330,7 @@ stretch_mode = 3
 
 [node name="selec_name" type="Label" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Selec_Desc"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_jmwri")
 theme_override_font_sizes/font_size = 20
 text = "Choose a Homunculus to view stats"
 horizontal_alignment = 1
@@ -291,10 +343,12 @@ alignment = 1
 [node name="selec_price" type="Label" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Selec_Desc/selec_stats"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("11_jmwri")
 text = "50 Gold"
 
 [node name="selec_bet" type="Button" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Selec_Desc/selec_stats"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_jmwri")
 text = "FIGHT!"
 
 [node name="Creatures" type="VBoxContainer" parent="Fight_ring_UI/UI/Panel/HBoxContainer"]
@@ -314,6 +368,7 @@ stretch_mode = 3
 [node name="selec_name" type="Label" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot1"]
 custom_minimum_size = Vector2(358, 28)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_jmwri")
 theme_override_font_sizes/font_size = 20
 text = "Righteous Hard-Headed Homunculus"
 horizontal_alignment = 1
@@ -321,6 +376,7 @@ horizontal_alignment = 1
 [node name="Button" type="Button" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot1"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_jmwri")
 action_mode = 0
 text = "CHOOSE"
 script = ExtResource("8_7cmb4")
@@ -338,6 +394,7 @@ stretch_mode = 3
 [node name="selec_name" type="Label" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot2"]
 custom_minimum_size = Vector2(358, 28)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_jmwri")
 theme_override_font_sizes/font_size = 20
 text = "Righteous Hard-Headed Homunculus"
 horizontal_alignment = 1
@@ -345,6 +402,7 @@ horizontal_alignment = 1
 [node name="Button" type="Button" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_jmwri")
 action_mode = 0
 text = "CHOOSE"
 script = ExtResource("8_7cmb4")
@@ -362,6 +420,7 @@ stretch_mode = 3
 [node name="selec_name" type="Label" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot3"]
 custom_minimum_size = Vector2(358, 28)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_jmwri")
 theme_override_font_sizes/font_size = 20
 text = "Righteous Hard-Headed Homunculus"
 horizontal_alignment = 1
@@ -369,6 +428,7 @@ horizontal_alignment = 1
 [node name="Button" type="Button" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot3"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_jmwri")
 action_mode = 0
 text = "CHOOSE"
 script = ExtResource("8_7cmb4")
@@ -386,6 +446,7 @@ stretch_mode = 3
 [node name="selec_name" type="Label" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot4"]
 custom_minimum_size = Vector2(358, 28)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_jmwri")
 theme_override_font_sizes/font_size = 20
 text = "Righteous Hard-Headed Homunculus"
 horizontal_alignment = 1
@@ -393,6 +454,7 @@ horizontal_alignment = 1
 [node name="Button" type="Button" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot4"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_jmwri")
 action_mode = 0
 text = "CHOOSE"
 script = ExtResource("8_7cmb4")
@@ -410,6 +472,7 @@ stretch_mode = 3
 [node name="selec_name" type="Label" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot5"]
 custom_minimum_size = Vector2(358, 28)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_jmwri")
 theme_override_font_sizes/font_size = 20
 text = "Righteous Hard-Headed Homunculus"
 horizontal_alignment = 1
@@ -417,6 +480,7 @@ horizontal_alignment = 1
 [node name="Button" type="Button" parent="Fight_ring_UI/UI/Panel/HBoxContainer/Creatures/slot5"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_jmwri")
 action_mode = 0
 text = "CHOOSE"
 script = ExtResource("8_7cmb4")

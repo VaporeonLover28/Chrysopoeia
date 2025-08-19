@@ -42,7 +42,7 @@ tonemap_mode = 2
 _data = [Vector2(0, 0.842697), 0.0, 0.0, 0, 0, Vector2(0.522059, 0.516854), 0.0, 0.0, 0, 0, Vector2(0.970588, 0.685393), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_wyh8j"]
+[sub_resource type="CurveTexture" id="CurveTexture_5egv6"]
 resource_local_to_scene = true
 width = 128
 curve = SubResource("Curve_m3bi6")
@@ -58,9 +58,9 @@ emission_ring_cone_angle = 90.0
 direction = Vector3(4.23, 0, -2.63)
 gravity = Vector3(0, 0, 0)
 scale_min = 0.5
-scale_curve = SubResource("CurveTexture_wyh8j")
+scale_curve = SubResource("CurveTexture_5egv6")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mkpwh"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8dnnj"]
 blend_mode = 1
 cull_mode = 1
 albedo_color = Color(0.921569, 0.921569, 0.203922, 1)
@@ -69,7 +69,7 @@ emission = Color(0.997293, 0.829422, 1.15514e-06, 1)
 emission_energy_multiplier = 2.5
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_4nkqq"]
-material = SubResource("StandardMaterial3D_mkpwh")
+material = SubResource("StandardMaterial3D_8dnnj")
 radius = 0.01
 height = 0.02
 

@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://beywp328cnlsb"]
+[gd_scene load_steps=5 format=3 uid="uid://beywp328cnlsb"]
 
 [ext_resource type="FontFile" uid="uid://bubxb3wcmbboy" path="res://Assets/Fonts/comic-sans-ms-font-family/COMIC.TTF" id="1_8y3bf"]
 [ext_resource type="Script" uid="uid://bsdwv4wmtifxo" path="res://Script/match_tie_test.gd" id="1_c4djq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4djq"]
+bg_color = Color(0.0156863, 0.0980392, 0.4, 0.462745)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jfli"]
+bg_color = Color(0.0156863, 0.0980392, 0.4, 0.462745)
 
 [node name="match_tie_test" type="CanvasLayer"]
 script = ExtResource("1_c4djq")
@@ -30,7 +36,7 @@ offset_bottom = 240.0
 theme_override_fonts/normal_font = ExtResource("1_8y3bf")
 theme_override_font_sizes/normal_font_size = 61
 bbcode_enabled = true
-text = "match tie"
+text = "Match tie"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -56,17 +62,23 @@ offset_top = 307.0
 offset_right = 634.0
 offset_bottom = 370.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_8y3bf")
 theme_override_font_sizes/font_size = 45
 text = "+0 Gold"
 horizontal_alignment = 1
 
 [node name="Continue" type="Button" parent="Control"]
+visible = false
 layout_mode = 0
 offset_left = 490.0
 offset_top = 491.0
 offset_right = 630.0
 offset_bottom = 541.0
+theme_override_colors/font_pressed_color = Color(0.988235, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_8y3bf")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_c4djq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8jfli")
 text = "Continue"
 
 [connection signal="pressed" from="Control/Continue" to="." method="_on_continue_pressed"]
