@@ -157,8 +157,10 @@ func attack_enemy():
 		enemy.take_dmg(damage)
 		
 func take_dmg(dmg):
+	get_parent().ring.retract()
 	##Starts the inactivity timer to stop the chain
-	get_parent().inactivity.start()
+	get_parent().inactivity.start(get_parent().chain_cooldown)
+	get_parent().inac_charge.start(get_parent().chain_cooldown - 5)
 	
 	health -= dmg
 	

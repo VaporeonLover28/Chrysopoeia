@@ -13,7 +13,6 @@ func load_slots(game : String):
 			Globals.limit_spells(["Eye of Providence", "Fool's Gold", "Philosopher's Shard"])
 		"Fight Ring":
 			Globals.limit_spells(["Mars"])
-	
 	update_spell_slots()
 
 func update_spell_slots():

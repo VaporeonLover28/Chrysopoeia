@@ -22,7 +22,8 @@ var tween : Tween
 	#get_parent().visible = false
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("esc") and get_parent().visible:
+	if Input.is_action_just_pressed("esc") and get_parent().visible or \
+	Input.is_action_just_pressed("b") and get_parent().visible:
 		hide_shop_menu()
 
 func _show_shop_menu():
