@@ -6,6 +6,8 @@ extends InteractableObject; class_name SlotMachice
 @onready var wheel_3: Node3D = $wheels/wheel3
 @onready var wheel_4: Node3D = $wheels/wheel4
 @onready var input_prompt: Node3D = $input_area/input_prompt
+@onready var start: AudioStreamPlayer3D = $start
+@onready var spin_sfx: AudioStreamPlayer3D = $spin
 
 ##Reward is [Name, Value, Odds]
 ##Odds is the minimum value the randi must be to choose this reward
@@ -48,6 +50,7 @@ func _interact_SlotMachine(object_ref):
 func lever_pull():
 	##if the player can afford to play
 	if Globals.money - play_price >= 0:
+		start.play()
 		##take money
 		Globals.money -= play_price
 		##block the player from spinning again
@@ -73,6 +76,7 @@ func lever_pull():
 
 ##defining the spin rewards
 func spin_rewards(loot_table):
+	spin_sfx.play()
 	##pick a value between 1 and 100
 	var random_value = randi_range(1, 100)
 	##variable to stop multiple rewards from being chosen in one wheel
@@ -113,7 +117,7 @@ func spin_rewards(loot_table):
 	else:
 		#print(current_reward)
 		##how many times the wheels do a full spin before settling on the reward picked
-		var times = randi_range(5, 7)
+		var times = 5
 		#print(times)
 		spin(wheel_1, times, current_reward[0], loot_table)
 		await get_tree().create_timer(0.75).timeout
