@@ -11,4 +11,5 @@ price = 90
 description = "Good ol' time classic. Pull the lever!"
 item_scene = ExtResource("1_627h5")
 usable = true
+keybind = ""
 metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"

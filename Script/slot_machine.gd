@@ -186,19 +186,16 @@ func check_matching(loot_table):
 			#print("match of " + str(how_many_match[type]))
 	##make the machine spinnable again
 	spinning = false
-	Globals.is_betting = true
 	##give the earned money to the player
-	if Globals.aqua_regia_timer.time_left > 0 and Globals.is_betting == true:
+	if Globals.aqua_regia_timer.time_left > 0:
 		points *= 2
 	CoinEarned.moedas_01.play()
+	Globals.money_lost = (Globals.money + points) - play_price
 	Globals.money += points
-		#else:
-			#print("not a match")
 	if Globals.aqua_fortis_active == true:
 		play_price = 0
 		lever_pull()
 		Globals.aqua_fortis_active = false
-	Globals.is_betting = false
 
 func spell_cast(spell : String):
 	if Globals.check_spell_available(spell):

@@ -75,6 +75,7 @@ shape = SubResource("CylinderShape3D_8aala")
 
 [node name="Sell_Satisfation Value" parent="." instance=ExtResource("1_w4grq")]
 sell_value = 100
+satisfaction_value = 10
 
 [node name="Build_Spot" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.127924, 2.613, 0)

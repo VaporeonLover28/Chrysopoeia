@@ -153,7 +153,6 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("e"):
 			_rotate_bulding_object(1)
 		
-		
 		if is_on_building_mode == true:
 			lock_model_into_build_spot()
 	
@@ -284,6 +283,9 @@ func _build():
 		can_build = false
 		Globals.save_money = 0
 		SaveScript.auto_save.emit()
+		if instantiate_object.get_node_or_null("Sell_Satisfation Value") != null:
+			Globals.satisfaction_level += instantiate_object.get_node("Sell_Satisfation Value").satisfaction_value
+			print(Globals.satisfaction_level)
 		var save_ray_builder_1_monetoring = ray_builder_1.get_collider()
 		var save_ray_builder_2_monetoring = ray_builder_2.get_collider()
 		save_ray_builder_1_monetoring.monitoring = false
@@ -312,6 +314,8 @@ func _sell():
 					item = item.get_parent()
 				if item.get_node_or_null("Sell_Satisfation Value") != null:
 					Globals.money += item.get_node_or_null("Sell_Satisfation Value").sell_value
+					Globals.satisfaction_level -= item.get_node("Sell_Satisfation Value").satisfaction_value
+					print(Globals.satisfaction_level)
 					item.queue_free()
 				else:
 					print("don't have Sell_Satisfation Value node")
@@ -335,12 +339,12 @@ func lock_model_into_build_spot():
 	and ray_builder.get_collider().get_name() == "Area build spot"\
 	and ray_builder.get_collider().is_in_group(ray_builder_1.get_child(0).get_groups()[0])\
 	and ray_builder_1.get_child(0).get_child(-1).has_overlapping_bodies() == true:
-		#ray_builder_1.get_child(0).global_position = ray_builder.get_collider().get_parent().global_position
+		ray_builder_1.get_child(0).global_position = ray_builder.get_collider().get_parent().global_position - Vector3(0, 1.5, 0)
 		can_build = false
 		for item in ray_builder_1.get_child(0).get_child(0).get_child(0).mesh.get_surface_count():
 			ray_builder_1.get_child(0).get_child(0).get_child(0).mesh.surface_get_material(item).next_pass.set_shader_parameter("outline_color", Color.RED)
-		#ray_builder_1.get_child(0).top_level = true
-		#ray_builder_1.get_child(0).rotation = object_rotation + ray_builder.get_collider().get_parent().rotation
+		ray_builder_1.get_child(0).top_level = true
+		ray_builder_1.get_child(0).rotation = object_rotation + ray_builder.get_collider().get_parent().rotation
 	
 	elif ray_builder.get_collider() == null:
 		ray_builder_1.get_child(0).position = ray_builder_1.position + Vector3(0,0,-3)
