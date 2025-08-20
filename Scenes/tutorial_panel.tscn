@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm52g3da07jc"]
+
+[ext_resource type="Theme" uid="uid://ded1ab0u3v2ko" path="res://Themes/tutorial_theme.tres" id="1_8o4m8"]
+[ext_resource type="Script" uid="uid://c52ay13m06xkp" path="res://Script/tutorial_panel.gd" id="2_ekx5x"]
+[ext_resource type="Texture2D" uid="uid://d1bua7tvcviv2" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_0.png" id="3_eykno"]
+
+[node name="tutorial_panel" type="PanelContainer"]
+offset_right = 200.0
+offset_bottom = 200.0
+theme = ExtResource("1_8o4m8")
+script = ExtResource("2_ekx5x")
+panel_type = 1
+text = "You have unlocked the McGuffin! Press 0 to explode at will!"
+key = ExtResource("3_eykno")
+key_text = "Tralalero"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme = ExtResource("1_8o4m8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2

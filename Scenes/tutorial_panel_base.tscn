@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d1bua7tvcviv2" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_0.png" id="2_osw4x"]
 
 [node name="PanelContainer" type="PanelContainer"]
-offset_right = 258.0
+offset_right = 200.0
 offset_bottom = 277.0
 theme = ExtResource("1_jupvf")
 
@@ -17,6 +17,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 texture_filter = 1
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Tutorial gibberish bla bla bla
 Tutorial gibberish bla bla bla
@@ -24,10 +25,8 @@ Tutorial gibberish bla bla bla
 Tutorial gibberish bla bla bla
 Tutorial gibberish bla bla bla
 "
-horizontal_alignment = 1
 vertical_alignment = 1
-visible_characters_behavior = 1
-visible_ratio = -0.00649351
+autowrap_mode = 3
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

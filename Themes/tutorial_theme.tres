@@ -16,7 +16,7 @@ corner_radius_bottom_left = 15
 anti_aliasing = false
 
 [resource]
-Label/font_sizes/font_size = 16
+Label/font_sizes/font_size = 12
 Label/fonts/font = ExtResource("1_0rrr3")
 MarginContainer/constants/margin_bottom = 20
 MarginContainer/constants/margin_left = 20
