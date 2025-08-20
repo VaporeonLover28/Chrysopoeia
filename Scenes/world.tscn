@@ -290,9 +290,6 @@ maximum_time_for_spawn_npc = 180.0
 offset = Vector2(0, 655)
 transform = Transform2D(1, 0, 0, 1, 0, 655)
 
-[node name="Shop" parent="Shop Menu" index="0"]
-visible = false
-
 [node name="Top_Bar" parent="Shop Menu/Shop/Margin" index="0"]
 theme = null
 

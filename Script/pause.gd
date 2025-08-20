@@ -1,13 +1,13 @@
 extends CanvasLayer
 
-@onready var shop_menu: CanvasLayer = $"../Shop Menu"
+@onready var shop_menu: Control = $"../Shop Menu/Shop"
 
 func _ready() -> void:
 	visible = false
 
 func _unhandled_input(event: InputEvent) -> void:
 	if !visible:
-		if event.is_action_pressed("esc") and !shop_menu.visible and !get_tree().paused:
+		if event.is_action_pressed("esc") and !shop_menu.opened and !get_tree().paused:
 			visible = true
 			get_tree().paused = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

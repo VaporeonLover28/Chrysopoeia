@@ -128,8 +128,7 @@ func _physics_process(delta: float) -> void:
 		ray_interection.get_collider().get_parent().get_node_or_null("Sit positions") != null:
 			_call_npc_to_game()
 			
-		if Input.is_action_just_pressed("b") and Globals.player_interacting == false and\
-		Globals.game_paused == false:
+		if Input.is_action_just_pressed("b"):
 			world_scene.get_node("Shop Menu").get_child(0)._show_shop_menu()
 		
 		if Input.is_action_just_pressed("f") and Globals.check_spell_available("Wheel of Fortune") and \

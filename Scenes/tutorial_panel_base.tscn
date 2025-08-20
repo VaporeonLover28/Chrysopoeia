@@ -1,8 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://cijlrmhb54ha3"]
+[gd_scene load_steps=3 format=3 uid="uid://cijlrmhb54ha3"]
 
 [ext_resource type="Theme" uid="uid://ded1ab0u3v2ko" path="res://Themes/tutorial_theme.tres" id="1_jupvf"]
+[ext_resource type="Texture2D" uid="uid://d1bua7tvcviv2" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_0.png" id="2_osw4x"]
 
 [node name="PanelContainer" type="PanelContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 258.0
+offset_bottom = 277.0
 theme = ExtResource("1_jupvf")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme = ExtResource("1_jupvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Tutorial gibberish bla bla bla
+Tutorial gibberish bla bla bla
+Tutorial gibberish bla bla bla
+Tutorial gibberish bla bla bla
+Tutorial gibberish bla bla bla
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters_behavior = 1
+visible_ratio = -0.00649351
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_osw4x")
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Explode"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true

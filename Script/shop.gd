@@ -17,41 +17,56 @@ signal wait_for_spell_change
 signal update_hud
 signal update_shop_contents(added_itens: Array, removed_itens: Array)
 
+var opened := false
 var tween : Tween
 
 #func _ready() -> void:
 	#get_parent().visible = false
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("esc") and get_parent().visible or \
-	Input.is_action_just_pressed("b") and get_parent().visible:
+func _unhandled_input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("esc") and get_parent().offset.y < 500 or \
+	Input.is_action_just_pressed("b") and get_parent().offset.y < 500:
 		hide_shop_menu()
 
 func _show_shop_menu():
-	print(shop_tabs.theme)
-	get_parent().visible = true
-	self.visible = false
-	Globals.game_paused = true
-	#shop_tabs.visible = true
-	spell_option_box_container.visible = false
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if Globals.player_interacting == false and Globals.game_paused == false \
+	and get_parent().offset.y > 600:
+		Globals.game_paused = true
+		spell_option_box_container.visible = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		
+		if tween:
+			tween.kill()
+		
+		tween = create_tween()
+		tween.set_trans(Tween.TRANS_QUART)
+		tween.set_ease(Tween.EASE_OUT)
+		tween.set_parallel(true)
+		tween.tween_property(get_parent(), "offset", Vector2.ZERO, 0.75)
+		tween.tween_interval(0.75)
+		tween.tween_callback(func():bg.play("open"))
+		tween.tween_interval(0.75)
+		tween.tween_callback(func():opened = true)
+		
+		money_label.text = "Money: " + str(Globals.money)
+	
+func hide_shop_menu():
+	opened = false
+	Globals.game_paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+	if tween:
+		tween.kill()
+	
 	tween = create_tween()
 	tween.set_trans(Tween.TRANS_QUART)
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_parallel(true)
-	tween.tween_property(get_parent(), "offset", Vector2.ZERO, 0.75)
-	tween.tween_interval(0.75)
-	tween.tween_callback(func():bg.play("open"))
-	tween.tween_interval(0.75)
-	tween.tween_callback(func():visible = true)
-	
-	money_label.text = "Money: " + str(Globals.money)
-			
-	
-func hide_shop_menu():
-	get_parent().visible = false
-	Globals.game_paused = false
-		
+	tween.tween_property(get_parent(), "offset", Vector2(0, 665), 0.5)
+	tween.tween_interval(0.5)
+	tween.tween_callback(func():bg.play_backwards("open"))
+	tween.tween_interval(0.5)
+	tween.tween_callback(func():opened = false)
 
 func _buy_item(object_being_purchased: Control):
 	if object_being_purchased.item_resource.price <= Globals.money:
@@ -107,7 +122,6 @@ func _ready() -> void:
 			instanciated_item.get_child(0).get_node("Button").connect("pressed", _buy_item.bind(instanciated_item))
 			instanciated_item.position.x += 245 + (item * 245)
 			decoration_h_box_container.add_child(instanciated_item)
-			
 		
 	if PurchasableItemList.spell_list.size() > 0:
 		for item in PurchasableItemList.spell_list.size():
@@ -147,4 +161,3 @@ func _add_objects(area_of_shop: HBoxContainer, objects_to_be_added: Array):
 		instanciated_item.position.x += 245 + (item * 245)
 		area_of_shop.add_child(instanciated_item)
 		counter += 1
-	
