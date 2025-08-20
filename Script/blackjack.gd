@@ -422,6 +422,7 @@ func spell_cast(spell : String):
 	if Globals.check_spell_available(spell):
 		SpellSounds.feitiço_sfx.play()
 		Globals.cooldown_spell(spell)
+		spell_menu.update_spell_slots()
 		var spell_worked = randi_range(1, 4)
 		if spell_worked == 4:
 			match spell:

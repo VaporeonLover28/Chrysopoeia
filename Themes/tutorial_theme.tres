@@ -1,0 +1,22 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://ded1ab0u3v2ko"]
+
+[ext_resource type="FontFile" uid="uid://4y6u2ai8c7lq" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-Bold.ttf" id="1_0rrr3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tsdlq"]
+bg_color = Color(0.730742, 2.87581e-06, 5.77569e-07, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.961661, 0.779448, 0, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[resource]
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("1_0rrr3")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_tsdlq")

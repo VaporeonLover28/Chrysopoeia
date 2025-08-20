@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cijlrmhb54ha3"]
+
+[ext_resource type="Theme" uid="uid://ded1ab0u3v2ko" path="res://Themes/tutorial_theme.tres" id="1_jupvf"]
+
+[node name="PanelContainer" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_jupvf")

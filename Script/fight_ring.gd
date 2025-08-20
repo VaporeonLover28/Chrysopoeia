@@ -11,13 +11,15 @@ extends Node3D
 @onready var chain: Sprite3D = $chain
 @onready var chainend_1: Marker3D = $chainpos/chainend1
 @onready var chainend_2: Marker3D = $chainpos/chainend2
+@onready var inac_charge: Timer = $inac_charge
 @onready var inactivity: Timer = $inactivity
 @onready var match_win_test: CanvasLayer = $match_win_test
 @onready var match_tie_test: CanvasLayer = $match_tie_test
 @onready var match_loss_test: CanvasLayer = $match_loss_test
 @onready var spell_menu = preload("res://Scenes/spell_menu.tscn")
+@onready var ring: Node3D = $scenery/Magi_circulo_correntesglb
 
-var chain_cooldown = 10
+var chain_cooldown = 11
 var chain_distance = 1
 
 var tween : Tween
@@ -165,7 +167,10 @@ func bet_on_creature():
 	start_match()
 
 func start_match():
-	add_child(spell_menu.instantiate())
+	var sp_menu = spell_menu.instantiate()
+	add_child(sp_menu)
+	sp_menu.load_slots("Fight Ring")
+	
 	##Instantiating the player homunculus
 	MusicPlayer.fighttheme.play()
 	var player_homunculus = homunculus.instantiate()
@@ -199,7 +204,9 @@ func start_match():
 	enemy_homunculus.match_stats()
 	
 	match_started = true
-	$inactivity.start()
+	inactivity.start()
+	inac_charge.start()
+
 func warcry_sfx():
 	var which = randi_range(1, 3)
 	match which:
@@ -209,8 +216,6 @@ func warcry_sfx():
 			HomunculosSfx.oblong.play()
 		3:
 			HomunculosSfx.ungus.play()
-
-
 
 func chain_pull():
 	if !match_ended:
@@ -240,6 +245,8 @@ func chain_pull():
 		non_player_bet_creature.chained = false
 		non_player_bet_creature.sprite.play("default")
 		inactivity.start(chain_cooldown)
+		inac_charge.start(chain_cooldown - 5)
+
 func chain_sfx():
 	var which = randi_range(1, 2)
 	match which:
@@ -253,6 +260,7 @@ func spell_cast(spell):
 	if Globals.check_spell_available(spell):
 		SpellSounds.feitiço_sfx.play()
 		Globals.cooldown_spell(spell)
+		spell_menu.update_spell_slots()
 		##Choosing if mars worked or not
 		var spell_worked = randi_range(1, 4)
 		if spell_worked == 4:
@@ -330,5 +338,8 @@ func _on_inactivity_timeout() -> void:
 	chain_sfx()
 	if chain_distance - 0.2 > 0.5:
 		chain_distance -= 0.2
-	if chain_cooldown - 2 > 0:
+	if chain_cooldown - 5 > 0:
 		chain_cooldown -= 2
+
+func _on_inac_charge_timeout() -> void:
+	ring.anim()

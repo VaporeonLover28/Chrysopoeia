@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://ifr6x47walau"]
+[gd_scene load_steps=80 format=4 uid="uid://ifr6x47walau"]
 
 [ext_resource type="PackedScene" uid="uid://dsp27d25mg6bh" path="res://Scenes/player.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://cf6y1d4msmkfp" path="res://Script/world.gd" id="1_ic0uy"]
@@ -43,7 +43,6 @@
 [ext_resource type="Texture2D" uid="uid://bnqo0lpkvd6px" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130625.png" id="23_de5wk"]
 [ext_resource type="PackedScene" uid="uid://5fqe31h8scxt" path="res://Assets/Originals/praredelend.glb" id="23_no8kt"]
 [ext_resource type="Texture2D" uid="uid://droxfo4heuvl4" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130648.png" id="24_ctcri"]
-[ext_resource type="Script" uid="uid://b1mjwd0321b81" path="res://Script/build_spot.gd" id="25_1vso6"]
 [ext_resource type="PackedScene" uid="uid://2hi0ppmkqhxs" path="res://Scenes/spinningtor.tscn" id="25_i4fjy"]
 [ext_resource type="Texture2D" uid="uid://bgl24p3qpd2f6" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130712.png" id="25_mkebs"]
 [ext_resource type="Texture2D" uid="uid://cjaxygb5naw8p" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130820.png" id="26_a4ai1"]
@@ -59,6 +58,7 @@
 [ext_resource type="Texture2D" uid="uid://dpjpcs6o1j0bc" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817131015.png" id="31_74toi"]
 [ext_resource type="Texture2D" uid="uid://drpqmobd0hljp" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817131051.png" id="32_eea73"]
 [ext_resource type="Texture2D" uid="uid://denb5xhofm2r0" path="res://Assets/Originals/pilastralend_RammedEarth018_COL_1K_METALNESS.png" id="33_p5wkl"]
+[ext_resource type="PackedScene" uid="uid://7rsdr8js0apu" path="res://Scenes/chandelier_.tscn" id="50_cvubk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cwuo4"]
 animations = [{
@@ -162,8 +162,9 @@ animations = [{
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o2rbt"]
 sky_top_color = Color(1, 1, 1, 1)
-sky_horizon_color = Color(1, 1, 1, 1)
-ground_bottom_color = Color(0.556953, 0.556953, 0.556953, 1)
+sky_horizon_color = Color(0.241156, 0.241156, 0.241156, 1)
+sky_curve = 232.814
+ground_bottom_color = Color(0.138034, 0.138034, 0.138034, 1)
 ground_horizon_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Sky" id="Sky_yq1aw"]
@@ -212,19 +213,6 @@ size = Vector3(0.97998, 12.6138, 16.0626)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04jkj"]
 albedo_color = Color(1, 0.913725, 1, 1)
 albedo_texture = ExtResource("33_p5wkl")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_d0bu4"]
-size = Vector3(2.38513, 1.89441, 2.38354)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ua1v"]
-resource_local_to_scene = true
-transparency = 1
-albedo_color = Color(0, 1, 0, 0.286275)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_r0ikl"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_3ua1v")
-size = Vector2(3, 3)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qebug"]
 animations = [{
@@ -881,16 +869,27 @@ autostart = true
 [node name="Chandelier2" parent="NavigationRegion3D/cassino/fight_ring" instance=ExtResource("13_0pcbe")]
 transform = Transform3D(1.20131, 0, 0, 0, 1.20131, 0, 0, 0, 1.20131, 0, 5.35019, 0)
 
+[node name="Chandelier" parent="NavigationRegion3D/cassino" instance=ExtResource("50_cvubk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.57682, 4.48004, -11.178)
+
+[node name="CasinoLight" parent="NavigationRegion3D/cassino/Chandelier" instance=ExtResource("4_036b0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0349922, -1.20608, 0.130798)
+light_energy = 1.0
+shadow_bias = 0.0
+omni_range = 681.626
+
+[node name="Chandelier2" parent="NavigationRegion3D/cassino" instance=ExtResource("50_cvubk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4998, 4.48004, -13.3569)
+
+[node name="CasinoLight" parent="NavigationRegion3D/cassino/Chandelier2" instance=ExtResource("4_036b0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0349922, -1.20608, 0.130798)
+light_energy = 1.0
+shadow_bias = 0.0
+omni_range = 681.626
+
 [node name="All Interactable Spots" type="Node3D" parent="NavigationRegion3D"]
 
 [node name="All non interactable objects" type="Node3D" parent="NavigationRegion3D"]
-
-[node name="CasinoLight" parent="NavigationRegion3D" instance=ExtResource("4_036b0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0632236, 3.04997, -11.0472)
-visible = false
-light_energy = 1.0
-shadow_enabled = true
-omni_range = 681.626
 
 [node name="CasinoLight2" parent="NavigationRegion3D" instance=ExtResource("4_036b0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.0117, 3.14529, -12.913)
@@ -1318,21 +1317,9 @@ shape = SubResource("BoxShape3D_opbav")
 
 [node name="All Build spots" type="Node" parent="."]
 
-[node name="Build_Spot1" type="Marker3D" parent="All Build spots"]
+[node name="Build_Spot1" parent="All Build spots" instance=ExtResource("28_3ua1v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5788, 1.5, -18.125)
-script = ExtResource("25_1vso6")
 object_type = "Ground_object"
-
-[node name="Area build spot" type="Area3D" parent="All Build spots/Build_Spot1"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="All Build spots/Build_Spot1/Area build spot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00161, 0.31466, -0.0691856)
-shape = SubResource("BoxShape3D_d0bu4")
-debug_color = Color(0, 1, 0, 1)
-
-[node name="Build Mesh" type="MeshInstance3D" parent="All Build spots/Build_Spot1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.39867, 0)
-mesh = SubResource("PlaneMesh_r0ikl")
 
 [node name="Build_Spot2" parent="All Build spots" instance=ExtResource("28_3ua1v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5788, 1.5, -14.9286)
