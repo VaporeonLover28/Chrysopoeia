@@ -366,4 +366,5 @@ autoplay = "default"
 frame = 27
 frame_progress = 1.0
 
+[connection signal="update_shop_contents" from="Shop" to="Shop" method="_on_update_shop_contents"]
 [connection signal="pressed" from="Shop/Margin/Top_Bar/Quit_button" to="Shop" method="_on_quit_button_pressed"]

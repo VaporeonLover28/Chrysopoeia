@@ -28,7 +28,10 @@ var money: int = 100000:
 
 var save_money: int = 0
 
-var satisfaction_level: int = 0
+var satisfaction_level: int = 0:
+	set(new_value):
+		satisfaction_level = new_value
+		get_parent().get_node("PurchasableItemList").update_item_list()
 
 var transiting_characters_to_gamble: Array[Array]  
 var save_npcs_pos: Array[Array]
