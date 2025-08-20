@@ -284,8 +284,6 @@ maximum_time_for_spawn_npc = 180.0
 
 [node name="HUD" parent="." instance=ExtResource("2_pyn1s")]
 
-[node name="Pause" parent="." instance=ExtResource("21_yq1aw")]
-
 [node name="Shop Menu" parent="." instance=ExtResource("2_7yui6")]
 offset = Vector2(0, 655)
 transform = Transform2D(1, 0, 0, 1, 0, 655)
@@ -300,6 +298,8 @@ frame_progress = 0.0
 
 [node name="Bar UI" parent="." instance=ExtResource("3_e0ngr")]
 visible = false
+
+[node name="Pause" parent="." instance=ExtResource("21_yq1aw")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6uqi0")
