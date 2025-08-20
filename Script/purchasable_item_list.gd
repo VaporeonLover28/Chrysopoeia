@@ -25,6 +25,7 @@ load("res://Resources-shop/spell_mars.tres")]
 @onready var removed_itens: Array
 @onready var added_itens: Array
 
+@onready var shop_level : int = 0
 
 var item_list_level : int = 0:
 	set(new_value):
@@ -37,13 +38,15 @@ func _ready() -> void:
 func update_item_list():
 	added_itens = []
 	removed_itens = []
-	if Globals.satisfaction_level >= 0 and Globals.satisfaction_level < 10:
+	if Globals.satisfaction_level >= 0 and Globals.satisfaction_level < 10 and shop_level == 0:
 		print("by")
 		_filter_to_remove(games_list, [load("res://Resources-shop/slot_mac.tres")])
 		_filter_to_add(decoration_list, [load("res://Resources-shop/table.tres")])
-	if Globals.satisfaction_level >= 10:
+		shop_level = 1
+	if Globals.satisfaction_level >= 10 and shop_level == 1:
 		print("oi")
 		_filter_to_add(games_list, [load("res://Resources-shop/slot_mac.tres")])
+		shop_level = 2
 		
 	if get_parent().get_node_or_null("World") != null:
 		$"../World/Shop Menu/Shop".update_shop_contents.emit(_sort_by_type(added_itens), _sort_by_type(removed_itens))

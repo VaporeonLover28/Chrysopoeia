@@ -63,15 +63,6 @@ func _buy_item(object_being_purchased: Control):
 				ring_door.bought_ring_key.emit()
 			else:
 				world_scene.get_node("Player")._start_bulding_phase(object_being_purchased.item_resource.item_scene)
-				match [object_being_purchased.item_resource.name, PurchasableItemList.item_list_level]:
-					["Slot Machine", 0]:
-						PurchasableItemList.item_list_level += 1
-					["Black jack", 1]:
-						PurchasableItemList.item_list_level += 1
-					["Bar", 2]:
-						PurchasableItemList.item_list_level += 1
-					["Chipped Key", 3]:
-						PurchasableItemList.item_list_level += 1
 		else:
 			if Globals.spell_inventory_list.size() < 2:
 				#Globals.money -= object_being_purchased.item_resource.price
