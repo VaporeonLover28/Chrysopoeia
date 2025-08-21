@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdsx00dx2ajx0"
-path.s3tc="res://.godot/imported/CaçaNiquel_RECKRECKRECK.png-adc73b3da2904ff8302a763623064a0c.s3tc.ctex"
+uid="uid://b4ordp406dmhx"
+path.s3tc="res://.godot/imported/king_posed_-_medieval_fantasy_challenge_Image_0.png-26bf1f208aadad2e6efa502fccdb5e18.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "87c12567bc73128591f65089e117139a"
+"md5": "dbfa7f3a945ba1c73a578c70aa63403a"
 }
 
 [deps]
 
-source_file="res://Assets/Originals/Slot_Machice/CaçaNiquel_RECKRECKRECK.png"
-dest_files=["res://.godot/imported/CaçaNiquel_RECKRECKRECK.png-adc73b3da2904ff8302a763623064a0c.s3tc.ctex"]
+source_file="res://Assets/Exports/glTF/king_posed_-_medieval_fantasy_challenge_Image_0.png"
+dest_files=["res://.godot/imported/king_posed_-_medieval_fantasy_challenge_Image_0.png-26bf1f208aadad2e6efa502fccdb5e18.s3tc.ctex"]
 
 [params]
 

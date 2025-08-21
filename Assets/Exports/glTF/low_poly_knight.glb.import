@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://by0uob4gcn5me"
-path="res://.godot/imported/Cage_Small.gltf-1c5af579fc4a5e090681dfd0aa3861de.scn"
+uid="uid://bmfmh5aro1x6v"
+path="res://.godot/imported/low_poly_knight.glb-8387e79fafbcb88cb342a674750bc6fa.scn"
 
 [deps]
 
-source_file="res://Assets/Exports/glTF/Cage_Small.gltf"
-dest_files=["res://.godot/imported/Cage_Small.gltf-1c5af579fc4a5e090681dfd0aa3861de.scn"]
+source_file="res://Assets/Exports/glTF/low_poly_knight.glb"
+dest_files=["res://.godot/imported/low_poly_knight.glb-8387e79fafbcb88cb342a674750bc6fa.scn"]
 
 [params]
 

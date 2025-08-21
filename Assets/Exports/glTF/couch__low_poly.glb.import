@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dmnquo7xaroxr"
-path="res://.godot/imported/FarmCrate_Empty.gltf-a745253c0d9ee97e60b3e3e210e55832.scn"
+uid="uid://yjfio2efhl5q"
+path="res://.godot/imported/couch__low_poly.glb-55fd4ea1cbed1f551226dd9055ec0285.scn"
 
 [deps]
 
-source_file="res://Assets/Exports/glTF/FarmCrate_Empty.gltf"
-dest_files=["res://.godot/imported/FarmCrate_Empty.gltf-a745253c0d9ee97e60b3e3e210e55832.scn"]
+source_file="res://Assets/Exports/glTF/couch__low_poly.glb"
+dest_files=["res://.godot/imported/couch__low_poly.glb-55fd4ea1cbed1f551226dd9055ec0285.scn"]
 
 [params]
 

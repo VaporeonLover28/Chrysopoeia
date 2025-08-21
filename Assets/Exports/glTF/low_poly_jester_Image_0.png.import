@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdsx00dx2ajx0"
-path.s3tc="res://.godot/imported/CaçaNiquel_RECKRECKRECK.png-adc73b3da2904ff8302a763623064a0c.s3tc.ctex"
+uid="uid://05igk8gbhmu3"
+path.s3tc="res://.godot/imported/low_poly_jester_Image_0.png-54ad2b766e2bfcc385e7ba0d9c084ec7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "87c12567bc73128591f65089e117139a"
+"md5": "91a750d93428e74f75746f1932b6115b"
 }
 
 [deps]
 
-source_file="res://Assets/Originals/Slot_Machice/CaçaNiquel_RECKRECKRECK.png"
-dest_files=["res://.godot/imported/CaçaNiquel_RECKRECKRECK.png-adc73b3da2904ff8302a763623064a0c.s3tc.ctex"]
+source_file="res://Assets/Exports/glTF/low_poly_jester_Image_0.png"
+dest_files=["res://.godot/imported/low_poly_jester_Image_0.png-54ad2b766e2bfcc385e7ba0d9c084ec7.s3tc.ctex"]
 
 [params]
 
