@@ -3206,7 +3206,6 @@ visible = false
 environment = SubResource("Environment_6uqi0")
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
-quality = 2
 bounce_indirect_energy = 0.5
 light_data = ExtResource("34_82dmg")
 

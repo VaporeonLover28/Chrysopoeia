@@ -2,6 +2,8 @@ extends PanelContainer
 
 @onready var border: MarginContainer = $MarginContainer
 @onready var vbox: VBoxContainer = $MarginContainer/VBoxContainer
+@onready var value: ProgressBar = $Disappear/progress
+@onready var time_left: Timer = $Disappear/time_left
 
 @export var tutorial : String
 @export var dis_time : float
@@ -15,6 +17,8 @@ extends PanelContainer
 func _ready() -> void:
 	size = vec_size
 	position = pos
+	value.size = Vector2(vec_size.x, 4)
+	value.position.y = size.y - 22
 	match panel_type:
 		0:
 			var label = Label.new()
@@ -57,3 +61,15 @@ func _ready() -> void:
 			key_label.uppercase = true
 			key_label.text = key_text
 			vbox.add_child(key_label)
+	
+	if dis_time > 0:
+		time_left.start(dis_time)
+
+func _process(delta: float) -> void:
+	if !time_left.is_stopped():
+		value.value = time_left.time_left / dis_time * 100
+
+func _on_time_left_timeout() -> void:
+	##marks this panel's preset tutorial to already shown in the manager
+	TutorialManager.tutorials[tutorial] = true
+	queue_free()

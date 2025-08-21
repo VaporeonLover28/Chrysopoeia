@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c4rp73faok6gh"
-path="res://.godot/imported/Crate_Metal.gltf-40e29efd8848f45151db356538fdcf71.scn"
+uid="uid://cm26qorffko5q"
+path="res://.godot/imported/low_poly_jester.glb-c6eb720460c646d12be0841c4f121548.scn"
 
 [deps]
 
-source_file="res://Assets/Exports/glTF/Crate_Metal.gltf"
-dest_files=["res://.godot/imported/Crate_Metal.gltf-40e29efd8848f45151db356538fdcf71.scn"]
+source_file="res://Assets/Exports/glTF/low_poly_jester.glb"
+dest_files=["res://.godot/imported/low_poly_jester.glb-c6eb720460c646d12be0841c4f121548.scn"]
 
 [params]
 

@@ -96,12 +96,26 @@ func _ready() -> void:
 		await get_tree().create_timer(1).timeout
 		var tut_inst = tut_panel.instantiate()
 		tut_inst.tutorial = "movement"
-		tut_inst.dis_time = 10.0
-		tut_inst.vec_size = Vector2(200, 100)
+		tut_inst.dis_time = 1.0
+		tut_inst.vec_size = Vector2(200, 173)
 		tut_inst.pos = Vector2(930, 260)
 		tut_inst.panel_type = 0
-		tut_inst.text = "Thank you for purchasing the deed to Chrysopoeia Tavern! The place is all yours.\n\nWalk around using WASD and explore!"
+		tut_inst.text = "Thank you for purchasing the deed to Chrysopoeia " +\
+		"Tavern! The place is all yours.\n\nWalk around using WASD and explore!"
 		tutorial.add_child(tut_inst)
+		await get_tree().create_timer(3).timeout
+		$"HUD/money_box".visible = true
+		var tut_inst2 = tut_panel.instantiate()
+		tut_inst2.tutorial = "open_shop"
+		tut_inst2.dis_time = 0
+		tut_inst2.vec_size = Vector2(200, 203)
+		tut_inst2.pos = Vector2(890, 260)
+		tut_inst2.panel_type = 1
+		tut_inst2.text = "This place is big, but still empty. This way " +\
+		"nobody's gonna come here."
+		tut_inst2.key = load("res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_b_outline.png")
+		tut_inst2.key_text = "shop"
+		tutorial.add_child(tut_inst2)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("z"):

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dw30a01wpyvjx"
-path="res://.godot/imported/Cauldron.gltf-61754418da92de523bf60cecf4125e48.scn"
+uid="uid://cq8kuejvr7w7b"
+path="res://.godot/imported/guest_male_1_-_medieval_fantasy_challenge.glb-a440c731ce5e2da2390f6fc35b0afab3.scn"
 
 [deps]
 
-source_file="res://Assets/Exports/glTF/Cauldron.gltf"
-dest_files=["res://.godot/imported/Cauldron.gltf-61754418da92de523bf60cecf4125e48.scn"]
+source_file="res://Assets/Exports/glTF/guest_male_1_-_medieval_fantasy_challenge.glb"
+dest_files=["res://.godot/imported/guest_male_1_-_medieval_fantasy_challenge.glb-a440c731ce5e2da2390f6fc35b0afab3.scn"]
 
 [params]
 
