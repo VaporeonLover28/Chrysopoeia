@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://ded1ab0u3v2ko"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://ded1ab0u3v2ko"]
 
 [ext_resource type="FontFile" uid="uid://4y6u2ai8c7lq" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-Bold.ttf" id="1_0rrr3"]
 
@@ -15,6 +15,11 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 anti_aliasing = false
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0rrr3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jki5i"]
+bg_color = Color(0.605674, 1.66051e-06, 3.85046e-07, 1)
+
 [resource]
 HSlider/icons/grabber_disabled = null
 HSlider/icons/grabber_highlight = null
@@ -26,3 +31,5 @@ MarginContainer/constants/margin_left = 20
 MarginContainer/constants/margin_right = 20
 MarginContainer/constants/margin_top = 20
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_0rrr3")
+ProgressBar/styles/background = SubResource("StyleBoxEmpty_0rrr3")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_jki5i")
