@@ -6,7 +6,7 @@ signal bought_ring_key
 
 func _ready() -> void:
 	if Globals.ring_unlock == true:
-		_remove_wall()
+			_remove_wall()
 		
 func _remove_wall():
 	print("remove door")

@@ -40,7 +40,7 @@ func buy_drink():
 				Globals.aqua_philosophorum_timer.stop()
 			"Aqua Regia":
 				Globals.aqua_fortis_active = false
-				Globals.aqua_regia_timer.start(18000000)
+				Globals.aqua_regia_timer.start(180)
 				print(Globals.aqua_regia_timer.time_left)
 				Globals.aqua_philosophorum_timer.stop()
 			"Aqua Philosophorum":
@@ -66,7 +66,7 @@ func select_drink(chosen_drink):
 
 func clear_selection():
 	get_parent().visible = false
-	save_bar_reference._cancel_interact_Bar(save_bar_reference.sit_positions.save_player_ref)
+	save_bar_reference._cancel_interact_Bar(get_parent().get_parent().get_node("Player"))
 	drink_name.text = "Select a potion to view description"
 	sprite.visible = false
 	description.visible = false

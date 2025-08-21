@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgpmrktn2aurk"]
+
+[ext_resource type="PackedScene" uid="uid://ceplhjmvmqltv" path="res://Assets/Originals/Magorigado.glb" id="1_l360k"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xmrl0"]
+radius = 0.470618
+height = 2.10234
+
+[node name="Mago Bar" type="CharacterBody3D"]
+
+[node name="Magorigado" parent="." instance=ExtResource("1_l360k")]
+transform = Transform3D(3.57746e-09, 0, -0.3, 0, 0.3, 0, 0.3, 0, 3.57746e-09, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200053, 0.96957, 0.0697029)
+shape = SubResource("CapsuleShape3D_xmrl0")

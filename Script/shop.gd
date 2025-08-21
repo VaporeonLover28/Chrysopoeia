@@ -11,6 +11,8 @@ extends Control
 @onready var world_scene = $"../../"
 @onready var money_label: Label = $Margin/Top_Bar/Money_Label
 @onready var ring_door = $"../../NavigationRegion3D/cassino/door4"
+@onready var bar: Node3D = $"../../NavigationRegion3D/All Interactable Spots/Bar"
+
 @onready var bg = $"../bg"
 
 signal wait_for_spell_change
@@ -34,7 +36,7 @@ func _show_shop_menu():
 		Globals.game_paused = true
 		spell_option_box_container.visible = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		
+	
 		if tween:
 			tween.kill()
 		
@@ -76,10 +78,15 @@ func _buy_item(object_being_purchased: Control):
 				#Globals.money -= object_being_purchased.item_resource.price
 				Globals.ring_unlock = true
 				PurchasableItemList._filter_to_remove(PurchasableItemList.games_list, [load("res://Resources-shop/ring_key.tres")])
+				PurchasableItemList.added_itens = []
+				update_shop_contents.emit(PurchasableItemList._sort_by_type(PurchasableItemList.added_itens), PurchasableItemList._sort_by_type(PurchasableItemList.removed_itens))
 				ring_door.bought_ring_key.emit()
 			elif object_being_purchased.item_resource.name == "Bar":
 				Globals.bar_unlock = true
 				PurchasableItemList._filter_to_remove(PurchasableItemList.games_list, [load("res://Resources-shop/bar.tres")])
+				PurchasableItemList.added_itens = []
+				update_shop_contents.emit(PurchasableItemList._sort_by_type(PurchasableItemList.added_itens), PurchasableItemList._sort_by_type(PurchasableItemList.removed_itens))
+				bar.bought_bar.emit()
 				
 			else:
 				world_scene.get_node("Player")._start_bulding_phase(object_being_purchased.item_resource.item_scene)
@@ -154,6 +161,7 @@ func _on_update_shop_contents(added_itens: Array[Array], removed_itens: Array[Ar
 func _remove_objects(area_of_shop: HBoxContainer, objects_to_be_removed: Array):
 	for buyable_object in area_of_shop.get_children():
 		for itens_to_be_removed in objects_to_be_removed:
+			print("remove")
 			if buyable_object.item_resource == itens_to_be_removed:
 				buyable_object.queue_free()
 	

@@ -55,6 +55,7 @@ func _stand_character_up(object_ref):
 	var smallest_distance : float = 10
 	print("stand")
 	for item in self.get_child_count():
+		print(object_ref)
 		print(self.name + " " + str(object_ref.global_position.distance_to(self.get_child(item).global_position)))
 		print(chair_postion_list[item][1] == true)
 		if smallest_distance > object_ref.global_position.distance_to(self.get_child(item).global_position)\

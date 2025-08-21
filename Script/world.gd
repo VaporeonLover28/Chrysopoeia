@@ -116,8 +116,8 @@ func _spawn_npc():
 		
 		if NPC_to_spawn.scene_file_path == "res://Scenes/mage.tscn" and \
 		_see_number_of_NPC_type(NPC_to_spawn.scene_file_path) < maximum_number_of_mages:
-			NPC_to_spawn.position = Vector3(0,0.5,0)
 			walking_npcs.add_child(NPC_to_spawn)
+			NPC_to_spawn.position = Vector3(0,0.5,0)
 			is_trying_to_spawn_npc = false
 			
 		if NPC_to_spawn.scene_file_path == "res://Scenes/knight.tscn" and \
