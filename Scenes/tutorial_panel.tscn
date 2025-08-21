@@ -10,7 +10,7 @@ offset_bottom = 200.0
 theme = ExtResource("1_8o4m8")
 script = ExtResource("2_ekx5x")
 panel_type = 1
-text = "You have unlocked the McGuffin! Press 0 to explode at will!"
+text = "Thank you for purchasing the deed to Chrysopoeia Tavern! The place is all yours. Walk around using WASD and explore!"
 key = ExtResource("3_eykno")
 key_text = "Tralalero"
 
@@ -20,3 +20,6 @@ theme = ExtResource("1_8o4m8")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+
+[node name="disappear" type="Timer" parent="."]
+one_shot = true

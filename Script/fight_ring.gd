@@ -72,7 +72,7 @@ func _ready() -> void:
 				creature_dir_type = "Focused"
 				creature_name = "Focused "
 			
-		creature_type_picker = randi_range(1, 5)
+		creature_type_picker = randi_range(1, 4)
 		##Attack AI types
 		match creature_type_picker:
 			1:
@@ -87,9 +87,9 @@ func _ready() -> void:
 			4:
 				creature_atk_type = "Gambler"
 				creature_name += "Gambler "
-			5:
-				creature_atk_type = "Tickler"
-				creature_name += "Tickler "
+			#5:
+				#creature_atk_type = "Tickler"
+				#creature_name += "Tickler "
 		var name_picker = randi_range(1, 100)
 		##Easter egg lmao
 		if name_picker != 100:

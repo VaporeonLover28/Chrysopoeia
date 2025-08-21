@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://fw326cacay8v"]
 
-[ext_resource type="Script" uid="uid://ct7e4mcymyu3v" path="res://Scenes/spell_menu.gd" id="1_ls74s"]
+[ext_resource type="Script" uid="uid://ct7e4mcymyu3v" path="res://Script/spell_menu.gd" id="1_ls74s"]
 [ext_resource type="Texture2D" uid="uid://wetbh3qngmmh" path="res://Assets/Originals/spellot.png" id="2_5m44h"]
 [ext_resource type="FontFile" uid="uid://paxjlxvek7jf" path="res://Assets/Fonts/ransite_medieval/RansiteMedieval_PERSONAL_USE_ONLY.otf" id="3_eui55"]
 [ext_resource type="Texture2D" uid="uid://bpctb6libewyu" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_s.png" id="4_sbtxl"]

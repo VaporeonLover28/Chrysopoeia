@@ -63,3 +63,5 @@ autostart = true
 [connection signal="navigation_finished" from="nav" to="." method="_on_nav_navigation_finished"]
 [connection signal="timeout" from="idle" to="." method="_on_idle_timeout"]
 [connection signal="timeout" from="Get Away Timer" to="." method="_on_get_away_timer_timeout"]
+
+[editable path="Magorigado"]

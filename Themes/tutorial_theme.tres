@@ -3,7 +3,7 @@
 [ext_resource type="FontFile" uid="uid://4y6u2ai8c7lq" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-Bold.ttf" id="1_0rrr3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rrr3"]
-bg_color = Color(0.730742, 2.87581e-06, 5.77569e-07, 1)
+bg_color = Color(0.817316, 3.92266e-06, 3.85046e-07, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -16,6 +16,9 @@ corner_radius_bottom_left = 15
 anti_aliasing = false
 
 [resource]
+HSlider/icons/grabber_disabled = null
+HSlider/icons/grabber_highlight = null
+HSlider/icons/tick = null
 Label/font_sizes/font_size = 12
 Label/fonts/font = ExtResource("1_0rrr3")
 MarginContainer/constants/margin_bottom = 20

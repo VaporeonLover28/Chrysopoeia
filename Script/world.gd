@@ -1,5 +1,6 @@
 extends Node3D
 
+@onready var tut_panel = preload("res://Scenes/tutorial_panel.tscn")
 @onready var npc = preload("res://Scenes/npc.tscn")
 @onready var player: CharacterBody3D = $Player
 @onready var walking_npcs: Node = $Walking_NPCs
@@ -7,6 +8,7 @@ extends Node3D
 @onready var all_non_interactable_objects: Node = $"NavigationRegion3D/All non interactable objects"
 @onready var npc_spwaner_timer: Timer = $"NPC Spwaner Timer"
 @onready var player_recon: Area3D = $NavigationRegion3D/cassino/fight_ring/player_recon
+@onready var tutorial: CanvasLayer = $Tutorial
 
 var is_trying_to_spawn_npc: bool = false
 
@@ -90,13 +92,23 @@ func _ready() -> void:
 	Globals.save_npcs_pos = []
 	Globals.save_objects = []
 	Globals.save_player_pos = Vector3()
+	if !TutorialManager.tutorials["movement"]:
+		await get_tree().create_timer(1).timeout
+		var tut_inst = tut_panel.instantiate()
+		tut_inst.tutorial = "movement"
+		tut_inst.dis_time = 10.0
+		tut_inst.vec_size = Vector2(200, 100)
+		tut_inst.pos = Vector2(930, 260)
+		tut_inst.panel_type = 0
+		tut_inst.text = "Thank you for purchasing the deed to Chrysopoeia Tavern! The place is all yours.\n\nWalk around using WASD and explore!"
+		tutorial.add_child(tut_inst)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("z"):
 		SaveScript._save_function(self, 0)
 	if Input.is_action_just_pressed("x"):
 		SaveScript._load_function(0)
- 	
+	
 func _spawn_npc():
 	is_trying_to_spawn_npc = true
 	while is_trying_to_spawn_npc == true:

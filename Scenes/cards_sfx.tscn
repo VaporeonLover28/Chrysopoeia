@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://drerme36gy1ha"]
 
-[ext_resource type="Script" uid="uid://byp1l41kbrh8t" path="res://Scenes/cards_sfx.gd" id="1_0uckc"]
+[ext_resource type="Script" uid="uid://byp1l41kbrh8t" path="res://Script/cards_sfx.gd" id="1_0uckc"]
 [ext_resource type="AudioStream" uid="uid://wekyfymit0kv" path="res://SFX/cartas/virando_cartas.wav" id="1_qwftu"]
 [ext_resource type="AudioStream" uid="uid://bthle7pns5iu0" path="res://SFX/cartas/cartas_01.wav" id="2_0uckc"]
 [ext_resource type="AudioStream" uid="uid://njito3v2ctaa" path="res://SFX/cartas/cartas_02.wav" id="3_m21jy"]

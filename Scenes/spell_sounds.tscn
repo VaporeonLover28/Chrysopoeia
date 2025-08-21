@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://cd5bt6c5m38ip"]
 
 [ext_resource type="AudioStream" uid="uid://cipvlgyl86pw1" path="res://SFX/feitiços/ad_maiorem_01.wav" id="1_amnbd"]
-[ext_resource type="Script" uid="uid://c8u01p44sp13p" path="res://Scenes/spell_sounds.gd" id="1_u8ese"]
+[ext_resource type="Script" uid="uid://c8u01p44sp13p" path="res://Script/spell_sounds.gd" id="1_u8ese"]
 [ext_resource type="AudioStream" uid="uid://78aueybu5nkh" path="res://SFX/feitiços/ad_maiorem_02.wav" id="2_u8ese"]
 [ext_resource type="AudioStream" uid="uid://b5dd4q2g4stmr" path="res://SFX/feitiços/auri_sacra_01.wav" id="3_rk6ag"]
 [ext_resource type="AudioStream" uid="uid://r8nlxfca6fvv" path="res://SFX/feitiços/auri_sacra_02.wav" id="4_6t0uy"]

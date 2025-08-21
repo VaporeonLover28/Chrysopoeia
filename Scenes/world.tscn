@@ -3171,6 +3171,9 @@ maximum_time_for_spawn_npc = 180.0
 
 [node name="HUD" parent="." instance=ExtResource("2_pyn1s")]
 
+[node name="money_box" parent="HUD" index="1"]
+visible = false
+
 [node name="Shop Menu" parent="." instance=ExtResource("2_7yui6")]
 offset = Vector2(0, 655)
 transform = Transform2D(1, 0, 0, 1, 0, 655)
@@ -3186,10 +3189,17 @@ frame_progress = 0.0
 [node name="Bar UI" parent="." instance=ExtResource("3_e0ngr")]
 visible = false
 
+[node name="Tutorial" type="CanvasLayer" parent="."]
+
 [node name="Pause" parent="." instance=ExtResource("21_yq1aw")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6uqi0")
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+quality = 2
+bounce_indirect_energy = 0.5
+light_data = ExtResource("34_82dmg")
 
 [node name="Walking_NPCs" type="Node" parent="."]
 
@@ -3757,7 +3767,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.57682, 4.48004, -11.178)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0349922, -1.20608, 0.130798)
 light_energy = 1.0
 shadow_bias = 0.0
-omni_range = 681.626
+omni_range = 12.599
 
 [node name="Chandelier2" parent="NavigationRegion3D/cassino" instance=ExtResource("50_cvubk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4998, 4.48004, -13.3569)
@@ -3766,7 +3776,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4998, 4.48004, -13.3569)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0349922, -1.20608, 0.130798)
 light_energy = 1.0
 shadow_bias = 0.0
-omni_range = 681.626
+omni_range = 7.178
 
 [node name="All Interactable Spots" type="Node3D" parent="NavigationRegion3D"]
 
@@ -4490,11 +4500,6 @@ skeleton = NodePath("")
 [node name="barbuitobonito" parent="." instance=ExtResource("30_o2rbt")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.0218, 0.632395, -16.9854)
 
-[node name="LightmapGI" type="LightmapGI" parent="."]
-bounces = 2
-bounce_indirect_energy = 0.5
-light_data = ExtResource("34_82dmg")
-
 [connection signal="timeout" from="NPC Spwaner Timer" to="." method="_spawn_npc"]
 [connection signal="update_hud" from="Shop Menu/Shop" to="HUD" method="update_spell_slots"]
 [connection signal="bought_ring_key" from="NavigationRegion3D/cassino/door4" to="NavigationRegion3D/cassino/door4" method="_remove_wall"]
@@ -4503,6 +4508,7 @@ light_data = ExtResource("34_82dmg")
 [connection signal="timeout" from="NavigationRegion3D/cassino/fight_ring/ringlight/change" to="NavigationRegion3D/cassino/fight_ring/ringlight" method="_on_change_timeout"]
 [connection signal="timeout" from="fabbreh/Timer" to="fabbreh" method="_on_timer_timeout"]
 
+[editable path="HUD"]
 [editable path="Shop Menu"]
 [editable path="NavigationRegion3D/praredelend"]
 [editable path="NavigationRegion3D/praredelend2"]

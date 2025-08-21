@@ -26,6 +26,7 @@ HomunculosSfx="*res://Scenes/homunculos_sfx.tscn"
 BuildingSfx="*res://Scenes/building.tscn"
 CoinEarned="*res://Scenes/coin_earned.tscn"
 SpellSounds="*res://Scenes/spell_sounds.tscn"
+TutorialManager="*res://Script/Tutorial_Manager.gd"
 
 [display]
 
