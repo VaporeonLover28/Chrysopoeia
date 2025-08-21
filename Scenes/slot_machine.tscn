@@ -116,6 +116,7 @@ action = "Fortune"
 
 [node name="Sell_Satisfation Value" parent="." instance=ExtResource("7_pyjcy")]
 sell_value = 90
+satisfaction_value = 10
 
 [node name="start" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.947295, 0)

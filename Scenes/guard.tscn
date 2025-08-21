@@ -20,6 +20,8 @@ minimum_time_for_idle = 5.0
 maximum_time_for_idle = 7.0
 minimum_time_for_TIOT = 14.0
 maximum_time_for_TIOT = 26.0
+minimum_money = 300
+maximum_money = 666
 metadata/_custom_type_script = "uid://d3u1aaam68bee"
 
 [node name="Leave Interaction" type="Timer" parent="."]
@@ -51,6 +53,7 @@ shape = SubResource("CapsuleShape3D_nsuie")
 
 [node name="Interacatable object Detection Area" type="Area3D" parent="."]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+collision_layer = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interacatable object Detection Area"]
 shape = SubResource("SphereShape3D_rrk28")

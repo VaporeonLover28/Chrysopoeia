@@ -278,7 +278,7 @@ func _build():
 			world_scene.get_node("NavigationRegion3D").get_node("All Interactable Spots").add_child(instantiate_object)
 		else:
 			world_scene.get_node("NavigationRegion3D").get_node("All non interactable objects").add_child(instantiate_object)
-		instantiate_object.global_position = ray_builder_1.get_child(0).global_position - Vector3(0, 1.5, 0)
+		instantiate_object.global_position = ray_builder_1.get_child(0).global_position - Vector3(0, 1, 0)
 		world_scene.get_node("NavigationRegion3D").bake_navigation_mesh()
 		is_on_building_mode = false
 		current_object_being_purchased = null
@@ -329,7 +329,7 @@ func lock_model_into_build_spot():
 	and ray_builder.get_collider().is_in_group(ray_builder_1.get_child(0).get_groups()[0])\
 	and ray_builder_1.get_child(0).get_child(-1).has_overlapping_bodies() == false\
 	and ray_builder.get_collider().get_parent().taken == false:
-		ray_builder_1.get_child(0).global_position = ray_builder.get_collider().get_parent().global_position
+		ray_builder_1.get_child(0).global_position = ray_builder.get_collider().get_parent().global_position - Vector3(0, 0.5, 0)
 		ray_builder_1.get_child(0).rotation = ray_builder_1.get_child(0).rotation  + ray_builder.get_collider().get_parent().rotation
 		can_build = true
 		for item in ray_builder_1.get_child(0).get_child(0).get_child(0).mesh.get_surface_count():
@@ -341,7 +341,8 @@ func lock_model_into_build_spot():
 	and ray_builder.get_collider().get_name() == "Area build spot"\
 	and ray_builder.get_collider().is_in_group(ray_builder_1.get_child(0).get_groups()[0])\
 	and ray_builder_1.get_child(0).get_child(-1).has_overlapping_bodies() == true:
-		ray_builder_1.get_child(0).global_position = ray_builder.get_collider().get_parent().global_position - Vector3(0, 1.5, 0)
+		print("hey")
+		ray_builder_1.get_child(0).global_position = ray_builder.get_collider().get_parent().global_position - Vector3(0, 0.5, 0)
 		can_build = false
 		for item in ray_builder_1.get_child(0).get_child(0).get_child(0).mesh.get_surface_count():
 			ray_builder_1.get_child(0).get_child(0).get_child(0).mesh.surface_get_material(item).next_pass.set_shader_parameter("outline_color", Color.RED)

@@ -17,6 +17,7 @@ func _save_function(world_scene: Node3D, save_file_number: int):
 	new_config.set_value("Globalvaribles", "money", Globals.money)
 	new_config.set_value("Globalvaribles", "spells", Globals.spell_inventory_list)
 	new_config.set_value("Globalvaribles", "satisfaction_level", Globals.satisfaction_level)
+	new_config.set_value("Globalvaribles", "bar_unlock", Globals.bar_unlock)
 	new_config.set_value("Globalvaribles", "ring_unlock", Globals.ring_unlock)
 	new_config.set_value("Globalvaribles", "Aqua Vitae Timer", Globals.aqua_vitae_timer.time_left)
 	new_config.set_value("Globalvaribles", "Aqua Fortis Active", Globals.aqua_fortis_active)
@@ -53,6 +54,7 @@ func _load_function(save_file_number: int):
 		Globals.money = new_config.get_value("Globalvaribles", "money")
 		Globals.satisfaction_level = new_config.get_value("Globalvaribles", "satisfaction_level")
 		PurchasableItemList.item_list_level = new_config.get_value("Globalvaribles", "item_list_level")
+		Globals.bar_unlock = new_config.get_value("Globalvaribles", "bar_unlock", Globals.bar_unlock)
 		Globals.ring_unlock = new_config.get_value("Globalvaribles", "ring_unlock")
 		if new_config.get_value("Globalvaribles", "Aqua Vitae Timer") > 0:
 			Globals.aqua_vitae_timer.start(new_config.get_value("Globalvaribles", "Aqua Vitae Timer"))

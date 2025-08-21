@@ -118,7 +118,7 @@ shadow_mesh = SubResource("ArrayMesh_iox7g")
 [sub_resource type="BoxShape3D" id="BoxShape3D_ughjk"]
 size = Vector3(0.685646, 1.11253, 0.632254)
 
-[node name="Chair" type="StaticBody3D" groups=["Ground_object"]]
+[node name="Chair" type="StaticBody3D" groups=["Chair_object"]]
 
 [node name="Chair_12" parent="." instance=ExtResource("1_nsp1p")]
 
@@ -131,5 +131,6 @@ shape = SubResource("BoxShape3D_ughjk")
 
 [node name="Sell_Satisfation Value" parent="." instance=ExtResource("2_ughjk")]
 sell_value = 50
+satisfaction_value = 5
 
 [editable path="Chair_12"]

@@ -49,7 +49,6 @@ func _physics_process(delta: float) -> void:
 		if is_instance_valid(targeted_position_is_object) == true and targeted_position_is_object is InteractableObject and is_on_interaction == false:
 			_go_to_interactable_object()
 		
-			
 		move_and_slide()
 
 func _walk_to(target_positon : Vector3):

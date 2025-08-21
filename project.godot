@@ -41,6 +41,7 @@ Doors=""
 Ground_object=""
 Table_object=""
 ceiling_object=""
+Chair_object=""
 
 [input]
 

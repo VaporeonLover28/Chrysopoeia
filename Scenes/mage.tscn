@@ -18,6 +18,9 @@ minimum_time_for_idle = 1.0
 maximum_time_for_idle = 3.0
 minimum_time_for_TIOT = 15.0
 maximum_time_for_TIOT = 20.0
+chance_to_choose_favorite_game = 50
+minimum_money = 50
+maximum_money = 1000
 metadata/_custom_type_script = "uid://d3u1aaam68bee"
 
 [node name="Leave Interaction" type="Timer" parent="."]
@@ -46,7 +49,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_f3bfq")
 shape = SubResource("CapsuleShape3D_ysgl8")
 
 [node name="Interacatable object Detection Area" type="Area3D" parent="."]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+transform = Transform3D(2000, 0, 0, 0, 2000, 0, 0, 0, 2000, 0, 0, 0)
+collision_layer = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interacatable object Detection Area"]
 shape = SubResource("SphereShape3D_y4der")

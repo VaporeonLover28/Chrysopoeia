@@ -148,3 +148,4 @@ chair_postion_list = Array[Array]([[Vector3(0, 0, 2.2), true]])
 
 [node name="Sell_Satisfation Value" parent="." instance=ExtResource("3_or8fe")]
 sell_value = 200
+satisfaction_value = 35

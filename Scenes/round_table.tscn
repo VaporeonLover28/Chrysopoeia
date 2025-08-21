@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://v0sieb00f01a"]
+[gd_scene load_steps=11 format=4 uid="uid://v0sieb00f01a"]
 
 [ext_resource type="PackedScene" uid="uid://c6jqyf306la64" path="res://Scenes/sell_satisfation_value.tscn" id="1_w4grq"]
 [ext_resource type="Script" uid="uid://b1mjwd0321b81" path="res://Script/build_spot.gd" id="2_8aala"]
@@ -47,8 +47,8 @@ shadow_mesh = SubResource("ArrayMesh_li6fb")
 height = 0.0512813
 radius = 0.977051
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ic0uy"]
-size = Vector3(0.928459, 0.619591, 0.999219)
+[sub_resource type="BoxShape3D" id="BoxShape3D_8aala"]
+size = Vector3(0.96167, 0.731934, 0.98877)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0jux3"]
 resource_local_to_scene = true
@@ -58,14 +58,17 @@ albedo_color = Color(0, 1, 0, 0.286275)
 [sub_resource type="PlaneMesh" id="PlaneMesh_klv87"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_0jux3")
-size = Vector2(1, 1)
+size = Vector2(1.75, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ic0uy"]
+size = Vector3(1.83316, 1.65982, 1.61044)
 
 [node name="Round Table" type="StaticBody3D" groups=["Ground_object"]]
 
 [node name="Round table" type="Node3D" parent="."]
 
 [node name="Round_Material_001_0" type="MeshInstance3D" parent="Round table"]
-transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -0.0921344, 2.22045e-16, 0.0126138)
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0.0690674, 0)
 mesh = SubResource("ArrayMesh_4a7hk")
 skeleton = NodePath("")
 
@@ -78,18 +81,79 @@ sell_value = 100
 satisfaction_value = 10
 
 [node name="Build_Spot" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.127924, 2.613, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.128, 1.25, 0)
 script = ExtResource("2_8aala")
 
-[node name="Area build spot" type="Area3D" parent="Build_Spot" groups=["Table_object"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.19186, 0)
+[node name="Area build spot" type="Area3D" parent="Build_Spot" groups=["Chair_object"]]
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Build_Spot/Area build spot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0101394, 0.00271273, 0.00727903)
-shape = SubResource("BoxShape3D_ic0uy")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0293044, 0.318338, 0.0128943)
+shape = SubResource("BoxShape3D_8aala")
 debug_color = Color(0, 1, 0, 1)
 
 [node name="Build Mesh" type="MeshInstance3D" parent="Build_Spot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.48413, 0)
+mesh = SubResource("PlaneMesh_klv87")
+
+[node name="Build_Spot_Chair" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 1, 0)
+script = ExtResource("2_8aala")
+
+[node name="Area build spot" type="Area3D" parent="Build_Spot_Chair" groups=["Chair_object"]]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Build_Spot_Chair/Area build spot"]
+shape = SubResource("BoxShape3D_ic0uy")
+debug_color = Color(0, 1, 0, 1)
+
+[node name="Build Mesh" type="MeshInstance3D" parent="Build_Spot_Chair"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.802255, 0)
+mesh = SubResource("PlaneMesh_klv87")
+
+[node name="Build_Spot_Chair2" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 1, 0)
+script = ExtResource("2_8aala")
+
+[node name="Area build spot" type="Area3D" parent="Build_Spot_Chair2" groups=["Chair_object"]]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Build_Spot_Chair2/Area build spot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.242866, 0.0627229, 0.00727903)
+shape = SubResource("BoxShape3D_ic0uy")
+debug_color = Color(0, 1, 0, 1)
+
+[node name="Build Mesh" type="MeshInstance3D" parent="Build_Spot_Chair2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27452, -0.93612, 0)
+mesh = SubResource("PlaneMesh_klv87")
+
+[node name="Build_Spot_Chair3" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.75)
+script = ExtResource("2_8aala")
+
+[node name="Area build spot" type="Area3D" parent="Build_Spot_Chair3" groups=["Chair_object"]]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Build_Spot_Chair3/Area build spot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0101394, 0.0627229, 0.00727903)
+shape = SubResource("BoxShape3D_ic0uy")
+debug_color = Color(0, 1, 0, 1)
+
+[node name="Build Mesh" type="MeshInstance3D" parent="Build_Spot_Chair3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.231305, -0.868815, 0)
+mesh = SubResource("PlaneMesh_klv87")
+
+[node name="Build_Spot_Chair4" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1.75)
+script = ExtResource("2_8aala")
+
+[node name="Area build spot" type="Area3D" parent="Build_Spot_Chair4" groups=["Chair_object"]]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Build_Spot_Chair4/Area build spot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.296919)
+shape = SubResource("BoxShape3D_ic0uy")
+debug_color = Color(0, 1, 0, 1)
+
+[node name="Build Mesh" type="MeshInstance3D" parent="Build_Spot_Chair4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.835066, 0.255512)
 mesh = SubResource("PlaneMesh_klv87")

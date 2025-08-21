@@ -16,3 +16,4 @@ shape = SubResource("BoxShape3D_i6yl4")
 
 [node name="Sell_Satisfation Value" parent="." instance=ExtResource("2_i5q6g")]
 sell_value = 50
+satisfaction_value = 20

@@ -75,7 +75,12 @@ func _buy_item(object_being_purchased: Control):
 			if object_being_purchased.item_resource.name == "Chipped Key":
 				#Globals.money -= object_being_purchased.item_resource.price
 				Globals.ring_unlock = true
+				PurchasableItemList._filter_to_remove(PurchasableItemList.games_list, [load("res://Resources-shop/ring_key.tres")])
 				ring_door.bought_ring_key.emit()
+			elif object_being_purchased.item_resource.name == "Bar":
+				Globals.bar_unlock = true
+				PurchasableItemList._filter_to_remove(PurchasableItemList.games_list, [load("res://Resources-shop/bar.tres")])
+				
 			else:
 				world_scene.get_node("Player")._start_bulding_phase(object_being_purchased.item_resource.item_scene)
 		else:
