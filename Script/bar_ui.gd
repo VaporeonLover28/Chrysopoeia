@@ -41,7 +41,6 @@ func buy_drink():
 			"Aqua Regia":
 				Globals.aqua_fortis_active = false
 				Globals.aqua_regia_timer.start(180)
-				print(Globals.aqua_regia_timer.time_left)
 				Globals.aqua_philosophorum_timer.stop()
 			"Aqua Philosophorum":
 				Globals.aqua_fortis_active = false

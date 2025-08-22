@@ -15,9 +15,7 @@ var money: int = 100000:
 		if aqua_vitae_timer.time_left > 0 and (new_value - money) <= money and is_betting == true:
 			new_value += (new_value - money) * 4 / 100
 			aqua_vitae_timer.stop()
-		print(aqua_philosophorum_timer.time_left)
 		if aqua_philosophorum_timer.time_left > 0 and new_value <= 0:
-			print("aqua_philosophorum activated")
 			new_value = 110
 			aqua_philosophorum_timer.stop()
 		if aqua_regia_timer.time_left > 0 and is_betting == true:
@@ -37,6 +35,7 @@ var transiting_characters_to_gamble: Array[Array]
 var save_npcs_pos: Array[Array]
 var save_objects: Array[Array]
 var save_player_pos: Vector3 = Vector3()
+var save_build_spot : Array
 
 var money_lost: int = 8
 var spell_inventory_list: Array[PurchasableItemResource]
@@ -75,10 +74,9 @@ func check_spell_available(spell_name : String):
 		var spell_found := false
 		var spell_not_cd := false
 		for spell in spell_inventory_list:
-			print(spell.name)
 			if !spell_found:
 				if spell_name == spell.name:
-					print("spell found: " + spell.name)
+
 					spell_found = true
 					if spell.usable:
 						spell_not_cd = true

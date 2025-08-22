@@ -5,7 +5,7 @@ extends Marker3D
 @onready var area: Area3D = $"Area build spot"
 @onready var mesh: MeshInstance3D = $"Build Mesh"
 
-var taken := false
+@onready var taken := false
 
 var color_free := Color.hex(0x00ff0056)
 var color_taken := Color.hex(0xff000056)

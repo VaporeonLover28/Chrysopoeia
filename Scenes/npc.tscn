@@ -31,6 +31,7 @@ wait_time = 5.0
 one_shot = true
 
 [node name="nav" type="NavigationAgent3D" parent="."]
+path_postprocessing = 1
 simplify_path = true
 
 [node name="idle" type="Timer" parent="."]
@@ -49,6 +50,7 @@ shape = SubResource("CapsuleShape3D_acqhf")
 
 [node name="Interacatable object Detection Area" type="Area3D" parent="."]
 transform = Transform3D(100000, 0, 0, 0, 100000, 0, 0, 0, 100000, 0, 0, 0)
+collision_layer = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interacatable object Detection Area"]
 shape = SubResource("SphereShape3D_acqhf")

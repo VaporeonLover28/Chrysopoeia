@@ -32,7 +32,6 @@ var targeted_sitting_position : int = 20
 func _ready() -> void:
 	_walk_to(world_scene.get_node("Enter point for npc").position)
 	targeted_interactable_object_timer.start(randf_range(minimum_time_for_TIOT, maximum_time_for_TIOT))
-	print(money)
 
 func _physics_process(delta: float) -> void:
 	if Globals.game_paused == false:
@@ -46,7 +45,8 @@ func _physics_process(delta: float) -> void:
 		rotation.x = 0
 		rotation.z = 0
 			
-		if is_instance_valid(targeted_position_is_object) == true and targeted_position_is_object is InteractableObject and is_on_interaction == false:
+		if is_instance_valid(targeted_position_is_object) == true and targeted_position_is_object is InteractableObject and\
+		is_on_interaction == false and is_going_to_interaction == true:
 			_go_to_interactable_object()
 		
 		move_and_slide()
@@ -55,15 +55,15 @@ func _walk_to(target_positon : Vector3):
 	nav.set_target_position(target_positon)
 	
 func _go_to_interactable_object():
-	is_going_to_interaction = true
 	if nav.is_navigation_finished() == true:
+		targeted_position_is_object._interact([self])
 		is_going_to_interaction = false
 		is_on_interaction = true
-		targeted_position_is_object._interact([self])
 		print("sit")
 		leave_interaction.start()
 		get_away_timer.stop()
-		return
+	else:
+		is_going_to_interaction = true
 	if targeted_position_is_object.get_node_or_null("Sit positions") != null:
 		if targeted_position_is_object.get_node("Sit positions")._SICSOC(targeted_sitting_position) == true:
 			return
@@ -79,8 +79,12 @@ func _go_to_interactable_object():
 				targeted_position_is_object = null
 
 func chose_interactable_object():
+<<<<<<< Updated upstream
 	#print("chosed interactable object")
 	if Globals.game_paused == false:
+=======
+	if Globals.game_paused == false and is_going_to_interaction == false and is_on_interaction == false:
+>>>>>>> Stashed changes
 		idle.stop()
 		interacatable_object_detection_area.get_child(0).disabled = false
 		await get_tree().create_timer(0.5).timeout
@@ -98,6 +102,7 @@ func chose_interactable_object():
 			else:
 				_walk_to(targeted_position_is_object.global_position)
 		interacatable_object_detection_area.get_child(0).disabled = true
+		is_going_to_interaction = true
 		
 func _filter_interactable_object_in_area(bodies):
 	return bodies.get_parent() is InteractableObject
@@ -118,8 +123,9 @@ func see_if_favorite_game_is_in_area(array_of_bodies: Array):
 	return false
 
 func _get_called_to_play_game(game_reference: Node3D):
-	if Globals.game_paused == false:
+	if Globals.game_paused == false and is_going_to_interaction == false and is_on_interaction == false:
 		idle.stop()
+		print(game_reference)
 		targeted_position_is_object = game_reference
 		var random_choice_of_chair = randi_range(0, targeted_position_is_object.get_node("Sit positions").get_child_count() - 1)
 		_walk_to(targeted_position_is_object.get_node("Sit positions").get_child(random_choice_of_chair).global_position)

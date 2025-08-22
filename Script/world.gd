@@ -55,17 +55,17 @@ func _ready() -> void:
 				all_non_interactable_objects.add_child(instantiate_interactable)
 				instantiate_interactable.global_position = item[1]
 				instantiate_interactable.rotation = item[2]
-			print(new_config.get_value("Player", "position"))
 			player.global_position = new_config.get_value("Player", "position")
-			#print(new_config.get_value("NPC", "info"))
 			## proxima linha é só pra testar	
 			$Walking_NPCs/NPC.queue_free()
+			for item in $"All Build spots".get_children():
+				item.taken = new_config.get_value("Scene", "build_spot")
+				
 			for item in new_config.get_value("NPC", "info"):
 				var instantiate_npc = load(item[0]).instantiate()
 				instantiate_npc.global_position = item[1]
 				walking_npcs.add_child(instantiate_npc)
 				walking_npcs.get_child(-1).money = item[2]
-				print(walking_npcs.get_child(-1).money)
 			SaveScript.is_loading = false
 	elif Globals.save_npcs_pos.is_empty() != true and Globals.save_objects.is_empty() != true:
 		$Walking_NPCs/NPC.queue_free()
@@ -88,12 +88,15 @@ func _ready() -> void:
 				all_interactable_spots.add_child(instantiate_object)
 			else:
 				all_non_interactable_objects.add_child(instantiate_object)
-		print(Globals.save_player_pos)
+		for item in all_interactable_spots.get_children():
+			item.taken = Globals.save_build_spot[item.get_index()]
+			
 		SaveScript.auto_save.emit()
 	Globals.transiting_characters_to_gamble = []
 	Globals.save_npcs_pos = []
 	Globals.save_objects = []
 	Globals.save_player_pos = Vector3()
+	Globals.save_build_spot = []
 	if !TutorialManager.tutorials["movement"]:
 		await get_tree().create_timer(1).timeout
 		var tut_query = tut_panel.instantiate()
@@ -185,7 +188,7 @@ func _spawn_npc():
 			walking_npcs.add_child(NPC_to_spawn)
 			is_trying_to_spawn_npc = false
 			
-	npc_spwaner_timer.start(randf_range(minimum_time_for_spawn_npc, maximum_time_for_spawn_npc))
+	npc_spwaner_timer.start(randf_range(minimum_time_for_spawn_npc, maximum_time_for_spawn_npc)/(Globals.satisfaction_level + 100)/200)
 		
 func _see_number_of_NPC_type(npc_type: String):
 	var npc_type_count: int  = 0

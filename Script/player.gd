@@ -36,8 +36,12 @@ var t_bob : float = 0.0
 
 var tween : Tween
 
+<<<<<<< Updated upstream
 signal build_tutorial
 signal slot_machine_tutorial
+=======
+var object_sitting: InteractableObject
+>>>>>>> Stashed changes
 
 func _ready() -> void:
 	if Globals.save_player_pos != Vector3():
@@ -105,7 +109,6 @@ func _physics_process(delta: float) -> void:
 					var save_npcs_info : Array
 					save_npcs_info.push_back(item.scene_file_path)
 					save_npcs_info.push_back(item.global_position)
-					print(item.global_position)
 					save_npcs_info.push_back(item.get_index())
 					save_npcs_info.push_back(item.money)
 					Globals.save_npcs_pos.push_back(save_npcs_info)
@@ -122,13 +125,17 @@ func _physics_process(delta: float) -> void:
 						save_object_info.push_back(object.global_position)
 						save_object_info.push_back(object.rotation)
 						Globals.save_objects.push_back(save_object_info)
+				var array_of_building_spot: Array
+				for item in world_scene.get_node("All Build spots").get_children():
+					array_of_building_spot.push_back(item.taken)
+				Globals.save_build_spot.push_back(array_of_building_spot)
 				Globals.save_player_pos = global_position
 				loading_screen("fight_ring")
 			elif ray_interection.get_collider() != null:
 				_interact_object()
 		
 		elif Input.is_action_just_pressed("c") and \
-		ray_interection.get_collider().get_parent().get_node_or_null("Sit positions") != null:
+		object_sitting != null:
 			_call_npc_to_game()
 			
 		if Input.is_action_just_pressed("b") and TutorialManager.tutorials["movement"]:
@@ -184,10 +191,9 @@ func _call_npc_to_game():
 		var bodies_on_area = call_npc_area.get_overlapping_bodies().filter(_filter_NPC_in_area)
 		if bodies_on_area.is_empty() == false:
 			var choosen_NPC = bodies_on_area.pick_random()
-			var object_inst = ray_interection.get_collider()
-			if object_inst.get_parent() is InteractableObject\
+			if object_sitting is InteractableObject\
 			  and choosen_NPC != null:
-				choosen_NPC._get_called_to_play_game(object_inst.get_parent())
+				choosen_NPC._get_called_to_play_game(object_sitting)
 		call_npc_area.get_child(0).disabled = true
 		
 func _filter_NPC_in_area(bodies):
@@ -235,7 +241,7 @@ func _start_bulding_phase(object_to_be_purchase: PackedScene):
 	if current_object_being_purchased_instantiate is InteractableObject:
 		current_object_being_purchased_instantiate = current_object_being_purchased_instantiate.get_node("Model").duplicate()
 		current_object_being_purchased_instantiate.add_to_group("Ground_object")
-		print(current_object_being_purchased_instantiate.get_groups())
+
 	for item in current_object_being_purchased_instantiate.get_children():
 		if item is Node3D or item is CollisionShape3D:
 			pass
@@ -254,7 +260,6 @@ func _start_bulding_phase(object_to_be_purchase: PackedScene):
 			new_area3d.add_child(instantiate_colission)
 	current_object_being_purchased_instantiate.add_child(new_area3d)
 	current_object_being_purchased_instantiate.position = ray_builder_1.position + Vector3(0,0,-3)
-	print(current_object_being_purchased_instantiate.name)
 	ray_builder_1.add_child(current_object_being_purchased_instantiate)
 	is_on_building_mode = true
 	
@@ -263,7 +268,6 @@ func _rotate_bulding_object(rotation_direction: int):
 	
 func _cancel_build():
 	world_scene.update_all_mesh.emit()
-	print("Cancelled build")
 	is_on_building_mode = false
 	current_object_being_purchased = null
 	Globals.money += Globals.save_money 
@@ -273,9 +277,7 @@ func _build():
 	if can_build == true:
 		build_sfx()
 		world_scene.update_all_mesh.emit()
-		print("Built " + str(current_object_being_purchased))
 		var instantiate_object = current_object_being_purchased.instantiate()
-		print(ray_builder.get_collider().get_parent())
 		ray_builder.get_collider().get_parent().taken = true
 		instantiate_object.rotation = ray_builder_1.get_child(0).rotation
 		ray_builder_1.get_child(0).queue_free()
@@ -292,17 +294,15 @@ func _build():
 		SaveScript.auto_save.emit()
 		if instantiate_object.get_node_or_null("Sell_Satisfation Value") != null:
 			Globals.satisfaction_level += instantiate_object.get_node("Sell_Satisfation Value").satisfaction_value
-			print(Globals.satisfaction_level)
+
 		var save_ray_builder_1_monetoring = ray_builder_1.get_collider()
 		var save_ray_builder_2_monetoring = ray_builder_2.get_collider()
 		save_ray_builder_1_monetoring.monitoring = false
 		if save_ray_builder_2_monetoring != null:
-			print("save_ray_builder_2_monetoring.monitoring = false")
 			save_ray_builder_2_monetoring.monitoring = false
 		await get_tree().create_timer(0.1).timeout
 		save_ray_builder_1_monetoring.monitoring = true
 		if save_ray_builder_2_monetoring != null:
-			print("save_ray_builder_2_monetoring.monitoring = true")
 			save_ray_builder_2_monetoring.monitoring = true
 	
 func _sell():
@@ -312,20 +312,14 @@ func _sell():
 		object_inst = object_inst.get_parent()
 	if object_inst != null and object_inst.get_node_or_null("Sell_Satisfation Value") != null and Globals.game_paused == false:
 		ray_builder.get_collider().get_parent().taken = false
-		print(ray_builder.get_collider().get_overlapping_bodies())
 		if ray_builder.get_collider().get_overlapping_bodies().is_empty() != true:
-			print("has_overlapping_bodies")
-			print(ray_builder.get_collider().get_overlapping_bodies())
 			for item in ray_builder.get_collider().get_overlapping_bodies():
 				if item.get_parent() is InteractableObject:
 					item = item.get_parent()
 				if item.get_node_or_null("Sell_Satisfation Value") != null:
 					Globals.money += item.get_node_or_null("Sell_Satisfation Value").sell_value
 					Globals.satisfaction_level -= item.get_node("Sell_Satisfation Value").satisfaction_value
-					print(Globals.satisfaction_level)
 					item.queue_free()
-				else:
-					print("don't have Sell_Satisfation Value node")
 	
 
 func lock_model_into_build_spot():
@@ -346,7 +340,6 @@ func lock_model_into_build_spot():
 	and ray_builder.get_collider().get_name() == "Area build spot"\
 	and ray_builder.get_collider().is_in_group(ray_builder_1.get_child(0).get_groups()[0])\
 	and ray_builder_1.get_child(0).get_child(-1).has_overlapping_bodies() == true:
-		print("hey")
 		ray_builder_1.get_child(0).global_position = ray_builder.get_collider().get_parent().global_position - Vector3(0, 0.5, 0)
 		can_build = false
 		for item in ray_builder_1.get_child(0).get_child(0).get_child(0).mesh.get_surface_count():

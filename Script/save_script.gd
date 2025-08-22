@@ -13,10 +13,10 @@ func _init() -> void:
 	
 
 func _save_function(world_scene: Node3D, save_file_number: int):
-	print("save")
 	new_config.set_value("Globalvaribles", "money", Globals.money)
 	new_config.set_value("Globalvaribles", "spells", Globals.spell_inventory_list)
 	new_config.set_value("Globalvaribles", "satisfaction_level", Globals.satisfaction_level)
+	new_config.set_value("Globalvaribles", "item_list_level", PurchasableItemList.item_list_level)
 	new_config.set_value("Globalvaribles", "bar_unlock", Globals.bar_unlock)
 	new_config.set_value("Globalvaribles", "ring_unlock", Globals.ring_unlock)
 	new_config.set_value("Globalvaribles", "Aqua Vitae Timer", Globals.aqua_vitae_timer.time_left)
@@ -33,6 +33,11 @@ func _save_function(world_scene: Node3D, save_file_number: int):
 	var array_obj_interact : Array
 	for item in world_scene.get_node("NavigationRegion3D/All Interactable Spots").get_children():
 		array_obj_interact.push_back([item.scene_file_path, item.global_position, item.rotation])
+	array_obj_interact.remove_at(0)
+	var array_of_building_spot: Array
+	for item in world_scene.get_node("All Build spots").get_children():
+		array_of_building_spot.push_back(item.taken)
+	new_config.set_value("Scene", "build_spot", array_of_building_spot)
 	new_config.set_value("Scene", "interactable", array_obj_interact)
 	new_config.set_value("Player", "position", world_scene.get_node("Player").global_position)
 	var save_npcs_array: Array[Array]

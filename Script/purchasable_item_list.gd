@@ -27,10 +27,7 @@ load("res://Resources-shop/spell_mars.tres")]
 
 @onready var shop_level : int = 0
 
-var item_list_level : int = -1:
-	set(new_value):
-		item_list_level = new_value
-		update_item_list()
+var item_list_level : int = -1
 		
 func _ready() -> void:
 	update_item_list()
@@ -39,8 +36,7 @@ func update_item_list():
 	added_itens = []
 	removed_itens = []
 	if Globals.satisfaction_level >= 0 and Globals.satisfaction_level < 35 and shop_level != 1:
-		print("by")
-		_filter_to_add(games_list, [load("res://Resources-shop/slot_mac.tres"), load("res://Resources-shop/bar.tres")])
+		_filter_to_add(games_list, [load("res://Resources-shop/slot_mac.tres")])
 		_filter_to_add(decoration_list, [load("res://Resources-shop/table.tres")])
 		_filter_to_add(spell_list, [load("res://Resources-shop/spell_fortune.tres")])
 		_filter_to_remove(games_list, [load("res://Resources-shop/black_jack.tres")])
@@ -64,7 +60,7 @@ func update_item_list():
 	if Globals.satisfaction_level >= 250 and shop_level != 4:
 		if Globals.ring_unlock == false:
 			_filter_to_add(games_list, [load("res://Resources-shop/ring_key.tres")])
-		#_filter_to_add(decoration_list, [load("res://Resources-shop/Candlestick.tres")])
+		_filter_to_add(decoration_list, [load("res://Resources-shop/Candlestick.tres")])
 		_filter_to_add(spell_list, [load("res://Resources-shop/spell_mars.tres")])
 		shop_level = 4
 		
@@ -74,13 +70,9 @@ func update_item_list():
 
 func _filter_to_add(type_of_list: Array , objects_to_be_added: Array):
 	for item in objects_to_be_added:
-		print(item)
 		if type_of_list.has(item) == false:
-			print("add")
 			type_of_list.append(item)
 			added_itens.append(item)
-	print(added_itens)
-	print(decoration_list)
 	
 func _filter_to_remove(type_of_list: Array , objects_to_be_removed: Array):
 	var array_objects_removing : Array
@@ -88,11 +80,9 @@ func _filter_to_remove(type_of_list: Array , objects_to_be_removed: Array):
 		if type_of_list.has(item) == true:
 			array_objects_removing.push_back(item)
 			removed_itens.push_back(item)
-			print(item)
 			
 	for item in array_objects_removing:
 		print(item)
-		print("item removed")
 		type_of_list.erase(item)
 	
 

@@ -6,7 +6,6 @@ extends Node3D; class_name InteractableObject
 @export var object_name : String
 
 func _interact(pass_interact_parameter : Array = [], pass_cancel_interact_parameter : Array = []):
-	if Globals.player_interacting == false:
 		match pass_interact_parameter.size():
 			0:
 				call("_interact_" + object_class)

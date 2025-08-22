@@ -147,7 +147,6 @@ func _ready() -> void:
 			spell_h_box_container.add_child(instanciated_item)
 
 func _on_update_shop_contents(added_itens: Array[Array], removed_itens: Array[Array]) -> void:
-	print("_on_update_shop_contents")
 	if !added_itens[0].is_empty():
 		_add_objects(games_h_box_container, added_itens[0])
 	if !added_itens[1].is_empty():
@@ -164,7 +163,6 @@ func _on_update_shop_contents(added_itens: Array[Array], removed_itens: Array[Ar
 func _remove_objects(area_of_shop: HBoxContainer, objects_to_be_removed: Array):
 	for buyable_object in area_of_shop.get_children():
 		for itens_to_be_removed in objects_to_be_removed:
-			print("remove")
 			if buyable_object.item_resource == itens_to_be_removed:
 				buyable_object.queue_free()
 	

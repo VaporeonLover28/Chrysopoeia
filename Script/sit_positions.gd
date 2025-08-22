@@ -26,23 +26,21 @@ func _ready() -> void:
 func _sit_character(object_ref):
 	await get_tree().create_timer(0.1).timeout
 	if _ASAT() != true:
+		print("npc sit")
 		#makes player sit
 		#checks for marker with the smallest postion distance to the player so he can sit, removing the spot from the pool
 		chosen_sitting_transition = null
 		var chosen_sitting_position: int = 50
-		var smallest_distance : float = 10
-		print("sit")
+		var smallest_distance : float = 1000
 		for item in self.get_child_count():
-			print(self.name + " " + str(object_ref.global_position.distance_to(self.get_child(item).global_position)))
-			print(chair_postion_list[item][1] == true)
 			if smallest_distance > object_ref.global_position.distance_to(self.get_child(item).global_position)\
 			and chair_postion_list[item][1] != false:
 				chosen_sitting_position = item 
 				smallest_distance = object_ref.global_position.distance_to(self.get_child(item).global_position)
 		chair_postion_list[chosen_sitting_position][1] = false
 		chair_postion_list[chosen_sitting_position].push_back(object_ref)
-		print(chair_postion_list)
 		characters_sitting_count += 1
+		print(chair_postion_list)
 		if object_ref.name == "Player":
 			chosen_sitting_transition = self.get_child(chosen_sitting_position)
 			save_player_ref = object_ref
@@ -52,7 +50,7 @@ func _sit_character(object_ref):
 
 func _stand_character_up(object_ref):
 	var chosen_sitting_position = 10
-	var smallest_distance : float = 10
+	var smallest_distance : float = 1000
 	print("stand")
 	for item in self.get_child_count():
 		print(object_ref)
@@ -69,7 +67,6 @@ func _stand_character_up(object_ref):
 		Globals.player_interacting = false
 		player_is_sitting = false
 		save_player_ref = null
-		Globals.player_interacting = false
 
 func _physics_process(delta: float) -> void:
 	pass
@@ -82,9 +79,9 @@ func _pull_camera(player):
 	tween.tween_property(player_ref.pivot, "rotation_degrees", Vector3(0, 0, 0), 1.25)
 	tween.tween_property(player_ref.camera, "rotation_degrees", Vector3(0, 0, 0), 1.25)
 	tween.tween_property(player_ref.camera, "global_position", \
-	chosen_sitting_transition.global_position + Vector3(0, 0.6, 0), 0.75)
+	$"../Player Chair".global_position + Vector3(0, 0.6, 0), 0.75)
 	await get_tree().create_timer(1.5).timeout
-	player.global_position = chosen_sitting_transition.global_position
+	player.global_position = $"../Player Chair".global_position
 #checks then returns if all sits are taken
 func _ASAT():
 	var all_got_taken: bool = false
@@ -103,3 +100,12 @@ func _SICSOC(choice_of_chair: int):
 		return true
 	else:
 		return false
+
+func _CNSC():
+	var count_character: int
+	for item in chair_postion_list.size():
+		if chair_postion_list[item - 1][1] == false:
+			count_character += 1
+	print(count_character)
+	return count_character
+	
