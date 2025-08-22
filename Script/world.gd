@@ -140,7 +140,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("y") and !TutorialManager.tutorials["movement"]:
 		query.emit()
 	if Input.is_action_just_pressed("n") and !TutorialManager.tutorials["movement"]:
-		if tutorial.get_child_count() == 0:
+		if !tutorial.get_child_count() == 0:
 			tutorial.get_child(0).queue_free()
 		$"HUD/money_box".visible = true
 		$HUD/money_box/shop/keybind.visible = true

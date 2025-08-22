@@ -1,10 +1,68 @@
-[gd_scene load_steps=6 format=3 uid="uid://uuscgkuf1gtm"]
+[gd_scene load_steps=17 format=3 uid="uid://uuscgkuf1gtm"]
 
+[ext_resource type="FontFile" uid="uid://4y6u2ai8c7lq" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-Bold.ttf" id="1_56par"]
 [ext_resource type="Script" uid="uid://bwatdkkfxp8n6" path="res://Script/bar_ui.gd" id="1_dh4dj"]
 [ext_resource type="PackedScene" uid="uid://crlgcabjryx4g" path="res://Scenes/drink_button.tscn" id="2_gudkw"]
 [ext_resource type="Texture2D" uid="uid://uwmfs54tyh4x" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Double/keyboard_0.png" id="3_2lkti"]
 [ext_resource type="AudioStream" uid="uid://cfhstwel0vc3l" path="res://SFX/poção/bebendo.wav" id="4_5hlx4"]
+[ext_resource type="Texture2D" uid="uid://b7fqwxvtq3xwq" path="res://Assets/Originals/vitae.png" id="5_6jliv"]
+[ext_resource type="Texture2D" uid="uid://bmgcr5gp863y4" path="res://Assets/Originals/bar_bg.png" id="5_e1ry4"]
 [ext_resource type="AudioStream" uid="uid://yxrle7j7a0qj" path="res://SFX/poção/obtendo_poção.wav" id="5_ie4il"]
+[ext_resource type="Texture2D" uid="uid://cya555j28gcuj" path="res://Assets/Originals/fortis.png" id="6_14um1"]
+[ext_resource type="Texture2D" uid="uid://cwyjq87qf0cmi" path="res://Assets/Originals/regia.png" id="7_dkmfc"]
+[ext_resource type="Texture2D" uid="uid://bd6wssbdg63ud" path="res://Assets/Originals/philosophorum.png" id="8_1wwey"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fbfhh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uecof"]
+bg_color = Color(0.580392, 0.372549, 0.290196, 1)
+border_width_left = 5
+border_width_top = 2
+border_width_right = 5
+border_width_bottom = 2
+border_color = Color(0.580392, 0.372549, 0.290196, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jliv"]
+bg_color = Color(0.580392, 0.372549, 0.290196, 1)
+border_width_left = 5
+border_width_top = 2
+border_width_right = 5
+border_width_bottom = 2
+border_color = Color(0.580392, 0.372549, 0.290196, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_14um1"]
+bg_color = Color(0.219792, 0.125327, 0.0877812, 1)
+border_width_left = 5
+border_width_top = 2
+border_width_right = 5
+border_width_bottom = 2
+border_color = Color(0.222959, 0.127419, 0.0894462, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_dkmfc"]
+Button/colors/font_color = Color(0.2, 0.0845, 0.002, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_pressed_color = Color(0.580392, 0.372549, 0.290196, 1)
+Button/font_sizes/font_size = 17
+Button/fonts/font = ExtResource("1_56par")
+Button/styles/focus = SubResource("StyleBoxEmpty_fbfhh")
+Button/styles/hover = SubResource("StyleBoxFlat_uecof")
+Button/styles/normal = SubResource("StyleBoxFlat_6jliv")
+Button/styles/pressed = SubResource("StyleBoxFlat_14um1")
+Label/colors/font_color = Color(0.58, 0.372167, 0.29, 1)
+Label/font_sizes/font_size = 17
+Label/fonts/font = ExtResource("1_56par")
 
 [node name="Bar UI" type="CanvasLayer"]
 
@@ -20,28 +78,33 @@ offset_top = -270.0
 offset_right = 340.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = SubResource("Theme_dkmfc")
 script = ExtResource("1_dh4dj")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_top = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer"]
 custom_minimum_size = Vector2(679, 270)
 layout_mode = 2
-offset_right = 679.0
-offset_bottom = 270.0
 
-[node name="Selected_Drink" type="VBoxContainer" parent="Control/HBoxContainer"]
+[node name="Selected_Drink" type="VBoxContainer" parent="Control/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(338, 270)
 layout_mode = 2
 
-[node name="Gold" type="Label" parent="Control/HBoxContainer/Selected_Drink"]
+[node name="Gold" type="Label" parent="Control/MarginContainer/HBoxContainer/Selected_Drink"]
 layout_mode = 2
 text = "     Gold: XXX"
 
-[node name="Drink_Box" type="VBoxContainer" parent="Control/HBoxContainer/Selected_Drink"]
+[node name="Drink_Box" type="VBoxContainer" parent="Control/MarginContainer/HBoxContainer/Selected_Drink"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 alignment = 1
 
-[node name="Name" type="Label" parent="Control/HBoxContainer/Selected_Drink/Drink_Box"]
+[node name="Name" type="Label" parent="Control/MarginContainer/HBoxContainer/Selected_Drink/Drink_Box"]
 custom_minimum_size = Vector2(74, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
@@ -49,58 +112,59 @@ text = "Select a potion to view description"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sprite" type="TextureRect" parent="Control/HBoxContainer/Selected_Drink/Drink_Box"]
+[node name="Sprite" type="TextureRect" parent="Control/MarginContainer/HBoxContainer/Selected_Drink/Drink_Box"]
 visible = false
 layout_mode = 2
 texture = ExtResource("3_2lkti")
 stretch_mode = 3
 
-[node name="Description" type="Label" parent="Control/HBoxContainer/Selected_Drink/Drink_Box"]
+[node name="Description" type="Label" parent="Control/MarginContainer/HBoxContainer/Selected_Drink/Drink_Box"]
 visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 horizontal_alignment = 1
 
-[node name="Buy_Button" type="Button" parent="Control/HBoxContainer/Selected_Drink"]
+[node name="Buy_Button" type="Button" parent="Control/MarginContainer/HBoxContainer/Selected_Drink"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Buy"
 
-[node name="Drink_List" type="ScrollContainer" parent="Control/HBoxContainer"]
+[node name="Drink_List" type="ScrollContainer" parent="Control/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(338, 270)
 layout_mode = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
-[node name="GridContainer" type="GridContainer" parent="Control/HBoxContainer/Drink_List"]
+[node name="GridContainer" type="GridContainer" parent="Control/MarginContainer/HBoxContainer/Drink_List"]
 layout_mode = 2
 columns = 2
 
-[node name="Drink1" parent="Control/HBoxContainer/Drink_List/GridContainer" instance=ExtResource("2_gudkw")]
+[node name="Drink1" parent="Control/MarginContainer/HBoxContainer/Drink_List/GridContainer" instance=ExtResource("2_gudkw")]
 layout_mode = 2
 drink_name = "Aqua Vitae"
 drink_price = 25
-drink_image = ExtResource("3_2lkti")
+drink_image = ExtResource("5_6jliv")
 
-[node name="Drink2" parent="Control/HBoxContainer/Drink_List/GridContainer" instance=ExtResource("2_gudkw")]
+[node name="Drink2" parent="Control/MarginContainer/HBoxContainer/Drink_List/GridContainer" instance=ExtResource("2_gudkw")]
 layout_mode = 2
 drink_name = "Aqua Fortis"
 drink_price = 80
-drink_image = ExtResource("3_2lkti")
+drink_image = ExtResource("6_14um1")
 
-[node name="Drink3" parent="Control/HBoxContainer/Drink_List/GridContainer" instance=ExtResource("2_gudkw")]
+[node name="Drink3" parent="Control/MarginContainer/HBoxContainer/Drink_List/GridContainer" instance=ExtResource("2_gudkw")]
 layout_mode = 2
 drink_name = "Aqua Regia"
 drink_price = 120
-drink_image = ExtResource("3_2lkti")
+drink_image = ExtResource("7_dkmfc")
 
-[node name="Drink4" parent="Control/HBoxContainer/Drink_List/GridContainer" instance=ExtResource("2_gudkw")]
+[node name="Drink4" parent="Control/MarginContainer/HBoxContainer/Drink_List/GridContainer" instance=ExtResource("2_gudkw")]
 layout_mode = 2
 drink_name = "Aqua Philosophorum"
 drink_price = 100
-drink_image = ExtResource("3_2lkti")
+drink_image = ExtResource("8_1wwey")
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="TextureRect" parent="Control"]
 z_index = -2
 y_sort_enabled = true
 layout_mode = 1
@@ -111,7 +175,7 @@ grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 3
 mouse_filter = 2
-color = Color(0.568627, 0, 1, 1)
+texture = ExtResource("5_e1ry4")
 
 [node name="sipPotion" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_5hlx4")
@@ -119,4 +183,4 @@ stream = ExtResource("4_5hlx4")
 [node name="selectPotion" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_ie4il")
 
-[connection signal="pressed" from="Control/HBoxContainer/Selected_Drink/Buy_Button" to="Control" method="_on_buy_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/HBoxContainer/Selected_Drink/Buy_Button" to="Control" method="_on_buy_button_pressed"]

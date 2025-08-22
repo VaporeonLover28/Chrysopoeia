@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cc8lfsm2djmxi"]
+[gd_scene load_steps=17 format=3 uid="uid://cc8lfsm2djmxi"]
 
 [ext_resource type="Script" uid="uid://dik6iickpgs3r" path="res://options.gd" id="1_g1sm3"]
 [ext_resource type="Theme" uid="uid://cdh2vq0ieqel5" path="res://Themes/option_theme_check.tres" id="1_qqnya"]
@@ -9,21 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://br4c6wvhsagf0" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_shift.png" id="6_34to5"]
 [ext_resource type="Texture2D" uid="uid://bw2bk1lgkp3to" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_escape.png" id="7_21smx"]
 [ext_resource type="Texture2D" uid="uid://vh4jus6w66ri" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/mouse_right.png" id="8_jpdgi"]
-[ext_resource type="Texture2D" uid="uid://vpsnal4dyyq1" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/mouse_left.png" id="9_mrk6e"]
 [ext_resource type="Texture2D" uid="uid://f0ttn82elvev" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_b.png" id="10_oa66i"]
 [ext_resource type="Texture2D" uid="uid://bymswxfkuf1i7" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_e.png" id="11_k0hbd"]
 [ext_resource type="Texture2D" uid="uid://dl1c3wpfn3nqf" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_f.png" id="12_g1sm3"]
 [ext_resource type="Texture2D" uid="uid://cjhka17gkabdj" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_tab.png" id="13_bscdg"]
-[ext_resource type="Texture2D" uid="uid://dsk8pn6hw5myi" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_space.png" id="14_pfkoy"]
 [ext_resource type="Texture2D" uid="uid://g8taecw3182d" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_q.png" id="15_hw8gm"]
-[ext_resource type="Texture2D" uid="uid://dtfxgynf6hlxt" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_z.png" id="16_lq70a"]
-[ext_resource type="Texture2D" uid="uid://dlt5hgipgnt2e" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_x.png" id="17_8jo0a"]
-[ext_resource type="Texture2D" uid="uid://bqfht4nusi6r5" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_r.png" id="18_iqnv7"]
-[ext_resource type="Texture2D" uid="uid://qbgocmlncrfu" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_c.png" id="19_ofdu2"]
 [ext_resource type="Texture2D" uid="uid://dkaq6sa8la6ug" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_h.png" id="20_ywwqc"]
-[ext_resource type="Texture2D" uid="uid://njckevlsnnk7" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_y.png" id="21_3w45p"]
-[ext_resource type="Texture2D" uid="uid://boy32nrcpdifj" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_n.png" id="22_81jd5"]
-[ext_resource type="Texture2D" uid="uid://cqrj0lnnl525y" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_enter.png" id="23_387uy"]
+[ext_resource type="AudioStream" uid="uid://cqhwg7nysjt3r" path="res://SFX/homunculos/galunga.wav" id="25_bscdg"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -39,9 +31,10 @@ layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 tab_alignment = 1
-current_tab = 0
+current_tab = 1
 
 [node name="Display" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -74,7 +67,6 @@ text = "Enable Vsync
 "
 
 [node name="Inputs" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -82,254 +74,177 @@ metadata/_tab_index = 1
 layout_mode = 0
 offset_right = 1146.0
 offset_bottom = 615.0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Inputs/MarginContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 122
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="General" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "General"
+
+[node name="wasd" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/wasd"]
 layout_mode = 2
 texture = ExtResource("2_kfnrp")
 
-[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Open shop"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/wasd"]
 layout_mode = 2
 texture = ExtResource("3_tcskm")
 
-[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-text = "Open shop"
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+[node name="TextureRect3" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/wasd"]
 layout_mode = 2
 texture = ExtResource("4_fry7h")
 
-[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-text = "Open shop"
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer4"]
+[node name="TextureRect4" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/wasd"]
 layout_mode = 2
 texture = ExtResource("5_ksf6h")
 
-[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer4"]
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/wasd"]
 layout_mode = 2
-text = "Open shop"
+text = "Movement"
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="shift" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer5"]
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/shift"]
 layout_mode = 2
 texture = ExtResource("6_34to5")
 
-[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer5"]
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/shift"]
 layout_mode = 2
-text = "Open shop"
+text = "Run"
 
-[node name="HBoxContainer6" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer6" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer6"]
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/HBoxContainer6"]
 layout_mode = 2
 texture = ExtResource("7_21smx")
 
-[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer6"]
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/HBoxContainer6"]
 layout_mode = 2
-text = "Open shop"
+text = "Pause"
 
-[node name="HBoxContainer7" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer7"]
-layout_mode = 2
-texture = ExtResource("8_jpdgi")
-
-[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer7"]
-layout_mode = 2
-text = "Open shop"
-
-[node name="HBoxContainer8" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer9" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer8"]
-layout_mode = 2
-texture = ExtResource("9_mrk6e")
-
-[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer8"]
-layout_mode = 2
-text = "Open shop"
-
-[node name="HBoxContainer9" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer9"]
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/HBoxContainer9"]
 layout_mode = 2
 texture = ExtResource("10_oa66i")
 
-[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer9"]
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer/HBoxContainer9"]
 layout_mode = 2
-text = "Open shop"
+text = "Open / Close Shop"
 
-[node name="HBoxContainer10" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer10"]
-layout_mode = 2
-texture = ExtResource("11_k0hbd")
-
-[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer10"]
-layout_mode = 2
-text = "Open shop"
-
-[node name="HBoxContainer11" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer11"]
+[node name="Building" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-texture = ExtResource("12_g1sm3")
+theme_override_font_sizes/font_size = 40
+text = "Building"
 
-[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer11"]
-layout_mode = 2
-text = "Open shop"
-
-[node name="HBoxContainer12" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer7" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer12"]
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer2/HBoxContainer7"]
 layout_mode = 2
-texture = ExtResource("13_bscdg")
+texture = ExtResource("8_jpdgi")
 
-[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer12"]
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer2/HBoxContainer7"]
 layout_mode = 2
-text = "Open shop"
+text = "Place Item"
 
-[node name="HBoxContainer13" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer13"]
-layout_mode = 2
-texture = ExtResource("14_pfkoy")
-
-[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer13"]
-layout_mode = 2
-text = "Open shop"
-
-[node name="HBoxContainer14" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer10" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer14"]
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer2/HBoxContainer10"]
 layout_mode = 2
 texture = ExtResource("15_hw8gm")
 
-[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer14"]
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer2/HBoxContainer10"]
 layout_mode = 2
-text = "Open shop"
+texture = ExtResource("11_k0hbd")
 
-[node name="HBoxContainer15" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer2/HBoxContainer10"]
 layout_mode = 2
+text = "Rotate Item"
 
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer15"]
-layout_mode = 2
-texture = ExtResource("16_lq70a")
-
-[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer15"]
-layout_mode = 2
-text = "Open shop"
-
-[node name="HBoxContainer16" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer19" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer16"]
-layout_mode = 2
-texture = ExtResource("17_8jo0a")
-
-[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer16"]
-layout_mode = 2
-text = "Open shop"
-
-[node name="HBoxContainer17" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer17"]
-layout_mode = 2
-texture = ExtResource("18_iqnv7")
-
-[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer17"]
-layout_mode = 2
-text = "Open shop"
-
-[node name="HBoxContainer18" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer18"]
-layout_mode = 2
-texture = ExtResource("19_ofdu2")
-
-[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer18"]
-layout_mode = 2
-text = "Open shop"
-
-[node name="HBoxContainer19" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer19"]
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer2/HBoxContainer19"]
 layout_mode = 2
 texture = ExtResource("20_ywwqc")
 
-[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer19"]
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer2/HBoxContainer19"]
 layout_mode = 2
-text = "Open shop"
+text = "Sell item"
 
-[node name="HBoxContainer20" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer20"]
-layout_mode = 2
-texture = ExtResource("21_3w45p")
-
-[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer20"]
-layout_mode = 2
-text = "Open shop"
-
-[node name="HBoxContainer21" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer21"]
+[node name="Spells" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer3"]
 layout_mode = 2
-texture = ExtResource("22_81jd5")
+theme_override_font_sizes/font_size = 40
+text = "Spells"
 
-[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer21"]
-layout_mode = 2
-text = "Open shop"
-
-[node name="HBoxContainer22" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer11" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer3"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer22"]
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer3/HBoxContainer11"]
 layout_mode = 2
-texture = ExtResource("23_387uy")
+texture = ExtResource("12_g1sm3")
 
-[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer22"]
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer3/HBoxContainer11"]
 layout_mode = 2
-text = "Open shop"
+text = "Wheel of Fortune"
+
+[node name="HBoxContainer12" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer3/HBoxContainer12"]
+layout_mode = 2
+texture = ExtResource("13_bscdg")
+
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer3/HBoxContainer12"]
+layout_mode = 2
+text = "Eye of Providence / Mars"
+
+[node name="HBoxContainer13" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer3/HBoxContainer13"]
+layout_mode = 2
+texture = ExtResource("3_tcskm")
+
+[node name="Label2" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer3/HBoxContainer13"]
+layout_mode = 2
+text = "Fool's Gold"
+
+[node name="HBoxContainer14" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer3/HBoxContainer14"]
+layout_mode = 2
+texture = ExtResource("5_ksf6h")
+
+[node name="Label2" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer3/HBoxContainer14"]
+layout_mode = 2
+text = "Philosopher's Shard"
 
 [node name="Audio" type="TabBar" parent="TabContainer"]
 visible = false
@@ -350,6 +265,11 @@ text = "Volume"
 
 [node name="HSlider" type="HSlider" parent="TabContainer/Audio/MarginContainer/VBoxContainer"]
 layout_mode = 2
+min_value = -80.0
+max_value = 6.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="TabContainer/Audio"]
+stream = ExtResource("25_bscdg")
 
 [connection signal="toggled" from="TabContainer/Display/Margin_display/Display_container/Fullscreen_button" to="." method="_on_fullscreen_button_toggled"]
 [connection signal="toggled" from="TabContainer/Display/Margin_display/Display_container/Vsync_button" to="." method="_on_vsync_button_toggled"]

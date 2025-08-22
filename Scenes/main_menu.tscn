@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://cf21qm02h40cu"]
+[gd_scene load_steps=54 format=4 uid="uid://cf21qm02h40cu"]
 
 [ext_resource type="Script" uid="uid://gupatwggm12k" path="res://Script/main_menu.gd" id="1_opfnp"]
 [ext_resource type="Script" uid="uid://h04ek6sfnud1" path="res://Script/spinner.gd" id="3_ce3w2"]
@@ -14,6 +14,30 @@
 [ext_resource type="Texture2D" uid="uid://lw53w3el4ehq" path="res://Assets/Originals/gold_nugget_GoldNugget_Albedo.png" id="9_vtepg"]
 [ext_resource type="PackedScene" uid="uid://d4afiryk4wkkn" path="res://Assets/Originals/Circulomagico.glb" id="10_vr1f0"]
 [ext_resource type="PackedScene" uid="uid://bo12uuy2oanjx" path="res://Assets/Originals/gold_nugget.glb" id="11_vr1f0"]
+[ext_resource type="Texture2D" uid="uid://u1bgqexwrn0f" path="res://Assets/Originals/Banner_anim/Banner_01.png" id="15_bmhhk"]
+[ext_resource type="Texture2D" uid="uid://drti1jb6kxom" path="res://Assets/Originals/Banner_anim/Banner_2.png" id="16_pddej"]
+[ext_resource type="Texture2D" uid="uid://b3ofgbgr2dbr0" path="res://Assets/Originals/Banner_anim/Banner_3.png" id="17_ko05x"]
+[ext_resource type="Texture2D" uid="uid://m663qh0w5255" path="res://Assets/Originals/Banner_anim/Banner_4.png" id="18_43km2"]
+[ext_resource type="Texture2D" uid="uid://ciax6bnv37wo6" path="res://Assets/Originals/Banner_anim/Banner_5.png" id="19_3533h"]
+[ext_resource type="Texture2D" uid="uid://cerpfe2wjuakq" path="res://Assets/Originals/Banner_anim/Banner_6.png" id="20_dp8uv"]
+[ext_resource type="Texture2D" uid="uid://b8a68jgn55v2f" path="res://Assets/Originals/Banner_anim/Banner_7.png" id="21_uu0lx"]
+[ext_resource type="Texture2D" uid="uid://d28lry3jr5px3" path="res://Assets/Originals/Banner_anim/Banner_8.png" id="22_ujm45"]
+[ext_resource type="Texture2D" uid="uid://b0iyqpbbc50w2" path="res://Assets/Originals/Banner_anim/Banner_9.png" id="23_aj2v6"]
+[ext_resource type="Texture2D" uid="uid://u5sm1cy4a8pr" path="res://Assets/Originals/Banner_anim/Banner_10.png" id="24_vj5y7"]
+[ext_resource type="Texture2D" uid="uid://hxovsyxew44h" path="res://Assets/Originals/Banner_anim/Banner_11.png" id="25_3l6me"]
+[ext_resource type="Texture2D" uid="uid://b3g5adcm84txf" path="res://Assets/Originals/Banner_anim/Banner_12.png" id="26_y17f6"]
+[ext_resource type="Texture2D" uid="uid://b62425t6x184s" path="res://Assets/Originals/Banner_anim/Banner_13.png" id="27_hovqx"]
+[ext_resource type="Texture2D" uid="uid://6e5tiecebmxe" path="res://Assets/Originals/Banner_anim/Banner_14.png" id="28_pavwk"]
+[ext_resource type="Texture2D" uid="uid://dmfwah8uxiq24" path="res://Assets/Originals/Banner_anim/Banner_15.png" id="29_4v5qc"]
+[ext_resource type="Texture2D" uid="uid://cu7p50j15veh8" path="res://Assets/Originals/Banner_anim/Banner_16.png" id="30_w71i6"]
+[ext_resource type="Texture2D" uid="uid://dju4qskc2e54r" path="res://Assets/Originals/Banner_anim/Banner_17.png" id="31_tni0p"]
+[ext_resource type="Texture2D" uid="uid://dl7mpk6ib671" path="res://Assets/Originals/Banner_anim/Banner_18.png" id="32_m8avj"]
+[ext_resource type="Texture2D" uid="uid://drhswek16mp6v" path="res://Assets/Originals/Banner_anim/Banner_19.png" id="33_mldsx"]
+[ext_resource type="Texture2D" uid="uid://ca1yuv6xgu06" path="res://Assets/Originals/Banner_anim/Banner_20.png" id="34_gvnub"]
+[ext_resource type="Texture2D" uid="uid://ht5v2fqgcs6a" path="res://Assets/Originals/Banner_anim/Banner_21.png" id="35_u2gki"]
+[ext_resource type="Texture2D" uid="uid://mu6uvho1twij" path="res://Assets/Originals/Banner_anim/Banner_22.png" id="36_yuqo8"]
+[ext_resource type="Texture2D" uid="uid://0idnlokn8wcc" path="res://Assets/Originals/Banner_anim/Banner_23.png" id="37_ifnak"]
+[ext_resource type="Texture2D" uid="uid://8188i400w7ax" path="res://Assets/Originals/Banner_anim/Banner_24.png" id="38_3eqs5"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5egv6"]
 load_path = "res://.godot/imported/praredelend_preda.png-080c9f603eb289def9d6616a64ce1c56.s3tc.ctex"
@@ -121,6 +145,86 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_i77s3")
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_6qc4h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_bmhhk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_pddej")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ko05x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_43km2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_3533h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_dp8uv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_uu0lx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_ujm45")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_aj2v6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_vj5y7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_3l6me")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_y17f6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_hovqx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_pavwk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_4v5qc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_w71i6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_tni0p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_m8avj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_mldsx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_gvnub")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_u2gki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_yuqo8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_ifnak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_3eqs5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 30.0
+}]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yhxw7"]
 
 [node name="Control" type="Control"]
@@ -218,59 +322,55 @@ script = ExtResource("3_ce3w2")
 transform = Transform3D(1, 0, 0, 0, 0.924546, 0.38107, 0, -0.38107, 0.924546, 0.009, 0.217, 0.764)
 fov = 74.5
 
+[node name="buttons" type="AnimatedSprite2D" parent="."]
+position = Vector2(958, 321)
+sprite_frames = SubResource("SpriteFrames_6qc4h")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 827.0
+offset_top = -309.0
+offset_right = 1081.0
+offset_bottom = -22.0
+theme_override_constants/separation = 17
+
+[node name="Start_btn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_cp0ys")
+text = "Start"
+alignment = 0
+
+[node name="Load_btn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_cp0ys")
+text = "Load"
+alignment = 0
+
+[node name="Options_btn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_cp0ys")
+text = "Options"
+alignment = 0
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+theme_override_styles/separator = SubResource("StyleBoxEmpty_yhxw7")
+
+[node name="Quit_btn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_cp0ys")
+text = "Quit"
+alignment = 0
+
 [node name="ColorRect" type="TextureRect" parent="."]
+visible = false
 clip_children = 2
 layout_mode = 0
 offset_left = 745.0
 offset_right = 1159.0
 offset_bottom = 653.0
 texture = ExtResource("5_vr1f0")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
-layout_mode = 0
-offset_left = 82.0
-offset_top = 251.0
-offset_right = 336.0
-offset_bottom = 538.0
-
-[node name="Start_btn" type="Button" parent="ColorRect/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("5_cp0ys")
-text = "Start"
-alignment = 0
-
-[node name="HSeparator2" type="HSeparator" parent="ColorRect/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 5
-theme_override_styles/separator = SubResource("StyleBoxEmpty_yhxw7")
-
-[node name="Load_btn" type="Button" parent="ColorRect/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("5_cp0ys")
-text = "Load"
-alignment = 0
-
-[node name="HSeparator3" type="HSeparator" parent="ColorRect/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 5
-theme_override_styles/separator = SubResource("StyleBoxEmpty_yhxw7")
-
-[node name="Options_btn" type="Button" parent="ColorRect/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("5_cp0ys")
-text = "Options"
-alignment = 0
-
-[node name="HSeparator" type="HSeparator" parent="ColorRect/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 30
-theme_override_styles/separator = SubResource("StyleBoxEmpty_yhxw7")
-
-[node name="Quit_btn" type="Button" parent="ColorRect/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("5_cp0ys")
-text = "Quit"
-alignment = 0
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
@@ -280,7 +380,7 @@ offset_right = 845.0
 offset_bottom = -9.0
 pivot_offset = Vector2(278, 62)
 theme_override_colors/font_color = Color(0.653681, 0.0323807, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 0.807843, 0, 0.894118)
+theme_override_colors/font_outline_color = Color(1, 0.8, 0, 1)
 theme_override_constants/shadow_offset_x = 45
 theme_override_constants/shadow_offset_y = 50
 theme_override_constants/outline_size = 45
@@ -291,10 +391,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("8_yhxw7")
 
-[connection signal="pressed" from="ColorRect/VBoxContainer/Start_btn" to="." method="_on_start_btn_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/Load_btn" to="." method="_on_load_btn_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/Options_btn" to="." method="_on_options_btn_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/Quit_btn" to="." method="_on_quit_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/Start_btn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/Load_btn" to="." method="_on_load_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options_btn" to="." method="_on_options_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit_btn" to="." method="_on_quit_btn_pressed"]
 
 [editable path="SubViewportContainer/SubViewport/Table"]
 [editable path="SubViewportContainer/SubViewport/gold_nugget"]

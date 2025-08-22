@@ -1,10 +1,10 @@
 extends Control
 
-@onready var drink_name: Label = $HBoxContainer/Selected_Drink/Drink_Box/Name
-@onready var sprite: TextureRect = $HBoxContainer/Selected_Drink/Drink_Box/Sprite
-@onready var description: Label = $HBoxContainer/Selected_Drink/Drink_Box/Description
-@onready var buy_button: Button = $HBoxContainer/Selected_Drink/Buy_Button
-@onready var gold: Label = $HBoxContainer/Selected_Drink/Gold
+@onready var drink_name: Label = $MarginContainer/HBoxContainer/Selected_Drink/Drink_Box/Name
+@onready var sprite: TextureRect = $MarginContainer/HBoxContainer/Selected_Drink/Drink_Box/Sprite
+@onready var description: Label = $MarginContainer/HBoxContainer/Selected_Drink/Drink_Box/Description
+@onready var buy_button: Button = $MarginContainer/HBoxContainer/Selected_Drink/Buy_Button
+@onready var gold: Label = $MarginContainer/HBoxContainer/Selected_Drink/Gold
 @onready var sip_potion: AudioStreamPlayer = $"../sipPotion"
 @onready var select_potion: AudioStreamPlayer = $"../selectPotion"
 
