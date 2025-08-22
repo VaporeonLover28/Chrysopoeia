@@ -57,7 +57,6 @@ func _ready() -> void:
 				instantiate_interactable.rotation = item[2]
 			player.global_position = new_config.get_value("Player", "position")
 			## proxima linha é só pra testar	
-			$Walking_NPCs/NPC.queue_free()
 			for item in $"All Build spots".get_children():
 				item.taken = new_config.get_value("Scene", "build_spot")[item.get_index()]
 				
@@ -66,9 +65,11 @@ func _ready() -> void:
 				instantiate_npc.global_position = item[1]
 				walking_npcs.add_child(instantiate_npc)
 				walking_npcs.get_child(-1).money = item[2]
+				
+			$NavigationRegion3D.bake_navigation_mesh()
 			SaveScript.is_loading = false
+			
 	elif Globals.save_npcs_pos.is_empty() != true and Globals.save_objects.is_empty() != true:
-		$Walking_NPCs/NPC.queue_free()
 		var counter: int = 0
 		for item in Globals.save_npcs_pos:
 			var instantiate_npc = load(item[0]).instantiate()
@@ -92,11 +93,13 @@ func _ready() -> void:
 			item.taken = Globals.save_build_spot[item.get_index()]
 			
 		SaveScript.auto_save.emit()
+		$NavigationRegion3D.bake_navigation_mesh()
 	Globals.transiting_characters_to_gamble = []
 	Globals.save_npcs_pos = []
 	Globals.save_objects = []
 	Globals.save_player_pos = Vector3()
 	Globals.save_build_spot = []
+	
 	if !TutorialManager.tutorials["movement"]:
 		await get_tree().create_timer(1).timeout
 		var tut_query = tut_panel.instantiate()
@@ -131,6 +134,9 @@ func _ready() -> void:
 		tut_inst2.key = load("res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_b_outline.png")
 		tut_inst2.key_text = "shop"
 		tutorial.add_child(tut_inst2)
+
+func _exit_tree() -> void:
+	SaveScript.auto_save.disconnect(SaveScript._save_function)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("z"):

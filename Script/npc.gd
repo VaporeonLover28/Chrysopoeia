@@ -28,6 +28,7 @@ var is_on_interaction : bool = false
 var is_going_to_interaction : bool = false
 var targeted_position_is_object = null
 var targeted_sitting_position : int = 20
+var is_moving: bool = true
 
 func _ready() -> void:
 	_walk_to(world_scene.get_node("Enter point for npc").position)
@@ -40,7 +41,10 @@ func _physics_process(delta: float) -> void:
 		var destino = nav.get_next_path_position()
 		var local_destino = destino - global_position
 		var dir = local_destino.normalized()
-		velocity = dir * 2
+		if is_moving == true:
+			velocity = dir * 2
+		else:
+			velocity = Vector3.ZERO
 		look_at(destino)
 		rotation.x = 0
 		rotation.z = 0
@@ -50,6 +54,7 @@ func _physics_process(delta: float) -> void:
 			_go_to_interactable_object()
 		
 		move_and_slide()
+		
 
 func _walk_to(target_positon : Vector3):
 	nav.set_target_position(target_positon)
@@ -59,7 +64,7 @@ func _go_to_interactable_object():
 		targeted_position_is_object._interact([self])
 		is_going_to_interaction = false
 		is_on_interaction = true
-		print("sit")
+		is_moving = false
 		leave_interaction.start()
 		get_away_timer.stop()
 	else:
@@ -98,9 +103,11 @@ func chose_interactable_object():
 					targeted_sitting_position = random_choice_of_chair
 				else:
 					_walk_to(targeted_position_is_object.global_position)
-			interacatable_object_detection_area.get_child(0).disabled = true
-			is_going_to_interaction = true
-			idle.stop()
+				interacatable_object_detection_area.get_child(0).disabled = true
+				is_going_to_interaction = true
+				idle.stop()
+				is_moving = true
+			
 		
 func _filter_interactable_object_in_area(bodies):
 	return bodies.get_parent() is InteractableObject
@@ -136,6 +143,7 @@ func _get_called_to_play_game(game_reference: Node3D):
 		targeted_sitting_position = random_choice_of_chair
 
 func _walk_to_random(min_x, max_x, min_z, max_z):
+	is_moving = true
 	targeted_position_is_object = null
 	var random_positon := Vector3(0,1,0)
 	random_positon.x = randf_range(min_x + self.position.x, max_x + self.position.x)
@@ -144,11 +152,14 @@ func _walk_to_random(min_x, max_x, min_z, max_z):
 
 func _on_nav_navigation_finished() -> void:
 	if is_going_to_interaction == false and is_on_interaction == false and Globals.game_paused == false:
+		is_moving = false
 		idle.start(randf_range(minimum_time_for_idle, maximum_time_for_idle))
+		print("navegation finished")
 
 func _on_idle_timeout() -> void:
 	if Globals.game_paused == false and is_going_to_interaction == false and is_on_interaction == false:
 		_walk_to_random(-5, 5, -5, 5)
+		print("idle")
 	
 func _leave_interaction():
 	if is_instance_valid(targeted_position_is_object) == true and targeted_position_is_object is GambleSpot and Globals.game_paused == false:
