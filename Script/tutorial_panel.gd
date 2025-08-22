@@ -47,6 +47,7 @@ func _ready() -> void:
 			key_label.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 			key_label.uppercase = true
 			key_label.text = key_text
+			key_label.add_theme_font_size_override("font_size", 20)
 			vbox.add_child(key_label)
 		2:
 			var keyspr = TextureRect.new()
@@ -62,14 +63,19 @@ func _ready() -> void:
 			key_label.text = key_text
 			vbox.add_child(key_label)
 	
-	if dis_time > 0:
+	if dis_time < 100:
 		time_left.start(dis_time)
 
 func _process(delta: float) -> void:
-	if !time_left.is_stopped():
+	if time_left.time_left < 100:
 		value.value = time_left.time_left / dis_time * 100
+	else:
+		value.value = 0
 
 func _on_time_left_timeout() -> void:
+	clear()
+
+func clear():
 	##marks this panel's preset tutorial to already shown in the manager
 	TutorialManager.tutorials[tutorial] = true
 	queue_free()

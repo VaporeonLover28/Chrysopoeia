@@ -3188,6 +3188,14 @@ maximum_time_for_spawn_npc = 180.0
 [node name="money_box" parent="HUD" index="1"]
 visible = false
 
+[node name="keybind" parent="HUD/money_box/shop" index="0"]
+visible = false
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 64.0
+offset_bottom = 64.0
+
 [node name="Shop Menu" parent="." instance=ExtResource("2_7yui6")]
 offset = Vector2(0, 655)
 transform = Transform2D(1, 0, 0, 1, 0, 655)
@@ -3227,7 +3235,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.83101, 0.894929, -12.503)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.931993, 15.9121)
 
 [node name="Player" parent="." instance=ExtResource("1_f3sb7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -4.71195)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0.5, -4.71195)
 collision_mask = 17
 
 [node name="NonPathDecor" type="Node3D" parent="."]
@@ -4538,8 +4546,10 @@ transform = Transform3D(1, 0, 0, 0, 2.89471, 0, 0, 0, 0.546401, 15.8275, 2.36844
 mesh = SubResource("ArrayMesh_r74th")
 skeleton = NodePath("")
 
+[connection signal="shop_tutorial" from="." to="." method="_on_shop_tutorial"]
 [connection signal="timeout" from="NPC Spwaner Timer" to="." method="_spawn_npc"]
 [connection signal="update_hud" from="Shop Menu/Shop" to="HUD" method="update_spell_slots"]
+[connection signal="build_tutorial" from="Player" to="." method="_on_player_build_tutorial"]
 [connection signal="bought_ring_key" from="NavigationRegion3D/cassino/door4" to="NavigationRegion3D/cassino/door4" method="_remove_wall"]
 [connection signal="body_entered" from="NavigationRegion3D/cassino/fight_ring/player_recon" to="NavigationRegion3D/cassino/fight_ring/player_recon" method="_on_body_entered"]
 [connection signal="body_exited" from="NavigationRegion3D/cassino/fight_ring/player_recon" to="NavigationRegion3D/cassino/fight_ring/player_recon" method="_on_body_exited"]

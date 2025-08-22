@@ -29,6 +29,8 @@ preload("res://Scenes/pleb.tscn"), \
 preload("res://Scenes/noble.tscn")]
 
 signal update_all_mesh
+signal query
+signal shop_tutorial
 
 func _ready() -> void:
 	Globals.limit_spells(["Wheel of Fortune"])
@@ -94,20 +96,30 @@ func _ready() -> void:
 	Globals.save_player_pos = Vector3()
 	if !TutorialManager.tutorials["movement"]:
 		await get_tree().create_timer(1).timeout
+		var tut_query = tut_panel.instantiate()
+		tut_query.dis_time = 9999
+		tut_query.vec_size = Vector2(200, 50)
+		tut_query.pos = Vector2(930, 270)
+		tut_query.panel_type = 0
+		tut_query.text = "Load tutorial?\nPress Y to load or N to skip all tutorials."
+		tutorial.add_child(tut_query)
+		await self.query
+		tut_query.queue_free()
+		await get_tree().create_timer(0.5).timeout
 		var tut_inst = tut_panel.instantiate()
 		tut_inst.tutorial = "movement"
-		tut_inst.dis_time = 1.0
+		tut_inst.dis_time = 15.0
 		tut_inst.vec_size = Vector2(200, 173)
 		tut_inst.pos = Vector2(930, 260)
 		tut_inst.panel_type = 0
 		tut_inst.text = "Thank you for purchasing the deed to Chrysopoeia " +\
 		"Tavern! The place is all yours.\n\nWalk around using WASD and explore!"
 		tutorial.add_child(tut_inst)
-		await get_tree().create_timer(3).timeout
+		await get_tree().create_timer(16).timeout
 		$"HUD/money_box".visible = true
 		var tut_inst2 = tut_panel.instantiate()
 		tut_inst2.tutorial = "open_shop"
-		tut_inst2.dis_time = 0
+		tut_inst2.dis_time = 9999
 		tut_inst2.vec_size = Vector2(200, 203)
 		tut_inst2.pos = Vector2(890, 260)
 		tut_inst2.panel_type = 1
@@ -122,6 +134,15 @@ func _process(delta: float) -> void:
 		SaveScript._save_function(self, 0)
 	if Input.is_action_just_pressed("x"):
 		SaveScript._load_function(0)
+	if Input.is_action_just_pressed("y") and !TutorialManager.tutorials["movement"]:
+		query.emit()
+	if Input.is_action_just_pressed("n") and !TutorialManager.tutorials["movement"]:
+		tutorial.get_child(0).queue_free()
+		$"HUD/money_box".visible = true
+		$HUD/money_box/shop/keybind.visible = true
+		$HUD/money_box/shop/keybind.position = Vector2(15, 58)
+		for key in TutorialManager.tutorials:
+			TutorialManager.tutorials[key] = true
 	
 func _spawn_npc():
 	is_trying_to_spawn_npc = true
@@ -177,3 +198,29 @@ func _see_number_of_NPC_type(npc_type: String):
 		MusicPlayer.emptytavern.play()
 		
 	return npc_type_count
+
+func _on_shop_tutorial() -> void:
+	tutorial.get_child(0).clear()
+	$HUD/money_box/shop/keybind.visible = true
+	$HUD/money_box/shop/keybind.position = Vector2(15, 58)
+	var tut_inst = tut_panel.instantiate()
+	tut_inst.dis_time = 9999
+	tut_inst.vec_size = Vector2(200, 50)
+	tut_inst.pos = Vector2(930, 270)
+	tut_inst.panel_type = 0
+	tut_inst.text = "It's time to renovate!\nBuy a slot machine to start this place up.\n" +\
+	"Press the button below an item to begin placing it."
+	tutorial.add_child(tut_inst)
+
+func _on_player_build_tutorial() -> void:
+	tutorial.get_child(0).clear()
+	var tut_inst = tut_panel.instantiate()
+	tut_inst.dis_time = 9999
+	tut_inst.vec_size = Vector2(200, 50)
+	tut_inst.pos = Vector2(900, 230)
+	tut_inst.panel_type = 1
+	tut_inst.text = "Bring the item to a valid build spot,\nmarked by the green areas on the ground," +\
+	" to build it.\nYou can rotate the item by holding Q or E."
+	tut_inst.key = load("res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/mouse_right_outline.png")
+	tut_inst.key_text = "place"
+	tutorial.add_child(tut_inst)

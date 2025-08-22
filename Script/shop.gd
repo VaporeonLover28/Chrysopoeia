@@ -51,6 +51,9 @@ func _show_shop_menu():
 		tween.tween_callback(func():opened = true)
 		
 		money_label.text = "Money: " + str(Globals.money)
+		
+		if !TutorialManager.tutorials["open_shop"]:
+			world_scene.shop_tutorial.emit()
 	
 func hide_shop_menu():
 	opened = false

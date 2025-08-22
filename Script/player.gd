@@ -36,6 +36,9 @@ var t_bob : float = 0.0
 
 var tween : Tween
 
+signal build_tutorial
+signal slot_machine_tutorial
+
 func _ready() -> void:
 	if Globals.save_player_pos != Vector3():
 		global_position = Globals.save_player_pos
@@ -128,7 +131,7 @@ func _physics_process(delta: float) -> void:
 		ray_interection.get_collider().get_parent().get_node_or_null("Sit positions") != null:
 			_call_npc_to_game()
 			
-		if Input.is_action_just_pressed("b"):
+		if Input.is_action_just_pressed("b") and TutorialManager.tutorials["movement"]:
 			world_scene.get_node("Shop Menu").get_child(0)._show_shop_menu()
 		
 		if Input.is_action_just_pressed("f") and Globals.check_spell_available("Wheel of Fortune") and \
@@ -224,6 +227,8 @@ func loading_screen(game):
 
 func _start_bulding_phase(object_to_be_purchase: PackedScene):
 	world_scene.update_all_mesh.emit()
+	if !TutorialManager.tutorials["build"]:
+		build_tutorial.emit()
 	object_rotation = Vector3.ZERO
 	current_object_being_purchased = object_to_be_purchase
 	var current_object_being_purchased_instantiate = current_object_being_purchased.instantiate()

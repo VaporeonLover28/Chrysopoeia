@@ -34,11 +34,14 @@ var wheels_spinning : int = 0
 var spinning : bool = false
 var fortune := 0
 
+var times_played : int = 0
+
 ##slot machice lol
 ##spin the wheel if it isn't spinning already
 ##clears the variables
 
 func _ready() -> void:
+	#print(get_parent().get_parent().get_parent().name)
 	object_class = "SlotMachine"
 
 func _interact_SlotMachine(object_ref):
@@ -48,6 +51,7 @@ func _interact_SlotMachine(object_ref):
 		lever_pull()
 
 func lever_pull():
+	times_played += 1
 	##if the player can afford to play
 	if Globals.money - play_price >= 0:
 		start.play()
@@ -55,13 +59,7 @@ func lever_pull():
 		Globals.money -= play_price
 		##block the player from spinning again
 		spinning = true
-		##define the spin results
-		if fortune == 0:
-			spin_rewards(base_rewards)
-		elif fortune == 1:
-			spin_rewards(fortune_rewards)
-		else:
-			spin_rewards(failed_fortune_rewards)
+		
 		##tweening the lever to be pulled
 		tween = create_tween()
 		tween.set_trans(Tween.TRANS_BACK)
@@ -69,6 +67,35 @@ func lever_pull():
 		tween.tween_property(lever, "rotation_degrees", Vector3(90, 0, 0), 0.66)
 		tween.set_trans(Tween.TRANS_QUART)
 		tween.tween_property(lever, "rotation_degrees", Vector3.ZERO, 0.66)
+		
+		if TutorialManager.tutorials["slot_machine"]:
+			##define the spin results
+			if fortune == 0:
+				spin_rewards(base_rewards)
+			elif fortune == 1:
+				spin_rewards(fortune_rewards)
+			else:
+				spin_rewards(failed_fortune_rewards)
+		else:
+			match times_played:
+				1:
+					current_reward = [["Mercury", 10, 1], ["Geocentrism", 50, 60], ["Mercury", 10, 1], ["Sun", 20, 40]]
+				2:
+					current_reward = [["Sun", 20, 40], ["Mercury", 10, 1], ["Ra", 75, 75], ["Trismegistus", 100, 85]]
+				3:
+					current_reward = [["Geocentrism", 50, 60], ["Sun", 20, 40], ["Sun", 20, 40], ["Ankh", 0, 95]]
+			spin_sfx.play()
+			var times = 5
+			#print(times)
+			spin(wheel_1, times, current_reward[0], base_rewards)
+			await get_tree().create_timer(0.75).timeout
+			spin(wheel_2, times, current_reward[1], base_rewards)
+			await get_tree().create_timer(0.75).timeout
+			spin(wheel_3, times, current_reward[2], base_rewards)
+			await get_tree().create_timer(0.75).timeout
+			spin(wheel_4, times, current_reward[3], base_rewards)
+			times = 0
+		
 	##if cannot be afforded
 		if play_price == 0:
 			play_price = 30
