@@ -4,6 +4,8 @@
 
 [resource]
 albedo_texture = ExtResource("1_v0ora")
+metallic = 1.0
+emission_energy_multiplier = 6.0
 uv1_scale = Vector3(0.092, 0.092, 0.092)
 uv1_triplanar = true
 uv1_world_triplanar = true

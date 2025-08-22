@@ -18,7 +18,7 @@ func _ready() -> void:
 	size = vec_size
 	position = pos
 	value.size = Vector2(vec_size.x, 4)
-	value.position.y = size.y - 9
+	value.position.y = size.y - 7
 	match panel_type:
 		0:
 			var label = Label.new()
@@ -78,4 +78,6 @@ func _on_time_left_timeout() -> void:
 func clear():
 	##marks this panel's preset tutorial to already shown in the manager
 	TutorialManager.tutorials[tutorial] = true
+	print(tutorial + " seen")
+	print(TutorialManager.tutorials)
 	queue_free()

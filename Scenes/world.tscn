@@ -1,4 +1,4 @@
-[gd_scene load_steps=145 format=4 uid="uid://ifr6x47walau"]
+[gd_scene load_steps=146 format=4 uid="uid://ifr6x47walau"]
 
 [ext_resource type="PackedScene" uid="uid://dsp27d25mg6bh" path="res://Scenes/player.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://cf6y1d4msmkfp" path="res://Script/world.gd" id="1_ic0uy"]
@@ -67,6 +67,7 @@
 [ext_resource type="PackedScene" uid="uid://dbgpivfhrvrfu" path="res://Scenes/shader_quad.tscn" id="65_uq5fj"]
 [ext_resource type="PackedScene" uid="uid://j4nby41rkhr3" path="res://Scenes/sit_positions.tscn" id="66_xm6am"]
 [ext_resource type="Shader" uid="uid://nn3p8j7ucwa8" path="res://Scenes/bounding.gdshader" id="67_uq5fj"]
+[ext_resource type="PackedScene" uid="uid://blm2ybcpo2i7k" path="res://Scenes/slot_machine.tscn" id="68_xm6am"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cwuo4"]
 animations = [{
@@ -3117,7 +3118,7 @@ size = Vector3(4.6239, 3.88443, 0.456802)
 render_priority = -128
 shader = ExtResource("67_uq5fj")
 shader_parameter/albedo = Color(0, 0, 0, 1)
-shader_parameter/proximity_fade_distance = 0.0
+shader_parameter/proximity_fade_distance = -0.015
 
 [sub_resource type="BoxMesh" id="BoxMesh_tutfb"]
 flip_faces = true
@@ -4514,6 +4515,8 @@ shape = SubResource("BoxShape3D_ry8tx")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.751, 0, -17.426)
 material_override = SubResource("ShaderMaterial_xm6am")
 mesh = SubResource("BoxMesh_tutfb")
+
+[node name="SlotMachine" parent="." instance=ExtResource("68_xm6am")]
 
 [connection signal="shop_tutorial" from="." to="." method="_on_shop_tutorial"]
 [connection signal="timeout" from="NPC Spwaner Timer" to="." method="_spawn_npc"]

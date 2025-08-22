@@ -36,9 +36,9 @@ var fortune := 0
 
 var times_played : int = 0
 
-signal tutorial_2
-signal tutorial_3
-signal tutorial_4
+#signal tutorial_2
+#signal tutorial_3
+#signal tutorial_4
 
 ##slot machice lol
 ##spin the wheel if it isn't spinning already
@@ -84,11 +84,40 @@ func lever_pull():
 			match times_played:
 				1:
 					current_reward = [["Mercury", 10, 1], ["Geocentrism", 50, 60], ["Mercury", 10, 1], ["Sun", 20, 40]]
-					
+					$"../../../Tutorial".get_child(0).clear()
+					var tut_inst = load("res://Scenes/tutorial_panel.tscn").instantiate()
+					tut_inst.tutorial = "slot_machine2"
+					tut_inst.dis_time = 9999
+					tut_inst.vec_size = Vector2(200, 165)
+					tut_inst.pos = Vector2(930, 245)
+					tut_inst.panel_type = 0
+					tut_inst.text = "Slot machines give you gold for every combination of two " +\
+					"or more symbols.\n\nMore common symbols give less, while the rarer ones give more. A LOT more."
+					get_parent().get_parent().get_parent().tutorial.add_child(tut_inst)
 				2:
 					current_reward = [["Sun", 20, 40], ["Mercury", 10, 1], ["Ra", 75, 75], ["Trismegistus", 100, 85]]
+					$"../../../Tutorial".get_child(0).clear()
+					var tut_inst = load("res://Scenes/tutorial_panel.tscn").instantiate()
+					tut_inst.tutorial = "slot_machine3"
+					tut_inst.dis_time = 9999
+					tut_inst.vec_size = Vector2(200, 100)
+					tut_inst.pos = Vector2(930, 260)
+					tut_inst.panel_type = 0
+					tut_inst.text = "If you get no combinations, you get no reward. It's that simple."
+					get_parent().get_parent().get_parent().tutorial.add_child(tut_inst)
 				3:
 					current_reward = [["Geocentrism", 50, 60], ["Sun", 20, 40], ["Sun", 20, 40], ["Ankh", 0, 95]]
+					$"../../../Tutorial".get_child(0).clear()
+					TutorialManager.tutorials["slot_machine4"] = true
+					var tut_inst = load("res://Scenes/tutorial_panel.tscn").instantiate()
+					tut_inst.tutorial = "slot_machine4"
+					tut_inst.dis_time = 15
+					tut_inst.vec_size = Vector2(200, 175)
+					tut_inst.pos = Vector2(930, 245)
+					tut_inst.panel_type = 0
+					tut_inst.text = "Keep in mind that one on the right! That's an Ankh.\n" +\
+					"If you get an Ankh alongside a combination, you get double the rewards!"
+					get_parent().get_parent().get_parent().tutorial.add_child(tut_inst)
 			spin_sfx.play()
 			var times = 5
 			#print(times)
@@ -221,7 +250,8 @@ func check_matching(loot_table):
 	##give the earned money to the player
 	if Globals.aqua_regia_timer.time_left > 0:
 		points *= 2
-	CoinEarned.moedas_01.play()
+	if points > 0:
+		CoinEarned.moedas_01.play()
 	Globals.money_lost = (Globals.money + points) - play_price
 	Globals.money += points
 	if Globals.aqua_fortis_active == true:

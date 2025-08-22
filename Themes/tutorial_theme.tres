@@ -3,12 +3,12 @@
 [ext_resource type="FontFile" uid="uid://4y6u2ai8c7lq" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-Bold.ttf" id="1_0rrr3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rrr3"]
-bg_color = Color(0.817316, 3.92266e-06, 3.85046e-07, 1)
+bg_color = Color(0.672305, 4.51226e-06, 2.40654e-07, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0.961661, 0.779448, 0, 1)
+border_color = Color(0.901945, 0.730435, 0, 1)
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
@@ -18,7 +18,7 @@ anti_aliasing = false
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0rrr3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jki5i"]
-bg_color = Color(0.605674, 1.66051e-06, 3.85046e-07, 1)
+bg_color = Color(0.457555, 1.23937e-06, 2.16588e-07, 1)
 
 [resource]
 HSlider/icons/grabber_disabled = null
