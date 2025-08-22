@@ -38,7 +38,7 @@ var times_played : int = 0
 
 #signal tutorial_2
 #signal tutorial_3
-#signal tutorial_4
+signal tutorial_4_ended
 
 ##slot machice lol
 ##spin the wheel if it isn't spinning already
@@ -106,7 +106,7 @@ func lever_pull():
 					tut_inst.text = "If you get no combinations, you get no reward. It's that simple."
 					get_parent().get_parent().get_parent().tutorial.add_child(tut_inst)
 				3:
-					current_reward = [["Geocentrism", 50, 60], ["Sun", 20, 40], ["Sun", 20, 40], ["Ankh", 0, 95]]
+					current_reward = [["Sun", 20, 40], ["Sun", 20, 40], ["Sun", 20, 40], ["Ankh", 0, 95]]
 					$"../../../Tutorial".get_child(0).clear()
 					TutorialManager.tutorials["slot_machine4"] = true
 					var tut_inst = load("res://Scenes/tutorial_panel.tscn").instantiate()
@@ -118,6 +118,7 @@ func lever_pull():
 					tut_inst.text = "Keep in mind that one on the right! That's an Ankh.\n" +\
 					"If you get an Ankh alongside a combination, you get double the rewards!"
 					get_parent().get_parent().get_parent().tutorial.add_child(tut_inst)
+					tutorial_4_ended.emit()
 			spin_sfx.play()
 			var times = 5
 			#print(times)
@@ -215,7 +216,6 @@ func wheel_stopped(wheel, found_reward, loot_table):
 	if wheels_spinning == 0:
 		##check for combos
 		check_matching(loot_table)
-	
 
 ##checking combos
 func check_matching(loot_table):
@@ -259,6 +259,17 @@ func check_matching(loot_table):
 		lever_pull()
 		Globals.aqua_fortis_active = false
 
+func cassino_opened_tutorial():
+	var tut_inst = load("res://Scenes/tutorial_panel.tscn").instantiate()
+	tut_inst.tutorial = "movement"
+	tut_inst.dis_time = 10
+	tut_inst.vec_size = Vector2(200, 175)
+	tut_inst.pos = Vector2(930, 245)
+	tut_inst.panel_type = 0
+	tut_inst.text = "Now that we have something going here, people are sure to come by!\n\n"+\
+	"Keep on making gold and decorating, surely in no time this tavern's gonna have a reputation!"
+	get_parent().get_parent().get_parent().tutorial.add_child(tut_inst)
+
 func spell_cast(spell : String):
 	if Globals.check_spell_available(spell):
 		Globals.cooldown_spell(spell)
@@ -281,3 +292,8 @@ func _on_input_area_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
 		Globals.fortuna_target = null
 		input_prompt.visible = false
+
+func _on_tutorial_4_ended() -> void:
+	print("next")
+	await get_tree().create_timer(16)
+	cassino_opened_tutorial()

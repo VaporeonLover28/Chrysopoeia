@@ -1,4 +1,4 @@
-[gd_scene load_steps=157 format=4 uid="uid://ifr6x47walau"]
+[gd_scene load_steps=157 format=4 uid="uid://dkerjl0ljpmti"]
 
 [ext_resource type="PackedScene" uid="uid://dsp27d25mg6bh" path="res://Scenes/player.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://cf6y1d4msmkfp" path="res://Script/world.gd" id="1_ic0uy"]
@@ -3324,7 +3324,7 @@ collision_mask = 17
 [node name="NonPathDecor" type="Node3D" parent="."]
 
 [node name="WorldFloor" type="MeshInstance3D" parent="NonPathDecor"]
-transform = Transform3D(1, 0, 0, 0, 1.1179, 0, 0, 0, 1, 5.06, -0.441, -15.061)
+transform = Transform3D(1, 0, 0, 0, 1.1179, 0, 0, 0, 1, 5.06, -0.5, -15.061)
 material_override = SubResource("StandardMaterial3D_ochwf")
 mesh = SubResource("BoxMesh_dsm2w")
 
@@ -4500,15 +4500,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5788, 1.5, -5.29397)
 object_type = "Ground_object"
 
 [node name="Build_Spot6" parent="All Build spots" instance=ExtResource("28_3ua1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4481, 1.5, -30.5852)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4481, 1.5, -29.7909)
 object_type = "Ground_object"
 
 [node name="Build_Spot7" parent="All Build spots" instance=ExtResource("28_3ua1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1965, 1.5, -30.5852)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1965, 1.5, -29.7909)
 object_type = "Ground_object"
 
 [node name="Build_Spot8" parent="All Build spots" instance=ExtResource("28_3ua1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.93844, 1.5, -30.5852)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.93844, 1.5, -29.7909)
 object_type = "Ground_object"
 
 [node name="Build_Spot9" parent="All Build spots" instance=ExtResource("28_3ua1v")]

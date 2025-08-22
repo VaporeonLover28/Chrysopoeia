@@ -7,8 +7,9 @@
 script = ExtResource("1_jdcbq")
 item_type = "Spells"
 name = "Chipped Key"
-price = 0
+price = 707
 description = "Looks like it got beat up."
 item_sprite = ExtResource("1_63m15")
 usable = true
+keybind = ""
 metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"

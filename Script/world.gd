@@ -56,8 +56,7 @@ func _ready() -> void:
 				instantiate_interactable.global_position = item[1]
 				instantiate_interactable.rotation = item[2]
 			player.global_position = new_config.get_value("Player", "position")
-			## proxima linha é só pra testar	
-			$Walking_NPCs/NPC.queue_free()
+			## proxima linha é só pra testar
 			for item in $"All Build spots".get_children():
 				item.taken = new_config.get_value("Scene", "build_spot")[item.get_index()]
 				
@@ -66,9 +65,9 @@ func _ready() -> void:
 				instantiate_npc.global_position = item[1]
 				walking_npcs.add_child(instantiate_npc)
 				walking_npcs.get_child(-1).money = item[2]
+			$NavigationRegion3D.bake_navigation_mesh()
 			SaveScript.is_loading = false
 	elif Globals.save_npcs_pos.is_empty() != true and Globals.save_objects.is_empty() != true:
-		$Walking_NPCs/NPC.queue_free()
 		var counter: int = 0
 		for item in Globals.save_npcs_pos:
 			var instantiate_npc = load(item[0]).instantiate()
@@ -92,6 +91,7 @@ func _ready() -> void:
 			item.taken = Globals.save_build_spot[item.get_index()]
 			
 		SaveScript.auto_save.emit()
+		$NavigationRegion3D.bake_navigation_mesh()
 	Globals.transiting_characters_to_gamble = []
 	Globals.save_npcs_pos = []
 	Globals.save_objects = []
@@ -147,7 +147,10 @@ func _process(delta: float) -> void:
 		$HUD/money_box/shop/keybind.position = Vector2(15, 58)
 		for key in TutorialManager.tutorials:
 			TutorialManager.tutorials[key] = true
-	
+
+func _exit_tree() -> void:
+	SaveScript.auto_save.disconnect(SaveScript._save_function)
+
 func _spawn_npc():
 	is_trying_to_spawn_npc = true
 	while is_trying_to_spawn_npc == true:
