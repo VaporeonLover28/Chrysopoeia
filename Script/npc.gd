@@ -79,12 +79,8 @@ func _go_to_interactable_object():
 				targeted_position_is_object = null
 
 func chose_interactable_object():
-<<<<<<< Updated upstream
-	#print("chosed interactable object")
-	if Globals.game_paused == false:
-=======
 	if Globals.game_paused == false and is_going_to_interaction == false and is_on_interaction == false:
->>>>>>> Stashed changes
+
 		idle.stop()
 		interacatable_object_detection_area.get_child(0).disabled = false
 		await get_tree().create_timer(0.5).timeout

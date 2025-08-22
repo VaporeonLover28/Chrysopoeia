@@ -1,4 +1,4 @@
-[gd_scene load_steps=143 format=4 uid="uid://ifr6x47walau"]
+[gd_scene load_steps=142 format=4 uid="uid://ifr6x47walau"]
 
 [ext_resource type="PackedScene" uid="uid://dsp27d25mg6bh" path="res://Scenes/player.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://cf6y1d4msmkfp" path="res://Script/world.gd" id="1_ic0uy"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cplllnfhtikkb" path="res://Scenes/hud.tscn" id="2_pyn1s"]
 [ext_resource type="PackedScene" uid="uid://uuscgkuf1gtm" path="res://Scenes/bar_ui.tscn" id="3_e0ngr"]
 [ext_resource type="PackedScene" uid="uid://jekyh5hw0o23" path="res://Scenes/npc.tscn" id="3_tlwt5"]
-[ext_resource type="Texture2D" uid="uid://cy6533hoie6y4" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Double/keyboard_quote_outlin_02e.png" id="3_uq5fj"]
 [ext_resource type="PackedScene" uid="uid://cb53qpnp2by4" path="res://Scenes/casino_light.tscn" id="4_036b0"]
 [ext_resource type="PackedScene" uid="uid://bju8ckhov8525" path="res://Assets/Exports/glTF/Stool.gltf" id="4_gbfbk"]
 [ext_resource type="Texture2D" uid="uid://bhm7iuxwwodlc" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024333.png" id="5_cvubk"]
@@ -3186,12 +3185,8 @@ maximum_time_for_spawn_npc = 180.0
 
 [node name="HUD" parent="." instance=ExtResource("2_pyn1s")]
 
-[node name="pause" parent="HUD" index="0"]
-texture = ExtResource("3_uq5fj")
-
 [node name="keybind" parent="HUD/money_box/shop" index="0"]
 visible = false
-layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 64.0
@@ -4553,7 +4548,6 @@ skeleton = NodePath("")
 [connection signal="shop_tutorial" from="." to="." method="_on_shop_tutorial"]
 [connection signal="timeout" from="NPC Spwaner Timer" to="." method="_spawn_npc"]
 [connection signal="update_hud" from="Shop Menu/Shop" to="HUD" method="update_spell_slots"]
-[connection signal="build_tutorial" from="Player" to="." method="_on_player_build_tutorial"]
 [connection signal="bought_ring_key" from="NavigationRegion3D/cassino/door4" to="NavigationRegion3D/cassino/door4" method="_remove_wall"]
 [connection signal="body_entered" from="NavigationRegion3D/cassino/fight_ring/player_recon" to="NavigationRegion3D/cassino/fight_ring/player_recon" method="_on_body_entered"]
 [connection signal="body_exited" from="NavigationRegion3D/cassino/fight_ring/player_recon" to="NavigationRegion3D/cassino/fight_ring/player_recon" method="_on_body_exited"]

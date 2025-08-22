@@ -36,12 +36,12 @@ var t_bob : float = 0.0
 
 var tween : Tween
 
-<<<<<<< Updated upstream
+
 signal build_tutorial
 signal slot_machine_tutorial
-=======
+
 var object_sitting: InteractableObject
->>>>>>> Stashed changes
+
 
 func _ready() -> void:
 	if Globals.save_player_pos != Vector3():
