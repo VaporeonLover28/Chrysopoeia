@@ -258,12 +258,8 @@ func _start_bulding_phase(object_to_be_purchase: PackedScene):
 			current_object_being_purchased_instantiate.get_child(item.get_index()).queue_free()
 			new_area3d.add_child(instantiate_colission)
 	current_object_being_purchased_instantiate.add_child(new_area3d)
-	for item in current_object_being_purchased_instantiate.get_children():
-		print(item)
-		if item.get_script() != null and item.get_script().resource_path == "res://Script/build_spot.gd":
-			item.queue_free()
+	current_object_being_purchased_instantiate.position = ray_builder_1.position + Vector3(0,0,-3)
 	ray_builder_1.add_child(current_object_being_purchased_instantiate)
-	ray_builder_1.get_child(0).position = ray_builder_1.position + Vector3(0,0,-3)
 	is_on_building_mode = true
 	
 func _rotate_bulding_object(rotation_direction: int):
@@ -290,10 +286,7 @@ func _build():
 			world_scene.get_node("NavigationRegion3D").get_node("All Interactable Spots").add_child(instantiate_object)
 		else:
 			world_scene.get_node("NavigationRegion3D").get_node("All non interactable objects").add_child(instantiate_object)
-		if instantiate_object.scene_file_path == "res://Scenes/chandelier_.tscn":
-			instantiate_object.global_position = ray_builder_1.get_child(0).global_position + Vector3(0, 1.5, 0)
-		else:
-			instantiate_object.global_position = ray_builder_1.get_child(0).global_position - Vector3(0, 1, 0)
+		instantiate_object.global_position = ray_builder_1.get_child(0).global_position - Vector3(0, 1, 0)
 		world_scene.get_node("NavigationRegion3D").bake_navigation_mesh()
 		is_on_building_mode = false
 		current_object_being_purchased = null
@@ -305,13 +298,11 @@ func _build():
 
 		var save_ray_builder_1_monetoring = ray_builder_1.get_collider()
 		var save_ray_builder_2_monetoring = ray_builder_2.get_collider()
-		if save_ray_builder_1_monetoring != null:
-			save_ray_builder_1_monetoring.monitoring = false
+		save_ray_builder_1_monetoring.monitoring = false
 		if save_ray_builder_2_monetoring != null:
 			save_ray_builder_2_monetoring.monitoring = false
 		await get_tree().create_timer(0.1).timeout
-		if save_ray_builder_1_monetoring != null:
-			save_ray_builder_1_monetoring.monitoring = true
+		save_ray_builder_1_monetoring.monitoring = true
 		if save_ray_builder_2_monetoring != null:
 			save_ray_builder_2_monetoring.monitoring = true
 	
@@ -330,7 +321,6 @@ func _sell():
 					Globals.money += item.get_node_or_null("Sell_Satisfation Value").sell_value
 					Globals.satisfaction_level -= item.get_node("Sell_Satisfation Value").satisfaction_value
 					item.queue_free()
-		SaveScript.auto_save.emit()
 	
 
 func lock_model_into_build_spot():
@@ -339,10 +329,7 @@ func lock_model_into_build_spot():
 	and ray_builder.get_collider().is_in_group(ray_builder_1.get_child(0).get_groups()[0])\
 	and ray_builder_1.get_child(0).get_child(-1).has_overlapping_bodies() == false\
 	and ray_builder.get_collider().get_parent().taken == false:
-		if ray_builder_1.get_child(0).scene_file_path == "res://Scenes/chandelier_.tscn":
-			ray_builder_1.get_child(0).global_position = ray_builder.get_collider().get_parent().global_position + Vector3(0, 0.5, 0)
-		else:
-			ray_builder_1.get_child(0).global_position = ray_builder.get_collider().get_parent().global_position - Vector3(0, 0.5, 0)
+		ray_builder_1.get_child(0).global_position = ray_builder.get_collider().get_parent().global_position - Vector3(0, 0.5, 0)
 		ray_builder_1.get_child(0).rotation = ray_builder_1.get_child(0).rotation  + ray_builder.get_collider().get_parent().rotation
 		can_build = true
 		for item in ray_builder_1.get_child(0).get_child(0).get_child(0).mesh.get_surface_count():
@@ -354,10 +341,7 @@ func lock_model_into_build_spot():
 	and ray_builder.get_collider().get_name() == "Area build spot"\
 	and ray_builder.get_collider().is_in_group(ray_builder_1.get_child(0).get_groups()[0])\
 	and ray_builder_1.get_child(0).get_child(-1).has_overlapping_bodies() == true:
-		if ray_builder_1.get_child(0).scene_file_path == "res://Scenes/chandelier_.tscn":
-			ray_builder_1.get_child(0).global_position = ray_builder.get_collider().get_parent().global_position + Vector3(0, 0.5, 0)
-		else:
-			ray_builder_1.get_child(0).global_position = ray_builder.get_collider().get_parent().global_position - Vector3(0, 0.5, 0)
+		ray_builder_1.get_child(0).global_position = ray_builder.get_collider().get_parent().global_position - Vector3(0, 0.5, 0)
 		can_build = false
 		for item in ray_builder_1.get_child(0).get_child(0).get_child(0).mesh.get_surface_count():
 			ray_builder_1.get_child(0).get_child(0).get_child(0).mesh.surface_get_material(item).next_pass.set_shader_parameter("outline_color", Color.RED)

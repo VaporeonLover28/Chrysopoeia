@@ -18,8 +18,7 @@ func _on_start_btn_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/world.tscn")
 	
 func _on_load_btn_pressed() -> void:
-	MusicPlayer.menutheme.stop()
-	SaveScript._load_function(0)
+	get_tree().change_scene_to_file("res://Scenes/Load_game.tscn")
 
 func _on_options_btn_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Options.tscn")

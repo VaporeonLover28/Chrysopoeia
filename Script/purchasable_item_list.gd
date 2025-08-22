@@ -9,9 +9,8 @@ load("res://Resources-shop/ring_key.tres")]
 @onready var all_decoration_list : Array[PurchasableItemResource] = \
 [load("res://Resources-shop/Candlestick.tres"),\
 load("res://Resources-shop/chair.tres"),\
-load("res://Resources-shop/chandelier.tres"),\
-load("res://Resources-shop/table.tres"),\
-load("res://Resources-shop/trono.tres")]
+load("res://Resources-shop/chandelier.tres"),
+load("res://Resources-shop/table.tres")]
 
 @onready var all_spell_list : Array[PurchasableItemResource] = [load("res://Resources-shop/spell_fortune.tres"),
 load("res://Resources-shop/spell_shard.tres"),
@@ -34,40 +33,37 @@ func _ready() -> void:
 	update_item_list()
 
 func update_item_list():
-	if SaveScript.is_loading == false:
-		added_itens = []
-		removed_itens = []
+	added_itens = []
+	removed_itens = []
+	if Globals.satisfaction_level >= 0 and Globals.satisfaction_level < 35 and shop_level != 1:
+		_filter_to_add(games_list, [load("res://Resources-shop/slot_mac.tres")])
+		_filter_to_add(decoration_list, [load("res://Resources-shop/table.tres")])
+		_filter_to_add(spell_list, [load("res://Resources-shop/spell_fortune.tres")])
+		_filter_to_remove(games_list, [load("res://Resources-shop/black_jack.tres")])
+		_filter_to_remove(decoration_list, [load("res://Resources-shop/chair.tres"), load("res://Resources-shop/Candlestick.tres")])
+		_filter_to_remove(spell_list, [load("res://Resources-shop/spell_prov.tres")])
+		shop_level = 1
+	if Globals.satisfaction_level >= 35 and Globals.satisfaction_level < 120 and  shop_level != 2:
+		_filter_to_add(games_list, [load("res://Resources-shop/black_jack.tres")])
+		_filter_to_add(decoration_list, [load("res://Resources-shop/chair.tres"), load("res://Resources-shop/Candlestick.tres")])
+		_filter_to_add(spell_list, [load("res://Resources-shop/spell_prov.tres")])
+		_filter_to_remove(decoration_list, [load("res://Resources-shop/Candlestick.tres")])
+		_filter_to_remove(spell_list, [load("res://Resources-shop/spell_shard.tres"), load("res://Resources-shop/spell_fool.tres")])
+		shop_level = 2
+	if Globals.satisfaction_level >= 120 and Globals.satisfaction_level < 250  and shop_level != 3:
+		if Globals.bar_unlock == false:
+			_filter_to_add(games_list, [load("res://Resources-shop/bar.tres")])
+		_filter_to_add(decoration_list, [load("res://Resources-shop/Candlestick.tres")])
+		_filter_to_add(spell_list, [load("res://Resources-shop/spell_shard.tres"), load("res://Resources-shop/spell_fool.tres")])
+		_filter_to_remove(spell_list, [load("res://Resources-shop/spell_mars.tres")])
+		shop_level = 3
+	if Globals.satisfaction_level >= 250 and shop_level != 4:
+		if Globals.ring_unlock == false:
+			_filter_to_add(games_list, [load("res://Resources-shop/ring_key.tres")])
+		_filter_to_add(decoration_list, [load("res://Resources-shop/Candlestick.tres")])
+		_filter_to_add(spell_list, [load("res://Resources-shop/spell_mars.tres")])
+		shop_level = 4
 		
-		if Globals.satisfaction_level >= 0 and Globals.satisfaction_level < 35 and shop_level != 1:
-			_filter_to_add(games_list, [load("res://Resources-shop/slot_mac.tres")])
-			_filter_to_add(decoration_list, [load("res://Resources-shop/table.tres")])
-			_filter_to_add(spell_list, [load("res://Resources-shop/spell_fortune.tres")])
-			_filter_to_remove(games_list, [load("res://Resources-shop/black_jack.tres")])
-			_filter_to_remove(decoration_list, [load("res://Resources-shop/chair.tres"), load("res://Resources-shop/Candlestick.tres")])
-			_filter_to_remove(spell_list, [load("res://Resources-shop/spell_prov.tres")])
-			shop_level = 1
-		if Globals.satisfaction_level >= 35 and Globals.satisfaction_level < 120 and shop_level != 2:
-			_filter_to_add(games_list, [load("res://Resources-shop/black_jack.tres")])
-			_filter_to_add(decoration_list, [load("res://Resources-shop/chair.tres"), load("res://Resources-shop/Candlestick.tres")])
-			_filter_to_add(spell_list, [load("res://Resources-shop/spell_prov.tres")])
-			_filter_to_remove(decoration_list, [load("res://Resources-shop/chandelier.tres")])
-			_filter_to_remove(spell_list, [load("res://Resources-shop/spell_shard.tres"), load("res://Resources-shop/spell_fool.tres")])
-			shop_level = 2
-		if Globals.satisfaction_level >= 120 and Globals.satisfaction_level < 250  and shop_level != 3:
-			if Globals.bar_unlock == false:
-				_filter_to_add(games_list, [load("res://Resources-shop/bar.tres")])
-			_filter_to_add(decoration_list, [load("res://Resources-shop/chandelier.tres")])
-			_filter_to_add(spell_list, [load("res://Resources-shop/spell_shard.tres"), load("res://Resources-shop/spell_fool.tres")])
-			_filter_to_remove(spell_list, [load("res://Resources-shop/spell_mars.tres")])
-			_filter_to_remove(decoration_list, [load("res://Resources-shop/trono.tres")])
-			shop_level = 3
-		if Globals.satisfaction_level >= 250 and shop_level != 4:
-			if Globals.ring_unlock == false:
-				_filter_to_add(games_list, [load("res://Resources-shop/ring_key.tres")])
-			_filter_to_add(decoration_list, [load("res://Resources-shop/trono.tres")])
-			_filter_to_add(spell_list, [load("res://Resources-shop/spell_mars.tres")])
-			shop_level = 4
-	print(shop_level)
 	if get_parent().get_node_or_null("World") != null:
 		$"../World/Shop Menu/Shop".update_shop_contents.emit(_sort_by_type(added_itens), _sort_by_type(removed_itens))
 		

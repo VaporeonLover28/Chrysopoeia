@@ -151,7 +151,7 @@ func _on_update_shop_contents(added_itens: Array[Array], removed_itens: Array[Ar
 		_add_objects(games_h_box_container, added_itens[0])
 	if !added_itens[1].is_empty():
 		_add_objects(decoration_h_box_container, added_itens[1])
-	if !added_itens[2].is_empty():
+	if !removed_itens[2].is_empty():
 		_add_objects(spell_h_box_container, added_itens[2])
 	if !removed_itens[0].is_empty():
 		_remove_objects(games_h_box_container, removed_itens[0])
