@@ -1,11 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://cplllnfhtikkb"]
+[gd_scene load_steps=9 format=3 uid="uid://cplllnfhtikkb"]
 
 [ext_resource type="Script" uid="uid://cdp52ym80e577" path="res://Script/hud.gd" id="1_6fbih"]
-[ext_resource type="Texture2D" uid="uid://brg6gjvw3r7rf" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Double/keyboard_quote_outline.png" id="1_e0onf"]
+[ext_resource type="Texture2D" uid="uid://cy6533hoie6y4" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Double/keyboard_quote_outlin_02e.png" id="2_8jye8"]
+[ext_resource type="FontFile" uid="uid://4y6u2ai8c7lq" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-Bold.ttf" id="3_43w4t"]
 [ext_resource type="Texture2D" uid="uid://deqm62q0dnwk2" path="res://Assets/Originals/Xopi.png" id="3_t1xeu"]
-[ext_resource type="Texture2D" uid="uid://fc8vckax01o5" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Vector/keyboard_b_outline.svg" id="4_36asn"]
 [ext_resource type="Texture2D" uid="uid://wetbh3qngmmh" path="res://Assets/Originals/spellot.png" id="4_t1xeu"]
+[ext_resource type="Texture2D" uid="uid://dsf40o5k56jo4" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_b_outline-et.png" id="5_7gr8i"]
 [ext_resource type="FontFile" uid="uid://paxjlxvek7jf" path="res://Assets/Fonts/ransite_medieval/RansiteMedieval_PERSONAL_USE_ONLY.otf" id="5_t1xeu"]
+
+[sub_resource type="Theme" id="Theme_5ep0j"]
+default_font = ExtResource("3_43w4t")
+Label/colors/font_color = Color(0.796078, 0, 0, 1)
+Label/colors/font_outline_color = Color(1, 0.866667, 0, 1)
+Label/constants/outline_size = 10
+Label/font_sizes/font_size = 18
+Label/fonts/font = ExtResource("3_43w4t")
 
 [node name="HUD" type="CanvasLayer"]
 process_mode = 3
@@ -15,7 +24,7 @@ script = ExtResource("1_6fbih")
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_e0onf")
+texture = ExtResource("2_8jye8")
 stretch_mode = 3
 
 [node name="money_box" type="VBoxContainer" parent="."]
@@ -26,6 +35,7 @@ offset_bottom = 197.0
 
 [node name="Gold" type="Label" parent="money_box"]
 layout_mode = 2
+theme = SubResource("Theme_5ep0j")
 text = "Gold: XXXXX"
 
 [node name="shop" type="TextureRect" parent="money_box"]
@@ -36,12 +46,13 @@ texture = ExtResource("3_t1xeu")
 stretch_mode = 3
 
 [node name="keybind" type="TextureRect" parent="money_box/shop"]
+layout_mode = 0
 offset_left = 15.0
 offset_top = 58.0
 offset_right = 79.0
 offset_bottom = 122.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_36asn")
+texture = ExtResource("5_7gr8i")
 
 [node name="spells" type="MarginContainer" parent="."]
 offset_top = 492.0

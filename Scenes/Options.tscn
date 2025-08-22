@@ -1,6 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://cc8lfsm2djmxi"]
+[gd_scene load_steps=25 format=3 uid="uid://cc8lfsm2djmxi"]
 
+[ext_resource type="Script" uid="uid://dik6iickpgs3r" path="res://options.gd" id="1_g1sm3"]
 [ext_resource type="Theme" uid="uid://cdh2vq0ieqel5" path="res://Themes/option_theme_check.tres" id="1_qqnya"]
+[ext_resource type="Texture2D" uid="uid://boeea25ftv4sr" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_w.png" id="2_kfnrp"]
+[ext_resource type="Texture2D" uid="uid://dgh0pkkp52mnr" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_a.png" id="3_tcskm"]
+[ext_resource type="Texture2D" uid="uid://bpctb6libewyu" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_s.png" id="4_fry7h"]
+[ext_resource type="Texture2D" uid="uid://b0dx1hxp2ufsc" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_d.png" id="5_ksf6h"]
+[ext_resource type="Texture2D" uid="uid://br4c6wvhsagf0" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_shift.png" id="6_34to5"]
+[ext_resource type="Texture2D" uid="uid://bw2bk1lgkp3to" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_escape.png" id="7_21smx"]
+[ext_resource type="Texture2D" uid="uid://vh4jus6w66ri" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/mouse_right.png" id="8_jpdgi"]
+[ext_resource type="Texture2D" uid="uid://vpsnal4dyyq1" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/mouse_left.png" id="9_mrk6e"]
+[ext_resource type="Texture2D" uid="uid://f0ttn82elvev" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_b.png" id="10_oa66i"]
+[ext_resource type="Texture2D" uid="uid://bymswxfkuf1i7" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_e.png" id="11_k0hbd"]
+[ext_resource type="Texture2D" uid="uid://dl1c3wpfn3nqf" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_f.png" id="12_g1sm3"]
+[ext_resource type="Texture2D" uid="uid://cjhka17gkabdj" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_tab.png" id="13_bscdg"]
+[ext_resource type="Texture2D" uid="uid://dsk8pn6hw5myi" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_space.png" id="14_pfkoy"]
+[ext_resource type="Texture2D" uid="uid://g8taecw3182d" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_q.png" id="15_hw8gm"]
+[ext_resource type="Texture2D" uid="uid://dtfxgynf6hlxt" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_z.png" id="16_lq70a"]
+[ext_resource type="Texture2D" uid="uid://dlt5hgipgnt2e" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_x.png" id="17_8jo0a"]
+[ext_resource type="Texture2D" uid="uid://bqfht4nusi6r5" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_r.png" id="18_iqnv7"]
+[ext_resource type="Texture2D" uid="uid://qbgocmlncrfu" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_c.png" id="19_ofdu2"]
+[ext_resource type="Texture2D" uid="uid://dkaq6sa8la6ug" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_h.png" id="20_ywwqc"]
+[ext_resource type="Texture2D" uid="uid://njckevlsnnk7" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_y.png" id="21_3w45p"]
+[ext_resource type="Texture2D" uid="uid://boy32nrcpdifj" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_n.png" id="22_81jd5"]
+[ext_resource type="Texture2D" uid="uid://cqrj0lnnl525y" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_enter.png" id="23_387uy"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -9,6 +32,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_g1sm3")
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 0
@@ -36,23 +60,6 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="Resolution_label" type="Label" parent="TabContainer/Display/Margin_display/Display_container/Res_container"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = " Resolution"
-
-[node name="Resolution_button" type="OptionButton" parent="TabContainer/Display/Margin_display/Display_container/Res_container"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-selected = 0
-allow_reselect = true
-item_count = 5
-popup/item_0/id = 0
-popup/item_1/id = 1
-popup/item_2/id = 2
-popup/item_3/id = 3
-popup/item_4/id = 4
-
 [node name="Fullscreen_button" type="CheckButton" parent="TabContainer/Display/Margin_display/Display_container"]
 layout_mode = 2
 size_flags_horizontal = 0
@@ -71,6 +78,278 @@ visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Inputs"]
+layout_mode = 0
+offset_right = 1146.0
+offset_bottom = 615.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Inputs/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_kfnrp")
+
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Open shop"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("3_tcskm")
+
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Open shop"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("4_fry7h")
+
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Open shop"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+texture = ExtResource("5_ksf6h")
+
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Open shop"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+texture = ExtResource("6_34to5")
+
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "Open shop"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+texture = ExtResource("7_21smx")
+
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "Open shop"
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+texture = ExtResource("8_jpdgi")
+
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+text = "Open shop"
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+texture = ExtResource("9_mrk6e")
+
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+text = "Open shop"
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer9"]
+layout_mode = 2
+texture = ExtResource("10_oa66i")
+
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer9"]
+layout_mode = 2
+text = "Open shop"
+
+[node name="HBoxContainer10" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer10"]
+layout_mode = 2
+texture = ExtResource("11_k0hbd")
+
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer10"]
+layout_mode = 2
+text = "Open shop"
+
+[node name="HBoxContainer11" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer11"]
+layout_mode = 2
+texture = ExtResource("12_g1sm3")
+
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer11"]
+layout_mode = 2
+text = "Open shop"
+
+[node name="HBoxContainer12" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer12"]
+layout_mode = 2
+texture = ExtResource("13_bscdg")
+
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer12"]
+layout_mode = 2
+text = "Open shop"
+
+[node name="HBoxContainer13" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer13"]
+layout_mode = 2
+texture = ExtResource("14_pfkoy")
+
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer13"]
+layout_mode = 2
+text = "Open shop"
+
+[node name="HBoxContainer14" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer14"]
+layout_mode = 2
+texture = ExtResource("15_hw8gm")
+
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer14"]
+layout_mode = 2
+text = "Open shop"
+
+[node name="HBoxContainer15" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer15"]
+layout_mode = 2
+texture = ExtResource("16_lq70a")
+
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer15"]
+layout_mode = 2
+text = "Open shop"
+
+[node name="HBoxContainer16" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer16"]
+layout_mode = 2
+texture = ExtResource("17_8jo0a")
+
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer16"]
+layout_mode = 2
+text = "Open shop"
+
+[node name="HBoxContainer17" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer17"]
+layout_mode = 2
+texture = ExtResource("18_iqnv7")
+
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer17"]
+layout_mode = 2
+text = "Open shop"
+
+[node name="HBoxContainer18" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer18"]
+layout_mode = 2
+texture = ExtResource("19_ofdu2")
+
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer18"]
+layout_mode = 2
+text = "Open shop"
+
+[node name="HBoxContainer19" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer19"]
+layout_mode = 2
+texture = ExtResource("20_ywwqc")
+
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer19"]
+layout_mode = 2
+text = "Open shop"
+
+[node name="HBoxContainer20" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer20"]
+layout_mode = 2
+texture = ExtResource("21_3w45p")
+
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer20"]
+layout_mode = 2
+text = "Open shop"
+
+[node name="HBoxContainer21" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer21"]
+layout_mode = 2
+texture = ExtResource("22_81jd5")
+
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer21"]
+layout_mode = 2
+text = "Open shop"
+
+[node name="HBoxContainer22" type="HBoxContainer" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer22"]
+layout_mode = 2
+texture = ExtResource("23_387uy")
+
+[node name="Label" type="Label" parent="TabContainer/Inputs/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer22"]
+layout_mode = 2
+text = "Open shop"
+
 [node name="Audio" type="TabBar" parent="TabContainer"]
 layout_mode = 2
 metadata/_tab_index = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Audio"]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 613.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Audio/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Volume"
+
+[node name="HSlider" type="HSlider" parent="TabContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[connection signal="toggled" from="TabContainer/Display/Margin_display/Display_container/Fullscreen_button" to="." method="_on_fullscreen_button_toggled"]
+[connection signal="toggled" from="TabContainer/Display/Margin_display/Display_container/Vsync_button" to="." method="_on_vsync_button_toggled"]
+[connection signal="value_changed" from="TabContainer/Audio/MarginContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]

@@ -1,12 +1,52 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://f5yk4gkyeuqv"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://f5yk4gkyeuqv"]
 
 [ext_resource type="FontFile" uid="uid://4y6u2ai8c7lq" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-Bold.ttf" id="1_sb3rf"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sb3rf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sb3rf"]
+bg_color = Color(1, 0.807843, 0, 0.894118)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.807843, 0, 0.894118)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jba0o"]
+bg_color = Color(0.705948, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.866667, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7blt"]
-bg_color = Color(0.583686, 0.275523, 0.171805, 1)
+bg_color = Color(1, 0.807843, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.866667, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [resource]
-Button/colors/font_pressed_color = Color(1, 0.791111, 0.698955, 1)
+Button/colors/font_color = Color(1, 0.866667, 0, 1)
+Button/colors/font_hover_color = Color(0.881923, 0.434736, 0.0048974, 1)
+Button/colors/font_pressed_color = Color(0.8, 0, 0, 1)
 Button/font_sizes/font_size = 30
 Button/fonts/font = ExtResource("1_sb3rf")
+Button/styles/focus = SubResource("StyleBoxEmpty_sb3rf")
+Button/styles/hover = SubResource("StyleBoxFlat_sb3rf")
+Button/styles/normal = SubResource("StyleBoxFlat_jba0o")
 Button/styles/pressed = SubResource("StyleBoxFlat_p7blt")
