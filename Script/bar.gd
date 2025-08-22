@@ -7,8 +7,6 @@ extends InteractableObject
 
 signal bought_bar
 
-
-
 func _ready() -> void:
 	if Globals.bar_unlock == true:
 		var mage_instance = MAGO_BAR.instantiate()

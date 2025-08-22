@@ -12,6 +12,8 @@ var blackjack_npc = preload("res://Scenes/blackjack_npc.tscn")
 
 @onready var can_cancel_interact: bool = true
 
+@onready var is_transiting : bool = false
+
 var tween : Tween
 
 func _ready() -> void:
@@ -22,8 +24,10 @@ func _physics_process(delta: float) -> void:
 		world.get_node("Player").object_sitting = null
 		sit_positions.player_is_sitting = false
 		Globals.player_interacting = false
-	if Input.is_action_just_pressed("click") and sit_positions.player_is_sitting == true and sit_positions._CNSC() >= 2:
+	if Input.is_action_just_pressed("click") and sit_positions.player_is_sitting == true and sit_positions._CNSC() >= 2 and is_transiting == false:
 		_transiti_into_bet()
+		is_transiting = true
+		
 	can_cancel_interact = true
 
 func _interact_GambleSpot(object_ref):
@@ -45,7 +49,8 @@ func _transiti_into_bet():
 		loading_screen(game_machice_scene)
 		for item in sit_positions.chair_postion_list:
 			var save_character: Array
-			if item.size() > 3 and item[2] != null:
+			print(item.size() > 3 and item[2] != null)
+			if item.size() >= 3 and item[2] != null:
 				save_character.push_back(item[2].npc_name)
 				save_character.push_back(item[2].money)
 				save_character.push_back(item[2].get_index())

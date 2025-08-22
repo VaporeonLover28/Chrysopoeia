@@ -3825,8 +3825,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.83753)
 [node name="Shader_Quad" parent="NavigationRegion3D/All Interactable Spots/Bar/camera" instance=ExtResource("65_uq5fj")]
 
 [node name="Sit positions" parent="NavigationRegion3D/All Interactable Spots/Bar" instance=ExtResource("66_xm6am")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.542, 0.691, 0)
-chair_postion_list = Array[Array]([[Vector3(0, 0, 2.2), true]])
+chair_postion_list = Array[Array]([[Vector3(0, 0, 2.2), true], [Vector3(1.5, 0, 2.2), true], [Vector3(4.1, 0, 2.2), true], [Vector3(2.3, 0, 2.2), true]])
 
 [node name="All non interactable objects" type="Node3D" parent="NavigationRegion3D"]
 

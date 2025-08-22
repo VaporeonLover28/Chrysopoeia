@@ -80,25 +80,27 @@ func _go_to_interactable_object():
 
 func chose_interactable_object():
 	if Globals.game_paused == false and is_going_to_interaction == false and is_on_interaction == false:
-
-		idle.stop()
 		interacatable_object_detection_area.get_child(0).disabled = false
 		await get_tree().create_timer(0.5).timeout
 		var bodies_on_area = interacatable_object_detection_area.get_overlapping_bodies().filter(_filter_interactable_object_in_area)
 		if bodies_on_area.is_empty() == false:
 			see_if_favorite_game_is_in_area(bodies_on_area)
+			if Globals.bar_unlock == false:
+				bodies_on_area = bodies_on_area.filter(_remove_bar_if_not_unlocked)
 			if favorite_games.is_empty() != true and randi_range(0 ,100) <= chance_to_choose_favorite_game and see_if_favorite_game_is_in_area(bodies_on_area) == true:
 				bodies_on_area = bodies_on_area.filter(_filter_favorite_game)
-			var choosen_intecractable_object = bodies_on_area.pick_random().get_parent()
-			targeted_position_is_object = choosen_intecractable_object
-			if targeted_position_is_object.get_node_or_null("Sit positions") != null:
-				var random_choice_of_chair = randi_range(0, targeted_position_is_object.get_node("Sit positions").get_child_count() - 1)
-				_walk_to(targeted_position_is_object.get_node("Sit positions").get_child(random_choice_of_chair).global_position)
-				targeted_sitting_position = random_choice_of_chair
-			else:
-				_walk_to(targeted_position_is_object.global_position)
-		interacatable_object_detection_area.get_child(0).disabled = true
-		is_going_to_interaction = true
+			if bodies_on_area.is_empty() == false:
+				var choosen_intecractable_object = bodies_on_area.pick_random().get_parent()
+				targeted_position_is_object = choosen_intecractable_object
+				if targeted_position_is_object.get_node_or_null("Sit positions") != null:
+					var random_choice_of_chair = randi_range(0, targeted_position_is_object.get_node("Sit positions").get_child_count() - 1)
+					_walk_to(targeted_position_is_object.get_node("Sit positions").get_child(random_choice_of_chair).global_position)
+					targeted_sitting_position = random_choice_of_chair
+				else:
+					_walk_to(targeted_position_is_object.global_position)
+			interacatable_object_detection_area.get_child(0).disabled = true
+			is_going_to_interaction = true
+			idle.stop()
 		
 func _filter_interactable_object_in_area(bodies):
 	return bodies.get_parent() is InteractableObject
@@ -117,6 +119,12 @@ func see_if_favorite_game_is_in_area(array_of_bodies: Array):
 		else:
 			pass
 	return false
+	
+func _remove_bar_if_not_unlocked(body):
+	if body.name == "Bar":
+		return true
+	else:
+		return false
 
 func _get_called_to_play_game(game_reference: Node3D):
 	if Globals.game_paused == false and is_going_to_interaction == false and is_on_interaction == false:
