@@ -36,6 +36,10 @@ var fortune := 0
 
 var times_played : int = 0
 
+signal tutorial_2
+signal tutorial_3
+signal tutorial_4
+
 ##slot machice lol
 ##spin the wheel if it isn't spinning already
 ##clears the variables
@@ -68,7 +72,7 @@ func lever_pull():
 		tween.set_trans(Tween.TRANS_QUART)
 		tween.tween_property(lever, "rotation_degrees", Vector3.ZERO, 0.66)
 		
-		if TutorialManager.tutorials["slot_machine"]:
+		if TutorialManager.tutorials["slot_machine4"]:
 			##define the spin results
 			if fortune == 0:
 				spin_rewards(base_rewards)
@@ -80,6 +84,7 @@ func lever_pull():
 			match times_played:
 				1:
 					current_reward = [["Mercury", 10, 1], ["Geocentrism", 50, 60], ["Mercury", 10, 1], ["Sun", 20, 40]]
+					
 				2:
 					current_reward = [["Sun", 20, 40], ["Mercury", 10, 1], ["Ra", 75, 75], ["Trismegistus", 100, 85]]
 				3:

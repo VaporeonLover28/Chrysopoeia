@@ -39,10 +39,9 @@ layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 tab_alignment = 1
-current_tab = 2
+current_tab = 0
 
 [node name="Display" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -64,6 +63,7 @@ size_flags_horizontal = 0
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("1_qqnya")
+button_pressed = true
 text = "Fullscreen"
 
 [node name="Vsync_button" type="CheckButton" parent="TabContainer/Display/Margin_display/Display_container"]
@@ -332,6 +332,7 @@ layout_mode = 2
 text = "Open shop"
 
 [node name="Audio" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 

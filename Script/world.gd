@@ -59,7 +59,7 @@ func _ready() -> void:
 			## proxima linha é só pra testar	
 			$Walking_NPCs/NPC.queue_free()
 			for item in $"All Build spots".get_children():
-				item.taken = new_config.get_value("Scene", "build_spot")
+				item.taken = new_config.get_value("Scene", "build_spot")[item.get_index()]
 				
 			for item in new_config.get_value("NPC", "info"):
 				var instantiate_npc = load(item[0]).instantiate()
@@ -140,7 +140,8 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("y") and !TutorialManager.tutorials["movement"]:
 		query.emit()
 	if Input.is_action_just_pressed("n") and !TutorialManager.tutorials["movement"]:
-		tutorial.get_child(0).queue_free()
+		if tutorial.get_child_count() == 0:
+			tutorial.get_child(0).queue_free()
 		$"HUD/money_box".visible = true
 		$HUD/money_box/shop/keybind.visible = true
 		$HUD/money_box/shop/keybind.position = Vector2(15, 58)
@@ -207,23 +208,39 @@ func _on_shop_tutorial() -> void:
 	$HUD/money_box/shop/keybind.visible = true
 	$HUD/money_box/shop/keybind.position = Vector2(15, 58)
 	var tut_inst = tut_panel.instantiate()
+	tut_inst.tutorial = "shop"
 	tut_inst.dis_time = 9999
 	tut_inst.vec_size = Vector2(200, 50)
 	tut_inst.pos = Vector2(930, 270)
 	tut_inst.panel_type = 0
-	tut_inst.text = "It's time to renovate!\nBuy a slot machine to start this place up.\n" +\
+	tut_inst.text = "It's time to renovate!\n\nBuy a slot machine to start this place up.\n" +\
 	"Press the button below an item to begin placing it."
 	tutorial.add_child(tut_inst)
 
 func _on_player_build_tutorial() -> void:
 	tutorial.get_child(0).clear()
 	var tut_inst = tut_panel.instantiate()
+	tut_inst.tutorial = "build"
 	tut_inst.dis_time = 9999
 	tut_inst.vec_size = Vector2(200, 50)
 	tut_inst.pos = Vector2(900, 230)
 	tut_inst.panel_type = 1
 	tut_inst.text = "Bring the item to a valid build spot,\nmarked by the green areas on the ground," +\
-	" to build it.\nYou can rotate the item by holding Q or E."
+	" to build it.\n\nYou can rotate the item by holding Q or E."
 	tut_inst.key = load("res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/mouse_right_outline.png")
 	tut_inst.key_text = "place"
+	tutorial.add_child(tut_inst)
+
+func _on_player_slot_machine_tutorial() -> void:
+	tutorial.get_child(0).clear()
+	var tut_inst = tut_panel.instantiate()
+	tut_inst.tutorial = "slot_machine1"
+	tut_inst.dis_time = 9999
+	tut_inst.vec_size = Vector2(200, 50)
+	tut_inst.pos = Vector2(900, 230)
+	tut_inst.panel_type = 1
+	tut_inst.text = "Put 30 gold in the machine to spin it.\n\nSlot machines "+\
+	"have six different symbols, each one rarer than the other."
+	tut_inst.key = load("res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_e_outline.png")
+	tut_inst.key_text = "play"
 	tutorial.add_child(tut_inst)
