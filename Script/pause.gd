@@ -24,7 +24,7 @@ func _on_button_resume_pressed() -> void:
 	resume()
 
 func _on_button_settings_pressed() -> void:
-	pass 
+	get_tree().change_scene_to_file("res://Scenes/Options.tscn")
 
 func _on_button_leave_pressed() -> void:
 	get_tree().paused = false

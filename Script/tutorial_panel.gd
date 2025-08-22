@@ -18,7 +18,7 @@ func _ready() -> void:
 	size = vec_size
 	position = pos
 	value.size = Vector2(vec_size.x, 4)
-	value.position.y = size.y - 22
+	value.position.y = size.y - 9
 	match panel_type:
 		0:
 			var label = Label.new()

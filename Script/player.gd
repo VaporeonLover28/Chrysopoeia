@@ -36,7 +36,6 @@ var t_bob : float = 0.0
 
 var tween : Tween
 
-
 signal build_tutorial
 signal slot_machine_tutorial
 
@@ -276,6 +275,8 @@ func _cancel_build():
 func _build():
 	if can_build == true:
 		build_sfx()
+		if !TutorialManager.tutorials["slot_machine1"]:
+			slot_machine_tutorial.emit()
 		world_scene.update_all_mesh.emit()
 		var instantiate_object = current_object_being_purchased.instantiate()
 		ray_builder.get_collider().get_parent().taken = true

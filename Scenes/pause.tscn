@@ -1,11 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://doc2fu24go0bh"]
+[gd_scene load_steps=3 format=3 uid="uid://doc2fu24go0bh"]
 
 [ext_resource type="Script" uid="uid://dsfo288pq7njr" path="res://Script/pause.gd" id="1_l2mpd"]
-[ext_resource type="Theme" uid="uid://kkr23t006yx2" path="res://Themes/pause_button_theme.tres" id="2_5a6ek"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e0jm0"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3fojq"]
+[ext_resource type="Theme" uid="uid://f5yk4gkyeuqv" path="res://Themes/menu_theme.tres" id="2_l2mpd"]
 
 [node name="Pause" type="CanvasLayer"]
 process_mode = 3
@@ -19,7 +15,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-color = Color(0.294118, 0.117647, 0.490196, 0.415686)
+color = Color(0.466154, 0, 0.0168552, 0.415686)
 
 [node name="buttons" type="VBoxContainer" parent="."]
 anchors_preset = 6
@@ -34,29 +30,22 @@ grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/separation = 15
 alignment = 1
 
 [node name="Button_resume" type="Button" parent="buttons"]
 layout_mode = 2
-theme = ExtResource("2_5a6ek")
+theme = ExtResource("2_l2mpd")
 text = "Resume"
-
-[node name="HSeparator" type="HSeparator" parent="buttons"]
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxEmpty_e0jm0")
 
 [node name="Button_settings" type="Button" parent="buttons"]
 layout_mode = 2
-theme = ExtResource("2_5a6ek")
-text = "Settings"
-
-[node name="HSeparator2" type="HSeparator" parent="buttons"]
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxEmpty_3fojq")
+theme = ExtResource("2_l2mpd")
+text = "Options"
 
 [node name="Button_leave" type="Button" parent="buttons"]
 layout_mode = 2
-theme = ExtResource("2_5a6ek")
+theme = ExtResource("2_l2mpd")
 text = "Leave
 "
 
