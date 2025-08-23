@@ -13,6 +13,7 @@ func _init() -> void:
 	
 
 func _save_function(world_scene: Node3D, save_file_number: int):
+	print("save")
 	new_config.set_value("Globalvaribles", "money", Globals.money)
 	new_config.set_value("Globalvaribles", "spells", Globals.spell_inventory_list)
 	new_config.set_value("Globalvaribles", "satisfaction_level", Globals.satisfaction_level)

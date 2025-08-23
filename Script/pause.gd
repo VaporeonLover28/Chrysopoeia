@@ -27,5 +27,6 @@ func _on_button_settings_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Options.tscn")
 
 func _on_button_leave_pressed() -> void:
+	SaveScript.auto_save.emit()
 	get_tree().paused = false
 	get_tree().quit()

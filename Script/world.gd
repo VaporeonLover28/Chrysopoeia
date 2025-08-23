@@ -67,6 +67,9 @@ func _ready() -> void:
 				walking_npcs.get_child(-1).money = item[2]
 			$NavigationRegion3D.bake_navigation_mesh()
 			SaveScript.is_loading = false
+			SaveScript.current_savefile_loading = ""
+			$Walking_NPCs/NPC.queue_free()
+			$Walking_NPCs/NPC2.queue_free()
 	elif Globals.save_npcs_pos.is_empty() != true and Globals.save_objects.is_empty() != true:
 		var counter: int = 0
 		for item in Globals.save_npcs_pos:
@@ -91,6 +94,8 @@ func _ready() -> void:
 			item.taken = Globals.save_build_spot[item.get_index()]
 			
 		SaveScript.auto_save.emit()
+		$Walking_NPCs/NPC.queue_free()
+		$Walking_NPCs/NPC2.queue_free()
 		$NavigationRegion3D.bake_navigation_mesh()
 	Globals.transiting_characters_to_gamble = []
 	Globals.save_npcs_pos = []
