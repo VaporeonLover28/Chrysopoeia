@@ -6,7 +6,7 @@ var game_paused: bool = false
 var player_interacting: bool = false
 var player_is_in_camera_animation: bool = false
 var is_betting : bool = false
-var money: int = 10000:
+var money: int = 2000:
 	set(new_value):
 		if (new_value - money) < 0 and is_betting == true:
 			money_lost = (new_value - money)

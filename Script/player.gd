@@ -135,6 +135,7 @@ func _physics_process(delta: float) -> void:
 		
 		elif Input.is_action_just_pressed("c") and \
 		object_sitting != null:
+			print("call npc")
 			_call_npc_to_game()
 			
 		if Input.is_action_just_pressed("b") and TutorialManager.tutorials["movement"]:
@@ -185,15 +186,13 @@ func _cancel_interaction():
 	
 func _call_npc_to_game():
 	if world_scene.get_node("Walking_NPCs").get_child_count() > 0 and Globals.game_paused == false:
-		call_npc_area.get_child(0).disabled = false
-		await get_tree().create_timer(0.1).timeout
 		var bodies_on_area = call_npc_area.get_overlapping_bodies().filter(_filter_NPC_in_area)
+		print(bodies_on_area)
 		if bodies_on_area.is_empty() == false:
 			var choosen_NPC = bodies_on_area.pick_random()
 			if object_sitting is InteractableObject\
 			  and choosen_NPC != null:
 				choosen_NPC._get_called_to_play_game(object_sitting)
-		call_npc_area.get_child(0).disabled = true
 		
 func _filter_NPC_in_area(bodies):
 	return bodies is NPC

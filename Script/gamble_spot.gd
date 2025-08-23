@@ -21,9 +21,11 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("e") and sit_positions.player_is_sitting == true and can_cancel_interact == true:
-		world.get_node("Player").object_sitting = null
-		sit_positions.player_is_sitting = false
-		Globals.player_interacting = false
+		#world.get_node("Player").object_sitting = null
+		#sit_positions.player_is_sitting = false
+		#Globals.player_interacting = false
+		pass
+		
 	if Input.is_action_just_pressed("click") and sit_positions.player_is_sitting == true and sit_positions._CNSC() >= 2 and is_transiting == false:
 		_transiti_into_bet()
 		is_transiting = true
@@ -39,7 +41,13 @@ func _interact_GambleSpot(object_ref):
 		Globals.player_interacting = true
 		world.get_node("Player").object_sitting = self
 		print(Globals.player_interacting)
+<<<<<<< Updated upstream
 		sit_positions._pull_camera(world.get_node("Player"), sit_positions.get_parent().rotation_degrees)
+=======
+		sit_positions._pull_camera(world.get_node("Player"))
+		_transiti_into_bet()
+		
+>>>>>>> Stashed changes
 	if object_ref is NPC:
 		print("interact npc")
 		sit_positions._sit_character(object_ref)

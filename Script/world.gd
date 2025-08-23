@@ -33,7 +33,6 @@ signal query
 signal shop_tutorial
 
 func _ready() -> void:
-	_spawn_npc()
 	npc_spwaner_timer.start(randf_range(minimum_time_for_spawn_npc, maximum_time_for_spawn_npc)/(Globals.satisfaction_level + 100)/200)
 	Globals.limit_spells(["Wheel of Fortune"])
 	Globals.is_betting = false
