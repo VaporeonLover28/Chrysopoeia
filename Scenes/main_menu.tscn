@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=4 uid="uid://cf21qm02h40cu"]
+[gd_scene load_steps=53 format=4 uid="uid://cf21qm02h40cu"]
 
 [ext_resource type="Script" uid="uid://gupatwggm12k" path="res://Script/main_menu.gd" id="1_opfnp"]
 [ext_resource type="Script" uid="uid://h04ek6sfnud1" path="res://Script/spinner.gd" id="3_ce3w2"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://dou0u21vugnyg" path="res://Assets/Originals/banner.png" id="5_vr1f0"]
 [ext_resource type="Script" uid="uid://dl3d0x2t346o" path="res://Script/circulomagico.gd" id="6_vtepg"]
 [ext_resource type="Script" uid="uid://dj7uf3sroay0t" path="res://Script/gold_nugget.gd" id="7_5egv6"]
-[ext_resource type="Texture2D" uid="uid://bbtb2l43wx0m2" path="res://Assets/Originals/fabbri1.png" id="7_8dnnj"]
 [ext_resource type="Script" uid="uid://c4ndqtv32fvou" path="res://Script/title.gd" id="8_yhxw7"]
 [ext_resource type="PackedScene" uid="uid://tjnuyxlxa08i" path="res://Assets/Originals/Magorigado_pose2.glb" id="9_16hvj"]
 [ext_resource type="Texture2D" uid="uid://lw53w3el4ehq" path="res://Assets/Originals/gold_nugget_GoldNugget_Albedo.png" id="9_vtepg"]
@@ -300,7 +299,6 @@ draw_pass_1 = SubResource("CapsuleMesh_4nkqq")
 [node name="OmniLight3D" type="OmniLight3D" parent="SubViewportContainer/SubViewport/Circulomagico"]
 light_color = Color(1, 1, 0, 1)
 light_energy = 0.192
-light_projector = ExtResource("7_8dnnj")
 shadow_enabled = true
 omni_attenuation = 1.725
 
