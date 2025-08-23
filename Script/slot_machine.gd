@@ -8,6 +8,7 @@ extends InteractableObject; class_name SlotMachice
 @onready var input_prompt: Node3D = $input_area/input_prompt
 @onready var start: AudioStreamPlayer3D = $start
 @onready var spin_sfx: AudioStreamPlayer3D = $spin
+@onready var deposit_node: Label3D = $deposit
 
 ##Reward is [Name, Value, Odds]
 ##Odds is the minimum value the randi must be to choose this reward
@@ -37,7 +38,7 @@ var fortune := 0
 
 var times_played : int = 0
 
-var deposit
+var deposit : int = 0
 
 #signal tutorial_2
 #signal tutorial_3
@@ -60,7 +61,7 @@ func _interact_SlotMachine(object_ref):
 func lever_pull():
 	times_played += 1
 	##if the player can afford to play
-	if Globals.money - play_price >= 0:
+	if Globals.money - play_price >= 0 and player_spinning:
 		start.play()
 		##take money
 		Globals.money -= play_price
@@ -133,13 +134,39 @@ func lever_pull():
 			await get_tree().create_timer(0.75).timeout
 			spin(wheel_4, times, current_reward[3], base_rewards)
 			times = 0
+	elif !player_spinning:
+		start.play()
+		##block the player from spinning again
+		spinning = true
+		##tweening the lever to be pulled
+		tween = create_tween()
+		tween.set_trans(Tween.TRANS_BACK)
+		tween.set_ease(Tween.EASE_OUT)
+		tween.tween_property(lever, "rotation_degrees", Vector3(90, 0, 0), 0.66)
+		tween.set_trans(Tween.TRANS_QUART)
+		tween.tween_property(lever, "rotation_degrees", Vector3.ZERO, 0.66)
+			##define the spin results
+		if fortune == 0:
+			spin_rewards(base_rewards)
+		elif fortune == 1:
+			spin_rewards(fortune_rewards)
+		else:
+			spin_rewards(failed_fortune_rewards)
+		spin_sfx.play()
+		var times = 5
+		#print(times)
+		spin(wheel_1, times, current_reward[0], base_rewards)
+		await get_tree().create_timer(0.75).timeout
+		spin(wheel_2, times, current_reward[1], base_rewards)
+		await get_tree().create_timer(0.75).timeout
+		spin(wheel_3, times, current_reward[2], base_rewards)
+		await get_tree().create_timer(0.75).timeout
+		spin(wheel_4, times, current_reward[3], base_rewards)
+		times = 0
 		
 	##if cannot be afforded
 		if play_price == 0:
 			play_price = 30
-	else:
-		##just ignore
-		pass
 
 ##defining the spin rewards
 func spin_rewards(loot_table):

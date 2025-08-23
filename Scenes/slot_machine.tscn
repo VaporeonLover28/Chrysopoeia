@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=4 uid="uid://blm2ybcpo2i7k"]
+[gd_scene load_steps=17 format=4 uid="uid://blm2ybcpo2i7k"]
 
 [ext_resource type="Script" uid="uid://du03851jbkyo2" path="res://Script/slot_machine.gd" id="1_0ucjj"]
 [ext_resource type="PackedScene" uid="uid://dgww0bhqoowog" path="res://Assets/Originals/Slot_Machice/Caçaniquel.glb" id="2_s1yih"]
 [ext_resource type="PackedScene" uid="uid://ddxc2ltff5yec" path="res://Assets/Originals/Slot_Machice/alavanca.glb" id="4_2rg1w"]
 [ext_resource type="PackedScene" uid="uid://cxvcxyaq27jof" path="res://Assets/Originals/Slot_Machice/Rodacerta.glb" id="5_ab6dg"]
 [ext_resource type="PackedScene" uid="uid://bi326asm5h1wa" path="res://Scenes/input_prompt.tscn" id="6_pyjcy"]
+[ext_resource type="FontFile" uid="uid://4y6u2ai8c7lq" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-Bold.ttf" id="7_beykt"]
 [ext_resource type="Texture2D" uid="uid://dl1c3wpfn3nqf" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_f.png" id="7_pxobf"]
 [ext_resource type="PackedScene" uid="uid://c6jqyf306la64" path="res://Scenes/sell_satisfation_value.tscn" id="7_pyjcy"]
 [ext_resource type="AudioStream" uid="uid://ceqpycwlkc1bs" path="res://SFX/slot/69717__lukaso__start_1.wav" id="8_jd2m2"]
@@ -78,6 +79,14 @@ mesh = SubResource("ArrayMesh_jd2m2")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Model" groups=["Ground_object"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0165101, 0)
 shape = SubResource("BoxShape3D_0ucjj")
+
+[node name="deposit" type="Label3D" parent="."]
+transform = Transform3D(1, 0, -7.05861e-22, 0, 1, 0, 7.05861e-22, 0, 1, -3.5293e-22, 0.579067, 0.782199)
+modulate = Color(0.983333, 1, 0, 1)
+outline_modulate = Color(0.43, 0.186333, 0, 1)
+text = "Deposit : XX"
+font = ExtResource("7_beykt")
+font_size = 26
 
 [node name="wheels" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125774, 0)
