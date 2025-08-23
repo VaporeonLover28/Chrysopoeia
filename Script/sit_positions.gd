@@ -68,16 +68,13 @@ func _stand_character_up(object_ref):
 		player_is_sitting = false
 		save_player_ref = null
 
-func _physics_process(delta: float) -> void:
-	pass
-
-func _pull_camera(player):
+func _pull_camera(player, pos_vec3 : Vector3):
 	tween = create_tween()
 	tween.set_trans(Tween.TRANS_SINE)
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_parallel(true)
-	tween.tween_property(player_ref.pivot, "rotation_degrees", Vector3(0, 0, 0), 1.25)
-	tween.tween_property(player_ref.camera, "rotation_degrees", Vector3(0, 0, 0), 1.25)
+	tween.tween_property(player_ref.pivot, "rotation_degrees", Vector3(0, pos_vec3.y - 90, 0), 1.25)
+	tween.tween_property(player_ref.camera, "rotation_degrees", Vector3(-20, 0, 0), 1.25)
 	if get_parent() is GambleSpot:
 		tween.tween_property(player_ref.camera, "global_position", \
 	$"../Player Chair".global_position + Vector3(0, 0.6, 0), 0.75)

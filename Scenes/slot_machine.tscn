@@ -123,11 +123,13 @@ satisfaction_value = 10
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.947295, 0)
 stream = ExtResource("8_jd2m2")
 volume_db = -20.0
+bus = &"SFX"
 
 [node name="spin" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.947295, 0)
 stream = ExtResource("9_beykt")
 volume_db = -20.0
+bus = &"SFX"
 
 [connection signal="tutorial_4_ended" from="." to="." method="_on_tutorial_4_ended"]
 [connection signal="body_entered" from="input_area" to="." method="_on_input_area_body_entered"]
