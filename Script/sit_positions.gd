@@ -87,12 +87,6 @@ func _pull_camera(player, pos_vec3 : Vector3):
 		tween.tween_property(player_ref.camera, "global_position", \
 	chosen_sitting_transition.global_position + Vector3(0, 0.6, 0), 0.75)
 
-	#await get_tree().create_timer(1.5).timeout
-	#player.global_position = chosen_sitting_transition.global_position
-
-		await get_tree().create_timer(1.5).timeout
-		player.global_position = chosen_sitting_transition.global_position
-
 #checks then returns if all sits are taken
 func _ASAT():
 	var all_got_taken: bool = false
