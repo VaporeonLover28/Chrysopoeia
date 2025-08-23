@@ -2,8 +2,8 @@
 
 importer="2d_array_texture"
 type="CompressedTexture2DArray"
-uid="uid://161vhk2ptuvi"
-path.bptc="res://.godot/imported/world.exr-2019d079d88e1e7d5216d8d9a9f7f104.bptc.ctexarray"
+uid="uid://30fq6vdesv0a"
+path.bptc="res://.godot/imported/world.exr-b2157f5a0be7bc10406a6e58795aec61.bptc.ctexarray"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://world.exr"
-dest_files=["res://.godot/imported/world.exr-2019d079d88e1e7d5216d8d9a9f7f104.bptc.ctexarray"]
+source_file="res://Scenes/world.exr"
+dest_files=["res://.godot/imported/world.exr-b2157f5a0be7bc10406a6e58795aec61.bptc.ctexarray"]
 
 [params]
 

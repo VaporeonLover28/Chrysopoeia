@@ -58,7 +58,7 @@
 [ext_resource type="Texture2D" uid="uid://dpjpcs6o1j0bc" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817131015.png" id="31_74toi"]
 [ext_resource type="Texture2D" uid="uid://drpqmobd0hljp" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817131051.png" id="32_eea73"]
 [ext_resource type="Texture2D" uid="uid://denb5xhofm2r0" path="res://Assets/Originals/pilastralend_RammedEarth018_COL_1K_METALNESS.png" id="33_p5wkl"]
-[ext_resource type="LightmapGIData" uid="uid://fpg0r2pturrk" path="res://world.lmbake" id="34_82dmg"]
+[ext_resource type="LightmapGIData" uid="uid://b4e5tjrn7jw43" path="res://Scenes/world.lmbake" id="34_uoh4w"]
 [ext_resource type="PackedScene" uid="uid://7rsdr8js0apu" path="res://Scenes/chandelier_.tscn" id="50_cvubk"]
 [ext_resource type="Texture2D" uid="uid://dcqt8g5tuhn07" path="res://Assets/Originals/praredelend_RammedEarth018_COL_1K_METALNESS.png" id="53_dsm2w"]
 [ext_resource type="Texture2D" uid="uid://co3tguw5gacmx" path="res://Assets/Originals/praredelend_RammedEarth018_METALNESS_1K_METALNESS_png-RammedEarth018_ROUGHN.png" id="54_82dmg"]
@@ -3300,7 +3300,8 @@ environment = SubResource("Environment_6uqi0")
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
 bounce_indirect_energy = 0.5
-light_data = ExtResource("34_82dmg")
+use_texture_for_bounces = false
+light_data = ExtResource("34_uoh4w")
 
 [node name="Walking_NPCs" type="Node" parent="."]
 
