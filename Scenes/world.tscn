@@ -3307,9 +3307,15 @@ light_data = ExtResource("34_82dmg")
 [node name="NPC" parent="Walking_NPCs" instance=ExtResource("3_tlwt5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.125, 1, -12.822)
 npc_name = "Pleb"
+minimum_time_for_idle = 1.0
+minimum_time_for_TIOT = 10.0
+maximum_time_for_TIOT = 12.0
 
 [node name="NPC2" parent="Walking_NPCs" instance=ExtResource("3_tlwt5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10988, -6.49276)
+minimum_time_for_idle = 1.0
+minimum_time_for_TIOT = 10.0
+maximum_time_for_TIOT = 12.0
 
 [node name="Enter point for npc" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.83101, 0.894929, -12.503)
