@@ -32,9 +32,12 @@ var points : int = 0
 var wheels_spinning : int = 0
 ##if any wheels are spinning
 var spinning : bool = false
+var player_spinning : bool = false
 var fortune := 0
 
 var times_played : int = 0
+
+var deposit
 
 #signal tutorial_2
 #signal tutorial_3
@@ -213,9 +216,11 @@ func wheel_stopped(wheel, found_reward, loot_table):
 	wheel.rotation_degrees = Vector3(0, 90, (360 - found_reward * 60))
 	wheels_spinning -= 1
 	##if all the wheels are stopped
-	if wheels_spinning == 0:
+	if wheels_spinning == 0 and player_spinning:
 		##check for combos
 		check_matching(loot_table)
+	else:
+		spinning = false
 
 ##checking combos
 func check_matching(loot_table):
