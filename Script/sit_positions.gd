@@ -44,7 +44,7 @@ func _sit_character(object_ref):
 		if object_ref.name == "Player":
 			chosen_sitting_transition = self.get_child(chosen_sitting_position)
 			save_player_ref = object_ref
-			_pull_camera(object_ref)
+			_pull_camera(object_ref, get_parent().rotation_degrees)
 			player_is_sitting = true
 			Globals.player_interacting = true
 
@@ -71,17 +71,17 @@ func _stand_character_up(object_ref):
 func _physics_process(delta: float) -> void:
 	pass
 
-func _pull_camera(player):
+func _pull_camera(player, rot_vec3):
 	tween = create_tween()
 	tween.set_trans(Tween.TRANS_SINE)
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_parallel(true)
-	tween.tween_property(player_ref.pivot, "rotation_degrees", Vector3(0, 0, 0), 1.25)
-	tween.tween_property(player_ref.camera, "rotation_degrees", Vector3(0, 0, 0), 1.25)
+	tween.tween_property(player_ref.pivot, "rotation_degrees", Vector3(0, rot_vec3.y - 90, 0), 1.25)
+	tween.tween_property(player_ref.camera, "rotation_degrees", Vector3(-30, 0, 0), 1.25)
 	tween.tween_property(player_ref.camera, "global_position", \
 	$"../Player Chair".global_position + Vector3(0, 0.6, 0), 0.75)
-	await get_tree().create_timer(1.5).timeout
-	player.global_position = $"../Player Chair".global_position
+	#await get_tree().create_timer(1.5).timeout
+	#player.global_position = $"../Player Chair".global_position
 #checks then returns if all sits are taken
 func _ASAT():
 	var all_got_taken: bool = false
