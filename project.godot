@@ -13,7 +13,8 @@ config_version=5
 config/name="Chrysopoeia"
 run/main_scene="uid://cf21qm02h40cu"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://dvl1ihyqc6abg"
+config/windows_native_icon="res://Assets/Originals/logo.ico"
 
 [autoload]
 
@@ -32,7 +33,6 @@ TutorialManager="*res://Script/Tutorial_Manager.gd"
 
 window/size/mode=3
 window/stretch/mode="canvas_items"
-window/stretch/aspect="keep_height"
 
 [global_group]
 
@@ -42,6 +42,7 @@ Ground_object=""
 Table_object=""
 ceiling_object=""
 Chair_object=""
+Close_wall_object=""
 
 [input]
 

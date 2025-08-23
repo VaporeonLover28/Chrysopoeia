@@ -31,10 +31,9 @@ layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 
 [node name="Display" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -67,6 +66,7 @@ text = "Enable Vsync
 "
 
 [node name="Inputs" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 

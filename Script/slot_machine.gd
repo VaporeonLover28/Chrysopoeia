@@ -294,6 +294,4 @@ func _on_input_area_body_exited(body: Node3D) -> void:
 		input_prompt.visible = false
 
 func _on_tutorial_4_ended() -> void:
-	print("next")
-	await get_tree().create_timer(16)
 	cassino_opened_tutorial()
