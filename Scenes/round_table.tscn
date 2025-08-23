@@ -96,7 +96,7 @@ debug_color = Color(0, 1, 0, 1)
 mesh = SubResource("PlaneMesh_klv87")
 
 [node name="Build_Spot_Chair" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 1.56671, 0)
 script = ExtResource("2_8aala")
 
 [node name="Area build spot" type="Area3D" parent="Build_Spot_Chair" groups=["Chair_object"]]
@@ -107,11 +107,11 @@ shape = SubResource("BoxShape3D_ic0uy")
 debug_color = Color(0, 1, 0, 1)
 
 [node name="Build Mesh" type="MeshInstance3D" parent="Build_Spot_Chair"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.802255, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.39304, 0)
 mesh = SubResource("PlaneMesh_klv87")
 
 [node name="Build_Spot_Chair2" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 1.62105, 0)
 script = ExtResource("2_8aala")
 
 [node name="Area build spot" type="Area3D" parent="Build_Spot_Chair2" groups=["Chair_object"]]
@@ -123,11 +123,11 @@ shape = SubResource("BoxShape3D_ic0uy")
 debug_color = Color(0, 1, 0, 1)
 
 [node name="Build Mesh" type="MeshInstance3D" parent="Build_Spot_Chair2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27452, -0.93612, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27452, -1.4041, 0)
 mesh = SubResource("PlaneMesh_klv87")
 
 [node name="Build_Spot_Chair3" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5064, -1.75)
 script = ExtResource("2_8aala")
 
 [node name="Area build spot" type="Area3D" parent="Build_Spot_Chair3" groups=["Chair_object"]]
@@ -139,11 +139,11 @@ shape = SubResource("BoxShape3D_ic0uy")
 debug_color = Color(0, 1, 0, 1)
 
 [node name="Build Mesh" type="MeshInstance3D" parent="Build_Spot_Chair3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.231305, -0.868815, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.231305, -1.21987, 0)
 mesh = SubResource("PlaneMesh_klv87")
 
 [node name="Build_Spot_Chair4" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49803, 1.75)
 script = ExtResource("2_8aala")
 
 [node name="Area build spot" type="Area3D" parent="Build_Spot_Chair4" groups=["Chair_object"]]
@@ -155,5 +155,5 @@ shape = SubResource("BoxShape3D_ic0uy")
 debug_color = Color(0, 1, 0, 1)
 
 [node name="Build Mesh" type="MeshInstance3D" parent="Build_Spot_Chair4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.835066, 0.255512)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1662, 0.255512)
 mesh = SubResource("PlaneMesh_klv87")

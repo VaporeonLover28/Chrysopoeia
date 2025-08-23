@@ -78,10 +78,14 @@ func _pull_camera(player):
 	tween.set_parallel(true)
 	tween.tween_property(player_ref.pivot, "rotation_degrees", Vector3(0, 0, 0), 1.25)
 	tween.tween_property(player_ref.camera, "rotation_degrees", Vector3(0, 0, 0), 1.25)
-	tween.tween_property(player_ref.camera, "global_position", \
+	if get_parent() is GambleSpot:
+		tween.tween_property(player_ref.camera, "global_position", \
 	$"../Player Chair".global_position + Vector3(0, 0.6, 0), 0.75)
+	else:
+		tween.tween_property(player_ref.camera, "global_position", \
+	chosen_sitting_transition.global_position + Vector3(0, 0.6, 0), 0.75)
 	await get_tree().create_timer(1.5).timeout
-	player.global_position = $"../Player Chair".global_position
+	player.global_position = chosen_sitting_transition.global_position
 #checks then returns if all sits are taken
 func _ASAT():
 	var all_got_taken: bool = false

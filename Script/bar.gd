@@ -16,7 +16,6 @@ func _ready() -> void:
 	
 func _interact_Bar(object_ref):
 	if sit_positions._ASAT() != true:
-		sit_positions._sit_character(object_ref)
 		if Globals.bar_unlock == true:
 			if object_ref.name == "Player":
 				world.get_node("Bar UI").get_child(0).show_bar_ui(self)
@@ -30,6 +29,7 @@ func _interact_Bar(object_ref):
 						Globals.money += 120
 					4:
 						Globals.money += 100
+				sit_positions._sit_character(object_ref)
 
 func _cancel_interact_Bar(object_ref):
 	sit_positions._stand_character_up(object_ref)
