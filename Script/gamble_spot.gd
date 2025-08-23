@@ -41,13 +41,13 @@ func _interact_GambleSpot(object_ref):
 		Globals.player_interacting = true
 		world.get_node("Player").object_sitting = self
 		print(Globals.player_interacting)
-<<<<<<< Updated upstream
+
 		sit_positions._pull_camera(world.get_node("Player"), sit_positions.get_parent().rotation_degrees)
-=======
+
 		sit_positions._pull_camera(world.get_node("Player"))
 		_transiti_into_bet()
 		
->>>>>>> Stashed changes
+
 	if object_ref is NPC:
 		print("interact npc")
 		sit_positions._sit_character(object_ref)
