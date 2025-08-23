@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://cc8lfsm2djmxi"]
+[gd_scene load_steps=24 format=3 uid="uid://cc8lfsm2djmxi"]
 
 [ext_resource type="Script" uid="uid://dik6iickpgs3r" path="res://options.gd" id="1_g1sm3"]
+[ext_resource type="FontFile" uid="uid://4y6u2ai8c7lq" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-Bold.ttf" id="1_mrk6e"]
 [ext_resource type="Theme" uid="uid://cdh2vq0ieqel5" path="res://Themes/option_theme_check.tres" id="1_qqnya"]
 [ext_resource type="Texture2D" uid="uid://boeea25ftv4sr" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_w.png" id="2_kfnrp"]
 [ext_resource type="Texture2D" uid="uid://dgh0pkkp52mnr" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_a.png" id="3_tcskm"]
@@ -17,6 +18,44 @@
 [ext_resource type="Texture2D" uid="uid://dkaq6sa8la6ug" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_h.png" id="20_ywwqc"]
 [ext_resource type="AudioStream" uid="uid://cqhwg7nysjt3r" path="res://SFX/homunculos/galunga.wav" id="25_bscdg"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oa66i"]
+bg_color = Color(0.194128, 0.00442755, 6.01634e-09, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_viydq"]
+content_margin_left = 30.0
+content_margin_right = 30.0
+bg_color = Color(0.576851, 0.0359249, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1k6i7"]
+content_margin_left = 30.0
+content_margin_right = 30.0
+bg_color = Color(0.576471, 0.0352941, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yfx2d"]
+content_margin_left = 30.0
+content_margin_right = 30.0
+bg_color = Color(0.12549, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cdyqt"]
+bg_color = Color(0.199083, 0.00403517, 2.40654e-08, 1)
+
+[sub_resource type="Theme" id="Theme_k0hbd"]
+CheckButton/font_sizes/font_size = 20
+CheckButton/fonts/font = ExtResource("1_mrk6e")
+Label/font_sizes/font_size = 20
+Label/fonts/font = ExtResource("1_mrk6e")
+TabBar/font_sizes/font_size = 20
+TabBar/fonts/font = ExtResource("1_mrk6e")
+TabContainer/colors/font_selected_color = Color(0.95, 0.95, 0.95, 1)
+TabContainer/colors/font_unselected_color = Color(1, 1, 1, 1)
+TabContainer/font_sizes/font_size = 31
+TabContainer/fonts/font = ExtResource("1_mrk6e")
+TabContainer/styles/panel = SubResource("StyleBoxFlat_oa66i")
+TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_viydq")
+TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_1k6i7")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_yfx2d")
+TabContainer/styles/tabbar_background = SubResource("StyleBoxFlat_cdyqt")
+
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -24,6 +63,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_k0hbd")
 script = ExtResource("1_g1sm3")
 
 [node name="TabContainer" type="TabContainer" parent="."]
@@ -31,9 +71,11 @@ layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 tab_alignment = 1
-current_tab = 0
+current_tab = 2
+tabs_rearrange_group = 0
 
 [node name="Display" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -247,7 +289,6 @@ layout_mode = 2
 text = "Philosopher's Shard"
 
 [node name="Audio" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -255,22 +296,55 @@ metadata/_tab_index = 2
 layout_mode = 0
 offset_right = 1151.0
 offset_bottom = 613.0
+theme_override_constants/margin_left = 55
+theme_override_constants/margin_right = 55
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Audio/MarginContainer"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/Audio/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Volume"
+theme_override_font_sizes/font_size = 30
+text = "Main Volume"
 
 [node name="HSlider" type="HSlider" parent="TabContainer/Audio/MarginContainer/VBoxContainer"]
 layout_mode = 2
 min_value = -80.0
 max_value = 6.0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="TabContainer/Audio"]
+[node name="Label3" type="Label" parent="TabContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Background Music"
+
+[node name="HSlider3" type="HSlider" parent="TabContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+min_value = -80.0
+max_value = 6.0
+
+[node name="Label4" type="Label" parent="TabContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Sound Effects"
+
+[node name="HSlider4" type="HSlider" parent="TabContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+min_value = -80.0
+max_value = 6.0
+
+[node name="galunga" type="AudioStreamPlayer" parent="TabContainer/Audio"]
 stream = ExtResource("25_bscdg")
+
+[node name="galunga2" type="AudioStreamPlayer" parent="TabContainer/Audio"]
+stream = ExtResource("25_bscdg")
+bus = &"BGM"
+
+[node name="galunga3" type="AudioStreamPlayer" parent="TabContainer/Audio"]
+stream = ExtResource("25_bscdg")
+bus = &"SFX"
 
 [connection signal="toggled" from="TabContainer/Display/Margin_display/Display_container/Fullscreen_button" to="." method="_on_fullscreen_button_toggled"]
 [connection signal="toggled" from="TabContainer/Display/Margin_display/Display_container/Vsync_button" to="." method="_on_vsync_button_toggled"]
 [connection signal="value_changed" from="TabContainer/Audio/MarginContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/MarginContainer/VBoxContainer/HSlider3" to="." method="_on_h_slider_3_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/MarginContainer/VBoxContainer/HSlider4" to="." method="_on_h_slider_4_value_changed"]
