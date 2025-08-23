@@ -11,7 +11,7 @@ func _ready() -> void:
 	tween = create_tween()
 	tween.set_trans(Tween.TRANS_QUINT)
 	tween.set_ease(Tween.EASE_OUT)
-	tween.tween_property(v_box_container,"position", Vector2(827,182), 2)
+	tween.tween_property(v_box_container,"position", Vector2(827,182), 3)
 
 func _on_start_btn_pressed() -> void:
 	MusicPlayer.menutheme.stop()
