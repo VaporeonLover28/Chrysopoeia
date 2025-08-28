@@ -103,6 +103,7 @@ func _physics_process(delta: float) -> void:
 	
 	if !is_on_building_mode:
 		if Input.is_action_just_pressed("e") and Globals.player_interacting == false:
+			SaveScript._save_function(world_scene, 0)
 			if world_scene.player_recon.player_inside:
 				for item in world_scene.get_node("Walking_NPCs").get_children():
 					var save_npcs_info : Array
@@ -200,6 +201,7 @@ func _filter_NPC_in_area(bodies):
 
 func loading_screen(game):
 	Globals.player_pos_save = global_position
+	SaveScript._save_function(self, 0)
 	can_move = false
 	var which_suit = randi_range(0, 3)
 	var inst = loading_suit.instantiate()

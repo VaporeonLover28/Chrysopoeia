@@ -132,7 +132,7 @@ func _calculate_bet_loses(money_value: int):
 func return_to_world():
 	player_interacting = false
 	clear_cooldowns()
-	get_tree().change_scene_to_file("res://Scenes/world.tscn")
+	SaveScript._load_function(0)
 
 func fortuna_sounds():
 	var which_one = randi_range(1, 2)	

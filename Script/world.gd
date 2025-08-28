@@ -65,6 +65,12 @@ func _ready() -> void:
 				instantiate_npc.global_position = item[1]
 				walking_npcs.add_child(instantiate_npc)
 				walking_npcs.get_child(-1).money = item[2]
+			
+			if new_config.get_value("Globalvaribles", "tutorials")["open_shop"]:
+				$HUD/money_box.visible = true
+				$HUD/money_box/shop/keybind.visible = true
+				$HUD/money_box/shop/keybind.position = Vector2(15, 58)
+			
 			$NavigationRegion3D.bake_navigation_mesh()
 			SaveScript.is_loading = false
 			SaveScript.current_savefile_loading = ""

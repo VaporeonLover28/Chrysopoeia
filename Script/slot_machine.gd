@@ -112,7 +112,7 @@ func lever_pull():
 					var tut_inst = load("res://Scenes/tutorial_panel.tscn").instantiate()
 					tut_inst.tutorial = "slot_machine4"
 					tut_inst.dis_time = 15
-					tut_inst.vec_size = Vector2(200, 175)
+					tut_inst.vec_size = Vector2(200, 232)
 					tut_inst.pos = Vector2(930, 245)
 					tut_inst.panel_type = 0
 					tut_inst.text = "Keep in mind that one on the right! That's an Ankh.\n" +\
@@ -260,10 +260,11 @@ func check_matching(loot_table):
 		Globals.aqua_fortis_active = false
 
 func cassino_opened_tutorial():
+	await get_tree().create_timer(16).timeout
 	var tut_inst = load("res://Scenes/tutorial_panel.tscn").instantiate()
 	tut_inst.tutorial = "movement"
 	tut_inst.dis_time = 10
-	tut_inst.vec_size = Vector2(200, 175)
+	tut_inst.vec_size = Vector2(200, 200)
 	tut_inst.pos = Vector2(930, 245)
 	tut_inst.panel_type = 0
 	tut_inst.text = "Now that we have something going here, people are sure to come by!\n\n"+\

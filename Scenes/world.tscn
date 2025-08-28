@@ -63,8 +63,8 @@
 [ext_resource type="Texture2D" uid="uid://dcqt8g5tuhn07" path="res://Assets/Originals/praredelend_RammedEarth018_COL_1K_METALNESS.png" id="53_dsm2w"]
 [ext_resource type="Texture2D" uid="uid://co3tguw5gacmx" path="res://Assets/Originals/praredelend_RammedEarth018_METALNESS_1K_METALNESS_png-RammedEarth018_ROUGHN.png" id="54_82dmg"]
 [ext_resource type="Texture2D" uid="uid://clsd7c5d66co8" path="res://Assets/Originals/praredelend_RammedEarth018_NRM_1K_METALNESS.png" id="55_0d7cr"]
+[ext_resource type="Script" uid="uid://dhisnowfs26s4" path="res://Scenes/sit_positions_2.gd" id="56_uoh4w"]
 [ext_resource type="Script" uid="uid://gr2n64ilt3lv" path="res://Script/bar.gd" id="63_ry8tx"]
-[ext_resource type="PackedScene" uid="uid://dbgpivfhrvrfu" path="res://Scenes/shader_quad.tscn" id="65_uq5fj"]
 [ext_resource type="PackedScene" uid="uid://j4nby41rkhr3" path="res://Scenes/sit_positions.tscn" id="66_xm6am"]
 [ext_resource type="Shader" uid="uid://nn3p8j7ucwa8" path="res://Scenes/bounding.gdshader" id="67_uq5fj"]
 [ext_resource type="PackedScene" uid="uid://bv5b2y003jboc" path="res://Assets/Originals/prorta.glb" id="68_xm6am"]
@@ -3904,13 +3904,13 @@ shape = SubResource("BoxShape3D_tutfb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.09282, 0.135869, -1.99396)
 shape = SubResource("BoxShape3D_s73dv")
 
-[node name="camera" type="Camera3D" parent="NavigationRegion3D/All Interactable Spots/Bar"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.83753)
+[node name="Sit positions 2" parent="NavigationRegion3D/All Interactable Spots/Bar" instance=ExtResource("66_xm6am")]
+visible = false
+script = ExtResource("56_uoh4w")
+chair_postion_list = Array[Array]([])
 
-[node name="Shader_Quad" parent="NavigationRegion3D/All Interactable Spots/Bar/camera" instance=ExtResource("65_uq5fj")]
-
-[node name="Sit positions" parent="NavigationRegion3D/All Interactable Spots/Bar" instance=ExtResource("66_xm6am")]
-chair_postion_list = Array[Array]([[Vector3(0, 0, 2.2), true], [Vector3(1.5, 0, 2.2), true], [Vector3(4.1, 0, 2.2), true], [Vector3(2.3, 0, 2.2), true]])
+[node name="Marker3D" type="Marker3D" parent="NavigationRegion3D/All Interactable Spots/Bar/Sit positions 2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03909, 1.93235)
 
 [node name="All non interactable objects" type="Node3D" parent="NavigationRegion3D"]
 

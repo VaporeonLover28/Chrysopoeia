@@ -27,6 +27,7 @@ func _cancel_interact_GambleSpot(object_ref):
 
 	
 func loading_screen(game):
+	SaveScript._save_function(world, 0)
 	var which_suit = randi_range(0, 3)
 	var inst = LOADING_SUIT.instantiate()
 	match which_suit:

@@ -7,10 +7,8 @@ var is_loading: bool = false
 
 signal auto_save
 
-
 func _init() -> void:
 	new_config = ConfigFile.new()
-	
 
 func _save_function(world_scene: Node3D, save_file_number: int):
 	print("save")
