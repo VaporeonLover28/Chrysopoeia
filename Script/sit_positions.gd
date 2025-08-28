@@ -68,9 +68,6 @@ func _stand_character_up(object_ref):
 		player_is_sitting = false
 		save_player_ref = null
 
-func _physics_process(delta: float) -> void:
-	pass
-
 func _pull_camera(player, rot_vec3):
 	tween = create_tween()
 	tween.set_trans(Tween.TRANS_SINE)

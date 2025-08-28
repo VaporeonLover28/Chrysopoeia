@@ -427,18 +427,14 @@ func spell_cast(spell : String):
 		if spell_worked == 4:
 			match spell:
 				"Eye of Providence":
-					
 					failed_providence()
 				"Philosopher's Shard":
-					
 					failed_philo_shard()
 				"Fool's Gold":
-					
 					failed_fools_gold()
 		else:
 			match spell:
 				"Eye of Providence":
-					
 					providence()
 				"Philosopher's Shard":
 					philo_shard()
@@ -459,6 +455,7 @@ func providence():
 	revealed_text.text = str(dealer_revealed_card.rank) +" of " + str(dealer_revealed_card.suit)
 
 func failed_providence():
+	Globals.prov_sounds()
 	dealer_revealed_card = deck[randi_range(0, deck.size() - 2)]
 	if !revealed_card.visible:
 		revealed_card.visible = true
@@ -469,6 +466,11 @@ func failed_providence():
 		tween.tween_property(revealed_card, "position", Vector2(998, 266), 1)
 	revealed_info.set_texture(load("res://Assets/card_textures/" + str(dealer_revealed_card.rank.to_lower()) +"_of_" + str(dealer_revealed_card.suit.to_lower()) + ".png"))
 	revealed_text.text = str(dealer_revealed_card.rank) +" of " + str(dealer_revealed_card.suit) + "?"
+
+func direct_providence():
+	dealer_revealed_card = deck.back()
+	revealed_info.set_texture(load("res://Assets/card_textures/" + str(dealer_revealed_card.rank.to_lower()) +"_of_" + str(dealer_revealed_card.suit.to_lower()) + ".png"))
+	revealed_text.text = str(dealer_revealed_card.rank) +" of " + str(dealer_revealed_card.suit)
 
 func philo_shard():
 	Globals.shard_sounds()
@@ -484,9 +486,10 @@ func philo_shard():
 		_:
 			deck.back().change_values(rank_order[int(deck.back().value)], deck.back().suit, value_order[int(deck.back().value)])
 	if dealer_revealed_card != null:
-		providence()
+		direct_providence()
 
 func failed_philo_shard():
+	Globals.shard_sounds()
 	var what_rank = randi_range(0, 12)
 	deck.back().change_values(rank_order[what_rank], deck.back().suit, value_order[what_rank])
 	if dealer_revealed_card != null:
@@ -506,9 +509,10 @@ func fools_gold():
 		_:
 			deck.back().change_values(rank_order[int(deck.back().value) - 2], deck.back().suit, value_order[int(deck.back().value) - 2])
 	if dealer_revealed_card != null:
-		providence()
+		direct_providence()
 
 func failed_fools_gold():
+	Globals.fgold_sounds()
 	var what_rank = randi_range(0, 12)
 	deck.back().change_values(rank_order[what_rank], deck.back().suit, value_order[what_rank])
 	if dealer_revealed_card != null:

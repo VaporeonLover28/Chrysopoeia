@@ -3,7 +3,7 @@
 [ext_resource type="FontFile" uid="uid://4y6u2ai8c7lq" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-Bold.ttf" id="1_xoeh4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xoeh4"]
-bg_color = Color(0.545098, 0.270588, 0.0745098, 0.611765)
+bg_color = Color(0.37, 0.1258, 0.037, 0.611765)
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
@@ -46,7 +46,7 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1tx8m"]
-bg_color = Color(0.545098, 0.270588, 0.0745098, 1)
+bg_color = Color(0.418964, 0.211294, 0.0792904, 1)
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
@@ -106,6 +106,10 @@ expand_margin_bottom = 1.0
 
 [resource]
 Button/colors/font_color = Color(0.545098, 0.270588, 0.0745098, 1)
+Button/colors/font_focus_color = Color(0.55, 0.2695, 0.0825, 1)
+Button/colors/font_hover_color = Color(0.13, 0.0647833, 0.0182, 1)
+Button/colors/font_hover_pressed_color = Color(0.109718, 0.0358532, 0.0110064, 1)
+Button/colors/font_pressed_color = Color(0.109718, 0.0358532, 0.0110064, 1)
 Button/font_sizes/font_size = 20
 Button/fonts/font = ExtResource("1_xoeh4")
 Button/styles/hover = SubResource("StyleBoxFlat_xoeh4")
