@@ -10,10 +10,11 @@ load_path = "res://.godot/imported/gold_nugget_GoldNugget_Albedo.png-b134b9e3edd
 resource_name = "GoldNugget"
 cull_mode = 2
 albedo_texture = SubResource("CompressedTexture2D_ikbim")
-metallic = 1.0
+metallic = 0.8
 roughness = 0.23
 emission_enabled = true
-emission = Color(0.582789, 0.255423, 0, 1)
+emission = Color(0.376571, 0.155053, 9.62615e-08, 1)
+emission_energy_multiplier = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_58e0g"]
 _surfaces = [{
