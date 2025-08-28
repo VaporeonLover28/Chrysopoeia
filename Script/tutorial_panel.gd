@@ -15,10 +15,6 @@ extends PanelContainer
 @export var key_text : String
 
 func _ready() -> void:
-	size = vec_size
-	position = pos
-	value.size = Vector2(vec_size.x, 4)
-	value.position.y = size.y - 7
 	match panel_type:
 		0:
 			var label = Label.new()
@@ -62,6 +58,16 @@ func _ready() -> void:
 			key_label.uppercase = true
 			key_label.text = key_text
 			vbox.add_child(key_label)
+	
+	if size.x < vec_size.x:
+		size.x = vec_size.x
+	if size.y < vec_size.y:
+		size.y = vec_size.y
+	
+	position = Vector2(1152 - size.x, 648/2 - size.y / 2)
+	
+	value.size = Vector2(vec_size.x, 4)
+	value.position.y = size.y - 20
 	
 	if dis_time < 100:
 		time_left.start(dis_time)

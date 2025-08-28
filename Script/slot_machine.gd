@@ -89,7 +89,7 @@ func lever_pull():
 					tut_inst.tutorial = "slot_machine2"
 					tut_inst.dis_time = 9999
 					tut_inst.vec_size = Vector2(200, 165)
-					tut_inst.pos = Vector2(930, 245)
+					#tut_inst.pos = Vector2(930, 245)
 					tut_inst.panel_type = 0
 					tut_inst.text = "Slot machines give you gold for every combination of two " +\
 					"or more symbols.\n\nMore common symbols give less, while the rarer ones give more. A LOT more."
@@ -101,7 +101,7 @@ func lever_pull():
 					tut_inst.tutorial = "slot_machine3"
 					tut_inst.dis_time = 9999
 					tut_inst.vec_size = Vector2(200, 100)
-					tut_inst.pos = Vector2(930, 260)
+					#tut_inst.pos = Vector2(930, 260)
 					tut_inst.panel_type = 0
 					tut_inst.text = "If you get no combinations, you get no reward. It's that simple."
 					get_parent().get_parent().get_parent().tutorial.add_child(tut_inst)
@@ -113,7 +113,7 @@ func lever_pull():
 					tut_inst.tutorial = "slot_machine4"
 					tut_inst.dis_time = 15
 					tut_inst.vec_size = Vector2(200, 232)
-					tut_inst.pos = Vector2(930, 245)
+					#tut_inst.pos = Vector2(930, 245)
 					tut_inst.panel_type = 0
 					tut_inst.text = "Keep in mind that one on the right! That's an Ankh.\n" +\
 					"If you get an Ankh alongside a combination, you get double the rewards!"
@@ -265,7 +265,7 @@ func cassino_opened_tutorial():
 	tut_inst.tutorial = "movement"
 	tut_inst.dis_time = 10
 	tut_inst.vec_size = Vector2(200, 200)
-	tut_inst.pos = Vector2(930, 245)
+	#tut_inst.pos = Vector2(930, 245)
 	tut_inst.panel_type = 0
 	tut_inst.text = "Now that we have something going here, people are sure to come by!\n\n"+\
 	"Keep on making gold and decorating, surely in no time this tavern's gonna have a reputation!"

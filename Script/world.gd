@@ -113,7 +113,7 @@ func _ready() -> void:
 		var tut_query = tut_panel.instantiate()
 		tut_query.dis_time = 9999
 		tut_query.vec_size = Vector2(200, 50)
-		tut_query.pos = Vector2(930, 270)
+		#tut_query.pos = Vector2(930, 270)
 		tut_query.panel_type = 0
 		tut_query.text = "Load tutorial?\nPress Y to load or N to skip all tutorials."
 		tutorial.add_child(tut_query)
@@ -124,7 +124,7 @@ func _ready() -> void:
 		tut_inst.tutorial = "movement"
 		tut_inst.dis_time = 15.0
 		tut_inst.vec_size = Vector2(200, 173)
-		tut_inst.pos = Vector2(930, 260)
+		#tut_inst.pos = Vector2(930, 260)
 		tut_inst.panel_type = 0
 		tut_inst.text = "Thank you for purchasing the deed to Chrysopoeia " +\
 		"Tavern! The place is all yours.\n\nWalk around using WASD and explore!"
@@ -135,7 +135,7 @@ func _ready() -> void:
 		tut_inst2.tutorial = "open_shop"
 		tut_inst2.dis_time = 9999
 		tut_inst2.vec_size = Vector2(200, 203)
-		tut_inst2.pos = Vector2(890, 250)
+		#tut_inst2.pos = Vector2(890, 250)
 		tut_inst2.panel_type = 1
 		tut_inst2.text = "This place is big, but still empty. This way " +\
 		"nobody's gonna come here."
@@ -225,7 +225,7 @@ func _on_shop_tutorial() -> void:
 	tut_inst.tutorial = "shop"
 	tut_inst.dis_time = 9999
 	tut_inst.vec_size = Vector2(200, 50)
-	tut_inst.pos = Vector2(930, 270)
+	#tut_inst.pos = Vector2(930, 270)
 	tut_inst.panel_type = 0
 	tut_inst.text = "It's time to renovate!\n\nBuy a slot machine to start this place up.\n" +\
 	"Press the button below an item to begin placing it."
@@ -237,7 +237,7 @@ func _on_player_build_tutorial() -> void:
 	tut_inst.tutorial = "build"
 	tut_inst.dis_time = 9999
 	tut_inst.vec_size = Vector2(200, 50)
-	tut_inst.pos = Vector2(900, 200)
+	#tut_inst.pos = Vector2(900, 200)
 	tut_inst.panel_type = 1
 	tut_inst.text = "Bring the item to a valid build spot,\nmarked by the green areas on the ground," +\
 	" to build it.\n\nYou can rotate the item by holding Q or E."
@@ -251,7 +251,7 @@ func _on_player_slot_machine_tutorial() -> void:
 	tut_inst.tutorial = "slot_machine1"
 	tut_inst.dis_time = 9999
 	tut_inst.vec_size = Vector2(200, 50)
-	tut_inst.pos = Vector2(900, 230)
+	#tut_inst.pos = Vector2(900, 230)
 	tut_inst.panel_type = 1
 	tut_inst.text = "Put 30 gold in the machine to spin it.\n\nSlot machines "+\
 	"have six different symbols, each one rarer than the other."
