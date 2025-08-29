@@ -13,7 +13,6 @@ var save_player_ref : CharacterBody3D
 
 var characters_sitting_count: int = 0
 
-
 var tween : Tween
 
 func _ready() -> void:

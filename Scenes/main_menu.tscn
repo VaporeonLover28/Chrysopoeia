@@ -1,8 +1,7 @@
-[gd_scene load_steps=53 format=4 uid="uid://cf21qm02h40cu"]
+[gd_scene load_steps=52 format=4 uid="uid://cf21qm02h40cu"]
 
 [ext_resource type="Script" uid="uid://gupatwggm12k" path="res://Script/main_menu.gd" id="1_opfnp"]
 [ext_resource type="Script" uid="uid://h04ek6sfnud1" path="res://Script/spinner.gd" id="3_ce3w2"]
-[ext_resource type="PackedScene" uid="uid://1vs87kpuhfnj" path="res://Assets/Exports/glTF/fantasy_table_low-poly_stylised.glb" id="3_t1dhk"]
 [ext_resource type="Theme" uid="uid://f5yk4gkyeuqv" path="res://Themes/menu_theme.tres" id="5_cp0ys"]
 [ext_resource type="FontFile" uid="uid://paxjlxvek7jf" path="res://Assets/Fonts/ransite_medieval/RansiteMedieval_PERSONAL_USE_ONLY.otf" id="5_n45e2"]
 [ext_resource type="Texture2D" uid="uid://dou0u21vugnyg" path="res://Assets/Originals/banner.png" id="5_vr1f0"]
@@ -261,21 +260,15 @@ size = Vector3(10, 1, 12.5304)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
 environment = SubResource("Environment_8qtwp")
 
-[node name="Table" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_t1dhk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00459552, 0.00956634, -4.4175)
-
-[node name="Sketchfab_model" parent="SubViewportContainer/SubViewport/Table" index="0"]
-visible = false
-
-[node name="light" type="SpotLight3D" parent="SubViewportContainer/SubViewport/Table"]
-transform = Transform3D(1, 0, 0, 0, 0.196254, 0.980553, 0, -0.980553, 0.196254, -0.0275023, 4.99043, -0.00590324)
+[node name="light" type="SpotLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.196254, 0.980553, 0, -0.980553, 0.196254, -0.0275023, 4.99043, -2.82035)
 light_color = Color(1, 0.637837, 0.399547, 1)
 light_energy = 3.0
 spot_range = 10.0
 spot_angle = 35.0
 
-[node name="light2" type="SpotLight3D" parent="SubViewportContainer/SubViewport/Table"]
-transform = Transform3D(1, 0, 0, 0, 0.972105, 0.234548, 0, -0.234548, 0.972105, -0.0275023, 1.3288, 1.66688)
+[node name="light2" type="SpotLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.972105, 0.234548, 0, -0.234548, 0.972105, -0.0275023, 1.3288, -1.14756)
 light_color = Color(1, 0.637837, 0.399547, 1)
 spot_range = 3.19828
 spot_angle = 35.0
@@ -336,21 +329,19 @@ theme_override_constants/separation = 17
 layout_mode = 2
 theme = ExtResource("5_cp0ys")
 text = "Start"
-alignment = 0
 
 [node name="Load_btn" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("5_cp0ys")
 text = "Load"
-alignment = 0
 
 [node name="Options_btn" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("5_cp0ys")
 text = "Options"
-alignment = 0
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 30
 theme_override_styles/separator = SubResource("StyleBoxEmpty_yhxw7")
@@ -359,7 +350,6 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_yhxw7")
 layout_mode = 2
 theme = ExtResource("5_cp0ys")
 text = "Quit"
-alignment = 0
 
 [node name="ColorRect" type="TextureRect" parent="."]
 visible = false
@@ -394,5 +384,4 @@ script = ExtResource("8_yhxw7")
 [connection signal="pressed" from="VBoxContainer/Options_btn" to="." method="_on_options_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit_btn" to="." method="_on_quit_btn_pressed"]
 
-[editable path="SubViewportContainer/SubViewport/Table"]
 [editable path="SubViewportContainer/SubViewport/gold_nugget"]

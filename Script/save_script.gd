@@ -52,9 +52,9 @@ func _save_function(world_scene: Node3D, save_file_number: int):
 		save_npcs_array.push_back(save_npcs_info)
 	new_config.set_value("NPC", "info", save_npcs_array)
 	new_config.save("user://SaveFile" + str(save_file_number) +".cfg")
-	
 
 func _load_function(save_file_number: int):
+	get_tree().paused = false
 	current_savefile_loading = "user://SaveFile" + str(save_file_number) +".cfg"
 	var loading = new_config.load(current_savefile_loading)
 	if loading == OK:
