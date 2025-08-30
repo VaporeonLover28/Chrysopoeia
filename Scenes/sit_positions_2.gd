@@ -40,13 +40,14 @@ func _physics_process(delta: float) -> void:
 	pass
 
 func _pull_camera(player, rot_vec3):
-	tween = create_tween()
-	tween.set_trans(Tween.TRANS_SINE)
-	tween.set_ease(Tween.EASE_OUT)
-	tween.set_parallel(true)
-	tween.tween_property(player_ref.pivot, "rotation_degrees", Vector3(0, rot_vec3.y - 90, 0), 1.25)
-	tween.tween_property(player_ref.camera, "rotation_degrees", Vector3(-30, 0, 0), 1.25)
-	#tween.tween_property(player_ref.camera, "global_position", \
+	pass
+	#tween = create_tween()
+	#tween.set_trans(Tween.TRANS_SINE)
+	#tween.set_ease(Tween.EASE_OUT)
+	#tween.set_parallel(true)
+	#tween.tween_property(player_ref.pivot, "rotation_degrees", Vector3(0, rot_vec3.y - 90, 0), 1.25)
+	#tween.tween_property(player_ref.camera, "rotation_degrees", Vector3(-30, 0, 0), 1.25)
+	##tween.tween_property(player_ref.camera, "global_position", \
 	#$Marker3D.global_position + Vector3(0, 0.6, 0), 0.75)
 	#await get_tree().create_timer(1.5).timeout
 	#player.global_position = $"../Player Chair".global_position

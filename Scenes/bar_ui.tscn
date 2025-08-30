@@ -65,6 +65,8 @@ Label/font_sizes/font_size = 17
 Label/fonts/font = ExtResource("1_56par")
 
 [node name="Bar UI" type="CanvasLayer"]
+offset = Vector2(0, 270)
+transform = Transform2D(1, 0, 0, 1, 0, 270)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

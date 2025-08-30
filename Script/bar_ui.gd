@@ -8,16 +8,38 @@ extends Control
 @onready var sip_potion: AudioStreamPlayer = $"../sipPotion"
 @onready var select_potion: AudioStreamPlayer = $"../selectPotion"
 
-
 var save_bar_reference: InteractableObject
-
 var selected_drink: VBoxContainer
+var tween: Tween
+
+func print_mouse_mode():
+	var current_mode = Input.get_mouse_mode()
+	var mode_name = ""
+
+	match current_mode:
+		Input.MOUSE_MODE_VISIBLE: mode_name = "MOUSE_MODE_VISIBLE"
+		Input.MOUSE_MODE_HIDDEN: mode_name = "MOUSE_MODE_HIDDEN"
+		Input.MOUSE_MODE_CAPTURED: mode_name = "MOUSE_MODE_CAPTURED"
+		Input.MOUSE_MODE_CONFINED: mode_name = "MOUSE_MODE_CONFINED"
+		Input.MOUSE_MODE_CONFINED_HIDDEN: mode_name = "MOUSE_MODE_CONFINED_HIDDEN"
+		_: mode_name = "UNKNOWN"
+
+	print("Current mouse mode: ", mode_name, " (", current_mode, ")")
 
 func show_bar_ui(bar_reference: InteractableObject):
-	get_parent().visible = true
 	save_bar_reference = bar_reference
 	gold.text = "Gold:" + str(Globals.money)
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
+	# DEBUG: Print current mouse mode before changing it
+	print_mouse_mode()
+	
+	tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_QUART)
+	tween.set_parallel(true)
+	tween.tween_property(get_parent(), "offset", Vector2(0, 0), 0.5)
+	tween.tween_callback(func(): Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE))
+	tween.tween_callback(func(): print_mouse_mode())
 
 func buy_drink():
 	sip_potion.play()
@@ -46,8 +68,10 @@ func buy_drink():
 				Globals.aqua_fortis_active = false
 				Globals.aqua_regia_timer.stop()
 				Globals.aqua_philosophorum_timer.start(180)
-		clear_selection()
 		
+		# Update gold display after purchase
+		gold.text = "Gold:" + str(Globals.money)
+		clear_selection()
 	else:
 		print("Potion not affordable")
 
@@ -58,18 +82,39 @@ func select_drink(chosen_drink):
 	sprite.texture = chosen_drink.drink_image
 	description.text = chosen_drink.description
 	buy_button.text = "Buy " + chosen_drink.drink_name + " for " + str(chosen_drink.drink_price) + " Gold"
+	
 	if !sprite.visible:
 		sprite.visible = true
 		description.visible = true
 		buy_button.visible = true
 
 func clear_selection():
-	get_parent().visible = false
-	save_bar_reference._cancel_interact_Bar(get_parent().get_parent().get_node("Player"))
+	tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_QUART)
+	tween.set_parallel(true)
+	tween.tween_property(get_parent(), "offset", Vector2(0, 270), 0.5)
+	tween.tween_callback(_on_clear_selection_complete)
+
+func _on_clear_selection_complete():
+	# Reset UI elements
 	drink_name.text = "Select a potion to view description"
 	sprite.visible = false
 	description.visible = false
 	buy_button.visible = false
+	
+	# Only cancel interaction if we have a valid reference
+	if save_bar_reference:
+		# Use the correct method name and pass empty array as expected
+		save_bar_reference._cancel_interact([])
+	
+	# Optional: Recapture mouse if needed for gameplay
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _on_buy_button_pressed() -> void:
 	buy_drink()
+
+# Add this function to handle manual closing without buying
+func _input(event):
+	if event.is_action_pressed("e") and get_parent().offset.y == 0:
+		clear_selection()

@@ -1,11 +1,10 @@
 extends Node3D; class_name InteractableObject
 
-
 @export_category("Object basics")
 @export var object_class : String
 @export var object_name : String
 
-func _interact(pass_interact_parameter : Array = [], pass_cancel_interact_parameter : Array = []):
+func _interact(pass_interact_parameter : Array = []):
 		match pass_interact_parameter.size():
 			0:
 				call("_interact_" + object_class)

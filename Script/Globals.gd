@@ -40,7 +40,7 @@ var save_build_spot : Array
 var money_lost: int = 8
 var spell_inventory_list: Array[PurchasableItemResource]
 
-var bar_unlock: bool = false
+var bar_unlock: bool = true
 var ring_unlock: bool = false
 
 @onready var aqua_vitae_timer: Timer
