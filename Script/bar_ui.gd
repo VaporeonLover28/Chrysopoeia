@@ -8,6 +8,7 @@ extends Control
 @onready var sip_potion: AudioStreamPlayer = $"../sipPotion"
 @onready var select_potion: AudioStreamPlayer = $"../selectPotion"
 
+var player_ref
 var save_bar_reference: InteractableObject
 var selected_drink: VBoxContainer
 var tween: Tween
@@ -25,8 +26,10 @@ func print_mouse_mode():
 		_: mode_name = "UNKNOWN"
 
 	print("Current mouse mode: ", mode_name, " (", current_mode, ")")
-
-func show_bar_ui(bar_reference: InteractableObject):
+	print("Current mouse pos: " + str(get_global_mouse_position()))
+	
+func show_bar_ui(bar_reference: InteractableObject, player):
+	player_ref = player
 	save_bar_reference = bar_reference
 	gold.text = "Gold:" + str(Globals.money)
 	
@@ -38,8 +41,8 @@ func show_bar_ui(bar_reference: InteractableObject):
 	tween.set_trans(Tween.TRANS_QUART)
 	tween.set_parallel(true)
 	tween.tween_property(get_parent(), "offset", Vector2(0, 0), 0.5)
-	tween.tween_callback(func(): Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE))
 	tween.tween_callback(func(): print_mouse_mode())
+	tween.tween_callback(func(): Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE))
 
 func buy_drink():
 	sip_potion.play()
@@ -89,6 +92,8 @@ func select_drink(chosen_drink):
 		buy_button.visible = true
 
 func clear_selection():
+	player_ref.can_move = true
+	Globals.player_interacting = false
 	tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_QUART)

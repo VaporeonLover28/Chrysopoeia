@@ -31,10 +31,11 @@ func _interact(pass_interact_parameter: Array = []):
 		_handle_npc_interaction()
 
 func _handle_player_interaction(player: CharacterBody3D):
+	player.can_move = false
+	
 	if is_occupied:
 		return  # Chair already taken
 	
-	player_ref = player
 	is_player_sitting = true
 	is_occupied = true
 	Globals.player_interacting = true
@@ -51,7 +52,7 @@ func _handle_player_interaction(player: CharacterBody3D):
 	
 	# Show bar UI after sitting
 	if Globals.bar_unlock:
-		tween.tween_callback(func(): world.get_node("Bar UI").get_child(0).show_bar_ui(self))
+		tween.tween_callback(func(): world.get_node("Bar UI").get_child(0).show_bar_ui(self, player))
 
 func _handle_npc_interaction():
 	# NPC buys a random drink

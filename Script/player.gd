@@ -29,6 +29,8 @@ var current_object_being_purchased: PackedScene
 var can_build : bool
 var object_rotation: Vector3
 
+var crosshair_object = null
+
 #headbob vars
 @export var bob_freq : float = 2
 @export var bob_amp : float = 0.08
@@ -99,6 +101,16 @@ func _physics_process(delta: float) -> void:
 		ray_builder = ray_builder_2
 	else: 
 		ray_builder = ray_builder_1
+	
+	if ray_builder.get_collider() != null and\
+	ray_builder.get_collider().has_overlapping_bodies():
+		for body in ray_builder.get_collider().get_overlapping_bodies():
+			if body.get_parent() is InteractableObject:
+				crosshair_object = body.get_parent()
+				ui.item.text = "[wave amp=50.0 freq=5.0 connected=1]" + crosshair_object.name + "[/wave]"
+	else:
+		crosshair_object = null
+		ui.item.text = ""
 	
 	if !is_on_building_mode:
 		if Input.is_action_just_pressed("e") and Globals.player_interacting == false:

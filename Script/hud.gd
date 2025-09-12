@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var spells: MarginContainer = $spells
 @onready var slot_1: TextureRect = $spells/magic_box/slot_1
 @onready var slot_2: TextureRect = $spells/magic_box/slot_2
+@onready var item: RichTextLabel = $item
 
 func _ready() -> void:
 	slot_1.visible = false

@@ -124,3 +124,19 @@ scroll_active = false
 shortcut_keys_enabled = false
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="item" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(125, 50)
+offset_left = 891.0
+offset_top = 442.0
+offset_right = 1119.0
+offset_bottom = 492.0
+theme_override_fonts/normal_font = ExtResource("5_t1xeu")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[wave amp=50.0 freq=5.0 connected=1][/wave]"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
