@@ -37,8 +37,14 @@ func update_mesh():
 func selec_mesh():
 	if !selection_mesh.visible:
 		selection_mesh.visible = true
+	for body in area.get_overlapping_bodies():
+		if body.get_parent().has_method("show_depot_label"):
+			body.get_parent().show_depot_label()
 
 func deselec_mesh():
 	if selection_mesh.visible:
 		selection_mesh.visible = false
 		Globals.selected_build_spot = null
+	for body in area.get_overlapping_bodies():
+		if body.get_parent().has_method("hide_depot_label"):
+			body.get_parent().hide_depot_label()

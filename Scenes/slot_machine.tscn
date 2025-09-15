@@ -131,7 +131,9 @@ stream = ExtResource("9_beykt")
 volume_db = -20.0
 
 [node name="depot_label" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.591, 0.783)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.191, 0)
+visible = false
+billboard = 1
 modulate = Color(0.811813, 0.755176, 0, 1)
 outline_modulate = Color(0.411014, 0.191095, 0, 1)
 text = "0 Gold"

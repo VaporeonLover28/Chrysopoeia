@@ -311,6 +311,12 @@ func claim_depot():
 		Globals.money += gold_in_depot
 		gold_in_depot = 0
 
+func show_depot_label():
+	$depot_label.visible = true
+
+func hide_depot_label():
+	$depot_label.visible = false
+
 func _on_input_area_body_entered(body: Node3D) -> void:
 	if Globals.check_spell_available("Wheel of Fortune") and body.name == "Player":
 		Globals.fortuna_target = self
