@@ -201,7 +201,7 @@ func crosshair_prompts():
 		match crosshair_object.object_name:
 			"Slot Machine":
 				ui.add_crosshair_input_prompt("Play (30 Gold)", load("res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_e.png"))
-			"Blackjack Table":
+			"BlackJack Table":
 				ui.add_crosshair_input_prompt("Play (Results)", load("res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_e.png"))
 		ui.add_crosshair_input_prompt("Sell", load("res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_h.png"))
 		ui.all_prompts_shown = true
