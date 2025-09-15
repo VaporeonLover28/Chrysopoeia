@@ -20,7 +20,7 @@ script = ExtResource("1_frv1u")
 [node name="Panel" type="PanelContainer" parent="."]
 layout_mode = 0
 offset_right = 1152.0
-offset_bottom = 80.0
+offset_bottom = 96.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 layout_mode = 2
@@ -39,7 +39,7 @@ stretch_mode = 3
 [node name="Function" type="Label" parent="Panel/HBoxContainer/Q"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "Hit"
+text = "Stand"
 horizontal_alignment = 1
 
 [node name="E" type="VBoxContainer" parent="Panel/HBoxContainer"]
@@ -55,7 +55,7 @@ stretch_mode = 3
 [node name="Function" type="Label" parent="Panel/HBoxContainer/E"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "Stand"
+text = "Hit"
 horizontal_alignment = 1
 
 [node name="R" type="VBoxContainer" parent="Panel/HBoxContainer"]
@@ -91,6 +91,7 @@ text = "Accept Gold"
 horizontal_alignment = 1
 
 [node name="Panel2" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 376.0
 offset_top = -64.0

@@ -119,7 +119,7 @@ size = Vector3(0.523, 1, 1.91)
 script = ExtResource("1_33dal")
 game_machice_scene = "blackjack"
 object_class = "GambleSpot"
-object_name = "BlackJack"
+object_name = "BlackJack Table"
 metadata/_custom_type_script = "uid://d33jhadxc2lv5"
 
 [node name="Model" type="StaticBody3D" parent="." groups=["Ground_object"]]

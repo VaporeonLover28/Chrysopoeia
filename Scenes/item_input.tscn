@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://r3tjwqqg7u6s"]
+
+[ext_resource type="Script" uid="uid://dppqoac2llwrd" path="res://Scenes/item_input.gd" id="1_g6nxk"]
+[ext_resource type="Texture2D" uid="uid://bnws5s74tq10x" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Vector/keyboard_e.svg" id="1_wg18o"]
+[ext_resource type="FontFile" uid="uid://4y6u2ai8c7lq" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-Bold.ttf" id="2_g6nxk"]
+
+[node name="item_input" type="Control"]
+custom_minimum_size = Vector2(170, 39)
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_g6nxk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_right = 173.0
+offset_bottom = 64.0
+scale = Vector2(0.6, 0.6)
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_wg18o")
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_g6nxk")
+theme_override_font_sizes/font_size = 26
+text = "Play (30 Gold)"

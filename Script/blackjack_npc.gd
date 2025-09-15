@@ -41,8 +41,9 @@ func _process(delta: float) -> void:
 	move_and_slide()
 
 func play_turn():
+	#print("i am " + name + " and my hand is " + hand_marker.name)
 	calculate_hand_value()
-	print(name + "'s turn ")
+	#print(name + "'s turn ")
 	if state == "Playing":
 		match personality:
 			"Pleb":
@@ -482,16 +483,16 @@ func play_turn():
 							"hit",\
 							"hit",\
 							"hit")
-	else:
-		match state:
-			"Standed":
-				print(name + " has standed, skipping turn.")
-			"Busted":
-				print(name + " has busted, skipping turn.")
-			"Blackjack":
-				print(name + " has a blackjack, so they stand.")
-			"Doubled":
-				print(name + " has doubled, so they cannot hit.")
+	#else:
+		#match state:
+			#"Standed":
+				#print(name + " has standed, skipping turn.")
+			#"Busted":
+				#print(name + " has busted, skipping turn.")
+			#"Blackjack":
+				#print(name + " has a blackjack, so they stand.")
+			#"Doubled":
+				#print(name + " has doubled, so they cannot hit.")
 
 func calculate_hand_value():
 	var value_bank = 0
@@ -536,21 +537,21 @@ func update_state_label():
 
 func hit():
 	#update_action_label("hit")
-	print(name + " hits.")
+	#print(name + " hits.")
 	game.card_to_npc(game.deck.pop_back(), self, Vector3(0, 0, 0))
 	calculate_hand_value()
 
 func stand():
 	#update_action_label("stand")
 	state = "Standed"
-	print(name + " stands.")
+	#print(name + " stands.")
 	update_state_label()
 
 func double_down():
 	if game.round <= game.round_order_npcs.size():
 		#update_action_label("double")
 		state = "Doubled"
-		print(name + " doubles down.")
+		#print(name + " doubles down.")
 		game.card_to_npc(game.deck.pop_back(), self, Vector3(-180, 90, 0))
 		calculate_hand_value()
 	else:
@@ -559,13 +560,13 @@ func double_down():
 func bust():
 	#update_action_label("bust")
 	state = "Busted"
-	print(name + " busts.")
+	#print(name + " busts.")
 	update_state_label()
 
 func blackjack():
 	#update_action_label("blackjack")
 	state = "Blackjack"
-	print(name + " has a blackjack.")
+	#print(name + " has a blackjack.")
 	update_state_label()
 
 func hard_total_matrix(case1, case2, case3, case4, case5, case6, case7, case8, case9, case10):
@@ -634,7 +635,7 @@ func go_to_table(chair_pos):
 
 func _on_nav_navigation_finished() -> void:
 	is_sat_down = true
-	print(self.name + " global pos: " + str(global_position))
+	#print(self.name + " global pos: " + str(global_position))
 
 func look_at_player():
 	look_at($"../blackjack_player".position)

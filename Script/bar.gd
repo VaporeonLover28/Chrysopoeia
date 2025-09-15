@@ -1,7 +1,6 @@
 extends InteractableObject
 
 @onready var world: Node3D = $"../../.."
-@onready var camera: Camera3D = $camera
 @onready var chair: Marker3D = $"Sit positions 2/Marker3D"
 
 var tween: Tween

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://blm2ybcpo2i7k"]
+[gd_scene load_steps=17 format=4 uid="uid://blm2ybcpo2i7k"]
 
 [ext_resource type="Script" uid="uid://du03851jbkyo2" path="res://Script/slot_machine.gd" id="1_0ucjj"]
 [ext_resource type="PackedScene" uid="uid://dgww0bhqoowog" path="res://Assets/Originals/Slot_Machice/Caçaniquel.glb" id="2_s1yih"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c6jqyf306la64" path="res://Scenes/sell_satisfation_value.tscn" id="7_pyjcy"]
 [ext_resource type="AudioStream" uid="uid://ceqpycwlkc1bs" path="res://SFX/slot/69717__lukaso__start_1.wav" id="8_jd2m2"]
 [ext_resource type="AudioStream" uid="uid://sk41rf4lxker" path="res://SFX/slot/69701__lukaso__wheel4.wav" id="9_beykt"]
+[ext_resource type="FontFile" uid="uid://4y6u2ai8c7lq" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-Bold.ttf" id="10_beykt"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_33385"]
 load_path = "res://.godot/imported/Caçanique_RECKRECKRESERVA.png-b30410b43749643c8a27bd887e578734.s3tc.ctex"
@@ -64,7 +65,7 @@ size = Vector3(0.725, 1, 2)
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 script = ExtResource("1_0ucjj")
 object_class = "SlotMachine"
-object_name = "SlotMachine"
+object_name = "Slot Machine"
 
 [node name="Model" type="StaticBody3D" parent="." groups=["Ground_object"]]
 transform = Transform3D(1, 0, 5.68434e-15, 0, 1, 0, -5.68434e-15, 0, 1, 0, 0.928577, 0)
@@ -128,6 +129,13 @@ volume_db = -20.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.947295, 0)
 stream = ExtResource("9_beykt")
 volume_db = -20.0
+
+[node name="depot_label" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.591, 0.783)
+modulate = Color(0.811813, 0.755176, 0, 1)
+outline_modulate = Color(0.411014, 0.191095, 0, 1)
+text = "0 Gold"
+font = ExtResource("10_beykt")
 
 [connection signal="tutorial_4_ended" from="." to="." method="_on_tutorial_4_ended"]
 [connection signal="body_entered" from="input_area" to="." method="_on_input_area_body_entered"]

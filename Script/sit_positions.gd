@@ -26,7 +26,7 @@ func _ready() -> void:
 func _sit_character(object_ref):
 	await get_tree().create_timer(0.1).timeout
 	if _ASAT() != true:
-		print("npc sit")
+		#print("npc sit")
 		#makes player sit
 		#checks for marker with the smallest postion distance to the player so he can sit, removing the spot from the pool
 		chosen_sitting_transition = null
@@ -40,7 +40,7 @@ func _sit_character(object_ref):
 		chair_postion_list[chosen_sitting_position][1] = false
 		chair_postion_list[chosen_sitting_position].push_back(object_ref)
 		characters_sitting_count += 1
-		print(chair_postion_list)
+		#print(chair_postion_list)
 		if object_ref.name == "Player":
 			chosen_sitting_transition = self.get_child(chosen_sitting_position)
 			save_player_ref = object_ref
@@ -51,11 +51,11 @@ func _sit_character(object_ref):
 func _stand_character_up(object_ref):
 	var chosen_sitting_position = 10
 	var smallest_distance : float = 1000
-	print("stand")
+	#print("stand")
 	for item in self.get_child_count():
-		print(object_ref)
-		print(self.name + " " + str(object_ref.global_position.distance_to(self.get_child(item).global_position)))
-		print(chair_postion_list[item][1] == true)
+		#print(object_ref)
+		#print(self.name + " " + str(object_ref.global_position.distance_to(self.get_child(item).global_position)))
+		#print(chair_postion_list[item][1] == true)
 		if smallest_distance > object_ref.global_position.distance_to(self.get_child(item).global_position)\
 		and chair_postion_list[item][1] == false:
 				chosen_sitting_position = item 
@@ -103,6 +103,6 @@ func _CNSC():
 	for item in chair_postion_list.size():
 		if chair_postion_list[item - 1][1] == false:
 			count_character += 1
-	print(count_character)
+	#print(count_character)
 	return count_character
 	

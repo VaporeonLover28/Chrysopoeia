@@ -9,6 +9,6 @@ func _ready() -> void:
 			_remove_wall()
 		
 func _remove_wall():
-	print("remove door")
+	#print("remove door")
 	self.visible = true
 	navigation_region_3d.bake_navigation_mesh()

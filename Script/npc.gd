@@ -134,7 +134,7 @@ func _remove_bar_if_not_unlocked(body):
 func _get_called_to_play_game(game_reference: Node3D):
 	if Globals.game_paused == false and is_going_to_interaction == false and is_on_interaction == false:
 		idle.stop()
-		print(game_reference)
+		#print(game_reference)
 		targeted_position_is_object = game_reference
 		var random_choice_of_chair = randi_range(0, targeted_position_is_object.get_node("Sit positions").get_child_count() - 1)
 		_walk_to(targeted_position_is_object.get_node("Sit positions").get_child(random_choice_of_chair).global_position)
@@ -160,7 +160,7 @@ func _on_idle_timeout() -> void:
 func _leave_interaction():
 	if is_instance_valid(targeted_position_is_object) == true and targeted_position_is_object is GambleSpot and Globals.game_paused == false:
 		targeted_position_is_object._cancel_interact_GambleSpot(self)
-		print("got up")
+		#print("got up")
 	is_on_interaction = false
 	idle.start(randf_range(minimum_time_for_idle, maximum_time_for_idle))
 	targeted_interactable_object_timer.start(randf_range(minimum_time_for_TIOT, maximum_time_for_TIOT))

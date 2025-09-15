@@ -13,35 +13,16 @@ var save_bar_reference: InteractableObject
 var selected_drink: VBoxContainer
 var tween: Tween
 
-func print_mouse_mode():
-	var current_mode = Input.get_mouse_mode()
-	var mode_name = ""
-
-	match current_mode:
-		Input.MOUSE_MODE_VISIBLE: mode_name = "MOUSE_MODE_VISIBLE"
-		Input.MOUSE_MODE_HIDDEN: mode_name = "MOUSE_MODE_HIDDEN"
-		Input.MOUSE_MODE_CAPTURED: mode_name = "MOUSE_MODE_CAPTURED"
-		Input.MOUSE_MODE_CONFINED: mode_name = "MOUSE_MODE_CONFINED"
-		Input.MOUSE_MODE_CONFINED_HIDDEN: mode_name = "MOUSE_MODE_CONFINED_HIDDEN"
-		_: mode_name = "UNKNOWN"
-
-	print("Current mouse mode: ", mode_name, " (", current_mode, ")")
-	print("Current mouse pos: " + str(get_global_mouse_position()))
-	
 func show_bar_ui(bar_reference: InteractableObject, player):
 	player_ref = player
 	save_bar_reference = bar_reference
 	gold.text = "Gold:" + str(Globals.money)
-	
-	# DEBUG: Print current mouse mode before changing it
-	print_mouse_mode()
 	
 	tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_QUART)
 	tween.set_parallel(true)
 	tween.tween_property(get_parent(), "offset", Vector2(0, 0), 0.5)
-	tween.tween_callback(func(): print_mouse_mode())
 	tween.tween_callback(func(): Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE))
 
 func buy_drink():
@@ -57,8 +38,8 @@ func buy_drink():
 						Globals.money += 50
 					Globals.money_lost = -1
 					Globals.aqua_vitae_timer.start(180)
-				else:
-					print("Aqua Vitae already active")
+				#else:
+					#print("Aqua Vitae already active")
 			"Aqua Fortis":
 				Globals.aqua_fortis_active = true
 				Globals.aqua_regia_timer.stop()
@@ -75,8 +56,8 @@ func buy_drink():
 		# Update gold display after purchase
 		gold.text = "Gold:" + str(Globals.money)
 		clear_selection()
-	else:
-		print("Potion not affordable")
+	#else:
+		#print("Potion not affordable")
 
 func select_drink(chosen_drink):
 	select_potion.play()

@@ -22,8 +22,8 @@ var aces_in_hand : int
 
 func _process(delta: float) -> void:
 	if allowed_to_move:
-		if Input.is_action_just_pressed("space"):
-			ui._slide()
+		#if Input.is_action_just_pressed("space"):
+			#ui._slide()
 		
 		if Input.is_action_just_pressed("r") and !game.round_started:
 			game.call_player()
@@ -38,10 +38,10 @@ func _process(delta: float) -> void:
 			else:
 				game.place_bets()
 		
-		if Input.is_action_just_pressed("q") and game.dealer_can_hit:
+		if Input.is_action_just_pressed("e") and game.dealer_can_hit:
 			game.dealer_hit()
 		
-		if Input.is_action_just_pressed("e") and game.dealer_can_stand:
+		if Input.is_action_just_pressed("q") and game.dealer_can_stand:
 			game.dealer_stand()
 	
 	move_and_slide()

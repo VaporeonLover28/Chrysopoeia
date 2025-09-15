@@ -19,124 +19,132 @@ var fortune_rewards : Array = [["Mercury", 10, 1], ["Sun", 20, 20], ["Geocentris
 var failed_fortune_rewards : Array = [["Mercury", 5, 1], ["Sun", 12, 40], ["Geocentrism", 35, 60], 
 ["Ra", 50, 75], ["Trismegistus", 80, 85], ["Ankh", 0, 95]]
 
-##creating a tween
 var tween : Tween
 
-##how much it costs to play
 var play_price : int = 30
 ##array containing the results
 var current_reward : Array
 ##what is going to be given at the end of the spin
 var points : int = 0
-##how many wheels are spinning
+
 var wheels_spinning : int = 0
-##if any wheels are spinning
 var spinning : bool = false
+
+##if machine has been wheel of fortune'd
+##1 is fortuned, 0 is base odds, -1 is failed fortune (worse rewards)
 var fortune := 0
 
+##tutorial stuff
 var times_played : int = 0
-
-#signal tutorial_2
-#signal tutorial_3
 signal tutorial_4_ended
 
-##slot machice lol
-##spin the wheel if it isn't spinning already
-##clears the variables
+var last_to_play: Node = null
+var gold_in_depot : int = 0:
+	set(amount):
+		gold_in_depot = amount
+		$depot_label.text = str(amount) + " Gold"
 
 func _ready() -> void:
-	#print(get_parent().get_parent().get_parent().name)
 	object_class = "SlotMachine"
 
 func _interact_SlotMachine(object_ref):
 	if !spinning:
 		current_reward.clear()
 		points = 0
+		last_to_play = object_ref
 		lever_pull()
 
 func lever_pull():
 	times_played += 1
-	##if the player can afford to play
-	if Globals.money - play_price >= 0:
-		start.play()
-		##take money
-		Globals.money -= play_price
-		##block the player from spinning again
-		spinning = true
-		
-		##tweening the lever to be pulled
-		tween = create_tween()
-		tween.set_trans(Tween.TRANS_BACK)
-		tween.set_ease(Tween.EASE_OUT)
-		tween.tween_property(lever, "rotation_degrees", Vector3(90, 0, 0), 0.66)
-		tween.set_trans(Tween.TRANS_QUART)
-		tween.tween_property(lever, "rotation_degrees", Vector3.ZERO, 0.66)
-		
-		if TutorialManager.tutorials["slot_machine4"]:
-			##define the spin results
-			if fortune == 0:
-				spin_rewards(base_rewards)
-			elif fortune == 1:
-				spin_rewards(fortune_rewards)
-			else:
-				spin_rewards(failed_fortune_rewards)
+	
+	if last_to_play.name == "Player":
+		if Globals.money - play_price >= 0:
+			Globals.money -= play_price
 		else:
-			match times_played:
-				1:
-					current_reward = [["Mercury", 10, 1], ["Geocentrism", 50, 60], ["Mercury", 10, 1], ["Sun", 20, 40]]
-					$"../../../Tutorial".get_child(0).clear()
-					var tut_inst = load("res://Scenes/tutorial_panel.tscn").instantiate()
-					tut_inst.tutorial = "slot_machine2"
-					tut_inst.dis_time = 9999
-					tut_inst.vec_size = Vector2(200, 165)
-					#tut_inst.pos = Vector2(930, 245)
-					tut_inst.panel_type = 0
-					tut_inst.text = "Slot machines give you gold for every combination of two " +\
-					"or more symbols.\n\nMore common symbols give less, while the rarer ones give more. A LOT more."
-					get_parent().get_parent().get_parent().tutorial.add_child(tut_inst)
-				2:
-					current_reward = [["Sun", 20, 40], ["Mercury", 10, 1], ["Ra", 75, 75], ["Trismegistus", 100, 85]]
-					$"../../../Tutorial".get_child(0).clear()
-					var tut_inst = load("res://Scenes/tutorial_panel.tscn").instantiate()
-					tut_inst.tutorial = "slot_machine3"
-					tut_inst.dis_time = 9999
-					tut_inst.vec_size = Vector2(200, 100)
-					#tut_inst.pos = Vector2(930, 260)
-					tut_inst.panel_type = 0
-					tut_inst.text = "If you get no combinations, you get no reward. It's that simple."
-					get_parent().get_parent().get_parent().tutorial.add_child(tut_inst)
-				3:
-					current_reward = [["Sun", 20, 40], ["Sun", 20, 40], ["Sun", 20, 40], ["Ankh", 0, 95]]
-					$"../../../Tutorial".get_child(0).clear()
-					TutorialManager.tutorials["slot_machine4"] = true
-					var tut_inst = load("res://Scenes/tutorial_panel.tscn").instantiate()
-					tut_inst.tutorial = "slot_machine4"
-					tut_inst.dis_time = 15
-					tut_inst.vec_size = Vector2(200, 232)
-					#tut_inst.pos = Vector2(930, 245)
-					tut_inst.panel_type = 0
-					tut_inst.text = "Keep in mind that one on the right! That's an Ankh.\n" +\
-					"If you get an Ankh alongside a combination, you get double the rewards!"
-					get_parent().get_parent().get_parent().tutorial.add_child(tut_inst)
-					tutorial_4_ended.emit()
-			spin_sfx.play()
-			var times = 5
-			#print(times)
-			spin(wheel_1, times, current_reward[0], base_rewards)
-			await get_tree().create_timer(0.75).timeout
-			spin(wheel_2, times, current_reward[1], base_rewards)
-			await get_tree().create_timer(0.75).timeout
-			spin(wheel_3, times, current_reward[2], base_rewards)
-			await get_tree().create_timer(0.75).timeout
-			spin(wheel_4, times, current_reward[3], base_rewards)
-			times = 0
-		
-	##if cannot be afforded
-		if play_price == 0:
-			play_price = 30
+			spinning = false
+			last_to_play = null
+			return
 	else:
-		##just ignore
-		pass
+		if last_to_play.money >= 30:
+			gold_in_depot += 30
+			last_to_play.money -= 30
+	
+	start.play()
+	spinning = true
+	
+	##tweening the lever to be pulled
+	tween = create_tween()
+	tween.set_trans(Tween.TRANS_BACK)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(lever, "rotation_degrees", Vector3(90, 0, 0), 0.66)
+	tween.set_trans(Tween.TRANS_QUART)
+	tween.tween_property(lever, "rotation_degrees", Vector3.ZERO, 0.66)
+	
+	##if outside the tutorial
+	if TutorialManager.tutorials["slot_machine4"]:
+		##define the spin results
+		if fortune == 0:
+			spin_rewards(base_rewards)
+		elif fortune == 1:
+			spin_rewards(fortune_rewards)
+		else:
+			spin_rewards(failed_fortune_rewards)
+	##if in the tutorial still
+	else:
+		##rigging first spins
+		match times_played:
+			1:
+				current_reward = [["Mercury", 10, 1], ["Geocentrism", 50, 60], ["Mercury", 10, 1], ["Sun", 20, 40]]
+				$"../../../Tutorial".get_child(0).clear()
+				var tut_inst = load("res://Scenes/tutorial_panel.tscn").instantiate()
+				tut_inst.tutorial = "slot_machine2"
+				tut_inst.dis_time = 9999
+				tut_inst.vec_size = Vector2(200, 165)
+				#tut_inst.pos = Vector2(930, 245)
+				tut_inst.panel_type = 0
+				tut_inst.text = "Slot machines give you gold for every combination of two " +\
+				"or more symbols.\n\nMore common symbols give less, while the rarer ones give more. A LOT more."
+				get_parent().get_parent().get_parent().tutorial.add_child(tut_inst)
+			2:
+				current_reward = [["Sun", 20, 40], ["Mercury", 10, 1], ["Ra", 75, 75], ["Trismegistus", 100, 85]]
+				$"../../../Tutorial".get_child(0).clear()
+				var tut_inst = load("res://Scenes/tutorial_panel.tscn").instantiate()
+				tut_inst.tutorial = "slot_machine3"
+				tut_inst.dis_time = 9999
+				tut_inst.vec_size = Vector2(200, 100)
+				#tut_inst.pos = Vector2(930, 260)
+				tut_inst.panel_type = 0
+				tut_inst.text = "If you get no combinations, you get no reward. It's that simple."
+				get_parent().get_parent().get_parent().tutorial.add_child(tut_inst)
+			3:
+				current_reward = [["Ankh", 0, 95], ["Sun", 20, 40], ["Sun", 20, 40], ["Sun", 20, 40]]
+				$"../../../Tutorial".get_child(0).clear()
+				TutorialManager.tutorials["slot_machine4"] = true
+				var tut_inst = load("res://Scenes/tutorial_panel.tscn").instantiate()
+				tut_inst.tutorial = "slot_machine4"
+				tut_inst.dis_time = 15
+				tut_inst.vec_size = Vector2(200, 232)
+				#tut_inst.pos = Vector2(930, 245)
+				tut_inst.panel_type = 0
+				tut_inst.text = "Keep in mind that one on the left! That's an Ankh.\n" +\
+				"If you get an Ankh alongside a combination, you get double the rewards!"
+				get_parent().get_parent().get_parent().tutorial.add_child(tut_inst)
+				tutorial_4_ended.emit()
+		spin_sfx.play()
+		var times = 5
+		#print(times)
+		##spinning the in game wheels to their rewards
+		spin(wheel_1, times, current_reward[0], base_rewards)
+		await get_tree().create_timer(0.75).timeout
+		spin(wheel_2, times, current_reward[1], base_rewards)
+		await get_tree().create_timer(0.75).timeout
+		spin(wheel_3, times, current_reward[2], base_rewards)
+		await get_tree().create_timer(0.75).timeout
+		spin(wheel_4, times, current_reward[3], base_rewards)
+		times = 0
+	##idk whats this
+	if play_price == 0:
+		play_price = 30
 
 ##defining the spin rewards
 func spin_rewards(loot_table):
@@ -230,7 +238,7 @@ func check_matching(loot_table):
 	##if ankhs were picked (you can do booleans like this lol)
 	var has_ankh : bool = how_many_match["Ankh"] > 0
 	##how much each symbol is multiplied by (you can do ints like this lol)
-	var ankh_multiplier : int = 2 * how_many_match["Ankh"] if has_ankh else 1
+	var ankh_multiplier : int = 2 if has_ankh else 1
 	##for each reward type (key in dict)
 	for type in how_many_match:
 		##increase the int
@@ -245,19 +253,33 @@ func check_matching(loot_table):
 				##gives points * multiplier
 				points += loot_table[which_reward][1] * how_many_match[type] * ankh_multiplier
 			#print("match of " + str(how_many_match[type]))
+	
 	##make the machine spinnable again
 	spinning = false
-	##give the earned money to the player
-	if Globals.aqua_regia_timer.time_left > 0:
-		points *= 2
-	if points > 0:
-		CoinEarned.moedas_01.play()
-	Globals.money_lost = (Globals.money + points) - play_price
-	Globals.money += points
-	if Globals.aqua_fortis_active == true:
-		play_price = 0
-		lever_pull()
-		Globals.aqua_fortis_active = false
+	
+	if last_to_play:
+		if last_to_play.name == "Player":
+			if Globals.aqua_regia_timer.time_left > 0:
+				points *= 2
+			if points > 0:
+				CoinEarned.moedas_01.play()
+			Globals.money_lost = (Globals.money + points) - play_price
+			Globals.money += points
+			if Globals.aqua_fortis_active == true:
+				play_price = 0
+				lever_pull()
+				Globals.aqua_fortis_active = false
+			else:
+				last_to_play = null
+		else:
+			if points > 0 and points <= gold_in_depot:
+				gold_in_depot -= points
+				last_to_play.money += points
+				last_to_play = null
+			else:
+				gold_in_depot = 0
+				last_to_play.money += points
+				last_to_play = null
 
 func cassino_opened_tutorial():
 	await get_tree().create_timer(16).timeout
@@ -283,6 +305,11 @@ func spell_cast(spell : String):
 func input_disappear():
 	Globals.fortuna_target = null
 	input_prompt.visible = false
+
+func claim_depot():
+	if gold_in_depot > 0:
+		Globals.money += gold_in_depot
+		gold_in_depot = 0
 
 func _on_input_area_body_entered(body: Node3D) -> void:
 	if Globals.check_spell_available("Wheel of Fortune") and body.name == "Player":

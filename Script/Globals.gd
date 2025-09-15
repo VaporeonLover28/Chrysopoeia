@@ -50,6 +50,8 @@ var ring_unlock: bool = false
 
 var fortuna_target : Node3D
 
+var selected_build_spot : Marker3D
+
 func _ready() -> void:
 	var aqua_vitae_timer_inst = Timer.new()
 	aqua_vitae_timer_inst.one_shot = true
@@ -80,7 +82,7 @@ func check_spell_available(spell_name : String):
 					spell_found = true
 					if spell.usable:
 						spell_not_cd = true
-						print("spell available")
+						#print("spell available")
 					else:
 						print("spell in inv, on cooldown")
 				else:

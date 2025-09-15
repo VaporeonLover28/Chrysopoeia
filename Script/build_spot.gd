@@ -4,6 +4,7 @@ extends Marker3D
 @onready var world = get_tree().root.get_node("World")
 @onready var area: Area3D = $"Area build spot"
 @onready var mesh: MeshInstance3D = $"Build Mesh"
+@onready var selection_mesh: MeshInstance3D = $"Selec Mesh"
 
 @onready var taken := false
 
@@ -32,4 +33,12 @@ func update_mesh():
 	else:
 		mesh.visible = false
 		on_or_off = false
-		
+
+func selec_mesh():
+	if !selection_mesh.visible:
+		selection_mesh.visible = true
+
+func deselec_mesh():
+	if selection_mesh.visible:
+		selection_mesh.visible = false
+		Globals.selected_build_spot = null

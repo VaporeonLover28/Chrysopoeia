@@ -6,7 +6,11 @@ extends CanvasLayer
 @onready var spells: MarginContainer = $spells
 @onready var slot_1: TextureRect = $spells/magic_box/slot_1
 @onready var slot_2: TextureRect = $spells/magic_box/slot_2
-@onready var item: RichTextLabel = $item
+@onready var item: RichTextLabel = $crosshair_item/VBoxContainer/name
+@onready var crosshair_desc: VBoxContainer = $crosshair_item/VBoxContainer
+
+var prompt = preload("res://Scenes/item_input.tscn")
+var all_prompts_shown : bool = false
 
 func _ready() -> void:
 	slot_1.visible = false
@@ -34,3 +38,17 @@ func update_spell_slots():
 			slot_2.modulate = Color(0.553, 0.553, 0.553)
 		else:
 			slot_2.modulate = Color(1, 1, 1)
+
+func add_crosshair_input_prompt(text : String, sprite : Texture):
+	var new_prompt = prompt.instantiate()
+	new_prompt.text = text
+	new_prompt.icon = sprite
+	new_prompt.scale = Vector2(0.6, 0.6)
+	crosshair_desc.add_child(new_prompt)
+
+func clear_desc():
+	if crosshair_desc.get_child_count() > 1:
+		for child in crosshair_desc.get_children():
+			if child is not RichTextLabel:
+				child.queue_free()
+	all_prompts_shown = false

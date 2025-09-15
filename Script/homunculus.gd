@@ -239,11 +239,11 @@ func random_atk_cd(baseatkcd):
 
 func mars():
 	Globals.mars_sounds()
-	print("mars")
+	#print("mars")
 	damage * 1.25
 
 func failed_mars():
-	print("failed mars")
+	#print("failed mars")
 	health += 20
 	damage /= 2
 	

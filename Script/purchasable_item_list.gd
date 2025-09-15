@@ -67,7 +67,7 @@ func update_item_list():
 			_filter_to_add(decoration_list, [load("res://Resources-shop/trono.tres")])
 			_filter_to_add(spell_list, [load("res://Resources-shop/spell_mars.tres")])
 			shop_level = 4
-	print(shop_level)
+	#print(shop_level)
 		
 	if get_parent().get_node_or_null("World") != null:
 		$"../World/Shop Menu/Shop".update_shop_contents.emit(_sort_by_type(added_itens), _sort_by_type(removed_itens))
@@ -87,7 +87,7 @@ func _filter_to_remove(type_of_list: Array , objects_to_be_removed: Array):
 			removed_itens.push_back(item)
 			
 	for item in array_objects_removing:
-		print(item)
+		#print(item)
 		type_of_list.erase(item)
 	
 

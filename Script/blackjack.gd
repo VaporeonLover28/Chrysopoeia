@@ -16,6 +16,7 @@ extends Node3D
 @onready var end_ui: CanvasLayer = $blackjack_end_ui
 @onready var hand_markers: Node3D = $hand_markers
 @onready var spell_menu: CanvasLayer = $Spell_menu
+@onready var turn_arrow: Sprite3D = $turn_arrow
 
 var tween : Tween
 
@@ -77,6 +78,9 @@ func _ready():
 	MusicPlayer.blackjacktheme.play()
 	MusicPlayer.emptytavern.stop()
 
+func _process(delta: float) -> void:
+	turn_arrow.rotation_degrees.y += deg_to_rad(150)
+
 ##putting the cards in the screen
 func instantiate_cards():
 	for instance in 52:
@@ -128,7 +132,7 @@ func call_player():
 			if table[chairs][1] == 0 and !new_npc.assigned_chair:
 				##call the funcion on the npc script to come to the chair
 				new_npc.go_to_table(table[chairs][0])
-				print(table[chairs][0])
+				#print(table[chairs][0])
 				##occupy the chair
 				table[chairs][1] = 1
 				new_npc.assigned_chair = true
@@ -136,7 +140,7 @@ func call_player():
 				new_npc.hand_marker = hand_marker_array[chairs]
 				##add the npc to the npc array
 				playing_npcs.append(new_npc)
-				print(new_npc)
+				#print(new_npc)
 
 func spawn_player(pers, money):
 	var new_npc = npc.instantiate()
@@ -157,7 +161,7 @@ func spawn_player(pers, money):
 			new_npc.hand_marker = hand_marker_array[chairs]
 			##add the npc to the npc array
 			playing_npcs.append(new_npc)
-			print(new_npc)
+			#print(new_npc)
 
 ##setting a table order (left to right) for the rounds playing
 func set_round_order():
@@ -268,6 +272,7 @@ func card_to_npc(card : Node3D, who : CharacterBody3D, rot : Vector3):
 	who.update_state_label()
 
 func pass_turn():
+	arrow_go_to(round_order_npcs[whose_turn].hand_marker.global_position, "start")
 	turn_timer.start()
 	round += 1
 
@@ -320,12 +325,12 @@ func dealer_stand():
 	end_game()
 
 func dealer_bust():
-	print("Dealer busted")
+	#print("Dealer busted")
 	dealer_busted = true
 	end_game()
 
 func dealer_blackjack():
-	print("Dealer blackjack")
+	#print("Dealer blackjack")
 	dealer_blackjacked = true
 
 func end_game():
@@ -340,70 +345,70 @@ func end_game():
 			flip_sfx()
 	dealer_can_stand = false
 	dealer_can_hit = false
-	print("Game ended")
+	#print("Game ended")
 	if dealer_busted:
 		for npcs in round_order_npcs:
 			match npcs.state:
 				"Standed":
-					print(npcs.name + " has won!")
+					#print(npcs.name + " has won!")
 					end_ui.result_texts([npcs.name, "Win", npcs.bet, "+" + str(npcs.bet)])
 					##return money bet + how much was bet (2x bet)
 				"Busted":
-					print(npcs. name + " had busted and lost!")
+					#print(npcs. name + " had busted and lost!")
 					end_ui.result_texts([npcs.name, "Loss", npcs.bet, "-" + str(npcs.bet)])
 					##lose the money bet
 				"Doubled":
-					print(npcs.name + " has won with a double down!")
+				#	print(npcs.name + " has won with a double down!")
 					end_ui.result_texts([npcs.name, "Double Win", npcs.bet, "+" + str(npcs.bet * 2)])
 					##return doubled bet + how much the bet valued in total (4x bet)
 				"Blackjack":
-					print(npcs.name + " has a blackjack and won!")
+				#	print(npcs.name + " has a blackjack and won!")
 					end_ui.result_texts([npcs.name, "Blackjack", npcs.bet, "+" + str(int(npcs.bet * 2.5))])
 					##return bet + bet + half bet (2.5x bet)
 	elif dealer_blackjacked:
-		print("The dealer has a blackjack!")
+		#print("The dealer has a blackjack!")
 		for npcs in round_order_npcs:
 			if npcs.state == "Blackjack":
-				print(npcs.name + " also has a blackjack and gets a push back.")
+				#print(npcs.name + " also has a blackjack and gets a push back.")
 				end_ui.result_texts([npcs.name, "Tie", npcs.bet, 0])
 			else:
-				print(npcs.name + " either bust or didn't have a blackjack. Either way they lost.")
+				#print(npcs.name + " either bust or didn't have a blackjack. Either way they lost.")
 				end_ui.result_texts([npcs.name, "Loss", npcs.bet, "-" + str(npcs.bet)])
 	else:
 		for npcs in round_order_npcs:
 			match npcs.state:
 						"Standed":
 							if npcs.hand_value > player.dealer_hand_value:
-								print(npcs.name + " standed and won!")
+								#print(npcs.name + " standed and won!")
 								end_ui.result_texts([npcs.name, "Win", npcs.bet, "+" + str(npcs.bet)])
 								##return money bet + how much was bet (2x bet)
 							elif npcs.hand_value == player.dealer_hand_value:
-								print(npcs.name + " tied the dealer and gets a push back.")
+								#print(npcs.name + " tied the dealer and gets a push back.")
 								end_ui.result_texts([npcs.name, "Tie", npcs.bet, 0])
 								##return money bet
 							else:
-								print(npcs.name + " standed and lost!")
+								#print(npcs.name + " standed and lost!")
 								end_ui.result_texts([npcs.name, "Loss", npcs.bet, "-" + str(npcs.bet)])
 								##lose the money bet
 						"Busted":
-							print(npcs. name + " had busted and lost!")
+							#print(npcs. name + " had busted and lost!")
 							end_ui.result_texts([npcs.name, "Loss", npcs.bet, "-" + str(npcs.bet)])
 							##lose the money bet
 						"Doubled":
 							if npcs.hand_value > player.dealer_hand_value:
-								print(npcs.name + " has won with a double down!")
+								#print(npcs.name + " has won with a double down!")
 								end_ui.result_texts([npcs.name, "Double Win", npcs.bet, "+" + str(npcs.bet * 2)])
 								##return doubled bet + how much the bet valued in total (4x bet)
 							elif npcs.hand_value == player.dealer_hand_value:
-								print(npcs.name + " tied the dealer and gets a push back.")
+								#print(npcs.name + " tied the dealer and gets a push back.")
 								end_ui.result_texts([npcs.name, "Tie", npcs.bet, 0])
 								##return money bet
 							else:
-								print(npcs.name + " doubled down and lost!")
+								#print(npcs.name + " doubled down and lost!")
 								end_ui.result_texts([npcs.name, "Double Loss", npcs.bet, "-" + str(npcs.bet * 2)])
 								##lose the money bet
 						"Blackjack":
-							print(npcs.name + " has a blackjack and won!")
+							#print(npcs.name + " has a blackjack and won!")
 							end_ui.result_texts([npcs.name, "Blackjack", npcs.bet, "+" + str(int(npcs.bet * 2.5))])
 							##return bet + bet + half bet (2.5x bet)
 	end_anim()
@@ -418,7 +423,7 @@ func end_anim():
 	end_ui.match_end_anim()
 
 func spell_cast(spell : String):
-	print(spell)
+	#print(spell)
 	if Globals.check_spell_available(spell):
 		SpellSounds.feitiço_sfx.play()
 		Globals.cooldown_spell(spell)
@@ -541,12 +546,27 @@ func _on_turn_timer_timeout() -> void:
 			whose_turn = 0
 		else:
 			whose_turn += 1
+		#print("next player to play has hand " + hand_markers.get_children()[whose_turn].name)
 		turn_timer.start()
 		round += 1
+		await get_tree().create_timer(0.25).timeout
+		arrow_go_to(round_order_npcs[whose_turn].hand_marker.global_position, "middle")
 	else:
 		turn_timer.stop()
 		whose_turn = -1
 		dealer_turn()
+		await get_tree().create_timer(0.25).timeout
+		arrow_go_to(turn_arrow.global_position + Vector3(0, 3, 0), "end")
+
+func arrow_go_to(pos : Vector3, vis : String):
+	tween = create_tween()
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_trans(Tween.TRANS_QUART)
+	if vis == "start":
+		tween.tween_callback(func(): turn_arrow.visible = true)
+	tween.tween_property(turn_arrow, "global_position", pos + Vector3(0, 0.25, 0), 0.5)
+	if vis == "end":
+		tween.tween_callback(func(): turn_arrow.visible = false)
 
 func card_sfx():
 	var which = randi_range(1, 4)

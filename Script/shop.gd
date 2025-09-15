@@ -92,7 +92,7 @@ func _buy_item(object_being_purchased: Control):
 				bar.bought_bar.emit()
 				
 			else:
-				world_scene.get_node("Player")._start_bulding_phase(object_being_purchased.item_resource.item_scene)
+				world_scene.get_node("Player").start_bulding_phase(object_being_purchased.item_resource.item_scene)
 		else:
 			if Globals.spell_inventory_list.size() < 2:
 				#Globals.money -= object_being_purchased.item_resource.price
@@ -111,7 +111,7 @@ func _buy_item(object_being_purchased: Control):
 		Globals.money -= object_being_purchased.item_resource.price
 		CoinEarned.moedas_03.play()
 		Globals.save_money += object_being_purchased.item_resource.price
-	hide_shop_menu()
+		hide_shop_menu()
 
 func _choose_spell_to_change(spell_choosen: PurchasableItemResource):
 	var spell_to_remove = Globals.spell_inventory_list.find(spell_choosen)

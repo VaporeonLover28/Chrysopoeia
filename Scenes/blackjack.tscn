@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bm0dwcec16xlf"]
+[gd_scene load_steps=20 format=3 uid="uid://bm0dwcec16xlf"]
 
 [ext_resource type="Script" uid="uid://brf7xhqpnw2iv" path="res://Script/blackjack.gd" id="1_ghed7"]
 [ext_resource type="Texture2D" uid="uid://bkoihmjcjf8pi" path="res://Assets/Originals/praredelend_madeiira.jpg" id="2_tild6"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dgs6yskiuhuvj" path="res://Assets/Originals/Mesa_blackjack.glb" id="3_wt0yi"]
 [ext_resource type="FontFile" uid="uid://4y6u2ai8c7lq" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-Bold.ttf" id="4_2qcqo"]
 [ext_resource type="PackedScene" uid="uid://cjrb25thpiawq" path="res://Assets/Originals/mago_beta.glb" id="4_wt0yi"]
+[ext_resource type="Texture2D" uid="uid://cfaq6cu7q3e3b" path="res://Assets/Exports/pngimg.com - red_arrow_PNG1.png" id="5_kl8m7"]
 [ext_resource type="Script" uid="uid://j5nv645ekjhk" path="res://Script/mago_beta.gd" id="5_tild6"]
 [ext_resource type="Script" uid="uid://b6lxgr0emidg7" path="res://Script/blackjack_player.gd" id="5_wkmli"]
 [ext_resource type="PackedScene" uid="uid://blky3rg2wfs5q" path="res://Scenes/blackjack_ui_test.tscn" id="6_2qcqo"]
@@ -145,6 +146,11 @@ outline_modulate = Color(0.788235, 0.321569, 0, 0)
 font = ExtResource("4_2qcqo")
 uppercase = true
 
+[node name="turn_arrow" type="Sprite3D" parent="."]
+transform = Transform3D(-1.31134e-10, 0.003, 0, -0.003, -1.31134e-10, 0, 0, 0, 0.003, 0, 2.22322, -0.349)
+visible = false
+texture = ExtResource("5_kl8m7")
+
 [node name="deck" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18919, 0.887299, 0.157821)
 
@@ -159,8 +165,8 @@ script = ExtResource("5_tild6")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Blackjack_UI_test" parent="CanvasLayer" instance=ExtResource("6_2qcqo")]
-offset_top = 650.0
-offset_bottom = 82.0
+offset_top = 553.0
+offset_bottom = -15.0
 metadata/_edit_use_anchors_ = true
 
 [node name="gamecontrol" type="Panel" parent="CanvasLayer"]

@@ -46,9 +46,9 @@ func result_texts(player_results : Array):
 
 func match_end_anim():
 	if Globals.aqua_regia_timer.time_left > 0 and Globals.is_betting == true:
-		print(house_net)
+		#print(house_net)
 		house_net *= 2
-		print(house_net)
+		#print(house_net)
 	get_parent().player.allowed_to_move = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	bg.play("open")

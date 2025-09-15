@@ -87,7 +87,7 @@ func _physics_process(delta: float) -> void:
 	
 	#headbob
 	t_bob += delta * velocity.length() * float(is_on_floor())
-	camera.transform.origin = _headbob(t_bob) + Vector3(0, 0.5, 0)
+	camera.transform.origin = headbob(t_bob) + Vector3(0, 0.5, 0)
 	
 	if is_on_floor() and velocity.length() > 0.2:
 		if sin(t_bob * bob_freq) < -0.95:  
@@ -102,15 +102,7 @@ func _physics_process(delta: float) -> void:
 	else: 
 		ray_builder = ray_builder_1
 	
-	if ray_builder.get_collider() != null and\
-	ray_builder.get_collider().has_overlapping_bodies():
-		for body in ray_builder.get_collider().get_overlapping_bodies():
-			if body.get_parent() is InteractableObject:
-				crosshair_object = body.get_parent()
-				ui.item.text = "[wave amp=50.0 freq=5.0 connected=1]" + crosshair_object.name + "[/wave]"
-	else:
-		crosshair_object = null
-		ui.item.text = ""
+	identify_crosshair_object()
 	
 	if !is_on_building_mode:
 		if Input.is_action_just_pressed("e") and Globals.player_interacting == false:
@@ -143,11 +135,11 @@ func _physics_process(delta: float) -> void:
 				Globals.save_player_pos = global_position
 				loading_screen("fight_ring")
 			elif ray_interection.get_collider() != null:
-				_interact_object()
+				interact_object()
 		
 		elif Input.is_action_just_pressed("c") and \
 		object_sitting != null:
-			_call_npc_to_game()
+			call_npc_to_game()
 			
 		if Input.is_action_just_pressed("b") and TutorialManager.tutorials["movement"]:
 			world_scene.get_node("Shop Menu").get_child(0)._show_shop_menu()
@@ -161,45 +153,72 @@ func _physics_process(delta: float) -> void:
 			Globals.fortuna_target.input_disappear()
 			
 		if Input.is_action_just_pressed("h") and ray_interection.get_collider() != null:
-			_sell()
+			sell()
 	else:
 			
 		if Input.is_action_just_pressed("rightclick") and is_on_building_mode:
-			_build()
+			build()
 			
 		if Input.is_action_just_pressed("h"):
-			_cancel_build()
+			cancel_build()
 			
 		if Input.is_action_pressed("q"):
-			_rotate_bulding_object(-1)
+			rotate_bulding_object(-1)
 			
 		if Input.is_action_pressed("e"):
-			_rotate_bulding_object(1)
+			rotate_bulding_object(1)
 		
 		if is_on_building_mode == true:
 			lock_model_into_build_spot()
 	
 	move_and_slide()
 
-func _headbob(time) -> Vector3:
+func headbob(time) -> Vector3:
 	var pos = Vector3.ZERO
 	pos.y = sin(time * bob_freq) * bob_amp
 	pos.x = cos(time * bob_freq / 2) * bob_amp
 	return pos
 
-func _interact_object():
+func identify_crosshair_object():
+	if ray_builder.get_collider() != null and\
+	ray_builder.get_collider().has_overlapping_bodies():
+		for body in ray_builder.get_collider().get_overlapping_bodies():
+			if body.get_parent() is InteractableObject:
+				Globals.selected_build_spot = ray_builder.get_collider().get_parent()
+				Globals.selected_build_spot.selec_mesh()
+				crosshair_object = body.get_parent()
+				ui.item.text = "[wave amp=50.0 freq=5.0 connected=1]" + crosshair_object.object_name + "[/wave]"
+				crosshair_prompts()
+	else:
+		if Globals.selected_build_spot != null:
+			Globals.selected_build_spot.deselec_mesh()
+		crosshair_object = null
+		ui.item.text = ""
+		ui.clear_desc()
+
+func crosshair_prompts():
+	if !ui.all_prompts_shown:
+		match crosshair_object.object_name:
+			"Slot Machine":
+				ui.add_crosshair_input_prompt("Play (30 Gold)", load("res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_e.png"))
+			"Blackjack Table":
+				ui.add_crosshair_input_prompt("Play (Results)", load("res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_e.png"))
+		ui.add_crosshair_input_prompt("Sell", load("res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_h.png"))
+		ui.all_prompts_shown = true
+	
+func interact_object():
 	var object_inst = ray_interection.get_collider()
 	if object_inst != null and object_inst.get_parent() is InteractableObject and Globals.game_paused == false:
 		object_inst.get_parent()._interact([self])
 
-func _cancel_interaction():
+func cancel_interaction():
 	Globals.player_interacting = false
 	
-func _call_npc_to_game():
+func call_npc_to_game():
 	if world_scene.get_node("Walking_NPCs").get_child_count() > 0 and Globals.game_paused == false:
 		call_npc_area.get_child(0).disabled = false
 		await get_tree().create_timer(0.1).timeout
-		var bodies_on_area = call_npc_area.get_overlapping_bodies().filter(_filter_NPC_in_area)
+		var bodies_on_area = call_npc_area.get_overlapping_bodies().filter(filter_NPC_in_area)
 		if bodies_on_area.is_empty() == false:
 			var choosen_NPC = bodies_on_area.pick_random()
 			if object_sitting is InteractableObject\
@@ -207,7 +226,7 @@ func _call_npc_to_game():
 				choosen_NPC._get_called_to_play_game(object_sitting)
 		call_npc_area.get_child(0).disabled = true
 		
-func _filter_NPC_in_area(bodies):
+func filter_NPC_in_area(bodies):
 	return bodies is NPC
 
 func loading_screen(game):
@@ -243,7 +262,7 @@ func loading_screen(game):
 	await get_tree().create_timer(4.5).timeout
 	get_tree().change_scene_to_file("res://Scenes/" + game + ".tscn")
 
-func _start_bulding_phase(object_to_be_purchase: PackedScene):
+func start_bulding_phase(object_to_be_purchase: PackedScene):
 	world_scene.update_all_mesh.emit()
 	if !TutorialManager.tutorials["build"]:
 		build_tutorial.emit()
@@ -272,24 +291,24 @@ func _start_bulding_phase(object_to_be_purchase: PackedScene):
 			new_area3d.add_child(instantiate_colission)
 	current_object_being_purchased_instantiate.add_child(new_area3d)
 	for item in current_object_being_purchased_instantiate.get_children():
-		print(item)
+		#print(item)
 		if item.get_script() != null and item.get_script().resource_path == "res://Script/build_spot.gd":
 			item.queue_free()
 	ray_builder_1.add_child(current_object_being_purchased_instantiate)
 	ray_builder_1.get_child(0).position = ray_builder_1.position + Vector3(0,0,-3)
 	is_on_building_mode = true
 	
-func _rotate_bulding_object(rotation_direction: int):
+func rotate_bulding_object(rotation_direction: int):
 	object_rotation += Vector3(0,deg_to_rad(8),0) * rotation_direction
 	
-func _cancel_build():
+func cancel_build():
 	world_scene.update_all_mesh.emit()
 	is_on_building_mode = false
 	current_object_being_purchased = null
 	Globals.money += Globals.save_money 
 	ray_builder_1.get_child(0).queue_free()
 	
-func _build():
+func build():
 	if can_build == true:
 		build_sfx()
 		if !TutorialManager.tutorials["slot_machine1"]:
@@ -328,7 +347,7 @@ func _build():
 		if save_ray_builder_2_monetoring != null:
 			save_ray_builder_2_monetoring.monitoring = true
 	
-func _sell():
+func sell():
 	CoinEarned.moedas_01.play()
 	var object_inst = ray_interection.get_collider()
 	if object_inst.get_parent() is InteractableObject:
