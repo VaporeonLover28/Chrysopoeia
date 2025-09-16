@@ -20,7 +20,7 @@ config/windows_native_icon="res://Assets/Originals/logo.ico"
 
 Globals="*res://Script/Globals.gd"
 SaveScript="*res://Script/save_script.gd"
-PurchasableItemList="*res://Script/purchasable_item_list.gd"
+PurchasableItemList="res://Script/purchasable_item_list.gd"
 MusicPlayer="*res://Scenes/music_player.tscn"
 CardsSfx="*res://Scenes/cards_sfx.tscn"
 HomunculosSfx="*res://Scenes/homunculos_sfx.tscn"

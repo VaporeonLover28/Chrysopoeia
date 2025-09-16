@@ -11,7 +11,6 @@ extends CharacterBody3D
 @onready var world_scene = $"../"
 @onready var loading_suit = preload("res://Scenes/loading_suit.tscn")
 @onready var ui = $"../HUD"
-@onready var money = $"../HUD/money_box/Gold"
 
 @onready var walk_1: AudioStreamPlayer3D = $Walk1
 @onready var walk_2: AudioStreamPlayer3D = $Walk2
@@ -62,7 +61,7 @@ func _unhandled_input(event): #event representa o evento do input
 				camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-70), deg_to_rad(70))
 
 func _physics_process(delta: float) -> void:
-	money.text = "Gold: " + str(Globals.money)
+	ui.update_hud()
 	# Add the gravity.
 	if not is_on_floor() and Globals.game_paused == false:
 		velocity += get_gravity() * delta
@@ -142,7 +141,9 @@ func _physics_process(delta: float) -> void:
 			call_npc_to_game()
 			
 		if Input.is_action_just_pressed("b") and TutorialManager.tutorials["movement"]:
-			world_scene.get_node("Shop Menu").get_child(0)._show_shop_menu()
+			#world_scene.get_node("Shop Menu").get_child(0)._show_shop_menu()
+			if ui.get_node("new_furn").visible:
+				ui.get_node("new_furn").visible = false
 		
 		if Input.is_action_just_pressed("f") and Globals.check_spell_available("Wheel of Fortune") and \
 		Globals.fortuna_target != null:

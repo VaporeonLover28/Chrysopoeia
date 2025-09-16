@@ -80,15 +80,15 @@ func _buy_item(object_being_purchased: Control):
 			if object_being_purchased.item_resource.name == "Chipped Key":
 				#Globals.money -= object_being_purchased.item_resource.price
 				Globals.ring_unlock = true
-				PurchasableItemList._filter_to_remove(PurchasableItemList.games_list, [load("res://Resources-shop/ring_key.tres")])
-				PurchasableItemList.added_itens = []
-				update_shop_contents.emit(PurchasableItemList._sort_by_type(PurchasableItemList.added_itens), PurchasableItemList._sort_by_type(PurchasableItemList.removed_itens))
+				#PurchasableItemList._filter_to_remove(PurchasableItemList.games_list, [load("res://Resources-shop/ring_key.tres")])
+				#PurchasableItemList.added_itens = []
+				#update_shop_contents.emit(PurchasableItemList._sort_by_type(PurchasableItemList.added_itens), PurchasableItemList._sort_by_type(PurchasableItemList.removed_itens))
 				ring_door.bought_ring_key.emit()
 			elif object_being_purchased.item_resource.name == "Bar":
 				Globals.bar_unlock = true
-				PurchasableItemList._filter_to_remove(PurchasableItemList.games_list, [load("res://Resources-shop/bar.tres")])
-				PurchasableItemList.added_itens = []
-				update_shop_contents.emit(PurchasableItemList._sort_by_type(PurchasableItemList.added_itens), PurchasableItemList._sort_by_type(PurchasableItemList.removed_itens))
+				#PurchasableItemList._filter_to_remove(PurchasableItemList.games_list, [load("res://Resources-shop/bar.tres")])
+				#PurchasableItemList.added_itens = []
+				#update_shop_contents.emit(PurchasableItemList._sort_by_type(PurchasableItemList.added_itens), PurchasableItemList._sort_by_type(PurchasableItemList.removed_itens))
 				bar.bought_bar.emit()
 				
 			else:
@@ -121,30 +121,30 @@ func _choose_spell_to_change(spell_choosen: PurchasableItemResource):
 func _on_quit_button_pressed() -> void:
 	hide_shop_menu()
 
-func _ready() -> void:
-	if PurchasableItemList.games_list.size() > 0:
-		for item in PurchasableItemList.games_list.size():
-			var instanciated_item = buyable_object.instantiate()
-			instanciated_item.item_resource = PurchasableItemList.games_list[item - 1]
-			instanciated_item.get_child(0).get_node("Button").connect("pressed", _buy_item.bind(instanciated_item))
-			instanciated_item.position.x = 245 + (item * 245)
-			games_h_box_container.add_child(instanciated_item)
-	
-	if PurchasableItemList.decoration_list.size() > 0:
-		for item in PurchasableItemList.decoration_list.size():
-			var instanciated_item = buyable_object.instantiate()
-			instanciated_item.item_resource = PurchasableItemList.decoration_list[item - 1]
-			instanciated_item.get_child(0).get_node("Button").connect("pressed", _buy_item.bind(instanciated_item))
-			instanciated_item.position.x += 245 + (item * 245)
-			decoration_h_box_container.add_child(instanciated_item)
-		
-	if PurchasableItemList.spell_list.size() > 0:
-		for item in PurchasableItemList.spell_list.size():
-			var instanciated_item = buyable_object.instantiate()
-			instanciated_item.item_resource = PurchasableItemList.spell_list[item - 1]
-			instanciated_item.get_child(0).get_node("Button").connect("pressed", _buy_item.bind(instanciated_item))
-			instanciated_item.position.x += 245 + (item * 245)
-			spell_h_box_container.add_child(instanciated_item)
+#func _ready() -> void:
+	#if PurchasableItemList.games_list.size() > 0:
+		#for item in PurchasableItemList.games_list.size():
+			#var instanciated_item = buyable_object.instantiate()
+			#instanciated_item.item_resource = PurchasableItemList.games_list[item - 1]
+			#instanciated_item.get_child(0).get_node("Button").connect("pressed", _buy_item.bind(instanciated_item))
+			#instanciated_item.position.x = 245 + (item * 245)
+			#games_h_box_container.add_child(instanciated_item)
+	#
+	#if PurchasableItemList.decoration_list.size() > 0:
+		#for item in PurchasableItemList.decoration_list.size():
+			#var instanciated_item = buyable_object.instantiate()
+			#instanciated_item.item_resource = PurchasableItemList.decoration_list[item - 1]
+			#instanciated_item.get_child(0).get_node("Button").connect("pressed", _buy_item.bind(instanciated_item))
+			#instanciated_item.position.x += 245 + (item * 245)
+			#decoration_h_box_container.add_child(instanciated_item)
+		#
+	#if PurchasableItemList.spell_list.size() > 0:
+		#for item in PurchasableItemList.spell_list.size():
+			#var instanciated_item = buyable_object.instantiate()
+			#instanciated_item.item_resource = PurchasableItemList.spell_list[item - 1]
+			#instanciated_item.get_child(0).get_node("Button").connect("pressed", _buy_item.bind(instanciated_item))
+			#instanciated_item.position.x += 245 + (item * 245)
+			#spell_h_box_container.add_child(instanciated_item)
 
 func _on_update_shop_contents(added_itens: Array[Array], removed_itens: Array[Array]) -> void:
 	if !added_itens[0].is_empty():

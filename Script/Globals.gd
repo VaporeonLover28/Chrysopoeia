@@ -26,10 +26,15 @@ var money: int = 200:
 
 var save_money: int = 0
 
-var satisfaction_level: int = 0:
+var satis_levels : Array = [0, 35, 120, 250]
+var max_satis : int = 35
+
+var satisfaction_level: int = 1:
 	set(new_value):
+		if get_parent().get_node_or_null("World") != null:
+			get_parent().get_node("World/HUD").satis_anim(max_satis, new_value)
 		satisfaction_level = new_value
-		get_parent().get_node("PurchasableItemList").update_item_list()
+		#get_parent().get_node("PurchasableItemList").update_item_list()
 
 var transiting_characters_to_gamble: Array[Array]  
 var save_npcs_pos: Array[Array]
@@ -51,6 +56,12 @@ var ring_unlock: bool = false
 var fortuna_target : Node3D
 
 var selected_build_spot : Marker3D
+
+func max_satis_update():
+	for number in satis_levels:
+		if satisfaction_level < number:
+			max_satis = number
+			return
 
 func _ready() -> void:
 	var aqua_vitae_timer_inst = Timer.new()

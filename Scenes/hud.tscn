@@ -1,12 +1,77 @@
-[gd_scene load_steps=9 format=3 uid="uid://cplllnfhtikkb"]
+[gd_scene load_steps=16 format=3 uid="uid://cplllnfhtikkb"]
 
 [ext_resource type="Script" uid="uid://cdp52ym80e577" path="res://Script/hud.gd" id="1_6fbih"]
 [ext_resource type="Texture2D" uid="uid://cy6533hoie6y4" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Double/keyboard_quote_outlin_02e.png" id="2_8jye8"]
+[ext_resource type="FontFile" uid="uid://bc4j7ku7lla8b" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-BoldOblique.ttf" id="3_4f5kr"]
 [ext_resource type="FontFile" uid="uid://4y6u2ai8c7lq" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-Bold.ttf" id="3_43w4t"]
 [ext_resource type="Texture2D" uid="uid://deqm62q0dnwk2" path="res://Assets/Originals/Xopi.png" id="3_t1xeu"]
+[ext_resource type="Texture2D" uid="uid://cewqv2dtqm7i4" path="res://Assets/Originals/under.png" id="4_5ep0j"]
 [ext_resource type="Texture2D" uid="uid://wetbh3qngmmh" path="res://Assets/Originals/spellot.png" id="4_t1xeu"]
+[ext_resource type="Texture2D" uid="uid://chwwwvxjs12q6" path="res://Assets/Originals/over.png" id="5_4f5kr"]
 [ext_resource type="Texture2D" uid="uid://dsf40o5k56jo4" path="res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_b_outline-et.png" id="5_7gr8i"]
 [ext_resource type="FontFile" uid="uid://paxjlxvek7jf" path="res://Assets/Fonts/ransite_medieval/RansiteMedieval_PERSONAL_USE_ONLY.otf" id="5_t1xeu"]
+[ext_resource type="Texture2D" uid="uid://b5idp6c3jujuh" path="res://Assets/Originals/progress.png" id="6_piegi"]
+
+[sub_resource type="Animation" id="Animation_4f5kr"]
+resource_name = "levelup"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("levelup:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.96667),
+"transitions": PackedFloat32Array(1, 10, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("levelup/current:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.96667),
+"transitions": PackedFloat32Array(1, 10, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_piegi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("levelup:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("levelup/current:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i2avg"]
+_data = {
+&"RESET": SubResource("Animation_piegi"),
+&"levelup": SubResource("Animation_4f5kr")
+}
 
 [sub_resource type="Theme" id="Theme_5ep0j"]
 default_font = ExtResource("3_43w4t")
@@ -15,10 +80,41 @@ Label/colors/font_outline_color = Color(1, 0.866667, 0, 1)
 Label/constants/outline_size = 10
 Label/font_sizes/font_size = 18
 Label/fonts/font = ExtResource("3_43w4t")
+RichTextLabel/colors/default_color = Color(0.796078, 0, 0, 1)
+RichTextLabel/colors/font_outline_color = Color(1, 0.866667, 0, 1)
+RichTextLabel/constants/outline_size = 8
 
 [node name="HUD" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_6fbih")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_i2avg")
+}
+
+[node name="levelup" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_top = 86.0
+offset_right = 1152.0
+offset_bottom = 166.0
+color = Color(1, 0.783333, 0, 1)
+
+[node name="current" type="Label" parent="levelup"]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+custom_minimum_size = Vector2(30, 0)
+offset_left = 463.0
+offset_top = 7.0
+offset_right = 689.0
+offset_bottom = 70.0
+theme = SubResource("Theme_5ep0j")
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("3_4f5kr")
+theme_override_font_sizes/font_size = 51
+text = "LEVEL UP"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="pause" type="TextureRect" parent="."]
 offset_right = 40.0
@@ -27,11 +123,61 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_8jye8")
 stretch_mode = 3
 
+[node name="satis_bar" type="HBoxContainer" parent="."]
+offset_left = 443.0
+offset_top = -71.0
+offset_right = 677.0
+offset_bottom = -30.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+
+[node name="current" type="Label" parent="satis_bar"]
+texture_filter = 1
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme = SubResource("Theme_5ep0j")
+theme_override_font_sizes/font_size = 16
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="satis_bar"]
+layout_mode = 2
+size_flags_vertical = 4
+texture_under = ExtResource("4_5ep0j")
+texture_over = ExtResource("5_4f5kr")
+texture_progress = ExtResource("6_piegi")
+
+[node name="next" type="Label" parent="satis_bar"]
+texture_filter = 1
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme = SubResource("Theme_5ep0j")
+theme_override_font_sizes/font_size = 16
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tavernsatis" type="RichTextLabel" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(30, 0)
+offset_left = 482.0
+offset_top = -39.0
+offset_right = 639.0
+offset_bottom = 2.0
+theme = SubResource("Theme_5ep0j")
+bbcode_enabled = true
+text = "[wave amp=50.0 freq=5.0 connected=1]Tavern Satisfaction[/wave]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="money_box" type="VBoxContainer" parent="."]
-offset_left = 1033.0
-offset_top = 42.0
-offset_right = 1161.0
-offset_bottom = 197.0
+offset_left = 1029.0
+offset_top = 36.0
+offset_right = 1199.0
+offset_bottom = 179.0
 
 [node name="Gold" type="Label" parent="money_box"]
 layout_mode = 2
@@ -53,6 +199,18 @@ offset_right = 79.0
 offset_bottom = 122.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_7gr8i")
+
+[node name="new_furn" type="Label" parent="."]
+visible = false
+offset_left = 1013.0
+offset_top = 75.0
+offset_right = 1082.0
+offset_bottom = 114.0
+theme = SubResource("Theme_5ep0j")
+theme_override_font_sizes/font_size = 14
+text = "New items
+available!"
+horizontal_alignment = 1
 
 [node name="spells" type="MarginContainer" parent="."]
 offset_top = 492.0
@@ -144,7 +302,7 @@ layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("5_t1xeu")
 theme_override_font_sizes/normal_font_size = 35
 bbcode_enabled = true
-text = "[wave amp=50.0 freq=5.0 connected=1]Blackjack Table[/wave]"
+text = "[wave amp=50.0 freq=5.0 connected=1][/wave]"
 fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false

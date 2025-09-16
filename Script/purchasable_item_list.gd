@@ -1,6 +1,5 @@
 extends Node
 
-
 @onready var all_games_list : Array[PurchasableItemResource] = [load("res://Resources-shop/slot_mac.tres"),
 load("res://Resources-shop/black_jack.tres"),
 load("res://Resources-shop/bar.tres"),
