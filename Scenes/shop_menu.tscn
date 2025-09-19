@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://ltp3jvrek5bh"]
+[gd_scene load_steps=45 format=3 uid="uid://ltp3jvrek5bh"]
 
 [ext_resource type="Script" uid="uid://mh8h7xo4eso6" path="res://Script/shop.gd" id="1_xysl7"]
 [ext_resource type="Texture2D" uid="uid://bhm7iuxwwodlc" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024333.png" id="2_e6gci"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://4y6u2ai8c7lq" path="res://Assets/Fonts/medieval_sharp/MedievalSharp-Bold.ttf" id="3_g4n61"]
 [ext_resource type="Texture2D" uid="uid://i2akf0ju8xn3" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024402.png" id="3_lkph0"]
 [ext_resource type="Texture2D" uid="uid://pov62jfwgcqy" path="res://icon.svg" id="3_lvwfa"]
+[ext_resource type="PackedScene" uid="uid://dxeqkff8vqgci" path="res://Scenes/shop_item.tscn" id="3_w4pn8"]
 [ext_resource type="Texture2D" uid="uid://egyaahdv6jpg" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024437.png" id="4_g4n61"]
 [ext_resource type="Texture2D" uid="uid://dtxfnhnc06qg3" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024511.png" id="5_w4pn8"]
 [ext_resource type="Texture2D" uid="uid://bdcqrh2xht7u" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024538.png" id="6_ewq8f"]
@@ -225,6 +226,9 @@ vertical_scroll_mode = 0
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+
+[node name="Item" parent="Shop/Margin/Top_Bar/Shop_Tabs/Games/ScrollContainer/HBoxContainer" instance=ExtResource("3_w4pn8")]
+layout_mode = 2
 
 [node name="Decoration" type="TabBar" parent="Shop/Margin/Top_Bar/Shop_Tabs"]
 visible = false

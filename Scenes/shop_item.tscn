@@ -1,0 +1,112 @@
+[gd_scene load_steps=9 format=3 uid="uid://dxeqkff8vqgci"]
+
+[ext_resource type="Theme" uid="uid://dtnkyvcoybi" path="res://Themes/shop_menu.tres" id="1_b8rhe"]
+[ext_resource type="Script" uid="uid://ch1ockmtt6sy2" path="res://Script/item.gd" id="2_ewy27"]
+[ext_resource type="Texture2D" uid="uid://bbtb2l43wx0m2" path="res://Assets/Originals/fabbri1.png" id="3_ewy27"]
+[ext_resource type="Resource" uid="uid://co6pc4wkxyh10" path="res://Resources-shop/slot_mac.tres" id="3_tga60"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ewy27"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lqxd8"]
+
+[sub_resource type="Sky" id="Sky_nv7ox"]
+sky_material = SubResource("ProceduralSkyMaterial_lqxd8")
+
+[sub_resource type="Environment" id="Environment_lqxd8"]
+background_mode = 2
+sky = SubResource("Sky_nv7ox")
+tonemap_mode = 2
+
+[node name="Item" type="Control"]
+custom_minimum_size = Vector2(250, 400)
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_b8rhe")
+script = ExtResource("2_ewy27")
+item = ExtResource("3_tga60")
+unlocked = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(250, 400)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Slot Machine"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="textures" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="SubviewportRect" type="TextureRect" parent="MarginContainer/VBoxContainer/textures"]
+texture_filter = 1
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture = SubResource("ViewportTexture_ewy27")
+
+[node name="SpriteRect" type="TextureRect" parent="MarginContainer/VBoxContainer/textures"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Desc" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+text = "Reality is but what you are told. Lets you see the next card in the deck."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Buy" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "50 Gold"
+
+[node name="dim" type="ColorRect" parent="."]
+visible = false
+layout_mode = 2
+offset_right = 250.0
+offset_bottom = 400.0
+color = Color(0.20871, 0.20871, 0.20871, 0.47451)
+
+[node name="chain" type="TextureRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(250, 400)
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 400.0
+texture = ExtResource("3_ewy27")
+expand_mode = 4
+flip_v = true
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(200, 200)
+
+[node name="Node3D" type="Node3D" parent="SubViewport"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport/Node3D"]
+environment = SubResource("Environment_lqxd8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport/Node3D"]
+transform = Transform3D(0.981531, -0.165673, 0.0956506, 0.145721, 0.971441, 0.187264, -0.123943, -0.169867, 0.977642, 0, 0, 0)
+shadow_enabled = true
+sky_mode = 2
+
+[node name="Node3D" type="Node3D" parent="SubViewport/Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport/Node3D/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.913112, 0.40771, 0, -0.40771, 0.913112, 0, 1.98197, 2.17094)

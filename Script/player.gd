@@ -141,6 +141,7 @@ func _physics_process(delta: float) -> void:
 			call_npc_to_game()
 			
 		if Input.is_action_just_pressed("b") and TutorialManager.tutorials["movement"]:
+			Globals.satisfaction_level += 25
 			#world_scene.get_node("Shop Menu").get_child(0)._show_shop_menu()
 			if ui.get_node("new_furn").visible:
 				ui.get_node("new_furn").visible = false

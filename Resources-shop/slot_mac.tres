@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=3 format=3 uid="uid://co6pc4wkxyh10"]
+[gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=4 format=3 uid="uid://co6pc4wkxyh10"]
 
 [ext_resource type="PackedScene" uid="uid://blm2ybcpo2i7k" path="res://Scenes/slot_machine.tscn" id="1_627h5"]
+[ext_resource type="PackedScene" uid="uid://ce71rky8otvb3" path="res://Scenes/shop_subviewports/slot_machine.tscn" id="2_lg8y0"]
 [ext_resource type="Script" uid="uid://dtrrlkl8w8gkb" path="res://Script/purchasable_itens_resource.gd" id="2_tocq8"]
 
 [resource]
@@ -10,6 +11,7 @@ name = "Slot Machine"
 price = 90
 description = "Good ol' time classic. Pull the lever!"
 item_scene = ExtResource("1_627h5")
+model = ExtResource("2_lg8y0")
 usable = true
 keybind = ""
 metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"

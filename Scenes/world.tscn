@@ -3268,6 +3268,10 @@ maximum_time_for_spawn_npc = 180.0
 
 [node name="current" parent="HUD/levelup" index="0"]
 layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 226.0
+offset_bottom = 63.0
 
 [node name="money_box" parent="HUD" index="5"]
 visible = false
