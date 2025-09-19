@@ -28,7 +28,7 @@ func _ready() -> void:
 func update():
 	name_label.text = item.name
 	desc.text = item.description
-	buy.text = str(item.price) + " Gold"
+	buy.text = "Buy for " + str(item.price) + " Gold"
 	
 	match item.item_type:
 		"Objects":
@@ -46,6 +46,6 @@ func update():
 	if unlocked:
 		dim.visible = false
 		chain.visible = false
-	else:
-		dim.visible = true
-		chain.visible = true
+	#else:
+		#dim.visible = true
+		#chain.visible = true

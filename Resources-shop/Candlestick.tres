@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=3 format=3 uid="uid://7xjll1nej5ux"]
+[gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=4 format=3 uid="uid://7xjll1nej5ux"]
 
 [ext_resource type="PackedScene" uid="uid://bal2sa3ylkh84" path="res://Scenes/candlestick.tscn" id="1_yd803"]
 [ext_resource type="Script" uid="uid://dtrrlkl8w8gkb" path="res://Script/purchasable_itens_resource.gd" id="2_jxxxt"]
+[ext_resource type="PackedScene" uid="uid://1ncy37tk883g" path="res://Scenes/shop_subviewports/candle_stick_triple_2.tscn" id="2_q2go0"]
 
 [resource]
 script = ExtResource("2_jxxxt")
@@ -10,5 +11,7 @@ name = "Candlestick"
 price = 50
 description = "A common light source for fancy tables."
 item_scene = ExtResource("1_yd803")
+model = ExtResource("2_q2go0")
 usable = true
+keybind = ""
 metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"

@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=4 uid="uid://ce71rky8otvb3"]
+[gd_scene load_steps=7 format=4 uid="uid://ce71rky8otvb3"]
 
 [ext_resource type="PackedScene" uid="uid://cxvcxyaq27jof" path="res://Assets/Originals/Slot_Machice/Rodacerta.glb" id="2_3dals"]
+[ext_resource type="PackedScene" uid="uid://ddxc2ltff5yec" path="res://Assets/Originals/Slot_Machice/alavanca.glb" id="2_lqxd8"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_33385"]
 load_path = "res://.godot/imported/Caçanique_RECKRECKRESERVA.png-b30410b43749643c8a27bd887e578734.s3tc.ctex"
@@ -68,3 +69,9 @@ transform = Transform3D(-3.27835e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, -3.27835e-0
 
 [node name="wheel4" parent="wheels2" instance=ExtResource("2_3dals")]
 transform = Transform3D(-3.27835e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, -3.27835e-08, 0.253393, 1.468, 0.4)
+
+[node name="lever" type="Node3D" parent="."]
+transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 0.599144, 5.07636, -2.94201)
+
+[node name="alavanca" parent="lever" instance=ExtResource("2_lqxd8")]
+transform = Transform3D(-6.77527e-09, 0, -0.155, 0, 0.155, 0, 0.155, 0, -6.77527e-09, -0.458246, -0.657829, 0.0540456)

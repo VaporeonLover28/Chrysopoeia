@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=3 format=3 uid="uid://cav5dt5t5pjdm"]
+[gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=4 format=3 uid="uid://cav5dt5t5pjdm"]
 
 [ext_resource type="PackedScene" uid="uid://dp7rwp8yfewpg" path="res://Scenes/black_jack.tscn" id="1_qk04i"]
 [ext_resource type="Script" uid="uid://dtrrlkl8w8gkb" path="res://Script/purchasable_itens_resource.gd" id="1_xtfld"]
+[ext_resource type="PackedScene" uid="uid://c2d378gaf20uq" path="res://Scenes/shop_subviewports/mesa_blackjack.tscn" id="2_un1ew"]
 
 [resource]
 script = ExtResource("1_xtfld")
@@ -10,5 +11,7 @@ name = "Blackjack"
 price = 200
 description = "The kingdom's most famous card game"
 item_scene = ExtResource("1_qk04i")
+model = ExtResource("2_un1ew")
 usable = true
+keybind = ""
 metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"

@@ -3267,7 +3267,6 @@ maximum_time_for_spawn_npc = 180.0
 [node name="HUD" parent="." instance=ExtResource("2_pyn1s")]
 
 [node name="current" parent="HUD/levelup" index="0"]
-layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 226.0

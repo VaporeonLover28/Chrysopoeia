@@ -1,15 +1,17 @@
-[gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=3 format=3 uid="uid://dpmw1tqdgusgi"]
+[gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=4 format=3 uid="uid://dpmw1tqdgusgi"]
 
 [ext_resource type="Script" uid="uid://dtrrlkl8w8gkb" path="res://Script/purchasable_itens_resource.gd" id="1_2x08f"]
 [ext_resource type="PackedScene" uid="uid://v0sieb00f01a" path="res://Scenes/round_table.tscn" id="1_xq057"]
+[ext_resource type="PackedScene" uid="uid://yxxrajfnhxmr" path="res://Scenes/shop_subviewports/round_table.tscn" id="2_b01t0"]
 
 [resource]
 script = ExtResource("1_2x08f")
 item_type = "Objects"
 name = "Table"
 price = 100
-description = ""
+description = "Chairs and candlesticks can be attached."
 item_scene = ExtResource("1_xq057")
+model = ExtResource("2_b01t0")
 usable = true
 keybind = ""
 metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"

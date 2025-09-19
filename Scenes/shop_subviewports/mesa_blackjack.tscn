@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=4 uid="uid://dp7rwp8yfewpg"]
+[gd_scene load_steps=11 format=4 uid="uid://c2d378gaf20uq"]
 
-[ext_resource type="Script" uid="uid://d33jhadxc2lv5" path="res://Script/gamble_spot.gd" id="1_33dal"]
-[ext_resource type="PackedScene" uid="uid://j4nby41rkhr3" path="res://Scenes/sit_positions.tscn" id="3_nu2ws"]
-[ext_resource type="PackedScene" uid="uid://c6jqyf306la64" path="res://Scenes/sell_satisfation_value.tscn" id="3_or8fe"]
+[ext_resource type="PackedScene" uid="uid://bo6gr1h1ae700" path="res://Scenes/card.tscn" id="1_dnjgf"]
+[ext_resource type="PackedScene" uid="uid://bgq0u7ixd4j2s" path="res://Scenes/gold_nugget.tscn" id="2_4lpki"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_33dal"]
 load_path = "res://.godot/imported/Mesa_blackjack_RECKRECKRESERVA.png-a25a14910b2ffad23af7eb30af69c244.s3tc.ctex"
@@ -31,7 +30,7 @@ resource_name = "Material.002"
 cull_mode = 2
 albedo_texture = SubResource("CompressedTexture2D_hxsds")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_or8fe"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_c3mrl"]
 _surfaces = [{
 "aabb": AABB(-1, -1.16049, -1, 2, 7.96039, 2),
 "format": 34896613377,
@@ -68,7 +67,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_nu2ws"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_inu81"]
 resource_local_to_scene = true
 resource_name = "Mesa_blackjack_Cylinder"
 lightmap_size_hint = Vector2i(82, 86)
@@ -107,48 +106,75 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AABztkzFhr4AAIC2TncWPkzFhr7PG0++AABztkzFhr4AAIC+aHhzPkzFhr6eOp69NnkWvkzFhr7PG0++aHhzPkzFhr6gNp49aHhzvkzFhr6eOp69TncWPkzFhr7QGU8+aHhzvkzFhr6gNp49AABztkzFhr4AAIA+NnkWvkzFhr7QGU8+AABztqTh3EEAAIC2AABztqTh3EEAAIC+TncWPqTh3EHPG0++NnkWvqTh3EHPG0++aHhzPqTh3EGeOp69aHhzvqTh3EGeOp69aHhzPqTh3EGgNp49aHhzvqTh3EGgNp49TncWPqTh3EHQGU8+NnkWvqTh3EHQGU8+AABztqTh3EEAAIA+AABztkzFhr4AAIC+TncWPqTh3EHPG0++AABztqTh3EEAAIC+TncWPkzFhr7PG0++TncWPkzFhr7PG0++aHhzPqTh3EGeOp69TncWPqTh3EHPG0++aHhzPkzFhr6eOp69aHhzPkzFhr6eOp69aHhzPqTh3EGgNp49aHhzPqTh3EGeOp69aHhzPkzFhr6gNp49aHhzPkzFhr6gNp49TncWPqTh3EHQGU8+aHhzPqTh3EGgNp49TncWPkzFhr7QGU8+TncWPkzFhr7QGU8+AABztqTh3EEAAIA+TncWPqTh3EHQGU8+AABztkzFhr4AAIA+AABztkzFhr4AAIA+NnkWvqTh3EHQGU8+AABztqTh3EEAAIA+NnkWvkzFhr7QGU8+NnkWvkzFhr7QGU8+aHhzvqTh3EGgNp49NnkWvqTh3EHQGU8+aHhzvkzFhr6gNp49aHhzvkzFhr6gNp49aHhzvqTh3EGeOp69aHhzvqTh3EGgNp49aHhzvkzFhr6eOp69aHhzvkzFhr6eOp69NnkWvqTh3EHPG0++aHhzvqTh3EGeOp69NnkWvkzFhr7PG0++NnkWvkzFhr7PG0++AABztqTh3EEAAIC+NnkWvqTh3EHPG0++AABztkzFhr4AAIC+AoAAAP7//z8CgAAA/v//PwKAAAD+//8/AoAAAP7//z8CgAAA/v//PwKAAAD+//8/AoAAAP7//z8CgAAA/v//PwKAAAD+//8/AoAAAP7//z8CgAAA/v//P/9//f/+//+//3/9//7//7//f/3//v//v/9//f/+//+//3/9//7//7//f/3//v//v/9//f/+//+//3/9//7//7//f/3//v//v/9//f/+//+//3/9//7//7/+/5rgAACxz/7/muAAALHP/v+a4AAAsc/+/5rgAACxz/7/27UAABHl/v/btQAAEeX+/9u1AAAR5f7/27UAABHl/f8AgP7//v/9/wCA/v/+//3/AID+//7//f8AgP7//v8gyv9//v8Q5SDK/3/+/xDlIMr/f/7/EOUgyv9//v8Q5WCf/3/+/6/PYJ//f/7/r89gn/9//v+vz2Cf/3/+/6/PnmD/f53g/7+eYP9/neD/v55g/3+d4P+/nmD/f53g/7/eNf9/3bX/v941/3/dtf+/3jX/f921/7/eNf9/3bX/vwEA/38AgP+/AQD/fwCA/78BAP9/AID/vwEA/38AgP+/AAAjSiRK/78AACNKJEr/vwAAI0okSv+/AAAjSiRK/78AAGQfZB//vwAAZB9kH/+/AABkH2Qf/78AAGQfZB//vw==")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_or8fe")
+shadow_mesh = SubResource("ArrayMesh_c3mrl")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_nu2ws"]
-size = Vector3(0.847473, 1, 1)
+[node name="Mesa_blackjack" type="Node3D"]
+transform = Transform3D(-1.08486e-08, 0, -0.248187, 0, 0.248187, 0, 0.248187, 0, -1.08486e-08, 0, 0.094779, 0)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_or8fe"]
-size = Vector3(0.523, 1, 1.91)
-
-[node name="BlackJack" type="Node3D"]
-script = ExtResource("1_33dal")
-game_machice_scene = "blackjack"
-object_class = "GambleSpot"
-object_name = "BlackJack Table"
-metadata/_custom_type_script = "uid://d33jhadxc2lv5"
-
-[node name="Model" type="StaticBody3D" parent="." groups=["Ground_object"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.947, 0)
-
-[node name="Mesa_blackjack" type="Node3D" parent="Model"]
-transform = Transform3D(0.248187, 0, 0, 0, 0.248187, 0, 0, 0, 0.248187, 0, -0.897969, 0)
-
-[node name="Cylinder_002" type="MeshInstance3D" parent="Model/Mesa_blackjack"]
+[node name="Cylinder_002" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.2, 0, 0, 0, 0.128186, 0, 0, 0, 1.2, 0, -0.0681063, 0)
-mesh = SubResource("ArrayMesh_nu2ws")
+mesh = SubResource("ArrayMesh_inu81")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0858365, 0, 0)
-shape = SubResource("BoxShape3D_nu2ws")
-disabled = true
+[node name="card" parent="." instance=ExtResource("1_dnjgf")]
+transform = Transform3D(-1.33104, 0, -4.28294, 0, 4.485, 0, 4.28294, 0, -1.33104, 0.659065, 3.53258, 1.34456)
+rank = "Four"
+value = "4"
+suit = "Clubs"
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.076166, 0, 0)
-shape = SubResource("BoxShape3D_or8fe")
+[node name="card2" parent="." instance=ExtResource("1_dnjgf")]
+transform = Transform3D(1.66406, 0, -4.16487, 0, 4.485, 0, 4.16487, 0, 1.66406, 1.04927, 3.53258, -0.888821)
+rank = "Jack"
+value = "J"
+suit = "Hearts"
 
-[node name="Sit positions" parent="." instance=ExtResource("3_nu2ws")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0496062, 0.910575, 0)
-chair_postion_list = Array[Array]([[Vector3(0, 0, 2.3), true], [Vector3(1.3, 0, 0), true], [Vector3(1.3, 0, 1.1), true], [Vector3(0, 0, -2.3), true], [Vector3(-1.3, 0, -1.1), true]])
+[node name="card3" parent="." instance=ExtResource("1_dnjgf")]
+transform = Transform3D(-2.06243, -0.0295132, -3.98256, -0.14678, 4.48239, 0.042795, 3.97996, 0.150016, -2.06219, 1.49344, 3.52696, -0.134413)
+rank = "Queen"
+value = "Q"
+suit = "Hearts"
 
-[node name="Sell_Satisfation Value" parent="." instance=ExtResource("3_or8fe")]
-sell_value = 200
-satisfaction_value = 35
+[node name="card4" parent="." instance=ExtResource("1_dnjgf")]
+transform = Transform3D(-4.45853, -0.0295132, -0.485684, -0.0455692, 4.48239, 0.145943, 0.484442, 0.150016, -4.45624, 0.246788, 3.54514, -0.421254)
+rank = "King"
+value = "K"
+suit = "Hearts"
 
-[node name="Player Chair" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.72898, 1.24582, 0.0389726)
+[node name="card5" parent="." instance=ExtResource("1_dnjgf")]
+transform = Transform3D(1.84281, -0.0295132, -4.08881, -0.12465, 4.48239, -0.0885335, 4.08702, 0.150016, 1.84092, 0.349146, 3.51439, 0.517898)
+rank = "King"
+value = "K"
+suit = "Hearts"
+
+[node name="gold_nugget" parent="." instance=ExtResource("2_4lpki")]
+transform = Transform3D(0.786569, 0, 0.617503, 0, 1, 0, -0.617503, 0, 0.786569, 0.363831, 3.89928, -1.79309)
+
+[node name="Label3D" parent="gold_nugget" index="1"]
+visible = false
+
+[node name="gold_nugget2" parent="." instance=ExtResource("2_4lpki")]
+transform = Transform3D(0.105124, 0, -0.588678, 0, 0.59799, 0, 0.588678, 0, 0.105124, 0.590871, 3.89928, -2.0457)
+
+[node name="Label3D" parent="gold_nugget2" index="1"]
+visible = false
+
+[node name="gold_nugget3" parent="." instance=ExtResource("2_4lpki")]
+transform = Transform3D(0.786569, 0, 0.617503, 0, 1, 0, -0.617503, 0, 0.786569, 0.158531, 3.89928, 1.68217)
+
+[node name="Label3D" parent="gold_nugget3" index="1"]
+visible = false
+
+[node name="gold_nugget4" parent="." instance=ExtResource("2_4lpki")]
+transform = Transform3D(0.105124, 0, -0.588678, 0, 0.59799, 0, 0.588678, 0, 0.105124, 0.62658, 3.89928, 1.60686)
+
+[node name="Label3D" parent="gold_nugget4" index="1"]
+visible = false
+
+[editable path="gold_nugget"]
+[editable path="gold_nugget/gold_nugget"]
+[editable path="gold_nugget2"]
+[editable path="gold_nugget2/gold_nugget"]
+[editable path="gold_nugget3"]
+[editable path="gold_nugget3/gold_nugget"]
+[editable path="gold_nugget4"]
+[editable path="gold_nugget4/gold_nugget"]

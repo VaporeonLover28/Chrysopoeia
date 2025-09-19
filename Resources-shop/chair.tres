@@ -1,14 +1,17 @@
-[gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=3 format=3 uid="uid://ddo6hinvoqvrh"]
+[gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=4 format=3 uid="uid://ddo6hinvoqvrh"]
 
 [ext_resource type="Script" uid="uid://dtrrlkl8w8gkb" path="res://Script/purchasable_itens_resource.gd" id="1_e0usc"]
 [ext_resource type="PackedScene" uid="uid://bisb3j2dm12lc" path="res://Scenes/chair.tscn" id="1_mx5n4"]
+[ext_resource type="PackedScene" uid="uid://crxawduuylnwy" path="res://Scenes/shop_subviewports/chair_12.tscn" id="2_a36uq"]
 
 [resource]
 script = ExtResource("1_e0usc")
 item_type = "Objects"
 name = "Chair"
 price = 50
-description = ""
+description = "Place them around tables to give your patrons places to sit."
 item_scene = ExtResource("1_mx5n4")
+model = ExtResource("2_a36uq")
 usable = true
+keybind = ""
 metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"
