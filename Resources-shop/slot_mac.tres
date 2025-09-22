@@ -10,6 +10,7 @@ item_type = "Objects"
 name = "Slot Machine"
 price = 90
 description = "Good ol' time classic. Pull the lever!"
+required_satis = 1
 item_scene = ExtResource("1_627h5")
 model = ExtResource("2_lg8y0")
 usable = true

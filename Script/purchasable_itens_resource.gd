@@ -4,6 +4,7 @@ extends Resource; class_name PurchasableItemResource
 @export var name: String
 @export var price: int
 @export var description: String
+@export var required_satis : int
 @export var item_scene: PackedScene
 @export var model : PackedScene
 #only necessary if it is a spell 

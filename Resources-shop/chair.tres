@@ -10,6 +10,7 @@ item_type = "Objects"
 name = "Chair"
 price = 50
 description = "Place them around tables to give your patrons places to sit."
+required_satis = 1
 item_scene = ExtResource("1_mx5n4")
 model = ExtResource("2_a36uq")
 usable = true

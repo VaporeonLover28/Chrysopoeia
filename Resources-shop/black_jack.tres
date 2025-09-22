@@ -10,6 +10,7 @@ item_type = "Objects"
 name = "Blackjack"
 price = 200
 description = "The kingdom's most famous card game"
+required_satis = 2
 item_scene = ExtResource("1_qk04i")
 model = ExtResource("2_un1ew")
 usable = true

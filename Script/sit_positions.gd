@@ -13,7 +13,6 @@ var save_player_ref : CharacterBody3D
 
 var characters_sitting_count: int = 0
 
-
 var tween : Tween
 
 func _ready() -> void:
@@ -68,7 +67,7 @@ func _stand_character_up(object_ref):
 		player_is_sitting = false
 		save_player_ref = null
 
-func _pull_camera(player, rot_vec3):
+func _pull_camera(_player, rot_vec3):
 	tween = create_tween()
 	tween.set_trans(Tween.TRANS_SINE)
 	tween.set_ease(Tween.EASE_OUT)
@@ -99,7 +98,7 @@ func _SICSOC(choice_of_chair: int):
 		return false
 
 func _CNSC():
-	var count_character: int
+	var count_character: int = 0
 	for item in chair_postion_list.size():
 		if chair_postion_list[item - 1][1] == false:
 			count_character += 1

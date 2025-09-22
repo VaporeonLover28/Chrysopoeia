@@ -9,6 +9,7 @@ item_type = "Spells"
 name = "Mars"
 price = 200
 description = "Mars, god of war. Strengthens your homunculus."
+required_satis = 4
 item_sprite = ExtResource("1_muh6c")
 usable = true
 keybind = "tab"

@@ -9,6 +9,7 @@ item_type = "Spells"
 name = "Chipped Key"
 price = 707
 description = "Looks like it got beat up."
+required_satis = 4
 item_sprite = ExtResource("1_63m15")
 usable = true
 keybind = ""

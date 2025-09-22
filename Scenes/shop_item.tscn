@@ -2,10 +2,10 @@
 
 [ext_resource type="Theme" uid="uid://dtnkyvcoybi" path="res://Themes/shop_menu.tres" id="1_b8rhe"]
 [ext_resource type="Script" uid="uid://ch1ockmtt6sy2" path="res://Script/item.gd" id="2_ewy27"]
-[ext_resource type="Texture2D" uid="uid://bbtb2l43wx0m2" path="res://Assets/Originals/fabbri1.png" id="3_ewy27"]
-[ext_resource type="Resource" uid="uid://ddo6hinvoqvrh" path="res://Resources-shop/chair.tres" id="3_idtay"]
+[ext_resource type="Texture2D" uid="uid://b6jdcsuv3r7uu" path="res://Assets/Originals/lock.png" id="4_asrp6"]
+[ext_resource type="FontFile" uid="uid://b24ebmq4t81nj" path="res://Fonts/KiwiSoda.ttf" id="5_tga60"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ewy27"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_idtay"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lqxd8"]
@@ -24,7 +24,6 @@ layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("1_b8rhe")
 script = ExtResource("2_ewy27")
-item = ExtResource("3_idtay")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(250, 400)
@@ -55,12 +54,16 @@ texture_filter = 1
 layout_mode = 2
 offset_right = 200.0
 offset_bottom = 200.0
-texture = SubResource("ViewportTexture_ewy27")
+texture = SubResource("ViewportTexture_idtay")
 
 [node name="SpriteRect" type="TextureRect" parent="MarginContainer/VBoxContainer/textures"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 11.0
+offset_top = 21.0
+offset_right = 86.0
+offset_bottom = 96.0
+scale = Vector2(2.3, 2.3)
+stretch_mode = 5
 
 [node name="Desc" type="Label" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 80)
@@ -75,11 +78,11 @@ layout_mode = 2
 text = "Price"
 
 [node name="dim" type="ColorRect" parent="."]
-visible = false
 layout_mode = 2
+offset_top = 14.0
 offset_right = 250.0
 offset_bottom = 400.0
-color = Color(0.20871, 0.20871, 0.20871, 0.47451)
+color = Color(0.111197, 0.111197, 0.111197, 0.47451)
 
 [node name="chain" type="TextureRect" parent="."]
 visible = false
@@ -87,11 +90,25 @@ custom_minimum_size = Vector2(250, 400)
 layout_mode = 0
 offset_right = 250.0
 offset_bottom = 400.0
-texture = ExtResource("3_ewy27")
+texture = ExtResource("4_asrp6")
 expand_mode = 4
-flip_v = true
+
+[node name="locknumber" type="Label" parent="chain"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 110.0
+offset_top = 173.0
+offset_right = 142.0
+offset_bottom = 237.0
+theme_override_colors/font_color = Color(0.352941, 0.156863, 0.0980392, 1)
+theme_override_fonts/font = ExtResource("5_tga60")
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SubViewport" type="SubViewport" parent="."]
+own_world_3d = true
 transparent_bg = true
 size = Vector2i(200, 200)
 

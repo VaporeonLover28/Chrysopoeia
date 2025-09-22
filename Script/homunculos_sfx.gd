@@ -21,13 +21,3 @@ extends Node3D
 @onready var ungus = $Ungus
 @onready var homunc_chain_2: AudioStreamPlayer3D = $HomuncChain2
 @onready var homunc_chain: AudioStreamPlayer3D = $HomuncChain
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

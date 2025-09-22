@@ -1,6 +1,6 @@
-[gd_scene load_steps=45 format=3 uid="uid://ltp3jvrek5bh"]
+[gd_scene load_steps=58 format=3 uid="uid://ltp3jvrek5bh"]
 
-[ext_resource type="Script" uid="uid://mh8h7xo4eso6" path="res://Script/shop.gd" id="1_xysl7"]
+[ext_resource type="Script" uid="uid://b2lmr33e6p2iw" path="res://Script/shop2.gd" id="1_xb42a"]
 [ext_resource type="Texture2D" uid="uid://bhm7iuxwwodlc" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024333.png" id="2_e6gci"]
 [ext_resource type="Texture2D" uid="uid://wetbh3qngmmh" path="res://Assets/Originals/spellot.png" id="2_jhj42"]
 [ext_resource type="Theme" uid="uid://dtnkyvcoybi" path="res://Themes/shop_menu.tres" id="2_lkph0"]
@@ -10,18 +10,31 @@
 [ext_resource type="Texture2D" uid="uid://pov62jfwgcqy" path="res://icon.svg" id="3_lvwfa"]
 [ext_resource type="PackedScene" uid="uid://dxeqkff8vqgci" path="res://Scenes/shop_item.tscn" id="3_w4pn8"]
 [ext_resource type="Texture2D" uid="uid://egyaahdv6jpg" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024437.png" id="4_g4n61"]
+[ext_resource type="Resource" uid="uid://co6pc4wkxyh10" path="res://Resources-shop/slot_mac.tres" id="4_xb42a"]
+[ext_resource type="Resource" uid="uid://cav5dt5t5pjdm" path="res://Resources-shop/black_jack.tres" id="5_3c6qa"]
 [ext_resource type="Texture2D" uid="uid://dtxfnhnc06qg3" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024511.png" id="5_w4pn8"]
+[ext_resource type="Resource" uid="uid://c1ve03nv8ehl6" path="res://Resources-shop/ring_key.tres" id="6_1eja7"]
 [ext_resource type="Texture2D" uid="uid://bdcqrh2xht7u" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024538.png" id="6_ewq8f"]
 [ext_resource type="Texture2D" uid="uid://bu822v0kahoq2" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130108.png" id="7_fuqo7"]
+[ext_resource type="Resource" uid="uid://dpmw1tqdgusgi" path="res://Resources-shop/table.tres" id="7_u6p4m"]
+[ext_resource type="Resource" uid="uid://ddo6hinvoqvrh" path="res://Resources-shop/chair.tres" id="8_hkj0g"]
 [ext_resource type="Texture2D" uid="uid://dkhl7vsnqeego" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130133.png" id="8_lq4pg"]
+[ext_resource type="Resource" uid="uid://7xjll1nej5ux" path="res://Resources-shop/Candlestick.tres" id="9_eivo6"]
 [ext_resource type="Texture2D" uid="uid://nbkh4aphl8yk" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130207.png" id="9_gr4d3"]
+[ext_resource type="Resource" uid="uid://dmkhxswotf078" path="res://Resources-shop/bar.tres" id="10_ctqwn"]
 [ext_resource type="Texture2D" uid="uid://cgt4wqhmgoscb" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130228.png" id="10_guybm"]
 [ext_resource type="Texture2D" uid="uid://bqdve5hva8f8q" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130248.png" id="11_bgvlv"]
+[ext_resource type="Resource" uid="uid://cflagy6qrtpb3" path="res://Resources-shop/chandelier.tres" id="11_tvyjt"]
 [ext_resource type="Texture2D" uid="uid://df3wrdcpepy80" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130341.png" id="12_bmrd7"]
+[ext_resource type="Resource" uid="uid://feupwn4se2kr" path="res://Resources-shop/spell_fortune.tres" id="12_d7crq"]
+[ext_resource type="Resource" uid="uid://br68s7kx7q8yy" path="res://Resources-shop/spell_prov.tres" id="13_48dd5"]
 [ext_resource type="Texture2D" uid="uid://b8nlbir068ihx" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130357.png" id="13_d6c3t"]
 [ext_resource type="Texture2D" uid="uid://bjsbl26vi4wyx" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130418.png" id="14_6u3qt"]
+[ext_resource type="Resource" uid="uid://c10qwpfpx1xds" path="res://Resources-shop/spell_shard.tres" id="14_tdly1"]
+[ext_resource type="Resource" uid="uid://bpvpbmep1p0gl" path="res://Resources-shop/spell_fool.tres" id="15_1kqbk"]
 [ext_resource type="Texture2D" uid="uid://dynp3emk68bax" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130434.png" id="15_jtl1u"]
 [ext_resource type="Texture2D" uid="uid://csos1tsim6ga6" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130456.png" id="16_kq1os"]
+[ext_resource type="Resource" uid="uid://bltltrlpmdlk1" path="res://Resources-shop/spell_mars.tres" id="16_kx6si"]
 [ext_resource type="Texture2D" uid="uid://d1l3lpsj4ykc8" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130531.png" id="17_4kjod"]
 [ext_resource type="Texture2D" uid="uid://djliwdnltry16" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130548.png" id="18_xb42a"]
 [ext_resource type="Texture2D" uid="uid://cgbh43crb2pk8" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817130608.png" id="19_3c6qa"]
@@ -159,9 +172,12 @@ animations = [{
 }]
 
 [node name="Shop Menu" type="CanvasLayer"]
+offset = Vector2(0, 650)
+transform = Transform2D(1, 0, 0, 1, 0, 650)
 metadata/_edit_vertical_guides_ = [1293.0]
 
 [node name="Shop" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -170,17 +186,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
-script = ExtResource("1_xysl7")
-
-[node name="Bgadadadda" type="ColorRect" parent="Shop"]
-visible = false
-layout_mode = 2
-offset_top = 0.40448
-offset_right = 1152.0
-offset_bottom = 647.596
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.331203, 0.1742, 0.67, 1)
+script = ExtResource("1_xb42a")
 
 [node name="Margin" type="MarginContainer" parent="Shop"]
 layout_mode = 2
@@ -229,6 +235,16 @@ size_flags_vertical = 8
 
 [node name="Item" parent="Shop/Margin/Top_Bar/Shop_Tabs/Games/ScrollContainer/HBoxContainer" instance=ExtResource("3_w4pn8")]
 layout_mode = 2
+item = ExtResource("4_xb42a")
+unlocked = true
+
+[node name="Item2" parent="Shop/Margin/Top_Bar/Shop_Tabs/Games/ScrollContainer/HBoxContainer" instance=ExtResource("3_w4pn8")]
+layout_mode = 2
+item = ExtResource("5_3c6qa")
+
+[node name="Item3" parent="Shop/Margin/Top_Bar/Shop_Tabs/Games/ScrollContainer/HBoxContainer" instance=ExtResource("3_w4pn8")]
+layout_mode = 2
+item = ExtResource("6_1eja7")
 
 [node name="Decoration" type="TabBar" parent="Shop/Margin/Top_Bar/Shop_Tabs"]
 visible = false
@@ -252,6 +268,26 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
+[node name="Item" parent="Shop/Margin/Top_Bar/Shop_Tabs/Decoration/ScrollContainer/HBoxContainer" instance=ExtResource("3_w4pn8")]
+layout_mode = 2
+item = ExtResource("7_u6p4m")
+
+[node name="Item2" parent="Shop/Margin/Top_Bar/Shop_Tabs/Decoration/ScrollContainer/HBoxContainer" instance=ExtResource("3_w4pn8")]
+layout_mode = 2
+item = ExtResource("8_hkj0g")
+
+[node name="Item3" parent="Shop/Margin/Top_Bar/Shop_Tabs/Decoration/ScrollContainer/HBoxContainer" instance=ExtResource("3_w4pn8")]
+layout_mode = 2
+item = ExtResource("9_eivo6")
+
+[node name="Item4" parent="Shop/Margin/Top_Bar/Shop_Tabs/Decoration/ScrollContainer/HBoxContainer" instance=ExtResource("3_w4pn8")]
+layout_mode = 2
+item = ExtResource("10_ctqwn")
+
+[node name="Item5" parent="Shop/Margin/Top_Bar/Shop_Tabs/Decoration/ScrollContainer/HBoxContainer" instance=ExtResource("3_w4pn8")]
+layout_mode = 2
+item = ExtResource("11_tvyjt")
+
 [node name="Spells" type="TabBar" parent="Shop/Margin/Top_Bar/Shop_Tabs"]
 visible = false
 layout_mode = 2
@@ -273,6 +309,26 @@ vertical_scroll_mode = 0
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+
+[node name="Item" parent="Shop/Margin/Top_Bar/Shop_Tabs/Spells/ScrollContainer/HBoxContainer" instance=ExtResource("3_w4pn8")]
+layout_mode = 2
+item = ExtResource("12_d7crq")
+
+[node name="Item2" parent="Shop/Margin/Top_Bar/Shop_Tabs/Spells/ScrollContainer/HBoxContainer" instance=ExtResource("3_w4pn8")]
+layout_mode = 2
+item = ExtResource("13_48dd5")
+
+[node name="Item3" parent="Shop/Margin/Top_Bar/Shop_Tabs/Spells/ScrollContainer/HBoxContainer" instance=ExtResource("3_w4pn8")]
+layout_mode = 2
+item = ExtResource("14_tdly1")
+
+[node name="Item4" parent="Shop/Margin/Top_Bar/Shop_Tabs/Spells/ScrollContainer/HBoxContainer" instance=ExtResource("3_w4pn8")]
+layout_mode = 2
+item = ExtResource("15_1kqbk")
+
+[node name="Item5" parent="Shop/Margin/Top_Bar/Shop_Tabs/Spells/ScrollContainer/HBoxContainer" instance=ExtResource("3_w4pn8")]
+layout_mode = 2
+item = ExtResource("16_kx6si")
 
 [node name="Money_Label" type="Label" parent="Shop/Margin/Top_Bar"]
 layout_mode = 2
@@ -357,5 +413,5 @@ autoplay = "default"
 frame = 27
 frame_progress = 1.0
 
-[connection signal="update_shop_contents" from="Shop" to="Shop" method="_on_update_shop_contents"]
+[connection signal="tab_changed" from="Shop/Margin/Top_Bar/Shop_Tabs" to="Shop" method="_on_shop_tabs_tab_changed"]
 [connection signal="pressed" from="Shop/Margin/Top_Bar/Quit_button" to="Shop" method="_on_quit_button_pressed"]

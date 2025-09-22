@@ -10,6 +10,7 @@ item_type = "Objects"
 name = "Chandelier"
 price = 50
 description = "A very fancy array of candles that can be hung from the ceiliing."
+required_satis = 3
 item_scene = ExtResource("1_kfpxi")
 model = ExtResource("2_o63bb")
 usable = true

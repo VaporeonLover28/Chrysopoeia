@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=3 format=3 uid="uid://dmkhxswotf078"]
+[gd_resource type="Resource" script_class="PurchasableItemResource" load_steps=4 format=3 uid="uid://dmkhxswotf078"]
 
 [ext_resource type="Script" uid="uid://dtrrlkl8w8gkb" path="res://Script/purchasable_itens_resource.gd" id="1_2vd6k"]
 [ext_resource type="PackedScene" uid="uid://cpdocr2khmtk5" path="res://Assets/Exports/glTF/Barrel_Holder.gltf" id="1_86krd"]
+[ext_resource type="PackedScene" uid="uid://rped6124v0jm" path="res://Scenes/shop_subviewports/barrel_holder.tscn" id="2_xqydt"]
 
 [resource]
 script = ExtResource("1_2vd6k")
@@ -9,7 +10,9 @@ item_type = "Objects"
 name = "Bar"
 price = 400
 description = "Relax a little and have some exotic beverages brewed to your magical interest."
+required_satis = 3
 item_scene = ExtResource("1_86krd")
+model = ExtResource("2_xqydt")
 usable = true
 keybind = ""
 metadata/_custom_type_script = "uid://dtrrlkl8w8gkb"

@@ -175,3 +175,7 @@ func _add_objects(area_of_shop: HBoxContainer, objects_to_be_added: Array):
 		instanciated_item.position.x += 245 + (item * 245)
 		area_of_shop.add_child(instanciated_item)
 		counter += 1
+
+
+func _on_shop_tabs_tab_changed(tab: int) -> void:
+	pass # Replace with function body.

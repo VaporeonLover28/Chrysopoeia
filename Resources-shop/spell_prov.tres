@@ -9,6 +9,7 @@ item_type = "Spells"
 name = "Eye of Providence"
 price = 250
 description = "Reality is but what you are told. Lets you see the next card in the deck."
+required_satis = 2
 item_sprite = ExtResource("1_3ei7p")
 usable = true
 keybind = "tab"

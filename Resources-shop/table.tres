@@ -10,6 +10,7 @@ item_type = "Objects"
 name = "Table"
 price = 100
 description = "Chairs and candlesticks can be attached."
+required_satis = 1
 item_scene = ExtResource("1_xq057")
 model = ExtResource("2_b01t0")
 usable = true

@@ -26,7 +26,7 @@ var tween : Tween
 #func _ready() -> void:
 	#personality_label.text = personality
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !is_sat_down:
 		var destination = nav.get_next_path_position()
 		var local_destination = destination - global_position

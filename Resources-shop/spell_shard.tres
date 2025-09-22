@@ -9,6 +9,7 @@ item_type = "Spells"
 name = "Philosopher's Shard"
 price = 300
 description = "A shard of pure extracted intelligence... Well. someone broke it.  Increases the rank of a card."
+required_satis = 3
 item_sprite = ExtResource("1_kk0ke")
 usable = true
 keybind = "d"

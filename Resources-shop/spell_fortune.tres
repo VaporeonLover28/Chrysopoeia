@@ -9,6 +9,7 @@ item_type = "Spells"
 name = "Wheel of Fortune"
 price = 600
 description = "You feel that today might be your lucky day! Betters slot machine odds."
+required_satis = 1
 item_sprite = ExtResource("1_uc2ik")
 usable = true
 keybind = "f"

@@ -10,6 +10,7 @@ item_type = "Objects"
 name = "Candlestick"
 price = 50
 description = "A common light source for fancy tables."
+required_satis = 2
 item_scene = ExtResource("1_yd803")
 model = ExtResource("2_q2go0")
 usable = true

@@ -22,6 +22,6 @@ func _ready() -> void:
 	else:
 		texture_rect.texture = item_resource.item_sprite
 		
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if texture_rect.texture is ViewportTexture:
 		item_viewport.get_child(0).get_child(-1).rotation += Vector3(0,0.01,0)
