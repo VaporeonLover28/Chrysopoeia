@@ -15,42 +15,39 @@ extends Control
 var opened := false
 var tween : Tween
 
-func _ready() -> void:
-	show_shop_menu()
-
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("esc") and get_parent().offset.y < 500 or \
 	Input.is_action_just_pressed("b") and get_parent().offset.y < 500:
 		hide_shop_menu()
 
 func show_shop_menu():
-	#if Globals.player_interacting == false and Globals.game_paused == false \
-	#and get_parent().offset.y > 600:
-	Globals.game_paused = true
-	spell_option_box_container.visible = false
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if Globals.player_interacting == false and Globals.game_paused == false \
+	and get_parent().offset.y > 600:
+		Globals.game_paused = true
+		spell_option_box_container.visible = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
-	if tween:
-		tween.kill()
-	
-	tween = create_tween()
-	tween.set_trans(Tween.TRANS_QUART)
-	tween.set_ease(Tween.EASE_OUT)
-	tween.set_parallel(true)
-	tween.tween_property(get_parent(), "offset", Vector2.ZERO, 0.75)
-	tween.tween_callback(func():bg.play("open"))
-	tween.set_parallel(false)
-	tween.tween_callback(func():
-		opened = true
-		visible = true
-		money_label.text = "Money: " + str(Globals.money)
-		for tab in shop_tabs.get_children():
-			if tab.visible:
-				for item in tab.get_child(0).get_child(0).get_children():
-					item.update())
-	
-	#if !TutorialManager.tutorials["open_shop"]:
-		#world_scene.shop_tutorial.emit()
+		if tween:
+			tween.kill()
+		
+		tween = create_tween()
+		tween.set_trans(Tween.TRANS_QUART)
+		tween.set_ease(Tween.EASE_OUT)
+		tween.set_parallel(true)
+		tween.tween_property(get_parent(), "offset", Vector2.ZERO, 0.75)
+		tween.tween_callback(func():bg.play("open"))
+		tween.tween_callback(func():
+			await get_tree().create_timer(0.1).timeout
+			opened = true
+			visible = true
+			money_label.text = "Money: " + str(Globals.money)
+			for tab in shop_tabs.get_children():
+				if tab.visible:
+					for item in tab.get_child(0).get_child(0).get_children():
+						item.update())
+		
+		if !TutorialManager.tutorials["open_shop"]:
+			world_scene.shop_tutorial.emit()
 	
 func hide_shop_menu():
 	opened = false
@@ -64,10 +61,9 @@ func hide_shop_menu():
 	tween.set_trans(Tween.TRANS_QUART)
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_parallel(true)
+	tween.tween_callback(func():visible = false)
 	tween.tween_property(get_parent(), "offset", Vector2(0, 665), 0.5)
-	tween.tween_interval(0.5)
 	tween.tween_callback(func():bg.play_backwards("open"))
-	tween.tween_interval(0.5)
 	tween.tween_callback(func():opened = false)
 
 func _on_quit_button_pressed() -> void:

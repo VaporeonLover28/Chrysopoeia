@@ -118,33 +118,23 @@ skeleton = NodePath("")
 
 [node name="card" parent="." instance=ExtResource("1_dnjgf")]
 transform = Transform3D(-1.33104, 0, -4.28294, 0, 4.485, 0, 4.28294, 0, -1.33104, 0.659065, 3.53258, 1.34456)
-rank = "Four"
-value = "4"
-suit = "Clubs"
+script = null
 
 [node name="card2" parent="." instance=ExtResource("1_dnjgf")]
 transform = Transform3D(1.66406, 0, -4.16487, 0, 4.485, 0, 4.16487, 0, 1.66406, 1.04927, 3.53258, -0.888821)
-rank = "Jack"
-value = "J"
-suit = "Hearts"
+script = null
 
 [node name="card3" parent="." instance=ExtResource("1_dnjgf")]
 transform = Transform3D(-2.06243, -0.0295132, -3.98256, -0.14678, 4.48239, 0.042795, 3.97996, 0.150016, -2.06219, 1.49344, 3.52696, -0.134413)
-rank = "Queen"
-value = "Q"
-suit = "Hearts"
+script = null
 
 [node name="card4" parent="." instance=ExtResource("1_dnjgf")]
 transform = Transform3D(-4.45853, -0.0295132, -0.485684, -0.0455692, 4.48239, 0.145943, 0.484442, 0.150016, -4.45624, 0.246788, 3.54514, -0.421254)
-rank = "King"
-value = "K"
-suit = "Hearts"
+script = null
 
 [node name="card5" parent="." instance=ExtResource("1_dnjgf")]
 transform = Transform3D(1.84281, -0.0295132, -4.08881, -0.12465, 4.48239, -0.0885335, 4.08702, 0.150016, 1.84092, 0.349146, 3.51439, 0.517898)
-rank = "King"
-value = "K"
-suit = "Hearts"
+script = null
 
 [node name="gold_nugget" parent="." instance=ExtResource("2_4lpki")]
 transform = Transform3D(0.786569, 0, 0.617503, 0, 1, 0, -0.617503, 0, 0.786569, 0.363831, 3.89928, -1.79309)

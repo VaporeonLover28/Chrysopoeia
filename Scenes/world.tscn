@@ -1,4 +1,4 @@
-[gd_scene load_steps=157 format=4 uid="uid://dkerjl0ljpmti"]
+[gd_scene load_steps=156 format=4 uid="uid://dkerjl0ljpmti"]
 
 [ext_resource type="PackedScene" uid="uid://dsp27d25mg6bh" path="res://Scenes/player.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://cf6y1d4msmkfp" path="res://Script/world.gd" id="1_ic0uy"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://jekyh5hw0o23" path="res://Scenes/npc.tscn" id="3_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://cb53qpnp2by4" path="res://Scenes/casino_light.tscn" id="4_036b0"]
 [ext_resource type="PackedScene" uid="uid://bju8ckhov8525" path="res://Assets/Exports/glTF/Stool.gltf" id="4_gbfbk"]
-[ext_resource type="Script" uid="uid://b2lmr33e6p2iw" path="res://Script/shop2.gd" id="4_uoh4w"]
 [ext_resource type="Texture2D" uid="uid://bhm7iuxwwodlc" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024333.png" id="5_cvubk"]
 [ext_resource type="PackedScene" uid="uid://cpdocr2khmtk5" path="res://Assets/Exports/glTF/Barrel_Holder.gltf" id="5_ioo17"]
 [ext_resource type="Texture2D" uid="uid://i2akf0ju8xn3" path="res://Assets/Originals/Pergaminho/Pergaminho_anim/Pergaminho_20250817024402.png" id="6_eskoj"]
@@ -3286,9 +3285,6 @@ offset_bottom = 64.0
 offset = Vector2(0, 655)
 transform = Transform2D(1, 0, 0, 1, 0, 655)
 
-[node name="Shop" parent="Shop Menu" index="0"]
-script = ExtResource("4_uoh4w")
-
 [node name="Top_Bar" parent="Shop Menu/Shop/Margin" index="0"]
 theme = null
 
@@ -3307,6 +3303,7 @@ frame_progress = 0.0
 environment = SubResource("Environment_6uqi0")
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
+quality = 0
 bounce_indirect_energy = 0.5
 use_texture_for_bounces = false
 light_data = ExtResource("34_uoh4w")
