@@ -18,7 +18,6 @@ var opened := false
 var tween : Tween
 
 signal wait_for_spell_change
-signal update_hud
 
 func _ready() -> void:
 	$Margin.position = Vector2(135, 64)
@@ -89,7 +88,6 @@ func buy_item(object):
 			else:
 				if Globals.spell_inventory_list.size() < 2:
 					Globals.spell_inventory_list.push_front(object)
-					update_hud.emit()
 				else:
 					spell_slot1.texture = Globals.spell_inventory_list[0].item_sprite
 					spell_slot1.get_parent().connect("pressed", _choose_spell_to_change.bind(Globals.spell_inventory_list[0]))
@@ -99,7 +97,6 @@ func buy_item(object):
 					spell_option_box_container.visible = true
 					await wait_for_spell_change
 					Globals.spell_inventory_list.push_front(object)
-					update_hud.emit()
 		Globals.money -= object.price
 		CoinEarned.moedas_03.play()
 		Globals.save_money += object.price

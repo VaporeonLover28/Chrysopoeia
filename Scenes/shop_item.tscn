@@ -51,7 +51,7 @@ layout_mode = 2
 
 [node name="SubviewportRect" type="TextureRect" parent="MarginContainer/VBoxContainer/textures"]
 texture_filter = 1
-layout_mode = 2
+layout_mode = 0
 offset_right = 200.0
 offset_bottom = 200.0
 texture = SubResource("ViewportTexture_idtay")
@@ -78,7 +78,7 @@ layout_mode = 2
 text = "Price"
 
 [node name="dim" type="ColorRect" parent="."]
-layout_mode = 2
+layout_mode = 0
 offset_top = 14.0
 offset_right = 250.0
 offset_bottom = 400.0
@@ -126,3 +126,5 @@ sky_mode = 2
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport/Node3D/Node3D"]
 transform = Transform3D(1, 0, 0, 0, 0.913112, 0.40771, 0, -0.40771, 0.913112, 0, 1.98197, 2.17094)
+
+[connection signal="button_up" from="MarginContainer/VBoxContainer/Buy" to="." method="_on_buy_button_up"]

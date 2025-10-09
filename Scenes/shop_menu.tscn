@@ -189,7 +189,7 @@ size_flags_vertical = 3
 script = ExtResource("1_xb42a")
 
 [node name="Margin" type="MarginContainer" parent="Shop"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 135.0
 offset_top = 64.0
 offset_right = 981.0
@@ -217,7 +217,7 @@ layout_mode = 2
 metadata/_tab_index = 0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Shop/Margin/Top_Bar/Shop_Tabs/Games"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 7.0
 offset_top = 7.0
 offset_right = 824.0
@@ -252,7 +252,7 @@ layout_mode = 2
 metadata/_tab_index = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Shop/Margin/Top_Bar/Shop_Tabs/Decoration"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 7.0
 offset_top = 7.0
 offset_right = 824.0
@@ -294,7 +294,7 @@ layout_mode = 2
 metadata/_tab_index = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Shop/Margin/Top_Bar/Shop_Tabs/Spells"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 7.0
 offset_top = 7.0
 offset_right = 824.0

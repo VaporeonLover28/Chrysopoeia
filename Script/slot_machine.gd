@@ -310,6 +310,7 @@ func claim_depot():
 	if gold_in_depot > 0:
 		Globals.money += gold_in_depot
 		gold_in_depot = 0
+		CoinEarned.moedas_01.play()
 
 func show_depot_label():
 	$depot_label.visible = true

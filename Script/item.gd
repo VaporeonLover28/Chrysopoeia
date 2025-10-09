@@ -44,7 +44,7 @@ func update():
 			sprite_rect.texture = item.item_sprite
 			sprite_rect.visible = true
 	
-	if item.required_satis <= Globals.satisfaction_level:
+	if Globals.satis_levels[item.required_satis - 1] <= Globals.satisfaction_level:
 		unlocked = true
 	else:
 		unlocked = false

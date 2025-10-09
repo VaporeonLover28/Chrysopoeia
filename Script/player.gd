@@ -52,8 +52,8 @@ func _unhandled_input(event): #event representa o evento do input
 			Globals.game_paused = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if can_move:
-		#if event is InputEventMouseMotion and Globals.game_paused == false and world_scene.get_node("Bar UI").offset != Vector2.ZERO:
-			#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		if event is InputEventMouseMotion and Globals.game_paused == false and world_scene.get_node("Bar UI").offset != Vector2.ZERO:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		if event is InputEventMouseMotion and Globals.game_paused == false \
 		and world_scene.get_node("Bar UI").offset != Vector2.ZERO and Globals.player_interacting == false:
 				pivot.rotate_y(-event.relative.x * mouse_sensitivity)
@@ -136,12 +136,15 @@ func _physics_process(delta: float) -> void:
 			elif ray_interection.get_collider() != null:
 				interact_object()
 		
-		elif Input.is_action_just_pressed("c") and \
-		object_sitting != null:
-			call_npc_to_game()
-			
+		#elif Input.is_action_just_pressed("c") and \
+		#object_sitting != null:
+			#call_npc_to_game()
+		
+		if Input.is_action_just_pressed("c") and crosshair_object != null\
+		and crosshair_object.has_method("claim_depot"):
+			crosshair_object.claim_depot()
+		
 		if Input.is_action_just_pressed("b") and TutorialManager.tutorials["movement"]:
-			#Globals.satisfaction_level += 25
 			world_scene.get_node("Shop Menu").get_child(0).show_shop_menu()
 		
 		if Input.is_action_just_pressed("f") and Globals.check_spell_available("Wheel of Fortune") and \
@@ -201,9 +204,10 @@ func crosshair_prompts():
 		match crosshair_object.object_name:
 			"Slot Machine":
 				ui.add_crosshair_input_prompt("Play (30 Gold)", load("res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_e.png"))
+				ui.add_crosshair_input_prompt("Collect gold (" + str(crosshair_object.gold_in_depot) + ")", load("res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_c.png"))
 			"BlackJack Table":
 				ui.add_crosshair_input_prompt("Play (Results)", load("res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_e.png"))
-		ui.add_crosshair_input_prompt("Sell", load("res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_h.png"))
+		ui.add_crosshair_input_prompt("Sell (3/4ths Price)", load("res://Assets/Exports/kenney_input-prompts_1.4/Keyboard & Mouse/Default/keyboard_h.png"))
 		ui.all_prompts_shown = true
 	
 func interact_object():
@@ -359,7 +363,7 @@ func sell():
 				if item.get_parent() is InteractableObject:
 					item = item.get_parent()
 				if item.get_node_or_null("Sell_Satisfation Value") != null:
-					Globals.money += item.get_node_or_null("Sell_Satisfation Value").sell_value
+					Globals.money += int(float(item.get_node_or_null("Sell_Satisfation Value").sell_value) * 75 / 100)
 					Globals.satisfaction_level -= item.get_node("Sell_Satisfation Value").satisfaction_value
 					item.queue_free()
 		SaveScript.auto_save.emit()
