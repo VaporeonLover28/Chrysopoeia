@@ -11,9 +11,17 @@ extends Control
 @onready var world_scene = $"../../"
 @onready var money_label: Label = $Margin/Top_Bar/Money_Label
 @onready var bg = $"../bg"
+@onready var ring_door = $"../../NavigationRegion3D/cassino/door4"
+@onready var bar: Node3D = $"../../NavigationRegion3D/All Interactable Spots/Bar"
 
 var opened := false
 var tween : Tween
+
+signal wait_for_spell_change
+signal update_hud
+
+func _ready() -> void:
+	$Margin.position = Vector2(135, 64)
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("esc") and get_parent().offset.y < 500 or \
@@ -65,6 +73,42 @@ func hide_shop_menu():
 	tween.tween_property(get_parent(), "offset", Vector2(0, 665), 0.5)
 	tween.tween_callback(func():bg.play_backwards("open"))
 	tween.tween_callback(func():opened = false)
+
+func buy_item(object):
+	if object.price <= Globals.money:
+		if object.name == "Bar":
+			Globals.bar_unlock = true
+			bar.bought_bar.emit()
+		elif object.name == "Chipped Key":
+			Globals.ring_unlock = true
+			ring_door.bought_ring_key.emit()
+		else:
+			if object.item_type == "Objects":
+				world_scene.get_node("Player").start_bulding_phase(object.item_scene)
+			##object.item_type == "Spells"
+			else:
+				if Globals.spell_inventory_list.size() < 2:
+					Globals.spell_inventory_list.push_front(object)
+					update_hud.emit()
+				else:
+					spell_slot1.texture = Globals.spell_inventory_list[0].item_sprite
+					spell_slot1.get_parent().connect("pressed", _choose_spell_to_change.bind(Globals.spell_inventory_list[0]))
+					spell_slot2.texture = Globals.spell_inventory_list[1].item_sprite
+					spell_slot2.get_parent().connect("pressed", _choose_spell_to_change.bind(Globals.spell_inventory_list[1]))
+					shop_tabs.visible = false
+					spell_option_box_container.visible = true
+					await wait_for_spell_change
+					Globals.spell_inventory_list.push_front(object)
+					update_hud.emit()
+		Globals.money -= object.price
+		CoinEarned.moedas_03.play()
+		Globals.save_money += object.price
+		hide_shop_menu()
+
+func _choose_spell_to_change(spell_choosen: PurchasableItemResource):
+	var spell_to_remove = Globals.spell_inventory_list.find(spell_choosen)
+	Globals.spell_inventory_list.remove_at(spell_to_remove)
+	wait_for_spell_change.emit()
 
 func _on_quit_button_pressed() -> void:
 	hide_shop_menu()

@@ -19,15 +19,16 @@ func _ready() -> void:
 		_spawn_bar()
 
 func _interact(pass_interact_parameter: Array = []):
-	if pass_interact_parameter.size() > 0 and pass_interact_parameter[0] is Object:
-		var object_ref = pass_interact_parameter[0]
-		if object_ref.name == "Player":
-			_handle_player_interaction(object_ref)
+	if Globals.bar_unlock:
+		if pass_interact_parameter.size() > 0 and pass_interact_parameter[0] is Object:
+			var object_ref = pass_interact_parameter[0]
+			if object_ref.name == "Player":
+				_handle_player_interaction(object_ref)
+			else:
+				_handle_npc_interaction()
 		else:
+			# Fallback if no object reference provided
 			_handle_npc_interaction()
-	else:
-		# Fallback if no object reference provided
-		_handle_npc_interaction()
 
 func _handle_player_interaction(player: CharacterBody3D):
 	player.can_move = false

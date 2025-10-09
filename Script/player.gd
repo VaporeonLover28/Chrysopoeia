@@ -52,8 +52,8 @@ func _unhandled_input(event): #event representa o evento do input
 			Globals.game_paused = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if can_move:
-		if event is InputEventMouseMotion and Globals.game_paused == false and world_scene.get_node("Bar UI").offset != Vector2.ZERO: # se o jogador mover o mouse(prendemos ele na tela)
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		#if event is InputEventMouseMotion and Globals.game_paused == false and world_scene.get_node("Bar UI").offset != Vector2.ZERO:
+			#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		if event is InputEventMouseMotion and Globals.game_paused == false \
 		and world_scene.get_node("Bar UI").offset != Vector2.ZERO and Globals.player_interacting == false:
 				pivot.rotate_y(-event.relative.x * mouse_sensitivity)

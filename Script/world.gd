@@ -103,11 +103,13 @@ func _ready() -> void:
 		$Walking_NPCs/NPC.queue_free()
 		$Walking_NPCs/NPC2.queue_free()
 		$NavigationRegion3D.bake_navigation_mesh()
+	
 	Globals.transiting_characters_to_gamble = []
 	Globals.save_npcs_pos = []
 	Globals.save_objects = []
 	Globals.save_player_pos = Vector3()
 	Globals.save_build_spot = []
+	
 	if !TutorialManager.tutorials["movement"]:
 		await get_tree().create_timer(1).timeout
 		var tut_query = tut_panel.instantiate()
@@ -117,7 +119,9 @@ func _ready() -> void:
 		tut_query.panel_type = 0
 		tut_query.text = "Load tutorial?\nPress Y to load or N to skip all tutorials."
 		tutorial.add_child(tut_query)
+		
 		await self.query
+		
 		tut_query.queue_free()
 		await get_tree().create_timer(0.5).timeout
 		var tut_inst = tut_panel.instantiate()
@@ -129,7 +133,9 @@ func _ready() -> void:
 		tut_inst.text = "Thank you for purchasing the deed to Chrysopoeia " +\
 		"Tavern! The place is all yours.\n\nWalk around using WASD and explore!"
 		tutorial.add_child(tut_inst)
+		
 		await get_tree().create_timer(16).timeout
+		
 		$"HUD/money_box".visible = true
 		var tut_inst2 = tut_panel.instantiate()
 		tut_inst2.tutorial = "open_shop"

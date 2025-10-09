@@ -1,5 +1,6 @@
 extends Control
 
+@onready var shop: Control = $"../../../../../../.."
 @onready var name_label: Label = $MarginContainer/VBoxContainer/Name
 @onready var chain: TextureRect = $chain
 @onready var locknumber: Label = $chain/locknumber
@@ -54,3 +55,6 @@ func update():
 	else:
 		dim.visible = true
 		chain.visible = true
+
+func _on_buy_button_up() -> void:
+	shop.buy_item(item)
