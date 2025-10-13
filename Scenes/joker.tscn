@@ -12,6 +12,8 @@ albedo_color = Color(1, 0.533333, 0, 1)
 [sub_resource type="SphereShape3D" id="SphereShape3D_mb4xb"]
 
 [node name="Jester" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_u44jf")
 npc_name = "Joker"
 minimum_time_for_idle = 1.0

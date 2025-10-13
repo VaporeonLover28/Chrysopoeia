@@ -163,6 +163,7 @@ n={
 3d_physics/layer_3="NPC"
 3d_physics/layer_4="Game NPC"
 3d_physics/layer_5="Input Prompts"
+3d_physics/layer_6="Door"
 
 [rendering]
 

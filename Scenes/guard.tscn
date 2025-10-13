@@ -12,6 +12,8 @@ albedo_color = Color(0.3, 0.3, 0.3, 1)
 [sub_resource type="SphereShape3D" id="SphereShape3D_rrk28"]
 
 [node name="Knight" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_p570l")
 minimum_time_to_enter = 60.0
 maximum_time_to_enter = 75.0
