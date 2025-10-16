@@ -185,9 +185,11 @@ func headbob(time) -> Vector3:
 func identify_crosshair_object():
 	if ray_builder.get_collider() != null and\
 	ray_builder.get_collider().has_overlapping_bodies():
+		#print(ray_builder.get_collider().get_overlapping_bodies())
 		for body in ray_builder.get_collider().get_overlapping_bodies():
-			if body.get_parent() is InteractableObject:
-				Globals.selected_build_spot = ray_builder.get_collider().get_parent()
+			if body.get_parent() is InteractableObject and body.get_parent().name != "Bar":
+				print(body.get_parent())
+				Globals.selected_build_spot = body.get_parent().get_node("Sell_Satisfation Value").assigned_build_spot
 				Globals.selected_build_spot.selec_mesh()
 				crosshair_object = body.get_parent()
 				ui.item.text = "[wave amp=50.0 freq=5.0 connected=1]" + crosshair_object.object_name + "[/wave]"
@@ -338,6 +340,7 @@ func build():
 		SaveScript.auto_save.emit()
 		if instantiate_object.get_node_or_null("Sell_Satisfation Value") != null:
 			Globals.satisfaction_level += instantiate_object.get_node("Sell_Satisfation Value").satisfaction_value
+			instantiate_object.get_node("Sell_Satisfation Value").assigned_build_spot = ray_builder.get_collider().get_parent()
 
 		var save_ray_builder_1_monetoring = ray_builder_1.get_collider()
 		var save_ray_builder_2_monetoring = ray_builder_2.get_collider()

@@ -22,11 +22,11 @@ var is_trying_to_spawn_npc: bool = false
 @export var minimum_time_for_spawn_npc: float
 @export var maximum_time_for_spawn_npc: float
 
-var npc_list: Array[PackedScene] = [preload("res://Scenes/npc.tscn"),\
-preload("res://Scenes/guard.tscn"), \
-preload("res://Scenes/joker.tscn"), \
-preload("res://Scenes/pleb.tscn"), \
-preload("res://Scenes/noble.tscn")]
+var npc_list: Array[String] = ["res://Scenes/npc.tscn",\
+"res://Scenes/guard.tscn", \
+"res://Scenes/joker.tscn", \
+"res://Scenes/pleb.tscn", \
+"res://Scenes/noble.tscn"]
 
 signal update_all_mesh
 signal query
@@ -171,44 +171,63 @@ func _exit_tree() -> void:
 func _spawn_npc():
 	print("spwan npc")
 	is_trying_to_spawn_npc = true
+	var counter: int = 0
 	while is_trying_to_spawn_npc == true:
-		var NPC_to_spawn = npc_list.pick_random().instantiate()
 		
-		if NPC_to_spawn.scene_file_path == "res://Scenes/npc.tscn" and \
-		_see_number_of_NPC_type(NPC_to_spawn.scene_file_path) < maximum_number_of_mages:
+		var NPC_to_spawn = npc_list.pick_random()
+		
+		if NPC_to_spawn == "res://Scenes/npc.tscn" and \
+		_see_number_of_NPC_type(NPC_to_spawn) < maximum_number_of_mages:
+			NPC_to_spawn = load(NPC_to_spawn).instantiate() 
 			walking_npcs.add_child(NPC_to_spawn)
 			NPC_to_spawn.position = $"Spawn NPC Marker".position
 			is_trying_to_spawn_npc = false
+			break
 			
-		if NPC_to_spawn.scene_file_path == "res://Scenes/knight.tscn" and \
-		_see_number_of_NPC_type(NPC_to_spawn.scene_file_path) < maximum_number_of_knights:
+		elif NPC_to_spawn == "res://Scenes/guard.tscn" and \
+		_see_number_of_NPC_type(NPC_to_spawn) < maximum_number_of_knights:
+			NPC_to_spawn = load(NPC_to_spawn).instantiate() 
 			NPC_to_spawn.position = $"Spawn NPC Marker".position
 			walking_npcs.add_child(NPC_to_spawn)
 			is_trying_to_spawn_npc = false
+			break
 			
-		if NPC_to_spawn.scene_file_path == "res://Scenes/jester.tscn" and \
-		_see_number_of_NPC_type(NPC_to_spawn.scene_file_path) < maximum_number_of_jesters:
+		elif NPC_to_spawn == "res://Scenes/pleb.tscn" and \
+		_see_number_of_NPC_type(NPC_to_spawn) < maximum_number_of_jesters:
+			NPC_to_spawn = load(NPC_to_spawn).instantiate() 
 			NPC_to_spawn.position = $"Spawn NPC Marker".position
 			walking_npcs.add_child(NPC_to_spawn)
 			is_trying_to_spawn_npc = false
+			break
 			
-		if NPC_to_spawn.scene_file_path == "res://Scenes/communer.tscn" and \
-		_see_number_of_NPC_type(NPC_to_spawn.scene_file_path) < maximum_number_of_communers:
+		elif NPC_to_spawn == "res://Scenes/communer.tscn" and \
+		_see_number_of_NPC_type(NPC_to_spawn) < maximum_number_of_communers:
+			NPC_to_spawn = load(NPC_to_spawn).instantiate() 
 			NPC_to_spawn.position = $"Spawn NPC Marker".position
 			walking_npcs.add_child(NPC_to_spawn)
 			is_trying_to_spawn_npc = false
+			break
 			
-		if NPC_to_spawn.scene_file_path == "res://Scenes/noble.tscn" and \
-		_see_number_of_NPC_type(NPC_to_spawn.scene_file_path) < maximum_number_of_nobles:
+		elif NPC_to_spawn == "res://Scenes/noble.tscn" and \
+		_see_number_of_NPC_type(NPC_to_spawn) < maximum_number_of_nobles:
+			NPC_to_spawn = load(NPC_to_spawn).instantiate() 
 			NPC_to_spawn.position = $"Spawn NPC Marker".position
 			walking_npcs.add_child(NPC_to_spawn)
 			is_trying_to_spawn_npc = false
+			break
 			
-		if NPC_to_spawn.scene_file_path == "res://Scenes/alcoholic_mage.tscn" and \
-		_see_number_of_NPC_type(NPC_to_spawn.scene_file_path) < maximum_number_of_alcoholic_mages:
+		elif NPC_to_spawn == "res://Scenes/alcoholic_mage.tscn" and \
+		_see_number_of_NPC_type(NPC_to_spawn) < maximum_number_of_alcoholic_mages:
+			NPC_to_spawn = load(NPC_to_spawn).instantiate() 
 			NPC_to_spawn.position = $"Spawn NPC Marker".position
 			walking_npcs.add_child(NPC_to_spawn)
 			is_trying_to_spawn_npc = false
+			break
+		elif counter > 25:
+			break
+		else:
+			counter += 1
+			
 			
 		
 func _see_number_of_NPC_type(npc_type: String):
