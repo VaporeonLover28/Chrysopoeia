@@ -8,18 +8,3 @@ extends Node
 @onready var emptytavern: AudioStreamPlayer = $empty_tavern
 @onready var jingle_vitoria = $JingleVitoria
 @onready var jingle_derrota = $JingleDerrota
-
-func play(audio: AudioStream, single = false) -> void:
-	if not audio:
-		return
-	if single:
-		stop()
-	for player:AudioStreamPlayer in get_children():
-		if not player.playing:
-			player.stream = audio
-			player.play()
-			return
-
-func stop():
-	for player:AudioStreamPlayer in get_children():
-		player.stop()

@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1bvuh6sqefam"]
+[gd_scene load_steps=7 format=3 uid="uid://d1bvuh6sqefam"]
 
 [ext_resource type="Script" uid="uid://1b1tykx5uhrs" path="res://Script/guard.gd" id="1_p570l"]
+[ext_resource type="PackedScene" uid="uid://bmfmh5aro1x6v" path="res://Assets/Exports/glTF/low_poly_knight.glb" id="2_smm0d"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fsrac"]
 
@@ -48,6 +49,7 @@ one_shot = true
 [node name="Wait Time To Enter Casino" type="Timer" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_fsrac")
 surface_material_override/0 = SubResource("StandardMaterial3D_owtlo")
 
@@ -65,6 +67,9 @@ disabled = true
 [node name="Get Away Timer" type="Timer" parent="."]
 wait_time = 35.0
 autostart = true
+
+[node name="low_poly_knight" parent="." instance=ExtResource("2_smm0d")]
+transform = Transform3D(0.435, 0, 0, 0, 0.435, 0, 0, 0, 0.435, 0, -0.05007559, 0)
 
 [connection signal="timeout" from="Leave Interaction" to="." method="_leave_interaction"]
 [connection signal="timeout" from="Targeted Interactable Object Timer" to="." method="chose_interactable_object"]

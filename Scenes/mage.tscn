@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://du436jkxvf4eh"]
+[gd_scene load_steps=7 format=3 uid="uid://du436jkxvf4eh"]
 
 [ext_resource type="Script" uid="uid://d3u1aaam68bee" path="res://Script/npc.gd" id="1_r3b7i"]
+[ext_resource type="PackedScene" uid="uid://tjnuyxlxa08i" path="res://Assets/Originals/Magorigado_pose2.glb" id="2_0xdm5"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_48eh1"]
 
@@ -45,6 +46,7 @@ wait_time = 10.0
 one_shot = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_48eh1")
 surface_material_override/0 = SubResource("StandardMaterial3D_f3bfq")
 
@@ -62,6 +64,9 @@ disabled = true
 [node name="Get Away Timer" type="Timer" parent="."]
 wait_time = 35.0
 autostart = true
+
+[node name="Magorigado_pose2" parent="." instance=ExtResource("2_0xdm5")]
+transform = Transform3D(-1.3113417e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.3113417e-08, 0, -0.9758226, 0)
 
 [connection signal="timeout" from="Leave Interaction" to="." method="_leave_interaction"]
 [connection signal="timeout" from="Targeted Interactable Object Timer" to="." method="chose_interactable_object"]

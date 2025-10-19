@@ -169,7 +169,7 @@ func _exit_tree() -> void:
 	SaveScript.auto_save.disconnect(SaveScript._save_function)
 
 func _spawn_npc():
-	print("spwan npc")
+	print("Spawned npc")
 	is_trying_to_spawn_npc = true
 	var counter: int = 0
 	while is_trying_to_spawn_npc == true:
@@ -227,18 +227,18 @@ func _spawn_npc():
 			break
 		else:
 			counter += 1
-			
-			
-		
+	
 func _see_number_of_NPC_type(npc_type: String):
 	var npc_type_count: int  = 0
 	for npcs in walking_npcs.get_children():
 		if npcs.scene_file_path == npc_type:
 			npc_type_count += 1
 	if npc_type_count >= 3:
-		MusicPlayer.fulltavern.play()
+		if !MusicPlayer.fulltavern.playing:
+			MusicPlayer.fulltavern.play()
 	else:
-		MusicPlayer.emptytavern.play()
+		if !MusicPlayer.emptytavern.playing:
+			MusicPlayer.emptytavern.play()
 		
 	return npc_type_count
 

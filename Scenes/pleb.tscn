@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://1gqpvwlydbwx"]
+[gd_scene load_steps=7 format=3 uid="uid://1gqpvwlydbwx"]
 
 [ext_resource type="Script" uid="uid://d3u1aaam68bee" path="res://Script/npc.gd" id="1_7fhad"]
+[ext_resource type="PackedScene" uid="uid://cq8kuejvr7w7b" path="res://Assets/Exports/glTF/guest_male_1_-_medieval_fantasy_challenge.glb" id="2_mj11g"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_yvte5"]
 
@@ -46,6 +47,7 @@ wait_time = 10.0
 one_shot = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_yvte5")
 surface_material_override/0 = SubResource("StandardMaterial3D_j8il2")
 
@@ -63,6 +65,9 @@ disabled = true
 [node name="Get Away Timer" type="Timer" parent="."]
 wait_time = 35.0
 autostart = true
+
+[node name="guest_male_1_-_medieval_fantasy_challenge" parent="." instance=ExtResource("2_mj11g")]
+transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, 0, -0.9957146, 0)
 
 [connection signal="timeout" from="Leave Interaction" to="." method="_leave_interaction"]
 [connection signal="timeout" from="Targeted Interactable Object Timer" to="." method="chose_interactable_object"]
