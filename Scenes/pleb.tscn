@@ -67,7 +67,7 @@ wait_time = 35.0
 autostart = true
 
 [node name="guest_male_1_-_medieval_fantasy_challenge" parent="." instance=ExtResource("2_mj11g")]
-transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, 0, -0.9957146, 0)
+transform = Transform3D(-1.13, 0, -9.878774e-08, 0, 1.13, 0, 9.878774e-08, 0, -1.13, 0, -0.9957146, 0)
 
 [connection signal="timeout" from="Leave Interaction" to="." method="_leave_interaction"]
 [connection signal="timeout" from="Targeted Interactable Object Timer" to="." method="chose_interactable_object"]
