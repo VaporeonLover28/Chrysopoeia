@@ -43,9 +43,10 @@ func _physics_process(delta: float) -> void:
 		var dir = local_destino.normalized()
 		if is_moving == true:
 			velocity = dir * 2
+			if position != destino:
+				look_at(destino)
 		else:
 			velocity = Vector3.ZERO
-		look_at(destino)
 		rotation.x = 0
 		rotation.z = 0
 			

@@ -33,6 +33,8 @@ one_shot = true
 [node name="nav" type="NavigationAgent3D" parent="."]
 path_postprocessing = 1
 simplify_path = true
+simplify_epsilon = 1.0
+debug_enabled = true
 
 [node name="idle" type="Timer" parent="."]
 wait_time = 10.0

@@ -11,7 +11,7 @@ albedo_color = Color(0.51, 0.374, 0, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yvte5"]
 
-[node name="Communer" type="CharacterBody3D"]
+[node name="Pleb" type="CharacterBody3D"]
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_7fhad")
@@ -38,6 +38,7 @@ autostart = true
 [node name="nav" type="NavigationAgent3D" parent="."]
 path_postprocessing = 1
 simplify_path = true
+simplify_epsilon = 1.0
 debug_enabled = true
 
 [node name="idle" type="Timer" parent="."]
