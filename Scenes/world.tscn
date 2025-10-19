@@ -3253,9 +3253,9 @@ shadow_mesh = SubResource("ArrayMesh_bjvw0")
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_ic0uy")
-maximum_number_of_knights = 1
+maximum_number_of_knights = 3
 maximum_number_of_jesters = 1
-maximum_number_of_communers = 1
+maximum_number_of_communers = 4
 maximum_number_of_nobles = 1
 maximum_number_of_alcoholic_mages = 1
 minimum_time_for_spawn_npc = 30.0
